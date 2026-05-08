@@ -1,0 +1,10 @@
+{
+  "cssTheme": "Things",
+  "enabledCssSnippets": [
+    "body-text-indent",
+    "outline-compact",
+    "inline-code-highlight",
+    "table-auto-width"
+  ],
+  "theme": "obsidian"
+}

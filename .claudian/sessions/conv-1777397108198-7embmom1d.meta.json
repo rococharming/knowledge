@@ -1,0 +1,24 @@
+{
+  "id": "conv-1777397108198-7embmom1d",
+  "providerId": "claude",
+  "title": "Explain my identity and capabilities",
+  "titleGenerationStatus": "success",
+  "createdAt": 1777397108199,
+  "updatedAt": 1777397227537,
+  "lastResponseAt": 1777397136558,
+  "sessionId": "1f6d95e2-5c06-44b5-8af0-15abdf961f0a",
+  "providerState": {
+    "providerSessionId": "1f6d95e2-5c06-44b5-8af0-15abdf961f0a"
+  },
+  "currentNote": "Claude Code/测试笔记1.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 20912,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 20224,
+    "contextWindow": 200000,
+    "contextTokens": 41136,
+    "percentage": 21,
+    "contextWindowIsAuthoritative": true
+  }
+}

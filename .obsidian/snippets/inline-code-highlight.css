@@ -1,0 +1,19 @@
+.cm-inline-code {
+  color: #e0a0ff !important;
+  background-color: rgba(180, 100, 255, 0.15) !important;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+.markdown-preview-view code {
+  color: #e0a0ff !important;
+  background-color: rgba(180, 100, 255, 0.15) !important;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+.cm-header-3,
+.HyperMD-header-3,
+.markdown-preview-view h3 {
+  color: #dadada !important;
+}

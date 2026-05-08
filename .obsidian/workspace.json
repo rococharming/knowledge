@@ -1,0 +1,341 @@
+{
+  "main": {
+    "id": "1f5166a8d4c5645a",
+    "type": "split",
+    "children": [
+      {
+        "id": "0556dbdc1f685473",
+        "type": "split",
+        "dimension": 57.82442748091603,
+        "children": [
+          {
+            "id": "cdc510a90de7437d",
+            "type": "tabs",
+            "dimension": 43.125,
+            "children": [
+              {
+                "id": "bec11ecba8ace179",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "AI/notes/llm-wiki/1、LLM Wiki介绍.md",
+                    "mode": "source",
+                    "source": false
+                  },
+                  "icon": "lucide-file",
+                  "title": "1、LLM Wiki介绍"
+                }
+              }
+            ]
+          },
+          {
+            "id": "1ccb637c9adf8a4a",
+            "type": "tabs",
+            "dimension": 56.875,
+            "children": [
+              {
+                "id": "8556551a54ea1c9a",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "README.md",
+                    "mode": "source",
+                    "source": false
+                  },
+                  "icon": "lucide-file",
+                  "title": "README"
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "horizontal"
+      },
+      {
+        "id": "e3dc71024dd6d8d7",
+        "type": "tabs",
+        "dimension": 42.17557251908397,
+        "children": [
+          {
+            "id": "41ecc1c633db41d3",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "terminal:terminal",
+              "state": {
+                "terminal:terminal": {
+                  "cwd": "/Users/11185032/spf/knowledge",
+                  "focus": false,
+                  "profile": {
+                    "args": [
+                      "--login"
+                    ],
+                    "executable": "/opt/homebrew/bin/fish",
+                    "followTheme": true,
+                    "name": "",
+                    "platforms": {
+                      "darwin": true
+                    },
+                    "pythonExecutable": "python3",
+                    "restoreHistory": false,
+                    "rightClickAction": "copyPaste",
+                    "successExitCodes": [
+                      "0",
+                      "SIGINT",
+                      "SIGTERM"
+                    ],
+                    "terminalOptions": {
+                      "documentOverride": null
+                    },
+                    "type": "integrated",
+                    "useWin32Conhost": true
+                  },
+                  "serial": null
+                }
+              },
+              "pinned": true,
+              "icon": "terminal",
+              "title": "终端：✳ Refine translations preserve technical terms"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "302137e620ccea99",
+    "type": "split",
+    "children": [
+      {
+        "id": "ad68bd4db922b55e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2f214d9719af6425",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": true
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "501fc895f6b171c7",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "2c34b8e22b142abe",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 313.5
+  },
+  "right": {
+    "id": "7f84de27ab27cb4f",
+    "type": "split",
+    "children": [
+      {
+        "id": "65a62e360b10c973",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "85d9293f63a964d5",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Claude Code/测试笔记1.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "测试笔记1 的反向链接列表"
+            }
+          },
+          {
+            "id": "1eaadb2b918161e2",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Claude Code/1、Claude Code入门.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "1、Claude Code入门 的出链列表"
+            }
+          },
+          {
+            "id": "f53936260e8e8b61",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "7af8fcd8c39993c0",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
+            }
+          },
+          {
+            "id": "040a847e83018fa9",
+            "type": "leaf",
+            "state": {
+              "type": "file-properties",
+              "state": {
+                "file": "Claude Code/4、Skill（AI生成）.md"
+              },
+              "icon": "lucide-info",
+              "title": "4、Skill（AI生成）的笔记属性"
+            }
+          },
+          {
+            "id": "a4891b4f5ae43b05",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {},
+              "icon": "lucide-ghost",
+              "title": "advanced-tables-toolbar"
+            }
+          },
+          {
+            "id": "9ab415b5c5116e32",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "README.md",
+                "followCursor": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "README 的大纲"
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:新建数据库": false,
+      "workspaces:管理工作区布局": false,
+      "terminal:Open terminal": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "obsidian-excalidraw-plugin:New drawing": false
+    }
+  },
+  "active": "2f214d9719af6425",
+  "lastOpenFiles": [
+    "LearnRust/assets/image-2025-11-21_15-26-54_0CLDujS9.png",
+    "LearnRust/assets/image-2025-11-17_14-47-17_UUixeS0Q.png",
+    "LearnRust/assets/image-2025-11-26_11-22-3_TgxRMbMt.png",
+    "LearnRust/assets/image-2025-11-28_14-14-21_7cjznsvD.png",
+    "LearnRust/assets/image-2025-11-20_14-29-31_fKkTtnl5.png",
+    "LearnRust/assets/image_g-pLAQeE.png",
+    "LearnRust/assets/image_pxAGSR5N.png",
+    "LearnRust/assets/image-2025-11-26_11-41-36_HGx96qWL.png",
+    "LearnRust/assets/image_37lK4Qh1.png",
+    "LearnRust/assets/image-2026-1-14_16-18-50_c046wtmC.png",
+    "LearnRust/assets/image-2025-11-18_16-58-36_EbABSYQi.png",
+    "LearnRust/assets",
+    "LearnRust/Rust基础/14、测试（待补充）.md",
+    "LearnRust/Rust基础/5、字符串.md",
+    "LearnRust/Rust基础/8、模式匹配.md",
+    "LearnRust/Rust基础/9、crate与模块（待补充）.md",
+    "LearnRust/Rust基础/3、所有权.md",
+    "LearnRust/Rust基础/6、结构体.md",
+    "LearnRust/Rust基础/12、运算符重载.md",
+    "LearnRust/Rust基础/11、错误处理.md",
+    "LearnRust/Rust基础/7、枚举.md",
+    "LearnRust/Rust基础/15、闭包.md",
+    "LearnRust/Rust基础/4、引用和切片.md",
+    "LearnRust/Rust基础/2、Rust基础语法.md",
+    "LearnRust/Rust基础/1、Rust安装与开发环境配置.md",
+    "LearnRust/Rust基础/18、集合（待补充）.md",
+    "LearnRust/Rust基础/17、智能指针.md",
+    "LearnRust/Rust基础/13、实用工具特征（待重构）.md",
+    "LearnRust/Rust基础/16、迭代器.md",
+    "LearnRust/Rust基础/10、泛型和特征.md",
+    "LearnRust/Rust基础",
+    "LearnRust/Rust进阶/异步编程/3、Tokio Task.md",
+    "LearnRust/Rust进阶/异步编程/2、Tokio异步运行时.md",
+    "LearnRust/Rust进阶/异步编程/1、异步编程基础.md",
+    "LearnRust/Rust进阶/异步编程",
+    "LearnRust/Rust进阶/网络编程/1、Rust原生网络编程.md",
+    "LearnRust/Rust进阶/多线程编程/4、全局变量.md",
+    "LearnRust/Rust进阶/多线程编程/3、共享可变状态.md",
+    "LearnRust/Rust进阶/多线程编程/2、通道.md",
+    "LearnRust/Rust进阶/网络编程",
+    "LearnRust/Rust进阶/多线程编程",
+    "LearnRust/Rust进阶/其他",
+    "LearnRust/Rust进阶/CookBook",
+    "LearnRust/Rust进阶",
+    "LearnRust",
+    "wiki"
+  ]
+}
