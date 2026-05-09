@@ -1,0 +1,31 @@
+{
+  "eval_id": 1,
+  "eval_name": "wiki-with-dead-links-and-orphans",
+  "prompt": "lint 一下 AI 领域的 wiki",
+  "assertions": [
+    {
+      "name": "detects_dead_link",
+      "description": "报告中发现死链 [[不存在的页面]]"
+    },
+    {
+      "name": "detects_orphaned_page",
+      "description": "报告中发现孤立页面 [[孤立文章]]"
+    },
+    {
+      "name": "detects_missing_frontmatter",
+      "description": "报告中发现 [[缺 frontmatter]] 缺少 frontmatter"
+    },
+    {
+      "name": "detects_stale_content",
+      "description": "报告中发现陈旧页面 [[旧概念]]（date 2024-01-01）"
+    },
+    {
+      "name": "has_clear_categories",
+      "description": "报告按严重度分类（高/中/低）"
+    },
+    {
+      "name": "does_not_modify_wiki",
+      "description": "未修改任何 wiki 文件"
+    }
+  ]
+}

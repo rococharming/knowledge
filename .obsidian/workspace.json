@@ -4,100 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "0556dbdc1f685473",
-        "type": "split",
-        "dimension": 57.82442748091603,
-        "children": [
-          {
-            "id": "cdc510a90de7437d",
-            "type": "tabs",
-            "dimension": 43.125,
-            "children": [
-              {
-                "id": "bec11ecba8ace179",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "AI/notes/llm-wiki/1、LLM Wiki介绍.md",
-                    "mode": "source",
-                    "source": false
-                  },
-                  "icon": "lucide-file",
-                  "title": "1、LLM Wiki介绍"
-                }
-              }
-            ]
-          },
-          {
-            "id": "1ccb637c9adf8a4a",
-            "type": "tabs",
-            "dimension": 56.875,
-            "children": [
-              {
-                "id": "8556551a54ea1c9a",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "README.md",
-                    "mode": "source",
-                    "source": false
-                  },
-                  "icon": "lucide-file",
-                  "title": "README"
-                }
-              }
-            ]
-          }
-        ],
-        "direction": "horizontal"
-      },
-      {
-        "id": "e3dc71024dd6d8d7",
+        "id": "7ae16d88cbbf6e0e",
         "type": "tabs",
-        "dimension": 42.17557251908397,
         "children": [
           {
-            "id": "41ecc1c633db41d3",
+            "id": "d0b3a4ae8481d169",
             "type": "leaf",
-            "pinned": true,
             "state": {
-              "type": "terminal:terminal",
+              "type": "markdown",
               "state": {
-                "terminal:terminal": {
-                  "cwd": "/Users/11185032/spf/knowledge",
-                  "focus": false,
-                  "profile": {
-                    "args": [
-                      "--login"
-                    ],
-                    "executable": "/opt/homebrew/bin/fish",
-                    "followTheme": true,
-                    "name": "",
-                    "platforms": {
-                      "darwin": true
-                    },
-                    "pythonExecutable": "python3",
-                    "restoreHistory": false,
-                    "rightClickAction": "copyPaste",
-                    "successExitCodes": [
-                      "0",
-                      "SIGINT",
-                      "SIGTERM"
-                    ],
-                    "terminalOptions": {
-                      "documentOverride": null
-                    },
-                    "type": "integrated",
-                    "useWin32Conhost": true
-                  },
-                  "serial": null
-                }
+                "file": "CLAUDE.md",
+                "mode": "source",
+                "source": false
               },
-              "pinned": true,
-              "icon": "terminal",
-              "title": "终端：✳ Refine translations preserve technical terms"
+              "icon": "lucide-file",
+              "title": "CLAUDE"
             }
           }
         ]
@@ -289,8 +210,43 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "2f214d9719af6425",
+  "active": "d0b3a4ae8481d169",
   "lastOpenFiles": [
+    "lint-workspace/description-opt/2026-05-09_021912",
+    "lint-workspace/description-opt/run_loop.log",
+    "lint-workspace/description-opt",
+    "lint-workspace/trigger_evals.json",
+    "lint-workspace/iteration-2/eval-1/without_skill/timing.json",
+    "lint-workspace/iteration-2/eval-1/with_skill/timing.json",
+    "lint-workspace/iteration-2/eval-1/without_skill/outputs/report.md",
+    "lint-workspace/iteration-2/eval-1/with_skill/outputs/report.md",
+    "AI/wiki/concepts/旧概念.md",
+    "AI/wiki/summaries/缺 frontmatter.md",
+    "AI/wiki/summaries/孤立文章.md",
+    "AI/wiki/entities/Claude Code.md",
+    "AI/wiki/concepts/RAG.md",
+    "lint-workspace/iteration-2/eval-1/without_skill/outputs",
+    "lint-workspace/iteration-2/eval-1/with_skill/outputs",
+    "lint-workspace/iteration-2/eval-1/without_skill",
+    "lint-workspace/iteration-2/eval-1/with_skill",
+    "lint-workspace/iteration-2/eval-1",
+    "lint-workspace/iteration-1/eval-1/with_skill/outputs/report.md",
+    "lint-workspace/iteration-1/eval-1/without_skill/outputs/report.md",
+    "index.md",
+    "AI/CLAUDE.md",
+    "CLAUDE.md",
+    "Rust/CLAUDE.md",
+    "Rust/wiki/log.md",
+    "Rust/wiki/index.md",
+    "AI/raw/articles/test-article-rag-vs-cache.md",
+    "AI/raw/articles/test-article-claude-cache.md",
+    "README.md",
+    "AI/wiki.backup/log.md",
+    "AI/wiki.backup/index.md",
+    "AI/raw/test-article-rag-vs-cache.md",
+    "AI/raw/test-article-claude-cache.md",
+    "llm-wiki.md",
+    "AI/notes/llm-wiki/1、LLM Wiki介绍.md",
     "LearnRust/assets/image-2025-11-21_15-26-54_0CLDujS9.png",
     "LearnRust/assets/image-2025-11-17_14-47-17_UUixeS0Q.png",
     "LearnRust/assets/image-2025-11-26_11-22-3_TgxRMbMt.png",
@@ -301,41 +257,6 @@
     "LearnRust/assets/image-2025-11-26_11-41-36_HGx96qWL.png",
     "LearnRust/assets/image_37lK4Qh1.png",
     "LearnRust/assets/image-2026-1-14_16-18-50_c046wtmC.png",
-    "LearnRust/assets/image-2025-11-18_16-58-36_EbABSYQi.png",
-    "LearnRust/assets",
-    "LearnRust/Rust基础/14、测试（待补充）.md",
-    "LearnRust/Rust基础/5、字符串.md",
-    "LearnRust/Rust基础/8、模式匹配.md",
-    "LearnRust/Rust基础/9、crate与模块（待补充）.md",
-    "LearnRust/Rust基础/3、所有权.md",
-    "LearnRust/Rust基础/6、结构体.md",
-    "LearnRust/Rust基础/12、运算符重载.md",
-    "LearnRust/Rust基础/11、错误处理.md",
-    "LearnRust/Rust基础/7、枚举.md",
-    "LearnRust/Rust基础/15、闭包.md",
-    "LearnRust/Rust基础/4、引用和切片.md",
-    "LearnRust/Rust基础/2、Rust基础语法.md",
-    "LearnRust/Rust基础/1、Rust安装与开发环境配置.md",
-    "LearnRust/Rust基础/18、集合（待补充）.md",
-    "LearnRust/Rust基础/17、智能指针.md",
-    "LearnRust/Rust基础/13、实用工具特征（待重构）.md",
-    "LearnRust/Rust基础/16、迭代器.md",
-    "LearnRust/Rust基础/10、泛型和特征.md",
-    "LearnRust/Rust基础",
-    "LearnRust/Rust进阶/异步编程/3、Tokio Task.md",
-    "LearnRust/Rust进阶/异步编程/2、Tokio异步运行时.md",
-    "LearnRust/Rust进阶/异步编程/1、异步编程基础.md",
-    "LearnRust/Rust进阶/异步编程",
-    "LearnRust/Rust进阶/网络编程/1、Rust原生网络编程.md",
-    "LearnRust/Rust进阶/多线程编程/4、全局变量.md",
-    "LearnRust/Rust进阶/多线程编程/3、共享可变状态.md",
-    "LearnRust/Rust进阶/多线程编程/2、通道.md",
-    "LearnRust/Rust进阶/网络编程",
-    "LearnRust/Rust进阶/多线程编程",
-    "LearnRust/Rust进阶/其他",
-    "LearnRust/Rust进阶/CookBook",
-    "LearnRust/Rust进阶",
-    "LearnRust",
-    "wiki"
+    "LearnRust/Rust基础/14、测试（待补充）.md"
   ]
 }

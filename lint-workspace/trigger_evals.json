@@ -1,0 +1,22 @@
+[
+  {"query": "lint 一下 wiki", "should_trigger": true},
+  {"query": "wiki 里好像有些死链，帮我检查一下", "should_trigger": true},
+  {"query": "给知识库做个健康检查，看看有没有孤立页面", "should_trigger": true},
+  {"query": "帮我扫描一下 wiki 的 frontmatter 有没有问题", "should_trigger": true},
+  {"query": "AI 领域有些页面很久没更新了，帮我看看哪些需要 review", "should_trigger": true},
+  {"query": "检查 wiki 里有没有陈旧的条目", "should_trigger": true},
+  {"query": "wiki 页面之间的链接好像断了几个", "should_trigger": true},
+  {"query": "整理一下 wiki，看看有没有没用的页面", "should_trigger": true},
+  {"query": "我的知识库最近增长很快，帮我 lint 一下", "should_trigger": true},
+  {"query": "有个页面从目录里消失了，帮我排查一下", "should_trigger": true},
+  {"query": "ingest 这篇文章到 wiki", "should_trigger": false},
+  {"query": "query：RAG 是什么", "should_trigger": false},
+  {"query": "创建心理学领域", "should_trigger": false},
+  {"query": "帮我写个 Python 脚本处理数据", "should_trigger": false},
+  {"query": "打开 Obsidian", "should_trigger": false},
+  {"query": "在 notes 里记个想法", "should_trigger": false},
+  {"query": "把 raw/里的文章归档", "should_trigger": false},
+  {"query": "对比 RAG 和 Fine-tuning", "should_trigger": false},
+  {"query": "lint 这个词是什么意思", "should_trigger": false},
+  {"query": "帮我检查代码里的死链", "should_trigger": false}
+]
