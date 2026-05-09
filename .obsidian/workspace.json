@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "2ff1454cc6f097e9",
+        "id": "45612b7bb2a38796",
         "type": "tabs",
         "children": [
           {
-            "id": "85fc7067095c1204",
+            "id": "2f40bef453d4b401",
             "type": "leaf",
             "pinned": true,
             "state": {
@@ -46,52 +46,53 @@
               },
               "pinned": true,
               "icon": "terminal",
-              "title": "终端：⠐ Claude Code"
+              "title": "终端：✳ Fix Obsidian path handling"
             }
           },
           {
-            "id": "0d0015f8f70925dd",
+            "id": "24f28fc17647d20a",
             "type": "leaf",
+            "pinned": true,
             "state": {
-              "type": "markdown",
+              "type": "terminal:terminal",
               "state": {
-                "file": "AI/notes/Claude Code/常用Skills汇总/3、superpowers（待完善）.md",
-                "mode": "source",
-                "source": false
+                "terminal:terminal": {
+                  "cwd": "/Users/11185032/spf/knowledge",
+                  "focus": false,
+                  "profile": {
+                    "args": [
+                      "--login"
+                    ],
+                    "executable": "/opt/homebrew/bin/fish",
+                    "followTheme": true,
+                    "name": "",
+                    "platforms": {
+                      "darwin": true
+                    },
+                    "pythonExecutable": "python3",
+                    "restoreHistory": false,
+                    "rightClickAction": "copyPaste",
+                    "successExitCodes": [
+                      "0",
+                      "SIGINT",
+                      "SIGTERM"
+                    ],
+                    "terminalOptions": {
+                      "documentOverride": null
+                    },
+                    "type": "integrated",
+                    "useWin32Conhost": true
+                  },
+                  "serial": null
+                }
               },
-              "icon": "lucide-file",
-              "title": "3、superpowers（待完善）"
-            }
-          },
-          {
-            "id": "8d7d639f3d29d68c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "AI/notes/Claude Code/常用Skills汇总/3、superpowers（待完善）.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "3、superpowers（待完善）"
-            }
-          },
-          {
-            "id": "5e578efd94fcb402",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "AI/notes/Claude Code/todo.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "todo"
+              "pinned": true,
+              "icon": "terminal",
+              "title": "终端：⠂ Claude Code"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -278,53 +279,53 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "85fc7067095c1204",
+  "active": "24f28fc17647d20a",
   "lastOpenFiles": [
-    "AI/notes/Claude Code/常用Skills汇总/3、superpowers（待完善）.md",
-    "AI/notes/Claude Code/todo.md",
-    "AI/notes/Claude Code/8、Plugin.md",
-    "AI/notes/Claude Code/7、Hook.md",
-    "AI/notes/Claude Code/6、MCP.md",
-    "AI/notes/Claude Code/Tools.md",
-    "AI/notes/Claude Code/Settings.md",
-    "AI/notes/Claude Code/1、Claude Code入门.md",
-    "AI/notes/Claude Code/2、Permission Mode.md",
-    "AI/github-mcp-server GitHub's official MCP Server.md",
+    "assets/Image 34.png",
+    "Rust/notes/Rust基础/3、所有权.md",
+    "Rust/notes/Cookbook/1、算法.md",
+    "assets/Image 109.png",
+    "assets/Image 108.png",
+    "Rust/notes/Rust进阶/异步编程/1、异步编程基础.md",
+    "Rust/notes/Rust进阶/异步编程/2、Tokio异步运行时.md",
+    "assets/Image 107.png",
+    "assets/Image 106.png",
+    "assets/Image 105.png",
+    "assets/Image 104.png",
+    "assets/Image 103.png",
+    "assets/Image 102.png",
+    "assets/Image 101.png",
+    "Rust/notes/Rust进阶/异步编程/3、Tokio Task.md",
+    "Rust/notes/Rust进阶/多线程编程/4、全局变量.md",
+    "assets/Image 100.png",
+    "Rust/notes/Rust进阶/多线程编程/3、共享可变状态.md",
+    "Rust/notes/Rust进阶/多线程编程/2、通道.md",
+    "Rust/notes/Rust进阶/多线程编程/1、多线程编程基础.md",
+    "Rust/notes/Rust进阶/网络编程/1、Rust原生网络编程.md",
+    "Rust/notes/Rust进阶/异步编程",
+    "Rust/notes/Rust进阶/多线程编程",
+    "Rust/notes/Rust进阶/网络编程",
+    "Rust/notes/Rust基础/15、闭包.md",
+    "Rust/notes/Rust基础/18、集合（待补充）.md",
+    "Rust/notes/Rust基础/17、智能指针.md",
+    "Rust/notes/Rust基础/16、迭代器.md",
+    "Rust/notes/Rust基础/14、测试（待补充）.md",
+    "Rust/notes/Rust基础/13、实用工具特征（待重构）.md",
+    "Rust/notes/Rust基础/12、运算符重载.md",
+    "Rust/notes/Rust基础/11、错误处理.md",
+    "Rust/notes/Rust基础/10、泛型和特征.md",
+    "Rust/notes/Rust基础/9、crate与模块（待补充）.md",
+    "Rust/notes/Rust基础/8、模式匹配.md",
+    "Rust/notes/Rust基础/7、枚举.md",
+    "Rust/notes/Rust基础/6、结构体.md",
+    "Rust/notes/Rust基础/4、引用和切片.md",
+    "Rust/notes/Rust基础/5、字符串 - KM知识管理平台.md",
+    "Rust/notes/Cookbook",
+    "Rust/notes/Rust进阶",
+    "Rust/notes/Rust基础",
+    "Rust/raw/others/Rust基础",
     "lint-workspace/iteration-2/review.html",
-    "lint-workspace/iteration-2/benchmark.md",
     "lint-workspace/iteration-2/benchmark.json",
-    "lint-workspace/iteration-2/eval-3-orphans/without_skill/run-1/grading.json",
-    "lint-workspace/iteration-2/eval-3-orphans/without_skill/run-1",
-    "lint-workspace/iteration-2/eval-3-orphans/with_skill/run-1/grading.json",
-    "lint-workspace/iteration-2/eval-3-orphans/with_skill/run-1",
-    "lint-workspace/iteration-2/eval-2-health-check/without_skill/run-1/grading.json",
-    "lint-workspace/iteration-2/eval-2-health-check/without_skill/run-1",
-    "lint-workspace/iteration-2/eval-2-health-check/with_skill/run-1/grading.json",
-    "lint-workspace/iteration-2/eval-2-health-check/with_skill/run-1",
-    "assets/Pasted image 20260509180642.png",
-    "lint-workspace/iteration-2/eval-3-orphans/without_skill/outputs/report.md",
-    "lint-workspace/iteration-2/eval-2-health-check/without_skill/outputs/report.md",
-    "lint-workspace/iteration-2/eval-1-lint-ai/without_skill/outputs/report.md",
-    "lint-workspace/iteration-2/eval-3-orphans/with_skill/outputs/report.md",
-    "lint-workspace/iteration-2/eval-2-health-check/with_skill/outputs/report.md",
-    "lint-workspace/iteration-2/eval-1-lint-ai/with_skill/outputs/report.md",
-    "lint-workspace/iteration-1/benchmark.md",
-    "lint-workspace/iteration-1/eval-3-orphans/without_skill/outputs/report.md",
-    "lint-workspace/iteration-1/eval-2-health-check/without_skill/outputs/report.md",
-    "lint-workspace/iteration-1/eval-3-orphans/with_skill/outputs/report.md",
-    "lint-workspace/iteration-1/eval-2-health-check/with_skill/outputs/report.md",
-    "lint-workspace/iteration-1/eval-1-lint-ai/with_skill/outputs/report.md",
-    "lint-workspace/iteration-1/eval-1-lint-ai/without_skill/outputs/report.md",
-    "AI/wiki/concepts/TestBadFrontmatter.md",
-    "AI/wiki/concepts/TestOrphan.md",
-    "assets/Pasted image 20260509155525.png",
-    "assets/Pasted image 20260509155304.png",
-    "assets/Pasted image 20260509115221.png",
-    "assets/Pasted image 20260509114604.png",
-    "LearnRust/assets/image-2025-11-21_15-26-54_0CLDujS9.png",
-    "LearnRust/assets/image-2025-11-17_14-47-17_UUixeS0Q.png",
-    "LearnRust/assets/image-2025-11-26_11-22-3_TgxRMbMt.png",
-    "LearnRust/assets/image-2025-11-28_14-14-21_7cjznsvD.png",
-    "LearnRust/assets/image-2025-11-20_14-29-31_fKkTtnl5.png"
+    "lint-workspace/iteration-2/eval-3-orphans/without_skill/run-1/grading.json"
   ]
 }
