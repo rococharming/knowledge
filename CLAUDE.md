@@ -2,8 +2,6 @@
 
 本仓库是一个基于 Karpathy [LLM Wiki](llm-wiki.md) 规范的多领域个人知识库。由 **LLM 维护**、**Obsidian 浏览**、**Git 管理**。
 
-> Obsidian 是 IDE；LLM 是程序员；Wiki 是代码库。
-
 ---
 
 ## 一、仓库架构
@@ -42,7 +40,7 @@ knowledge/
 ### Schema 分层
 
 - **全局规则**（本文件 `CLAUDE.md`）：所有领域通用的架构约定、文件规范、操作原则。
-- **领域规则**（`<领域>/CLAUDE.md`）：该领域特有的名称约定、分类体系、qmd collection 名称、领域术语等。新增领域时必须创建。
+- **领域规则**（`<领域>/CLAUDE.md`）：该领域特有的名称约定、分类体系、qmd collection 名称、领域术语等。新增领域时必须创建；已有领域若结构不完整（缺少 `CLAUDE.md`、frontmatter 或必要章节），可用 `init-domain` skill 检查并补充。
 
 ### 顶层 `index.md`
 
@@ -260,7 +258,7 @@ qmd embed       # 更新向量嵌入（慢，按需执行）
 
 ## 十、领域 CLAUDE.md 模板
 
-新增领域时，在 `<领域>/CLAUDE.md` 中至少包含：
+新增领域时，在 `<领域>/CLAUDE.md` 中至少包含以下内容。若已有领域缺少该文件或内容不完整，可用 `init-domain` skill 检查并补充缺失部分：
 
 ```markdown
 # <领域名称> 领域规则

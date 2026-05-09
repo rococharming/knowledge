@@ -7,6 +7,12 @@
       "skillPath": "skills/baoyu-translate/SKILL.md",
       "computedHash": "3dc723aa4b86c4c6b8557faeec558e54f5bce5f9cf39aa629dd588ed6531df20"
     },
+    "impeccable": {
+      "source": "pbakaus/impeccable",
+      "sourceType": "github",
+      "skillPath": "skill/SKILL.md",
+      "computedHash": "8cdf2e788eaca3af7d02026ef9cec55b506100a00d130f938e3fb1ad669c0ad0"
+    },
     "obsidian-cli": {
       "source": "kepano/obsidian-skills",
       "sourceType": "github",
