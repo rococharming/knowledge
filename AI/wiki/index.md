@@ -5,30 +5,30 @@ date: 2026-05-10
 
 # AI 领域 Wiki 索引
 
-## Summaries
+## summaries
 
-（暂无）
+_（暂无）_
 
-## Entities
+## entities
 
-（暂无）
+_（暂无）_
 
-## Concepts
+## concepts
 
-（暂无）
+_（暂无）_
 
-## Comparisons
+## comparisons
 
-（暂无）
+_（暂无）_
 
-## Overviews
+## overviews
 
-（暂无）
+_（暂无）_
 
-## Syntheses
+## syntheses
 
-（暂无）
+_（暂无）_
 
-## Recipes
+## recipes
 
-（暂无）
+_（暂无）_

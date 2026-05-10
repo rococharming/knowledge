@@ -1,56 +1,71 @@
 ---
 title: Rust Wiki 索引
-date: 2026-05-09
+date: 2026-05-11
 ---
 
 # Rust Wiki 索引
 
-## Summaries
+## summaries
 
-- [[Rust安装与开发环境配置摘要]] — Rust 开发环境搭建完整指南（rustup、Cargo、IDE 配置）
+- [[Rust 安装与开发环境配置]] — Rust 入门指南摘要，涵盖工具链概览、IDE 配置及包管理
+- [[Rust 基础语法]] — Rust 语言核心基础语法系统梳理，涵盖变量、类型、控制流、函数与注释
+- [[所有权系统概述]] — Rust 所有权系统全景摘要，涵盖所有权规则、移动语义与共享所有权
 
-## Entities
+## entities
 
-- [[rustup]] — Rust 官方工具链管理器
-- [[Cargo]] — Rust 官方构建工具和包管理器
-- [[rustc]] — Rust 官方编译器
+- [[rustup]] — Rust 工具链管理器，负责安装、更新和切换 Rust 编译器版本
+- [[rustc]] — Rust 官方编译器，将 .rs 源文件编译为可执行文件或库
+- [[Cargo]] — Rust 的构建工具和包管理工具，项目开发的核心工具
 
-## Concepts
+## concepts
 
-- [[Rust工具链]] — Rust 工具链类型与管理（stable、beta、nightly）
+- [[变量与可变性]] — let 绑定、mut 可变性声明、变量遮蔽（shadowing）与作用域
+- [[常量与静态变量]] — const 编译期常量与 static 静态存储的区别、static mut 与 unsafe
+- [[数据类型]] — 标量类型（整型、浮点型、布尔型、字符型）与复合类型（数组、元组）的完整梳理
+- [[控制流]] — if 表达式、loop/while/for 循环、循环标签与范围语法
+- [[函数]] — 表达式语言特征、参数与返回值、函数签名与声明顺序
+- [[注释]] — 行注释、块注释、文档注释、rustdoc 与文档测试
+- [[Edition]] — Rust 语言规则的可选版本包机制，兼顾稳定性与进化性
+- [[语义化版本]] — Cargo 依赖管理中的版本号解析规则（^、~、精确版本）
+- [[所有权]] — 所有权三大规则、作用域与 RAII、所有权放宽方式
+- [[移动]] — 移动语义、Copy 类型、函数传参与返回值、控制流中的移动、复合类型移出
+- [[共享所有权]] — Rc（单线程）与 Arc（多线程）引用计数指针的使用与限制
 
-## Comparisons
-
-_（暂无）_
-
-## Overviews
-
-_（暂无）_
-
-## Syntheses
-
-_（暂无）_
-
-## Recipes
-
-- [[Rust开发环境配置]] — 从安装 rustup 到配置 VS Code 的完整步骤
-
-## Snippets
+## comparisons
 
 _（暂无）_
 
-## Patterns
+## overviews
 
 _（暂无）_
 
-## Projects
+## syntheses
 
 _（暂无）_
 
-## Exercises
+## recipes
+
+- [[Cargo 命令速查]] — Cargo 核心命令分类速查，涵盖创建、构建、测试、依赖管理
+- [[rustup 命令速查]] — rustup 工具链安装、更新、切换命令速查
+- [[RsProxy 镜像源配置]] — 国内环境下通过 RsProxy 加速 Rust 安装和依赖下载
+- [[VS Code Rust 开发环境配置]] — 在 VS Code 中配置 rust-analyzer 等插件搭建 Rust 开发环境
+
+## snippets
 
 _（暂无）_
 
-## Resources
+## patterns
+
+_（暂无）_
+
+## projects
+
+_（暂无）_
+
+## exercises
+
+_（暂无）_
+
+## resources
 
 _（暂无）_

@@ -4,24 +4,77 @@
     "type": "split",
     "children": [
       {
-        "id": "3d8e00243746017f",
+        "id": "abb60ad8b470d0f9",
         "type": "tabs",
         "children": [
           {
-            "id": "467ce1080511b7c0",
+            "id": "7083211aa6d020c5",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "terminal:terminal",
+              "state": {
+                "terminal:terminal": {
+                  "cwd": "/Users/songpengfei/knowledge",
+                  "focus": false,
+                  "profile": {
+                    "args": [
+                      "--login"
+                    ],
+                    "executable": "/opt/homebrew/bin/fish",
+                    "followTheme": true,
+                    "name": "",
+                    "platforms": {
+                      "darwin": true
+                    },
+                    "pythonExecutable": "python3",
+                    "restoreHistory": false,
+                    "rightClickAction": "copyPaste",
+                    "successExitCodes": [
+                      "0",
+                      "SIGINT",
+                      "SIGTERM"
+                    ],
+                    "terminalOptions": {
+                      "documentOverride": null
+                    },
+                    "type": "integrated",
+                    "useWin32Conhost": true
+                  },
+                  "serial": null
+                }
+              },
+              "pinned": true,
+              "icon": "terminal",
+              "title": "终端：✳ Claude Code"
+            }
+          },
+          {
+            "id": "1756eed0a3a1d499",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CLAUDE.md",
+                "file": "Rust/wiki/log.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CLAUDE"
+              "title": "log"
+            }
+          },
+          {
+            "id": "ce35446928bb6b02",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "关系图谱"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -156,13 +209,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "CLAUDE.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "CLAUDE 的大纲"
+              "title": "大纲"
             }
           }
         ],
@@ -187,45 +239,45 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "3c4f69496ee82652",
+  "active": "ce35446928bb6b02",
   "lastOpenFiles": [
-    "1",
-    "AI/CLAUDE.md",
-    "CLAUDE.md",
-    "README.md",
-    "Rust/wiki/index.md",
+    "Rust/raw/archive/articles/所有权.md",
+    "Rust/wiki/concepts/共享所有权.md",
+    "Rust/wiki/concepts/移动.md",
+    "Rust/wiki/concepts/所有权.md",
+    "Rust/wiki/summaries/所有权系统概述.md",
     "Rust/wiki/log.md",
-    "Rust/wiki/recipes/Rust开发环境配置.md",
-    "Rust/wiki/entities/rustup.md",
-    "Rust/wiki/entities/rustc.md",
-    "Rust/wiki/entities/Cargo.md",
-    "Rust/wiki/concepts/Rust工具链.md",
+    "index.md",
+    "Rust/wiki/index.md",
+    "Rust/wiki/concepts/数据类型.md",
+    "Rust/wiki/recipes/rustup 命令速查.md",
+    "llm-wiki-zh-CN.md",
+    "Rust/raw/articles/所有权.md",
+    "Rust/notes/Rust基础/4、引用和切片.md",
+    "Rust/notes/Rust基础/3、所有权.md",
+    "Rust/wiki/summaries/Rust 安装与开发环境配置.md",
+    "llm-wiki.md",
+    "Rust/notes/Rust基础/1、Rust安装与开发环境配置.md",
+    "所有权.md",
+    "lint-report-20260510.md",
+    "lint-report-20260511.md",
+    "Rust/wiki/concepts/变量与可变性.md",
+    "Rust/wiki/recipes/Cargo 命令速查.md",
+    "Rust/wiki/summaries/Rust 基础语法.md",
+    "Rust/raw/archive/articles/Rust基础语法.md",
+    "knowledge/index.md",
+    "knowledge",
+    "Rust/wiki/concepts/注释.md",
+    "Rust/raw/archive/articles",
+    "1",
     "scripts/sync-qmd.sh",
     "scripts",
-    "Rust/raw/archive/Rust安装与开发环境配置.md",
-    "Rust/wiki/summaries/Rust安装与开发环境配置摘要.md",
-    "Rust/CLAUDE.md",
     "Rust/wiki/resources",
     "Rust/wiki/exercises",
     "Rust/wiki/projects",
     "Rust/wiki/patterns",
     "Rust/wiki/snippets",
-    "Rust/wiki/syntheses",
-    "Rust/wiki/overviews",
-    "Rust/wiki/comparisons",
-    "AI/wiki/index.md",
-    "AI/wiki/log.md",
-    "index.md",
-    "Rust/raw/articles/Rust安装与开发环境配置.md",
-    "Rust/notes/Rust基础/1、Rust安装与开发环境配置.md",
-    "Rust/notes/Rust进阶/异步编程/1、异步编程基础.md",
-    "Rust/notes/Rust基础/5、字符串.md",
-    "AI/notes/Claude Code/Claude编程技巧/1、AI 编程守则.md",
-    "Rust/notes/Rust基础/3、所有权.md",
-    "Rust/notes/Rust基础/2、Rust基础语法.md",
-    "AI/notes/Claude Code/1、Claude Code入门.md",
     "assets/Pasted image 20260510015319.png",
-    "Rust/notes/Rust基础/1、Rust安装与开发环境配置.backup.md",
     "assets/Pasted image 20260510012958.png"
   ]
 }

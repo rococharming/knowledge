@@ -1,53 +1,112 @@
 ---
-title: "Cargo"
+title: Cargo
 date: 2026-05-10
+tags: [rust, cargo, package-management]
 source_count: 1
-tags: [rust, cargo, build-tool, entity]
 ---
 
 # Cargo
 
-## 定义
+## 概述
 
-Cargo 是 Rust 的**官方构建工具和包管理器**，负责项目创建、依赖管理、代码构建、测试运行和文档生成。它是 Rust 开发的核心工具，底层调用 rustc 完成实际编译。
+Cargo 是 Rust 的**构建工具和包管理工具**。安装 [[rustup]] 时会一并安装 Cargo 的最新 stable 版本。通过 Cargo 可以新建项目、构建代码、下载编译依赖库、运行测试和生成文档。构建时底层隐式调用 [[rustc]] 进行编译。
 
-## 关键信息
+## 创建项目
 
-### 核心功能
+### 二进制可执行项目
 
-- **项目创建**：`cargo new` 生成标准项目结构
-- **依赖管理**：自动下载、编译和配置 crates.io 上的库
-- **代码构建**：`cargo build` 调用 rustc 编译项目
-- **测试运行**：`cargo test` 执行项目中的测试代码
-- **文档生成**：`cargo doc` 生成项目文档
+```bash
+cargo new hello_cargo
+```
 
-### 常用命令
-
-| 命令 | 作用 |
-|------|------|
-| `cargo new <name>` | 创建二进制项目 |
-| `cargo new --lib <name>` | 创建库项目 |
-| `cargo build` | 调试构建（`target/debug/`） |
-| `cargo build --release` | 发布构建（`target/release/`） |
-| `cargo run` | 构建并运行 |
-| `cargo run --release` | 发布构建并运行 |
-| `cargo check` | 检查代码是否可编译（不生成二进制） |
-| `cargo test` | 运行测试 |
-| `cargo clean` | 清理 `target/` 目录 |
-| `cargo doc` | 生成文档 |
-
-### 项目结构
+自动生成目录结构：
 
 ```
 hello_cargo/
-├── .git/          # Git 仓库（自动生成）
-├── .gitignore     # Git 忽略文件
-├── Cargo.toml     # 项目配置
+├── .git/
+├── .gitignore
+├── Cargo.toml
 └── src/
-    └── main.rs    # 入口文件（二进制项目）
+    └── main.rs
 ```
 
-### Cargo.toml 核心字段
+- `Cargo.toml`：项目配置文件，包含包信息和依赖
+- `src/main.rs`：程序入口文件
+
+不使用 Git 版本控制时，加 `--vcs=none` 选项。
+
+### 库项目
+
+```bash
+cargo new --lib my_lib
+```
+
+生成 `src/lib.rs` 而非 `main.rs`。
+
+## 常用命令
+
+| 命令 | 作用 |
+|---|---|
+| `cargo build` | 调试构建，输出到 `target/debug/` |
+| `cargo build --release` | 发布构建，输出到 `target/release/` |
+| `cargo run` | 构建并运行 |
+| `cargo run --release` | 发布构建并运行 |
+| `cargo check` | 检查代码是否可编译（不生成产物，速度快） |
+| `cargo test` | 运行测试 |
+| `cargo doc` | 构建项目文档 |
+| `cargo clean` | 清理构建产物（删除 `target/`） |
+
+## 构建模式
+
+| 模式 | 优化级别 | 编译速度 | 文件大小 | 运行速度 | 调试符号 |
+|---|---|---|---|---|---|
+| Debug（默认） | `opt-level=0` | 快 | 大 | 慢 | 完整 |
+| Release | `opt-level=3` | 慢 | 小 | 快 | 较少 |
+
+## 包管理
+
+### 添加依赖
+
+```bash
+cargo add ferris-says              # 添加最新版本
+cargo add ferris-says@0.3.2        # 指定精确版本
+cargo add serde@^1.0               # 语义化版本范围
+```
+
+版本规则遵循 [[语义化版本]]。
+
+### 启用 Features
+
+Rust 库追求最小默认依赖，非核心功能放入 feature 中按需启用：
+
+```bash
+cargo add serde --features derive
+cargo add tokio --features rt-multi-thread,macros
+```
+
+在代码中通过 `#[cfg(feature = "foo")]` 控制条件编译。
+
+### 依赖类型
+
+| 类型 | 命令 | 用途 |
+|---|---|---|
+| 普通依赖 | `cargo add crate` | 加到 `[dependencies]`，项目运行必需 |
+| 开发依赖 | `cargo add crate --dev` | 加到 `[dev-dependencies]`，仅测试/基准时使用 |
+| 构建依赖 | `cargo add crate --build` | 加到 `[build-dependencies]`，供 `build.rs` 构建脚本使用 |
+
+### 移除依赖
+
+```bash
+cargo remove serde
+cargo remove pretty_assertions --dev
+cargo remove cc --build
+```
+
+### Cargo.lock
+
+由 Cargo 自动生成，锁定项目所有依赖的确切版本。多人协作时应提交到版本控制，确保所有环境依赖一致。
+
+## Cargo.toml 示例
 
 ```toml
 [package]
@@ -56,34 +115,16 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+ferris-says = "0.3.2"
+serde = { version = "1", features = ["derive"] }
+
+[dev-dependencies]
+pretty_assertions = "1.4"
 ```
 
-### 构建模式对比
+## 关联
 
-| 特性 | Debug 构建 | Release 构建 |
-|------|-----------|-------------|
-| 优化级别 | `opt-level=0` | `opt-level=3` |
-| 编译速度 | 快 | 慢 |
-| 可执行文件体积 | 大 | 小 |
-| 运行速度 | 慢 | 快 |
-| 调试符号 | 完整 | 较少 |
-| 触发条件 | `cargo build` | `cargo build --release` |
-
-### 依赖管理
-
-- **`cargo add <crate>`**：自动添加依赖到 `Cargo.toml` 并更新 `Cargo.lock`
-- **`cargo add <crate>@<version>`**：指定版本，支持 `^` 和 `~` 语义化范围
-- **`cargo add <crate> --features <f1>,<f2>`**：启用 feature
-- **`cargo add <crate> --dev`**：添加开发依赖（`[dev-dependencies]`）
-- **`cargo add <crate> --build`**：添加构建依赖（`[build-dependencies]`）
-- **`cargo remove <crate>`**：移除依赖
-
-### Cargo.lock
-
-- 自动生成的依赖锁定文件
-- 记录项目使用的所有 crate 及其精确版本
-- 确保不同环境下依赖一致，多人协作时应提交到版本控制
-
-## 相关素材
-
-- [[Rust安装与开发环境配置摘要]]
+- [[rustup]] — 管理 Cargo 版本的工具链管理器
+- [[rustc]] — Cargo 底层调用的编译器
+- [[语义化版本]] — Cargo 依赖版本解析规则
+- [[Edition]] — Cargo.toml 中指定的语言规则版本

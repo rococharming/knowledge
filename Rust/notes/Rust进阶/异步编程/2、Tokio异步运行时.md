@@ -17,7 +17,7 @@ Tokio常见的模块包括：
 在使用 `tokio` 前，需要先在 `Cargo.toml` 中引入依赖，例如：
 
 ```toml
-tokio = { version = "1.48.0", features = \["full"\] }
+tokio = { version = "1.48.0", features = ["full"] }
 ```
 也可以在命令行中执行：
 ```bash
@@ -53,9 +53,9 @@ let rt = tokio::runtime::Runtime::new().unwrap();
 
 示例1：创建当前线程Runtime
 ```rust
-let rt = tokio::runtime::Builder::new\_current\_thread()
+let rt = tokio::runtime::Builder::new_current_thread()
 
-.enable\_all()
+.enable_all()
 
 .build()
 
@@ -63,17 +63,17 @@ let rt = tokio::runtime::Builder::new\_current\_thread()
 ```
 示例2：创建多线程Runtime
 ```rust
-let rt = tokio::runtime::Builder::new\_multi\_thread()
+let rt = tokio::runtime::Builder::new_multi_thread()
 
-.work\_threads(8) // 指定 8 个工作线程
+.worker_threads(8) // 指定 8 个工作线程
 
-.enable\_io() // 启用异步 I/O 驱动
+.enable_io() // 启用异步 I/O 驱动
 
-.enable\_time() // 启用时间驱动
+.enable_time() // 启用时间驱动
 
 .build()
 
-.unwarp();
+.unwrap();
 ```
 注意事项：
 
@@ -93,9 +93,9 @@ use tokio::runtime::Runtime;
 
 fn main() {
 
-let \_rt = Runtime::new().unwrap();
+let _rt = Runtime::new().unwrap();
 
-sleep(Duration::from\_secs(120)); // 休眠 120 秒便于观察
+sleep(Duration::from_secs(120)); // 休眠 120 秒便于观察
 
 }
 ```
@@ -113,7 +113,7 @@ sleep(Duration::from\_secs(120)); // 休眠 120 秒便于观察
 示例：
 
 ```rust
-#\[tokio::main\]
+#[tokio::main]
 
 async fn main() {
 
@@ -121,21 +121,21 @@ async fn main() {
 
 }
 ```
-这个宏会自动帮哦我们创建runtime，并在其中执行 `async fn main()` 的内容。
+这个宏会自动帮我们创建runtime，并在其中执行 `async fn main()` 的内容。
 
 默认情况下， `#[tokio::main]` 创建的是多线程runtime。从概念上可以把它大致理解为：
 ```rust
 fn main() {
 
-let rt = tokio::runtime::Builder::new\_multi\_thread()
+let rt = tokio::runtime::Builder::new_multi_thread()
 
-.enable\_all()
+.enable_all()
 
 .build()
 
 .unwrap();
 
-rt.block\_on(async {
+rt.block_on(async {
 
 // 原来的 async main 内容
 
@@ -145,15 +145,15 @@ rt.block\_on(async {
 ```
 使用 `#[tokio::main]` 时，也可以通过参数配置 runtime：
 ```rust
-#\[tokio::main(flavor = "multi\_thread")\]
+#[tokio::main(flavor = "multi_thread")]
 
 async fn main() {}
 
-#\[tokio::main(flavor = "multi\_thread", worker\_threads = 14)\]
+#[tokio::main(flavor = "multi_thread", worker_threads = 14)]
 
 async fn main() {}
 
-#\[tokio::main(worker\_threads = 14)\]
+#[tokio::main(worker_threads = 14)]
 
 async fn main() {}
 ```
@@ -161,7 +161,7 @@ async fn main() {}
 
 如果希望使用当前线程 runtime，则可以写成：
 ```rust
-#\[tokio::main(flavor = "current\_thread")\]
+#[tokio::main(flavor = "current_thread")]
 
 async fn main() {}
 ```
@@ -178,17 +178,17 @@ fn main() {
 
 let t1 = std::thread::spawn(|| {
 
-let \_rt = tokio::runtime::Runtime::new().unwrap();
+let _rt = tokio::runtime::Runtime::new().unwrap();
 
-std::thread::sleep(std::time::Duration::from\_secs(60));
+std::thread::sleep(std::time::Duration::from_secs(60));
 
 });
 
 let t2 = std::thread::spawn(|| {
 
-let \_rt = tokio::runtime::Runtime::new().unwrap();
+let _rt = tokio::runtime::Runtime::new().unwrap();
 
-std::thread::sleep(std::time::Duration::from\_secs(60));
+std::thread::sleep(std::time::Duration::from_secs(60));
 
 });
 
@@ -198,7 +198,7 @@ t2.join().unwrap();
 
 }
 ```
-实际在Mac 14核实验预期会有3 + 14 \* 2 = 31个线程。
+实际在Mac 14核实验预期会有3 + 14 * 2 = 31个线程。
 
 上面这段代码中，两个新建的线程各自持有一个 **独立** 的 Tokio runtime，它们之间互不共享 **调度器和任务队列** 。
 
@@ -223,7 +223,7 @@ t2.join().unwrap();
 
 这正是异步运行时高并发的基础之一。
 
-## 2、block\_on()方法
+## 2、block_on()方法
 
 `Runtime` 提供了 `block_on()` 方法。它接收一个 `Future` 作为参数，并在当前线程上阻塞，直到该 `Future` 执行完成后才返回。
 
@@ -238,13 +238,13 @@ fn main() {
 
 let rt = Runtime::new().unwrap();
 
-rt.block\_on(
+rt.block_on(
 
 async {
 
 println!("Before sleep: {}", chrono::Local::now().format("%F %T.%.3f"));
 
-tokio::time::sleep(std::time::Duration::from\_secs(5)).await;
+tokio::time::sleep(std::time::Duration::from_secs(5)).await;
 
 println!("After sleep: {}", chrono::Local::now().format("%F %T.%.3f"))
 
@@ -270,13 +270,13 @@ fn main() {
 
 let rt = Runtime::new().unwrap();
 
-let val = rt.block\_on(
+let val = rt.block_on(
 
 async {
 
 println!("Before sleep: {}", chrono::Local::now().format("%F %T.%.3f"));
 
-tokio::time::sleep(std::time::Duration::from\_secs(5)).await;
+tokio::time::sleep(std::time::Duration::from_secs(5)).await;
 
 println!("After sleep: {}", chrono::Local::now().format("%F %T.%.3f"));
 
@@ -303,7 +303,7 @@ use chrono;
 
 fn now() -> String {
 
-chrono::Local::now().format("%F %T.%.3f").to\_string()
+chrono::Local::now().format("%F %T.%.3f").to_string()
 
 }
 
@@ -311,7 +311,7 @@ fn main() {
 
 let rt = Runtime::new().unwrap();
 
-rt.block\_on(
+rt.block_on(
 
 async {
 
@@ -319,7 +319,7 @@ println!("create new async task: {}", now());
 
 tokio::spawn(async {
 
-tokio::time::sleep(std::time::Duration::from\_secs(3)).await;
+tokio::time::sleep(std::time::Duration::from_secs(3)).await;
 
 println!("async task over: {}", now())
 
@@ -349,7 +349,7 @@ use chrono;
 
 fn now() -> String {
 
-chrono::Local::now().format("%F %T.%.3f").to\_string()
+chrono::Local::now().format("%F %T.%.3f").to_string()
 
 }
 
@@ -357,7 +357,7 @@ fn main() {
 
 let rt = Runtime::new().unwrap();
 
-rt.block\_on(
+rt.block_on(
 
 async {
 
@@ -365,7 +365,7 @@ println!("create new async task: {}", now());
 
 let t = tokio::spawn(async {
 
-tokio::time::sleep(std::time::Duration::from\_secs(3)).await;
+tokio::time::sleep(std::time::Duration::from_secs(3)).await;
 
 println!("async task over: {}", now())
 
@@ -397,17 +397,17 @@ use chrono;
 
 fn now() -> String {
 
-chrono::Local::now().format("%F %T.%.3f").to\_string()
+chrono::Local::now().format("%F %T.%.3f").to_string()
 
 }
 
-fn async\_task(rt: &Runtime) -> JoinHandle<()> {
+fn async_task(rt: &Runtime) -> JoinHandle<()> {
 
 println!("create new async task: {}", now());
 
 rt.spawn(async {
 
-tokio::time::sleep(std::time::Duration::from\_secs(3)).await;
+tokio::time::sleep(std::time::Duration::from_secs(3)).await;
 
 println!("async task over: {}", now())
 
@@ -419,11 +419,11 @@ fn main() {
 
 let rt = Runtime::new().unwrap();
 
-rt.block\_on(
+rt.block_on(
 
 async {
 
-let t = async\_task(&rt);
+let t = async_task(&rt);
 
 t.await.unwrap();
 
@@ -447,7 +447,7 @@ use chrono;
 
 fn now() -> String {
 
-chrono::Local::now().format("%F %T.%.3f").to\_string()
+chrono::Local::now().format("%F %T.%.3f").to_string()
 
 }
 
@@ -455,13 +455,13 @@ fn main() {
 
 let rt = Runtime::new().unwrap();
 
-let \_guard = rt.enter(); // 临时标记往下部分位于Tokio runtime上下文
+let _guard = rt.enter(); // 临时标记往下部分位于Tokio runtime上下文
 
 let t1 = tokio::spawn(async {
 
 println!("task1 start... {}", now());
 
-tokio::time::sleep(tokio::time::Duration::from\_secs(1)).await;
+tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;
 
 println!("task1 done... {}", now());
 
@@ -471,13 +471,13 @@ let t2 = tokio::spawn(async {
 
 println!("task2 start... {}", now());
 
-tokio::time::sleep(tokio::time::Duration::from\_secs(2)).await;
+tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
 
 println!("task2 done... {}", now());
 
 });
 
-rt.block\_on(async move {
+rt.block_on(async move {
 
 t1.await.unwrap();
 
@@ -529,7 +529,7 @@ use chrono;
 
 fn now() -> String {
 
-chrono::Local::now().format("%F %T.%.3f").to\_string()
+chrono::Local::now().format("%F %T.%.3f").to_string()
 
 }
 
@@ -537,7 +537,7 @@ fn main() {
 
 let rt = Runtime::new().unwrap();
 
-rt.block\_on(async {
+rt.block_on(async {
 
 let t = tokio::spawn(async {
 
@@ -549,7 +549,7 @@ i += 1;
 
 println!("tick: {}", i);
 
-tokio::time::sleep(std::time::Duration::from\_millis(200)).await;
+tokio::time::sleep(std::time::Duration::from_millis(200)).await;
 
 }
 
@@ -557,7 +557,7 @@ tokio::time::sleep(std::time::Duration::from\_millis(200)).await;
 
 // 先让异步任务充分运行下
 
-tokio::time::sleep(std::time::Duration::from\_secs(1)).await;
+tokio::time::sleep(std::time::Duration::from_secs(1)).await;
 
 println!("abort now");
 
@@ -569,7 +569,7 @@ t.abort();
 
 match t.await {
 
-Ok(\_) => println!("task finished normally"),
+Ok(_) => println!("task finished normally"),
 
 Err(e) => println!("task canceled: {e}"),
 
@@ -609,9 +609,9 @@ fn main() {
 
 let rt = tokio::runtime::Runtime::new().unwrap();
 
-rt.block\_on(async {
+rt.block_on(async {
 
-std::thread::sleep(std::time::Duration::from\_secs(10));
+std::thread::sleep(std::time::Duration::from_secs(10));
 
 });
 
@@ -624,16 +624,16 @@ std::thread::sleep(std::time::Duration::from\_secs(10));
 worker thread：用于执行异步任务，不适合长期阻塞
 
 blocking thread：用于执行可能阻塞线程的同步代码，避免把 worker 线程卡住
-## 2、spawn\_blocking()
+## 2、spawn_blocking()
 
 在Tokio中，可以使用 `tokio::task::spawn_blocking()` 把同步阻塞代码放到专门的阻塞线程池中执行。
 
 示例形式如下：
 
 ```rust
-let v = tokio::task::spawn\_blocking(|| {
+let v = tokio::task::spawn_blocking(|| {
 
-heavy\_compute()
+heavy_compute()
 
 }).await?;
 
@@ -645,7 +645,7 @@ heavy\_compute()
 
 它返回的是Tokio的 `JoinHandle` ：因此可以直接在async代码块中`.await` 。
 ```rust
-let res = tokio::task::spawn\_blocking(|| {
+let res = tokio::task::spawn_blocking(|| {
 
 1 + 2
 
@@ -671,9 +671,9 @@ fn main() {
 
 let rt = tokio::runtime::Runtime::new().unwrap();
 
-rt.block\_on(async {
+rt.block_on(async {
 
-let h = tokio::task::spawn\_blocking(|| {
+let h = tokio::task::spawn_blocking(|| {
 
 let mut i = 0u32;
 
@@ -683,13 +683,13 @@ i += 1;
 
 println!("tick: {}", i);
 
-std::thread::sleep(std::time::Duration::from\_millis(200));
+std::thread::sleep(std::time::Duration::from_millis(200));
 
 }
 
 });
 
-tokio::time::sleep(tokio::time::Duration::from\_secs(1)).await;
+tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;
 
 println!("abort now");
 
@@ -697,13 +697,13 @@ h.abort();
 
 match h.await {
 
-Ok(\_) => println!("blocking task finished normally"),
+Ok(_) => println!("blocking task finished normally"),
 
 Err(e) => println!("blocking task was cancelled: {}", e),
 
 }
 
-tokio::time::sleep(tokio::time::Duration::from\_secs(1)).await;
+tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;
 
 println!("main over");
 
@@ -718,7 +718,7 @@ println!("main over");
 `abort()` 并不能像取消普通异步任务那样，把一个已经开始运行的 blocking 任务立刻停掉。可以看到，阻塞任务会一直运行。
 
 因此要注意， `spawn_blocking()` 更适合执行：可控时长的阻塞逻辑、不会无限死循环的同步代码。 **如果把不可结束的死循环放进去，就可能给runtime关闭带来麻烦** ，后面会讨论。
-## 4、spawn\_blocking()中的同步代码与async世界交换数据
+## 4、spawn_blocking()中的同步代码与async世界交换数据
 
 为了让 `spawn_blocking()` 中的同步代码与async世界交互，常见有两种方式：简单返回值和流式通信。
 
@@ -729,15 +729,15 @@ println!("main over");
 示例：
 
 ```rust
-#\[tokio::main\]
+#[tokio::main]
 
 async fn main() {
 
-let t = tokio::task::spawn\_blocking(|| {
+let t = tokio::task::spawn_blocking(|| {
 
 let mut sum = 0;
 
-for i in 0..1\_000 {
+for i in 0..1_000 {
 
 sum += i;
 
@@ -770,17 +770,17 @@ println!("res={}", res);
 ```rust
 use tokio::sync::mpsc;
 
-#\[tokio::main\]
+#[tokio::main]
 
 async fn main() {
 
 let (tx, mut rx) = mpsc::channel::<String>(10);
 
-let t = tokio::task::spawn\_blocking(move || {
+let t = tokio::task::spawn_blocking(move || {
 
 for i in 0..5 {
 
-tx.blocking\_send(format!("line: {}", i)).unwrap();
+tx.blocking_send(format!("line: {}", i)).unwrap();
 
 }
 
@@ -794,7 +794,7 @@ println!("recv: {}", msg);
 
 }
 
-let \_ = t.await;
+let _ = t.await;
 
 }
 ```
@@ -838,10 +838,10 @@ Tokio不会强杀worker线程，而是让它们在关闭流程中结束调度并
 
 **已开始执行的blocking任务可能导致关闭等待很久**
 
-这是最需要注意的一点。对于spawn\_blocking()提交的任务，如果它们已经执行，那么Tokio无法强行终止它们，因此在默认drop runtime的过程中，Tokio会等待这些blocking任务的结束。
+这是最需要注意的一点。对于spawn_blocking()提交的任务，如果它们已经执行，那么Tokio无法强行终止它们，因此在默认drop runtime的过程中，Tokio会等待这些blocking任务的结束。
 
 如果某个blocking任务是死循环，或者长期卡住不返回，那么runtime的关闭过程就可能被拖得很久，甚至看起来像“卡死”。
-## 2、shutdown\_background
+## 2、shutdown_background
 
 `Runtime` 提供了 `shutdown_background()` 方法，用来在后台发起关闭，而不是像普通drop那样等待所有相关工作等彻底结束。
 
@@ -862,15 +862,15 @@ fn main() {
 
 let rt = tokio::runtime::Runtime::new().unwrap();
 
-rt.block\_on(async {
+rt.block_on(async {
 
-tokio::task::spawn\_blocking(move || {
+tokio::task::spawn_blocking(move || {
 
 loop {
 
 println!("hello");
 
-std::thread::sleep(std::time::Duration::from\_secs(1));
+std::thread::sleep(std::time::Duration::from_secs(1));
 
 }
 
@@ -878,7 +878,7 @@ std::thread::sleep(std::time::Duration::from\_secs(1));
 
 });
 
-rt.shutdown\_background();
+rt.shutdown_background();
 
 }
 ```

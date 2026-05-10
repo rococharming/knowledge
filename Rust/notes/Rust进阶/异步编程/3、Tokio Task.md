@@ -43,7 +43,7 @@ Tokio Task可以视为绿色线程，因为：
 例如：
 
 ```rust
-async fn do\_work() {
+async fn do_work() {
 
 println!("working...");
 
@@ -117,13 +117,13 @@ Tokio对Task的调度，不是抢占式的，而是协作式调度。 **所谓�
 ```rust
 use tokio::time::{sleep, Duration};
 
-#\[tokio::main\]
+#[tokio::main]
 
 async fn main() {
 
 let t = tokio::spawn(async {
 
-sleep(Duration::from\_secs(1)).await;
+sleep(Duration::from_secs(1)).await;
 
 println!("child task done");
 
@@ -159,11 +159,11 @@ fn main() {
 
 let rt = Runtime::new().unwrap();
 
-rt.block\_on(async {
+rt.block_on(async {
 
 tokio::spawn(async {
 
-sleep(Duration::from\_secs(1)).await;
+sleep(Duration::from_secs(1)).await;
 
 println!("done");
 
@@ -185,11 +185,11 @@ fn main() {
 
 let rt = Runtime::new().unwrap();
 
-rt.block\_on(async {
+rt.block_on(async {
 
 let t = tokio::spawn(async {
 
-sleep(Duration::from\_secs(1)).await;
+sleep(Duration::from_secs(1)).await;
 
 println!("done");
 
@@ -209,7 +209,7 @@ t.await.unwrap();
 
 错误示例：
 ```rust
-#\[tokio::main\]
+#[tokio::main]
 
 async fn main() {
 
@@ -229,7 +229,7 @@ println!("{r}");
 
 正确写法：
 ```rust
-#\[tokio::main\]
+#[tokio::main]
 
 async fn main() {
 
@@ -254,13 +254,13 @@ println!("{s}");
 ```rust
 use tokio::time::{sleep, Duration};
 
-#\[tokio::main\]
+#[tokio::main]
 
 async fn main() {
 
 let task = tokio::spawn(async {
 
-sleep(Duration::from\_secs(1)).await;
+sleep(Duration::from_secs(1)).await;
 
 10
 
@@ -280,21 +280,21 @@ println!("result = {}", result);
 ```rust
 use tokio::time::{sleep, Duration};
 
-#\[tokio::main\]
+#[tokio::main]
 
 async fn main() {
 
 let task = tokio::spawn(async {
 
-sleep(Duration::from\_secs(2)).await;
+sleep(Duration::from_secs(2)).await;
 
 });
 
-println!("finished? {}", task.is\_finished());
+println!("finished? {}", task.is_finished());
 
-sleep(Duration::from\_secs(3)).await;
+sleep(Duration::from_secs(3)).await;
 
-println!("finished? {}", task.is\_finished());
+println!("finished? {}", task.is_finished());
 
 }
 ```
@@ -312,15 +312,15 @@ Tokio的 `worker thread` 主要用于轮询和推进异步任务。如果把 **�
 ```rust
 use tokio::task;
 
-#\[tokio::main\]
+#[tokio::main]
 
 async fn main() {
 
-let t = task::spawn\_blocking(|| {
+let t = task::spawn_blocking(|| {
 
 let mut sum = 0;
 
-for i in 0..1\_000\_000 {
+for i in 0..1_000_000 {
 
 sum += i;
 
@@ -337,7 +337,7 @@ println!("res = {}", res);
 }
 ```
 说明：这里闭包中的计算是同步执行的，但不会占用普通 worker thread。Tokio 会把它安排到阻塞线程池中执行，而当前 runtime仍可继续推进其它异步任务。
-## 2、spawn\_blocking()与std::thread::spawn()的区别
+## 2、spawn_blocking()与std::thread::spawn()的区别
 
 二者都能执行同步代码，但语义不同。
 
@@ -370,29 +370,29 @@ println!("res = {}", res);
 ```rust
 use tokio::task;
 
-#\[tokio::main\]
+#[tokio::main]
 
 async fn main() {
 
-let h = task::spawn\_blocking(|| {
+let h = task::spawn_blocking(|| {
 
 for i in 0..5 {
 
 println!("blocking: {}", i);
 
-std::thread::sleep(std::time::Duration::from\_secs(1));
+std::thread::sleep(std::time::Duration::from_secs(1));
 
 }
 
 });
 
-tokio::time::sleep(tokio::time::Duration::from\_millis(200)).await;
+tokio::time::sleep(tokio::time::Duration::from_millis(200)).await;
 
 h.abort(); // 尝试取消
 
 match h.await {
 
-Ok(\_) => println!("finished normally"),
+Ok(_) => println!("finished normally"),
 
 Err(e) => println!("cancelled with error {:?}", e),
 
@@ -415,11 +415,11 @@ Err(e) => println!("cancelled with error {:?}", e),
 ### （1）简单返回值
 
 ```rust
-#\[tokio::main\]
+#[tokio::main]
 
 async fn main() {
 
-let t = tokio::task::spawn\_blocking(|| {
+let t = tokio::task::spawn_blocking(|| {
 
 let mut sum = 0;
 
@@ -446,17 +446,17 @@ use tokio::task;
 
 use tokio::sync::mpsc;
 
-#\[tokio::main\]
+#[tokio::main]
 
 async fn main() {
 
 let (tx, mut rx) = mpsc::channel::<String>(10);
 
-let t = task::spawn\_blocking(move || {
+let t = task::spawn_blocking(move || {
 
 for i in 0..5 {
 
-tx.blocking\_send(format!("line: {}", i)).unwrap();
+tx.blocking_send(format!("line: {}", i)).unwrap();
 
 }
 
@@ -484,7 +484,7 @@ t.await.unwrap();
 ```rust
 use tokio::task;
 
-#\[tokio::main\]
+#[tokio::main]
 
 async fn main() {
 
@@ -494,7 +494,7 @@ for i in 1..=5 {
 
 println!("task A -> {}", i);
 
-task::yield\_now().await;
+task::yield_now().await;
 
 }
 
@@ -506,7 +506,7 @@ for i in 1..=5 {
 
 println!("task B -> {}", i);
 
-task::yield\_now().await;
+task::yield_now().await;
 
 }
 
@@ -540,21 +540,21 @@ use tokio::time::{sleep, Duration};
 
 use tokio::task::JoinError;
 
-#\[tokio::main\]
+#[tokio::main]
 
 async fn main() {
 
 let t = tokio::spawn(async {
 
-sleep(Duration::from\_secs(10)).await;
+sleep(Duration::from_secs(10)).await;
 
 });
 
 t.abort();
 
-let err: JoinError = t.await.unwrap\_err();
+let err: JoinError = t.await.unwrap_err();
 
-println!("{}", err.is\_cancelled());
+println!("{}", err.is_cancelled());
 
 }
 ```
@@ -588,11 +588,11 @@ use tokio::join;
 
 use tokio::time::{sleep, Duration};
 
-async fn do\_one() -> i32 {
+async fn do_one() -> i32 {
 
 println!("do one begin");
 
-sleep(Duration::from\_secs(1)).await;
+sleep(Duration::from_secs(1)).await;
 
 println!("do one end");
 
@@ -600,11 +600,11 @@ println!("do one end");
 
 }
 
-async fn do\_two() -> i32 {
+async fn do_two() -> i32 {
 
 println!("do two begin");
 
-sleep(Duration::from\_secs(2)).await;
+sleep(Duration::from_secs(2)).await;
 
 println!("do two end");
 
@@ -612,11 +612,11 @@ println!("do two end");
 
 }
 
-#\[tokio::main\]
+#[tokio::main]
 
 async fn main() {
 
-let (r1, r2) = join!(do\_one(), do\_two());
+let (r1, r2) = join!(do_one(), do_two());
 
 println!("r1: {}, r2: {}", r1, r2);
 
@@ -625,7 +625,7 @@ println!("all done");
 }
 ```
 说明：这里 `do_one()` 和 `do_two()` 会被并发推进，但 `join!` 会一直等到 **所有分支都完成** 之后，才继续执行后面的代码。
-## 2、try\_join!
+## 2、try_join!
 
 `tokio::try_join!`常用于多个返回 `Result` 的 `Future` 。它的语义是：
 
@@ -636,15 +636,15 @@ println!("all done");
 示例：
 
 ```rust
-use tokio::try\_join;
+use tokio::try_join;
 
 use tokio::time::{sleep, Duration};
 
-async fn do\_one() -> Result<i32, &'static str> {
+async fn do_one() -> Result<i32, &'static str> {
 
 println!("do one begin");
 
-sleep(Duration::from\_secs(1)).await;
+sleep(Duration::from_secs(1)).await;
 
 println!("do one end");
 
@@ -652,11 +652,11 @@ Ok(10)
 
 }
 
-async fn do\_two() -> Result<i32, &'static str> {
+async fn do_two() -> Result<i32, &'static str> {
 
 println!("do two begin");
 
-sleep(Duration::from\_secs(2)).await;
+sleep(Duration::from_secs(2)).await;
 
 println!("do two end");
 
@@ -666,11 +666,11 @@ Err("error")
 
 }
 
-#\[tokio::main\]
+#[tokio::main]
 
 async fn main() {
 
-match try\_join!(do\_one(), do\_two()) {
+match try_join!(do_one(), do_two()) {
 
 Ok((r1, r2)) => {
 
@@ -703,23 +703,23 @@ use tokio::select;
 
 use tokio::time::{sleep, Duration};
 
-async fn sleep\_n(n: u64) -> u64 {
+async fn sleep_n(n: u64) -> u64 {
 
-sleep(Duration::from\_secs(n)).await;
+sleep(Duration::from_secs(n)).await;
 
 n
 
 }
 
-#\[tokio::main\]
+#[tokio::main]
 
 async fn main() {
 
 select! {
 
-v = sleep\_n(5) => println!("branch 1 done: {}", v),
+v = sleep_n(5) => println!("branch 1 done: {}", v),
 
-v = sleep\_n(3) => println!("branch 2 done: {}", v),
+v = sleep_n(3) => println!("branch 2 done: {}", v),
 
 }
 
@@ -739,25 +739,25 @@ use tokio::select;
 
 use tokio::time::{sleep, Duration};
 
-async fn sleep\_n(n: u64) -> u64 {
+async fn sleep_n(n: u64) -> u64 {
 
-sleep(Duration::from\_secs(n)).await;
+sleep(Duration::from_secs(n)).await;
 
 n
 
 }
 
-#\[tokio::main\]
+#[tokio::main]
 
 async fn main() {
 
 let mut flag = false;
 
-for \_ in 0..2 {
+for _ in 0..2 {
 
 select! {
 
-v = sleep\_n(5) => {
+v = sleep_n(5) => {
 
 println!("branch 1 done: {}", v);
 
@@ -765,7 +765,7 @@ flag = true;
 
 }
 
-v = sleep\_n(3), if flag => println!("branch 2 done: {}", v),
+v = sleep_n(3), if flag => println!("branch 2 done: {}", v),
 
 }
 
@@ -781,7 +781,7 @@ v = sleep\_n(3), if flag => println!("branch 2 done: {}", v),
 示例：
 
 ```rust
-#\[tokio::main\]
+#[tokio::main]
 
 async fn main() {
 
@@ -793,9 +793,9 @@ tokio::select! {
 
 biased;
 
-\_ = async {}, if count < 1 => { count += 1; println!("first"); }
+_ = async {}, if count < 1 => { count += 1; println!("first"); }
 
-\_ = async {}, if count < 2 => { count += 1; println!("second"); }
+_ = async {}, if count < 2 => { count += 1; println!("second"); }
 
 else => { break; }
 

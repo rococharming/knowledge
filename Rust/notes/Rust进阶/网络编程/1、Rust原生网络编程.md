@@ -71,7 +71,7 @@ IP地址只表示主机位置，例如 `127.0.0.1`
 `IpAddr` 是一个枚举类型，用来统一表示IPv4或IPv6，定义如下：
 
 ```text
-eum IpAddr {
+enum IpAddr {
 
 V4(Ipv4Addr),
 
@@ -84,13 +84,13 @@ V6(Ipv6Addr),
 ```rust
 struct Ipv4Addr {
 
-octets: \[u8; 4\];
+octets: [u8; 4];
 
 }
 
 struct Ipv6Addr {
 
-octets: \[u8; 16\];
+octets: [u8; 16];
 
 }
 ```
@@ -128,7 +128,7 @@ port: u16,
 
 flowinfo: u32,
 
-scope\_id: u32,
+scope_id: u32,
 
 }
 ```
@@ -196,7 +196,7 @@ fn main() -> std::io::Result<()> {
 
 let listener = TcpListener::bind("127.0.0.1:0")?;
 
-println!("listening on: {}", listener.local\_addr()?);
+println!("listening on: {}", listener.local_addr()?);
 
 Ok(())
 
@@ -242,11 +242,11 @@ fn main() -> std::io::Result<()> {
 
 let listener = TcpListener::bind("127.0.0.1:8080")?;
 
-for stream\_result in listener.incoming() {
+for stream_result in listener.incoming() {
 
-let stream = stream\_result?;
+let stream = stream_result?;
 
-println!("new client: {}", stream.peer\_addr()?);
+println!("new client: {}", stream.peer_addr()?);
 
 break; // 示例只接收一个连接
 
@@ -277,7 +277,7 @@ curl http://127.0.0.1:8080
 
 建立连接后，可以通过对其进行读取和写入来传输数据。当该值被丢弃时，连接会关闭。
 
-客户端通过 `TcpStream::connect(addr)` 发起连接。前面已经介绍过，服务端通过 `TcpListener::accept()` 或 `TcpListner::incoming()` 迭代产出 `TcpStream` 。
+客户端通过 `TcpStream::connect(addr)` 发起连接。前面已经介绍过，服务端通过 `TcpListener::accept()` 或 `TcpListener::incoming()` 迭代产出 `TcpStream` 。
 
 ### （2）数据传输
 
@@ -300,17 +300,17 @@ let mut stream = TcpStream::connect("www.rust-lang.org:80")?;
 
 println!("Connected to the server");
 
-let mut buffer = \[0u8; 1024\];
+let mut buffer = [0u8; 1024];
 
-stream.write\_all(
+stream.write_all(
 
-b"GET / HTTP/1.1\\r\\n\\
+b"GET / HTTP/1.1\r\n\\
 
-Host: www.rust-lang.org\\r\\n\\
+Host: www.rust-lang.org\r\n\\
 
-Connection: close\\r\\n\\
+Connection: close\r\n\\
 
-\\r\\n"
+\r\n"
 
 )?;
 
@@ -324,7 +324,7 @@ break;
 
 }
 
-println!("{}", String::from\_utf8\_lossy(&buffer\[..n\]));
+println!("{}", String::from_utf8_lossy(&buffer[..n]));
 
 }
 
@@ -364,15 +364,15 @@ use std::net::{TcpListener, TcpStream};
 
 use std::thread;
 
-fn handle\_client(mut stream: TcpStream) -> std::io::Result<()> {
+fn handle_client(mut stream: TcpStream) -> std::io::Result<()> {
 
-let mut buf = \[0; 1024\];
+let mut buf = [0; 1024];
 
 let n = stream.read(&mut buf)?;
 
-println!("Received: {}", String::from\_utf8\_lossy(&buf\[..n\]));
+println!("Received: {}", String::from_utf8_lossy(&buf[..n]));
 
-stream.write\_all(b"pong")?;
+stream.write_all(b"pong")?;
 
 Ok(())
 
@@ -386,21 +386,21 @@ thread::spawn(|| {
 
 if let Ok(mut client) = TcpStream::connect("127.0.0.1:8080") {
 
-client.write\_all(b"ping").unwrap();
+client.write_all(b"ping").unwrap();
 
-let mut buf = \[0; 1024\];
+let mut buf = [0; 1024];
 
 let n = client.read(&mut buf).unwrap();
 
-println!("client got {}", String::from\_utf8\_lossy(&buf\[..n\]));
+println!("client got {}", String::from_utf8_lossy(&buf[..n]));
 
 }
 
 });
 
-let (stream, \_) = listener.accept()?;
+let (stream, _) = listener.accept()?;
 
-handle\_client(stream)?;
+handle_client(stream)?;
 ```
 上述代码演示了一个最小TCP往返流程：
 
@@ -438,9 +438,9 @@ fn main() -> std::io::Result<()> {
 
 let stream = TcpStream::connect("example.com:80")?;
 
-println!("local = {}", stream.local\_addr()?);
+println!("local = {}", stream.local_addr()?);
 
-println!("peer = {}", stream.peer\_addr()?);
+println!("peer = {}", stream.peer_addr()?);
 
 stream.shutdown(Shutdown::Write)?;
 
@@ -494,23 +494,23 @@ fn main() -> std::io::Result<()> {
 
 let server = UdpSocket::bind("127.0.0.1:9001")?;
 
-println!("Server starts on {}", server.local\_addr()?);
+println!("Server starts on {}", server.local_addr()?);
 
 thread::spawn(|| {
 
 let client = UdpSocket::bind("127.0.0.1:0").unwrap();
 
-client.send\_to(b"hello", "127.0.0.1:9001").unwrap();
+client.send_to(b"hello", "127.0.0.1:9001").unwrap();
 
 });
 
-let mut buf = \[0u8; 512\];
+let mut buf = [0u8; 512];
 
-let (n, src) = server.recv\_from(&mut buf)?;
+let (n, src) = server.recv_from(&mut buf)?;
 
 println!("{} bytes received from {}", n, src);
 
-println!("{}", String::from\_utf8\_lossy(&buf\[..n\]));
+println!("{}", String::from_utf8_lossy(&buf[..n]));
 
 Ok(())
 
@@ -527,7 +527,7 @@ fn main() -> std::io::Result<()> {
 
 let server = UdpSocket::bind("127.0.0.1:9001")?;
 
-println!("Server starts on {}", server.local\_addr()?);
+println!("Server starts on {}", server.local_addr()?);
 
 thread::spawn(|| {
 
@@ -535,17 +535,17 @@ let client = UdpSocket::bind("127.0.0.1:0").unwrap();
 
 client.connect("127.0.0.1:9001").unwrap();
 
-client.send(b"hello").unwrap(); // 可以直接用send而不是send\_to
+client.send(b"hello").unwrap(); // 可以直接用send而不是send_to
 
 });
 
-let mut buf = \[0u8; 512\];
+let mut buf = [0u8; 512];
 
-let (n, src) = server.recv\_from(&mut buf)?;
+let (n, src) = server.recv_from(&mut buf)?;
 
 println!("{} bytes received from {}", n, src);
 
-println!("{}", String::from\_utf8\_lossy(&buf\[..n\]));
+println!("{}", String::from_utf8_lossy(&buf[..n]));
 
 Ok(())
 
@@ -578,13 +578,13 @@ use std::io::{Read, Write};
 
 use std::thread;
 
-fn handle\_client(mut stream: TcpStream) -> std::io::Result<()> {
+fn handle_client(mut stream: TcpStream) -> std::io::Result<()> {
 
-let peer = stream.peer\_addr()?;
+let peer = stream.peer_addr()?;
 
 println!("客户端 {} 连接成功", peer);
 
-let mut buf = \[0u8; 512\];
+let mut buf = [0u8; 512];
 
 loop {
 
@@ -598,13 +598,13 @@ break;
 
 }
 
-let text = String::from\_utf8\_lossy(&buf\[..n\]);
+let text = String::from_utf8_lossy(&buf[..n]);
 
 println!("收到客户端 {} 消息：{}", peer, text);
 
 // 回显给客户端
 
-stream.write\_all(&buf\[..n\])?;
+stream.write_all(&buf[..n])?;
 
 }
 
@@ -616,7 +616,7 @@ fn main() -> std::io::Result<()> {
 
 let listener = TcpListener::bind("127.0.0.1:9000")?;
 
-println!("服务器 {} 已开启监听", listener.local\_addr()?);
+println!("服务器 {} 已开启监听", listener.local_addr()?);
 
 for stream in listener.incoming() {
 ```
@@ -633,13 +633,13 @@ fn main() -> std::io::Result<()> {
 
 let stream = TcpStream::connect("127.0.0.1:9000")?;
 
-let stream\_clone = stream.try\_clone()?;
+let stream_clone = stream.try_clone()?;
 
 let receiver = thread::spawn(move || {
 
-let mut reader = stream\_clone;
+let mut reader = stream_clone;
 
-let mut buf = \[0u8; 512\];
+let mut buf = [0u8; 512];
 
 loop {
 
@@ -651,13 +651,13 @@ break;
 
 }
 
-let text = String::from\_utf8\_lossy(&buf\[..n\]);
+let text = String::from_utf8_lossy(&buf[..n]);
 
 println!("收到服务端的echo：{}", text);
 
 }
 
-Ok::<\_, std::io::Error>(())
+Ok::<_, std::io::Error>(())
 
 });
 

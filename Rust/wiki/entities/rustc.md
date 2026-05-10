@@ -1,60 +1,70 @@
 ---
-title: "rustc"
+title: rustc
 date: 2026-05-10
+tags: [rust, compiler, rustc]
 source_count: 1
-tags: [rust, compiler, entity]
 ---
 
 # rustc
 
-## 定义
+## 概述
 
-rustc 是 Rust 官方提供的**编译器**，用于将 Rust 源程序（`.rs`）编译成目标文件、可执行文件或库。它是 Cargo 的底层编译工具，日常使用 Cargo 时通常不直接调用 rustc。
+rustc 是 Rust 官方编译器，用于将 Rust 源程序（`.rs`）编译成目标文件、可执行文件或库。其使用风格类似于 `gcc`。项目开发中通常使用 [[Cargo]] 来构建，但 Cargo 底层实际调用 rustc 完成编译。
 
-## 关键信息
+## 基本用法
 
-### 基本用法
+### 编译可执行文件
 
 ```bash
-# 编译生成可执行文件（默认 main / main.exe）
-rustc main.rs
+rustc main.rs              # 默认生成 main（或 main.exe）
+rustc -o hello main.rs     # 指定输出文件名
+```
 
-# 指定输出文件名
-rustc -o hello main.rs
+### 指定 Edition
 
-# 指定 Edition
+```bash
 rustc main.rs --edition=2021
 ```
 
-### 编译库
+[[Edition]] 是 Rust 语言规则的可选版本包，同一 rustc 同时兼容多个 Edition。
+
+## 编译库
+
+rustc 编译库时默认产生 Rust 自用的 **rlib** 格式。
+
+### 编译 rlib 库
 
 ```bash
-# 编译 rlib 库
 rustc --crate-type=rlib --crate-name=greet lib.rs
+```
 
-# 链接库到可执行文件
+- `--crate-type=rlib`：指定 crate 类型为 rlib
+- `--crate-name=greet`：指定 crate 名称为 greet
+
+生成 `libgreet.rlib` 文件。
+
+### 链接 rlib 到可执行文件
+
+```bash
 rustc -L. --extern greet=libgreet.rlib main.rs
 ```
 
-### 常用选项
+- `-L.`：将当前目录作为库路径搜索目录
+- `--extern greet=libgreet.rlib`：以 greet 作为 crate 名注入库
 
-| 选项 | 作用 |
-|------|------|
-| `-o <name>` | 指定输出文件名 |
-| `--edition=<year>` | 指定 Rust Edition（2015/2018/2021/2024） |
-| `--crate-type=<type>` | 指定 crate 类型（bin、lib、rlib 等） |
-| `--crate-name=<name>` | 指定 crate 名称 |
-| `-L <path>` | 添加库搜索路径 |
-| `--extern <name>=<path>` | 链接外部库 |
+## 与 Cargo 的关系
 
-### Edition 机制
+日常开发中直接使用 Cargo：
 
-Rust 通过 Edition 实现语言规则的版本化管理：
-- 同一 rustc 同时兼容多个 Edition
-- 旧项目按旧规则编译，新项目可选新规则
-- 主要 Edition：2015、2018、2021、2024
-- 在 `Cargo.toml` 中通过 `edition` 字段指定
+```bash
+cargo build
+cargo run
+```
 
-## 相关素材
+Cargo 会自动处理 rustc 的调用参数、依赖链接和 Edition 指定。
 
-- [[Rust安装与开发环境配置摘要]]
+## 关联
+
+- [[rustup]] — 管理 rustc 版本的工具链管理器
+- [[Cargo]] — 底层调用 rustc 的构建工具
+- [[Edition]] — rustc 支持的多版本语言规则机制
