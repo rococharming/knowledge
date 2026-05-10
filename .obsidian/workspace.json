@@ -187,8 +187,9 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "467ce1080511b7c0",
+  "active": "3c4f69496ee82652",
   "lastOpenFiles": [
+    "1",
     "AI/CLAUDE.md",
     "CLAUDE.md",
     "README.md",
@@ -225,7 +226,6 @@
     "AI/notes/Claude Code/1、Claude Code入门.md",
     "assets/Pasted image 20260510015319.png",
     "Rust/notes/Rust基础/1、Rust安装与开发环境配置.backup.md",
-    "assets/Pasted image 20260510012958.png",
-    "Rust/notes/Rust进阶/网络编程/1、Rust原生网络编程.backup.md"
+    "assets/Pasted image 20260510012958.png"
   ]
 }
