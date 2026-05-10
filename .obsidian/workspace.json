@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "445cf84cbeee8e22",
+        "id": "3d8e00243746017f",
         "type": "tabs",
         "children": [
           {
-            "id": "7d967a0923e81173",
+            "id": "467ce1080511b7c0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Rust/wiki/index.md",
+                "file": "CLAUDE.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "CLAUDE"
             }
           }
         ]
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Rust/wiki/index.md",
+                "file": "CLAUDE.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "index 的大纲"
+              "title": "CLAUDE 的大纲"
             }
           }
         ],
@@ -187,8 +187,11 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "7d967a0923e81173",
+  "active": "467ce1080511b7c0",
   "lastOpenFiles": [
+    "AI/CLAUDE.md",
+    "CLAUDE.md",
+    "README.md",
     "Rust/wiki/index.md",
     "Rust/wiki/log.md",
     "Rust/wiki/recipes/Rust开发环境配置.md",
@@ -196,7 +199,6 @@
     "Rust/wiki/entities/rustc.md",
     "Rust/wiki/entities/Cargo.md",
     "Rust/wiki/concepts/Rust工具链.md",
-    "README.md",
     "scripts/sync-qmd.sh",
     "scripts",
     "Rust/raw/archive/Rust安装与开发环境配置.md",
@@ -210,7 +212,6 @@
     "Rust/wiki/syntheses",
     "Rust/wiki/overviews",
     "Rust/wiki/comparisons",
-    "AI/CLAUDE.md",
     "AI/wiki/index.md",
     "AI/wiki/log.md",
     "index.md",
@@ -225,7 +226,6 @@
     "assets/Pasted image 20260510015319.png",
     "Rust/notes/Rust基础/1、Rust安装与开发环境配置.backup.md",
     "assets/Pasted image 20260510012958.png",
-    "Rust/notes/Rust进阶/网络编程/1、Rust原生网络编程.backup.md",
-    "Rust/notes/Rust进阶/异步编程/3、Tokio Task.backup.md"
+    "Rust/notes/Rust进阶/网络编程/1、Rust原生网络编程.backup.md"
   ]
 }
