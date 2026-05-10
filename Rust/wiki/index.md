@@ -7,15 +7,17 @@ date: 2026-05-09
 
 ## Summaries
 
-_（暂无）_
+- [[Rust安装与开发环境配置摘要]] — Rust 开发环境搭建完整指南（rustup、Cargo、IDE 配置）
 
 ## Entities
 
-_（暂无）_
+- [[rustup]] — Rust 官方工具链管理器
+- [[Cargo]] — Rust 官方构建工具和包管理器
+- [[rustc]] — Rust 官方编译器
 
 ## Concepts
 
-_（暂无）_
+- [[Rust工具链]] — Rust 工具链类型与管理（stable、beta、nightly）
 
 ## Comparisons
 
@@ -31,7 +33,7 @@ _（暂无）_
 
 ## Recipes
 
-_（暂无）_
+- [[Rust开发环境配置]] — 从安装 rustup 到配置 VS Code 的完整步骤
 
 ## Snippets
 

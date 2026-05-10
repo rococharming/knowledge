@@ -1,0 +1,14 @@
+{
+  "eval_id": 1,
+  "eval_name": "ingest-small-scale",
+  "prompt": "A user just said: 'ingest /tmp/knowledge-test/TestSmall/raw/articles/测试文章.md' Follow the ingest skill to process this material into the TestSmall wiki. Save step-by-step log to transcript.md and final report to report.md.",
+  "assertions": [
+    "The agent read the raw article file",
+    "The agent created at least one new wiki page in TestSmall/wiki/",
+    "The agent updated TestSmall/wiki/index.md",
+    "The agent updated TestSmall/wiki/log.md",
+    "The agent moved the raw file to TestSmall/raw/archive/",
+    "The agent did NOT run any qmd commands (this is small scale)",
+    "The report lists created/updated pages"
+  ]
+}

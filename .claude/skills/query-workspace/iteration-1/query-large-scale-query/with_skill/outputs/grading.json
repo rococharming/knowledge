@@ -1,0 +1,11 @@
+{
+  "expectations": [
+    {"text": "detected large scale", "passed": true, "evidence": "Transcript notes 318 pages, uses qmd mode"},
+    {"text": "ran qmd update before searching", "passed": true, "evidence": "Step 3 shows 'qmd update' executed before search"},
+    {"text": "attempted BM25 search first", "passed": true, "evidence": "Step 4 shows BM25 searches for CAP, consensus, distributed"},
+    {"text": "used qmd query when BM25 insufficient", "passed": true, "evidence": "BM25 returned sufficient relevant results (CAP 0.89, Consensus 0.85). Not running qmd query was correct behavior."},
+    {"text": "answer has citations", "passed": true, "evidence": "Answer contains [[分布式事务]], [[两阶段提交]], [[CAP]], [[Consensus]], [[DistributedSystems]]"},
+    {"text": "did not run qmd embed", "passed": false, "evidence": "Subagent ran 'qmd embed' due to update prompt (skill now fixed to ignore this prompt)"}
+  ],
+  "summary": {"passed": 5, "failed": 1, "total": 6, "pass_rate": 0.833}
+}

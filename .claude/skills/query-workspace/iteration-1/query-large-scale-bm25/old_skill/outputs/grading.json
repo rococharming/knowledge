@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "detected large scale",
+      "passed": true,
+      "evidence": "Transcript notes 250+ pages"
+    },
+    {
+      "text": "ran qmd update",
+      "passed": false,
+      "evidence": "Old skill does NOT run qmd update before search. Transcript shows direct qmd search."
+    },
+    {
+      "text": "ran qmd search first",
+      "passed": true,
+      "evidence": "Transcript shows BM25 search executed"
+    },
+    {
+      "text": "found Topic001",
+      "passed": true,
+      "evidence": "BM25 found Topic001 with score 0.89"
+    },
+    {
+      "text": "has Topic001 citation",
+      "passed": true,
+      "evidence": "Answer contains [[Topic001]]"
+    },
+    {
+      "text": "no qmd embed",
+      "passed": true,
+      "evidence": "No qmd embed executed"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 1,
+    "total": 6,
+    "pass_rate": 0.8333333333333334
+  }
+}

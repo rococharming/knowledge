@@ -1,0 +1,15 @@
+{
+  "eval_id": 5,
+  "eval_name": "ingest-large-scale",
+  "prompt": "A user just said: 'ingest /tmp/knowledge-test/TestLarge/raw/articles/分布式事务.md'. Follow the ingest skill to process this raw article into the TestLarge wiki. Save step-by-step log to transcript.md and final report to report.md.",
+  "assertions": [
+    "The agent read the raw article /tmp/knowledge-test/TestLarge/raw/articles/分布式事务.md",
+    "The agent created wiki pages in TestLarge/wiki/ (at least a summary page, possibly concept pages)",
+    "The agent updated TestLarge/wiki/index.md with new entries",
+    "The agent updated TestLarge/wiki/log.md with an ingest record",
+    "The agent moved the raw file to TestLarge/raw/archive/",
+    "The agent checked qmd collection existence (qmd collection list | grep knowledge-testlarge)",
+    "The agent ran qmd update for the TestLarge collection",
+    "The report mentions the qmd index update"
+  ]
+}

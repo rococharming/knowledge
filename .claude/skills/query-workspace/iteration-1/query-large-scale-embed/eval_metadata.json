@@ -1,0 +1,13 @@
+{
+  "eval_id": 3,
+  "eval_name": "query-large-scale-embed",
+  "prompt": "A user just said: '有哪些关于并行计算和并发编程的内容？' The knowledge base is at /tmp/knowledge-test/ with a large domain TestLarge (250+ pages). Note: qmd status shows Vectors: 0 embedded and 328 pending. Follow the query skill to answer. Save step-by-step log to transcript.md and final answer to answer.md.",
+  "assertions": [
+    "The agent detected large scale",
+    "The agent ran qmd update before searching",
+    "The agent attempted BM25 search first (qmd search)",
+    "The agent checked qmd status when BM25 results were insufficient",
+    "The agent either ran qmd embed or informed the user about embedding",
+    "The agent did not give up after BM25 poor results"
+  ]
+}

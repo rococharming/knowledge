@@ -1,0 +1,13 @@
+{
+  "eval_id": 6,
+  "eval_name": "query-large-scale-query",
+  "prompt": "A user just said: 'CAP定理和分布式共识之间有什么关系？' The knowledge base is at /tmp/knowledge-test/ with a large domain TestLarge (250+ pages, 350 vectors already embedded). Follow the query skill to answer. Save step-by-step log to transcript.md and final answer to answer.md.",
+  "assertions": [
+    "The agent detected large scale (by reading long index.md or checking page count)",
+    "The agent ran qmd update before searching",
+    "The agent attempted BM25 search first (qmd search)",
+    "The agent used qmd query (hybrid search with LLM reranking) when BM25 results were insufficient",
+    "The answer contains [[citations]] referencing actual wiki page names",
+    "The agent did NOT run qmd embed (vectors are already ready)"
+  ]
+}

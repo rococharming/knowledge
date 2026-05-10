@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "detected large scale",
+      "passed": true,
+      "evidence": "Transcript notes index.md 1049 lines > 500 threshold"
+    },
+    {
+      "text": "ran qmd update",
+      "passed": true,
+      "evidence": "Transcript shows 'qmd update -c knowledge-testlarge' executed BEFORE search"
+    },
+    {
+      "text": "ran qmd search first",
+      "passed": true,
+      "evidence": "Transcript shows BM25 search executed"
+    },
+    {
+      "text": "found Topic001",
+      "passed": true,
+      "evidence": "BM25 result shows Topic001 with score 0.89"
+    },
+    {
+      "text": "has Topic001 citation",
+      "passed": true,
+      "evidence": "Answer contains [[Topic001]]"
+    },
+    {
+      "text": "no qmd embed",
+      "passed": true,
+      "evidence": "Transcript shows no qmd embed executed"
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  }
+}

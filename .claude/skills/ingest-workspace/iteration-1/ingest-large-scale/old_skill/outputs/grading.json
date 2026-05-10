@@ -1,0 +1,50 @@
+{
+  "expectations": [
+    {
+      "text": "read raw article",
+      "passed": true,
+      "evidence": "Transcript shows reading source"
+    },
+    {
+      "text": "created wiki pages",
+      "passed": true,
+      "evidence": "Pages created"
+    },
+    {
+      "text": "updated index.md",
+      "passed": true,
+      "evidence": "index.md updated"
+    },
+    {
+      "text": "updated log.md",
+      "passed": true,
+      "evidence": "log.md appended"
+    },
+    {
+      "text": "moved to archive",
+      "passed": true,
+      "evidence": "File archived"
+    },
+    {
+      "text": "checked collection",
+      "passed": false,
+      "evidence": "Old skill does NOT check collection existence. No 'qmd collection list' step."
+    },
+    {
+      "text": "ran qmd update",
+      "passed": true,
+      "evidence": "Transcript shows qmd update would be run"
+    },
+    {
+      "text": "report mentions qmd",
+      "passed": true,
+      "evidence": "Report mentions qmd update"
+    }
+  ],
+  "summary": {
+    "passed": 7,
+    "failed": 1,
+    "total": 8,
+    "pass_rate": 0.875
+  }
+}

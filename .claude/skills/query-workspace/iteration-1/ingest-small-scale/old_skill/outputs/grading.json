@@ -1,0 +1,12 @@
+{
+  "expectations": [
+    {"text": "read raw article", "passed": true, "evidence": "Transcript shows reading /tmp/knowledge-test/TestSmall/raw/articles/Rust闭包.md"},
+    {"text": "created wiki pages", "passed": true, "evidence": "Files created: summaries/Rust闭包.md, concepts/闭包.md"},
+    {"text": "updated index.md", "passed": true, "evidence": "index.md updated with new entries"},
+    {"text": "updated log.md", "passed": true, "evidence": "log.md appended with ingest record"},
+    {"text": "moved to archive", "passed": true, "evidence": "File moved to raw/archive/Rust闭包.md"},
+    {"text": "no qmd commands", "passed": false, "evidence": "Agent ran qmd update (skill does not prohibit qmd for small scale, but test expected no qmd)"},
+    {"text": "did not write to notes/", "passed": true, "evidence": "No notes/ directory modified"}
+  ],
+  "summary": {"passed": 6, "failed": 1, "total": 7, "pass_rate": 0.857}
+}

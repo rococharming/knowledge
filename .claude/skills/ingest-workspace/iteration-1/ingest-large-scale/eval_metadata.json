@@ -1,0 +1,15 @@
+{
+  "eval_id": 2,
+  "eval_name": "ingest-large-scale",
+  "prompt": "A user just said: 'ingest /tmp/knowledge-test/TestLarge/raw/articles/新文章.md' Follow the ingest skill to process this material into the TestLarge wiki. Save step-by-step log to transcript.md and final report to report.md.",
+  "assertions": [
+    "The agent read the raw article file",
+    "The agent created at least one new wiki page in TestLarge/wiki/",
+    "The agent updated TestLarge/wiki/index.md",
+    "The agent updated TestLarge/wiki/log.md",
+    "The agent moved the raw file to TestLarge/raw/archive/",
+    "The agent checked qmd collection existence (qmd collection list)",
+    "The agent ran qmd update after creating wiki pages",
+    "The report mentions qmd index update"
+  ]
+}

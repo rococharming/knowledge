@@ -1,125 +1,54 @@
 {
   "main": {
-    "id": "1f5166a8d4c5645a",
+    "id": "27cdb98adae0f461",
     "type": "split",
     "children": [
       {
-        "id": "45612b7bb2a38796",
+        "id": "445cf84cbeee8e22",
         "type": "tabs",
         "children": [
           {
-            "id": "2f40bef453d4b401",
+            "id": "7d967a0923e81173",
             "type": "leaf",
-            "pinned": true,
             "state": {
-              "type": "terminal:terminal",
+              "type": "markdown",
               "state": {
-                "terminal:terminal": {
-                  "cwd": "/Users/11185032/spf/knowledge",
-                  "focus": false,
-                  "profile": {
-                    "args": [
-                      "--login"
-                    ],
-                    "executable": "/opt/homebrew/bin/fish",
-                    "followTheme": true,
-                    "name": "",
-                    "platforms": {
-                      "darwin": true
-                    },
-                    "pythonExecutable": "python3",
-                    "restoreHistory": false,
-                    "rightClickAction": "copyPaste",
-                    "successExitCodes": [
-                      "0",
-                      "SIGINT",
-                      "SIGTERM"
-                    ],
-                    "terminalOptions": {
-                      "documentOverride": null
-                    },
-                    "type": "integrated",
-                    "useWin32Conhost": true
-                  },
-                  "serial": null
-                }
+                "file": "Rust/wiki/index.md",
+                "mode": "source",
+                "source": false
               },
-              "pinned": true,
-              "icon": "terminal",
-              "title": "终端：✳ Fix Obsidian path handling"
-            }
-          },
-          {
-            "id": "24f28fc17647d20a",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "terminal:terminal",
-              "state": {
-                "terminal:terminal": {
-                  "cwd": "/Users/11185032/spf/knowledge",
-                  "focus": false,
-                  "profile": {
-                    "args": [
-                      "--login"
-                    ],
-                    "executable": "/opt/homebrew/bin/fish",
-                    "followTheme": true,
-                    "name": "",
-                    "platforms": {
-                      "darwin": true
-                    },
-                    "pythonExecutable": "python3",
-                    "restoreHistory": false,
-                    "rightClickAction": "copyPaste",
-                    "successExitCodes": [
-                      "0",
-                      "SIGINT",
-                      "SIGTERM"
-                    ],
-                    "terminalOptions": {
-                      "documentOverride": null
-                    },
-                    "type": "integrated",
-                    "useWin32Conhost": true
-                  },
-                  "serial": null
-                }
-              },
-              "pinned": true,
-              "icon": "terminal",
-              "title": "终端：⠂ Claude Code"
+              "icon": "lucide-file",
+              "title": "index"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "302137e620ccea99",
+    "id": "466cce0a33676135",
     "type": "split",
     "children": [
       {
-        "id": "ad68bd4db922b55e",
+        "id": "1aaf136e1a1b284e",
         "type": "tabs",
         "children": [
           {
-            "id": "2f214d9719af6425",
+            "id": "3c4f69496ee82652",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": true
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "文件列表"
             }
           },
           {
-            "id": "501fc895f6b171c7",
+            "id": "3e92147233dc65c5",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -136,7 +65,7 @@
             }
           },
           {
-            "id": "2c34b8e22b142abe",
+            "id": "dd066a406fa0cedc",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -149,23 +78,23 @@
       }
     ],
     "direction": "horizontal",
-    "width": 313.5
+    "width": 300
   },
   "right": {
-    "id": "7f84de27ab27cb4f",
+    "id": "94be849039c638f6",
     "type": "split",
     "children": [
       {
-        "id": "65a62e360b10c973",
+        "id": "3b4659b2665eff92",
         "type": "tabs",
         "children": [
           {
-            "id": "85d9293f63a964d5",
+            "id": "5cfaf78e7f749a27",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Claude Code/测试笔记1.md",
+                "file": "Rust/wiki/index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -175,25 +104,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "测试笔记1 的反向链接列表"
+              "title": "index 的反向链接列表"
             }
           },
           {
-            "id": "1eaadb2b918161e2",
+            "id": "fd0b58a62d82648d",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Claude Code/1、Claude Code入门.md",
+                "file": "Rust/wiki/index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "1、Claude Code入门 的出链列表"
+              "title": "index 的出链列表"
             }
           },
           {
-            "id": "f53936260e8e8b61",
+            "id": "03f84ec00b9f8e4c",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -208,7 +137,7 @@
             }
           },
           {
-            "id": "7af8fcd8c39993c0",
+            "id": "5b5d8b4198a7b4ad",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -222,47 +151,26 @@
             }
           },
           {
-            "id": "040a847e83018fa9",
-            "type": "leaf",
-            "state": {
-              "type": "file-properties",
-              "state": {
-                "file": "Claude Code/4、Skill（AI生成）.md"
-              },
-              "icon": "lucide-info",
-              "title": "4、Skill（AI生成）的笔记属性"
-            }
-          },
-          {
-            "id": "a4891b4f5ae43b05",
-            "type": "leaf",
-            "state": {
-              "type": "advanced-tables-toolbar",
-              "state": {},
-              "icon": "lucide-ghost",
-              "title": "advanced-tables-toolbar"
-            }
-          },
-          {
-            "id": "9ab415b5c5116e32",
+            "id": "8630144dc0485a98",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "followCursor": true,
+                "file": "Rust/wiki/index.md",
+                "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "index 的大纲"
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 342.5
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -272,60 +180,52 @@
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "bases:新建数据库": false,
       "workspaces:管理工作区布局": false,
+      "bases:新建数据库": false,
       "terminal:Open terminal": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "24f28fc17647d20a",
+  "active": "7d967a0923e81173",
   "lastOpenFiles": [
-    "assets/Image 34.png",
-    "Rust/notes/Rust基础/3、所有权.md",
-    "Rust/notes/Cookbook/1、算法.md",
-    "assets/Image 109.png",
-    "assets/Image 108.png",
+    "Rust/wiki/index.md",
+    "Rust/wiki/log.md",
+    "Rust/wiki/recipes/Rust开发环境配置.md",
+    "Rust/wiki/entities/rustup.md",
+    "Rust/wiki/entities/rustc.md",
+    "Rust/wiki/entities/Cargo.md",
+    "Rust/wiki/concepts/Rust工具链.md",
+    "README.md",
+    "scripts/sync-qmd.sh",
+    "scripts",
+    "Rust/raw/archive/Rust安装与开发环境配置.md",
+    "Rust/wiki/summaries/Rust安装与开发环境配置摘要.md",
+    "Rust/CLAUDE.md",
+    "Rust/wiki/resources",
+    "Rust/wiki/exercises",
+    "Rust/wiki/projects",
+    "Rust/wiki/patterns",
+    "Rust/wiki/snippets",
+    "Rust/wiki/syntheses",
+    "Rust/wiki/overviews",
+    "Rust/wiki/comparisons",
+    "AI/CLAUDE.md",
+    "AI/wiki/index.md",
+    "AI/wiki/log.md",
+    "index.md",
+    "Rust/raw/articles/Rust安装与开发环境配置.md",
+    "Rust/notes/Rust基础/1、Rust安装与开发环境配置.md",
     "Rust/notes/Rust进阶/异步编程/1、异步编程基础.md",
-    "Rust/notes/Rust进阶/异步编程/2、Tokio异步运行时.md",
-    "assets/Image 107.png",
-    "assets/Image 106.png",
-    "assets/Image 105.png",
-    "assets/Image 104.png",
-    "assets/Image 103.png",
-    "assets/Image 102.png",
-    "assets/Image 101.png",
-    "Rust/notes/Rust进阶/异步编程/3、Tokio Task.md",
-    "Rust/notes/Rust进阶/多线程编程/4、全局变量.md",
-    "assets/Image 100.png",
-    "Rust/notes/Rust进阶/多线程编程/3、共享可变状态.md",
-    "Rust/notes/Rust进阶/多线程编程/2、通道.md",
-    "Rust/notes/Rust进阶/多线程编程/1、多线程编程基础.md",
-    "Rust/notes/Rust进阶/网络编程/1、Rust原生网络编程.md",
-    "Rust/notes/Rust进阶/异步编程",
-    "Rust/notes/Rust进阶/多线程编程",
-    "Rust/notes/Rust进阶/网络编程",
-    "Rust/notes/Rust基础/15、闭包.md",
-    "Rust/notes/Rust基础/18、集合（待补充）.md",
-    "Rust/notes/Rust基础/17、智能指针.md",
-    "Rust/notes/Rust基础/16、迭代器.md",
-    "Rust/notes/Rust基础/14、测试（待补充）.md",
-    "Rust/notes/Rust基础/13、实用工具特征（待重构）.md",
-    "Rust/notes/Rust基础/12、运算符重载.md",
-    "Rust/notes/Rust基础/11、错误处理.md",
-    "Rust/notes/Rust基础/10、泛型和特征.md",
-    "Rust/notes/Rust基础/9、crate与模块（待补充）.md",
-    "Rust/notes/Rust基础/8、模式匹配.md",
-    "Rust/notes/Rust基础/7、枚举.md",
-    "Rust/notes/Rust基础/6、结构体.md",
-    "Rust/notes/Rust基础/4、引用和切片.md",
-    "Rust/notes/Rust基础/5、字符串 - KM知识管理平台.md",
-    "Rust/notes/Cookbook",
-    "Rust/notes/Rust进阶",
-    "Rust/notes/Rust基础",
-    "Rust/raw/others/Rust基础",
-    "lint-workspace/iteration-2/review.html",
-    "lint-workspace/iteration-2/benchmark.json",
-    "lint-workspace/iteration-2/eval-3-orphans/without_skill/run-1/grading.json"
+    "Rust/notes/Rust基础/5、字符串.md",
+    "AI/notes/Claude Code/Claude编程技巧/1、AI 编程守则.md",
+    "Rust/notes/Rust基础/3、所有权.md",
+    "Rust/notes/Rust基础/2、Rust基础语法.md",
+    "AI/notes/Claude Code/1、Claude Code入门.md",
+    "assets/Pasted image 20260510015319.png",
+    "Rust/notes/Rust基础/1、Rust安装与开发环境配置.backup.md",
+    "assets/Pasted image 20260510012958.png",
+    "Rust/notes/Rust进阶/网络编程/1、Rust原生网络编程.backup.md",
+    "Rust/notes/Rust进阶/异步编程/3、Tokio Task.backup.md"
   ]
 }

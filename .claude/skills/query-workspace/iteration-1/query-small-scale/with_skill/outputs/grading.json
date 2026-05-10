@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "read index.md",
+      "passed": true,
+      "evidence": "Transcript shows reading knowledge/index.md and TestSmall/wiki/index.md"
+    },
+    {
+      "text": "no qmd commands",
+      "passed": true,
+      "evidence": "Transcript shows no qmd commands executed"
+    },
+    {
+      "text": "has citations",
+      "passed": true,
+      "evidence": "Answer contains [[所有权]], [[Rust入门]], [[RustVsPython]]"
+    },
+    {
+      "text": "explains ownership",
+      "passed": true,
+      "evidence": "Answer explains ownership rules and advantages"
+    },
+    {
+      "text": "no qmd install",
+      "passed": true,
+      "evidence": "No qmd installation mentioned"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}
