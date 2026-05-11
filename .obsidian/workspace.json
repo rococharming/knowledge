@@ -4,88 +4,77 @@
     "type": "split",
     "children": [
       {
-        "id": "cd81d9334321a6c1",
-        "type": "tabs",
-        "dimension": 59.51327433628318,
+        "id": "503d19b19bc62b00",
+        "type": "split",
         "children": [
           {
-            "id": "0ba47f5179a76e2a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Rust/notes/Rust基础/1、Rust安装与开发环境配置.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "1、Rust安装与开发环境配置"
-            }
+            "id": "b8c254e1c91bec82",
+            "type": "tabs",
+            "dimension": 65.11936339522546,
+            "children": [
+              {
+                "id": "564a4faac98bd048",
+                "type": "leaf",
+                "state": {
+                  "type": "graph",
+                  "state": {},
+                  "icon": "lucide-git-fork",
+                  "title": "关系图谱"
+                }
+              }
+            ]
           },
           {
-            "id": "1242b3b62670a20f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Rust/notes/补充链接.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "补充链接"
-            }
-          }
-        ]
-      },
-      {
-        "id": "7d19779aa448b9a4",
-        "type": "tabs",
-        "dimension": 40.48672566371682,
-        "children": [
-          {
-            "id": "f8b64d3bb4040bea",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "terminal:terminal",
-              "state": {
-                "terminal:terminal": {
-                  "cwd": "/Users/11185032/spf/knowledge",
-                  "focus": false,
-                  "profile": {
-                    "args": [
-                      "--login"
-                    ],
-                    "executable": "/opt/homebrew/bin/fish",
-                    "followTheme": true,
-                    "name": "",
-                    "platforms": {
-                      "darwin": true
-                    },
-                    "pythonExecutable": "python3",
-                    "restoreHistory": false,
-                    "rightClickAction": "copyPaste",
-                    "successExitCodes": [
-                      "0",
-                      "SIGINT",
-                      "SIGTERM"
-                    ],
-                    "terminalOptions": {
-                      "documentOverride": null
-                    },
-                    "type": "integrated",
-                    "useWin32Conhost": true
+            "id": "14ecb2eb54841ace",
+            "type": "tabs",
+            "dimension": 34.88063660477454,
+            "children": [
+              {
+                "id": "0f0ca9f61724c401",
+                "type": "leaf",
+                "pinned": true,
+                "state": {
+                  "type": "terminal:terminal",
+                  "state": {
+                    "terminal:terminal": {
+                      "cwd": "/Users/songpengfei/knowledge",
+                      "focus": false,
+                      "profile": {
+                        "args": [
+                          "--login"
+                        ],
+                        "executable": "/opt/homebrew/bin/fish",
+                        "followTheme": true,
+                        "name": "",
+                        "platforms": {
+                          "darwin": true
+                        },
+                        "pythonExecutable": "python3",
+                        "restoreHistory": false,
+                        "rightClickAction": "copyPaste",
+                        "successExitCodes": [
+                          "0",
+                          "SIGINT",
+                          "SIGTERM"
+                        ],
+                        "terminalOptions": {
+                          "documentOverride": null
+                        },
+                        "type": "integrated",
+                        "useWin32Conhost": true
+                      },
+                      "serial": null
+                    }
                   },
-                  "serial": null
+                  "pinned": true,
+                  "icon": "terminal",
+                  "title": "终端：✳ Add .gitkeep to init-domain empty dirs"
                 }
-              },
-              "pinned": true,
-              "icon": "terminal",
-              "title": "终端：~/s/knowledge"
-            }
+              }
+            ]
           }
-        ]
+        ],
+        "direction": "horizontal"
       }
     ],
     "direction": "vertical"
@@ -142,7 +131,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "94be849039c638f6",
@@ -220,13 +209,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Rust/notes/Rust基础/1、Rust安装与开发环境配置.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "1、Rust安装与开发环境配置 的大纲"
+              "title": "大纲"
             }
           }
         ],
@@ -251,53 +239,53 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "0ba47f5179a76e2a",
+  "active": "0f0ca9f61724c401",
   "lastOpenFiles": [
-    "assets/Pasted image 20260511163624.png",
-    "Rust/notes/Rust基础/1、Rust安装与开发环境配置.md",
-    "Rust/wiki/recipes/Cargo 命令速查.md",
-    "Rust/notes/补充链接.md",
-    "Rust/wiki/resources",
-    "Rust/wiki/exercises",
-    "Rust/wiki/projects",
-    "Rust/wiki/patterns",
-    "Rust/wiki/snippets",
-    "Rust/wiki/syntheses",
-    "Rust/wiki/overviews",
-    "Rust/wiki/comparisons",
-    "AI/wiki/recipes",
-    "AI/wiki/syntheses",
-    "AI/CLAUDE.md",
-    "Rust/wiki/index.md",
+    "Rust/wiki/concepts/变量与可变性.md",
+    "macOS/wiki/entities/xcode-select.md",
+    "macOS/wiki/entities/xcodebuild.md",
+    "macOS/wiki/entities/Xcode Command Line Tools.md",
+    "macOS/wiki/entities/Xcode.md",
+    "macOS/raw/archive/articles/Xcode与命令行工具.md",
+    "macOS/notes/1、Xcode与命令行工具.md",
+    "macOS/raw/archive/articles",
+    "macOS/wiki/summaries/Xcode 与命令行工具.md",
+    "macOS/wiki/recipes/安装 Xcode 与 Command Line Tools.md",
+    "macOS/raw/articles/Xcode与命令行工具.md",
+    "Rust/wiki/log.md",
+    "Rust/wiki/recipes/RustRover 开发环境配置.md",
+    "macOS/CLAUDE.md",
+    "Rust/raw/archive/articles/Rust安装与开发环境配置 （改进版本）.md",
+    "Rust/raw/articles/Rust安装与开发环境配置 （改进版本）.md",
     "index.md",
-    "CLAUDE.md",
-    "llm-wiki.md",
+    "macOS/wiki/syntheses",
+    "macOS/wiki/summaries",
+    "macOS/wiki/recipes",
+    "macOS/wiki/index.md",
+    "macOS/wiki/overviews",
+    "macOS/wiki/log.md",
+    "macOS/wiki/entities",
+    "macOS/wiki/concepts",
+    "macOS/wiki/comparisons",
+    "macOS/raw/podcasts",
+    "macOS/raw/videos",
+    "Rust/notes/Rust基础/1、Rust安装与开发环境配置.md",
     "llm-wiki-zh-CN.md",
-    "assets/image-20260428150817120.png",
-    "assets/image-20260428145720094.png",
-    "assets/image-20260428145215608.png",
-    "assets/image-20260427234715436.png",
-    "assets/image-20260427221731327.png",
-    "assets/Pasted image 20260507170420.png",
-    "assets/Pasted image 20260507112717.png",
-    "assets/Image 29.png",
-    "assets/Image 28.png",
-    "assets/Image 17.png",
-    "Rust/raw/archive/articles/所有权.md",
-    "Rust/raw/archive/articles/Rust安装与开发环境配置.md",
-    "Rust/raw/archive/articles/Rust基础语法.md",
-    "Rust/notes/Rust进阶/网络编程/1、Rust原生网络编程.md",
-    "Rust/notes/Rust进阶/异步编程/3、Tokio Task.md",
-    "Rust/notes/Rust进阶/异步编程/2、Tokio异步运行时.md",
-    "Rust/notes/Rust进阶/异步编程/1、异步编程基础.md",
-    "Rust/notes/Rust进阶/多线程编程/4、全局变量.md",
-    "Rust/notes/Rust进阶/多线程编程/2、通道.md",
-    "Rust/notes/Rust进阶/多线程编程/3、共享可变状态.md",
-    "Rust/notes/Rust进阶/多线程编程/1、多线程编程基础.md",
-    "Rust/wiki/summaries/所有权系统概述.md",
-    "Rust/wiki/summaries/Rust 安装与开发环境配置.md",
-    "Rust/wiki/summaries/Rust 基础语法.md",
-    "Rust/wiki/recipes/rustup 命令速查.md",
-    "Rust/wiki/recipes/VS Code Rust 开发环境配置.md"
+    "ingest-workspace/iteration-1/eval-create-new/old_skill/outputs/report.md",
+    "ingest-workspace/iteration-1/eval-create-new/old_skill/outputs/wiki/log.md",
+    "ingest-workspace/iteration-1/eval-create-new/old_skill/outputs/wiki/index.md",
+    "ingest-workspace/iteration-1/eval-create-new/old_skill/outputs/entities/smol.md",
+    "ingest-workspace/iteration-1/eval-create-new/old_skill/outputs/entities/async-std.md",
+    "ingest-workspace/iteration-1/eval-create-new/old_skill/outputs/entities/Tokio.md",
+    "assets/Pasted image 20260511233913.png",
+    "assets/Image 17.png.png",
+    "assets/Pasted image 20260511232803.png",
+    "assets/Pasted image 20260511232736.png",
+    "assets/Pasted image 20260511231034.png",
+    "assets/Pasted image 20260511230042.png",
+    "assets/Pasted image 20260511225507.png",
+    "assets/Pasted image 20260511225501.png",
+    "assets/Pasted image 20260511224856.png",
+    "assets/Pasted image 20260511224814.png"
   ]
 }

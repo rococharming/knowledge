@@ -2,7 +2,7 @@
 title: Cargo 命令速查
 date: 2026-05-10
 tags: [rust, cargo, cheatsheet]
-source_count: 1
+source_count: 2
 ---
 
 # Cargo 命令速查
@@ -23,7 +23,7 @@ source_count: 1
 | `cargo build --release` | 发布构建，输出到 `target/release/` |
 | `cargo run` | 构建并运行 |
 | `cargo run --release` | 发布构建并运行 |
-| `cargo check` | 检查代码是否可编译（不生成产物，速度最快） |
+| `cargo check` | 检查代码是否可编译（类型检查、借用检查，不生成产物，速度最快） |
 | `cargo clean` | 清理构建产物（删除 `target/`） |
 
 ## 测试与文档
@@ -56,7 +56,7 @@ source_count: 1
 
 ## 关键提示
 
-- **`cargo check`** 是开发中最常用的命令，只检查编译错误而不生成二进制，速度远快于 `cargo build`。
+- **`cargo check`** 是开发中最常用的命令，执行类型检查、借用检查等编译检查工作，但不生成最终可执行文件，速度远快于 `cargo build`。开发过程中可频繁使用以快速发现编译错误。
 - **Release 模式**适合生产部署，但编译时间长，日常开发用 Debug 模式即可。
 - **`cargo add/remove`** 会自动修改 `Cargo.toml`，无需手动编辑。
 - **`Cargo.lock`** 锁定依赖精确版本，多人协作时应提交到版本控制。

@@ -2,7 +2,7 @@
 title: Edition
 date: 2026-05-10
 tags: [rust, edition, compiler]
-source_count: 1
+source_count: 2
 ---
 
 # Edition
@@ -35,8 +35,10 @@ Rust 需要同时满足两个看似矛盾的目标：
 
 ```toml
 [package]
-edition = "2021"
+edition = "2024"
 ```
+
+> 较新版本的 Rust 默认生成 `edition = "2024"`，较旧版本可能默认生成 `2021`。
 
 或通过 rustc 命令行指定：
 

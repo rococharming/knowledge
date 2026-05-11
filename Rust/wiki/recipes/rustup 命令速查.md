@@ -2,7 +2,7 @@
 title: rustup 命令速查
 date: 2026-05-11
 tags: [rust, rustup, toolchain, recipe]
-source_count: 2
+source_count: 3
 ---
 
 # rustup 命令速查
@@ -24,7 +24,7 @@ source_count: 2
 | `rustup install stable` | 安装稳定版工具链 |
 | `rustup install beta` | 安装测试版工具链 |
 | `rustup install nightly` | 安装每夜版工具链 |
-| `rustup update` | 更新所有已安装的工具链 |
+| `rustup update` | 更新所有已安装的工具链，同时自动检查并更新 rustup 自身 |
 | `rustup default stable` | 切换默认工具链为 stable |
 | `rustup default nightly` | 切换默认工具链为 nightly |
 | `rustup show` | 显示已安装工具链和当前活跃工具链 |

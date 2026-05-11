@@ -44,3 +44,10 @@
 - 发现: 13 个（矛盾 0、陈旧 0、死链 3、缺页 10、缺引用 2、空白 0）
 - 建议: 3 条（调查问题 2、新素材 4、搜索方向 1）
 
+## [2026-05-12] Ingest | Rust安装与开发环境配置 （改进版本）.md
+
+- 创建: `[[RustRover 开发环境配置]]`
+- 更新: `[[Rust 安装与开发环境配置]]` (source_count: 1→2), `[[rustup]]` (source_count: 1→2), `[[rustc]]` (source_count: 1→2), `[[Cargo]]` (source_count: 1→2), `[[VS Code Rust 开发环境配置]]` (source_count: 1→2), `[[rustup 命令速查]]` (source_count: 2→3), `[[Cargo 命令速查]]` (source_count: 1→2), `[[Edition]]` (source_count: 1→2)
+- 类型: articles
+- 来源: `raw/articles/Rust安装与开发环境配置 （改进版本）.md`
+

@@ -2,7 +2,7 @@
 title: Rust 安装与开发环境配置
 date: 2026-05-10
 tags: [rust, setup, toolchain]
-source_count: 1
+source_count: 2
 ---
 
 # Rust 安装与开发环境配置
@@ -41,7 +41,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 ### IDE 配置
 
-推荐使用 [[VS Code Rust 开发环境配置]] 搭建 IDE 开发环境，或选择 RustRover（JetBrains 出品的专用 IDE）。
+推荐使用 [[VS Code Rust 开发环境配置]] 搭建 IDE 开发环境，或使用 [[RustRover 开发环境配置]]（JetBrains 出品的专用 Rust IDE，开箱即用，内置 Cargo 集成和调试器）。
 
 ## 包管理
 

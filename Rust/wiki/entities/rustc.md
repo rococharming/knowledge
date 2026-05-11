@@ -2,7 +2,7 @@
 title: rustc
 date: 2026-05-10
 tags: [rust, compiler, rustc]
-source_count: 1
+source_count: 2
 ---
 
 # rustc
@@ -16,9 +16,11 @@ rustc 是 Rust 官方编译器，用于将 Rust 源程序（`.rs`）编译成目
 ### 编译可执行文件
 
 ```bash
-rustc main.rs              # 默认生成 main（或 main.exe）
+rustc main.rs              # 默认生成 main（macOS/Linux）或 main.exe（Windows）
 rustc -o hello main.rs     # 指定输出文件名
 ```
+
+在 macOS / Linux 上默认生成无后缀的可执行文件 `main`，Windows 上生成 `main.exe`。
 
 ### 指定 Edition
 
@@ -34,6 +36,16 @@ rustc 编译库时默认产生 Rust 自用的 **rlib** 格式。
 
 ### 编译 rlib 库
 
+创建库源码 `lib.rs`：
+
+```rust
+pub fn hello() {
+    println!("Hello, world!");
+}
+```
+
+编译命令：
+
 ```bash
 rustc --crate-type=rlib --crate-name=greet lib.rs
 ```
@@ -45,11 +57,23 @@ rustc --crate-type=rlib --crate-name=greet lib.rs
 
 ### 链接 rlib 到可执行文件
 
-```bash
-rustc -L. --extern greet=libgreet.rlib main.rs
+创建可执行文件源码 `main.rs`：
+
+```rust
+fn main() {
+    greet::hello();
+}
 ```
 
-- `-L.`：将当前目录作为库路径搜索目录
+> `greet` 是 `--crate-name` 指定的 crate 名。
+
+链接并编译：
+
+```bash
+rustc -L . --extern greet=libgreet.rlib main.rs
+```
+
+- `-L .`：将当前目录作为库路径搜索目录
 - `--extern greet=libgreet.rlib`：以 greet 作为 crate 名注入库
 
 ## 与 Cargo 的关系

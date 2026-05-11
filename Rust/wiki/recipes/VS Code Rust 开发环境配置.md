@@ -2,7 +2,7 @@
 title: VS Code Rust 开发环境配置
 date: 2026-05-10
 tags: [rust, ide, vscode, setup]
-source_count: 1
+source_count: 2
 ---
 
 # VS Code Rust 开发环境配置
@@ -18,7 +18,11 @@ source_count: 1
 
 ## 步骤
 
-### 步骤 1：用 VS Code 打开 Rust 项目
+### 步骤 1：安装 `code` 命令到 PATH
+
+确保 VS Code 的 `code` 命令已在系统 PATH 中。若终端提示 `code: command not found`，在 VS Code 中打开命令面板（`Cmd+P`），搜索 `> Shell Command` 并选择 `Shell Command: Install 'code' command in PATH`。
+
+### 步骤 2：用 VS Code 打开 Rust 项目
 
 ```bash
 cargo new my_project
@@ -26,7 +30,7 @@ cd my_project
 code .
 ```
 
-### 步骤 2：安装 Rust 插件
+### 步骤 3：安装 Rust 插件
 
 在 VS Code 左侧 Extensions（插件）面板中搜索并安装：
 
@@ -38,7 +42,7 @@ code .
    - 将编译错误和警告直接内嵌显示在代码行旁边
    - 无需查看底部面板即可定位问题
 
-### 步骤 3：验证功能
+### 步骤 4：验证功能
 
 创建或打开 `src/main.rs`，输入以下内容测试自动补全：
 

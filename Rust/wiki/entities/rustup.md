@@ -2,7 +2,7 @@
 title: rustup
 date: 2026-05-10
 tags: [rust, toolchain, rustup]
-source_count: 1
+source_count: 2
 ---
 
 # rustup
@@ -25,7 +25,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 |---|---|
 | `rustup --version` | 查看 rustup 版本（同时显示 rustc 版本） |
 | `rustup self update` | 更新 rustup 自身 |
-| `rustup update` | 更新所有已安装的 Rust 工具链 |
+| `rustup update` | 更新所有已安装的 Rust 工具链，同时自动检查并更新 rustup 自身 |
 | `rustup self uninstall` | 完全卸载 rustup 及管理的所有工具链 |
 | `rustup show` | 显示已安装工具链和当前活跃工具链 |
 | `rustup install stable/beta/nightly` | 安装指定版本工具链 |

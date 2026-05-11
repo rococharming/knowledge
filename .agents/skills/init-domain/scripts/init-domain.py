@@ -42,8 +42,8 @@ def create_directory_structure(base_dir: str, domain: str, categories: list[str]
 
     for p in paths:
         os.makedirs(p, exist_ok=True)
-        # Create .gitkeep in empty directories
-        if "raw/" in p or p.endswith("/notes"):
+        # Create .gitkeep in all empty directories so Git tracks them
+        if not os.listdir(p):
             open(f"{p}/.gitkeep", "a").close()
 
     return paths
@@ -143,6 +143,7 @@ def diagnose_existing(domain_path: str, categories: list[str]) -> dict:
         p = os.path.join(domain_path, "wiki", cat)
         if not os.path.isdir(p):
             os.makedirs(p, exist_ok=True)
+            open(os.path.join(p, ".gitkeep"), "a").close()
             created.append(f"wiki/{cat}/")
 
     # Check notes/

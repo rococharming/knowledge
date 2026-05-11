@@ -49,6 +49,7 @@ _（暂无）_
 - [[rustup 命令速查]] — rustup 工具链安装、更新、切换命令速查
 - [[RsProxy 镜像源配置]] — 国内环境下通过 RsProxy 加速 Rust 安装和依赖下载
 - [[VS Code Rust 开发环境配置]] — 在 VS Code 中配置 rust-analyzer 等插件搭建 Rust 开发环境
+- [[RustRover 开发环境配置]] — JetBrains 专用 Rust IDE 的配置与核心功能使用
 
 ## snippets
 
