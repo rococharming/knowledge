@@ -4,77 +4,79 @@
     "type": "split",
     "children": [
       {
-        "id": "abb60ad8b470d0f9",
-        "type": "tabs",
+        "id": "4eec1bab5ef993bf",
+        "type": "split",
         "children": [
           {
-            "id": "7083211aa6d020c5",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "terminal:terminal",
-              "state": {
-                "terminal:terminal": {
-                  "cwd": "/Users/songpengfei/knowledge",
-                  "focus": false,
-                  "profile": {
-                    "args": [
-                      "--login"
-                    ],
-                    "executable": "/opt/homebrew/bin/fish",
-                    "followTheme": true,
-                    "name": "",
-                    "platforms": {
-                      "darwin": true
-                    },
-                    "pythonExecutable": "python3",
-                    "restoreHistory": false,
-                    "rightClickAction": "copyPaste",
-                    "successExitCodes": [
-                      "0",
-                      "SIGINT",
-                      "SIGTERM"
-                    ],
-                    "terminalOptions": {
-                      "documentOverride": null
-                    },
-                    "type": "integrated",
-                    "useWin32Conhost": true
+            "id": "cd81d9334321a6c1",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "4fada888e451b34f",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "AI/CLAUDE.md",
+                    "mode": "source",
+                    "source": false
                   },
-                  "serial": null
+                  "icon": "lucide-file",
+                  "title": "CLAUDE"
                 }
-              },
-              "pinned": true,
-              "icon": "terminal",
-              "title": "终端：✳ Claude Code"
-            }
+              }
+            ]
           },
           {
-            "id": "1756eed0a3a1d499",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Rust/wiki/log.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "log"
-            }
-          },
-          {
-            "id": "ce35446928bb6b02",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "关系图谱"
-            }
+            "id": "b0f813a7de016e60",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "a4d79f836bc79f05",
+                "type": "leaf",
+                "pinned": true,
+                "state": {
+                  "type": "terminal:terminal",
+                  "state": {
+                    "terminal:terminal": {
+                      "cwd": "/Users/11185032/spf/knowledge",
+                      "focus": false,
+                      "profile": {
+                        "args": [
+                          "--login"
+                        ],
+                        "executable": "/opt/homebrew/bin/fish",
+                        "followTheme": true,
+                        "name": "",
+                        "platforms": {
+                          "darwin": true
+                        },
+                        "pythonExecutable": "python3",
+                        "restoreHistory": false,
+                        "rightClickAction": "copyPaste",
+                        "successExitCodes": [
+                          "0",
+                          "SIGINT",
+                          "SIGTERM"
+                        ],
+                        "terminalOptions": {
+                          "documentOverride": null
+                        },
+                        "type": "integrated",
+                        "useWin32Conhost": true
+                      },
+                      "serial": null
+                    }
+                  },
+                  "pinned": true,
+                  "icon": "terminal",
+                  "title": "终端：✳ Create missing wiki directories per domain"
+                }
+              }
+            ]
           }
         ],
-        "currentTab": 2
+        "direction": "horizontal"
       }
     ],
     "direction": "vertical"
@@ -222,7 +224,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -239,45 +242,53 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "ce35446928bb6b02",
+  "active": "a4d79f836bc79f05",
   "lastOpenFiles": [
-    "Rust/raw/archive/articles/所有权.md",
-    "Rust/wiki/concepts/共享所有权.md",
-    "Rust/wiki/concepts/移动.md",
-    "Rust/wiki/concepts/所有权.md",
-    "Rust/wiki/summaries/所有权系统概述.md",
-    "Rust/wiki/log.md",
-    "index.md",
-    "Rust/wiki/index.md",
-    "Rust/wiki/concepts/数据类型.md",
-    "Rust/wiki/recipes/rustup 命令速查.md",
-    "llm-wiki-zh-CN.md",
-    "Rust/raw/articles/所有权.md",
-    "Rust/notes/Rust基础/4、引用和切片.md",
-    "Rust/notes/Rust基础/3、所有权.md",
-    "Rust/wiki/summaries/Rust 安装与开发环境配置.md",
-    "llm-wiki.md",
-    "Rust/notes/Rust基础/1、Rust安装与开发环境配置.md",
-    "所有权.md",
-    "lint-report-20260510.md",
-    "lint-report-20260511.md",
-    "Rust/wiki/concepts/变量与可变性.md",
-    "Rust/wiki/recipes/Cargo 命令速查.md",
-    "Rust/wiki/summaries/Rust 基础语法.md",
-    "Rust/raw/archive/articles/Rust基础语法.md",
-    "knowledge/index.md",
-    "knowledge",
-    "Rust/wiki/concepts/注释.md",
-    "Rust/raw/archive/articles",
-    "1",
-    "scripts/sync-qmd.sh",
-    "scripts",
     "Rust/wiki/resources",
     "Rust/wiki/exercises",
     "Rust/wiki/projects",
     "Rust/wiki/patterns",
     "Rust/wiki/snippets",
-    "assets/Pasted image 20260510015319.png",
-    "assets/Pasted image 20260510012958.png"
+    "Rust/wiki/syntheses",
+    "Rust/wiki/overviews",
+    "Rust/wiki/comparisons",
+    "AI/wiki/recipes",
+    "AI/wiki/syntheses",
+    "AI/wiki/overviews",
+    "AI/CLAUDE.md",
+    "Rust/wiki/index.md",
+    "index.md",
+    "CLAUDE.md",
+    "llm-wiki.md",
+    "llm-wiki-zh-CN.md",
+    "assets/image-20260428150817120.png",
+    "assets/image-20260428145720094.png",
+    "assets/image-20260428145215608.png",
+    "assets/image-20260427234715436.png",
+    "assets/image-20260427221731327.png",
+    "assets/Pasted image 20260507170420.png",
+    "assets/Pasted image 20260507112717.png",
+    "assets/Image 29.png",
+    "assets/Image 28.png",
+    "assets/Image 17.png",
+    "Rust/raw/archive/articles/所有权.md",
+    "Rust/raw/archive/articles/Rust安装与开发环境配置.md",
+    "Rust/raw/archive/articles/Rust基础语法.md",
+    "Rust/notes/Rust进阶/网络编程/1、Rust原生网络编程.md",
+    "Rust/notes/Rust进阶/异步编程/3、Tokio Task.md",
+    "Rust/notes/Rust进阶/异步编程/2、Tokio异步运行时.md",
+    "Rust/notes/Rust进阶/异步编程/1、异步编程基础.md",
+    "Rust/notes/Rust进阶/多线程编程/4、全局变量.md",
+    "Rust/notes/Rust进阶/多线程编程/2、通道.md",
+    "Rust/notes/Rust进阶/多线程编程/3、共享可变状态.md",
+    "Rust/notes/Rust进阶/多线程编程/1、多线程编程基础.md",
+    "Rust/wiki/summaries/所有权系统概述.md",
+    "Rust/wiki/summaries/Rust 安装与开发环境配置.md",
+    "Rust/wiki/summaries/Rust 基础语法.md",
+    "Rust/wiki/recipes/rustup 命令速查.md",
+    "Rust/wiki/recipes/VS Code Rust 开发环境配置.md",
+    "Rust/wiki/recipes/RsProxy 镜像源配置.md",
+    "Rust/wiki/recipes/Cargo 命令速查.md",
+    "Rust/wiki/entities/rustup.md"
   ]
 }
