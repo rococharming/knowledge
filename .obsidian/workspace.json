@@ -4,81 +4,88 @@
     "type": "split",
     "children": [
       {
-        "id": "4eec1bab5ef993bf",
-        "type": "split",
+        "id": "cd81d9334321a6c1",
+        "type": "tabs",
+        "dimension": 59.51327433628318,
         "children": [
           {
-            "id": "cd81d9334321a6c1",
-            "type": "tabs",
-            "dimension": 74.1267787839586,
-            "children": [
-              {
-                "id": "4fada888e451b34f",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "Rust/notes/Rust基础/1、Rust安装与开发环境配置.md",
-                    "mode": "source",
-                    "source": false
-                  },
-                  "icon": "lucide-file",
-                  "title": "1、Rust安装与开发环境配置"
-                }
-              }
-            ]
+            "id": "0ba47f5179a76e2a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Rust/notes/Rust基础/1、Rust安装与开发环境配置.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "1、Rust安装与开发环境配置"
+            }
           },
           {
-            "id": "b0f813a7de016e60",
-            "type": "tabs",
-            "dimension": 25.873221216041397,
-            "children": [
-              {
-                "id": "a4d79f836bc79f05",
-                "type": "leaf",
-                "pinned": true,
-                "state": {
-                  "type": "terminal:terminal",
-                  "state": {
-                    "terminal:terminal": {
-                      "cwd": "/Users/11185032/spf/knowledge",
-                      "focus": false,
-                      "profile": {
-                        "args": [
-                          "--login"
-                        ],
-                        "executable": "/opt/homebrew/bin/fish",
-                        "followTheme": true,
-                        "name": "",
-                        "platforms": {
-                          "darwin": true
-                        },
-                        "pythonExecutable": "python3",
-                        "restoreHistory": false,
-                        "rightClickAction": "copyPaste",
-                        "successExitCodes": [
-                          "0",
-                          "SIGINT",
-                          "SIGTERM"
-                        ],
-                        "terminalOptions": {
-                          "documentOverride": null
-                        },
-                        "type": "integrated",
-                        "useWin32Conhost": true
-                      },
-                      "serial": null
-                    }
-                  },
-                  "pinned": true,
-                  "icon": "terminal",
-                  "title": "终端：✳ Create missing wiki directories per domain"
-                }
-              }
-            ]
+            "id": "1242b3b62670a20f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Rust/notes/补充链接.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "补充链接"
+            }
           }
-        ],
-        "direction": "horizontal"
+        ]
+      },
+      {
+        "id": "7d19779aa448b9a4",
+        "type": "tabs",
+        "dimension": 40.48672566371682,
+        "children": [
+          {
+            "id": "f8b64d3bb4040bea",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "terminal:terminal",
+              "state": {
+                "terminal:terminal": {
+                  "cwd": "/Users/11185032/spf/knowledge",
+                  "focus": false,
+                  "profile": {
+                    "args": [
+                      "--login"
+                    ],
+                    "executable": "/opt/homebrew/bin/fish",
+                    "followTheme": true,
+                    "name": "",
+                    "platforms": {
+                      "darwin": true
+                    },
+                    "pythonExecutable": "python3",
+                    "restoreHistory": false,
+                    "rightClickAction": "copyPaste",
+                    "successExitCodes": [
+                      "0",
+                      "SIGINT",
+                      "SIGTERM"
+                    ],
+                    "terminalOptions": {
+                      "documentOverride": null
+                    },
+                    "type": "integrated",
+                    "useWin32Conhost": true
+                  },
+                  "serial": null
+                }
+              },
+              "pinned": true,
+              "icon": "terminal",
+              "title": "终端：~/s/knowledge"
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -151,7 +158,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Rust/wiki/index.md",
+                "file": "Rust/notes/Rust基础/1、Rust安装与开发环境配置.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -161,7 +168,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "index 的反向链接列表"
+              "title": "1、Rust安装与开发环境配置 的反向链接列表"
             }
           },
           {
@@ -227,8 +234,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -245,8 +251,12 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "4fada888e451b34f",
+  "active": "0ba47f5179a76e2a",
   "lastOpenFiles": [
+    "assets/Pasted image 20260511163624.png",
+    "Rust/notes/Rust基础/1、Rust安装与开发环境配置.md",
+    "Rust/wiki/recipes/Cargo 命令速查.md",
+    "Rust/notes/补充链接.md",
     "Rust/wiki/resources",
     "Rust/wiki/exercises",
     "Rust/wiki/projects",
@@ -257,7 +267,6 @@
     "Rust/wiki/comparisons",
     "AI/wiki/recipes",
     "AI/wiki/syntheses",
-    "AI/wiki/overviews",
     "AI/CLAUDE.md",
     "Rust/wiki/index.md",
     "index.md",
@@ -289,9 +298,6 @@
     "Rust/wiki/summaries/Rust 安装与开发环境配置.md",
     "Rust/wiki/summaries/Rust 基础语法.md",
     "Rust/wiki/recipes/rustup 命令速查.md",
-    "Rust/wiki/recipes/VS Code Rust 开发环境配置.md",
-    "Rust/wiki/recipes/RsProxy 镜像源配置.md",
-    "Rust/wiki/recipes/Cargo 命令速查.md",
-    "Rust/wiki/entities/rustup.md"
+    "Rust/wiki/recipes/VS Code Rust 开发环境配置.md"
   ]
 }

@@ -332,26 +332,232 @@ rustc -L . --extern greet=libgreet.rlib main.rs
 
 ![[Image 9.png|600]]
 
+# 五、Cargo
+
+## 1、Cargo概述
+
+直接使用 `rustc` 编译一个个 Rust 源码文件比较费时费力。在实际项目开发中，更常用的是 `cargo`。
+
+`cargo` 是 Rust 的**构建工具和包管理工具**。通过 `rustup` 安装 Rust 时，通常会安装默认的 `stable` 工具链，而 `cargo` 是该工具链中的组件之一。
+
+使用`cargo`可以完成项目创建、代码构建、依赖下载与编译、测试和文档生成等工作。在构建代码时，`cargo` 底层会调用 `rustc` 完成实际编译。
+
+通过 `cargo`，可以做如下事情：
+
+- `cargo new` 新建项目
+- `cargo build`构建项目
+- `cargo run`构建并运行项目
+- `cargo check`检查项目是否可以通过编译，但不生成最终可执行文件
+- `cargo test`测试项目
+- `cargo doc`构建项目文档
+- `cargo clean`清理构建产物
+
+## 2、创建Cargo项目
+
+### （1）创建二进制可执行项目
+
+命令：
+
+```bash
+cargo new <project_name>
+```
+
+例如，创建 `hello_cargo` 项目：
+
+```shell
+cargo new hello_cargo
+```
+
+执行后，会在当前目录生成一个 `hello_cargo` 项目文件夹。
+
+![[Image 10.png]]
+
+进入该文件夹后，可以看到类似下面的目录结构：
+
+```text
+hello_cargo/
+├── .git/        # Git 仓库目录，默认自动生成
+├── .gitignore   # Git 忽略文件
+├── Cargo.toml   # Cargo 项目配置文件
+└── src/
+    └── main.rs  # Rust 主程序源文件
+```
+
+默认情况下，如果当前目录不在已有版本控制仓库中，`cargo new` 会为新项目初始化 Git 仓库。如果不想使用 Git 版本控制，可以在执行 `cargo new` 时加上 `--vcs=none` 选项：
+
+```shell
+cargo new hello_cargo --vcs=none
+```
+
+打开Cargo.toml文件，内容类似如下：
+
+```toml
+[package]
+name = "hello_cargo"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+```
+
+其中：
+- `[package]`是该包的基本信息，包括名字、版本、Edition等。除了默认生成的字段外，还可增加`description`、`license`、`authors`等其他信息。
+- `[dependencies]`：用于声明项目依赖的第三方 crate，这是Cargo进行包管理的核心机制，后续可以再详细介绍 ^6ed2c0
+
+> 需要注意的是，如果你使用的是较旧版本的 Rust，默认生成的 Edition 可能是 `2021`；较新的 Rust 版本默认生成的通常是 `2024`。
+
+进入 `src` 目录，可以看到自动生成的 `main.rs` 文件，内容如下：
+
+```rust
+fn main() {
+    println!("Hello, world!");
+}
+```
+
+`main.rs` 是二进制可执行项目的入口文件。
+
+说明：
+
+- `fn` 是 Rust 的关键字，用于定义函数。
+- `main` 是函数名称。对于二进制可执行程序来说，`main` 是程序入口函数，通常不能随意改成其他名字。
+- println!` 是 Rust 的一个宏，用于向控制台输出内容。
+
+### （2）创建库项目
+
+除了可以创建二进制可执行项目，还可以创建库项目。库项目与二进制项目的主要区别是：库项目默认没有 `main` 函数，因此不能直接作为程序运行，而是用于被其他代码调用。
+
+使用 `--lib` 选项可以创建库项目：
+
+```bash
+cargo new --lib <project_name>
+```
+
+库项目的目录结构与二进制项目类似，区别是 `src` 目录下自动生成的是 `lib.rs` 文件，而不是 `main.rs` 文件。
+
+`src/lib.rs` 内容类似如下：
+
+```rust
+pub fn add(left: u64, right: u64) -> u64 {
+    left + right
+}
+
+#[cfg(test)]
+mod tests {
+	use super::*;
+	
+	#[test]
+	fn it_works() {
+		let result = add(2, 2);
+		assert_eq!(result, 4);
+	}
+}
+```
+
+其中，`#[cfg(test)]` 和 `#[test]` 是与测试相关的内容，后续可以再详细介绍。 ^d6141b
+
+## 3、构建Cargo项目
+
+在创建好的 Cargo 项目目录中执行：
+
+```shell
+cargo build
+```
+
+即可构建（编译）项目。
+
+对于二进制项目，执行 `cargo build` 后会生成可执行文件，默认位于项目顶层目录的 `target/debug` 目录下。因为 `cargo build` 默认使用**调试构建**，也就是`dev profile`，所以生成结果位于 `debug` 目录中。
+
+当项目准备发布时，可以执行：
+
+```shell
+cargo build --release
+```
+
+这是**发布构建**（`release profile`）。构建产物位于项目顶层目录的`target/release`目录下。
+
+> 调试构建与发布构建
+> 
+> 调试构建：也就是默认的`cargo build`，使用`dev profile`。它通常优化较少，编译速度快，并保留更多的调试信息。
+> 
+> 发布构建：也就是 `cargo build --release`，使用`release profile`。它会启用更高级别的优化，通常编译速度较慢，但生成的程序运行速度更快，更适合发布或性能测试场景。
+
+构建完成后，就可以运行生成的可执行文件了。以调试构建为例，运行如下：
+
+![[Image 11.png]]
+
+## 4、构建并运行Cargo项目
+
+执行`cargo build`只会构建项目，如果要运行程序，还需要手动执行生成的可执行文件。
+
+Cargo 提供了 `cargo run`，可以一次完成“构建 + 运行”两个步骤：
+
+```bash
+cargo run
+```
+
+结果：
+
+![[Image 12.png]]
+
+`cargo run`默认也是调试构建。如果希望以发布模式构建并运行，可以使用：
+
+```bash
+cargo run --release
+```
+
+## 5、检查代码确保其可编译
+
+Cargo 还提供了 `cargo check` 命令，用于快速检查代码是否可以通过编译：
+
+```bash
+cargo check
+```
+
+`cargo check`会执行类型检查、借用检查等编译检查工作，但不会生成最终的可执行文件，因此通常比`cargo build`更快。开发过程中，可以经常使用`cargo check`快速发现编译错误。
+
+## 6、清理项目
+
+`cargo clean` 用于删除 Cargo 生成的构建产物。通常来说，它会删除项目中的 `target` 目录。
+
+命令如下：
+
+```bash
+cargo clean
+```
+
+## 7、测试
+
+Cargo 还提供了 `cargo test` 用于运行测试。关于测试的内容较多，后续可以再具体介绍。^4420bb
+
+命令如下：
+
+```bash
+cargo test
+```
 
 # 六、IDE环境
 
-使用IDE开发Rust项目会非常高效，推荐两款IDE软件：VS Code和RustRover。
+使用IDE或带插件的编辑器开发Rust项目会更加高效。这里推荐两种常见选择：`VS Code`和`RustRover`。
 
 ## 1、VS Code
 
-VS Code是目前非常受欢迎的一个编辑器，它可以用来开发各种语言的项目。
+`VS Code`是目前非常受欢迎的代码编辑器，可以用于开发多种语言的项目。通过安装 `Rust` 相关插件，`VS Code`也可以获得接近`IDE`的`Rust`开发体验。
 
-在cargo new一个新项目并进入项目文件夹，执行code .命令可以用VS Code打开该项目：
+在使用 `cargo new` 创建一个新项目并进入项目文件夹后，可以执行下面的命令用 VS Code 打开当前项目：
 
 ```bash
 code .
 ```
-不过，VS Code只是一个编辑器，要开发Rust项目，还需要安装Rust插件，来打造该编辑器成为一个IDE。方法很简单，只需要在VS Code左侧栏点击插件选项，搜索安装如下插件即可：
+
+如果终端提示 `code: command not found`，说明还没有把 VS Code 的 `code` 命令安装到 `PATH` 中。可以在 VS Code 中打开命令面板（`Command + P`），搜索`> Shell Command`并选择`Shell Command: Install 'code' command in PATH`：
+
+![[Pasted image 20260511163624.png]]
+
+打开项目后，还需要安装Rust相关插件。点击 VS Code 左侧栏的 Extensions，然后搜索并安装以下插件。
 
 ![[Image 13.png]]
 
-rust-analyzer：提供很多增强Rust编程体验的功能，如代码补全、类型推导、错误提示等功能。
-
+- `rust-analyzer`：Rust 官方推荐的语言服务器插件，也是`VS Code`开发 Rust 的最核心插件。它可以提供代码补全、类型提示、错误诊断、跳转定义、查找引用、代码
 Error Lens：将错误警告内嵌显示在代码里，
 
 至此，就完成了VS Code Rust开发环境的配置。现在，输出前几个字符时，就会自动弹出代码提示：
