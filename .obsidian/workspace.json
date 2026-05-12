@@ -4,18 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "344c2bbcb4b65378",
+        "id": "6ce7b2175cd5c991",
         "type": "tabs",
         "children": [
           {
-            "id": "c88b661df413a2d5",
+            "id": "279aa11faf5e503f",
             "type": "leaf",
             "pinned": true,
             "state": {
               "type": "terminal:terminal",
               "state": {
                 "terminal:terminal": {
-                  "cwd": "/Users/11185032/spf/knowledge",
+                  "cwd": "/Users/songpengfei/knowledge",
                   "focus": false,
                   "profile": {
                     "args": [
@@ -46,10 +46,21 @@
               },
               "pinned": true,
               "icon": "terminal",
-              "title": "终端：✳ Build Rust wiki topic note generator"
+              "title": "终端：✳ Fix qmd update Node.js version mismatch"
+            }
+          },
+          {
+            "id": "05194ccad516dff9",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "关系图谱"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -214,53 +225,53 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "c88b661df413a2d5",
+  "active": "05194ccad516dff9",
   "lastOpenFiles": [
-    "Rust/wiki/concepts/常量与静态变量.md",
+    "前后端/wiki/index.md",
+    "前后端/wiki/log.md",
+    "macOS/wiki/log.md",
+    "macOS/wiki/index.md",
+    "index.md",
+    "macOS/raw/archive/articles/Homebrew安装与使用.md",
+    "macOS/wiki/summaries/Homebrew 安装与使用.md",
+    "macOS/wiki/recipes/Homebrew 安装与配置.md",
+    "macOS/wiki/entities/Homebrew.md",
+    "macOS/raw/articles/Homebrew安装与使用.md",
+    "macOS/notes/2、Homebrew安装与使用.md",
+    "assets/Pasted image 20260513013040.png",
+    "前后端/wiki/concepts/HTTP 协议.md",
+    "前后端/wiki/summaries/HTTP 基础概述.md",
+    "前后端/notes/HTTP/HTTP基础.md",
+    "前后端/raw/archive/articles/HTTP基础概述.md",
+    "前后端/wiki/concepts/HTTP 请求流程.md",
+    "前后端/wiki/concepts/HTTP 系统组成.md",
+    "前后端/raw/archive/articles",
+    "前后端/raw/articles/HTTP基础概述.md",
     "前后端/notes/HTTP/1、HTTP基础概述.md",
+    "assets/Pasted image 20260513003914.png",
+    "macOS/notes/1、Xcode与命令行工具.md",
+    "assets/Pasted image 20260512234633.png",
+    "assets/Pasted image 20260512234551.png",
+    "assets/Pasted image 20260512233510.png",
+    "assets/Pasted image 20260512223046.png",
+    "assets/Pasted image 20260512222206.png",
+    "assets/Pasted image 20260512215555.png",
+    "assets/Pasted image 20260512215314.png",
+    "assets/Pasted image 20260512214427.png",
+    "Excalidraw/Drawing 2026-05-12 20.44.28.excalidraw.md",
+    "Excalidraw",
+    "Rust/wiki/concepts/常量与静态变量.md",
     "Rust/wiki/concepts/变量与可变性.md",
     "Rust/raw/archive/articles/Rust基础语法（改进版）.md",
     "Rust/raw/archive/articles/Rust基础语法.md",
     "Rust/raw/archive/articles/Rust安装与开发环境配置 （改进版本）.md",
-    "Rust/raw/archive/articles/Rust安装与开发环境配置.md",
-    "Rust/wiki/concepts/移动.md",
     "前后端/notes/HTTP",
-    "macOS/wiki/log.md",
-    "Rust/notes/Rust基础/1、Rust安装与开发环境配置.md",
-    "前后端/wiki/log.md",
-    "前后端/wiki/index.md",
-    "index.md",
     "前后端/wiki/syntheses",
     "前后端/wiki/summaries",
     "前后端/wiki/recipes",
     "前后端/wiki/overviews",
     "前后端/wiki/entities",
     "前后端/wiki/concepts",
-    "前后端/wiki/comparisons",
-    "前后端/raw/videos",
-    "前后端/raw/podcasts",
-    "前后端/CLAUDE.md",
-    "AI/wiki/log.md",
-    "Rust/wiki/log.md",
-    "Rust/wiki/concepts/size_of 与 size_of_val.md",
-    "Rust/wiki/snippets/size_of 与 size_of_val 速查.md",
-    "Rust/wiki/snippets/size_of 速查.md",
-    "Rust/wiki/snippets/size_of 与 size_of_val.md",
-    "Rust/raw/archive/articles/size_of和size_of_val.md",
-    "macOS/wiki/recipes/安装 Xcode 与 Command Line Tools.md",
-    "Rust/raw/articles/size_of和size_of_val.md",
-    "Rust/notes/Tips/1、size_of和size_of_val.md",
-    "Rust/notes/Rust基础/2、Rust基础语法.md",
-    "Rust/raw/articles/Rust基础语法（改进版）.md",
-    "assets/Pasted image 20260512113323.png",
-    "assets/Pasted image 20260512113109.png",
-    "assets/Pasted image 20260512112943.png",
-    "assets/Pasted image 20260512112850.png",
-    "assets/Pasted image 20260512105425.png",
-    "assets/Pasted image 20260511233913.png",
-    "assets/Image 17.png.png",
-    "assets/Pasted image 20260511232803.png",
-    "assets/Pasted image 20260511232736.png",
-    "assets/Pasted image 20260511231034.png"
+    "前后端/wiki/comparisons"
   ]
 }
