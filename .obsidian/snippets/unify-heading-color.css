@@ -1,0 +1,24 @@
+/* 所有标题颜色统一为一级标题颜色（正文色） */
+body {
+  --h3-color: var(--text-normal) !important;
+  --h4-color: var(--text-normal) !important;
+  --h5-color: var(--text-normal) !important;
+  --h6-color: var(--text-normal) !important;
+}
+
+/* 覆盖所有可能的 h4 颜色规则 */
+h3, .HyperMD-header-3 {
+  color: var(--text-normal) !important;
+}
+
+h4, .HyperMD-header-4 {
+  color: var(--text-normal) !important;
+}
+
+h5, .HyperMD-header-5 {
+  color: var(--text-normal) !important;
+}
+
+h6, .HyperMD-header-6 {
+  color: var(--text-normal) !important;
+}

@@ -4,40 +4,58 @@
     "type": "split",
     "children": [
       {
-        "id": "503d19b19bc62b00",
+        "id": "30b53cf4b1377947",
         "type": "split",
         "children": [
           {
-            "id": "b8c254e1c91bec82",
+            "id": "97fa869f10ec5e5c",
             "type": "tabs",
-            "dimension": 65.11936339522546,
+            "dimension": 71.15135834411385,
             "children": [
               {
-                "id": "564a4faac98bd048",
+                "id": "1247ed68f325bac8",
                 "type": "leaf",
                 "state": {
-                  "type": "graph",
-                  "state": {},
-                  "icon": "lucide-git-fork",
-                  "title": "关系图谱"
+                  "type": "markdown",
+                  "state": {
+                    "file": "Rust/notes/Rust基础/2、Rust基础语法.md",
+                    "mode": "source",
+                    "source": false
+                  },
+                  "icon": "lucide-file",
+                  "title": "2、Rust基础语法"
+                }
+              },
+              {
+                "id": "a81750d79664dc8a",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "Rust/notes/补充链接.md",
+                    "mode": "source",
+                    "source": false
+                  },
+                  "icon": "lucide-file",
+                  "title": "补充链接"
                 }
               }
             ]
           },
           {
-            "id": "14ecb2eb54841ace",
+            "id": "5940dcaf662f0ca7",
             "type": "tabs",
-            "dimension": 34.88063660477454,
+            "dimension": 28.84864165588616,
             "children": [
               {
-                "id": "0f0ca9f61724c401",
+                "id": "7494af60475dc65c",
                 "type": "leaf",
                 "pinned": true,
                 "state": {
                   "type": "terminal:terminal",
                   "state": {
                     "terminal:terminal": {
-                      "cwd": "/Users/songpengfei/knowledge",
+                      "cwd": "/Users/11185032/spf/knowledge",
                       "focus": false,
                       "profile": {
                         "args": [
@@ -68,7 +86,7 @@
                   },
                   "pinned": true,
                   "icon": "terminal",
-                  "title": "终端：✳ Add .gitkeep to init-domain empty dirs"
+                  "title": "终端：✳ Update Obsidian Things theme heading colors"
                 }
               }
             ]
@@ -131,7 +149,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 292.5
   },
   "right": {
     "id": "94be849039c638f6",
@@ -209,12 +227,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "Rust/notes/Rust基础/2、Rust基础语法.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "2、Rust基础语法 的大纲"
             }
           }
         ],
@@ -239,8 +258,16 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "0f0ca9f61724c401",
+  "active": "1247ed68f325bac8",
   "lastOpenFiles": [
+    "assets/Pasted image 20260512113323.png",
+    "assets/Pasted image 20260512113109.png",
+    "assets/Pasted image 20260512112943.png",
+    "assets/Pasted image 20260512112850.png",
+    "Rust/notes/Rust基础/2、Rust基础语法.md",
+    "assets/Pasted image 20260512105425.png",
+    "Rust/notes/补充链接.md",
+    "Rust/notes/Rust基础/6、结构体.md",
     "Rust/wiki/concepts/变量与可变性.md",
     "macOS/wiki/entities/xcode-select.md",
     "macOS/wiki/entities/xcodebuild.md",
@@ -273,19 +300,11 @@
     "llm-wiki-zh-CN.md",
     "ingest-workspace/iteration-1/eval-create-new/old_skill/outputs/report.md",
     "ingest-workspace/iteration-1/eval-create-new/old_skill/outputs/wiki/log.md",
-    "ingest-workspace/iteration-1/eval-create-new/old_skill/outputs/wiki/index.md",
-    "ingest-workspace/iteration-1/eval-create-new/old_skill/outputs/entities/smol.md",
-    "ingest-workspace/iteration-1/eval-create-new/old_skill/outputs/entities/async-std.md",
-    "ingest-workspace/iteration-1/eval-create-new/old_skill/outputs/entities/Tokio.md",
     "assets/Pasted image 20260511233913.png",
     "assets/Image 17.png.png",
     "assets/Pasted image 20260511232803.png",
     "assets/Pasted image 20260511232736.png",
     "assets/Pasted image 20260511231034.png",
-    "assets/Pasted image 20260511230042.png",
-    "assets/Pasted image 20260511225507.png",
-    "assets/Pasted image 20260511225501.png",
-    "assets/Pasted image 20260511224856.png",
-    "assets/Pasted image 20260511224814.png"
+    "assets/Pasted image 20260511230042.png"
   ]
 }

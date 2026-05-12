@@ -4,7 +4,8 @@
     "body-text-indent",
     "outline-compact",
     "inline-code-highlight",
-    "table-auto-width"
+    "table-auto-width",
+    "unify-heading-color"
   ],
   "theme": "obsidian"
 }
