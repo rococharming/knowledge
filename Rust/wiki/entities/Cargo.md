@@ -33,6 +33,8 @@ hello_cargo/
 - `Cargo.toml`：项目配置文件，包含包信息和依赖
 - `src/main.rs`：程序入口文件
 
+![[Image 10.png]]
+
 不使用 Git 版本控制时，加 `--vcs=none` 选项。
 
 ### 库项目
@@ -80,6 +82,14 @@ mod tests {
 | Debug（默认） | `opt-level=0` | 快 | 大 | 慢 | 完整 |
 | Release | `opt-level=3` | 慢 | 小 | 快 | 较少 |
 
+`cargo build` 后运行可执行文件：
+
+![[Image 11.png]]
+
+`cargo run` 一步完成构建与运行：
+
+![[Image 12.png]]
+
 ## 包管理
 
 ### 添加依赖
@@ -91,6 +101,25 @@ cargo add serde@^1.0               # 语义化版本范围
 ```
 
 版本规则遵循 [[语义化版本]]。
+
+也可以手动修改 `Cargo.toml`。例如在 [crates.io](https://crates.io/) 搜索 `rand`：
+
+![[Pasted image 20260511232736.png]]
+
+![[Pasted image 20260511232803.png]]
+
+在 `Cargo.toml` 的 `[dependencies]` 下添加：
+
+```toml
+[dependencies]
+rand = "0.10.1"
+```
+
+![[Image 17.png.png]]
+
+执行 `cargo build` 后 Cargo 会自动下载依赖，运行结果：
+
+![[Pasted image 20260511233913.png]]
 
 ### 启用 Features
 

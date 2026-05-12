@@ -115,13 +115,8 @@ date: {today}
 
 def generate_log_md(domain: str) -> str:
     """Generate the wiki/log.md content."""
-    today = datetime.now().strftime("%Y-%m-%d")
-
     return f"""# {domain} Wiki 操作日志
 
-## [{today}] init-domain | 领域初始化
-- 创建领域目录结构
-- 生成领域 CLAUDE.md
 """
 
 

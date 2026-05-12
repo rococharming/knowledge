@@ -4,95 +4,52 @@
     "type": "split",
     "children": [
       {
-        "id": "30b53cf4b1377947",
-        "type": "split",
+        "id": "344c2bbcb4b65378",
+        "type": "tabs",
         "children": [
           {
-            "id": "97fa869f10ec5e5c",
-            "type": "tabs",
-            "dimension": 71.15135834411385,
-            "children": [
-              {
-                "id": "1247ed68f325bac8",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "Rust/notes/Rust基础/2、Rust基础语法.md",
-                    "mode": "source",
-                    "source": false
+            "id": "c88b661df413a2d5",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "terminal:terminal",
+              "state": {
+                "terminal:terminal": {
+                  "cwd": "/Users/11185032/spf/knowledge",
+                  "focus": false,
+                  "profile": {
+                    "args": [
+                      "--login"
+                    ],
+                    "executable": "/opt/homebrew/bin/fish",
+                    "followTheme": true,
+                    "name": "",
+                    "platforms": {
+                      "darwin": true
+                    },
+                    "pythonExecutable": "python3",
+                    "restoreHistory": false,
+                    "rightClickAction": "copyPaste",
+                    "successExitCodes": [
+                      "0",
+                      "SIGINT",
+                      "SIGTERM"
+                    ],
+                    "terminalOptions": {
+                      "documentOverride": null
+                    },
+                    "type": "integrated",
+                    "useWin32Conhost": true
                   },
-                  "icon": "lucide-file",
-                  "title": "2、Rust基础语法"
+                  "serial": null
                 }
               },
-              {
-                "id": "a81750d79664dc8a",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "Rust/notes/补充链接.md",
-                    "mode": "source",
-                    "source": false
-                  },
-                  "icon": "lucide-file",
-                  "title": "补充链接"
-                }
-              }
-            ]
-          },
-          {
-            "id": "5940dcaf662f0ca7",
-            "type": "tabs",
-            "dimension": 28.84864165588616,
-            "children": [
-              {
-                "id": "7494af60475dc65c",
-                "type": "leaf",
-                "pinned": true,
-                "state": {
-                  "type": "terminal:terminal",
-                  "state": {
-                    "terminal:terminal": {
-                      "cwd": "/Users/11185032/spf/knowledge",
-                      "focus": false,
-                      "profile": {
-                        "args": [
-                          "--login"
-                        ],
-                        "executable": "/opt/homebrew/bin/fish",
-                        "followTheme": true,
-                        "name": "",
-                        "platforms": {
-                          "darwin": true
-                        },
-                        "pythonExecutable": "python3",
-                        "restoreHistory": false,
-                        "rightClickAction": "copyPaste",
-                        "successExitCodes": [
-                          "0",
-                          "SIGINT",
-                          "SIGTERM"
-                        ],
-                        "terminalOptions": {
-                          "documentOverride": null
-                        },
-                        "type": "integrated",
-                        "useWin32Conhost": true
-                      },
-                      "serial": null
-                    }
-                  },
-                  "pinned": true,
-                  "icon": "terminal",
-                  "title": "终端：✳ Update Obsidian Things theme heading colors"
-                }
-              }
-            ]
+              "pinned": true,
+              "icon": "terminal",
+              "title": "终端：✳ Build Rust wiki topic note generator"
+            }
           }
-        ],
-        "direction": "horizontal"
+        ]
       }
     ],
     "direction": "vertical"
@@ -227,13 +184,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Rust/notes/Rust基础/2、Rust基础语法.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "2、Rust基础语法 的大纲"
+              "title": "大纲"
             }
           }
         ],
@@ -258,53 +214,53 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "1247ed68f325bac8",
+  "active": "c88b661df413a2d5",
   "lastOpenFiles": [
+    "Rust/wiki/concepts/常量与静态变量.md",
+    "前后端/notes/HTTP/1、HTTP基础概述.md",
+    "Rust/wiki/concepts/变量与可变性.md",
+    "Rust/raw/archive/articles/Rust基础语法（改进版）.md",
+    "Rust/raw/archive/articles/Rust基础语法.md",
+    "Rust/raw/archive/articles/Rust安装与开发环境配置 （改进版本）.md",
+    "Rust/raw/archive/articles/Rust安装与开发环境配置.md",
+    "Rust/wiki/concepts/移动.md",
+    "前后端/notes/HTTP",
+    "macOS/wiki/log.md",
+    "Rust/notes/Rust基础/1、Rust安装与开发环境配置.md",
+    "前后端/wiki/log.md",
+    "前后端/wiki/index.md",
+    "index.md",
+    "前后端/wiki/syntheses",
+    "前后端/wiki/summaries",
+    "前后端/wiki/recipes",
+    "前后端/wiki/overviews",
+    "前后端/wiki/entities",
+    "前后端/wiki/concepts",
+    "前后端/wiki/comparisons",
+    "前后端/raw/videos",
+    "前后端/raw/podcasts",
+    "前后端/CLAUDE.md",
+    "AI/wiki/log.md",
+    "Rust/wiki/log.md",
+    "Rust/wiki/concepts/size_of 与 size_of_val.md",
+    "Rust/wiki/snippets/size_of 与 size_of_val 速查.md",
+    "Rust/wiki/snippets/size_of 速查.md",
+    "Rust/wiki/snippets/size_of 与 size_of_val.md",
+    "Rust/raw/archive/articles/size_of和size_of_val.md",
+    "macOS/wiki/recipes/安装 Xcode 与 Command Line Tools.md",
+    "Rust/raw/articles/size_of和size_of_val.md",
+    "Rust/notes/Tips/1、size_of和size_of_val.md",
+    "Rust/notes/Rust基础/2、Rust基础语法.md",
+    "Rust/raw/articles/Rust基础语法（改进版）.md",
     "assets/Pasted image 20260512113323.png",
     "assets/Pasted image 20260512113109.png",
     "assets/Pasted image 20260512112943.png",
     "assets/Pasted image 20260512112850.png",
-    "Rust/notes/Rust基础/2、Rust基础语法.md",
     "assets/Pasted image 20260512105425.png",
-    "Rust/notes/补充链接.md",
-    "Rust/notes/Rust基础/6、结构体.md",
-    "Rust/wiki/concepts/变量与可变性.md",
-    "macOS/wiki/entities/xcode-select.md",
-    "macOS/wiki/entities/xcodebuild.md",
-    "macOS/wiki/entities/Xcode Command Line Tools.md",
-    "macOS/wiki/entities/Xcode.md",
-    "macOS/raw/archive/articles/Xcode与命令行工具.md",
-    "macOS/notes/1、Xcode与命令行工具.md",
-    "macOS/raw/archive/articles",
-    "macOS/wiki/summaries/Xcode 与命令行工具.md",
-    "macOS/wiki/recipes/安装 Xcode 与 Command Line Tools.md",
-    "macOS/raw/articles/Xcode与命令行工具.md",
-    "Rust/wiki/log.md",
-    "Rust/wiki/recipes/RustRover 开发环境配置.md",
-    "macOS/CLAUDE.md",
-    "Rust/raw/archive/articles/Rust安装与开发环境配置 （改进版本）.md",
-    "Rust/raw/articles/Rust安装与开发环境配置 （改进版本）.md",
-    "index.md",
-    "macOS/wiki/syntheses",
-    "macOS/wiki/summaries",
-    "macOS/wiki/recipes",
-    "macOS/wiki/index.md",
-    "macOS/wiki/overviews",
-    "macOS/wiki/log.md",
-    "macOS/wiki/entities",
-    "macOS/wiki/concepts",
-    "macOS/wiki/comparisons",
-    "macOS/raw/podcasts",
-    "macOS/raw/videos",
-    "Rust/notes/Rust基础/1、Rust安装与开发环境配置.md",
-    "llm-wiki-zh-CN.md",
-    "ingest-workspace/iteration-1/eval-create-new/old_skill/outputs/report.md",
-    "ingest-workspace/iteration-1/eval-create-new/old_skill/outputs/wiki/log.md",
     "assets/Pasted image 20260511233913.png",
     "assets/Image 17.png.png",
     "assets/Pasted image 20260511232803.png",
     "assets/Pasted image 20260511232736.png",
-    "assets/Pasted image 20260511231034.png",
-    "assets/Pasted image 20260511230042.png"
+    "assets/Pasted image 20260511231034.png"
   ]
 }

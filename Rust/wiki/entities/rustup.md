@@ -19,6 +19,12 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 安装完成后，工具存放在 `~/.cargo/bin` 目录下。rustup 会自动将该目录加入 `PATH`。
 
+![[Image 1.png]]
+
+执行 `rustup --version` 验证安装：
+
+![[Image 3.png]]
+
 ## 核心命令
 
 | 命令 | 作用 |
@@ -43,6 +49,10 @@ rustup 管理三种工具链版本：
 ## 工作原理
 
 rustup 通过软链接机制管理工具调用：`~/.cargo/bin/cargo` 等命令实际都是指向 `~/.cargo/bin/rustup` 的软链接。当执行 `cargo build` 时，rustup 读取当前环境配置，决定使用哪个 toolchains，再调用其中的真实二进制。
+
+可以通过 `rustup which cargo` 查找真实 cargo 二进制的位置：
+
+![[Image 2.png]]
 
 ## 关联
 

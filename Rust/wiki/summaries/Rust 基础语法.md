@@ -1,8 +1,8 @@
 ---
 title: Rust 基础语法
-date: 2026-05-10
+date: 2026-05-12
 tags: [rust, basics, syntax]
-source_count: 1
+source_count: 2
 ---
 
 # Rust 基础语法

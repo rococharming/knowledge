@@ -22,6 +22,14 @@ rustc -o hello main.rs     # 指定输出文件名
 
 在 macOS / Linux 上默认生成无后缀的可执行文件 `main`，Windows 上生成 `main.exe`。
 
+默认输出：
+
+![[Image 6.png|400]]
+
+指定输出文件名：
+
+![[Image 7.png|400]]
+
 ### 指定 Edition
 
 ```bash
@@ -53,7 +61,9 @@ rustc --crate-type=rlib --crate-name=greet lib.rs
 - `--crate-type=rlib`：指定 crate 类型为 rlib
 - `--crate-name=greet`：指定 crate 名称为 greet
 
-生成 `libgreet.rlib` 文件。
+生成 `libgreet.rlib` 文件：
+
+![[Image 8.png|500]]
 
 ### 链接 rlib 到可执行文件
 
@@ -75,6 +85,10 @@ rustc -L . --extern greet=libgreet.rlib main.rs
 
 - `-L .`：将当前目录作为库路径搜索目录
 - `--extern greet=libgreet.rlib`：以 greet 作为 crate 名注入库
+
+执行完成后生成可执行文件：
+
+![[Image 9.png|600]]
 
 ## 与 Cargo 的关系
 

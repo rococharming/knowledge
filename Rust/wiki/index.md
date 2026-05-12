@@ -30,6 +30,7 @@ date: 2026-05-11
 - [[所有权]] — 所有权三大规则、作用域与 RAII、所有权放宽方式
 - [[移动]] — 移动语义、Copy 类型、函数传参与返回值、控制流中的移动、复合类型移出
 - [[共享所有权]] — Rc（单线程）与 Arc（多线程）引用计数指针的使用与限制
+- [[size_of 与 size_of_val]] — `std::mem` 中查询类型与值内存大小的两个核心函数
 
 ## comparisons
 
@@ -53,7 +54,7 @@ _（暂无）_
 
 ## snippets
 
-_（暂无）_
+- [[size_of 与 size_of_val 速查]] — `size_of` / `size_of_val` 速查代码示例
 
 ## patterns
 

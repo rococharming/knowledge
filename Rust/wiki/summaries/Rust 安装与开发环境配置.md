@@ -13,6 +13,10 @@ Rust 是 Mozilla 于 2006 年发起的系统级编程语言，2015 年发布 1.0
 
 本文涵盖 Rust 工具链的安装配置、核心组件使用及开发环境搭建。
 
+进入 Rust 官网 [https://rust-lang.org/](https://rust-lang.org/)，点击 Install，官网会根据当前操作系统给出对应的安装方案：
+
+![[Image.png|600]]
+
 ## 核心组件
 
 Rust 开发环境由以下核心组件构成：

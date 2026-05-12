@@ -31,6 +31,14 @@ source_count: 3
 | `rustup which cargo` | 查找真实 cargo 二进制的位置 |
 | `rustup --version` | 查看 rustup 和 rustc 版本 |
 
+`rustup --version` 输出示例（同时显示 rustc 版本）：
+
+![[Image 4.png]]
+
+`rustup show` 输出示例（当前目标平台、已安装的工具链、当前活跃工具链）：
+
+![[Image 5.png|400]]
+
 ## 工具链版本说明
 
 - **stable**：稳定版，每 6 周发布，默认安装，最可靠
