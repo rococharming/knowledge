@@ -4,18 +4,32 @@
     "type": "split",
     "children": [
       {
-        "id": "6ce7b2175cd5c991",
+        "id": "4e3d1e248297a332",
         "type": "tabs",
         "children": [
           {
-            "id": "279aa11faf5e503f",
+            "id": "554009dfbc54fb34",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Rust/notes/Rust基础/4、引用和切片.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "4、引用和切片"
+            }
+          },
+          {
+            "id": "64b332654655af7c",
             "type": "leaf",
             "pinned": true,
             "state": {
               "type": "terminal:terminal",
               "state": {
                 "terminal:terminal": {
-                  "cwd": "/Users/songpengfei/knowledge",
+                  "cwd": "/Users/11185032/spf/knowledge",
                   "focus": false,
                   "profile": {
                     "args": [
@@ -46,17 +60,21 @@
               },
               "pinned": true,
               "icon": "terminal",
-              "title": "终端：✳ Fix qmd update Node.js version mismatch"
+              "title": "终端：✳ Ingest Rust"
             }
           },
           {
-            "id": "05194ccad516dff9",
+            "id": "1bb27a0a6caadebd",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "关系图谱"
+              "type": "markdown",
+              "state": {
+                "file": "Rust/wiki/log.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "log"
             }
           }
         ],
@@ -208,7 +226,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 301.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -225,46 +243,46 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "05194ccad516dff9",
+  "active": "64b332654655af7c",
   "lastOpenFiles": [
+    "Rust/wiki/log.md",
+    "Rust/wiki/concepts/所有权系统.md",
+    "Rust/notes/Rust基础/4、引用和切片.md",
+    "Rust/wiki/concepts/所有权.md",
+    "Rust/wiki/concepts/移动.md",
+    "Rust/raw/archive/articles/所有权.md",
+    "Rust/wiki/concepts/Copy.md",
+    "Rust/raw/articles/所有权.md",
+    "Rust/CLAUDE.md",
+    "Rust/wiki/concepts/size_of 与 size_of_val.md",
+    "Rust/notes/Rust基础/3、所有权.md",
+    "Rust/wiki/concepts/数据类型.md",
+    "Rust/wiki/concepts/控制流.md",
+    "Rust/wiki/concepts/函数.md",
+    "Rust/wiki/concepts/共享所有权.md",
+    "Rust/wiki/concepts/变量与可变性.md",
+    "Rust/raw/archive/articles/Rust基础语法.md",
+    "Rust/wiki/concepts/常量与静态变量.md",
+    "assets/Image 36.png",
+    "assets/Image 34.png",
+    "assets/Image 35.png",
+    "assets/Image 33.png",
+    "assets/Image 32.png",
+    "assets/Image 17.png",
+    "assets/Image 31.png",
+    "assets/Pasted image 20260513105122.png",
+    "macOS/wiki/entities/Homebrew.md",
+    "macOS/raw/articles/Homebrew安装与使用.md",
+    "assets/Pasted image 20260513102821.png",
+    "Rust/raw/archive/articles/Rust安装与开发环境配置.md",
     "前后端/wiki/index.md",
     "前后端/wiki/log.md",
     "macOS/wiki/log.md",
     "macOS/wiki/index.md",
     "index.md",
-    "macOS/raw/archive/articles/Homebrew安装与使用.md",
-    "macOS/wiki/summaries/Homebrew 安装与使用.md",
-    "macOS/wiki/recipes/Homebrew 安装与配置.md",
-    "macOS/wiki/entities/Homebrew.md",
-    "macOS/raw/articles/Homebrew安装与使用.md",
-    "macOS/notes/2、Homebrew安装与使用.md",
     "assets/Pasted image 20260513013040.png",
-    "前后端/wiki/concepts/HTTP 协议.md",
-    "前后端/wiki/summaries/HTTP 基础概述.md",
-    "前后端/notes/HTTP/HTTP基础.md",
-    "前后端/raw/archive/articles/HTTP基础概述.md",
-    "前后端/wiki/concepts/HTTP 请求流程.md",
-    "前后端/wiki/concepts/HTTP 系统组成.md",
     "前后端/raw/archive/articles",
-    "前后端/raw/articles/HTTP基础概述.md",
-    "前后端/notes/HTTP/1、HTTP基础概述.md",
-    "assets/Pasted image 20260513003914.png",
-    "macOS/notes/1、Xcode与命令行工具.md",
-    "assets/Pasted image 20260512234633.png",
-    "assets/Pasted image 20260512234551.png",
-    "assets/Pasted image 20260512233510.png",
-    "assets/Pasted image 20260512223046.png",
-    "assets/Pasted image 20260512222206.png",
-    "assets/Pasted image 20260512215555.png",
-    "assets/Pasted image 20260512215314.png",
-    "assets/Pasted image 20260512214427.png",
-    "Excalidraw/Drawing 2026-05-12 20.44.28.excalidraw.md",
     "Excalidraw",
-    "Rust/wiki/concepts/常量与静态变量.md",
-    "Rust/wiki/concepts/变量与可变性.md",
-    "Rust/raw/archive/articles/Rust基础语法（改进版）.md",
-    "Rust/raw/archive/articles/Rust基础语法.md",
-    "Rust/raw/archive/articles/Rust安装与开发环境配置 （改进版本）.md",
     "前后端/notes/HTTP",
     "前后端/wiki/syntheses",
     "前后端/wiki/summaries",

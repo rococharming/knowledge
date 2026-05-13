@@ -34,3 +34,7 @@ source_count: 1
 - [[xcode-select]] — 工具链路径管理
 - [[xcodebuild]] — 命令行构建详解
 - [[安装 Xcode 与 Command Line Tools]] — 分步安装指南
+
+## 来源
+
+- [[Xcode与命令行工具]]

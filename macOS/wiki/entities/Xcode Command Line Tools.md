@@ -45,3 +45,7 @@ xcode-select --install
 ```
 
 安装后 developer directory 通常指向 `/Library/Developer/CommandLineTools`。
+
+## 来源
+
+- [[Xcode与命令行工具]]

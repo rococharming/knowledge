@@ -2,7 +2,7 @@
 title: Rust 基础语法
 date: 2026-05-12
 tags: [rust, basics, syntax]
-source_count: 2
+source_count: 1
 ---
 
 # Rust 基础语法
@@ -32,3 +32,7 @@ source_count: 2
 ## 与工具链的关系
 
 基础语法是理解 [[Cargo]] 构建配置、[[rustc]] 编译选项以及 [[Edition]] 语义差异的前提。例如 `static mut` 在 Edition 2024 中受到更严格的限制。
+
+## 来源
+
+- [[Rust基础语法]]

@@ -2,7 +2,7 @@
 title: Cargo
 date: 2026-05-10
 tags: [rust, cargo, package-management]
-source_count: 2
+source_count: 1
 ---
 
 # Cargo
@@ -115,7 +115,7 @@ cargo add serde@^1.0               # 语义化版本范围
 rand = "0.10.1"
 ```
 
-![[Image 17.png.png]]
+![[Image 17.png]]
 
 执行 `cargo build` 后 Cargo 会自动下载依赖，运行结果：
 
@@ -199,3 +199,7 @@ pretty_assertions = "1.4"
 - [[rustc]] — Cargo 底层调用的编译器
 - [[语义化版本]] — Cargo 依赖版本解析规则
 - [[Edition]] — Cargo.toml 中指定的语言规则版本
+
+## 来源
+
+- [[Rust安装与开发环境配置]]

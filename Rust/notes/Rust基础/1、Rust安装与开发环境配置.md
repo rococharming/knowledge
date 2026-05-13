@@ -674,7 +674,7 @@ edition = "2024"
 [dependencies]  
 rand = "0.10.1"
 ```
-![[Image 17.png.png]]
+![[Image 17.png]]
 
 保存 `Cargo.toml` 后，Cargo 会在后续执行构建命令时自动解析并下载依赖，例如执行：
 

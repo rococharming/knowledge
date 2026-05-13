@@ -2,7 +2,7 @@
 title: Edition
 date: 2026-05-10
 tags: [rust, edition, compiler]
-source_count: 2
+source_count: 1
 ---
 
 # Edition
@@ -56,3 +56,7 @@ rustc main.rs --edition=2021
 
 - [[rustc]] — 支持多 Edition 的编译器
 - [[Cargo]] — 在 `Cargo.toml` 中指定项目 Edition
+
+## 来源
+
+- [[Rust安装与开发环境配置]]

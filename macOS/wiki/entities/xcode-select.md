@@ -48,3 +48,7 @@ sudo xcode-select --reset
 - [[Xcode]] — 完整 IDE，安装后路径如上
 - [[Xcode Command Line Tools]] — 轻量级工具包，独立安装时路径如上
 - [[xcodebuild]] — 使用当前激活的 developer directory 进行构建
+
+## 来源
+
+- [[Xcode与命令行工具]]

@@ -2,7 +2,7 @@
 title: rustc
 date: 2026-05-10
 tags: [rust, compiler, rustc]
-source_count: 2
+source_count: 1
 ---
 
 # rustc
@@ -106,3 +106,7 @@ Cargo 会自动处理 rustc 的调用参数、依赖链接和 Edition 指定。
 - [[rustup]] — 管理 rustc 版本的工具链管理器
 - [[Cargo]] — 底层调用 rustc 的构建工具
 - [[Edition]] — rustc 支持的多版本语言规则机制
+
+## 来源
+
+- [[Rust安装与开发环境配置]]

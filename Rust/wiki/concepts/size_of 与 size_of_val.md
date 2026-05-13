@@ -109,4 +109,8 @@ const ARRAY_SIZE: usize = std::mem::size_of::<i64>();
 
 - [[size_of 与 size_of_val 速查]] — 速查代码示例
 - [[数据类型]] — 标量类型与复合类型的内存布局
-- [[所有权]] — Rust 内存管理模型与值语义
+- [[所有权系统]] — Rust 内存管理模型与值语义
+
+## 来源
+
+- [[size_of和size_of_val]]

@@ -2,7 +2,7 @@
 title: VS Code Rust 开发环境配置
 date: 2026-05-10
 tags: [rust, ide, vscode, setup]
-source_count: 2
+source_count: 1
 ---
 
 # VS Code Rust 开发环境配置
@@ -87,3 +87,7 @@ cargo check
 
 - [[rustup]] — 提供 Rust 编译器和工具链
 - [[Cargo]] — VS Code 的 Run/Debug 按钮底层调用 cargo 命令
+
+## 来源
+
+- [[Rust安装与开发环境配置]]

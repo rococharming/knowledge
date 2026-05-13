@@ -57,3 +57,7 @@ xcodebuild -project <项目名>.xcodeproj \
 ## 前置条件
 
 `xcodebuild` 依赖当前激活的 developer directory（由 [[xcode-select]] 管理）。确保路径指向正确的 [[Xcode]] 或 [[Xcode Command Line Tools]] 安装位置。
+
+## 来源
+
+- [[Xcode与命令行工具]]

@@ -2,7 +2,7 @@
 title: Rust 安装与开发环境配置
 date: 2026-05-10
 tags: [rust, setup, toolchain]
-source_count: 2
+source_count: 1
 ---
 
 # Rust 安装与开发环境配置
@@ -68,3 +68,7 @@ cargo add ferris-says
 
 - [Rust 官网](https://rust-lang.org/)
 - [crates.io](https://crates.io/)
+
+## 来源
+
+- [[Rust安装与开发环境配置]]

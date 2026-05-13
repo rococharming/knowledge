@@ -2,7 +2,7 @@
 title: rustup 命令速查
 date: 2026-05-11
 tags: [rust, rustup, toolchain, recipe]
-source_count: 3
+source_count: 2
 ---
 
 # rustup 命令速查
@@ -58,3 +58,7 @@ source_count: 3
 - [[rustup]] — 工具链管理器完整说明
 - [[Rust 安装与开发环境配置]] — 开发环境搭建指南
 - [[RsProxy 镜像源配置]] — 国内镜像加速配置
+
+## 来源
+
+- [[Rust安装与开发环境配置]]

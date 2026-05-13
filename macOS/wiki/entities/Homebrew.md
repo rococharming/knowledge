@@ -70,3 +70,7 @@ Homebrew 的安装前缀因芯片架构而异：
 
 - 安装 Homebrew 前通常需要先安装 [[Xcode Command Line Tools]]，提供 `clang`、`git`、`make` 等基础编译工具
 - Homebrew 是 macOS 开发环境搭建的首选包管理器，与 [[Xcode]] 共同构成完整的工具链
+
+## 来源
+
+- [[Homebrew安装与使用]]

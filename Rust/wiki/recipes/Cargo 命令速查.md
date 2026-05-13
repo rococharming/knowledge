@@ -2,7 +2,7 @@
 title: Cargo 命令速查
 date: 2026-05-10
 tags: [rust, cargo, cheatsheet]
-source_count: 2
+source_count: 1
 ---
 
 # Cargo 命令速查
@@ -66,3 +66,7 @@ source_count: 2
 - [[Cargo]] — Cargo 完整功能介绍
 - [[语义化版本]] — 版本号解析规则
 - [[RsProxy 镜像源配置]] — 国内环境加速配置
+
+## 来源
+
+- [[Rust安装与开发环境配置]]

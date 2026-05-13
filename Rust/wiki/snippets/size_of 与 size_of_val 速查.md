@@ -93,3 +93,7 @@ fn main() {
 ## 相关页面
 
 - [[size_of 与 size_of_val]] — 完整概念解释与原理说明
+
+## 来源
+
+- [[size_of和size_of_val]]

@@ -82,3 +82,7 @@ cargo new test_project && cd test_project && cargo build
 
 - [[rustup]] — 通过 RsProxy 加速安装的 Rust 工具链管理器
 - [[Cargo]] — 通过镜像加速依赖下载的包管理工具
+
+## 来源
+
+- [[Rust安装与开发环境配置]]

@@ -38,3 +38,7 @@ Xcode 安装后会自动包含 Command Line Tools 的核心组件，但两者可
 - **Apple Developer 网站**：下载指定版本的 `.xip` 文件，适合需要旧版本或特定版本的场景
 
 安装路径通常为 `/Applications/Xcode.app/Contents/Developer`。
+
+## 来源
+
+- [[Xcode与命令行工具]]

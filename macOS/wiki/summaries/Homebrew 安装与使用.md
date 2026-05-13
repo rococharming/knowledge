@@ -30,3 +30,7 @@ source_count: 1
 - [[Homebrew]] — Homebrew 实体页面，含核心概念（Formula、Cask、Tap）和完整命令参考
 - [[Homebrew 安装与配置]] — 分步安装指南，含芯片差异和常见问题排查
 - [[Xcode Command Line Tools]] — 安装 Homebrew 的前置依赖
+
+## 来源
+
+- [[Homebrew安装与使用]]

@@ -82,3 +82,7 @@ sudo xcode-select --reset
 | `xcode-select: error: tool 'xcodebuild' requires Xcode` | 当前激活的是 Command Line Tools，未安装完整 Xcode |
 | Homebrew 提示需要 Command Line Tools | 执行 `xcode-select --install` |
 | 多版本 Xcode 共存 | 使用 `xcode-select --switch` 指定具体版本路径 |
+
+## 来源
+
+- [[Xcode与命令行工具]]

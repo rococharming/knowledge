@@ -87,3 +87,7 @@ brew doctor
 
 - 完整命令参考：[[Homebrew]]
 - 前置工具：[[Xcode Command Line Tools]]
+
+## 来源
+
+- [[Homebrew安装与使用]]
