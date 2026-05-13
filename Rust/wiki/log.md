@@ -25,6 +25,13 @@
 - 类型: articles
 - 来源: `raw/articles/size_of和size_of_val.md`
 
+## [2026-05-13] Ingest | 引用和切片.md
+
+- 创建: `[[引用与借用]]`, `[[解引用]]`, `[[切片]]`
+- 更新: `[[所有权系统]]` (source_count: 1→1，补充借用章节交叉引用)
+- 类型: articles
+- 来源: `raw/articles/引用和切片.md`
+
 ## [2026-05-13] Ingest | 所有权.md
 
 - 创建: `[[所有权系统]]`, `[[移动]]`, `[[Copy]]`
