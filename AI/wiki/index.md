@@ -8,6 +8,7 @@ date: 2026-05-10
 ## summaries
 
 - [[Claude Code 入门]] — Claude Code 的入门指南，涵盖安装、配置、基本命令、权限模式和实战
+- [[Claude Code 权限模式系统]] — Claude Code 六种权限模式的系统梳理：default、acceptEdits、plan、auto、dontAsk、bypassPermissions
 
 ## entities
 
@@ -15,7 +16,7 @@ date: 2026-05-10
 
 ## concepts
 
-- [[Claude Code 权限模式]] — Claude Code 的四种权限模式：default、acceptEdits、plan、bypassPermissions
+- [[Claude Code 权限模式]] — Claude Code 的六种权限模式详解：default、acceptEdits、plan、auto、dontAsk、bypassPermissions，以及切换方式和受保护路径
 
 ## comparisons
 

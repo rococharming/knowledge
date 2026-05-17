@@ -1,10 +1,10 @@
 {
   "cssTheme": "Things",
   "enabledCssSnippets": [
-    "body-text-indent",
     "outline-compact",
-    "inline-code-highlight",
     "table-auto-width",
+    "body-text-indent",
+    "inline-code-highlight",
     "unify-heading-color"
   ],
   "theme": "obsidian"

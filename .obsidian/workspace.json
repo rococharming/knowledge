@@ -4,81 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "afea3bf8144e6b05",
-        "type": "split",
+        "id": "ad514c0a23af226c",
+        "type": "tabs",
         "children": [
           {
-            "id": "2b6268a76efe0fdc",
-            "type": "tabs",
-            "dimension": 23.337222870478413,
-            "children": [
-              {
-                "id": "2e36619075b3336a",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "AI/wiki/recipes/Claude Code 安装与配置.md",
-                    "mode": "source",
-                    "source": false
-                  },
-                  "icon": "lucide-file",
-                  "title": "Claude Code 安装与配置"
-                }
-              }
-            ]
-          },
-          {
-            "id": "9dcd62c241a08c91",
-            "type": "tabs",
-            "dimension": 76.66277712952159,
-            "children": [
-              {
-                "id": "49df74009bae9963",
-                "type": "leaf",
-                "pinned": true,
-                "state": {
-                  "type": "terminal:terminal",
-                  "state": {
-                    "terminal:terminal": {
-                      "cwd": "/Users/11185032/spf/knowledge",
-                      "focus": false,
-                      "profile": {
-                        "args": [
-                          "--login"
-                        ],
-                        "executable": "/opt/homebrew/bin/fish",
-                        "followTheme": true,
-                        "name": "",
-                        "platforms": {
-                          "darwin": true
-                        },
-                        "pythonExecutable": "python3",
-                        "restoreHistory": false,
-                        "rightClickAction": "copyPaste",
-                        "successExitCodes": [
-                          "0",
-                          "SIGINT",
-                          "SIGTERM"
-                        ],
-                        "terminalOptions": {
-                          "documentOverride": null
-                        },
-                        "type": "integrated",
-                        "useWin32Conhost": true
-                      },
-                      "serial": null
-                    }
-                  },
-                  "pinned": true,
-                  "icon": "terminal",
-                  "title": "终端：~/s/knowledge"
-                }
-              }
-            ]
+            "id": "0f87ece010c6b5cd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "AI/notes/Codex/1、Codex  CLI入门.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "1、Codex  CLI入门"
+            }
           }
-        ],
-        "direction": "horizontal"
+        ]
       }
     ],
     "direction": "vertical"
@@ -135,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 292.5
+    "width": 355.500732421875
   },
   "right": {
     "id": "94be849039c638f6",
@@ -213,12 +156,23 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "AI/notes/Codex/1、Codex  CLI入门.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "1、Codex  CLI入门 的大纲"
+            }
+          },
+          {
+            "id": "c6d4dcba6af7c45b",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {},
+              "icon": "spreadsheet",
+              "title": "Advanced Tables"
             }
           }
         ],
@@ -243,45 +197,46 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "49df74009bae9963",
+  "active": "0f87ece010c6b5cd",
   "lastOpenFiles": [
+    "AI/notes/Claude Code/1、Claude Code入门.md",
+    "AI/notes/Codex/1、Codex  CLI入门.md",
+    "assets/Pasted image 20260518002722.png",
+    "assets/Pasted image 20260517235136.png",
+    "assets/Pasted image 20260517234245.png",
+    "assets/Pasted image 20260517234142.png",
+    "assets/Pasted image 20260517231147.png",
+    "assets/Pasted image 20260517221219.png",
+    "AI/wiki/concepts/Claude Code 权限模式.md",
+    "AI/wiki/summaries/Claude Code 权限模式系统.md",
+    "AI/wiki/index.md",
+    "AI/wiki/log.md",
+    "AI/notes/Claude Code/2、Permission Mode.md",
+    "AI/raw/articles/Permission Mode.md",
+    "AI/raw/archive/articles/Permission Mode.md",
+    "AI/notes/Choose a permission mode.md",
+    "AI/notes/Claude Code/Tools.md",
+    "前后端/raw/archive/articles/HTTP请求与响应.md",
+    "前后端/wiki/recipes/浏览器 Network 面板.md",
+    "前后端/wiki/recipes/curl 命令.md",
+    "前后端/wiki/concepts/HTTP 响应.md",
+    "前后端/wiki/concepts/HTTP 请求.md",
+    "前后端/wiki/summaries/HTTP 报文.md",
+    "前后端/raw/articles/HTTP请求与响应.md",
+    "前后端/notes/HTTP/2、HTTP请求与响应.md",
+    "AI/notes/Codex",
+    "assets/Pasted image 20260517185758.png",
+    "assets/Pasted image 20260517182708.png",
+    "assets/Pasted image 20260517182219.png",
+    "assets/Pasted image 20260517182020.png",
+    "Rust/wiki/concepts/方法与关联函数.md",
     "AI/wiki/recipes/Claude Code 安装与配置.md",
     "AI/wiki/entities/Claude Code.md",
-    "AI/wiki/index.md",
     "AI/raw/archive/articles/Claude Code入门.md",
     "AI/raw/archive/articles",
-    "AI/wiki/concepts/Claude Code 权限模式.md",
     "AI/wiki/summaries/Claude Code 入门.md",
     "AI/raw/articles/Claude Code入门.md",
     "AI/raw/archive/test-article-rag-vs-cache.md",
-    "AI/raw/articles/test-article-claude-cache.md",
-    "AI/wiki/log.md",
-    "AI/notes/Claude Code/1、Claude Code入门.md",
-    "AI/notes/Claude Code/2、Permission Mode.md",
-    "assets/Pasted image 20260514155326.png",
-    "assets/Pasted image 20260514145827.png",
-    "assets/Pasted image 20260514142220.png",
-    "().md",
-    "Rust/notes/Rust基础/7、枚举.md",
-    "Rust/raw/archive/articles/结构体.md",
-    "Rust/wiki/concepts/结构体内存布局.md",
-    "Rust/wiki/concepts/方法与关联函数.md",
-    "Rust/wiki/concepts/结构体类型.md",
-    "Rust/wiki/summaries/Rust 结构体.md",
-    "Rust/wiki/log.md",
-    "Rust/raw/articles/结构体.md",
-    "9、.md",
-    "前后端/notes/HTTP/2、HTTP请求与响应.md",
-    "Rust/wiki/index.md",
-    "Rust/wiki/concepts/字符串相关类型.md",
-    "Rust/wiki/concepts/字符串类型.md",
-    "assets/Pasted image 20260514011227.png",
-    "assets/Pasted image 20260514004611.png",
-    "assets/Pasted image 20260514004346.png",
-    "assets/Pasted image 20260513221124.png",
-    "assets/Pasted image 20260513220811.png",
-    "assets/Pasted image 20260513215534.png",
-    "assets/Pasted image 20260513180152.png",
     "前后端/raw/archive/articles",
     "Excalidraw",
     "前后端/notes/HTTP",
@@ -289,7 +244,6 @@
     "前后端/wiki/summaries",
     "前后端/wiki/recipes",
     "前后端/wiki/overviews",
-    "前后端/wiki/entities",
-    "前后端/wiki/concepts"
+    "前后端/wiki/entities"
   ]
 }
