@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Rust/notes/Rust基础/8、模式匹配.md",
+                "file": "AI/notes/Codex/1、Codex  CLI.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "8、模式匹配"
+              "title": "1、Codex  CLI"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 355.500732421875
+    "width": 358.500732421875
   },
   "right": {
     "id": "94be849039c638f6",
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Rust/notes/Rust基础/8、模式匹配.md",
+                "file": "AI/notes/Codex/1、Codex  CLI.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "8、模式匹配 的大纲"
+              "title": "1、Codex  CLI 的大纲"
             }
           },
           {
@@ -197,11 +197,28 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "8630144dc0485a98",
+  "active": "1dd9ee6851aca306",
   "lastOpenFiles": [
-    "Rust/notes/Rust基础/7、枚举.md",
-    "Rust/notes/Rust基础/6、结构体.md",
+    "AI/notes/Codex/2、Codex App.md",
+    "assets/Pasted image 20260519012248.png",
+    "assets/Pasted image 20260519012039.png",
+    "assets/Pasted image 20260519011744.png",
+    "AI/notes/Codex/1、Codex  CLI.md",
+    "Rust/notes/Rust基础/9、crate与模块（待补充）.md",
+    "前后端/notes/HTTP/3、HTTP资源定位、内容类型和内容协商.md",
     "Rust/notes/Rust基础/8、模式匹配.md",
+    "Rust/notes/Rust基础/7、枚举.md",
+    "Rust/raw/archive/articles/模式匹配.md",
+    "Rust/wiki/patterns/简洁控制流.md",
+    "Rust/wiki/concepts/组合模式.md",
+    "Rust/wiki/concepts/模式绑定与借用.md",
+    "Rust/CLAUDE.md",
+    "Rust/wiki/concepts/模式类型.md",
+    "Rust/wiki/concepts/模式匹配.md",
+    "Rust/wiki/summaries/Rust 模式匹配.md",
+    "Rust/wiki/log.md",
+    "Rust/raw/articles/模式匹配.md",
+    "Rust/notes/Rust基础/6、结构体.md",
     "前后端/notes/数据格式/2、JSON-RPC.md",
     "assets/Pasted image 20260518155917.png",
     "前后端/notes/数据格式/1、JSON数据格式.md",
@@ -211,32 +228,14 @@
     "Rust/wiki/concepts/枚举类型.md",
     "Rust/raw/articles/枚举.md",
     "Rust/notes/补充链接.md",
-    "Rust/notes/其他/1、调试.md",
     "前后端/notes/数据格式",
-    "Rust/notes/Rust基础/3、所有权.md",
-    "Rust/notes/Rust基础/4、引用和切片.md",
-    "Rust/notes/Rust基础/5、字符串.md",
     "assets/Pasted image 20260518110659.png",
     "assets/Pasted image 20260518103630.png",
-    "Rust/notes/Rust基础/9、crate与模块（待补充）.md",
-    "9、.md",
-    "Rust/raw/archive/articles/字符串.md",
-    "Rust/raw/archive/articles/结构体.md",
-    "Rust/raw/archive/articles/所有权.md",
-    "AI/notes/Codex/1、Codex  CLI入门.md",
-    "AI/notes/Claude Code/1、Claude Code入门.md",
     "assets/Pasted image 20260518002722.png",
     "assets/Pasted image 20260517235136.png",
     "assets/Pasted image 20260517234245.png",
     "assets/Pasted image 20260517234142.png",
-    "assets/Pasted image 20260517231147.png",
-    "assets/Pasted image 20260517221219.png",
-    "AI/wiki/concepts/Claude Code 权限模式.md",
-    "AI/wiki/summaries/Claude Code 权限模式系统.md",
-    "AI/wiki/index.md",
-    "AI/wiki/log.md",
     "AI/notes/Codex",
-    "assets/Pasted image 20260517185758.png",
     "AI/raw/archive/articles",
     "前后端/raw/archive/articles",
     "Excalidraw",
