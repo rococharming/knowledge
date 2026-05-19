@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "117fea8065103931",
+        "id": "a9ee2bf600d5e9a2",
         "type": "tabs",
         "children": [
           {
-            "id": "1dd9ee6851aca306",
+            "id": "81ba0dfdfdcc6761",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -197,13 +197,17 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "1dd9ee6851aca306",
+  "active": "81ba0dfdfdcc6761",
   "lastOpenFiles": [
+    "assets/Pasted image 20260519114756.png",
+    "AI/notes/Claude Code/3、Slash命令.md",
+    "AI/notes/Claude Code/2、Permission Mode.md",
+    "AI/notes/Claude Code/1、Claude Code入门.md",
+    "AI/notes/Codex/1、Codex  CLI.md",
     "AI/notes/Codex/2、Codex App.md",
     "assets/Pasted image 20260519012248.png",
     "assets/Pasted image 20260519012039.png",
     "assets/Pasted image 20260519011744.png",
-    "AI/notes/Codex/1、Codex  CLI.md",
     "Rust/notes/Rust基础/9、crate与模块（待补充）.md",
     "前后端/notes/HTTP/3、HTTP资源定位、内容类型和内容协商.md",
     "Rust/notes/Rust基础/8、模式匹配.md",
@@ -225,9 +229,6 @@
     "AI/notes/snippets/JSON RPC.md",
     "Rust/raw/archive/articles/枚举.md",
     "Rust/wiki/summaries/Rust 枚举.md",
-    "Rust/wiki/concepts/枚举类型.md",
-    "Rust/raw/articles/枚举.md",
-    "Rust/notes/补充链接.md",
     "前后端/notes/数据格式",
     "assets/Pasted image 20260518110659.png",
     "assets/Pasted image 20260518103630.png",

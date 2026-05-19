@@ -3,24 +3,35 @@
 
 `Codex` 是 OpenAI 提供的 AI 编程代理（AI Coding Agent）。它不是单纯的代码补全工具，而是可以直接参与开发任务的智能体。
 
-它可以在指定项目目录中读取代码、理解代码库结构、修改文件、运行命令、调试问题，并根据任务目标持续推进开发工作。`Codex CLI`是运行在本地终端中的 Codex 形态，可以在你选择的目录中读取、修改和运行代码。
-
 `Codex`的核心能力包括：
 
 - 理解和分析代码库
 - 编写代码
-- 代码审查
-- 调试和修复
-- 运行命令并验证结果
+- 修改文件
+- 运行命令
+- 调试和修复问题
+- 审查代码变更
+- 根据结果继续迭代
 - 自动化处理开发任务
 
-Codex 有多种使用形态，例如 Codex CLI、Codex App、IDE Extension 和 Codex Web。本文主要介绍`Codex CLI`，也就是在终端中使用`Codex`。
+`Codex`有多种使用形态：
 
-# 二、安装Codex CLI
+- `Codex CLI`
+- `Codex App`
+- `Codex IDE Extension`
+- `Codex Web / Codex Cloud`
 
-开发者最常用的方式是安装 `Codex CLI`。它运行在本地终端中，但在执行任务时会把完成任务所需的上下文发送给模型处理。
+本篇介绍`Codex CLI`，也就是在终端中使用 `Codex`。
 
-可以使用`npm`全局安装：
+> Codex CLI 运行在本地终端，但它并不是完全离线工具。它会把完成任务所需的上下文发送给模型处理，然后在本地执行文件读取、文件修改、命令运行等操作。
+
+# 二、安装并登录Codex CLI
+
+## 1、安装
+
+开发者最常用的方式是安装 `Codex CLI`。
+
+可以使用 `npm` 全局安装：
 
 ```shell
 npm install -g @openai/codex
@@ -32,13 +43,13 @@ npm install -g @openai/codex
 codex --version
 ```
 
-如果后续想更新`Codex`，可以使用：
+如果后续想更新 `Codex CLI`，可以使用：
 
 ```shell
 npm install -g @openai/codex@latest
 ```
 
-如果当前安装方式支持自更新，也可以使用：
+也可以使用：
 
 ```shell
 codex update
@@ -51,32 +62,56 @@ npm uninstall -g @openai/codex
 ```
 
 
-# 三、登录Codex
+## 2、登录
 
-第一次安装好 Codex 后，在某个项目目录中执行：
+第一次安装好`Codex CLI`后，进入某个项目目录，执行：
 
 ```shell
 codex
 ```
 
-首次运行时需要登录。如果购买了OpenAI的套餐，选择`Sign in with ChatGPT`：
+首次运行时需要登录。首次运行时需要登录。`Codex CLI` 支持两种主要登录方式：
+
+1. 使用 ChatGPT 账号登录
+2. 使用 API Key登录
+
+如果你已经购买了支持 Codex 的 ChatGPT 套餐，通常选择：`Sign in with ChatGPT`
 
 ![[Pasted image 20260517221219.png|500]]
 
-然后浏览器会打开登录页面，完成登录后即可使用。
+浏览器会打开登录页面，完成登录后即可使用。
+
+登录完成后，`Codex CLI` 会缓存登录信息，下次启动时会复用。
+
+如果想要退出登录，在会话中执行斜杠命令`/logout`：
+
+```text
+/logout
+```
 
 
-# 四、交互模型运行
+# 三、基本使用
 
-在项目根目录直接执行：
+## 1、交互模式开启对话
+
+在某个项目路径下直接执行：
 
 ```shell
 codex
 ```
 
-`Codex` 会启动一个终端交互界面，也就是 `TUI`（Terminal User Interface）。
+`Codex CLI` 会启动一个终端交互界面，也就是 `TUI`（Terminal User Interface），进入交互模式。
 
-交互模式适合边看边改的开发任务。Codex 可以读取代码库、提出计划、修改文件、运行命令，并在过程中让你审阅它的操作。
+**交互模式适合边看边改的开发任务**。它会打开一个 full-screen terminal UI，Codex 可以读取仓库、修改文件并运行命令，用户可以实时审查它的动作。
+
+会话开启后，可以直接在对话中输入：
+
+- 自然语言任务
+- 代码片段
+- 文件路径
+- 截图或图片
+- slash command
+- skill 调用等
 
 也可以在命令行指定初始提示启动交互模式：
 
@@ -84,14 +119,42 @@ codex
 codex "给我解释这个代码库"
 ```
 
-会话开启后，可以：
+该初始提示会作为会话开始时的第一个任务要求。
 
-- 直接在对话中输入提示词、代码片段或图片（参考[[#^image-input|图片输入]]）
-- 在执行更改前查看Codex的计划，并逐步批准或拒绝
+
+## 2、非交互模式运行任务
+
+执行 `codex exec` 可以让 `Codex CLI` 以非交互方式完成任务：
+
+```shell
+codex exec "你好"
+```
+
+`codex exec` 也有短别名：
+
+```shell
+codex e "你好"
+```
+
+非交互模式适合脚本或CI风格的任务，它会把结果输出到`stdout`，并支持恢复之前的 exec session。
+
+## 3、从标准输入中读取任务
+
+`codex exec`的任务参数也可从标准输入读取。
+
+例如：
+
+```shell
+cat prompt.txt | codex exec -
+```
+
+这里的 `-` 表示从 `stdin` 读取 prompt。
+
+
 - 在 TUI 中阅读带语法高亮的 Markdown 代码块和差异（diff），然后使用 `/theme` 预览并保存喜欢的主题。
 - 使用`/clear`清空终端并开始新会话，或按`Ctrl+L`清屏但不启动新会话。
 - 使用`/copy`或`Ctrl+O`复制最近完成的输出，如果当前回合仍在输出，则复制最近已完成的内容而非进行中的文本。
-- 当`Codex`正在处理某项任务过程中，按`Tab`键，可将后续文本、斜杠命令（/command）或 `!` shell 命令排队到下一回合。
+- `Codex`在执行上一轮任务
 - 在对话框中按`Ctrl + R`，可以搜索之前的提示历史，按 Enter 选择匹配结果，按 Esc 取消。
 - 使用`Ctrl+C`或`/exit`结束交互会话
 
