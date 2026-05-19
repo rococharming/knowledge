@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "a9ee2bf600d5e9a2",
+        "id": "9e790ffeec0d3e5a",
         "type": "tabs",
         "children": [
           {
-            "id": "81ba0dfdfdcc6761",
+            "id": "737bba823cd2cb1a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI/notes/Codex/1、Codex  CLI.md",
+                "file": "AI/notes/Claude Code/3、Slash Command.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1、Codex  CLI"
+              "title": "3、Slash Command"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 358.500732421875
+    "width": 390.5
   },
   "right": {
     "id": "94be849039c638f6",
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI/notes/Codex/1、Codex  CLI.md",
+                "file": "AI/notes/Claude Code/3、Slash Command.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "1、Codex  CLI 的大纲"
+              "title": "3、Slash Command 的大纲"
             }
           },
           {
@@ -176,7 +176,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
@@ -197,17 +197,25 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "81ba0dfdfdcc6761",
+  "active": "c6d4dcba6af7c45b",
   "lastOpenFiles": [
-    "assets/Pasted image 20260519114756.png",
-    "AI/notes/Claude Code/3、Slash命令.md",
+    "assets/Pasted image 20260519182731.png",
+    "assets/Pasted image 20260519182641.png",
+    "AI/notes/Claude Code/3、Slash Command.md",
+    "AI/notes/snippets/JSON RPC.md",
+    "assets/Pasted image 20260519180001.png",
+    "assets/Pasted image 20260519160905.png",
+    "assets/Pasted image 20260519160717.png",
+    "assets/Pasted image 20260519155647.png",
+    "assets/Pasted image 20260519155224.png",
+    "assets/Pasted image 20260519154721.png",
+    "assets/Pasted image 20260519154625.png",
+    "assets/Pasted image 20260519145213.png",
+    "assets/Pasted image 20260519143634.png",
+    "AI/notes/Codex/1、Codex  CLI.md",
     "AI/notes/Claude Code/2、Permission Mode.md",
     "AI/notes/Claude Code/1、Claude Code入门.md",
-    "AI/notes/Codex/1、Codex  CLI.md",
     "AI/notes/Codex/2、Codex App.md",
-    "assets/Pasted image 20260519012248.png",
-    "assets/Pasted image 20260519012039.png",
-    "assets/Pasted image 20260519011744.png",
     "Rust/notes/Rust基础/9、crate与模块（待补充）.md",
     "前后端/notes/HTTP/3、HTTP资源定位、内容类型和内容协商.md",
     "Rust/notes/Rust基础/8、模式匹配.md",
@@ -224,18 +232,10 @@
     "Rust/raw/articles/模式匹配.md",
     "Rust/notes/Rust基础/6、结构体.md",
     "前后端/notes/数据格式/2、JSON-RPC.md",
-    "assets/Pasted image 20260518155917.png",
     "前后端/notes/数据格式/1、JSON数据格式.md",
-    "AI/notes/snippets/JSON RPC.md",
     "Rust/raw/archive/articles/枚举.md",
     "Rust/wiki/summaries/Rust 枚举.md",
     "前后端/notes/数据格式",
-    "assets/Pasted image 20260518110659.png",
-    "assets/Pasted image 20260518103630.png",
-    "assets/Pasted image 20260518002722.png",
-    "assets/Pasted image 20260517235136.png",
-    "assets/Pasted image 20260517234245.png",
-    "assets/Pasted image 20260517234142.png",
     "AI/notes/Codex",
     "AI/raw/archive/articles",
     "前后端/raw/archive/articles",
