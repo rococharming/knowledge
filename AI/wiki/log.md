@@ -12,3 +12,9 @@
 - 更新: `[[Claude Code 权限模式]]` (source_count: 1→2)
 - 类型: articles
 - 来源: `raw/articles/Permission Mode.md`
+
+## [2026-05-19] Ingest | Slash Command
+
+- 创建: `[[Claude Code Slash Command]]`, `[[Claude Code 命令类型]]`, `[[Claude Code 内置命令]]`, `[[Claude Code 状态栏配置]]`
+- 类型: articles
+- 来源: `raw/articles/Slash Command.md`

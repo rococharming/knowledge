@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "9e790ffeec0d3e5a",
+        "id": "c7bce8047496c33a",
         "type": "tabs",
         "children": [
           {
-            "id": "737bba823cd2cb1a",
+            "id": "d5f3b3f261cd7263",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI/notes/Claude Code/3、Slash Command.md",
+                "file": "Rust/notes/Rust基础/9、crate与模块.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "3、Slash Command"
+              "title": "9、crate与模块"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 390.5
+    "width": 200
   },
   "right": {
     "id": "94be849039c638f6",
@@ -88,25 +88,6 @@
         "id": "3b4659b2665eff92",
         "type": "tabs",
         "children": [
-          {
-            "id": "5cfaf78e7f749a27",
-            "type": "leaf",
-            "state": {
-              "type": "backlink",
-              "state": {
-                "file": "Rust/notes/Rust基础/1、Rust安装与开发环境配置.md",
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
-              },
-              "icon": "links-coming-in",
-              "title": "1、Rust安装与开发环境配置 的反向链接列表"
-            }
-          },
           {
             "id": "fd0b58a62d82648d",
             "type": "leaf",
@@ -156,13 +137,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI/notes/Claude Code/3、Slash Command.md",
+                "file": "Rust/notes/Rust基础/9、crate与模块.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "3、Slash Command 的大纲"
+              "title": "9、crate与模块 的大纲"
             }
           },
           {
@@ -176,7 +157,7 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -197,26 +178,35 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "c6d4dcba6af7c45b",
+  "active": "d5f3b3f261cd7263",
   "lastOpenFiles": [
-    "assets/Pasted image 20260519182731.png",
-    "assets/Pasted image 20260519182641.png",
+    "assets/Pasted image 20260520011515.png",
+    "Rust/notes/Cookbook/1、算法.md",
+    "Rust/notes/Rust基础/9、crate与模块.md",
+    "assets/Pasted image 20260520011146.png",
+    "assets/Pasted image 20260520010913.png",
+    "assets/Pasted image 20260520010744.png",
+    "AI/raw/archive/articles/Slash Command.md",
+    "AI/wiki/recipes/Claude Code 状态栏配置.md",
+    "AI/wiki/overviews/Claude Code 内置命令.md",
+    "AI/wiki/concepts/Claude Code 命令类型.md",
+    "AI/wiki/summaries/Claude Code Slash Command.md",
+    "Rust/notes/Rust基础/10、泛型和特征.md",
+    "AI/raw/articles/Slash Command.md",
+    "AI/notes/Claude Code/3、Slash Command.md.tmp.43172.697e715e0ffe",
     "AI/notes/Claude Code/3、Slash Command.md",
+    "assets/Pasted image 20260519232505.png",
+    "assets/Pasted image 20260519232240.png",
+    "assets/Pasted image 20260519232236.png",
+    "assets/Pasted image 20260519231725.png",
+    "assets/Pasted image 20260519231523.png",
+    "assets/Pasted image 20260519231137.png",
+    "assets/Pasted image 20260519230701.png",
     "AI/notes/snippets/JSON RPC.md",
-    "assets/Pasted image 20260519180001.png",
-    "assets/Pasted image 20260519160905.png",
-    "assets/Pasted image 20260519160717.png",
-    "assets/Pasted image 20260519155647.png",
-    "assets/Pasted image 20260519155224.png",
-    "assets/Pasted image 20260519154721.png",
-    "assets/Pasted image 20260519154625.png",
-    "assets/Pasted image 20260519145213.png",
-    "assets/Pasted image 20260519143634.png",
     "AI/notes/Codex/1、Codex  CLI.md",
     "AI/notes/Claude Code/2、Permission Mode.md",
     "AI/notes/Claude Code/1、Claude Code入门.md",
     "AI/notes/Codex/2、Codex App.md",
-    "Rust/notes/Rust基础/9、crate与模块（待补充）.md",
     "前后端/notes/HTTP/3、HTTP资源定位、内容类型和内容协商.md",
     "Rust/notes/Rust基础/8、模式匹配.md",
     "Rust/notes/Rust基础/7、枚举.md",
@@ -227,14 +217,6 @@
     "Rust/CLAUDE.md",
     "Rust/wiki/concepts/模式类型.md",
     "Rust/wiki/concepts/模式匹配.md",
-    "Rust/wiki/summaries/Rust 模式匹配.md",
-    "Rust/wiki/log.md",
-    "Rust/raw/articles/模式匹配.md",
-    "Rust/notes/Rust基础/6、结构体.md",
-    "前后端/notes/数据格式/2、JSON-RPC.md",
-    "前后端/notes/数据格式/1、JSON数据格式.md",
-    "Rust/raw/archive/articles/枚举.md",
-    "Rust/wiki/summaries/Rust 枚举.md",
     "前后端/notes/数据格式",
     "AI/notes/Codex",
     "AI/raw/archive/articles",
@@ -243,7 +225,6 @@
     "前后端/notes/HTTP",
     "前后端/wiki/syntheses",
     "前后端/wiki/summaries",
-    "前后端/wiki/recipes",
-    "前后端/wiki/overviews"
+    "前后端/wiki/recipes"
   ]
 }
