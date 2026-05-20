@@ -1,9 +1,11 @@
 ---
-title: size_of 与 size_of_val
+title: Rust size_of 与 size_of_val
 date: 2026-05-13
 tags: [rust, memory-safety]
 source_count: 1
 ---
+
+# Rust size_of 与 size_of_val
 
 本文是 Rust `std::mem::size_of` 与 `std::mem::size_of_val` 学习笔记的整体摘要，涵盖两个函数的核心区别、使用场景以及与动态大小类型（DST）的关系。
 

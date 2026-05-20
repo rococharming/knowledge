@@ -1,9 +1,11 @@
 ---
-title: 所有权
+title: Rust 所有权
 date: 2026-05-13
 tags: [rust, ownership, memory-safety]
 source_count: 1
 ---
+
+# Rust 所有权
 
 本文是 Rust 所有权系统学习笔记的整体摘要，涵盖内存管理三条路线、所有权三大规则、作用域与 Drop、移动语义、Copy 类型以及函数与复合类型中的所有权转移。
 
@@ -61,4 +63,4 @@ source_count: 1
 
 ## 来源
 
-- [[所有权]]
+- [[Rust 所有权]]

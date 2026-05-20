@@ -62,3 +62,25 @@
 - 更新: `[[控制流]]` (source_count: 1→1，补充简洁控制流交叉引用)
 - 类型: articles
 - 来源: `raw/articles/模式匹配.md`
+
+## [2026-05-20] Ingest | crate与模块.md
+
+- 创建: `[[Rust crate 与模块]]`, `[[Package与Crate]]`, `[[Cargo构建配置]]`, `[[模块系统]]`, `[[路径与导入]]`, `[[模块文件组织]]`
+- 更新: `[[Edition]]` (source_count: 1→2，补充 cargo fix --edition 迁移流程)
+- 更新: `[[Cargo]]` (source_count: 1→1，补充 Cargo构建配置 交叉引用)
+- 类型: articles
+- 来源: `raw/articles/crate与模块.md`
+
+## [2026-05-21] Query | 什么是Rust所有权
+
+- 范围: 单领域
+- 基于: `[[Rust 所有权]]`, `[[所有权系统]]`, `[[移动]]`, `[[Copy]]`, `[[引用与借用]]`, `[[生命周期]]`
+- 结果: 仅查询
+- 类型: query
+
+## [2026-05-21] Lint | Rust 领域
+
+- 范围: Rust 领域
+- 索引维护: 0 个
+- 发现: 0 个（矛盾 0、陈旧 0、死链 0、缺页 0、缺引用 0、空白 0）
+- 建议: 0 条

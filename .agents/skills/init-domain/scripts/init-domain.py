@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
 Init-Domain automation script.
-Creates directory structure and generates boilerplate files for a new domain.
+Creates directory structure, generates boilerplate files for a new domain,
+and updates README.md when present.
 
 Usage:
     python init-domain.py <domain_name> [options]
@@ -49,8 +50,8 @@ def create_directory_structure(base_dir: str, domain: str, categories: list[str]
     return paths
 
 
-def generate_claude_md(domain: str, overview: str, categories: list[str], tags: list[str]) -> str:
-    """Generate the domain CLAUDE.md content."""
+def generate_domain_md(domain: str, overview: str, categories: list[str], tags: list[str]) -> str:
+    """Generate the domain.md content."""
     today = datetime.now().strftime("%Y-%m-%d")
     cat_lines = "\n".join(f"- `{cat}/` — （请补充说明）" for cat in categories)
     tag_lines = "\n".join(f"- `#{t}` — （请补充说明）" for t in tags)
@@ -120,6 +121,54 @@ def generate_log_md(domain: str) -> str:
 """
 
 
+def update_readme_domains(base_dir: str, domain: str, overview: str) -> bool:
+    """Upsert the domain in README.md's existing domains table."""
+    readme_path = os.path.join(base_dir, "README.md")
+    if not os.path.exists(readme_path):
+        return False
+
+    with open(readme_path, encoding="utf-8") as f:
+        content = f.read()
+
+    heading = "## 现有领域"
+    start = content.find(heading)
+    if start == -1:
+        return False
+
+    end = content.find("\n---", start)
+    if end == -1:
+        return False
+
+    section = content[start:end]
+    lines = section.splitlines()
+    safe_overview = overview.replace("|", "\\|")
+    row = f"| [{domain}]({domain}/wiki/index.md) | {safe_overview} | 活跃 |"
+
+    updated = False
+    last_domain_row = None
+    for i, line in enumerate(lines):
+        if line.startswith("| ["):
+            last_domain_row = i
+            if line.startswith(f"| [{domain}]("):
+                if line != row:
+                    lines[i] = row
+                    updated = True
+                break
+    else:
+        insert_at = (last_domain_row + 1) if last_domain_row is not None else len(lines)
+        lines.insert(insert_at, row)
+        updated = True
+
+    if not updated:
+        return False
+
+    new_section = "\n".join(lines)
+    new_content = content[:start] + new_section + content[end:]
+    with open(readme_path, "w", encoding="utf-8") as f:
+        f.write(new_content)
+    return True
+
+
 def diagnose_existing(domain_path: str, categories: list[str]) -> dict:
     """Check an existing domain for missing files/directories and report issues."""
     issues = []
@@ -148,18 +197,18 @@ def diagnose_existing(domain_path: str, categories: list[str]) -> dict:
         open(os.path.join(notes_path, ".gitkeep"), "a").close()
         created.append("notes/")
 
-    # Check CLAUDE.md
-    claude_path = os.path.join(domain_path, "CLAUDE.md")
-    if not os.path.exists(claude_path):
-        issues.append("Missing: CLAUDE.md")
+    # Check domain.md
+    domain_rules_path = os.path.join(domain_path, "domain.md")
+    if not os.path.exists(domain_rules_path):
+        issues.append("Missing: domain.md")
     else:
-        content = open(claude_path, encoding="utf-8").read()
+        content = open(domain_rules_path, encoding="utf-8").read()
         if not content.strip().startswith("---"):
-            issues.append("CLAUDE.md missing YAML frontmatter")
+            issues.append("domain.md missing YAML frontmatter")
         required_sections = ["领域概述", "分类体系", "标签体系", "qmd 配置", "特殊约定"]
         for sec in required_sections:
             if sec not in content:
-                issues.append(f"CLAUDE.md missing section: {sec}")
+                issues.append(f"domain.md missing section: {sec}")
 
     # Check wiki/index.md
     index_path = os.path.join(domain_path, "wiki", "index.md")
@@ -212,18 +261,18 @@ def main():
 
     # Generate files
     overview = args.overview or f"{domain} 领域的知识积累"
-    claude_md = generate_claude_md(domain, overview, categories, tags)
+    domain_md = generate_domain_md(domain, overview, categories, tags)
     index_md = generate_index_md(domain, categories)
     log_md = generate_log_md(domain)
 
     # Only write files if they don't already exist (never overwrite)
-    claude_path = f"{domain_path}/CLAUDE.md"
-    if not os.path.exists(claude_path):
-        with open(claude_path, "w") as f:
-            f.write(claude_md)
-        print(f"Generated {domain}/CLAUDE.md")
+    domain_rules_path = f"{domain_path}/domain.md"
+    if not os.path.exists(domain_rules_path):
+        with open(domain_rules_path, "w") as f:
+            f.write(domain_md)
+        print(f"Generated {domain}/domain.md")
     else:
-        print(f"Preserved existing {domain}/CLAUDE.md")
+        print(f"Preserved existing {domain}/domain.md")
 
     index_path = f"{domain_path}/wiki/index.md"
     if not os.path.exists(index_path):
@@ -240,6 +289,9 @@ def main():
         print(f"Generated {domain}/wiki/log.md")
     else:
         print(f"Preserved existing {domain}/wiki/log.md")
+
+    if update_readme_domains(base_dir, domain, overview):
+        print(f"Updated README.md domain table for {domain}")
 
     # Diagnose if domain already existed
     if existing:

@@ -1,4 +1,4 @@
-
+# 一、概述
 Rust 标准库中的 `std::mem::size_of` 和 `std::mem::size_of_val` 都用于查看数据在内存中占用的字节数。
 
 它们的核心区别是：

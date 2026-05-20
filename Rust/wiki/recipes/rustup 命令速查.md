@@ -2,7 +2,7 @@
 title: rustup 命令速查
 date: 2026-05-11
 tags: [rust, rustup, toolchain, recipe]
-source_count: 2
+source_count: 1
 ---
 
 # rustup 命令速查

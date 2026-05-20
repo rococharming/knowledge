@@ -2,7 +2,7 @@
 title: Edition
 date: 2026-05-10
 tags: [rust, edition, compiler]
-source_count: 1
+source_count: 2
 ---
 
 # Edition
@@ -52,6 +52,31 @@ rustc main.rs --edition=2021
 - Edition 的切换通常只需要修改 `Cargo.toml` 中的一行配置
 - Edition 不是版本号，同一 rustc 编译器同时支持所有 Edition
 
+## Edition 迁移
+
+升级 Edition 时，推荐先使用自动迁移工具而非直接手动修改 `Cargo.toml`：
+
+```bash
+cargo fix --edition
+```
+
+这条命令根据编译器的可自动修复建议直接修改源码，尝试把代码改成同时兼容当前 Edition 和下一个 Edition 的写法。
+
+迁移流程：
+
+1. 运行 `cargo fix --edition`
+2. 修改 `Cargo.toml` 中的 `edition` 字段为目标版本
+3. 运行 `cargo check` 检查
+4. 运行 `cargo test` 验证
+
+示例：Rust 2018 引入 `async`/`await` 关键字后，旧代码中名为 `async` 的标识符可能被自动改为原始标识符写法：
+
+```rust
+let r#async = 1;  // r#前缀表示将关键字当作普通标识符使用
+```
+
+> `cargo fix --edition` 不是万能工具，只能处理编译器能明确判断的问题。涉及业务逻辑、API 设计、依赖版本升级的部分仍需人工检查。
+
 ## 关联
 
 - [[rustc]] — 支持多 Edition 的编译器
@@ -60,3 +85,4 @@ rustc main.rs --edition=2021
 ## 来源
 
 - [[Rust安装与开发环境配置]]
+- [[crate与模块]]

@@ -1,9 +1,11 @@
 ---
-title: 引用和切片
+title: Rust 引用和切片
 date: 2026-05-13
 tags: [rust, ownership, memory-safety]
 source_count: 1
 ---
+
+# Rust 引用和切片
 
 本文是 Rust 引用、解引用与切片学习笔记的整体摘要，涵盖引用的基本概念、借用规则、解引用机制、悬垂引用、借用临时值以及切片的创建与使用。
 
@@ -49,4 +51,4 @@ source_count: 1
 
 ## 来源
 
-- [[引用和切片]]
+- [[Rust 引用和切片]]

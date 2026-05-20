@@ -1,6 +1,6 @@
 # Init-Domain 模板参考
 
-## 领域 CLAUDE.md 模板
+## 领域 domain.md 模板
 
 ```markdown
 ---
@@ -96,5 +96,5 @@ _（暂无）_
 
 ## [<YYYY-MM-DD>] init-domain | 领域初始化
 - 创建领域目录结构
-- 生成领域 CLAUDE.md
+- 生成领域 domain.md
 ```

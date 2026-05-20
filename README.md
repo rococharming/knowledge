@@ -11,12 +11,13 @@
 ```
 knowledge/
 ├── README.md              # 本文件
-├── CLAUDE.md              # 全局规则（所有领域通用）
+├── AGENTS.md              # 全局规则主文件（所有领域通用）
+├── CLAUDE.md -> AGENTS.md # Claude Code 兼容入口
 ├── llm-wiki.md            # LLM Wiki 规范原文（Karpathy）
 ├── index.md               # 顶层目录 — 领域列表与路由
 ├── assets/                # 共享媒体资产
 ├── <领域>/                # 每个领域独立目录
-│   ├── CLAUDE.md          # 领域规则：名称约定、分类体系、qmd collection 名等
+│   ├── domain.md          # 领域规则：名称约定、分类体系、qmd collection 名等
 │   ├── raw/               # 不可变层 — 来源文档（只读）
 │   │   ├── articles/      # 网络文章、博客
 │   │   ├── papers/        # 学术论文
@@ -52,16 +53,18 @@ knowledge/
 
 ## 现有领域
 
-| 领域 | 描述 | 当前状态 |
-|---|---|---|
-| [AI](AI/wiki/index.md) | AI 编程工具、方法论与实践 | 活跃 |
-| [Rust](Rust/wiki/index.md) | Rust 编程语言学习与实践 | 活跃 |
+| 领域                         | 描述             | 当前状态 |
+| -------------------------- | -------------- | ---- |
+| [AI](AI/wiki/index.md)     | AI 编程工具、LLM 辅助编程与知识检索范式 | 活跃   |
+| [macOS](macOS/wiki/index.md) | macOS 开发环境设置、工具链配置及系统相关知识 | 活跃   |
+| [Rust](Rust/wiki/index.md) | Rust 编程语言学习与实践 | 活跃   |
+| [前后端](前后端/wiki/index.md) | Web 前后端开发入门学习，从前端基础到后端架构的系统知识 | 活跃   |
 
 ---
 
 ## 核心操作
 
-知识库有三种核心操作，每种操作由独立的 Claude Code Skill 实现：
+知识库有三种核心操作，每种操作由独立的 Agent Skill 实现：
 
 | 操作 | Skill | 功能描述 |
 |---|---|---|
@@ -71,35 +74,28 @@ knowledge/
 
 ---
 
-## Claude Code Skills
+## Agent Skills
 
-本项目配置了以下 Claude Code Skills，用于自动化知识库操作：
+本项目配置了以下 Agent Skills，用于自动化知识库操作。Skill 源文件位于 `.agents/skills/`，`.claude/skills/` 作为 Claude Code 兼容入口使用。
 
 ### 知识库核心 Skills
 
 | Skill | 触发场景 | 功能 |
 |---|---|---|
-| [`ingest`](.claude/skills/ingest) | "ingest 这篇文章"、"处理 raw 素材"、"把文章整合到知识库" | 将 `raw/` 中的 Markdown 素材提炼、分类、写入 `wiki/`，更新索引与日志，归档 raw，更新 qmd 索引 |
-| [`query`](.claude/skills/query) | "知识库里关于 X 有什么"、概念解释、工具对比、最佳实践建议 | 基于 `wiki/` 内容回答问题，支持小规模 index.md 浏览和大规模 qmd 搜索两种模式 |
-| [`lint`](.claude/skills/lint) | "lint 知识库"、"检查 wiki"、"health check"、"清理死链" | 对知识库执行 9 项系统化健康检查，自动修复结构问题，生成诊断报告 |
-| [`init-domain`](.claude/skills/init-domain) | "创建新领域"、"初始化投资知识库"、"搭建新领域" | 通过苏格拉底式提问了解需求，自动生成完整的领域目录结构和 boilerplate 文件 |
+| [`ingest`](.agents/skills/ingest) | "ingest 这篇文章"、"处理 raw 素材"、"把文章整合到知识库" | 将 `raw/` 中的 Markdown 素材提炼、分类、写入 `wiki/`，更新索引与日志，归档 raw，更新 qmd 索引 |
+| [`query`](.agents/skills/query) | "知识库里关于 X 有什么"、概念解释、工具对比、最佳实践建议 | 基于 `wiki/` 内容回答问题，支持小规模 index.md 浏览和大规模 qmd 搜索两种模式 |
+| [`lint`](.agents/skills/lint) | "lint 知识库"、"检查 wiki"、"health check"、"清理死链" | 对知识库执行 9 项系统化健康检查，自动修复结构问题，生成诊断报告 |
+| [`init-domain`](.agents/skills/init-domain) | "创建新领域"、"初始化投资知识库"、"搭建新领域" | 通过苏格拉底式提问了解需求，自动生成完整的领域目录结构和 boilerplate 文件 |
 
 ### Obsidian 生态 Skills
 
 | Skill | 触发场景 | 功能 |
 |---|---|---|
-| [`obsidian-markdown`](.claude/skills/obsidian-markdown) | 创建/编辑 `.md` 文件、维基链接、标注、frontmatter | 使用维基链接 `[[Note]]`、嵌入 `![[embed]]`、标注 `> [!type]`、frontmatter 属性等 Obsidian 特定语法 |
-| [`obsidian-cli`](.claude/skills/obsidian-cli) | 与 Obsidian 应用交互、管理笔记任务属性 | 通过 `obsidian` CLI 与运行中的 Obsidian 实例交互，读取/创建/搜索笔记、管理任务、标签统计等 |
-| [`json-canvas`](.claude/skills/json-canvas) | 创建/编辑 `.canvas` 文件、思维导图、流程图 | 创建和编辑 JSON Canvas 文件，包含节点、边线、分组和连接关系 |
-| [`obsidian-bases`](.claude/skills/obsidian-bases) | 创建/编辑 `.base` 文件、表格视图、卡片视图 | 创建 Obsidian Bases，包含视图、筛选器、公式和摘要，实现类似数据库的笔记视图 |
-
-### 辅助 Skills
-
-| Skill | 触发场景 | 功能 |
-|---|---|---|
-| [`defuddle`](.claude/skills/defuddle) | 读取/分析在线文章、网页文档 | 使用 Defuddle CLI 从网页中提取干净的可读 Markdown，移除导航和杂乱信息 |
-| [`baoyu-translate`](.claude/skills/baoyu-translate) | "翻译这篇文章"、"改成中文/英文"、"精翻" | 三模式翻译：quick（快速）、normal（分析后翻译）、refined（分析→翻译→审校→润色），支持术语表和自定义风格 |
-| [`update-todo`](.claude/skills/update-todo) | "扫描 todo"、"更新待办"、"检查哪些笔记需要完善" | 扫描 `Claude Code/` 目录，识别空文件和含"待补充"标记的笔记，生成/更新 `todo.md` |
+| [`obsidian-markdown`](.agents/skills/obsidian-markdown) | 创建/编辑 `.md` 文件、维基链接、标注、frontmatter | 使用维基链接 `[[Note]]`、嵌入 `![[embed]]`、标注 `> [!type]`、frontmatter 属性等 Obsidian 特定语法 |
+| [`obsidian-cli`](.agents/skills/obsidian-cli) | 与 Obsidian 应用交互、管理笔记任务属性 | 通过 `obsidian` CLI 与运行中的 Obsidian 实例交互，读取/创建/搜索笔记、管理任务、标签统计等 |
+| [`json-canvas`](.agents/skills/json-canvas) | 创建/编辑 `.canvas` 文件、思维导图、流程图 | 创建和编辑 JSON Canvas 文件，包含节点、边线、分组和连接关系 |
+| [`obsidian-bases`](.agents/skills/obsidian-bases) | 创建/编辑 `.base` 文件、表格视图、卡片视图 | 创建 Obsidian Bases，包含视图、筛选器、公式和摘要，实现类似数据库的笔记视图 |
+| [`defuddle`](.agents/skills/defuddle) | 读取/分析在线文章、网页文档 | 使用 Defuddle CLI 从网页中提取干净的可读 Markdown，移除导航和杂乱信息 |
 
 ---
 
@@ -114,11 +110,11 @@ AI/raw/articles/new-article.md
 Rust/raw/papers/new-paper.md
 ```
 
-然后请求 Claude Code 进行 ingest：
+然后请求 LLM Agent 进行 ingest：
 
 > "帮我 ingest AI/raw/articles/new-article.md"
 
-Claude 会自动：
+Agent 会自动：
 - 读取并提炼内容
 - 判断分类（summaries/entities/concepts/...）
 - 创建/更新 `wiki/` 页面（含标准 frontmatter）
@@ -128,12 +124,12 @@ Claude 会自动：
 
 ### 2. 查询知识
 
-向 Claude Code 提问，它会基于 `wiki/` 内容回答：
+向 LLM Agent 提问，它会基于 `wiki/` 内容回答：
 
 > "Rust 所有权和借用的核心规则是什么？"
 > "知识库里关于 RAG 和 Fine-tuning 的对比有什么？"
 
-Claude 会自动：
+Agent 会自动：
 - 判断涉及领域
 - 选择查询模式（小规模浏览 index.md / 大规模 qmd 搜索）
 - 读取相关页面
@@ -142,11 +138,11 @@ Claude 会自动：
 
 ### 3. 健康检查
 
-定期请求 Claude Code 执行 lint：
+定期请求 LLM Agent 执行 lint：
 
 > "lint 一下知识库"
 
-Claude 会自动：
+Agent 会自动：
 - 扫描所有领域的 wiki 页面
 - 检测死链、孤立页面、索引不同步、陈旧内容、数据空白等问题
 - 自动修复结构问题（孤立页面加入索引、移除死链、更新计数）
@@ -156,11 +152,12 @@ Claude 会自动：
 
 > "帮我创建一个心理学领域"
 
-Claude 会通过 `init-domain` skill：
+Agent 会通过 `init-domain` skill：
 - 简短询问领域主题、分类偏好、初始标签
 - 自动生成完整目录结构
-- 生成个性化领域 `CLAUDE.md`
+- 生成个性化领域 `domain.md`
 - 更新顶层 `index.md`
+- 更新 README.md 的现有领域表
 
 ---
 
@@ -214,15 +211,17 @@ source_count: 3
 
 ## 规范参考
 
-- [全局规则](CLAUDE.md) — 所有领域通用的架构约定、文件规范、操作原则
+- [全局规则](AGENTS.md) — 所有领域通用的架构约定、文件规范、操作原则
 - [LLM Wiki 规范](llm-wiki.md) — Karpathy 原始规范
-- [AI 领域规则](AI/CLAUDE.md) — AI 领域的分类体系、标签体系、特殊约定
-- [Rust 领域规则](Rust/CLAUDE.md) — Rust 领域的分类体系、标签体系、特殊约定
+- [AI 领域规则](AI/domain.md) — AI 领域的分类体系、标签体系、特殊约定
+- [macOS 领域规则](macOS/domain.md) — macOS 领域的分类体系、标签体系、特殊约定
+- [Rust 领域规则](Rust/domain.md) — Rust 领域的分类体系、标签体系、特殊约定
+- [前后端 领域规则](前后端/domain.md) — 前后端领域的分类体系、标签体系、特殊约定
 
 ---
 
 ## 贡献与维护
 
 - **Git 管理**：所有变更通过 Git 跟踪，便于跨设备同步和版本回溯
-- **LLM 维护**：日常 ingest、query、lint 操作由 Claude Code 执行
-- **手动编辑**：可直接编辑 `wiki/` 和 `notes/` 中的文件，但修改后建议让 Claude 执行 lint 确保一致性
+- **LLM 维护**：日常 ingest、query、lint 操作由 LLM Agent 执行
+- **手动编辑**：可直接编辑 `wiki/` 和 `notes/` 中的文件，但修改后建议让 LLM Agent 执行 lint 确保一致性

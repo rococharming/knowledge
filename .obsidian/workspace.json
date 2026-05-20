@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "ec0a53f7b09e0c9e",
+        "id": "885c1cda5aadeead",
         "type": "tabs",
         "children": [
           {
-            "id": "8d508d55f6d6f2f1",
+            "id": "2a9dd75bc7a54176",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Rust/notes/Rust基础/9、crate与模块.md",
+                "file": "AI/notes/Codex/1、Codex  CLI.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "9、crate与模块"
+              "title": "1、Codex  CLI"
             }
           }
         ]
@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 279.5
+    "width": 320.5004348754883,
+    "collapsed": true
   },
   "right": {
     "id": "94be849039c638f6",
@@ -137,13 +138,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Rust/notes/Rust基础/9、crate与模块.md",
+                "file": "AI/notes/Codex/1、Codex  CLI.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "9、crate与模块 的大纲"
+              "title": "1、Codex  CLI 的大纲"
             }
           },
           {
@@ -180,7 +181,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 301.5
+    "width": 238.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -197,46 +198,46 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "8d508d55f6d6f2f1",
+  "active": "2a9dd75bc7a54176",
   "lastOpenFiles": [
+    "assets/Pasted image 20260521021403.png",
+    "assets/Pasted image 20260521013607.png",
+    "assets/Pasted image 20260521012525.png",
+    "Rust/wiki/log.md",
+    "AI/notes/Codex/1、Codex  CLI.md",
+    "Rust/raw/archive/articles/字符串.md",
+    "Rust/wiki/summaries/Rust 字符串.md",
+    "Rust/raw/archive/articles/枚举.md",
+    "Rust/wiki/summaries/Rust 枚举.md",
+    "Rust/raw/archive/articles/结构体.md",
+    "Rust/wiki/summaries/Rust 结构体.md",
+    "Rust/wiki/summaries/Rust 基础语法.md",
+    "Rust/wiki/summaries/Rust size_of 与 size_of_val.md",
+    "macOS/raw/archive/articles/Xcode与命令行工具.md",
+    "macOS/wiki/entities/Xcode Command Line Tools.md",
+    "Rust/wiki/recipes/rustup 命令速查.md",
+    "Rust/wiki/concepts/模式匹配机制.md",
+    "Rust/wiki/summaries/Rust 引用和切片.md",
+    "Rust/wiki/summaries/Rust 所有权.md",
+    "Rust/wiki/concepts/模式匹配.md",
+    "Rust/wiki/summaries/Rust 模式匹配.md",
+    "Rust/raw/archive/articles/Rust基础语法.md",
+    "Rust/wiki/concepts/函数.md",
+    "Rust/wiki/concepts/常量与静态变量.md",
+    "Rust/wiki/concepts/变量与可变性.md",
+    "Rust/notes/Tips/1、size_of和size_of_val.md",
+    "Rust/raw/archive/articles/size_of和size_of_val.md",
+    "Rust/wiki/snippets/size_of 与 size_of_val 速查.md",
     "assets/Pasted image 20260520172555.png",
-    "AI/notes/Claude Code/3、Slash Command.md",
-    "AI/wiki/recipes/Claude Code 状态栏配置.md",
-    "Rust/notes/Rust基础/9、crate与模块.md",
-    "Rust/wiki/entities/rustc.md",
-    "Rust/wiki/entities/Cargo.md",
-    "AI/notes/Agent开发/1、Agent Harness.md",
     "assets/Pasted image 20260520140939.png",
-    "AI/notes/Claude Code/1、Claude Code入门.md",
-    "macOS/notes/2、Homebrew安装与使用.md",
-    "AI/notes/Codex/2、Codex App.md",
     "AI/notes/Agent开发",
     "assets/Pasted image 20260520011515.png",
-    "Rust/notes/Cookbook/1、算法.md",
     "assets/Pasted image 20260520011146.png",
     "assets/Pasted image 20260520010913.png",
     "assets/Pasted image 20260520010744.png",
-    "AI/raw/archive/articles/Slash Command.md",
-    "AI/wiki/overviews/Claude Code 内置命令.md",
-    "AI/wiki/concepts/Claude Code 命令类型.md",
-    "AI/wiki/summaries/Claude Code Slash Command.md",
-    "Rust/notes/Rust基础/10、泛型和特征.md",
-    "AI/raw/articles/Slash Command.md",
     "AI/notes/Claude Code/3、Slash Command.md.tmp.43172.697e715e0ffe",
     "assets/Pasted image 20260519232505.png",
     "assets/Pasted image 20260519232240.png",
-    "assets/Pasted image 20260519232236.png",
-    "assets/Pasted image 20260519231725.png",
-    "assets/Pasted image 20260519231523.png",
-    "AI/notes/snippets/JSON RPC.md",
-    "AI/notes/Codex/1、Codex  CLI.md",
-    "AI/notes/Claude Code/2、Permission Mode.md",
-    "前后端/notes/HTTP/3、HTTP资源定位、内容类型和内容协商.md",
-    "Rust/notes/Rust基础/8、模式匹配.md",
-    "Rust/notes/Rust基础/7、枚举.md",
-    "Rust/raw/archive/articles/模式匹配.md",
-    "Rust/wiki/patterns/简洁控制流.md",
-    "Rust/wiki/concepts/组合模式.md",
     "前后端/notes/数据格式",
     "AI/notes/Codex",
     "AI/raw/archive/articles",

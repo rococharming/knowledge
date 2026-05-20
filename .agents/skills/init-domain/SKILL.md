@@ -5,16 +5,16 @@ description: |
 
   此外，当用户要求完善、补全、修复已有领域目录（如"帮我完善 AI 领域"、"检查一下心理学目录还缺什么"、"这个领域的 wiki 结构不完整"），也应触发本 skill。该 skill 会检查已有领域的完整性，补充缺失的目录和文件，绝不覆盖用户已有的内容。
 
-  该 skill 通过苏格拉底式提问了解用户需求，使用 bundled 脚本自动生成或补全领域目录结构和 boilerplate 文件（CLAUDE.md、index.md、log.md），最后更新顶层 index.md。
+  该 skill 通过苏格拉底式提问了解用户需求，使用 bundled 脚本自动生成或补全领域目录结构和 boilerplate 文件（domain.md、index.md、log.md），最后更新顶层 index.md 和 README.md。
 ---
 
 # Init-Domain Skill
 
-使用 bundled 脚本 `scripts/init-domain.py` 为新领域快速搭建完整的 llm-wiki 目录结构，生成个性化的领域 CLAUDE.md。
+使用 bundled 脚本 `scripts/init-domain.py` 为新领域快速搭建完整的 llm-wiki 目录结构，生成个性化的领域 `domain.md`。
 
 ## 核心理念
 
-搭建新领域不是简单的"建文件夹"，而是**为知识库确立一套规范**。领域 CLAUDE.md 决定了 LLM 如何分类、如何搜索——它是该领域的"宪法"。通过简短提问确保生成的规范贴合用户需求，而非套模板。
+搭建新领域不是简单的"建文件夹"，而是**为知识库确立一套规范**。领域 `domain.md` 决定了 LLM 如何分类、如何搜索——它是该领域的"宪法"。通过简短提问确保生成的规范贴合用户需求，而非套模板。
 
 ## 执行流程
 
@@ -29,7 +29,7 @@ description: |
 **确认名称后，立即检查** `<领域>/` 目录是否已存在于工作目录中。
 
 **如果目录已存在**：
-1. 读取现有 `CLAUDE.md`（如果有），了解当前配置
+1. 读取现有 `domain.md`（如果有），了解当前配置
 2. **运行脚本带 `--check-existing`**，获取诊断报告
 3. 根据诊断结果判断缺失项
 4. **跳过提问**，直接执行补全（步骤 4）
@@ -70,23 +70,24 @@ python <skill-path>/scripts/init-domain.py <领域名称> \
 - **新领域**：创建完整的目录结构和所有 boilerplate 文件
 - **已有领域**（`--check-existing`）：
   - 创建缺失的目录（`raw/` 子目录、`wiki/` 子目录、`notes/`）
-  - 生成缺失的文件（`CLAUDE.md`、`wiki/index.md`、`wiki/log.md`）
+  - 生成缺失的文件（`domain.md`、`wiki/index.md`、`wiki/log.md`）
   - **绝不覆盖已有文件**（保护用户的个性化内容）
-  - 输出诊断报告，列出发现的完整性问题（如 CLAUDE.md 缺少 frontmatter 或必要章节）
+  - 输出诊断报告，列出发现的完整性问题（如 domain.md 缺少 frontmatter 或必要章节）
 
 **脚本会创建/补全**：
 - `raw/` 及其 7 个固定子目录（articles、papers、books、videos、podcasts、others、archive）
 - `wiki/` 及其用户指定的分类子目录
 - `notes/` 空目录
-- `CLAUDE.md`（带 frontmatter，仅当不存在时生成）
+- `domain.md`（带 frontmatter，仅当不存在时生成）
 - `wiki/index.md`（带 frontmatter，仅当不存在时生成）
 - `wiki/log.md`（仅当不存在时生成）
+- README.md 的"现有领域"表（若 README.md 存在，则自动新增或更新该领域行）
 
-### 5. 个性化 CLAUDE.md
+### 5. 个性化 domain.md
 
-脚本生成的 `CLAUDE.md` 是 boilerplate，需要你**手动润色**：
+脚本生成的 `domain.md` 是 boilerplate，需要你**手动润色**：
 
-1. **读取脚本生成的 CLAUDE.md**
+1. **读取脚本生成的 domain.md**
 2. **补充或修正以下内容**：
    - 领域概述：确保准确反映用户意图
    - 分类说明：每个分类一行简短说明
@@ -94,14 +95,14 @@ python <skill-path>/scripts/init-domain.py <领域名称> \
    - 特殊约定：基于领域特点添加 1-3 条（如投资领域需要"股票代码标注"、心理学领域需要"人名处理规则"）
 3. **使用 Edit 工具写入修正后的内容**
 
-**CLAUDE.md 必须包含的章节**（脚本已生成框架）：
+**domain.md 必须包含的章节**（脚本已生成框架）：
 - `## 领域概述`
 - `## 分类体系`
 - `## 标签体系`
 - `## qmd 配置`
 - `## 特殊约定`
 
-**CLAUDE.md 必须有 YAML frontmatter**：
+**domain.md 必须有 YAML frontmatter**：
 ```yaml
 ---
 title: <领域> 领域规则
@@ -110,13 +111,15 @@ domain: <领域>
 ---
 ```
 
-### 6. 更新顶层 index.md
+### 6. 更新顶层 index.md 与 README.md
 
 读取顶层 `index.md`（如果不存在则创建），添加新领域的路由：
 
 ```markdown
 - [[<领域>/wiki/index|<领域>]] — <领域概述的一句话>（0 页）
 ```
+
+脚本会自动维护 README.md 的"现有领域"表；如果后续手动修改领域概述，保持 `index.md`、`README.md` 与 `domain.md` 描述一致。
 
 ### 7. 报告结果
 
@@ -127,9 +130,10 @@ domain: <领域>
 已完成 <领域> 领域的初始化：
 
 - 目录结构：<列出创建的子目录>
-- 领域规则：已生成 <领域>/CLAUDE.md
+- 领域规则：已生成 <领域>/domain.md
 - 初始文件：index.md、log.md
 - 顶层索引：已更新 knowledge/index.md
+- README：已更新现有领域表
 
 你可以开始放入素材到 <领域>/raw/ 并让我 ingest 了。
 ```
@@ -140,16 +144,16 @@ domain: <领域>
 
 - 新增目录：<列出创建的子目录>
 - 新增文件：<列出生成的文件>
-- 诊断问题：<列出发现的问题，如 CLAUDE.md 缺少 frontmatter>
+- 诊断问题：<列出发现的问题，如 domain.md 缺少 frontmatter>
 - 已有文件：已保留，未覆盖
 ```
 
-如果诊断发现 CLAUDE.md 或 index.md 存在但内容不完整（如缺少 frontmatter、必要章节），向用户说明问题并询问是否需要修复。
+如果诊断发现 domain.md 或 index.md 存在但内容不完整（如缺少 frontmatter、必要章节），向用户说明问题并询问是否需要修复。
 
 ## 约束
 
-- **不覆盖已有文件**：已有文件（尤其是用户手写的 CLAUDE.md）绝不覆盖，只补充缺失的目录和文件
+- **不覆盖已有文件**：已有文件（尤其是用户手写的 domain.md）绝不覆盖，只补充缺失的目录和文件
 - **不在 log.md 中记录 init-domain**：log.md 仅记录 ingest、query、lint 三种操作。init-domain 是搭建脚手架，不是知识操作，不应写入日志
-- **保持和全局 CLAUDE.md 一致**：领域规则不能和全局规则冲突（如文件格式、三层分离原则）
+- **保持和全局 AGENTS.md 一致**：领域规则不能和全局规则冲突（如文件格式、三层分离原则）
 - **必须使用脚本**：不要手动用 mkdir/Write 创建目录，始终使用 bundled 脚本
 - **尊重用户的"随便"**：如果用户说"默认就行"，跳过提问，直接使用默认值执行

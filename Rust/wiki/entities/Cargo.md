@@ -199,6 +199,8 @@ pretty_assertions = "1.4"
 - [[rustc]] — Cargo 底层调用的编译器
 - [[语义化版本]] — Cargo 依赖版本解析规则
 - [[Edition]] — Cargo.toml 中指定的语言规则版本
+- [[Cargo构建配置]] — 构建流程、profile 配置与 Edition 迁移
+- [[Package与Crate]] — 编译单元与项目结构
 
 ## 来源
 
