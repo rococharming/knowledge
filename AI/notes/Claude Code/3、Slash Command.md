@@ -618,6 +618,14 @@ echo -e "${PURPLE}Cxt:${RESET} ${LIGHT_GRAY}${BAR}${RESET} ${YELLOW}${USED_PCT}%
 echo -e "${GRAY}Usage:${RESET} ${GREEN}In:${RESET}$(fmt_tokens "$CUR_IN") ${ORANGE}Out:${RESET}$(fmt_tokens "$CUR_OUT") ${YELLOW}Crt:${RESET}$(fmt_tokens "$CUR_CRT") ${CYAN}Rd:${RESET}$(fmt_tokens "$CUR_RD")"
 ```
 
+创建好之后，注意给脚本赋予执行权限：
+
+```shell
+chmod +x ~/.claude/statusline.sh
+```
+
+
+
 - 在`~/settings.json`中添加`statusLine`配置
 
 ```json

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI/notes/Agent开发/1、Agent Harness.md",
+                "file": "Rust/notes/Rust基础/9、crate与模块.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1、Agent Harness"
+              "title": "9、crate与模块"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 280.5
+    "width": 279.5
   },
   "right": {
     "id": "94be849039c638f6",
@@ -137,13 +137,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI/notes/Agent开发/1、Agent Harness.md",
+                "file": "Rust/notes/Rust基础/9、crate与模块.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "1、Agent Harness 的大纲"
+              "title": "9、crate与模块 的大纲"
             }
           },
           {
@@ -162,7 +162,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "AI/notes/Agent开发/1、Agent Harness.md",
+                "file": "Rust/notes/Rust基础/9、crate与模块.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -172,7 +172,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "1、Agent Harness 的反向链接列表"
+              "title": "9、crate与模块 的反向链接列表"
             }
           }
         ],
@@ -197,13 +197,19 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "3c4f69496ee82652",
+  "active": "8d508d55f6d6f2f1",
   "lastOpenFiles": [
-    "AI/notes/Claude Code/1、Claude Code入门.md",
+    "assets/Pasted image 20260520172555.png",
+    "AI/notes/Claude Code/3、Slash Command.md",
+    "AI/wiki/recipes/Claude Code 状态栏配置.md",
+    "Rust/notes/Rust基础/9、crate与模块.md",
+    "Rust/wiki/entities/rustc.md",
+    "Rust/wiki/entities/Cargo.md",
     "AI/notes/Agent开发/1、Agent Harness.md",
+    "assets/Pasted image 20260520140939.png",
+    "AI/notes/Claude Code/1、Claude Code入门.md",
     "macOS/notes/2、Homebrew安装与使用.md",
     "AI/notes/Codex/2、Codex App.md",
-    "Rust/notes/Rust基础/9、crate与模块.md",
     "AI/notes/Agent开发",
     "assets/Pasted image 20260520011515.png",
     "Rust/notes/Cookbook/1、算法.md",
@@ -211,20 +217,17 @@
     "assets/Pasted image 20260520010913.png",
     "assets/Pasted image 20260520010744.png",
     "AI/raw/archive/articles/Slash Command.md",
-    "AI/wiki/recipes/Claude Code 状态栏配置.md",
     "AI/wiki/overviews/Claude Code 内置命令.md",
     "AI/wiki/concepts/Claude Code 命令类型.md",
     "AI/wiki/summaries/Claude Code Slash Command.md",
     "Rust/notes/Rust基础/10、泛型和特征.md",
     "AI/raw/articles/Slash Command.md",
     "AI/notes/Claude Code/3、Slash Command.md.tmp.43172.697e715e0ffe",
-    "AI/notes/Claude Code/3、Slash Command.md",
     "assets/Pasted image 20260519232505.png",
     "assets/Pasted image 20260519232240.png",
     "assets/Pasted image 20260519232236.png",
     "assets/Pasted image 20260519231725.png",
     "assets/Pasted image 20260519231523.png",
-    "assets/Pasted image 20260519231137.png",
     "AI/notes/snippets/JSON RPC.md",
     "AI/notes/Codex/1、Codex  CLI.md",
     "AI/notes/Claude Code/2、Permission Mode.md",
@@ -234,9 +237,6 @@
     "Rust/raw/archive/articles/模式匹配.md",
     "Rust/wiki/patterns/简洁控制流.md",
     "Rust/wiki/concepts/组合模式.md",
-    "Rust/wiki/concepts/模式绑定与借用.md",
-    "Rust/CLAUDE.md",
-    "Rust/wiki/concepts/模式类型.md",
     "前后端/notes/数据格式",
     "AI/notes/Codex",
     "AI/raw/archive/articles",
