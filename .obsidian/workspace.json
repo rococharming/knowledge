@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "c7bce8047496c33a",
+        "id": "ec0a53f7b09e0c9e",
         "type": "tabs",
         "children": [
           {
-            "id": "d5f3b3f261cd7263",
+            "id": "8d508d55f6d6f2f1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Rust/notes/Rust基础/9、crate与模块.md",
+                "file": "AI/notes/Agent开发/1、Agent Harness.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "9、crate与模块"
+              "title": "1、Agent Harness"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 280.5
   },
   "right": {
     "id": "94be849039c638f6",
@@ -137,13 +137,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Rust/notes/Rust基础/9、crate与模块.md",
+                "file": "AI/notes/Agent开发/1、Agent Harness.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "9、crate与模块 的大纲"
+              "title": "1、Agent Harness 的大纲"
             }
           },
           {
@@ -154,6 +154,25 @@
               "state": {},
               "icon": "spreadsheet",
               "title": "Advanced Tables"
+            }
+          },
+          {
+            "id": "fe03167be03b255f",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "AI/notes/Agent开发/1、Agent Harness.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "1、Agent Harness 的反向链接列表"
             }
           }
         ],
@@ -178,11 +197,16 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "d5f3b3f261cd7263",
+  "active": "3c4f69496ee82652",
   "lastOpenFiles": [
+    "AI/notes/Claude Code/1、Claude Code入门.md",
+    "AI/notes/Agent开发/1、Agent Harness.md",
+    "macOS/notes/2、Homebrew安装与使用.md",
+    "AI/notes/Codex/2、Codex App.md",
+    "Rust/notes/Rust基础/9、crate与模块.md",
+    "AI/notes/Agent开发",
     "assets/Pasted image 20260520011515.png",
     "Rust/notes/Cookbook/1、算法.md",
-    "Rust/notes/Rust基础/9、crate与模块.md",
     "assets/Pasted image 20260520011146.png",
     "assets/Pasted image 20260520010913.png",
     "assets/Pasted image 20260520010744.png",
@@ -201,12 +225,9 @@
     "assets/Pasted image 20260519231725.png",
     "assets/Pasted image 20260519231523.png",
     "assets/Pasted image 20260519231137.png",
-    "assets/Pasted image 20260519230701.png",
     "AI/notes/snippets/JSON RPC.md",
     "AI/notes/Codex/1、Codex  CLI.md",
     "AI/notes/Claude Code/2、Permission Mode.md",
-    "AI/notes/Claude Code/1、Claude Code入门.md",
-    "AI/notes/Codex/2、Codex App.md",
     "前后端/notes/HTTP/3、HTTP资源定位、内容类型和内容协商.md",
     "Rust/notes/Rust基础/8、模式匹配.md",
     "Rust/notes/Rust基础/7、枚举.md",
@@ -216,7 +237,6 @@
     "Rust/wiki/concepts/模式绑定与借用.md",
     "Rust/CLAUDE.md",
     "Rust/wiki/concepts/模式类型.md",
-    "Rust/wiki/concepts/模式匹配.md",
     "前后端/notes/数据格式",
     "AI/notes/Codex",
     "AI/raw/archive/articles",
@@ -224,7 +244,6 @@
     "Excalidraw",
     "前后端/notes/HTTP",
     "前后端/wiki/syntheses",
-    "前后端/wiki/summaries",
-    "前后端/wiki/recipes"
+    "前后端/wiki/summaries"
   ]
 }
