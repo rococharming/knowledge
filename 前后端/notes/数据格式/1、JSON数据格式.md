@@ -523,3 +523,105 @@ JSON 是文本格式，不能直接存放原始二进制数据。
 ```
 
 这会让数据体积变大，因此大量二进制数据通常不直接放在 JSON 中传输。
+
+
+# 九、JSONL
+
+## 1、JSONL简介
+
+`JSONL`通常是`JSON Lines`的缩写，文件扩展常见为`.jsonl`、`.ndjson`。其中`.ndjson`是`newline-delimited JSON`，意思是换行分隔的JSON。
+
+`JSONL`可以理解为：
+
+> 一行一个`JSON`值的文本文件
+
+示例：
+
+```jsonl
+{"name":"Alice","age":18}
+{"name":"Bob","age":20}
+{"name":"Charlie","age":22}
+```
+
+这里每一行都是完整的JSON对象，但整个文件本身不是一个JSON数组。
+
+注意：**行与行之间不需要逗号**。
+
+
+
+## 2、JSONL与JSON的区别
+
+普通`JSON`文件通常是一个完整的JSON值。
+
+例如一个`JSON`对象：
+
+```json
+{
+  "name": "Alice",
+  "age": 18
+}
+```
+
+或者一个`JSON`数组：
+
+```json
+[
+  {
+    "name": "Alice",
+    "age": 18
+  },
+  {
+    "name": "Bob",
+    "age": 20
+  }
+]
+```
+
+而 JSONL 文件中，每一行都是一个独立的 JSON 值：
+
+```jsonl
+{"name":"Alice","age":18}
+{"name":"Bob","age":20}
+```
+
+> JSON适合表达一个完整数据结构；JSONL适合保存很多条独立记录
+
+
+## 3、JSONL每一行类型
+
+严格来说，`JSONL`每一行不一定必须是对象，而是一个合法的 JSON 值。
+
+因此下面这种 JSONL 在语法上也是合法的：
+
+```jsonl
+[1, 2, 3]
+["Rust", "Go", "Python"]
+[{"name":"Alice"}, {"name":"Bob"}]
+```
+
+每一行都是一个合法 JSON 数组。
+
+不过在实际使用中，**最常见、最推荐的形式仍然是一行一个 JSON 对象**。
+
+
+## 4、JSONL适用场景
+
+JSONL 特别适合处理大量独立记录。
+
+常见场景包括：
+
+- 日志记录
+- 数据集
+- AI训练数据
+- 批量数据导入导出
+- 流式处理
+- 命令行按行处理
+
+例如服务日志可以写成：
+
+```jsonl
+{"level":"info","message":"server started","time":"2026-05-21T10:00:00Z"}
+{"level":"warn","message":"slow request","time":"2026-05-21T10:01:00Z"}
+{"level":"error","message":"database timeout","time":"2026-05-21T10:02:00Z"}
+```
+

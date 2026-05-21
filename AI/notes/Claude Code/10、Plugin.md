@@ -57,7 +57,7 @@ my-plugin/
 
 ## 1、Skills
 
-`Plugin`可包含`Skills`（详见[[5、Skill|Skills]]）以扩展`Claude`的能力。
+`Plugin`可包含`Skills`（详见[[6、Skill|Skills]]）以扩展`Claude`的能力。
 
 在插件根目录下添加`Skills/`目录，其中包含`SKILL.md`文件的具体 skill 名的目录：
 
@@ -88,7 +88,7 @@ description: 审查代码的最佳实践和潜在问题。在审查代码、检�
 
 ## 2、Subagents
 
-`Plugin`可包含`Subagents`（详见[[9、Subagent|Subagents]]）。`Subagent`是**面向特定任务的专用子代理**，用于把复杂任务拆给更专业的`Claude`实例处理，例如代码审查、安全分析、测试分析、架构设计等。
+`Plugin`可包含`Subagents`（详见[[7、Subagent|Subagents]]）。`Subagent`是**面向特定任务的专用子代理**，用于把复杂任务拆给更专业的`Claude`实例处理，例如代码审查、安全分析、测试分析、架构设计等。
 
 目录示例：
 
@@ -141,7 +141,7 @@ tools:
 `Subagent` 也会使用插件命名空间，避免不同插件之间的 agent 名称冲突。例如：`/my-plugin:security-reviewer`，或者由`Claude`在合适的任务场景中自动委派给对应的 `Subagent`。
 
 ## 3、Hooks
-`Plugin` 可包含 `Hooks`（详见 [[7、Hook|Hooks]]）。`Hook`是在`Claude Code`生命周期的特定时机自动执行的脚本、命令或检查逻辑，用于实现自动化流程、约束行为、格式化代码、安全拦截等。
+`Plugin` 可包含 `Hooks`（详见 [[9、Hook|Hooks]]）。`Hook`是在`Claude Code`生命周期的特定时机自动执行的脚本、命令或检查逻辑，用于实现自动化流程、约束行为、格式化代码、安全拦截等。
 
 常见用途：
 
@@ -197,7 +197,7 @@ npm run lint:fix <file_path>
 
 ## 4、MCP Servers
 
-`Plugin`可包含`MCP Servers`（详见[[6、MCP|MCP]]）。`MCP Server`用于把外部工具、数据源或服务暴露给`Claude Code`，让`Claude`可以调用这些能力。
+`Plugin`可包含`MCP Servers`（详见[[8、MCP|MCP]]）。`MCP Server`用于把外部工具、数据源或服务暴露给`Claude Code`，让`Claude`可以调用这些能力。
 
 常见用途：
 

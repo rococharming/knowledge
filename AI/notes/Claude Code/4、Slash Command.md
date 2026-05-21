@@ -26,13 +26,13 @@
 
 旧式 `.claude/commands/*.md` 自定义命令仍然兼容，但 custom commands 已经合并进 Skills，`.claude/commands/deploy.md` 和 `.claude/skills/deploy/SKILL.md` 都可以创建 `/deploy`，但 Skill 支持目录结构、辅助文件、自动触发、可见性控制等更多能力，因此现在更推荐使用 Skill。
 
-关于 Skill 的更详细介绍参考[[5、Skill|Skill]]。
+关于 Skill 的更详细介绍参考[[6、Skill|Skill]]。
 
 4. 插件命令 / 插件 Skill
 
 插件可以打包 Skills、Agents、Hooks、MCP servers、LSP servers、monitors 等组件。插件中的 Skill 安装后也会变成 `/<plugin-name>:<skill-name>` 形式的快捷入口，这样可以避免与项目或个人 Skill 冲突。
 
-关于插件的更详细介绍参考[[8、Plugin|Plugin]]。
+关于插件的更详细介绍参考[[10、Plugin|Plugin]]。
 
  5. MCP Prompts 命令
 
@@ -40,7 +40,7 @@ MCP Server 可以暴露Prompts，这些 Prompts 会在 `Claude Code` 会话中�
 
 这些命令会从已连接的 MCP Server 动态发现。
 
-关于MCP的更详细介绍参考[[6、MCP|MCP]]。
+关于MCP的更详细介绍参考[[8、MCP|MCP]]。
 
 
 

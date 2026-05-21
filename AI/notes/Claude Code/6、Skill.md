@@ -14,8 +14,8 @@
 
 在`Claude Code`的交互体系中，Skills与以下机制紧密相关：
 
-- **Slash命令**：`/`菜单中既有内置固定逻辑命令，也有`Skill`命令（详见[[3、Slash Command]]）
-- **Subagent**：`Skill`可通过`context: fork`在隔离子代理中执行（详见[[9、Subagent]]）
+- **Slash命令**：`/`菜单中既有内置固定逻辑命令，也有`Skill`命令（详见[[4、Slash Command]]）
+- **Subagent**：`Skill`可通过`context: fork`在隔离子代理中执行（详见[[7、Subagent]]）
 
 > **何时创建Skill**：当你反复粘贴相同的操作手册、检查清单或多步骤流程时；当`CLAUDE.md`中的某部分内容从"事实陈述"演变为"操作流程"时；当需要封装副作用操作（如部署）并严格控制触发时机时。
 
@@ -122,7 +122,7 @@ my-skill/
 
 `--add-dir`标志主要用于授予文件访问权限，而非配置发现，但Skill是例外：额外目录中的`.claude/skills/`会自动加载。其他`.claude`配置（子代理、命令、输出样式）不从额外目录加载。
 
-来自`--add-dir`目录的`CLAUDE.md`文件默认不加载，需设置`CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1`（[[4、记忆机制#^566a05|详见记忆机制]]）。
+来自`--add-dir`目录的`CLAUDE.md`文件默认不加载，需设置`CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1`（[[5、记忆机制#^566a05|详见记忆机制]]）。
 
 ## 4、实时变更检测
 

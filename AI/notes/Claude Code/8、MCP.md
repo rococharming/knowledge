@@ -544,7 +544,7 @@ claude mcp reset-project-choices
 
 # 八、插件提供的MCP Server
 
-`Claude Code`的插件可以打包`MCP Server`。插件启用后，对应的 MCP Server 会随插件一起提供能力。有关插件可参考：[[8、Plugin|Plugin]]。
+`Claude Code`的插件可以打包`MCP Server`。插件启用后，对应的 MCP Server 会随插件一起提供能力。有关插件可参考：[[10、Plugin|Plugin]]。
 
 插件系统本身支持：
 
