@@ -25,7 +25,7 @@
 - [x] [[1、Claude Code入门]]
 - [x] [[3、Permission Mode]]
 - [x] [[4、Slash Command]]
-- [x] [[5、记忆机制]]
+- [x] [[5、Memory]]
 - [x] [[6、Skill]]
 - [x] [[8、MCP]]
 - [x] [[常用Skills汇总/1、skill-creator]]

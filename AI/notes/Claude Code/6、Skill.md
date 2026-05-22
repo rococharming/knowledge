@@ -122,7 +122,7 @@ my-skill/
 
 `--add-dir`标志主要用于授予文件访问权限，而非配置发现，但Skill是例外：额外目录中的`.claude/skills/`会自动加载。其他`.claude`配置（子代理、命令、输出样式）不从额外目录加载。
 
-来自`--add-dir`目录的`CLAUDE.md`文件默认不加载，需设置`CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1`（[[5、记忆机制#^566a05|详见记忆机制]]）。
+来自`--add-dir`目录的`CLAUDE.md`文件默认不加载，需设置`CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1`（[[5、Memory#^566a05|详见记忆机制]]）。
 
 ## 4、实时变更检测
 

@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "41beb0f88d85f731",
+        "id": "83e18b5077f554c4",
         "type": "tabs",
         "children": [
           {
-            "id": "07859cc05a66fb19",
+            "id": "b0d02a4d22555dca",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Rust/notes/Rust基础/10、泛型和特征.md",
+                "file": "AI/notes/Claude Code/5、Memory.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "10、泛型和特征"
+              "title": "5、Memory"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 362.5
   },
   "right": {
     "id": "94be849039c638f6",
@@ -137,13 +137,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Rust/notes/Rust基础/10、泛型和特征.md",
+                "file": "AI/notes/Claude Code/5、Memory.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "10、泛型和特征 的大纲"
+              "title": "5、Memory 的大纲"
             }
           },
           {
@@ -197,27 +197,30 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "07859cc05a66fb19",
+  "active": "b0d02a4d22555dca",
   "lastOpenFiles": [
-    "assets/Pasted image 20260522011654.png",
-    "前后端/notes/HTTP/1、HTTP基础.md",
-    "Rust/notes/Rust基础/10、泛型和特征.md",
-    "前后端/wiki/log.md",
-    "前后端/domain.md",
+    "assets/Pasted image 20260522112849.png",
+    "assets/Pasted image 20260522111533.png",
     "AI/notes/Claude Code/1、Claude Code入门.md",
     "AI/notes/Claude Code/2、Claude Code工作原理.md",
+    "AI/notes/Claude Code/5、Memory.md",
+    "AI/notes/Claude Code/4、Slash Command.md",
+    "AI/notes/Claude Code/Claude编程技巧/探索.claude目录.md",
+    "Rust/notes/Rust基础/10、泛型和特征.md",
+    "assets/Pasted image 20260522011654.png",
+    "前后端/notes/HTTP/1、HTTP基础.md",
+    "前后端/wiki/log.md",
+    "前后端/domain.md",
     "AI/raw/others/Extend Claude Code.md",
     "AI/raw/others/How Claude Code works.md",
     "AI/notes/Claude Code/Tools.md",
     "AI/notes/Claude Code/todo.md",
     "AI/notes/Claude Code/Settings.md",
     "AI/notes/Claude Code/10、Plugin.md",
-    "AI/notes/Claude Code/5、记忆机制.md",
     "AI/notes/Claude Code/9、Hook.md",
     "AI/notes/Claude Code/8、MCP.md",
     "AI/notes/Claude Code/7、Subagent.md",
     "AI/notes/Claude Code/6、Skill.md",
-    "AI/notes/Claude Code/4、Slash Command.md",
     "AI/notes/Claude Code/3、Permission Mode.md",
     "前后端/notes/数据格式/1、JSON数据格式.md",
     "assets/Pasted image 20260521102454.png",
@@ -228,14 +231,11 @@
     "Rust/wiki/log.md",
     "Rust/raw/archive/articles/字符串.md",
     "Rust/wiki/summaries/Rust 字符串.md",
-    "Rust/raw/archive/articles/枚举.md",
     "assets/Pasted image 20260520172555.png",
     "assets/Pasted image 20260520140939.png",
     "AI/notes/Agent开发",
     "assets/Pasted image 20260520011515.png",
     "assets/Pasted image 20260520011146.png",
-    "assets/Pasted image 20260520010913.png",
-    "assets/Pasted image 20260520010744.png",
     "AI/notes/Claude Code/3、Slash Command.md.tmp.43172.697e715e0ffe",
     "前后端/notes/数据格式",
     "AI/notes/Codex",
