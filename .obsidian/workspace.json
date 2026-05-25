@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "83e18b5077f554c4",
+        "id": "7c695b4ac7371c2a",
         "type": "tabs",
         "children": [
           {
-            "id": "b0d02a4d22555dca",
+            "id": "4c471b4e8459f40f",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -197,8 +197,10 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "3c4f69496ee82652",
+  "active": "4c471b4e8459f40f",
   "lastOpenFiles": [
+    "assets/Pasted image 20260526001218.png",
+    "AI/notes/Claude Code/5、Memory.md",
     "Rust/notes/Rust基础/19、集合（待补充）.md",
     "Rust/notes/Rust基础/18、智能指针.md",
     "Rust/notes/Rust基础/17、迭代器.md",
@@ -213,7 +215,6 @@
     "assets/Pasted image 20260522111533.png",
     "AI/notes/Claude Code/1、Claude Code入门.md",
     "AI/notes/Claude Code/2、Claude Code工作原理.md",
-    "AI/notes/Claude Code/5、Memory.md",
     "AI/notes/Claude Code/4、Slash Command.md",
     "AI/notes/Claude Code/Claude编程技巧/探索.claude目录.md",
     "Rust/notes/Rust基础/10、泛型和特征.md",
@@ -227,7 +228,6 @@
     "AI/notes/Claude Code/todo.md",
     "AI/notes/Claude Code/Settings.md",
     "AI/notes/Claude Code/10、Plugin.md",
-    "AI/notes/Claude Code/9、Hook.md",
     "assets/Pasted image 20260521102454.png",
     "assets/Pasted image 20260521021403.png",
     "assets/Pasted image 20260521013607.png",
