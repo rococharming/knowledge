@@ -106,7 +106,7 @@ repo/crates/CLAUDE.md
 
 如果希望额外目录的记忆文件也被加载，需要设置环境变量`CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD`：
 
-```rust
+```shell
 CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1 claude --add-dir ../shared-config
 ```
 
@@ -117,7 +117,7 @@ CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1 claude --add-dir ../shared-config
 - `.claude/rules/*.md`
 - `CLAUDE.local.md`
 
-其中，`CLAUDE.local.md` 是否加载还会受到 `--setting-sources` 的影响。`--settings-sources`用来指定`Claude Code`本次启动时读取哪些配置来源，参数值是一个逗号分隔列表，可选值包括：`user`、`project`、`local`。其中 `local` 对应本地个人配置，例如 `.claude/settings.local.json`，而在记忆文件体系里，`CLAUDE.local.md` 也属于 local 范围。
+其中，`CLAUDE.local.md` 是否加载还会受到 `--settings-sources` 的影响。`--settings-sources`用来指定`Claude Code`本次启动时读取哪些配置来源，参数值是一个逗号分隔列表，可选值包括：`user`、`project`、`local`。其中 `local` 对应本地个人配置，例如 `.claude/settings.local.json`，而在记忆文件体系里，`CLAUDE.local.md` 也属于 local 范围。
 
 
 
@@ -271,7 +271,7 @@ CLAUDE_CODE_NEW_INIT=1 claude
 - `.claude/rules/` 中的规则文件
 - `auto memory` 中自动保存的项目经验
 
-如果是大型 `monorepo`，而上层目录或其他团队目录中的规则与你当前工作无关，可以使用 `claudeMdExcludes` 排除。（详见[[#^claude-md-excludes|排除特定 CLAUDE.md 文件]]）。
+如果是大型 `monorepo`，而上层目录或其他团队目录中的规则与你当前工作无关，可以使用 `claudeMdExcludes` 排除（详见[[#^claude-md-excludes|排除特定 CLAUDE.md 文件]]）。
 
 
 # 五、@path导入
@@ -398,7 +398,7 @@ CLAUDE.local.md
 config/secrets.json
 
 # 本地个人记忆文件
-CLAUDE.local.json
+CLAUDE.local.md
 ```
 
 
@@ -591,8 +591,6 @@ ln -s ~/company-standards/security.md .claude/rules/security.md
 
 在大型`monorepo`中，仓库上层目录或其他团队目录中可能也存在`CLAUDE.md`或`.claude/rules/`。这些指令不一定和当前工作相关，甚至可能造成干扰。
 
-这时可以使用 `claudeMdExcludes` 排除特定文件或规则目录。
-
 这时可以使用`claudeMdExcludes`设置，按路径或glob模式排除特定的`CLAUDE.md`文件或规则目录，避免它们被加载进上下文。
 
 一般放在`.claude/settings.local.json`中：
@@ -676,10 +674,10 @@ CLAUDE_CODE_DISABLE_AUTO_MEMORY=1
   "autoMemoryDirectory": "~/my-custom-memory-dir"
 }
 ```
-`
+
 这个值必须是**绝对路径**，或者以 `~/` 开头。
 
-这个配置可以来自policy 设置、local配置和user配置，但不能是项目配置和本地配置，因为这些配置都存储在项目目录中，克隆别人的项目可能会将自动写入操作引向内存敏感位置。
+这个配置可以来自policy 设置和user配置，但不能是项目配置和本地配置，因为这些配置都存储在项目目录中，克隆别人的项目可能会将自动写入操作引向内存敏感位置。
 
 
 ## 4、目录结构
@@ -701,25 +699,21 @@ CLAUDE_CODE_DISABLE_AUTO_MEMORY=1
 - `debugging.md`、`api-conventions.md`等是按主题拆分的详细笔记
 - `Claude Code`会根据需要继续创建其他主题文件
 
-`MEMORY.md` 用来记录整个记忆目录中有什么内容，以及详细信息存放在哪些主题文件中。
-
 
 ## 5、工作方式
 
-每次对话开始时，`Claude Code` 不会把整个自动记忆目录全部加载进上下文，它只会加载 `MEMORY.md` 的一部分：前 200 行或前 25KB，谁先满足先取哪一个条件。
+每次对话开始时，`Claude Code`不会把整个自动记忆目录全部加载进上下文。它只会加载`MEMORY.md`的一部分：前 200 行或前 25 KB（取先满足者），超出这个范围的内容不会在启动时自动加载。
 
-超过这个范围的内容不会在启动时自动加载。
+因此，`MEMORY.md`会尽量短小，作为索引文件记录整个记忆目录中有什么内容，以及详细信息存放在哪些主题文件中。
 
+主题文件如`debugging.md`、`patterns.md`不会在启动时加载，只有当 `Claude Code` 认为相关信息有用时，才会使用普通文件工具按需读取。
 
-
-超过这个范围的内容不会在启动时自动加载。为了保持启动上下文精简，`Claude Code`会尽量把详细信息拆到单独的主题文件中，而让 `MEMORY.md` 保持简洁。
-
-像 `debugging.md`、`patterns.md` 这类主题文件不会在会话开始时自动加载，只有当 `Claude Code` 认为相关信息有用时，才会使用普通文件工具按需读取。
-
-在会话过程中，Claude 也会持续读写这些记忆文件。如果你在界面中看到：
+在会话过程中，如果你看到：
 
 - `Writing memory`
 - `Recalled memory`
+
+说明 `Claude Code` 正在读写自动记忆目录。
 
 ## 6、审计与编辑
 
@@ -729,34 +723,37 @@ CLAUDE_CODE_DISABLE_AUTO_MEMORY=1
 
 
 
-# 六、排查记忆相关问题
+# 十一、排查记忆相关问题
 
-下面整理了使用 `CLAUDE.md` 和`Auto memory`时最常见的几个问题，以及对应的排查思路。
+## 1、Claude Code没有遵循记忆文件
 
-## 1、Claude Code没有遵循CLAUDE.md
+首先要明确：**`CLAUDE.md` 不是系统提示本身的一部分**，而是在系统提示之后，作为额外用户消息传递给模型。
 
-**需要明确一点：`CLAUDE.md`的内容并不是系统提示本身的一部分，而是会在系统提示之后，作为一条额外的用户消息传递给模型**。`Claude Code`会读取并尽量遵循这些指令，但这并不等同于硬性强制执行。尤其当指令写得不够具体，或者不同文件之间存在冲突时，遵循效果就可能不稳定。
+因此，它会影响`Claude Code`的行为，但不等于强制执行。
 
-可以按照如下顺序排查：
+排查顺序如下：
 
 1. 运行 `/memory`，确认相关 `CLAUDE.md`、`CLAUDE.local.md`、`.claude/rules/*.md` 是否确实被加载。
-2. 检查文件是否放在当前会话能加载的位置。
-3. 检查`CLAUDE.md`是否放在了当前会话能加载的位置
-4. 把模糊指令改成具体、可验证的指令。
-5. 如果是必须固定执行的动作，改用 `hook`。
-6. 如果希望提升到系统提示层级，可以在脚本或自动化场景中使用 `--append-system-prompt`。
-7. 使用 `InstructionsLoaded` hook 记录哪些指令文件被加载、何时加载、为什么加载。
+2. 如果没加载，检查文件是否放在当前会话能加载的位置。
+3. 如果加载了，检查是否存在相互冲突的规则
+4. 把模糊指令改成具体、可验证的指令
+
+如果指令必须在特定时间点运行，例如每次提交或每次文件编辑之后，请将其作为 Hook 来编写。Hook 在固定的生命周期事件中作为shell命令执行。
+
+对于希望在系统提示词级别执行的命令，使用`--append-system-prompt`，由于必须每次调用时都传递它，因此它更适合脚本和自动化，而不是交互式使用。
+
+使用`InstructionsLoaded` Hook 来记录加载的确切指令文件、加载时间以及原因，这对于调试特定路径的规则或子目录中的懒加载文件非常有用。
 
 
 ## 2、不知道自动记忆保存了什么
 
-如果不确定`Claude Code`已经记住了哪些内容，可以直接运行 `/memory`，然后打开自动记忆文件夹查看。
+如果不确定`Claude Code`已经记住了哪些内容，可以直接运行 `/memory`，然后打开自动记忆文件夹查看、编辑或删除。
 
 ## 3、CLAUDE.md太大
 
-`CLAUDE.md` 过长会占用更多上下文空间，也可能降低`Claude Code`对关键指令的遵循效果。通常建议将单个 `CLAUDE.md` 控制在 200 行以内。
+如果`CLAUDE.md`超过 200 行，通常应该开始整理。
 
-如果内容已经变得很多，可以考虑以下做法：
+可以采用以下方式：
 
 - 删除不需要每次会话加载的内容。
 - 将路径相关规则放到 `.claude/rules/`。
@@ -766,18 +763,18 @@ CLAUDE_CODE_DISABLE_AUTO_MEMORY=1
 
 需要注意的是，把内容拆成 `@path` 导入虽然有助于组织结构更清晰，但**不会减少上下文占用**。因为被导入的文件仍然会在启动时一起加载进上下文，所以导入解决的是“可维护性”问题，而不是“长度”问题。
 
-## 4、`/compact`之后指令似乎丢失了
+## 4、/compact之后指令似乎丢失了
 
 执行 `/compact` 之后，并不是所有指令都会以同样方式保留下来。
 
-项目根目录下的 `CLAUDE.md` 会在压缩后继续保留。因为 `/compact` 之后，`Claude Code`会重新从磁盘读取它，并再次注入到会话中。
+项目根目录的 `CLAUDE.md` 会在压缩后继续保留，因为 `/compact` 之后，`Claude Code`会重新从磁盘读取它，并再次注入到会话中。
 
-但子目录中的嵌套 `CLAUDE.md` 不会自动重新注入。它们只有在`Claude Code`后续再次读取对应子目录中的文件时，才会重新加载。
+但子目录中的嵌套 `CLAUDE.md` 不会自动重新注入。它们只有在 `Claude Code` 后续再次读取对应子目录中的文件时，才会重新加载。
 
-因此，如果你发现某条指令在 `/compact` 之后消失了，常见原因通常有两种：
+因此，如果你发现某条指令在 `/compact` 之后消失了，常见原因是：
 
-- 这条指令原本只存在于对话里，并没有写入文件
+- 这条指令原本只存在于对话里，没有写入文件
 - 这条指令位于嵌套 `CLAUDE.md` 中，而该目录尚未被重新触发读取
 - 这条指令来自路径限定规则，但当前还没有读取匹配路径的文件。
 
-如果希望某条规则在压缩后依然稳定保留，最可靠的方法是把它写进 `CLAUDE.md`，而不是只停留在对话内容里。如果希望某条规则在压缩后稳定保留，最可靠的方法是写进项目根目录的 `CLAUDE.md`，而不是只留在对话内容中。
+如果希望某条规则在压缩后稳定保留，最可靠的方法是写进项目根目录的 `CLAUDE.md`，而不是只留在对话内容中。

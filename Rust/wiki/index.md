@@ -17,6 +17,8 @@ date: 2026-05-21
 - [[Rust 枚举]] — Rust 枚举类型学习笔记综合摘要，涵盖两种形态、方法、Option/Result、内存布局
 - [[Rust 模式匹配]] — Rust 模式匹配综合摘要，涵盖 match、模式类型、绑定与借用、组合模式、简洁控制流
 - [[Rust crate 与模块]] — Rust 项目结构、编译单元与代码组织机制综合摘要
+- [[Rust 泛型]] — Rust 泛型机制系统梳理，涵盖类型参数、结构体/枚举/方法泛型、const 泛型与单态化
+- [[Rust 特征]] — Rust trait 系统梳理，涵盖定义实现、默认方法、trait bound 与 impl Trait
 
 ## entities
 
@@ -36,7 +38,7 @@ date: 2026-05-21
 - [[所有权系统]] — Rust 内存管理核心机制，所有权三大规则与 RAII
 - [[移动]] — 所有权转移的默认行为，涵盖函数传参、控制流与复合类型
 - [[Copy]] — 按位复制的标记 trait，与移动相对
-- [[Trait]] — Rust 类型系统中描述类型能力的机制，支撑泛型约束、标记 trait 与动态分发场景
+- [[Trait]] — Rust 类型系统中描述类型能力的机制，涵盖定义实现、默认方法、trait bound 与 impl Trait
 - [[Edition]] — Rust 语言规则的可选版本包机制，兼顾稳定性与进化性
 - [[语义化版本]] — Cargo 依赖管理中的版本号解析规则（^、~、精确版本）
 - [[size_of 与 size_of_val]] — `std::mem` 中查询类型与值内存大小的两个核心函数
@@ -60,6 +62,7 @@ date: 2026-05-21
 - [[Cargo构建配置]] — Cargo 与 rustc 的关系、构建流程、profile 配置与 Edition 迁移
 - [[模块系统]] — 模块概念、命名空间管理、可见性规则与嵌套模块
 - [[路径与导入]] — 路径语法、use 导入、self/super/crate、as、pub use 重导出
+- [[泛型]] — Rust 泛型机制详解：类型参数、结构体/枚举/方法泛型、const 泛型与单态化
 
 ## comparisons
 

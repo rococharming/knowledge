@@ -84,3 +84,17 @@
 - 索引维护: 0 个
 - 发现: 0 个（矛盾 0、陈旧 0、死链 0、缺页 0、缺引用 0、空白 0）
 - 建议: 0 条
+
+## [2026-05-26] Ingest | 泛型.md
+
+- 创建: `[[Rust 泛型]]`, `[[泛型]]`
+- 更新: `[[Trait]]` (source_count: 4→5，补充 trait 基础用法与关联)
+- 类型: articles
+- 来源: `raw/articles/泛型.md`
+
+## [2026-05-26] Ingest | 特征.md
+
+- 创建: `[[Rust 特征]]`
+- 更新: `[[Trait]]` (source_count: 4→5，补充 trait 定义实现、默认方法、孤儿规则、trait bound、impl Trait 等完整内容)
+- 类型: articles
+- 来源: `raw/articles/特征.md`
