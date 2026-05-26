@@ -62,6 +62,106 @@
 | `WebSearch`            | 执行网络搜索                                 | 是      |
 | `Write`                | 创建新文件或完整覆盖已有文件                         | 是      |
 
+## 2、工具能力的来源
+
+`Claude Code`的工具能力主要来自三类：
+
+|来源|说明|示例|
+|---|---|---|
+|内置工具|`Claude Code` 默认提供的文件、搜索、编辑、执行、任务等能力|`Read`、`Edit`、`Bash`、`Grep`|
+|`MCP Server`|外部服务暴露的工具和资源|GitHub MCP、数据库 MCP、内部 API MCP|
+|`skill`|可复用的提示词工作流和参考资料|部署检查、代码审查流程、文档生成规范|
+
+注意：
+
+- `MCP Server`可以增加新的外部工具
+- `skill`通过已有的`Skill`工具运行，不会变成新的工具名
+- 内置工具名会直接用于权限规则、子代理、hook和CLI配置
+
+
+# 三、权限规则和工具配置
+
+## 1、工具名的配置场景
+
+大多数情况下，用户与`Claude Code`对话时不需要直接指定工具名。`Claude Code`会根据任务自动选择工具。
+
+**但在配置权限和行为边界时，需要显式使用工具名**。
+
+常见配置位置包括：
+
+- 配置文件的`permissions.allow`，允许某些工具或工具的调用范围
+- 配置文件的`permissions.deny`，禁止某些工具或工具的调用范围
+- 执行`/permissions`命令在交互界面中管理权限
+- 命令行启动时传入`--allowedTools`指定允许的工具
+- 命令行启动时传入`--disallowedTools`指定禁止的工具
+- Agent SDK 的 `allowedTools`，SDK中配置允许工具
+- Agent SDK 的 `disallowedTools`，SDK中配置禁止工具
+- 子代理 frontmatter 的 `tools`限制子代理可使用工具
+- 子代理 frontmatter 的 `disallowedTools`限制子代理不可使用工具
+- skill frontmatter 的`allowed-tools`限制 skill 可使用工具
+- hook 的 `if`条件，根据工具调用匹配 hook
+
+> Agent SDK 是面向开发者的接口，用来在自己程序创建、运行和约束`Claude Agent`。
+
+## 2、权限规则格式
+
+权限规则通常使用：
+
+```text
+ToolName(specifier)
+```
+
+其中：
+
+- `ToolName`是工具名
+- `specifier`是该工具支持的匹配范围
+- 不同工具支持的`specifier`格式不同
+
+常见规则如下：
+
+| 规则格式                           | 适用工具                          | 匹配含义               |
+| ------------------------------ | ----------------------------- | ------------------ |
+| `Bash(npm run *)`              | `Bash`、`Monitor`              | 匹配 shell 命令模式      |
+| `PowerShell(Get-ChildItem *)`  | `PowerShell`                  | 匹配 PowerShell 命令模式 |
+| `Read(~/secrets/**)`           | `Read`、`Grep`、`Glob`、`LSP`    | 匹配读取路径             |
+| `Edit(/src/**)`                | `Edit`、`Write`、`NotebookEdit` | 匹配编辑路径             |
+| `Skill(deploy *)`              | `Skill`                       | 匹配 skill 名称        |
+| `Agent(Explore)`               | `Agent`                       | 匹配子代理类型            |
+| `WebFetch(domain:example.com)` | `WebFetch`                    | 匹配可访问域名            |
+| `WebSearch`                    | `WebSearch`                   | 允许或禁止整个搜索工具        |
+
+不在表格中的工具，例如 `ExitPlanMode`、`ShareOnboardingGuide`，通常只接受裸工具名，不支持括号里的匹配范围。
+
+## 3、Edit(...)的读权限影响
+
+如果配置了：
+
+```text
+Edit(/src/**)
+```
+
+这条规则不仅允许编辑`/src/**`，也会**自动授予同一路径下的读取权限**。
+
+因此，不需要额外写：
+
+```text
+Read(/src/**)
+```
+
+## 4、hook matcher 与权限规则的区别
+
+权限规则使用`ToolName(specifier)`，`hook`的`matcher`字段使用裸工具名，例如：
+
+```text
+Bash
+Edit
+Read
+```
+
+也就是说：
+
+- 权限规则关注“是否允许某个工具在某个范围内运行”
+- hook matcher 关注“某个工具调用发生时是否触发hook”
 
 
 
