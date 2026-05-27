@@ -94,6 +94,14 @@ claude
 | `Ctrl + O` | 查看 compact 压缩详情 |
 | `Shift + Tab` | 切换权限模式 |
 
+## 记忆系统
+
+Claude Code 支持跨会话持久化记忆的完整机制，详见 [[Claude Code 记忆系统]]：
+
+- **CLAUDE.md**：用户手动编写的持久指令文件，支持托管策略、用户级、项目级、本地级四级作用范围
+- **auto memory**：Claude Code 自动积累的项目经验、调试记录和偏好
+- **.claude/rules/**：可按路径生效的规则拆分机制
+
 ## 模型配置
 
 Claude Code 默认调用 Anthropic 官方接口，但可通过配置 `base URL + auth + model` 映射接入国内第三方模型。详见 [[Claude Code 安装与配置]]。

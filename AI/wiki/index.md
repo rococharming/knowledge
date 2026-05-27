@@ -10,6 +10,7 @@ date: 2026-05-10
 - [[Claude Code 入门]] — Claude Code 的入门指南，涵盖安装、配置、基本命令、权限模式和实战
 - [[Claude Code 权限模式系统]] — Claude Code 六种权限模式的系统梳理：default、acceptEdits、plan、auto、dontAsk、bypassPermissions
 - [[Claude Code Slash Command]] — Claude Code Slash Command 完整指南的素材摘要，涵盖五类命令分类和内置命令速查
+- [[Claude Code Memory 系统]] — Claude Code 记忆系统完整梳理，涵盖 CLAUDE.md、auto memory、.claude/rules/ 和排查指南
 
 ## entities
 
@@ -19,6 +20,7 @@ date: 2026-05-10
 
 - [[Claude Code 权限模式]] — Claude Code 的六种权限模式详解：default、acceptEdits、plan、auto、dontAsk、bypassPermissions，以及切换方式和受保护路径
 - [[Claude Code 命令类型]] — Claude Code Slash Command 的五类分类体系：内置命令、内置 Skill、自定义 Skill、插件命令、MCP Prompts
+- [[Claude Code 记忆系统]] — Claude Code 双轨记忆架构详解：CLAUDE.md 与 auto memory 的关系、.claude/rules/ 拆分、AGENTS.md 兼容与常见问题排查
 
 ## comparisons
 
@@ -36,6 +38,7 @@ _（暂无）_
 
 - [[Claude Code 安装与配置]] — Claude Code 安装和接入 MiniMax、Kimi、DeepSeek 的详细配置步骤
 - [[Claude Code 状态栏配置]] — Claude Code 底部状态栏的手动脚本配置，含完整 bash 脚本和 settings.json 配置
+- [[Claude Code 记忆配置]] — Claude Code 记忆系统的配置与使用步骤：CLAUDE.md 创建、@path 导入、.claude/rules/、auto memory 与排除规则
 
 ## entities
 

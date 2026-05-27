@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "d762db3e75942b83",
+        "id": "9e14ab51d62b0d70",
         "type": "tabs",
         "children": [
           {
-            "id": "963c404462e7a724",
+            "id": "9b11f86c207df78e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Python/notes/1、安装Python.md",
+                "file": "AI/notes/Claude Code/Tools.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1、安装Python"
+              "title": "Tools"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 407.5004348754883
   },
   "right": {
     "id": "94be849039c638f6",
@@ -137,13 +137,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Python/notes/1、安装Python.md",
+                "file": "AI/notes/Claude Code/Tools.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "1、安装Python 的大纲"
+              "title": "Tools 的大纲"
             }
           },
           {
@@ -197,52 +197,53 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "963c404462e7a724",
+  "active": "9b11f86c207df78e",
   "lastOpenFiles": [
+    "AI/raw/archive/articles/Memory.md",
+    "AI/wiki/recipes/Claude Code 记忆配置.md",
+    "AI/wiki/concepts/Claude Code 记忆系统.md",
+    "AI/wiki/summaries/Claude Code Memory 系统.md",
+    "AI/raw/articles/Memory.md",
+    "AI/notes/Claude Code/Tools.md",
+    "AI/notes/Claude Code/6、Skill.md",
+    "AI/notes/Claude Code/5、Memory.md",
+    "AI/wiki/log.md",
+    "Python/notes/3、字符串.md",
+    "assets/Pasted image 20260528003524.png",
+    "assets/Pasted image 20260528002934.png",
+    "assets/Pasted image 20260528001823.png",
+    "Python/notes/2、数据类型和变量.md",
+    "通用计算机知识/notes/1、字符编码.md",
+    "通用计算机知识/raw/字符编码、常见字符集解析（ASCII、Unicode、UTF-8、GB2312等）_字符集编码-CSDN博客.md",
+    "通用计算机知识/raw/archive/articles/字符编码.md",
+    "通用计算机知识/raw/archive/articles",
+    "通用计算机知识/wiki/concepts/UTF-16.md",
+    "通用计算机知识/wiki/concepts/UTF-8.md",
+    "通用计算机知识/wiki/concepts/字符编码基础.md",
+    "通用计算机知识/wiki/summaries/字符编码体系.md",
+    "通用计算机知识/raw/articles/字符编码.md",
+    "assets/0b677a5f743e378b173bdc66bc4cc4c2.jpeg",
+    "assets/ac3b30040aa3543466077303586eb6ff.jpeg",
+    "README.md",
+    "通用计算机知识/raw/videos",
+    "通用计算机知识/raw/podcasts",
+    "通用计算机知识/raw/papers",
+    "通用计算机知识/raw/others",
+    "通用计算机知识/raw/books",
+    "通用计算机知识/raw/articles",
+    "通用计算机知识/raw/archive",
+    "通用计算机知识/wiki/syntheses",
+    "通用计算机知识/wiki/recipes",
+    "通用计算机知识/wiki/log.md",
+    "通用计算机知识/wiki/index.md",
+    "通用计算机知识/domain.md",
     "Python/notes/1、安装Python.md",
     "assets/Pasted image 20260527152200.png",
     "assets/Pasted image 20260527151755.png",
     "assets/Pasted image 20260527151421.png",
     "assets/Pasted image 20260527143446.png",
     "assets/Pasted image 20260527131056.png",
-    "assets/Pasted image 20260527130840.png",
-    "assets/Pasted image 20260527130236.png",
-    "assets/Pasted image 20260527125731.png",
     "Rust/notes/Rust基础/1、Rust安装与开发环境配置.md",
-    "Python/domain.md.tmp.65215.991cc15099f5",
-    "Python/wiki/syntheses",
-    "Python/wiki/summaries",
-    "Python/wiki/recipes",
-    "Python/wiki/overviews",
-    "Python/wiki/log.md",
-    "Python/wiki/index.md",
-    "Python/wiki/entities",
-    "Python/wiki/concepts",
-    "Python/wiki/comparisons",
-    "Python/raw/videos",
-    "Python/raw/podcasts",
-    "Python/domain.md",
-    "AI/notes/Agent开发/1、Agent Harness.md",
-    "assets/Pasted image 20260527104340.png",
-    "前后端/notes/npm包管理/1、发布npm包.md",
-    "Rust/notes/Rust基础/12、特征进阶.md",
-    "assets/Pasted image 20260527091919.png",
-    "Rust/notes/Rust基础/11、特征基础.md",
-    "AI/notes/Claude Code/Tools.md",
-    "AI/notes/Claude Code/2、Claude Code工作原理（待完善）.md",
-    "AI/wiki/log.md",
-    "Rust/notes/Rust基础/13、错误处理.md",
-    "Rust/notes/Rust进阶/多线程编程/1、多线程编程基础.md",
-    "Rust/wiki/concepts/Trait.md",
-    "Rust/raw/archive/articles/特征.md",
-    "Rust/raw/archive/articles/泛型.md",
-    "Rust/wiki/summaries/Rust 特征.md",
-    "Rust/wiki/summaries/Rust 泛型.md",
-    "Rust/wiki/concepts/泛型.md",
-    "Rust/raw/articles/特征.md",
-    "Rust/wiki/log.md",
-    "Rust/notes/Rust基础/10、泛型.md",
-    "Rust/raw/articles/泛型.md",
-    "Rust/notes/Rust进阶/Trait进阶.md"
+    "Python/wiki/log.md"
   ]
 }

@@ -18,3 +18,10 @@
 - 创建: `[[Claude Code Slash Command]]`, `[[Claude Code 命令类型]]`, `[[Claude Code 内置命令]]`, `[[Claude Code 状态栏配置]]`
 - 类型: articles
 - 来源: `raw/articles/Slash Command.md`
+
+## [2026-05-28] Ingest | Memory
+
+- 创建: `[[Claude Code Memory 系统]]`, `[[Claude Code 记忆系统]]`, `[[Claude Code 记忆配置]]`
+- 更新: `[[Claude Code]]` (source_count: 1→2)
+- 类型: articles
+- 来源: `raw/articles/Memory.md`
