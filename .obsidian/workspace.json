@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "cbf3033ca328b39d",
+        "id": "58c9355a24e1af07",
         "type": "tabs",
         "children": [
           {
-            "id": "6ba1409f7eb15bb7",
+            "id": "77b9b40273092c72",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Rust/notes/Rust基础/1、Rust安装与开发环境配置.md",
+                "file": "Python/notes/1、安装Python.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1、Rust安装与开发环境配置"
+              "title": "1、安装Python"
             }
           }
         ]
@@ -137,13 +137,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Rust/notes/Rust基础/1、Rust安装与开发环境配置.md",
+                "file": "Python/notes/1、安装Python.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "1、Rust安装与开发环境配置 的大纲"
+              "title": "1、安装Python 的大纲"
             }
           },
           {
@@ -197,8 +197,13 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "6ba1409f7eb15bb7",
+  "active": "77b9b40273092c72",
   "lastOpenFiles": [
+    "assets/Pasted image 20260527131056.png",
+    "assets/Pasted image 20260527130840.png",
+    "assets/Pasted image 20260527130236.png",
+    "assets/Pasted image 20260527125731.png",
+    "Rust/notes/Rust基础/1、Rust安装与开发环境配置.md",
     "Python/notes/1、安装Python.md",
     "Python/domain.md.tmp.65215.991cc15099f5",
     "Python/wiki/syntheses",
@@ -229,8 +234,6 @@
     "assets/Pasted image 20260526162447.png",
     "assets/Pasted image 20260526162226.png",
     "assets/Pasted image 20260526161610.png",
-    "assets/Pasted image 20260526161502.png",
-    "assets/Pasted image 20260526161155.png",
     "Rust/wiki/concepts/Trait.md",
     "Rust/raw/archive/articles/特征.md",
     "Rust/raw/archive/articles/泛型.md",
@@ -241,9 +244,6 @@
     "Rust/wiki/log.md",
     "Rust/notes/Rust基础/10、泛型.md",
     "Rust/raw/articles/泛型.md",
-    "Rust/notes/Rust进阶/Trait进阶.md",
-    "assets/Pasted image 20260526141426.png",
-    "AI/notes/Claude Code/5、Memory.md",
-    "Rust/notes/Rust基础/19、集合（待补充）.md"
+    "Rust/notes/Rust进阶/Trait进阶.md"
   ]
 }
