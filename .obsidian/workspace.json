@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "58c9355a24e1af07",
+        "id": "d762db3e75942b83",
         "type": "tabs",
         "children": [
           {
-            "id": "77b9b40273092c72",
+            "id": "963c404462e7a724",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -197,14 +197,18 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "77b9b40273092c72",
+  "active": "963c404462e7a724",
   "lastOpenFiles": [
+    "Python/notes/1、安装Python.md",
+    "assets/Pasted image 20260527152200.png",
+    "assets/Pasted image 20260527151755.png",
+    "assets/Pasted image 20260527151421.png",
+    "assets/Pasted image 20260527143446.png",
     "assets/Pasted image 20260527131056.png",
     "assets/Pasted image 20260527130840.png",
     "assets/Pasted image 20260527130236.png",
     "assets/Pasted image 20260527125731.png",
     "Rust/notes/Rust基础/1、Rust安装与开发环境配置.md",
-    "Python/notes/1、安装Python.md",
     "Python/domain.md.tmp.65215.991cc15099f5",
     "Python/wiki/syntheses",
     "Python/wiki/summaries",
@@ -228,12 +232,7 @@
     "AI/notes/Claude Code/2、Claude Code工作原理（待完善）.md",
     "AI/wiki/log.md",
     "Rust/notes/Rust基础/13、错误处理.md",
-    "assets/Pasted image 20260526174749.png",
-    "assets/Pasted image 20260526170746.png",
     "Rust/notes/Rust进阶/多线程编程/1、多线程编程基础.md",
-    "assets/Pasted image 20260526162447.png",
-    "assets/Pasted image 20260526162226.png",
-    "assets/Pasted image 20260526161610.png",
     "Rust/wiki/concepts/Trait.md",
     "Rust/raw/archive/articles/特征.md",
     "Rust/raw/archive/articles/泛型.md",
