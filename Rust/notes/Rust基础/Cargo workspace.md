@@ -279,7 +279,7 @@ Workspace 成员共享根目录下的`Cargo.lock`和`/target/`。
 
 `Cargo.lock`记录依赖解析结果。一个`workspace`只有一个根`Cargo.lock`，这可以让所有成员在同一套依赖解析结果下构建。
 
-例如，假设 adder 和 add_one 都依赖 `rand`，只要版本要求兼容，`Cargo`会尽量解析道到同一个版本，并记录在根目录的`Cargo.lock`中。
+例如，假设 adder 和 add_one 都依赖 `rand`，只要版本要求兼容，`Cargo`会尽量解析到同一个版本，并记录在根目录的`Cargo.lock`中。
 
 但要注意：**共享`Cargo.lock`不代表共享依赖作用域**。
 
@@ -346,3 +346,38 @@ rand = { workspace = true }
 - `[workspace.dependencies]` 不会自动把依赖添加给所有成员，成员必须显式写 `workspace = true`
 - 成员可以在继承时额外添加 features
 - workspace dependency 的 features 会和成员侧启用的 features 合并
+
+# 七、workspace.package
+
+除了依赖版本，也可以在根目录统一声明部分 package 元信息。成员再通过 `.workspace = true` 继承。
+
+根目录`Cargo.toml`：
+
+```toml
+[workspace]
+resolver = "3"
+members = [
+    "adder",
+    "add-one",
+    "add-two",
+]
+
+[workspace.package]
+edition = "2024"
+version = "0.1.0"
+license = "MIT"
+authors = ["Your Name <you@example.com>"]
+```
+
+成员 `add-one/Cargo.toml`：
+
+```toml
+[package]
+name = "add-one"
+edition.workspace = true
+version.workspace = true
+license.workspace = true
+authors.workspace = true
+```
+
+这种写法适合在一个仓库中维护多个内部 crate 时，统一 `edition`、`version`、`license`、`authors` 等信息。
