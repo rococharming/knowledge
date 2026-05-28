@@ -1,23 +1,44 @@
 # 一、概述
 
-`Skill`是`Claude Code`的扩展机制，通过编写`SKILL.md`文件定义可复用的指令集，让`Claude Code`获得新能力。与每次对话自动加载的`CLAUDE.md`不同，`Skill`**按需加载**——`SKILL.md`的正文只在调用时才进入上下文，因此长篇参考资料几乎不占用上下文，直到你真正需要它。
+`Skill`是 Claude Code 的扩展机制。通过编写`SKILL.md`文件，可以把可复用的指令、流程、参考资料、脚本和辅助资源封装成一个可调用能力，让`Claude Code`在合适的任务中使用。
 
-`Claude Code`会在任务描述相关时自动触发`Skill`（加载`SKILL.md`正文），也可以通过`/skill-name`手动调用。
+与每次会话自动加载`CLAUDE.md`不同，`Skill`的正文是**按需加载**的：
 
-之前的自定义命令已合并入`Skill`体系。`.claude/commands/deploy.md`和`.claude/skills/deploy/SKILL.md`都会创建`/deploy`命令，效果相同。旧版命令仍兼容，但同名时`Skill`优先。`Skill`新增的特性包括：
+- 会话开始时，Claude Code 会看到可自动调用`Skill`的名称和描述
+- 当 `Skill`被用户手动调用，或被 Claude 自动判断为相关时，`SKILL.md`正文才会进入上下文
+- 如果`Skill`被设置为仅用户手动调用，则连描述也不会进入`Claude`上下文
 
-- 每个skill对应独立目录，除`SKILL.md`外可存放辅助文件
-- 让`Claude Code`在任务相关时自动加载
-- 通过frontmatter控制调用方式（手动/自动/禁用）
+因此，`Skill`适合存放较长的操作手册、检查清单、团队规范、固定工作流和辅助脚本。长篇参考资料不会像`CLAUDE.md`那样每次对话都占用上下文，只有真正使用时才加载。
 
-`Claude Code`的`Skill`遵循[Agent Skills](https://agentskills.io/)开放标准，一份规范的`SKILL.md`可在多个支持该标准的AI工具间复用。`Claude Code`在此基础上增加了[[#六、调用与权限控制|^调用控制]]、[[#七-1-动态上下文注入|^动态上下文注入]]和[[#七-2-子代理执行|^子代理执行]]。
+`Skill`有两种常见调用方式：
 
-在`Claude Code`的交互体系中，Skills与以下机制紧密相关：
+- 用户手动调用：`/skill-name`
+- `Claude`自动调用：根据`SKILL.md`的 YAML frontmatter 的`description`/`when_to_use`判断是否相关
 
-- **Slash命令**：`/`菜单中既有内置固定逻辑命令，也有`Skill`命令（详见[[4、Slash Command]]）
-- **Subagent**：`Skill`可通过`context: fork`在隔离子代理中执行（详见[[7、Subagent]]）
+当你反复粘贴相同的提示词、相同检查清单或相同操作步骤时，就适合把它整理成Skill。
 
-> **何时创建Skill**：当你反复粘贴相同的操作手册、检查清单或多步骤流程时；当`CLAUDE.md`中的某部分内容从"事实陈述"演变为"操作流程"时；当需要封装副作用操作（如部署）并严格控制触发时机时。
+可以这样理解：
+
+| 内容类型               | 更适合放在哪里                                |
+| ------------------ | -------------------------------------- |
+| 项目的长期事实、约定、背景信息    | `CLAUDE.md`                            |
+| 可复用的任务流程、检查清单、专项规范 | `Skill`                                |
+| 临时一次性说明            | 当前对话                                   |
+| 需要隔离执行的专项任务        | `Skill` + `context: fork` 或 `Subagent` |
+
+自定义`Slash Command`已经合并进 Skills 体系，因此，`.claude/commands/deploy.md`和`.claude/skills/deploy/SKILL.md`都可以创建`/deploy`命令。
+
+旧版`.claude/commands/*.md`文件仍然兼容，并支持相同的 frontmatter，但官方更推荐使用 Skills，因为 Skill 支持**独立目录**、**辅助文件**、**自动调用控制**、**子代理执行**和**动态上下文注入**等能力。
+
+Claude Code 的 Skills 遵循 `Agent Skills` 开放标准，一份规范的 `SKILL.md` 可以在多个支持该标准的 AI 工具之间复用。`Claude Code` 在此基础上增加了调用控制、权限控制、动态上下文注入、子代理执行和动态加载等扩展能力。
+
+在 Claude Code 的交互体系中，Skills 与以下机制关系紧密：
+
+- `Slash Command`：Skill 可以通过 `/skill-name` 手动调用
+- `Subagent`：Skill 可以通过 `context: fork`在隔离子代理中执行
+- `Hooks`：Skill 可以配置限定于自身生命周期的 hooks
+- `Permissions`：Skill 可以通过`allowed-tools`预批准工具，可以通过权限规则限制 Skill 调用
+
 
 # 二、创建第一个Skill
 
