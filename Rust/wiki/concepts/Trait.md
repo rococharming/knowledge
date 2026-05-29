@@ -1,8 +1,8 @@
 ---
 title: Trait
-date: 2026-05-26
+date: 2026-05-29
 tags: [rust, trait, type-system, generic, trait-bound]
-source_count: 5
+source_count: 6
 ---
 
 # Trait
@@ -246,6 +246,12 @@ println!("{:?}", [1, 2, 3]);
 - [[Option]] — `Option<T>` 中的 `T` 可被 trait bound 约束
 - [[Result]] — `Result<T, E>` 中的类型参数约束
 - [[Cargo构建配置]] — 构建过程中 trait 检查所需元数据
+- [[Trait中的Self]] — `Self` 在 trait 中的类型级语义
+- [[Trait关联项]] — 关联函数、关联类型与关联常量
+- [[泛型Trait与默认参数]] — 泛型 trait 与默认类型参数
+- [[完全限定方法调用]] — UFCS 消除方法调用歧义
+- [[子Trait与超Trait]] — trait 之间的能力依赖关系
+- [[Trait对象与动态分发]] — `dyn Trait` 与运行时多态
 
 ## 来源
 
@@ -254,3 +260,6 @@ println!("{:?}", [1, 2, 3]);
 - [[size_of和size_of_val]]
 - [[crate与模块]]
 - [[特征]]
+- [[特征基础]]
+- [[特征进阶]]
+- [[特征对象]]

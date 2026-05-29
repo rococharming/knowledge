@@ -19,6 +19,9 @@ date: 2026-05-21
 - [[Rust crate 与模块]] — Rust 项目结构、编译单元与代码组织机制综合摘要
 - [[Rust 泛型]] — Rust 泛型机制系统梳理，涵盖类型参数、结构体/枚举/方法泛型、const 泛型与单态化
 - [[Rust 特征]] — Rust trait 系统梳理，涵盖定义实现、默认方法、trait bound 与 impl Trait
+- [[Rust 特征基础]] — Rust trait 系统基础：定义实现、默认方法、孤儿规则、trait bound 与 impl Trait
+- [[Rust 特征进阶]] — Rust trait 高级特性：Self 语义、关联项、泛型 trait、UFCS 与超 trait
+- [[Rust 特征对象]] — Rust trait object 与分发机制：胖指针、静态/动态分发、dyn 兼容
 
 ## entities
 
@@ -63,6 +66,12 @@ date: 2026-05-21
 - [[模块系统]] — 模块概念、命名空间管理、可见性规则与嵌套模块
 - [[路径与导入]] — 路径语法、use 导入、self/super/crate、as、pub use 重导出
 - [[泛型]] — Rust 泛型机制详解：类型参数、结构体/枚举/方法泛型、const 泛型与单态化
+- [[Trait中的Self]] — `Self` 在 trait 中的类型级语义：返回当前类型、同类型参数、关联项访问
+- [[Trait关联项]] — 关联函数、关联类型与关联常量的定义与使用
+- [[泛型Trait与默认参数]] — 泛型 trait 定义、同一类型的多实例实现与默认类型参数
+- [[完全限定方法调用]] — UFCS 语法消除 trait/固有方法歧义与泛型 trait 实例区分
+- [[子Trait与超Trait]] — trait 之间的能力约束关系：超 trait 与子 trait 语法及语义
+- [[Trait对象与动态分发]] — `dyn Trait` 胖指针、虚表、静态/动态分发对比与 dyn 兼容规则
 
 ## comparisons
 

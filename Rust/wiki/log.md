@@ -98,3 +98,22 @@
 - 更新: `[[Trait]]` (source_count: 4→5，补充 trait 定义实现、默认方法、孤儿规则、trait bound、impl Trait 等完整内容)
 - 类型: articles
 - 来源: `raw/articles/特征.md`
+
+## [2026-05-29] Ingest | 特征基础.md
+
+- 创建: `[[Rust 特征基础]]`
+- 更新: `[[Trait]]` (source_count: 5→6，补充 trait 基础相关内容与交叉引用)
+- 类型: articles
+- 来源: `raw/articles/特征基础.md`
+
+## [2026-05-29] Ingest | 特征进阶.md
+
+- 创建: `[[Rust 特征进阶]]`, `[[Trait中的Self]]`, `[[Trait关联项]]`, `[[泛型Trait与默认参数]]`, `[[完全限定方法调用]]`, `[[子Trait与超Trait]]`
+- 类型: articles
+- 来源: `raw/articles/特征进阶.md`
+
+## [2026-05-29] Ingest | 特征对象.md
+
+- 创建: `[[Rust 特征对象]]`, `[[Trait对象与动态分发]]`
+- 类型: articles
+- 来源: `raw/articles/特征对象.md`
