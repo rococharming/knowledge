@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 335.5,
-    "collapsed": true
+    "width": 335.5
   },
   "right": {
     "id": "94be849039c638f6",
@@ -200,6 +199,8 @@
   },
   "active": "99bab58f022af65d",
   "lastOpenFiles": [
+    "assets/Pasted image 20260530211637.png",
+    "assets/Pasted image 20260530211324.png",
     "assets/Pasted image 20260529172733.png",
     "Rust/wiki/log.md",
     "Rust/raw/archive/articles/特征对象.md",
@@ -235,9 +236,7 @@
     "assets/Pasted image 20260528171308.png",
     "assets/Pasted image 20260528170529.png",
     "assets/Pasted image 20260528170441.png",
-    "assets/Pasted image 20260528164446.png",
     "Python/notes/5、控制结构.md.tmp.31598.d6616c23cd64",
-    "assets/Pasted image 20260528155613.png",
     "通用计算机知识/raw/archive/articles",
     "通用计算机知识/raw/videos",
     "通用计算机知识/raw/podcasts",
