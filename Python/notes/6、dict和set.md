@@ -190,7 +190,7 @@ for score in d.values():
 同时遍历 `key` 和 `value`：
 
 ```python
-for name,score in d.items():
+for name, score in d.items():
 	print(name, score)
 ```
 

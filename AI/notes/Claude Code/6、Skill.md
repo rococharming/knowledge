@@ -1,10 +1,12 @@
 # 一、概述
 
-`Skill`是 Claude Code 的扩展机制。通过编写`SKILL.md`文件，可以把可复用的指令、流程、参考资料、脚本和辅助资源封装成一个可调用能力，让`Claude Code`在合适的任务中使用。
+`Skill`是 Claude Code 的扩展机制。
+
+通过编写`SKILL.md`文件，可以把可复用的指令、流程、参考资料、脚本和辅助资源封装成一个可调用能力，让`Claude Code`在合适的任务中使用。
 
 与每次会话自动加载`CLAUDE.md`不同，`Skill`的正文是**按需加载**的：
 
-- 会话开始时，Claude Code 会看到可自动调用`Skill`的名称和描述
+- 会话开始时，Claude Code 会看到**可自动调用Skill**的名称和描述
 - 当 `Skill`被用户手动调用，或被 Claude 自动判断为相关时，`SKILL.md`正文才会进入上下文
 - 如果`Skill`被设置为仅用户手动调用，则连描述也不会进入`Claude`上下文
 
@@ -15,7 +17,7 @@
 - 用户手动调用：`/skill-name`
 - `Claude`自动调用：根据`SKILL.md`的 YAML frontmatter 的`description`/`when_to_use`判断是否相关
 
-当你反复粘贴相同的提示词、相同检查清单或相同操作步骤时，就适合把它整理成Skill。
+当你反复粘贴相同的提示词、相同检查清单或相同操作步骤时，就适合把它们整理成Skill。
 
 可以这样理解：
 
@@ -39,26 +41,45 @@ Claude Code 的 Skills 遵循 `Agent Skills` 开放标准，一份规范的 `SKI
 - `Hooks`：Skill 可以配置限定于自身生命周期的 hooks
 - `Permissions`：Skill 可以通过`allowed-tools`预批准工具，可以通过权限规则限制 Skill 调用
 
+# 二、创建并使用第一个Skill
 
-# 二、创建第一个Skill
+## 1、简介
 
-本示例创建一个项目级`summarize-changes` skill，用来总结当前Git仓库中尚未提交的更改并标记潜在风险。它会在Claude读取指令**之前**，自动将实时的`git diff`注入到提示词中，让回答基于真实的工作区变更而非猜测。
+本示例创建一个项目级`summarize-changes` skill，用来总结当前仓库中尚未提交的更改，并标记潜在风险。
 
-当询问"我改了什么"、"帮我写提交信息"、"帮我review这次改动"等问题时，Claude可自动加载该skill，也可通过`/summarize-changes`手动调用。
+它会在 Claude 读取`Skill`指令**之前**，自动执行`git diff HEAD`，把实时`diff`注入到提示词中。这样 Claude 的回答基于真实工作区变更，而不是根据上下文猜测。
 
-1. 创建skill目录
+当询问"我改了什么"、"帮我写提交信息"、"帮我review这次改动"等问题时，Claude可自动加载该skill。也可通过`/summarize-changes`手动调用。
 
-在项目目录的`.claude/skills/`下创建目录，目录名即为命令名：
+## 2、创建Skill目录
 
-```bash
+在项目根目录创建目录：
+
+```shell
 mkdir -p .claude/skills/summarize-changes
 ```
 
-2. 编写SKILL.md
+`summarize-changes`就是SKILL名。
 
-每个skill需要一个`SKILL.md`文件，包含两部分：YAML frontmatter（描述用途和适用场景）和Markdown指令内容（告诉Claude如何处理输入和组织回答）。
+`.claude/skills/summarize-changes/SKILL.md`对应命令`/summarize-changes`。
 
-保存以下内容到`.claude/skills/summarize-changes/SKILL.md`：
+也可以把这个 Skill 放到个人目录中，让它对所有项目生效：
+
+```shell
+mkdir -p ~/.claude/skills/summarize-changes
+```
+
+> 项目级 Skill 适合只服务当前仓库；个人级 Skill 适合多个项目都能复用的通用流程。
+
+## 3、编写SKILL.md
+
+保存以下内容到：
+
+```text
+.claude/skills/summarize-changes/SKILL.md
+```
+
+`SKILL.md`：
 
 ```markdown
 ---
@@ -67,7 +88,7 @@ description: 总结当前 Git 仓库中尚未提交的更改，并标记潜在�
 
 ## 当前更改
 
-!\`git diff HEAD\`
+!`git diff HEAD`
 
 ## 指令
 
@@ -84,20 +105,22 @@ description: 总结当前 Git 仓库中尚未提交的更改，并标记潜在�
 如果当前 diff 为空，请直接说明：当前没有尚未提交的更改。
 ```
 
-3. 测试skill
+其中`` !`git diff HEAD` ``表示动态上下文注入。Claude Code会在 Skill 内容发送给 Claude 之前先执行这条命令，并把命令输出替换到当前位置。Claude 最终看到的是实际 diff 内容，而不是命令本身。
 
-进入任意Git项目，修改一个文件后启动Claude Code：
+## 4、测试Skill
 
-```bash
+进入一个 Git 项目，修改任意文件后启动 Claude Code：
+
+```shell
 claude
 ```
 
-两种测试方式：
+可以用两种方式测试：
 
-- 自动触发：输入`我改动了什么`，让Claude判断是否调用
+- 自动触发：输入`我改动了什么`，让Claude判断自动判断并调用
 - 手动调用：输入`/summarize-changes`
 
-配置正确时，Claude会返回未提交更改的简要总结和潜在风险提示。
+配置正确时，Claude 会基于当前 `git diff HEAD` 返回改动摘要和潜在风险。
 
 # 三、Skill的存储与结构
 

@@ -4,49 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "dcdec276a4d6d6d5",
+        "id": "2a038e59911c597a",
         "type": "tabs",
         "children": [
           {
-            "id": "7453d70d85da455d",
+            "id": "ce6bb1a8410fc8ea",
             "type": "leaf",
-            "pinned": true,
             "state": {
-              "type": "terminal:terminal",
+              "type": "markdown",
               "state": {
-                "terminal:terminal": {
-                  "cwd": "/Users/11185032/spf/knowledge",
-                  "focus": false,
-                  "profile": {
-                    "args": [
-                      "--login"
-                    ],
-                    "executable": "/opt/homebrew/bin/fish",
-                    "followTheme": true,
-                    "name": "",
-                    "platforms": {
-                      "darwin": true
-                    },
-                    "pythonExecutable": "python3",
-                    "restoreHistory": false,
-                    "rightClickAction": "copyPaste",
-                    "successExitCodes": [
-                      "0",
-                      "SIGINT",
-                      "SIGTERM"
-                    ],
-                    "terminalOptions": {
-                      "documentOverride": null
-                    },
-                    "type": "integrated",
-                    "useWin32Conhost": true
-                  },
-                  "serial": null
-                }
+                "file": "AI/notes/Claude Code/6、Skill.md",
+                "mode": "source",
+                "source": false
               },
-              "pinned": true,
-              "icon": "terminal",
-              "title": "终端：✳ Claude Code"
+              "icon": "lucide-file",
+              "title": "6、Skill"
             }
           }
         ]
@@ -106,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 316.5
+    "width": 356.5004348754883
   },
   "right": {
     "id": "94be849039c638f6",
@@ -165,12 +137,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "AI/notes/Claude Code/6、Skill.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "6、Skill 的大纲"
             }
           },
           {
@@ -224,8 +197,18 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "7453d70d85da455d",
+  "active": "ce6bb1a8410fc8ea",
   "lastOpenFiles": [
+    "AI/notes/Claude Code/6、Skill.md",
+    "Python/notes/7、函数.md",
+    "assets/Pasted image 20260601211146.png",
+    "Python/notes/6、dict和set.md",
+    "Python/notes/4、list和tuple.md",
+    "assets/Pasted image 20260601204516.png",
+    "assets/Pasted image 20260601204304.png",
+    "assets/Pasted image 20260601203529.png",
+    "Rust/notes/Rust基础/16、实用工具特征（待重构）.md",
+    "Rust/notes/Rust基础/15、运算符重载.md",
     "Rust/raw/archive/articles/测试.md",
     "Rust/wiki/recipes/cargo test 参数与运行控制.md",
     "Rust/wiki/concepts/文档测试.md",
@@ -243,10 +226,6 @@
     "assets/Pasted image 20260601161157.png",
     "assets/Pasted image 20260601161050.png",
     "assets/Pasted image 20260601160952.png",
-    "assets/Pasted image 20260601160449.png",
-    "assets/Pasted image 20260601154500.png",
-    "assets/Pasted image 20260601154352.png",
-    "assets/Pasted image 20260601153817.png",
     "Rust/raw/archive/articles/错误处理.md",
     "Rust/wiki/concepts/错误传播.md",
     "Rust/wiki/recipes/main函数错误处理.md",
@@ -257,12 +236,6 @@
     "Rust/wiki/concepts/panic机制.md",
     "Rust/wiki/summaries/Rust 错误处理.md",
     "Rust/notes/Rust基础/14、错误处理.md",
-    "Rust/raw/articles/错误处理.md",
-    "Rust/wiki/log.md",
-    "Rust/raw/archive/articles/特征对象.md",
-    "Rust/raw/archive/articles/特征进阶.md",
-    "Rust/raw/archive/articles/特征基础.md",
-    "Rust/wiki/summaries/Rust 特征基础.md",
     "Rust/notes/Rust基础/11、特征基础.md.tmp.22545.7c9e017bc779",
     "Python/notes/5、控制结构.md.tmp.31598.d6616c23cd64",
     "通用计算机知识/raw/archive/articles",
