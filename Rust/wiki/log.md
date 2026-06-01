@@ -125,3 +125,9 @@
 - 更新: `[[枚举类型]]` (source_count: 1→2，补充来源)
 - 类型: articles
 - 来源: `raw/articles/错误处理.md`
+
+## [2026-06-01] Ingest | 测试.md
+
+- 创建: `[[Rust 测试]]`, `[[Rust 测试基础]]`, `[[单元测试]]`, `[[集成测试]]`, `[[文档测试]]`, `[[cargo test 参数与运行控制]]`
+- 类型: articles
+- 来源: `raw/articles/测试.md`

@@ -23,6 +23,7 @@ date: 2026-05-21
 - [[Rust 特征进阶]] — Rust trait 高级特性：Self 语义、关联项、泛型 trait、UFCS 与超 trait
 - [[Rust 特征对象]] — Rust trait object 与分发机制：胖指针、静态/动态分发、dyn 兼容
 - [[Rust 错误处理]] — Rust 错误处理系统梳理，涵盖 panic/Result、错误传播、自定义错误与策略选择
+- [[Rust 测试]] — Rust 测试体系综合摘要，涵盖测试类型、断言、运行控制与开发依赖
 
 ## entities
 
@@ -78,6 +79,10 @@ date: 2026-05-21
 - [[错误传播]] — `?` 运算符、错误类型自动转换与 Option 上的应用
 - [[自定义错误类型]] — 自定义错误枚举与标准错误体系接入
 - [[std-error-Error]] — std::error::Error trait 与错误链机制
+- [[Rust 测试基础]] — 测试函数结构、断言宏、should_panic、Result 测试与自定义失败信息
+- [[单元测试]] — 与被测代码同文件的测试、#[cfg(test)] 条件编译、私有函数测试
+- [[集成测试]] — tests/ 目录组织、共享模块、二进制包的集成测试结构
+- [[文档测试]] — 文档注释中的可测试代码块、隐藏代码、代码块标记
 
 ## comparisons
 
@@ -100,6 +105,7 @@ _（暂无）_
 - [[RustRover 开发环境配置]] — JetBrains 专用 Rust IDE 的配置与核心功能使用
 - [[模块文件组织]] — 分文件编写模块的实践：单文件、目录模块与现代组织方式
 - [[main函数错误处理]] — main 函数中常见的错误处理模式
+- [[cargo test 参数与运行控制]] — cargo test 命令参数、运行方式控制与开发依赖使用
 
 ## snippets
 

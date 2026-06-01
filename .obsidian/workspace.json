@@ -4,21 +4,49 @@
     "type": "split",
     "children": [
       {
-        "id": "1c66562d80304a5f",
+        "id": "dcdec276a4d6d6d5",
         "type": "tabs",
         "children": [
           {
-            "id": "51af049e94dfa3e4",
+            "id": "7453d70d85da455d",
             "type": "leaf",
+            "pinned": true,
             "state": {
-              "type": "markdown",
+              "type": "terminal:terminal",
               "state": {
-                "file": "Rust/notes/Rust基础/15、测试.md",
-                "mode": "source",
-                "source": false
+                "terminal:terminal": {
+                  "cwd": "/Users/11185032/spf/knowledge",
+                  "focus": false,
+                  "profile": {
+                    "args": [
+                      "--login"
+                    ],
+                    "executable": "/opt/homebrew/bin/fish",
+                    "followTheme": true,
+                    "name": "",
+                    "platforms": {
+                      "darwin": true
+                    },
+                    "pythonExecutable": "python3",
+                    "restoreHistory": false,
+                    "rightClickAction": "copyPaste",
+                    "successExitCodes": [
+                      "0",
+                      "SIGINT",
+                      "SIGTERM"
+                    ],
+                    "terminalOptions": {
+                      "documentOverride": null
+                    },
+                    "type": "integrated",
+                    "useWin32Conhost": true
+                  },
+                  "serial": null
+                }
               },
-              "icon": "lucide-file",
-              "title": "15、测试"
+              "pinned": true,
+              "icon": "terminal",
+              "title": "终端：✳ Claude Code"
             }
           }
         ]
@@ -78,8 +106,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 214.50043487548828,
-    "collapsed": true
+    "width": 316.5
   },
   "right": {
     "id": "94be849039c638f6",
@@ -138,13 +165,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Rust/notes/Rust基础/15、测试.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "15、测试 的大纲"
+              "title": "大纲"
             }
           },
           {
@@ -198,15 +224,29 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "51af049e94dfa3e4",
+  "active": "7453d70d85da455d",
   "lastOpenFiles": [
-    "assets/Pasted image 20260601131738.png",
-    "assets/Pasted image 20260601130545.png",
-    "assets/Pasted image 20260601130408.png",
-    "assets/Pasted image 20260601130302.png",
-    "Rust/notes/Rust基础/2、Rust基础语法.md",
+    "Rust/raw/archive/articles/测试.md",
+    "Rust/wiki/recipes/cargo test 参数与运行控制.md",
+    "Rust/wiki/concepts/文档测试.md",
+    "Rust/wiki/concepts/集成测试.md",
+    "Rust/wiki/concepts/单元测试.md",
+    "Rust/wiki/concepts/Rust 测试基础.md",
+    "Rust/wiki/summaries/Rust 测试.md",
+    "Rust/raw/articles/测试.md",
     "Rust/notes/Rust基础/15、测试.md",
-    "assets/Pasted image 20260601124702.png",
+    "Rust/notes/Rust基础/15、测试.md.tmp.92677.229b8473b832",
+    "assets/Pasted image 20260601165314.png",
+    "assets/Pasted image 20260601164519.png",
+    "Rust/notes/Rust基础/2、Rust基础语法.md",
+    "assets/Pasted image 20260601161201.png",
+    "assets/Pasted image 20260601161157.png",
+    "assets/Pasted image 20260601161050.png",
+    "assets/Pasted image 20260601160952.png",
+    "assets/Pasted image 20260601160449.png",
+    "assets/Pasted image 20260601154500.png",
+    "assets/Pasted image 20260601154352.png",
+    "assets/Pasted image 20260601153817.png",
     "Rust/raw/archive/articles/错误处理.md",
     "Rust/wiki/concepts/错误传播.md",
     "Rust/wiki/recipes/main函数错误处理.md",
@@ -218,25 +258,12 @@
     "Rust/wiki/summaries/Rust 错误处理.md",
     "Rust/notes/Rust基础/14、错误处理.md",
     "Rust/raw/articles/错误处理.md",
-    "assets/Pasted image 20260601104845.png",
-    "assets/Pasted image 20260530211637.png",
-    "assets/Pasted image 20260530211324.png",
-    "assets/Pasted image 20260529172733.png",
     "Rust/wiki/log.md",
     "Rust/raw/archive/articles/特征对象.md",
     "Rust/raw/archive/articles/特征进阶.md",
     "Rust/raw/archive/articles/特征基础.md",
     "Rust/wiki/summaries/Rust 特征基础.md",
-    "Rust/wiki/summaries/Rust 特征对象.md",
-    "Rust/wiki/summaries/Rust 特征进阶.md",
-    "Rust/wiki/concepts/Trait对象与动态分发.md",
-    "Rust/wiki/concepts/子Trait与超Trait.md",
-    "Rust/wiki/concepts/完全限定方法调用.md",
-    "Rust/wiki/concepts/泛型Trait与默认参数.md",
-    "Rust/wiki/concepts/Trait关联项.md",
     "Rust/notes/Rust基础/11、特征基础.md.tmp.22545.7c9e017bc779",
-    "assets/Pasted image 20260529090824.png",
-    "assets/Pasted image 20260528204804.png",
     "Python/notes/5、控制结构.md.tmp.31598.d6616c23cd64",
     "通用计算机知识/raw/archive/articles",
     "通用计算机知识/raw/videos",
@@ -244,7 +271,6 @@
     "通用计算机知识/raw/papers",
     "通用计算机知识/raw/others",
     "通用计算机知识/raw/books",
-    "通用计算机知识/raw/articles",
-    "通用计算机知识/raw/archive"
+    "通用计算机知识/raw/articles"
   ]
 }
