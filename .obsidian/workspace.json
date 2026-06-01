@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 283.5,
+    "width": 214.50043487548828,
     "collapsed": true
   },
   "right": {
@@ -181,8 +181,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 276.5,
-    "collapsed": true
+    "width": 276.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -201,6 +200,13 @@
   },
   "active": "51af049e94dfa3e4",
   "lastOpenFiles": [
+    "assets/Pasted image 20260601131738.png",
+    "assets/Pasted image 20260601130545.png",
+    "assets/Pasted image 20260601130408.png",
+    "assets/Pasted image 20260601130302.png",
+    "Rust/notes/Rust基础/2、Rust基础语法.md",
+    "Rust/notes/Rust基础/15、测试.md",
+    "assets/Pasted image 20260601124702.png",
     "Rust/raw/archive/articles/错误处理.md",
     "Rust/wiki/concepts/错误传播.md",
     "Rust/wiki/recipes/main函数错误处理.md",
@@ -210,7 +216,6 @@
     "Rust/wiki/concepts/Result处理.md",
     "Rust/wiki/concepts/panic机制.md",
     "Rust/wiki/summaries/Rust 错误处理.md",
-    "Rust/notes/Rust基础/15、测试.md",
     "Rust/notes/Rust基础/14、错误处理.md",
     "Rust/raw/articles/错误处理.md",
     "assets/Pasted image 20260601104845.png",
@@ -229,15 +234,9 @@
     "Rust/wiki/concepts/完全限定方法调用.md",
     "Rust/wiki/concepts/泛型Trait与默认参数.md",
     "Rust/wiki/concepts/Trait关联项.md",
-    "Rust/wiki/concepts/Trait中的Self.md",
-    "Rust/raw/articles/特征对象.md",
     "Rust/notes/Rust基础/11、特征基础.md.tmp.22545.7c9e017bc779",
     "assets/Pasted image 20260529090824.png",
     "assets/Pasted image 20260528204804.png",
-    "assets/Pasted image 20260528202756.png",
-    "assets/Pasted image 20260528202708.png",
-    "assets/Pasted image 20260528201607.png",
-    "assets/Pasted image 20260528171308.png",
     "Python/notes/5、控制结构.md.tmp.31598.d6616c23cd64",
     "通用计算机知识/raw/archive/articles",
     "通用计算机知识/raw/videos",
