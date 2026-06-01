@@ -117,3 +117,11 @@
 - 创建: `[[Rust 特征对象]]`, `[[Trait对象与动态分发]]`
 - 类型: articles
 - 来源: `raw/articles/特征对象.md`
+
+## [2026-06-01] Ingest | 错误处理.md
+
+- 创建: `[[Rust 错误处理]]`, `[[panic机制]]`, `[[Result处理]]`, `[[错误传播]]`, `[[自定义错误类型]]`, `[[std-error-Error]]`, `[[错误处理策略]]`, `[[main函数错误处理]]`
+- 更新: `[[Result]]` (source_count: 2→3，补充类型别名、#[must_use]、方法关联)
+- 更新: `[[枚举类型]]` (source_count: 1→2，补充来源)
+- 类型: articles
+- 来源: `raw/articles/错误处理.md`

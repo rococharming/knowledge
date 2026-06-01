@@ -22,6 +22,7 @@ date: 2026-05-21
 - [[Rust 特征基础]] — Rust trait 系统基础：定义实现、默认方法、孤儿规则、trait bound 与 impl Trait
 - [[Rust 特征进阶]] — Rust trait 高级特性：Self 语义、关联项、泛型 trait、UFCS 与超 trait
 - [[Rust 特征对象]] — Rust trait object 与分发机制：胖指针、静态/动态分发、dyn 兼容
+- [[Rust 错误处理]] — Rust 错误处理系统梳理，涵盖 panic/Result、错误传播、自定义错误与策略选择
 
 ## entities
 
@@ -72,6 +73,11 @@ date: 2026-05-21
 - [[完全限定方法调用]] — UFCS 语法消除 trait/固有方法歧义与泛型 trait 实例区分
 - [[子Trait与超Trait]] — trait 之间的能力约束关系：超 trait 与子 trait 语法及语义
 - [[Trait对象与动态分发]] — `dyn Trait` 胖指针、虚表、静态/动态分发对比与 dyn 兼容规则
+- [[panic机制]] — panic! 的触发方式、栈展开/abort、backtrace 与线程行为
+- [[Result处理]] — Result 的多种处理方法与实用方法速查
+- [[错误传播]] — `?` 运算符、错误类型自动转换与 Option 上的应用
+- [[自定义错误类型]] — 自定义错误枚举与标准错误体系接入
+- [[std-error-Error]] — std::error::Error trait 与错误链机制
 
 ## comparisons
 
@@ -83,7 +89,7 @@ _（暂无）_
 
 ## syntheses
 
-_（暂无）_
+- [[错误处理策略]] — 错误分类、处理策略对比与最佳实践
 
 ## recipes
 
@@ -93,6 +99,7 @@ _（暂无）_
 - [[VS Code Rust 开发环境配置]] — 在 VS Code 中配置 rust-analyzer 等插件搭建 Rust 开发环境
 - [[RustRover 开发环境配置]] — JetBrains 专用 Rust IDE 的配置与核心功能使用
 - [[模块文件组织]] — 分文件编写模块的实践：单文件、目录模块与现代组织方式
+- [[main函数错误处理]] — main 函数中常见的错误处理模式
 
 ## snippets
 
