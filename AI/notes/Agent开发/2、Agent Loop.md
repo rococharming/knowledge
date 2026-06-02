@@ -169,31 +169,119 @@ run_bash("ls -la")
 2. 用 `subprocess.run(..., shell=True)` 执行命令。  
 3. 捕获 stdout 和 stderr。  
 4. 对超时、无输出和系统错误做简单兜底。  
+
+```python
+def run_bash(command: str)  -> str {
+	
+	# 危险命令列表
+	dangerous = ["rm -rf /", "sudo", "shutdown", "reboot", "> /dev/"]
+	
+	# 判断命令是否危险，危险则直接返回不执行命令
+	if any(d in command for d in dangerous):
+		return "Error: Dangerous command blocked"
+	
+	try:
+		r = subprocess.run(command, shell=True, cwd=os.getcwd(),
+						  capture_output=True, text=True, timeout=120)
+		out = (r.stdout + r.stderr).strip();
+		return out[:50000] if out else "(no output)"
+	except subprocess.TimeoutExpired:
+		return "Error: Timeout (120s)"
+	except (FileNotFoundError, OsError) as e:
+		return f"Error: {e}"
+	
+}
+```
   
-这是教学版的轻量保护，不是完整权限系统。README 也明确提示：真实权限控制会在后续课程展开。  
+这是教学版的轻量保护，不是完整权限系统。
   
-## Agent Loop 逐行理解  
+## 5、Agent Loop 逐行理解  
   
 核心函数是：  
   
 ```python  
-def agent_loop(messages: list):  
-    while True:        response = client.messages.create(            model=MODEL, system=SYSTEM, messages=messages,            tools=TOOLS, max_tokens=8000,        )  
-        messages.append({"role": "assistant", "content": response.content})  
-        if response.stop_reason != "tool_use":            return  
-        results = []        for block in response.content:            if block.type == "tool_use":                output = run_bash(block.input["command"])                results.append({                    "type": "tool_result",                    "tool_use_id": block.id,                    "content": output,                })  
-        messages.append({"role": "user", "content": results})  
+def agent_loop(messages: list):
+	
+	while True:
+	
+		# 用 Anthropic Messages API，让模型根据当前对话历史生成下一步响应。
+		response = client.messages.create(
+			model=MODEL, system=SYSTEM, messages=messages,
+			tools=TOOLS, max_tokens=8000,
+		)
+		
+		# 把模型这次回复加入对话历史。
+		messages.append({"role": "assistant", "content": response.content})
+	
+		# 如果模型不需要调用工具，结束循环
+		if response.stop_reason != "tool_use":
+			return 
+		
+	
+		results = []
+		for block in response.content:
+			if block.type = "tool_use":
+				print(f"\033[33m$ {block.input['command']}\033[0m")
+				output = run_bash(block.input["command"])
+				print(output[:200])
+				results.append({
+					"type": "tool_result",
+					"tool_use_id": block.id,
+					"content": output
+				})
+	
+	
+		# 把工具执行结果作为一条新的 `user` 消息写回对话历史。	
+		messages.append({"role": "user", "content": results})
+	
+
 ```  
-  
-理解时可以抓住三个动作：  
-  
-- `client.messages.create(...)`：让模型基于当前历史决定下一步。  
-- `run_bash(...)`：harness 替模型执行真实世界动作。  
-- `messages.append({"role": "user", "content": results})`：把执行结果回灌给模型，让下一轮推理有依据。  
-  
+
+参数`messages`用于保存整个对话历史，例如：
+
+```python
+[
+	{"role": "user", "content": "帮我查看当前目录"},
+	{"role": "assistant", "content": ...},
+	{"role": "user", "content": ...},
+]
+```
+
+注意，`response.content` 不一定只是普通文本，也可能包含工具调用请求。
+
+例如模型想执行命令时，`response.content` 里可能包含类似：
+
+```python
+{
+	"type": "tool_use",
+	"name": "bash",
+	"input": {
+		"command": "ls"
+	}
+}
+```
+
+将工具执行结果加入列表时，需要按照 Anthropic 工具调用协议组织：
+
+```python
+results.append({  
+	"type": "tool_result",  
+	"tool_use_id": block.id,  
+	"content": output,  
+})
+```
+
+字段含义：
+
+| 字段                        | 含义                 |
+| ------------------------- | ------------------ |
+| `"type": "tool_result"`   | 表示这是工具执行结果         |
+| `"tool_use_id": block.id` | 对应模型刚才发出的那个工具调用 ID |
+| `"content": output`       | 工具执行输出             |
+
 其中 `tool_use_id` 很重要，它把某个工具结果和模型发出的某个工具调用对应起来。模型一次可能请求多个工具调用，结果需要能准确匹配回去。  
   
-## 入口交互  
+## 6、入口交互  
   
 主程序维护一个 `history`：  
   

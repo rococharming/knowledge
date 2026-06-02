@@ -6,3 +6,9 @@
 - 类型: articles
 - 来源: `raw/articles/字符编码.md`
 
+## [2026-06-02] Ingest | 终端ANSI转义字符
+
+- 创建: `[[ANSI转义字符]]`, `[[ANSI转义序列]]`
+- 类型: articles
+- 来源: `raw/articles/终端ANSI转义字符.md`
+
