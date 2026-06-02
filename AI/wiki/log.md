@@ -25,3 +25,9 @@
 - 更新: `[[Claude Code]]` (source_count: 1→2)
 - 类型: articles
 - 来源: `raw/articles/Memory.md`
+
+## [2026-06-02] Ingest | Skill
+
+- 创建: `[[Claude Code Skill 系统]]`, `[[Claude Code Skill 系统]]`, `[[Claude Code Skill 创建]]`
+- 类型: articles
+- 来源: `raw/articles/Skill.md`

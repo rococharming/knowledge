@@ -23,7 +23,6 @@ Claude Code = 一个 agent loop
 `harness`没有让模型变聪明，因为模型本身已经很智能。`harness` 只是给了模型手、眼睛和一个可以工作的空间。
 
 
-
 # 二、核心模式
 
 ![[Pasted image 20260527104340.png|600]]
@@ -68,9 +67,9 @@ def agent_loop(messages):
         })
 ```
 
-之后每一节课会在这个循环之上叠加一种`harness`机制，但这个循环本身从不改变。循环本身是`agent`，机制属于`harness`。循环是固定的，会变化的是工具、知识、权限。
+之后在这个循环之上叠加一种`harness`机制，但这个循环本身从不改变。循环本身是`agent`，机制属于`harness`。循环是固定的，会变化的是工具、知识、权限。
 
-```rust
+```text
 Agent = 模型(LLM) + 通用操作环境（Harness）
 ```
 
