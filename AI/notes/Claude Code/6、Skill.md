@@ -1,5 +1,7 @@
 # 一、概述
 
+## 1、Skill概念
+
 `Skill`是 Claude Code 的扩展机制。
 
 通过编写`SKILL.md`文件，可以把可复用的指令、流程、参考资料、脚本和辅助资源封装成一个可调用能力，让`Claude Code`在合适的任务中使用。
@@ -40,6 +42,120 @@ Claude Code 的 Skills 遵循 `Agent Skills` 开放标准，一份规范的 `SKI
 - `Subagent`：Skill 可以通过 `context: fork`在隔离子代理中执行
 - `Hooks`：Skill 可以配置限定于自身生命周期的 hooks
 - `Permissions`：Skill 可以通过`allowed-tools`预批准工具，可以通过权限规则限制 Skill 调用
+
+## 2、捆绑Skills
+
+Claude Code包含一组在每个会话可用的捆绑Skill，包括`/code-review`、`/batch`、`/debug`、`/loop`、`/claude-api`等。
+
+与大多数会直接执行固定逻辑的内置命令不同，捆绑Skill是基于提示词的：它会向 Claude 提供详细指令，并让 Claude 使用其工具来编排完成工作。
+
+可以像调用其他任何技能一样调用它们，只需输入 `/` 后跟技能名称即可。
+
+这里着重介绍`/run`、`/verify`和`/run-skill-generator`三个捆绑 skill。这三个 skill 可以协同工作，用于启动项目，并根据运行中的项目而不仅仅是测试来确认更改。
+
+| Skill                  | 用途                                                 |
+| ---------------------- | -------------------------------------------------- |
+| `/run`                 | 启动应用并观察实际运行效果。看当前程序能不能跑起来、运行后输出/页面/接口是什么           |
+| `/verify`              | 构建并运行应用，按目标验收改动是否正确。确认刚才的代码修改是否真的符合需求，而不是只看类型检查或测试 |
+| `/run-skill-generator` | 生成项目专属的运行配方，教 `/run` 和 `/verify` 如何构建和启动你的项目       |
+`/run` 和 `/verify` 无需设置即可使用。它们会根据你的项目类型（CLI、服务器、TUI、浏览器驱动等），以及 README、`package.json` 或 `Makefile` 中的内容来推断启动方式。
+
+但对于那些需要标准启动流程之外内容的项目，这种推断会变得不可靠，例如需要数据库、env环境变量文件、图形会话或多步骤构建流程的项目。
+
+`/run-skill-generator`则会记录启动配方，它会从一个干净环境开始让应用成功运行，捕获有效的步骤，包括安装命令、环境变量、启动脚本等，然后将其作为项目专属技能提交到`.claude/skills/run-<name>/`。
+
+之后，`/run`、`/verify`以及该仓库中的任何其他Agent都会遵循这个已记录的配方，而不是重新发现启动方式。
+
+每个项目运行一次 `/run-skill-generator` 即可；如果构建或启动流程发生变化，则需要再次运行。
+
+下面给一个简单Rust项目示例：
+
+1. 准备一个Rust CLI项目
+
+```shell
+cargo new hello_cli  
+cd hello_cli
+```
+
+项目结构大概是：
+
+```text
+hello_cli/
+├── Cargo.toml
+└── src/
+    └── main.rs
+```
+
+初始 `src/main.rs`：
+
+```rust
+fn main() {
+    println!("Hello, world!");
+}
+```
+
+2. 第一次让 Claude Code 记录运行方式
+
+在 Claude Code 里输入：
+
+```text
+/run-skill-generator 这是一个 Rust CLI 项目。构建用 cargo build，运行用 cargo run。请记录这个项目的运行方式。
+```
+
+它的作用是生成项目专属运行配方，后续 `/run` 和 `/verify` 就不需要每次重新猜怎么启动项目。
+
+结果：
+
+![[Pasted image 20260602110117.png|600]]
+
+可以看到生成了`run-hello-cli` skill。
+
+3. 使用`/run`查看程序真实运行结果
+
+![[Pasted image 20260602111517.png|400]]
+
+可以看到 Claude 会自动加载`run-hello-cli` skill 运行项目。
+
+现在让 Claude Code 修改程序：
+
+```text
+把程序输出改成 Hello from Rust
+```
+
+Claude 修改后，`src/main.rs` 可能变成：
+
+```rust
+fn main() {  
+	println!("Hello from Rust");  
+}
+```
+
+结果：
+
+![[Pasted image 20260602111951.png|400]]
+
+会发现 Claude Code 除了更改源码，还会更改之前创建的`run-hello-cli` skill内容来适配当前修改并自动验证结果。
+
+4. 使用`/verify`验收代码改动
+
+继续让 Claude Code 改一个功能：
+
+```text
+让程序读取命令行参数 name，如果传入 name，就输出 Hello, name。
+```
+
+结果：
+
+![[Pasted image 20260602112252.png|400]]
+
+然后可以输入：
+
+```text
+/verify
+```
+
+`/verify`更像针对刚才的功能要求做验收，它不仅会构建运行程序，还会围绕你描述的预期行为做确认。
+
 
 # 二、创建并使用第一个Skill
 
@@ -122,60 +238,149 @@ claude
 
 配置正确时，Claude 会基于当前 `git diff HEAD` 返回改动摘要和潜在风险。
 
+![[Pasted image 20260602113451.png|400]]
+
 # 三、Skill的存储与结构
 
 ## 1、存储作用域
 
-Skill存放位置决定生效范围，支持四级作用域：
+Skill存放位置决定生效范围。常见作用域如下：
 
-| 级别  |                 路径                 |   适用范围    | 覆盖优先级  |
-| :-: | :--------------------------------: | :-------: | :----: |
-| 企业级 |   参考[[Settings]]的**managed settings**    |  组织内所有用户  |   最高   |
-| 个人级 | `~/.claude/skills/<name>/SKILL.md` | 当前用户的所有项目 |   中高   |
-| 项目级 |  `.claude/skills/<name>/SKILL.md`  |   仅当前项目   |   中    |
-| 插件级 | `<plugin>/skills/<name>/SKILL.md`  |   插件启用处   | 独立命名空间 |
+| 级别  |                 路径                  |   适用范围   |    说明    | 覆盖优先级  |
+| :-: | :---------------------------------: | :------: | :------: | ------ |
+| 企业级 | managed settings 配置（参考[[Settings]]） | 组织内所有用户  | 由管理员统一下发 | 最高     |
+| 个人级 | `~/.claude/skills/<name>/SKILL.md`  | 当前用户所有项目 | 适合通用工作流  | 中高     |
+| 项目级 |  `.claude/skills/<name>/SKILL.md`   |   当前项目   | 适合项目专用规则 | 中      |
+| 插件级 |  `<plugin>/skills/<name>/SKILL.md`  |  插件启用处   | 使用插件命名空间 | 独立命名空间 |
+同名 Skill 的覆盖规则通常是：
 
-同名Skill的覆盖规则：**企业级 > 个人级 > 项目级**。插件Skill使用`plugin-name:skill-name`命名空间，不与其他级别冲突。
+> 企业级 > 个人级 > 项目级
+
+插件Skill使用**插件命名空间**，不直接与普通个人级、项目级 Skill 冲突。
+
+插件Skill使用`plugin-name:skill-name`命名空间，不与其他级别冲突。调用时表现为`/plugin-name:skill-name`。
+
+如果在`.claude/commands/`有和 Skill 同名的 `.md` 文件，则 skill 优先。
+
+如果在 skill 文件夹里加上`.claude-plugin/plugin.json`，Claude 会把这个 skill 文件夹当成一个插件加载。
+
+假设你有一个 skill：
+
+```text
+.claude/skills/my-tool/SKILL.md
+```
+
+正常情况下，它只是一个普通 skill。但如果在这个 skill 文件夹里再加一个插件配置文件：
+
+```text
+.claude/skills/my-tool/.claude-plugin/plugin.json
+```
+
+那么 Claude Code 会把整个 `my-tool` 文件夹当成一个**plugin 插件**来加载，而不只是单纯的 skill。
+
+这样一来，这个目录就可以捆绑更多东西，不只是 skill。
+
+Claude Code 加载成插件时，插件名显示成`my-tool@skills-dir`，这里 `@skills-dir` 说明这个插件来自 skills 目录，而不是普通插件目录。
 
 ## 2、目录结构
 
-每个Skill是一个独立目录，`SKILL.md`是入口文件（必须），可附带辅助文件：
+每个Skill是一个**独立目录**，`SKILL.md`是入口文件，必须存在。Skill目录中还可以放辅助文件、模板、示例和脚本。
+
+示例：
 
 ```text
 my-skill/
-├── SKILL.md           # 主指令（必须，概览与导航）
-├── template.md        # 供 Claude Code 填写的模板（可选）
+├── SKILL.md           # 主指令，必须存在
+├── template.md        # 模板文件，可选
+├── reference.md       # 详细参考资料，可选
 ├── examples/
-│   └── sample.md      # 预期输出格式示例（可选）
+│   └── sample.md      # 示例输出，可选
 └── scripts/
-    └── validate.sh    # Claude Code 可执行的脚本
+    └── validate.sh    # 辅助脚本，可选
 ```
 
-在`SKILL.md`中引用辅助文件，让Claude知晓各文件的内容和加载时机：
+`SKILL.md`应该负责说明：
+
+- 这个 Skill 用来做什么
+- 什么时候使用
+- Claude 应该如何执行任务
+- 辅助文件放在哪里
+- 哪些内容需要按需读取
+
+例如，对于辅助文件：
 
 ```markdown
 ## 附加资源
 
-- 完整 API 详情见 [reference.md](reference.md)
-- 使用示例见 [example.md](example.md)
+- 完整 API 规范见 [reference.md](reference.md)
+- 输出模板见 [template.md](template.md)
+- 示例结果见 [examples/sample.md](examples/sample.md)
 ```
 
-> 建议`SKILL.md`保持在**500行以内**，详细参考材料放独立文件，通过相对路径引用。
+建议 `SKILL.md` 保持简洁，把详细参考资料拆到辅助文件中。这样 Skill 被加载时，Claude 先看到核心指令，需要时再读取具体文件。
 
-## 3、来自额外目录的skill
+## 3、辅助文件使用原则
 
-`--add-dir`标志主要用于授予文件访问权限，而非配置发现，但Skill是例外：额外目录中的`.claude/skills/`会自动加载。其他`.claude`配置（子代理、命令、输出样式）不从额外目录加载。
+辅助文件适合放置以下内容：
 
-来自`--add-dir`目录的`CLAUDE.md`文件默认不加载，需设置`CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1`（[[5、Memory#^566a05|详见记忆机制]]）。
+| 文件类型           | 适合内容              |
+| -------------- | ----------------- |
+| `reference.md` | 长篇 API 文档、规范、背景资料 |
+| `template.md`  | 固定输出模板            |
+| `examples/`    | 示例输入、示例输出         |
+| `scripts/`     | 校验脚本、生成脚本、辅助命令    |
+| `assets/`      | 图片、表格、静态资源        |
+`SKILL.md`不宜塞入全部内容，如果内容较多，推荐结构是：
 
-## 4、实时变更检测
+- **SKILL.md**：入口、规则、导航、执行步骤
+- **辅助文件**：详细资料、模板、示例、脚本
 
-- `Claude Code`**实时监控** skills 目录的文件变更（增/删/改），当前会话即时生效
-- `--add-dir`附加目录的 skills 目录也会被加载
-- 若会话启动时某个顶层 skills 目录不存在，创建后需重启`Claude Code`会话
-- 在对话中操作子目录文件时，`Claude Code`会查找该子目录下的`.claude/skills/`并加载（支持 monorepo 场景）
+这样既能减少上下文占用，也便于维护。
 
-# 四、Frontmatter参考
+## 4、来自额外目录的Skill
+
+Claude Code 支持通过`--add-dir`参数或`/add-dir`命令来授予额外目录的文件访问权限而不是配置发现。
+
+但对于 Skills，有一个特殊行为：**额外目录中的`.claude/skills/`也会被发现和加载**。此例外仅适用于 `--add-dir` 和 `/add-dir`。`settings.json` 中的 `permissions.additionalDirectories` 设置仅授予文件访问权限，不加载 skills。
+
+例如：
+
+```shell
+claude --add-dir ../shared-tools
+```
+
+如果额外目录中存在`../shared-tools/.claude/skills/my-skill/SKILL.md`，这个Skill也会被当前会话发现。
+
+其他 `.claude/` 配置（如 subagents、命令和输出样式）不会从其他目录加载。
+
+例如前面学习的额外目录中的`CLAUDE.md`默认不自动加载，需要设置`CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1`才加载。
+
+## 5、实时变更检测
+
+`Claude Code`会监控 Skills 目录的变化。在 `~/.claude/skills/`、项目 `.claude/skills/` 或 `--add-dir` 目录内的 `.claude/skills/` 中添加、编辑或删除 skill 会在当前会话中生效，无需重新启动。创建在会话启动时不存在的顶级 skills 目录需要重新启动 Claude Code，以便可以监视新目录。
+
+> 实时变更检测仅涵盖 `SKILL.md` 文本。对于也是插件的 skill 文件夹，对 `hooks/`、`.mcp.json`、`agents/` 和 `output-styles/` 的更改需要 `/reload-plugins` 才能生效。
+
+
+## 6、项目级skills加载
+
+项目级 skills 会从多个位置加载：Claude Code 会读取起始目录中的 `.claude/skills/`，以及从起始目录向上直到仓库根目录之间各级父目录里的 `.claude/skills/`。因此，即使你在某个子目录中启动 Claude，也仍然可以使用仓库根目录定义的 skills。
+
+当你在起始目录下方的子目录中处理文件时，Claude Code 还会按需发现该子目录中的嵌套 skills。
+
+这适合 monorepo 场景：仓库根目录可以定义通用 skills，每个子包也可以定义自己的专用 skills。
+
+
+# 四、配置Skills
+
+## 1、SKILL.md 组成
+
+`SKILL.md` 由两部分组成：顶部的 YAML frontmatter 和后面的 Markdown 正文。
+
+| 部分               | 作用                                                       |
+| ---------------- | -------------------------------------------------------- |
+| YAML frontmatter | 描述 skill 的元信息，例如名称、描述、适用场景。Claude Code 根据这些信息发现和选择 skill |
+| Markdown 正文      | 定义 skill 的具体执行方式，包括工作流程、规则、检查清单、示例和注意事项                  |
 
 通过`SKILL.md`文件顶部`---`之间的YAML frontmatter配置skill行为：
 
