@@ -4,24 +4,67 @@
     "type": "split",
     "children": [
       {
-        "id": "c8c5050b1da97254",
+        "id": "d589a34fcacabf67",
         "type": "tabs",
         "children": [
           {
-            "id": "acf10c9024bf6aa9",
+            "id": "2bb64dc7f54a4c45",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "terminal:terminal",
+              "state": {
+                "terminal:terminal": {
+                  "cwd": "/Users/songpengfei/knowledge",
+                  "focus": false,
+                  "profile": {
+                    "args": [
+                      "--login"
+                    ],
+                    "executable": "/opt/homebrew/bin/fish",
+                    "followTheme": true,
+                    "name": "",
+                    "platforms": {
+                      "darwin": true
+                    },
+                    "pythonExecutable": "python3",
+                    "restoreHistory": false,
+                    "rightClickAction": "copyPaste",
+                    "successExitCodes": [
+                      "0",
+                      "SIGINT",
+                      "SIGTERM"
+                    ],
+                    "terminalOptions": {
+                      "documentOverride": null
+                    },
+                    "type": "integrated",
+                    "useWin32Conhost": true
+                  },
+                  "serial": null
+                }
+              },
+              "pinned": true,
+              "icon": "terminal",
+              "title": "终端：✳ 校对 serde 和 serde_json 笔记"
+            }
+          },
+          {
+            "id": "95819b11d00b9ff8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI/notes/Claude Code/Claude编程技巧/1、AI 编程守则.md",
+                "file": "通用计算机知识/notes/Git/未命名.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1、AI 编程守则"
+              "title": "未命名"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -137,13 +180,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI/notes/Claude Code/Claude编程技巧/1、AI 编程守则.md",
+                "file": "通用计算机知识/notes/Git/未命名.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "1、AI 编程守则 的大纲"
+              "title": "未命名 的大纲"
             }
           },
           {
@@ -197,10 +240,28 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "acf10c9024bf6aa9",
+  "active": "95819b11d00b9ff8",
   "lastOpenFiles": [
-    "AI/notes/Agent开发/3、Tool Use.md",
+    "通用计算机知识/notes/Git/未命名.md",
+    "通用计算机知识/notes/Git",
+    "Rust/notes/常用crate/1、serde和serde_json.md.tmp.16664.0b10ce9e5462",
     "AI/notes/Agent开发/2、Agent Loop.md",
+    "Rust/notes/常用crate/1、serde和serde_json.md",
+    "assets/Pasted image 20260603224606.png",
+    "assets/Pasted image 20260603224340.png",
+    "assets/Pasted image 20260603223720.png",
+    "assets/Pasted image 20260603220646.png",
+    "assets/Pasted image 20260603215905.png",
+    "assets/Pasted image 20260603215041.png",
+    "assets/Pasted image 20260603214753.png",
+    "assets/Pasted image 20260603214406.png",
+    "assets/Pasted image 20260603214202.png",
+    "assets/Pasted image 20260603213434.png",
+    "Rust/notes/Rust基础/5、字符串.md",
+    "Rust/notes/常用crate",
+    "Rust/未命名",
+    "AI/notes/Claude Code/Claude编程技巧/1、AI 编程守则.md",
+    "AI/notes/Agent开发/3、Tool Use.md",
     "Rust/notes/Rust基础/Cargo workspace.md",
     "通用计算机知识/notes/2、终端ANSI转义字符.md",
     "Python/notes/7、函数.md",
@@ -209,12 +270,8 @@
     "通用计算机知识/wiki/concepts/ANSI转义序列.md",
     "通用计算机知识/raw/articles/终端ANSI转义字符.md",
     "通用计算机知识/notes/2、终端ANSI转义字符.md.tmp.2910.d431d1611cdb",
-    "assets/Pasted image 20260602222010.png",
-    "assets/Pasted image 20260602215411.png",
     "通用计算机知识/notes/1、字符编码.md",
-    "assets/Pasted image 20260602181738.png",
     "AI/notes/Claude Code/1、Claude Code入门.md",
-    "assets/Pasted image 20260602174451.png",
     "AI/notes/Agent开发/1、Agent Harness.md",
     "AI/notes/Claude Code/6、Skill.md",
     "AI/raw/archive/articles/Skill.md",
@@ -224,26 +281,12 @@
     "AI/raw/articles/Skill.md",
     "AI/raw/others/Extend Claude with skills.md",
     "AI/wiki/log.md",
-    "assets/Pasted image 20260602113451.png",
-    "assets/Pasted image 20260602112252.png",
-    "assets/Pasted image 20260602111951.png",
-    "assets/Pasted image 20260602111848.png",
-    "assets/Pasted image 20260602111517.png",
-    "assets/Pasted image 20260602110117.png",
     "AI/notes/Claude Code/4、Slash Command.md",
     "AI/notes/Claude Code/5、Memory.md",
-    "AI/notes/Claude Code/Settings.md",
-    "Python/notes/6、dict和set.md",
-    "Python/notes/4、list和tuple.md",
-    "Rust/notes/Rust基础/16、实用工具特征（待重构）.md",
     "Rust/notes/Rust基础/15、测试.md.tmp.92677.229b8473b832",
     "Rust/notes/Rust基础/11、特征基础.md.tmp.22545.7c9e017bc779",
     "Python/notes/5、控制结构.md.tmp.31598.d6616c23cd64",
     "通用计算机知识/raw/archive/articles",
-    "通用计算机知识/raw/videos",
-    "通用计算机知识/raw/podcasts",
-    "通用计算机知识/raw/papers",
-    "通用计算机知识/raw/others",
-    "通用计算机知识/raw/books"
+    "通用计算机知识/raw/videos"
   ]
 }
