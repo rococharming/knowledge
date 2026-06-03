@@ -4,35 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "38793369b90be23b",
+        "id": "c8c5050b1da97254",
         "type": "tabs",
         "children": [
           {
-            "id": "6ac3d4f6405b5d25",
+            "id": "acf10c9024bf6aa9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI/notes/Agent开发/2、Agent Loop.md",
+                "file": "AI/notes/Claude Code/Claude编程技巧/1、AI 编程守则.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2、Agent Loop"
-            }
-          },
-          {
-            "id": "09153eda5688178e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "通用计算机知识/notes/2、终端ANSI转义字符.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2、终端ANSI转义字符"
+              "title": "1、AI 编程守则"
             }
           }
         ]
@@ -92,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 262.5004348754883,
-    "collapsed": true
+    "width": 262.5004348754883
   },
   "right": {
     "id": "94be849039c638f6",
@@ -152,13 +137,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI/notes/Agent开发/2、Agent Loop.md",
+                "file": "AI/notes/Claude Code/Claude编程技巧/1、AI 编程守则.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "2、Agent Loop 的大纲"
+              "title": "1、AI 编程守则 的大纲"
             }
           },
           {
@@ -212,11 +197,13 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "6ac3d4f6405b5d25",
+  "active": "acf10c9024bf6aa9",
   "lastOpenFiles": [
+    "AI/notes/Agent开发/3、Tool Use.md",
+    "AI/notes/Agent开发/2、Agent Loop.md",
+    "Rust/notes/Rust基础/Cargo workspace.md",
     "通用计算机知识/notes/2、终端ANSI转义字符.md",
     "Python/notes/7、函数.md",
-    "AI/notes/Agent开发/2、Agent Loop.md",
     "通用计算机知识/raw/archive/articles/终端ANSI转义字符.md",
     "通用计算机知识/wiki/summaries/ANSI转义字符.md",
     "通用计算机知识/wiki/concepts/ANSI转义序列.md",
@@ -249,8 +236,6 @@
     "Python/notes/6、dict和set.md",
     "Python/notes/4、list和tuple.md",
     "Rust/notes/Rust基础/16、实用工具特征（待重构）.md",
-    "Rust/notes/Rust基础/15、运算符重载.md",
-    "Rust/raw/archive/articles/测试.md",
     "Rust/notes/Rust基础/15、测试.md.tmp.92677.229b8473b832",
     "Rust/notes/Rust基础/11、特征基础.md.tmp.22545.7c9e017bc779",
     "Python/notes/5、控制结构.md.tmp.31598.d6616c23cd64",
