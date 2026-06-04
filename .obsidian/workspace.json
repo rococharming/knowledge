@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "491a7faa209b0469",
+        "id": "ea4ee80e5d355a6d",
         "type": "tabs",
         "children": [
           {
-            "id": "a4ec5f2f7c8dd3ad",
+            "id": "5368ebc7d52544c1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Rust/notes/常用crate/2、clap.md",
+                "file": "Rust/项目/01_minigrep/1、命令行参数与文件读取.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2、clap"
+              "title": "1、命令行参数与文件读取"
             }
           }
         ]
@@ -137,13 +137,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Rust/notes/常用crate/2、clap.md",
+                "file": "Rust/项目/01_minigrep/1、命令行参数与文件读取.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "2、clap 的大纲"
+              "title": "1、命令行参数与文件读取 的大纲"
             }
           },
           {
@@ -197,53 +197,53 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "a4ec5f2f7c8dd3ad",
+  "active": "5368ebc7d52544c1",
   "lastOpenFiles": [
+    "Rust/项目/未命名.md",
+    "Rust/项目/01_minigrep/1、命令行参数与文件读取.md",
+    "Rust/项目/01_minigrep",
+    "Rust/notes/Rust基础/16、实用工具特征（待重构）.md",
+    "通用计算机知识/raw/archive/articles/创建Git仓库.md",
+    "通用计算机知识/raw/archive/articles/Git的安装与配置.md",
+    "Rust/项目",
+    "通用计算机知识/raw/articles/创建Git仓库.md",
+    "通用计算机知识/wiki/concepts/Git 远程仓库.md",
+    "通用计算机知识/wiki/concepts/Gitignore.md",
+    "通用计算机知识/wiki/concepts/Git 仓库.md",
+    "通用计算机知识/wiki/summaries/创建 Git 仓库.md",
+    "通用计算机知识/wiki/concepts/Git 认证.md",
+    "通用计算机知识/wiki/concepts/Git 配置.md",
+    "通用计算机知识/wiki/entities/Git.md",
+    "通用计算机知识/wiki/summaries/Git 安装与配置.md",
+    "通用计算机知识/raw/articles/Git的安装与配置.md",
+    "通用计算机知识/wiki/log.md",
+    "通用计算机知识/wiki/index.md",
+    "通用计算机知识/notes/Git/01_本地仓库基础/2、创建Git仓库.md",
+    "assets/Pasted image 20260605000953.png",
+    "通用计算机知识/notes/Git/01_本地仓库基础/1、Git的安装与配置.md",
+    "assets/Pasted image 20260604233716.png",
+    "assets/Pasted image 20260604233634.png",
+    "assets/Pasted image 20260604232027.png",
+    "assets/Pasted image 20260604230357.png",
+    "通用计算机知识/notes/Git/未命名.md",
+    "通用计算机知识/notes/Git/01_本地仓库基础",
+    "Rust/notes/常用crate/2、clap.md.tmp.52929.2207a42f7c35",
+    "Rust/notes/常用crate/2、clap.md",
+    "assets/Pasted image 20260604214530.png",
+    "clap-demo/src/main.rs",
+    "clap-demo/src",
+    "clap-demo/Cargo.toml",
+    "clap-demo",
     "assets/Pasted image 20260604181907.png",
     "assets/Pasted image 20260604181114.png",
     "AI/notes/常用Skills汇总/3、Superpowers（待完善）.md",
-    "Rust/notes/常用crate/2、clap.md",
     "Rust/notes/常用crate/1、serde和serde_json.md",
     "Rust/raw/1、clap crate入门 - KM知识管理平台.md",
     "BlueOS开发/notes/1、UI预览调研.md",
     "BlueOS开发/wiki/syntheses",
     "BlueOS开发/wiki/summaries",
-    "BlueOS开发/wiki/recipes",
-    "BlueOS开发/wiki/overviews",
     "BlueOS开发/wiki/log.md",
-    "BlueOS开发/wiki/index.md",
-    "BlueOS开发/wiki/entities",
-    "BlueOS开发/wiki/concepts",
-    "BlueOS开发/wiki/comparisons",
-    "BlueOS开发/raw/videos",
-    "BlueOS开发/raw/podcasts",
-    "BlueOS开发/raw/papers",
-    "BlueOS开发/domain.md",
-    "通用计算机知识/notes/Git/未命名.md",
-    "AI/notes/Agent开发/2、Agent Loop.md",
     "assets/Pasted image 20260603224606.png",
-    "assets/Pasted image 20260603224340.png",
-    "assets/Pasted image 20260603223720.png",
-    "assets/Pasted image 20260603220646.png",
-    "assets/Pasted image 20260603215905.png",
-    "assets/Pasted image 20260603215041.png",
-    "assets/Pasted image 20260603214753.png",
-    "assets/Pasted image 20260603214406.png",
-    "assets/Pasted image 20260603214202.png",
-    "Rust/notes/Rust基础/5、字符串.md",
-    "AI/notes/Claude Code/Claude编程技巧/1、AI 编程守则.md",
-    "AI/notes/Agent开发/3、Tool Use.md",
-    "Rust/notes/Rust基础/Cargo workspace.md",
-    "通用计算机知识/notes/2、终端ANSI转义字符.md",
-    "Python/notes/7、函数.md",
-    "通用计算机知识/raw/archive/articles/终端ANSI转义字符.md",
-    "通用计算机知识/wiki/summaries/ANSI转义字符.md",
-    "通用计算机知识/wiki/concepts/ANSI转义序列.md",
-    "通用计算机知识/raw/articles/终端ANSI转义字符.md",
-    "通用计算机知识/notes/1、字符编码.md",
-    "AI/notes/Claude Code/1、Claude Code入门.md",
-    "AI/notes/Agent开发/1、Agent Harness.md",
-    "AI/notes/Claude Code/6、Skill.md",
-    "AI/raw/archive/articles/Skill.md"
+    "assets/Pasted image 20260603224340.png"
   ]
 }
