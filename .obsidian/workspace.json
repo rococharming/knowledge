@@ -4,67 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "d589a34fcacabf67",
+        "id": "6145497465648d9e",
         "type": "tabs",
         "children": [
           {
-            "id": "2bb64dc7f54a4c45",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "terminal:terminal",
-              "state": {
-                "terminal:terminal": {
-                  "cwd": "/Users/songpengfei/knowledge",
-                  "focus": false,
-                  "profile": {
-                    "args": [
-                      "--login"
-                    ],
-                    "executable": "/opt/homebrew/bin/fish",
-                    "followTheme": true,
-                    "name": "",
-                    "platforms": {
-                      "darwin": true
-                    },
-                    "pythonExecutable": "python3",
-                    "restoreHistory": false,
-                    "rightClickAction": "copyPaste",
-                    "successExitCodes": [
-                      "0",
-                      "SIGINT",
-                      "SIGTERM"
-                    ],
-                    "terminalOptions": {
-                      "documentOverride": null
-                    },
-                    "type": "integrated",
-                    "useWin32Conhost": true
-                  },
-                  "serial": null
-                }
-              },
-              "pinned": true,
-              "icon": "terminal",
-              "title": "终端：✳ 校对 serde 和 serde_json 笔记"
-            }
-          },
-          {
-            "id": "95819b11d00b9ff8",
+            "id": "ac4337daf44e5c0c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "通用计算机知识/notes/Git/未命名.md",
+                "file": "AI/notes/Claude Code/常用Skills汇总/3、Superpowers.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "未命名"
+              "title": "3、Superpowers"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -121,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 262.5004348754883
+    "width": 262.5004348754883,
+    "collapsed": true
   },
   "right": {
     "id": "94be849039c638f6",
@@ -180,13 +138,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "通用计算机知识/notes/Git/未命名.md",
+                "file": "AI/notes/Claude Code/常用Skills汇总/3、Superpowers.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "未命名 的大纲"
+              "title": "3、Superpowers 的大纲"
             }
           },
           {
@@ -240,11 +198,23 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "95819b11d00b9ff8",
+  "active": "ac4337daf44e5c0c",
   "lastOpenFiles": [
+    "BlueOS开发/notes/1、UI预览调研.md",
+    "BlueOS开发/wiki/syntheses",
+    "BlueOS开发/wiki/summaries",
+    "BlueOS开发/wiki/recipes",
+    "BlueOS开发/wiki/overviews",
+    "BlueOS开发/wiki/log.md",
+    "BlueOS开发/wiki/index.md",
+    "BlueOS开发/wiki/entities",
+    "BlueOS开发/wiki/concepts",
+    "BlueOS开发/wiki/comparisons",
+    "BlueOS开发/raw/videos",
+    "BlueOS开发/raw/podcasts",
+    "BlueOS开发/raw/papers",
+    "BlueOS开发/domain.md",
     "通用计算机知识/notes/Git/未命名.md",
-    "通用计算机知识/notes/Git",
-    "Rust/notes/常用crate/1、serde和serde_json.md.tmp.16664.0b10ce9e5462",
     "AI/notes/Agent开发/2、Agent Loop.md",
     "Rust/notes/常用crate/1、serde和serde_json.md",
     "assets/Pasted image 20260603224606.png",
@@ -258,8 +228,6 @@
     "assets/Pasted image 20260603214202.png",
     "assets/Pasted image 20260603213434.png",
     "Rust/notes/Rust基础/5、字符串.md",
-    "Rust/notes/常用crate",
-    "Rust/未命名",
     "AI/notes/Claude Code/Claude编程技巧/1、AI 编程守则.md",
     "AI/notes/Agent开发/3、Tool Use.md",
     "Rust/notes/Rust基础/Cargo workspace.md",
@@ -269,7 +237,6 @@
     "通用计算机知识/wiki/summaries/ANSI转义字符.md",
     "通用计算机知识/wiki/concepts/ANSI转义序列.md",
     "通用计算机知识/raw/articles/终端ANSI转义字符.md",
-    "通用计算机知识/notes/2、终端ANSI转义字符.md.tmp.2910.d431d1611cdb",
     "通用计算机知识/notes/1、字符编码.md",
     "AI/notes/Claude Code/1、Claude Code入门.md",
     "AI/notes/Agent开发/1、Agent Harness.md",
@@ -278,15 +245,6 @@
     "AI/wiki/recipes/Claude Code Skill 创建.md",
     "AI/wiki/concepts/Claude Code Skill 系统.md",
     "AI/wiki/summaries/Claude Code Skill 系统.md",
-    "AI/raw/articles/Skill.md",
-    "AI/raw/others/Extend Claude with skills.md",
-    "AI/wiki/log.md",
-    "AI/notes/Claude Code/4、Slash Command.md",
-    "AI/notes/Claude Code/5、Memory.md",
-    "Rust/notes/Rust基础/15、测试.md.tmp.92677.229b8473b832",
-    "Rust/notes/Rust基础/11、特征基础.md.tmp.22545.7c9e017bc779",
-    "Python/notes/5、控制结构.md.tmp.31598.d6616c23cd64",
-    "通用计算机知识/raw/archive/articles",
-    "通用计算机知识/raw/videos"
+    "AI/raw/articles/Skill.md"
   ]
 }

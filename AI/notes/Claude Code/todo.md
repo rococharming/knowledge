@@ -18,7 +18,7 @@
   - [ ] 十、示例子代理
 - [ ] [[Tools]]
   - [ ] PowerShell 工具
-- [ ] [[常用Skills汇总/3、superpowers（待完善）]] — 标题含待完善标记
+- [ ] [[3、Superpowers]] — 标题含待完善标记
 
 ## 已完善的笔记
 

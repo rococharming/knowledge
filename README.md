@@ -61,7 +61,7 @@ knowledge/
 | [前后端](前后端/wiki/index.md) | Web 前后端开发入门学习，从前端基础到后端架构的系统知识 | 活跃   |
 | [Python](Python/wiki/index.md) | Python 编程语言语法、标准库、工程实践与生态 | 活跃 |
 | [通用计算机知识](通用计算机知识/wiki/index.md) | 操作系统、计算机网络、数据结构与算法、计算机组成原理等通用计算机科学基础知识 | 活跃 |
-
+| [BlueOS开发](BlueOS开发/wiki/index.md) | 嵌入式操作系统 BlueOS 的内核开发、驱动框架、系统服务与工程实践 | 活跃 |
 ---
 
 ## 核心操作
