@@ -18,7 +18,7 @@
   - [ ] 十、示例子代理
 - [ ] [[Tools]]
   - [ ] PowerShell 工具
-- [ ] [[3、Superpowers]] — 标题含待完善标记
+- [ ] [[3、Superpowers（待完善）]] — 标题含待完善标记
 
 ## 已完善的笔记
 
@@ -28,5 +28,5 @@
 - [x] [[5、Memory]]
 - [x] [[6、Skill]]
 - [x] [[8、MCP]]
-- [x] [[常用Skills汇总/1、skill-creator]]
-- [x] [[常用Skills汇总/2、find-skills]]
+- [x] [[1、skill-creator]]
+- [x] [[2、find-skills]]

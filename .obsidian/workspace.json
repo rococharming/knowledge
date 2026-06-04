@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "6145497465648d9e",
+        "id": "491a7faa209b0469",
         "type": "tabs",
         "children": [
           {
-            "id": "ac4337daf44e5c0c",
+            "id": "a4ec5f2f7c8dd3ad",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI/notes/Claude Code/常用Skills汇总/3、Superpowers.md",
+                "file": "Rust/notes/常用crate/2、clap.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "3、Superpowers"
+              "title": "2、clap"
             }
           }
         ]
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 262.5004348754883,
-    "collapsed": true
+    "width": 262.5004348754883
   },
   "right": {
     "id": "94be849039c638f6",
@@ -138,13 +137,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI/notes/Claude Code/常用Skills汇总/3、Superpowers.md",
+                "file": "Rust/notes/常用crate/2、clap.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "3、Superpowers 的大纲"
+              "title": "2、clap 的大纲"
             }
           },
           {
@@ -198,8 +197,14 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "ac4337daf44e5c0c",
+  "active": "a4ec5f2f7c8dd3ad",
   "lastOpenFiles": [
+    "assets/Pasted image 20260604181907.png",
+    "assets/Pasted image 20260604181114.png",
+    "AI/notes/常用Skills汇总/3、Superpowers（待完善）.md",
+    "Rust/notes/常用crate/2、clap.md",
+    "Rust/notes/常用crate/1、serde和serde_json.md",
+    "Rust/raw/1、clap crate入门 - KM知识管理平台.md",
     "BlueOS开发/notes/1、UI预览调研.md",
     "BlueOS开发/wiki/syntheses",
     "BlueOS开发/wiki/summaries",
@@ -216,7 +221,6 @@
     "BlueOS开发/domain.md",
     "通用计算机知识/notes/Git/未命名.md",
     "AI/notes/Agent开发/2、Agent Loop.md",
-    "Rust/notes/常用crate/1、serde和serde_json.md",
     "assets/Pasted image 20260603224606.png",
     "assets/Pasted image 20260603224340.png",
     "assets/Pasted image 20260603223720.png",
@@ -226,7 +230,6 @@
     "assets/Pasted image 20260603214753.png",
     "assets/Pasted image 20260603214406.png",
     "assets/Pasted image 20260603214202.png",
-    "assets/Pasted image 20260603213434.png",
     "Rust/notes/Rust基础/5、字符串.md",
     "AI/notes/Claude Code/Claude编程技巧/1、AI 编程守则.md",
     "AI/notes/Agent开发/3、Tool Use.md",
@@ -241,10 +244,6 @@
     "AI/notes/Claude Code/1、Claude Code入门.md",
     "AI/notes/Agent开发/1、Agent Harness.md",
     "AI/notes/Claude Code/6、Skill.md",
-    "AI/raw/archive/articles/Skill.md",
-    "AI/wiki/recipes/Claude Code Skill 创建.md",
-    "AI/wiki/concepts/Claude Code Skill 系统.md",
-    "AI/wiki/summaries/Claude Code Skill 系统.md",
-    "AI/raw/articles/Skill.md"
+    "AI/raw/archive/articles/Skill.md"
   ]
 }
