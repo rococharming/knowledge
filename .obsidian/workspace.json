@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "ea4ee80e5d355a6d",
+        "id": "b1688c7a50f61656",
         "type": "tabs",
         "children": [
           {
-            "id": "5368ebc7d52544c1",
+            "id": "2f53129d84622dcb",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Rust/项目/01_minigrep/1、命令行参数与文件读取.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "1、命令行参数与文件读取"
+              "title": "新标签页"
             }
           }
         ]
@@ -78,7 +74,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 262.5004348754883
+    "width": 258.5
   },
   "right": {
     "id": "94be849039c638f6",
@@ -137,13 +133,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Rust/项目/01_minigrep/1、命令行参数与文件读取.md",
+                "file": "Rust/项目/01_minigrep/2、项目重构与错误处理.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "1、命令行参数与文件读取 的大纲"
+              "title": "2、项目重构与错误处理 的大纲"
             }
           },
           {
@@ -197,10 +193,11 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "5368ebc7d52544c1",
+  "active": "8630144dc0485a98",
   "lastOpenFiles": [
-    "Rust/项目/未命名.md",
     "Rust/项目/01_minigrep/1、命令行参数与文件读取.md",
+    "Rust/项目/01_minigrep/2、项目重构与错误处理.md",
+    "Rust/项目/未命名.md",
     "Rust/项目/01_minigrep",
     "Rust/notes/Rust基础/16、实用工具特征（待重构）.md",
     "通用计算机知识/raw/archive/articles/创建Git仓库.md",
@@ -242,7 +239,6 @@
     "BlueOS开发/notes/1、UI预览调研.md",
     "BlueOS开发/wiki/syntheses",
     "BlueOS开发/wiki/summaries",
-    "BlueOS开发/wiki/log.md",
     "assets/Pasted image 20260603224606.png",
     "assets/Pasted image 20260603224340.png"
   ]
