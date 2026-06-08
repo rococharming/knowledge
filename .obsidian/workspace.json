@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "b4616dc56e633169",
+        "id": "3785f0550e0e9d66",
         "type": "tabs",
         "children": [
           {
-            "id": "d28e2d4fba31de8b",
+            "id": "4a2b6375f0ca2b33",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Rust/notes/Rust进阶/异步编程/1、异步编程基础.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "1、异步编程基础"
             }
           }
         ]
@@ -133,12 +137,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "Rust/notes/Rust进阶/异步编程/1、异步编程基础.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "1、异步编程基础 的大纲"
             }
           },
           {
@@ -192,13 +197,21 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "d28e2d4fba31de8b",
+  "active": "4a2b6375f0ca2b33",
   "lastOpenFiles": [
+    "assets/Pasted image 20260609012433.png",
+    "assets/Pasted image 20260609001710.png",
+    "Rust/notes/Rust基础/19、智能指针.md",
+    "Rust/notes/Rust进阶/异步编程/1、异步编程基础.md",
+    "Rust/notes/Rust基础/18、集合.md",
+    "Rust/notes/Rust基础/18、集合（待补充）.md",
+    "通用计算机知识/notes/Git/01_本地仓库基础/4、Git本地操作常用命令.md",
+    "通用计算机知识/notes/Git/01_本地仓库基础/3、工作区域与文件状态.md",
+    "通用计算机知识/notes/Git/01_本地仓库基础/3、工作区域与文件状态 1.md",
     "AI/notes/Claude Code/Claude编程技巧/3、项目规则.md",
     "AI/notes/Claude Code/Claude编程技巧/2、全局规则.md",
     "AI/notes/Claude Code/Claude编程技巧/1、AI 编程守则.md",
     "AI/notes/Claude Code/Claude编程技巧/2",
-    "通用计算机知识/notes/Git/01_本地仓库基础/3、工作区域与文件状态.md",
     "assets/Pasted image 20260607233202.png",
     "assets/Pasted image 20260607232839.png",
     "assets/Pasted image 20260607232729.png",
@@ -217,22 +230,14 @@
     "Rust/wiki/log.md",
     "Rust/notes/Rust基础/21、迭代器.md",
     "Rust/notes/Rust基础/20、闭包.md",
-    "Rust/notes/Rust基础/19、智能指针.md",
-    "Rust/notes/Rust基础/18、集合（待补充）.md",
     "Rust/notes/Rust基础/17、实用工具特征（待重构）.md",
     "Rust/notes/Rust基础/16、运算符重载.md",
     "Rust/notes/项目/01_minigrep/1、命令行参数与文件读取.md",
     "Rust/notes/项目/01_minigrep/3、搜索功能、环境变量与输出流.md",
-    "Rust/notes/项目/01_minigrep/2、项目重构与错误处理.md",
-    "Rust/项目/未命名.md",
     "Rust/notes/项目/01_minigrep",
-    "通用计算机知识/raw/archive/articles/创建Git仓库.md",
-    "通用计算机知识/raw/archive/articles/Git的安装与配置.md",
     "Rust/notes/项目",
-    "通用计算机知识/raw/articles/创建Git仓库.md",
     "assets/Pasted image 20260605000953.png",
     "assets/Pasted image 20260604233716.png",
-    "assets/Pasted image 20260604233634.png",
     "通用计算机知识/notes/Git/01_本地仓库基础",
     "Rust/notes/常用crate/2、clap.md.tmp.52929.2207a42f7c35",
     "clap-demo/src/main.rs",
