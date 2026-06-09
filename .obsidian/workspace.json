@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Rust/notes/Rust基础/19、智能指针.md",
+                "file": "Rust/notes/Rust基础/20、闭包.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "19、智能指针"
+              "title": "20、闭包"
             }
           }
         ]
@@ -137,13 +137,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Rust/notes/Rust基础/19、智能指针.md",
+                "file": "Rust/notes/Rust基础/20、闭包.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "19、智能指针 的大纲"
+              "title": "20、闭包 的大纲"
             }
           },
           {
@@ -199,9 +199,10 @@
   },
   "active": "87ae7a9cd060b71a",
   "lastOpenFiles": [
+    "Rust/notes/Rust基础/20、闭包.md",
+    "Rust/notes/Rust基础/19、智能指针.md",
     "AI/notes/Claude Code/7、Subagent.md",
     "Rust/notes/Rust基础/Cargo workspace.md",
-    "Rust/notes/Rust基础/19、智能指针.md",
     "assets/Pasted image 20260609143251.png",
     "AI/notes/Claude Code/8、MCP.md",
     "AI/wiki/entities/Claude Code.md",
@@ -234,7 +235,6 @@
     "Rust/raw/articles/运算符重载.md",
     "Rust/wiki/log.md",
     "Rust/notes/Rust基础/21、迭代器.md",
-    "Rust/notes/Rust基础/20、闭包.md",
     "Rust/notes/Rust基础/17、实用工具特征（待重构）.md",
     "Rust/notes/项目/01_minigrep",
     "Rust/notes/项目",
