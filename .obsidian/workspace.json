@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "972629020e107698",
+        "id": "4af8827b89a446fe",
         "type": "tabs",
         "children": [
           {
-            "id": "87ae7a9cd060b71a",
+            "id": "af0cfe7fee7d811f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Rust/notes/Rust基础/20、闭包.md",
+                "file": "Rust/notes/Rust基础/21、迭代器.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "20、闭包"
+              "title": "21、迭代器"
             }
           }
         ]
@@ -137,13 +137,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Rust/notes/Rust基础/20、闭包.md",
+                "file": "Rust/notes/Rust基础/21、迭代器.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "20、闭包 的大纲"
+              "title": "21、迭代器 的大纲"
             }
           },
           {
@@ -197,9 +197,10 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "87ae7a9cd060b71a",
+  "active": "af0cfe7fee7d811f",
   "lastOpenFiles": [
     "Rust/notes/Rust基础/20、闭包.md",
+    "Rust/notes/Rust基础/16、运算符重载.md",
     "Rust/notes/Rust基础/19、智能指针.md",
     "AI/notes/Claude Code/7、Subagent.md",
     "Rust/notes/Rust基础/Cargo workspace.md",
@@ -235,7 +236,6 @@
     "Rust/raw/articles/运算符重载.md",
     "Rust/wiki/log.md",
     "Rust/notes/Rust基础/21、迭代器.md",
-    "Rust/notes/Rust基础/17、实用工具特征（待重构）.md",
     "Rust/notes/项目/01_minigrep",
     "Rust/notes/项目",
     "通用计算机知识/notes/Git/01_本地仓库基础",
