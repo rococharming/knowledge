@@ -4,49 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "dbed790b60e4d549",
+        "id": "3a37b7933ba63895",
         "type": "tabs",
         "children": [
           {
-            "id": "30444587d625301a",
+            "id": "d0d70990e84a0558",
             "type": "leaf",
-            "pinned": true,
             "state": {
-              "type": "terminal:terminal",
+              "type": "markdown",
               "state": {
-                "terminal:terminal": {
-                  "cwd": "/Users/11185032/spf/knowledge",
-                  "focus": false,
-                  "profile": {
-                    "args": [
-                      "--login"
-                    ],
-                    "executable": "/opt/homebrew/bin/fish",
-                    "followTheme": true,
-                    "name": "",
-                    "platforms": {
-                      "darwin": true
-                    },
-                    "pythonExecutable": "python3",
-                    "restoreHistory": false,
-                    "rightClickAction": "copyPaste",
-                    "successExitCodes": [
-                      "0",
-                      "SIGINT",
-                      "SIGTERM"
-                    ],
-                    "terminalOptions": {
-                      "documentOverride": null
-                    },
-                    "type": "integrated",
-                    "useWin32Conhost": true
-                  },
-                  "serial": null
-                }
+                "file": "AI/notes/Agent开发/Anthropic API/5、流式处理.md",
+                "mode": "source",
+                "source": false
               },
-              "pinned": true,
-              "icon": "terminal",
-              "title": "终端：✳ 检查并纠正Anthropic API消息格式笔记中的错别字"
+              "icon": "lucide-file",
+              "title": "5、流式处理"
             }
           }
         ]
@@ -165,12 +137,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "AI/notes/Agent开发/Anthropic API/5、流式处理.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "5、流式处理 的大纲"
             }
           },
           {
@@ -224,53 +197,53 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "30444587d625301a",
+  "active": "d0d70990e84a0558",
   "lastOpenFiles": [
-    "AI/notes/Agent开发/Anthropic API/2、Anthropic API 消息格式.md.tmp.2891.b4584ee1b531",
+    "AI/notes/Agent开发/Anthropic API/code/stream_output.py",
+    "AI/notes/Agent开发/Anthropic API/code/model_parameters.py",
+    "AI/notes/Agent开发/Anthropic API/code/model.py",
+    "AI/notes/Agent开发/Anthropic API/code/conversion.py",
+    "AI/notes/Agent开发/Anthropic API/code",
+    "AI/notes/Agent开发/Anthropic API/01、Anthropic SDK入门/stream_output.py",
+    "AI/notes/Agent开发/Anthropic API/01、Anthropic SDK入门/model_parameters.py",
+    "AI/notes/Agent开发/Anthropic API/01、Anthropic SDK入门/model.py",
+    "AI/notes/Agent开发/Anthropic API/01、Anthropic SDK入门/conversion.py",
+    "AI/notes/Agent开发/Anthropic API/01、Anthropic SDK入门",
+    "AI/notes/Agent开发/Anthropic API/hello_python/model_parameters.py",
+    "AI/notes/Agent开发/Anthropic API/4、模型参数.md",
+    "AI/notes/Agent开发/Anthropic API/5、流式处理.md",
+    "assets/Pasted image 20260611184750.png",
+    "assets/Pasted image 20260611182158.png",
+    "assets/Pasted image 20260611182031.png",
+    "assets/Pasted image 20260611175616.png",
+    "assets/Pasted image 20260611172722.png",
+    "assets/Pasted image 20260611172602.png",
+    "AI/notes/Agent开发/AI核心概念.md",
+    "assets/Pasted image 20260611170245.png",
+    "AI/notes/Agent开发/AI 核心概念/1、.md",
+    "AI/notes/Agent开发/Anthropic API/3、模型速度比较.md",
     "AI/notes/Agent开发/Anthropic API/2、Anthropic API 消息格式.md",
     "assets/Pasted image 20260611115750.png",
     "assets/Pasted image 20260611115738.png",
     "assets/Pasted image 20260611102836.png",
     "AI/notes/Agent开发/Anthropic API/1、Anthropic SDK入门.md",
-    "AI/notes/Agent开发/Anthropic API/1、Anthropic SDK入门.md.tmp.58252.d61d73fa106e",
     "AI/notes/Agent开发/02_Agent_Loop/架构图.md",
-    "AI/notes/Agent开发/Anthropic API",
     "Rust/notes/Rust进阶/异步编程/2、Tokio异步运行时.md",
     "AI/notes/Claude Code/Claude编程技巧/2、全局规则.md",
     "Rust/notes/Rust基础/21、迭代器.md",
-    "assets/Pasted image 20260610180859.png",
     "Rust/notes/Rust基础/20、闭包.md",
     "Rust/notes/Rust基础/16、运算符重载.md",
     "Rust/notes/Rust基础/19、智能指针.md",
     "AI/notes/Claude Code/7、Subagent.md",
     "Rust/notes/Rust基础/Cargo workspace.md",
-    "assets/Pasted image 20260609143251.png",
     "AI/notes/Claude Code/8、MCP.md",
     "AI/wiki/entities/Claude Code.md",
     "Rust/notes/Rust基础/18、集合.md",
     "Rust/notes/Rust进阶/异步编程/1、异步编程基础.md",
-    "assets/Pasted image 20260609012433.png",
-    "assets/Pasted image 20260609001710.png",
     "Rust/notes/Rust基础/18、集合（待补充）.md",
     "通用计算机知识/notes/Git/01_本地仓库基础/4、Git本地操作常用命令.md",
     "通用计算机知识/notes/Git/01_本地仓库基础/3、工作区域与文件状态.md",
     "通用计算机知识/notes/Git/01_本地仓库基础/3、工作区域与文件状态 1.md",
-    "AI/notes/Claude Code/Claude编程技巧/3、项目规则.md",
-    "AI/notes/Claude Code/Claude编程技巧/1、AI 编程守则.md",
-    "AI/notes/Claude Code/Claude编程技巧/2",
-    "assets/Pasted image 20260607233202.png",
-    "assets/Pasted image 20260607232839.png",
-    "assets/Pasted image 20260607232729.png",
-    "通用计算机知识/notes/Git/01_本地仓库基础/1、Git的安装与配置.md",
-    "Rust/raw/archive/articles/运算符重载.md",
-    "Rust/wiki/concepts/索引运算符.md",
-    "Rust/wiki/concepts/有序性比较.md",
-    "Rust/notes/项目/01_minigrep",
-    "Rust/notes/项目",
-    "通用计算机知识/notes/Git/01_本地仓库基础",
-    "Rust/notes/常用crate/2、clap.md.tmp.52929.2207a42f7c35",
-    "clap-demo/src/main.rs",
-    "clap-demo/src",
-    "clap-demo/Cargo.toml"
+    "AI/notes/Claude Code/Claude编程技巧/3、项目规则.md"
   ]
 }
