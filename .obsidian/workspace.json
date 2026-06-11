@@ -4,79 +4,52 @@
     "type": "split",
     "children": [
       {
-        "id": "c612c2b1dcf838d3",
-        "type": "split",
+        "id": "dbed790b60e4d549",
+        "type": "tabs",
         "children": [
           {
-            "id": "3498430c289fb5b1",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "2d83efe5f32370da",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "AI/notes/Agent开发/Anthropic API/1、Anthropic SDK入门.md",
-                    "mode": "source",
-                    "source": false
+            "id": "30444587d625301a",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "terminal:terminal",
+              "state": {
+                "terminal:terminal": {
+                  "cwd": "/Users/11185032/spf/knowledge",
+                  "focus": false,
+                  "profile": {
+                    "args": [
+                      "--login"
+                    ],
+                    "executable": "/opt/homebrew/bin/fish",
+                    "followTheme": true,
+                    "name": "",
+                    "platforms": {
+                      "darwin": true
+                    },
+                    "pythonExecutable": "python3",
+                    "restoreHistory": false,
+                    "rightClickAction": "copyPaste",
+                    "successExitCodes": [
+                      "0",
+                      "SIGINT",
+                      "SIGTERM"
+                    ],
+                    "terminalOptions": {
+                      "documentOverride": null
+                    },
+                    "type": "integrated",
+                    "useWin32Conhost": true
                   },
-                  "icon": "lucide-file",
-                  "title": "1、Anthropic SDK入门"
+                  "serial": null
                 }
-              }
-            ]
-          },
-          {
-            "id": "4b26e1121d7c9e8c",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "d323089c3b37050b",
-                "type": "leaf",
-                "pinned": true,
-                "state": {
-                  "type": "terminal:terminal",
-                  "state": {
-                    "terminal:terminal": {
-                      "cwd": "/Users/songpengfei/knowledge",
-                      "focus": false,
-                      "profile": {
-                        "args": [
-                          "--login"
-                        ],
-                        "executable": "/opt/homebrew/bin/fish",
-                        "followTheme": true,
-                        "name": "",
-                        "platforms": {
-                          "darwin": true
-                        },
-                        "pythonExecutable": "python3",
-                        "restoreHistory": false,
-                        "rightClickAction": "copyPaste",
-                        "successExitCodes": [
-                          "0",
-                          "SIGINT",
-                          "SIGTERM"
-                        ],
-                        "terminalOptions": {
-                          "documentOverride": null
-                        },
-                        "type": "integrated",
-                        "useWin32Conhost": true
-                      },
-                      "serial": null
-                    }
-                  },
-                  "pinned": true,
-                  "icon": "terminal",
-                  "title": "终端：✳ 检查并纠正 Anthropic SDK 文档错别字"
-                }
-              }
-            ]
+              },
+              "pinned": true,
+              "icon": "terminal",
+              "title": "终端：✳ 检查并纠正Anthropic API消息格式笔记中的错别字"
+            }
           }
-        ],
-        "direction": "horizontal"
+        ]
       }
     ],
     "direction": "vertical"
@@ -192,13 +165,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Rust/notes/Rust基础/21、迭代器.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "21、迭代器 的大纲"
+              "title": "大纲"
             }
           },
           {
@@ -235,8 +207,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 276.5,
-    "collapsed": true
+    "width": 276.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -253,10 +224,15 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "d323089c3b37050b",
+  "active": "30444587d625301a",
   "lastOpenFiles": [
-    "AI/notes/Agent开发/Anthropic API/1、Anthropic SDK入门.md.tmp.58252.d61d73fa106e",
+    "AI/notes/Agent开发/Anthropic API/2、Anthropic API 消息格式.md.tmp.2891.b4584ee1b531",
+    "AI/notes/Agent开发/Anthropic API/2、Anthropic API 消息格式.md",
+    "assets/Pasted image 20260611115750.png",
+    "assets/Pasted image 20260611115738.png",
+    "assets/Pasted image 20260611102836.png",
     "AI/notes/Agent开发/Anthropic API/1、Anthropic SDK入门.md",
+    "AI/notes/Agent开发/Anthropic API/1、Anthropic SDK入门.md.tmp.58252.d61d73fa106e",
     "AI/notes/Agent开发/02_Agent_Loop/架构图.md",
     "AI/notes/Agent开发/Anthropic API",
     "Rust/notes/Rust进阶/异步编程/2、Tokio异步运行时.md",
@@ -286,20 +262,15 @@
     "assets/Pasted image 20260607232839.png",
     "assets/Pasted image 20260607232729.png",
     "通用计算机知识/notes/Git/01_本地仓库基础/1、Git的安装与配置.md",
-    "assets/Pasted image 20260607224938.png",
-    "assets/Pasted image 20260607224543.png",
-    "assets/Pasted image 20260607224241.png",
     "Rust/raw/archive/articles/运算符重载.md",
     "Rust/wiki/concepts/索引运算符.md",
     "Rust/wiki/concepts/有序性比较.md",
-    "Rust/wiki/concepts/相等性比较.md",
     "Rust/notes/项目/01_minigrep",
     "Rust/notes/项目",
     "通用计算机知识/notes/Git/01_本地仓库基础",
     "Rust/notes/常用crate/2、clap.md.tmp.52929.2207a42f7c35",
     "clap-demo/src/main.rs",
     "clap-demo/src",
-    "clap-demo/Cargo.toml",
-    "clap-demo"
+    "clap-demo/Cargo.toml"
   ]
 }
