@@ -17,7 +17,7 @@ client = Anthropic(
 model = os.getenv("MODEL_ID")
 
 
-response = client.messages.create(
+stream = client.messages.create(
     model=model,
     max_tokens=800,
     temperature=0,
@@ -27,8 +27,19 @@ response = client.messages.create(
             "content": "请写一篇关于大型语言模型流式输出的短文，说明它是什么、为什么有用，以及适合哪些应用场景。"
         }
     ],
+    stream=True
 )
 
-print("已经收到完整响应！")
-print("========================")
-print(response.content[0].text)
+
+for event in stream:
+    if event.type == "message_start":
+        input_tokens = event.message.usage.input_tokens
+        print("MESSAGE START EVENT")
+        print(f"Input tokens used: {input_tokens}")
+        print("========================")
+    elif event.type == "content_block_delta":
+        print(event.delta.text, end='', flush=True)
+    elif event.type == "message_delta":
+        print("\n========================")
+        print("MESSAGE DELTA EVENT")
+        print(f"Output tokens used: {event.usage.output_tokens}")
