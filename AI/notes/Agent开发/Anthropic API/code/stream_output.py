@@ -30,16 +30,13 @@ stream = client.messages.create(
     stream=True
 )
 
-
 for event in stream:
     if event.type == "message_start":
-        input_tokens = event.message.usage.input_tokens
-        print("MESSAGE START EVENT")
-        print(f"Input tokens used: {input_tokens}")
-        print("========================")
+        print(f"input tokens: {event.message.usage.input_tokens}")
+        print("=========================")
     elif event.type == "content_block_delta":
-        print(event.delta.text, end='', flush=True)
+        print(event.delta.text, flush=True, end="")
     elif event.type == "message_delta":
-        print("\n========================")
-        print("MESSAGE DELTA EVENT")
-        print(f"Output tokens used: {event.usage.output_tokens}")
+        print("\n=========================")
+        print(f"output tokens: {event.usage.output_tokens}")
+
