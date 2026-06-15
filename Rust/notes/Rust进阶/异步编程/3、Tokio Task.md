@@ -310,12 +310,12 @@ where
 
 这表示：
 
-| 约束 | 含义 |
-| --- | --- |
-| `F: Send` | task 可以在线程之间安全移动 |
-| `F: 'static` | task 不能持有可能提前失效的短生命周期引用 |
-| `F::Output: Send` | task 的输出可以在线程之间安全移动 |
-| `F::Output: 'static` | task 的输出不能依赖短生命周期引用 |
+| 约束                   | 含义                      |
+| -------------------- | ----------------------- |
+| `F: Send`            | task 可以在线程之间安全移动        |
+| `F: 'static`         | task 不能持有可能提前失效的短生命周期引用 |
+| `F::Output: Send`    | task 的输出可以在线程之间安全移动     |
+| `F::Output: 'static` | task 的输出不能依赖短生命周期引用     |
 
 这些约束和 Tokio 的多线程调度有关。一个 task 在 `.await` 处挂起后，下一次被唤醒时，可能会被另一个 worker thread 继续 `poll`。
 
@@ -323,21 +323,24 @@ where
 
 ## 2、捕获局部变量
 
-下面代码会出错：
+示例：
 
 ```rust
-#[tokio::main]
-async fn main() {
-    let s = String::from("hello");
-    let r = &s;
-
-    tokio::spawn(async move {
-        println!("{r}");
-    });
+#[tokio::main]  
+async fn main() {  
+    let s = String::from("hello");  
+  
+    tokio::spawn(async {  
+        println!("{}", s);  
+    });  
 }
 ```
 
-`r` 借用了局部变量 `s`，而 `tokio::spawn` 创建的 task 可能在当前作用域结束后仍然存在，因此这个引用不满足 `'static`。
+这段代码会编译报错：
+
+![[Pasted image 20260615093802.png|500]]
+
+`tokio::spawn`创建的异步任务不能借用局部变量。因为`tokio::spawn` 出来的任务不保证一定在 `main` 结束前执行完。
 
 更常见的写法是把所有权移动进 task：
 
@@ -422,94 +425,67 @@ async fn main() {
 
 典型场景是使用 `Rc<T>`、`RefCell<T>` 等不能跨线程移动的类型。
 
-示例：
-
-```rust
-use std::rc::Rc;
-use tokio::task::LocalSet;
-
-fn main() {
-    let rt = tokio::runtime::Builder::new_current_thread()
-        .enable_all()
-        .build()
-        .unwrap();
-
-    let local = LocalSet::new();
-
-    rt.block_on(local.run_until(async {
-        let value = Rc::new(10);
-
-        tokio::task::spawn_local(async move {
-            println!("{value}");
-        })
-        .await
-        .unwrap();
-    }));
-}
-```
-
-`spawn_local` 创建的是本地 task。它不要求 future 是 `Send`，但必须运行在 `LocalSet` 或支持本地任务的 runtime 上下文中。
-
-## 2、spawn 和 spawn_local
-
-| 写法 | task 是否需要 `Send` | 运行位置 |
-| --- | --- | --- |
-| `tokio::spawn(...)` | 需要 | Tokio Runtime，可跨 worker thread 移动 |
-| `tokio::task::spawn_local(...)` | 不需要 | 当前 `LocalSet` 或本地 runtime |
-
-选择标准：
-
-- task 需要跨线程调度：使用 `tokio::spawn`
-- task 内部持有 `Rc<T>`、`RefCell<T>` 等 `!Send` 值并跨 `.await`：使用 `LocalSet` + `spawn_local`
-- 能改成 `Arc<T>` / `Mutex<T>` 等线程安全类型：优先考虑普通 `tokio::spawn`
-
-# 八、协作式调度
-
-## 1、让出执行权
-
-Tokio task 使用协作式调度。一个 task 只有在合适的位置让出执行权，runtime 才有机会调度同一 worker thread 上的其他 task。
-
-常见让出位置：
-
-- `.await` 一个尚未就绪的异步操作
-- 显式调用 `tokio::task::yield_now().await`
+`LocalSet`本身不是 runtime，它只是一个本地任务集合，真正驱动任务运行的仍然是 Tokio Runtime。
 
 示例：
 
 ```rust
-async fn work() {
-    for _ in 0..100 {
-        // 做一小段计算
-
-        tokio::task::yield_now().await;
-    }
+use tokio::runtime::Runtime;  
+use tokio::task::LocalSet;  
+use std::rc::Rc;  
+  
+fn main() {  
+    let rt = Runtime::new().unwrap();  
+  
+    let local = LocalSet::new();  
+  
+    rt.block_on(local.run_until(async {  
+        let handle = tokio::task::spawn_local(async {  
+            let n = Rc::new(10);  
+  
+            tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;  
+  
+            println!("{}", n);  
+        });  
+  
+        handle.await.unwrap();   
+    }));  
 }
 ```
 
-`yield_now().await` 会把执行权交还给 Tokio 调度器，让其他 task 有机会运行。之后当前 task 仍然会再次被调度。
+这段代码虽然使用的是多线程 runtime，但`Rc<T>`所在的任务是通过`spawn_local`放进`LocalSet`运行的，因此它被限制在`main`线程（创建`LocalSet`的线程），不会跨线程迁移。
 
-## 2、长时间计算
+`LocalSet::run_until(future)`用于在当前线程进入这个 `LocalSet` 的本地任务上下文，驱动其中的 `spawn_local` 任务，并一直运行到传入的 `future` 完成。
 
-下面的 task 会长时间占住 worker thread：
+在`LocalSet`本地任务上下文中，仍然可以通过`tokio::spawn`创建跨线程的异步任务：
 
 ```rust
-async fn bad_task() {
-    loop {
-        // 长时间 CPU 计算，没有 .await
-    }
+use tokio::runtime::Runtime;  
+use tokio::task::LocalSet;  
+  
+fn main() {  
+    let rt = Runtime::new().unwrap();  
+  
+    let local = LocalSet::new();  
+  
+    rt.block_on(local.run_until(async {  
+        let handle1 = tokio::task::spawn_local(async {  
+            tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;  
+            println!("task 1 done");  
+        });  
+  
+        let handle2 = tokio::spawn(async {  
+            tokio::time::sleep(tokio::time::Duration::from_secs(3)).await;  
+            println!("task 2 done");  
+        });  
+  
+        handle1.await.unwrap();  
+        handle2.await.unwrap();  
+    }));  
 }
 ```
 
-问题不在于它是循环，而在于它没有 `.await`，也没有其他让出执行权的位置。Tokio 无法在一次 `poll` 调用内部强行抢占这个 task。
-
-处理方式：
-
-- 把计算拆小，在合适位置调用 `yield_now().await`
-- 使用 `spawn_blocking` 执行少量或可控时长的阻塞/计算逻辑
-- 对大量 CPU 密集计算，使用专门的计算线程池，例如 Rayon
-- 对长期运行的同步后台逻辑，使用专门 OS 线程
-
-# 九、阻塞任务
+# 七、spawn_blocking和阻塞任务
 
 ## 1、spawn_blocking
 
@@ -534,6 +510,8 @@ async fn main() {
 }
 ```
 
+在这里，`tokio::task::spawn_blocking(...)` 传入的闭包可以运行同步阻塞代码，因为它在 Tokio 的阻塞线程池中运行而非 worker thread。
+
 它和 `tokio::spawn` 的区别如下：
 
 | 写法 | 参数 | 执行位置 | 是否被反复 `poll` |
@@ -547,11 +525,6 @@ async fn main() {
 - 执行同步文件、压缩、解析等操作
 - 执行少量或可控时长的 CPU 计算
 
-不适合：
-
-- 无限循环
-- 长期后台 worker
-- 大量 CPU 密集计算且没有并发限制
 
 ## 2、blocking 任务取消
 
@@ -573,29 +546,29 @@ async fn main() {
 
 如果 blocking 任务还没开始运行，`abort()` 可能阻止它启动；如果已经开始运行，闭包通常会继续执行到结束。
 
-因此，提交给 `spawn_blocking` 的任务应该有明确结束条件。长期运行的同步逻辑更适合使用 `std::thread::spawn` 创建专门线程。
 
-# 十、多个任务的管理
+# 八、多个任务的管理
 
-## 1、Vec<JoinHandle<T>>
+## 1、Vec<JoinHandle\<T>>
 
 如果任务数量较少，并且需要按创建顺序收集结果，可以把 `JoinHandle` 放进 `Vec`：
 
 ```rust
-#[tokio::main]
-async fn main() {
-    let mut handles = Vec::new();
-
-    for i in 0..3 {
-        handles.push(tokio::spawn(async move {
-            i * 2
-        }));
-    }
-
-    for handle in handles {
-        let value = handle.await.unwrap();
-        println!("{value}");
-    }
+#[tokio::main]  
+async fn main() {  
+    let mut handles = Vec::new();  
+  
+    for i in 0..3 {  
+        handles.push(tokio::spawn(async move {  
+            i * 2  
+        }))  
+    }  
+  
+    for handle in handles {  
+        let value = handle.await.unwrap();  
+        println!("{}", value);  
+    }  
+  
 }
 ```
 
@@ -606,169 +579,173 @@ async fn main() {
 `JoinSet<T>` 用于管理一组同类型 task，并按完成顺序取回结果。
 
 ```rust
-use tokio::task::JoinSet;
-
-#[tokio::main]
-async fn main() {
-    let mut set = JoinSet::new();
-
-    for i in 0..3 {
-        set.spawn(async move {
-            i * 2
-        });
-    }
-
-    while let Some(result) = set.join_next().await {
-        let value = result.unwrap();
-        println!("{value}");
-    }
+use tokio::task::JoinSet;  
+  
+#[tokio::main]  
+async fn main() {  
+    let mut set = JoinSet::new();  
+  
+    for i in 0..3 {  
+        set.spawn(async move {  
+            tokio::time::sleep(tokio::time::Duration::from_secs(i + 1)).await;  
+            i * 2  
+        });  
+    }  
+  
+    while let Some(res) = set.join_next().await {  
+        let value = res.unwrap();  
+        println!("{}", value);  
+    }  
+  
 }
 ```
 
 当不关心创建顺序，只想哪个任务先完成就先处理哪个结果时，`JoinSet` 比 `Vec<JoinHandle<T>>` 更自然。
 
-# 十一、常见错误
+# 九、tokio::task::yield_now
 
-## 1、没有 Runtime 上下文
+`tokio::task::yield_now()`用来让当前 Tokio 任务主动让出一次执行机会，把控制权交还给 Runtime 执行器。
 
-`tokio::spawn` 必须在 Tokio Runtime 上下文中调用。
-
-错误示例：
+它本身是一个异步函数，只有写成下面这样才真正发生让出：
 
 ```rust
-fn main() {
-    tokio::spawn(async {
-        println!("hello");
-    });
-}
+tokio::task::yield_now().await;
 ```
 
-修复方式：
+调用后，当前任务会被重新放回调度队列，Runtime 可以先调度其他已经就绪的任务。当当前任务再次被调度时，会从`yield_now().await` 后面继续执行。`yield_now()` 完成时没有返回值。
+
+示例：
 
 ```rust
+use tokio::task;
+
 #[tokio::main]
 async fn main() {
-    tokio::spawn(async {
-        println!("hello");
-    })
-    .await
-    .unwrap();
-}
-```
-
-## 2、误以为 JoinHandle drop 会取消任务
-
-`drop(handle)` 不会取消 task：
-
-```rust
-#[tokio::main]
-async fn main() {
-    let handle = tokio::spawn(async {
-        tokio::time::sleep(std::time::Duration::from_secs(1)).await;
-        println!("done");
+    task::spawn(async {
+        println!("spawned task done!");
     });
 
-    drop(handle);
+    task::yield_now().await;
 
-    tokio::time::sleep(std::time::Duration::from_secs(2)).await;
+    println!("main task done!");
 }
 ```
 
-如果需要取消，要调用 `abort()`：
+结果：
+
+![[Pasted image 20260615104000.png|100]]
+
+结果并不是我们所预期的，尽管 main 任务在 spawn 之后主动通过`task::yield_now().await`让出了一次执行机会，但可以看到还是`main task done`先打印。
+
+因为`yield_now()` **不保证调度顺序**。即使当前任务主动 yield，下一轮调度也可能仍然继续调度当前任务。不能依赖它来实现严格的任务执行顺序。它适合在较长的异步计算循环中偶尔让出执行权，避免一个任务长时间占用 worker thread。
+
+
+# 十、join!和try_join!
+
+## 1、join!
+
+`tokio::join!`用来在同一个异步任务中并发等待多个`Future`，直到所有分支都完成后，再一次性返回它们的结果。
+
+示例：
 
 ```rust
-handle.abort();
+async fn fetch_user() -> String {  
+    tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;  
+    "user".to_string()  
+}  
+  
+  
+async fn fetch_order() -> String {  
+    tokio::time::sleep(tokio::time::Duration::from_secs(3)).await;  
+    "order".to_string()  
+}  
+  
+  
+#[tokio::main]  
+async fn main() {  
+    let (user, order) = tokio::join!(fetch_user(), fetch_order());  
+    println!("{}", user);  
+    println!("{}", order);  
+}
 ```
 
-## 3、在 task 中执行阻塞操作
-
-错误示例：
+`join!`返回的是一个元组，顺序和传入的`Future`顺序一致：
 
 ```rust
+let (a, b, c) = tokio::join!(fa(), fb(), fc());
+```
+
+> `join!`不是并发，也不是并行运行每个 Future。它等待的多个 Future 会放在当前的 Tokio Task 中，由当前 Task 所在的线程轮流 poll。
+
+如果这些 Future 返回的是 `Result`，`join!` 仍然会等待所有分支完成，即使其中某个分支已经返回 `Err`：
+
+```rust
+async fn a() -> Result<i32, &'static str> {
+    Ok(1)
+}
+
+async fn b() -> Result<i32, &'static str> {
+    Err("failed")
+}
+
 #[tokio::main]
 async fn main() {
-    tokio::spawn(async {
-        std::thread::sleep(std::time::Duration::from_secs(10));
-    });
+    let (ra, rb) = tokio::join!(a(), b());
+
+    println!("{ra:?}, {rb:?}");
 }
 ```
 
-这会阻塞当前 worker thread。异步等待应该使用 `tokio::time::sleep(...).await`：
+
+## 2、try_join!
+
+`tokio::try_join!` 适合多个 Future 都返回 `Result` 的场景。
+
+它也会在同一个异步任务中并发等待多个`Future`：
+
+- 如果所有`Future`都返回`Ok(_)`，最终返回`Ok((...))`
+- 如果任意`Future`返回`Er(_)`，立即返回这个错误，不再继续等待其他分支完成
 
 ```rust
+use tokio::time::{sleep, Duration};
+
+async fn fetch_user() -> Result<String, &'static str> {
+    sleep(Duration::from_secs(1)).await;
+    Ok("user".to_string())
+}
+
+async fn fetch_order() -> Result<String, &'static str> {
+    sleep(Duration::from_secs(1)).await;
+    Ok("order".to_string())
+}
+
 #[tokio::main]
-async fn main() {
-    tokio::spawn(async {
-        tokio::time::sleep(std::time::Duration::from_secs(10)).await;
-    })
-    .await
-    .unwrap();
+async fn main() -> Result<(), &'static str> {
+    let (user, order) = tokio::try_join!(
+        fetch_user(),
+        fetch_order()
+    )?;
+
+    println!("{user}, {order}");
+
+    Ok(())
 }
 ```
 
-必须调用同步阻塞代码时，使用 `spawn_blocking`：
+`try_join!` 的返回值也是按传入顺序组成的元组，只是外面包了一层 `Result`：
 
 ```rust
-#[tokio::main]
-async fn main() {
-    tokio::task::spawn_blocking(|| {
-        std::thread::sleep(std::time::Duration::from_secs(10));
-    })
-    .await
-    .unwrap();
-}
+let result: Result<(A, B), E> = tokio::try_join!(fa(), fb());
 ```
 
-## 4、把 join! 当成 spawn
+## 3、对比关系
 
-`tokio::join!` 不会自动创建新 task。它会在当前 task 中并发推进多个 `Future`。
+|写法|分支返回类型|完成条件|返回值|
+|---|---|---|---|
+|`tokio::join!`|任意类型|所有分支完成|`(A, B, ...)`|
+|`tokio::try_join!`|`Result<T, E>`|全部 `Ok`，或第一个 `Err`|`Result<(A, B, ...), E>`|
 
-```rust
-#[tokio::main]
-async fn main() {
-    let a = async { 1 };
-    let b = async { 2 };
 
-    let (x, y) = tokio::join!(a, b);
-    println!("{x}, {y}");
-}
-```
+# 十一、select!
 
-如果希望两个工作成为独立 task，需要使用 `tokio::spawn`：
-
-```rust
-#[tokio::main]
-async fn main() {
-    let a = tokio::spawn(async { 1 });
-    let b = tokio::spawn(async { 2 });
-
-    let (x, y) = tokio::join!(a, b);
-
-    println!("{}, {}", x.unwrap(), y.unwrap());
-}
-```
-
-# 十二、整体理解
-
-Tokio Task 可以按下面这条线理解：
-
-1. `async fn` / `async { ... }` 产生 `Future`
-2. `tokio::spawn(...)` 把 `Future` 注册成 runtime 管理的 task
-3. task 在 worker thread 上被 `poll`
-4. task 在 `.await` 处挂起，让出 worker thread
-5. 等待的资源就绪后，runtime 重新调度 task
-6. `JoinHandle<T>` 可以等待 task 完成并取得结果
-7. `abort()` 可以请求取消普通异步 task
-8. `spawn_blocking` 用于把同步阻塞闭包放到阻塞线程池
-
-一句话总结：
-
-> Tokio Task 是 Rust async 代码进入 Tokio 调度系统后的执行单元；它不是 OS 线程，而是由 runtime 在 worker thread 上协作式推进的轻量任务。
-
-# 参考资料
-
-- [Tokio task module documentation](https://docs.rs/tokio/latest/tokio/task/)
-- [Tokio `spawn` documentation](https://docs.rs/tokio/latest/tokio/task/fn.spawn.html)
-- [Tokio `JoinHandle` documentation](https://docs.rs/tokio/latest/tokio/task/struct.JoinHandle.html)
-- [Tokio `spawn_blocking` documentation](https://docs.rs/tokio/latest/tokio/task/fn.spawn_blocking.html)
-- [Tokio `LocalSet` documentation](https://docs.rs/tokio/latest/tokio/task/struct.LocalSet.html)
+`tokio::select!`用来同时等待多个异步分支

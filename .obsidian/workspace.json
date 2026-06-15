@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 262.5004348754883,
-    "collapsed": true
+    "width": 262.5004348754883
   },
   "right": {
     "id": "94be849039c638f6",
@@ -200,6 +199,8 @@
   },
   "active": "d0d70990e84a0558",
   "lastOpenFiles": [
+    "assets/Pasted image 20260615104000.png",
+    "assets/Pasted image 20260615093802.png",
     "Rust/notes/Rust进阶/异步编程/2、Tokio Runtime.md",
     "assets/Pasted image 20260614011824.png",
     "assets/Pasted image 20260614010843.png",
@@ -216,7 +217,6 @@
     "通用计算机知识/notes/Git/01_本地仓库基础/4、查看状态、暂存和提交.md",
     "assets/Pasted image 20260612004323.png",
     "assets/Pasted image 20260611235622.png",
-    "assets/Pasted image 20260611235316.png",
     "AI/notes/Agent开发/Anthropic API/code/stream_output.py",
     "AI/notes/Agent开发/Anthropic API/code/model_parameters.py",
     "AI/notes/Agent开发/Anthropic API/code/model.py",
