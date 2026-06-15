@@ -4,38 +4,42 @@
     "type": "split",
     "children": [
       {
-        "id": "9d766b2f5ef6c1f4",
+        "id": "663583ce81e5701e",
         "type": "split",
         "children": [
           {
-            "id": "3a37b7933ba63895",
+            "id": "b9b47ae2ff99e464",
             "type": "tabs",
             "children": [
               {
-                "id": "dcf281cc8b060339",
+                "id": "719c413a6570ec05",
                 "type": "leaf",
                 "state": {
-                  "type": "empty",
-                  "state": {},
+                  "type": "markdown",
+                  "state": {
+                    "file": "Python/notes/3、Python字符串.md",
+                    "mode": "source",
+                    "source": false
+                  },
                   "icon": "lucide-file",
-                  "title": "新标签页"
+                  "title": "3、Python字符串"
                 }
               }
             ]
           },
           {
-            "id": "532331df390e4468",
+            "id": "afa8ac134dac5f84",
             "type": "tabs",
             "children": [
               {
-                "id": "66b8b16dcca9f7b5",
+                "id": "ac92ef3e15a6269e",
                 "type": "leaf",
                 "pinned": true,
                 "state": {
                   "type": "terminal:terminal",
                   "state": {
                     "terminal:terminal": {
-                      "cwd": "/Users/11185032/spf/knowledge",
+                      "cwd": "/Users/songpengfei/knowledge",
                       "focus": false,
                       "profile": {
                         "args": [
@@ -66,7 +70,7 @@
                   },
                   "pinned": true,
                   "icon": "terminal",
-                  "title": "终端：✳ 纠正Anthropic API笔记中的错别字"
+                  "title": "终端：✳ 检查 Python 字符串笔记中的错别字"
                 }
               }
             ]
@@ -129,7 +133,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 262.5004348754883
+    "width": 262.50271224975586
   },
   "right": {
     "id": "94be849039c638f6",
@@ -247,28 +251,31 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "dcf281cc8b060339",
+  "active": "ac92ef3e15a6269e",
   "lastOpenFiles": [
-    "AI/notes/Agent开发/Anthropic API/6、多模态能力.md",
-    "AI/notes/Agent开发/Anthropic API/code/pokemon3.jpeg",
-    "AI/notes/Agent开发/Anthropic API/code/pokemon1.jpeg",
-    "AI/notes/Agent开发/Anthropic API/code/pokemon2.jpeg",
-    "AI/notes/Agent开发/Anthropic API/code/下载.jpeg",
-    "assets/Pasted image 20260615161213.png",
-    "AI/notes/Agent开发/Anthropic API/code/test.jpeg",
-    "AI/notes/Agent开发/Anthropic API/下载.jpeg",
-    "AI/notes/Agent开发/Anthropic API/images.webp",
-    "AI/notes/Agent开发/Anthropic API/code/image.py",
-    "通用计算机知识/notes/2、终端ANSI转义字符.md",
+    "Python/notes/3、Python字符串.md.tmp.18913.6a9657ff2570",
+    "Python/notes/3、Python字符串.md",
+    "assets/Pasted image 20260616003704.png",
+    "assets/Pasted image 20260615235134.png",
+    "assets/Pasted image 20260615233850.png",
+    "assets/Pasted image 20260615231320.png",
+    "assets/Pasted image 20260615230640.png",
+    "assets/Pasted image 20260615230144.png",
+    "assets/Pasted image 20260615224325.png",
+    "Python/notes/2、变量和数据类型.md",
+    "assets/Pasted image 20260615220914.png",
+    "assets/Pasted image 20260615220420.png",
+    "assets/Pasted image 20260615220211.png",
+    "Python/notes/1、安装Python.md",
+    "Python/notes/1、Python介绍.md",
+    "通用计算机知识/notes/Git/01_本地仓库基础/8、忽略规则文件.md",
+    "通用计算机知识/notes/Git/01_本地仓库基础/8、.md",
     "AI/notes/Agent开发/Anthropic API/5、流式处理.md",
-    "AI/notes/Agent开发/Anthropic API/code/stream_conversion.py",
-    "assets/Pasted image 20260615145424.png",
-    "AI/notes/Agent开发/Anthropic API/4、模型参数.md",
-    "AI/notes/Agent开发/Anthropic API/code/async_stream.py",
     "Python/notes/Python异步基础.md",
-    "Python/notes/未命名",
-    "Rust/notes/Rust进阶/异步编程/3、Tokio Task.md",
-    "assets/Pasted image 20260615104000.png",
+    "AI/notes/Agent开发/Anthropic API/code/stream_conversion.py",
+    "AI/notes/Agent开发/Anthropic API/code/image.py",
+    "AI/notes/Agent开发/Anthropic API/code/async_stream.py",
+    "AI/notes/Agent开发/Anthropic API/6、多模态能力.md",
     "Rust/notes/Rust进阶/异步编程/2、Tokio Runtime.md",
     "AI/notes/Agent开发/Anthropic API/1、Anthropic SDK入门.md",
     "通用计算机知识/notes/Git/01_本地仓库基础/7、删除和重命名文件.md",
@@ -281,6 +288,8 @@
     "AI/notes/Agent开发/Anthropic API/code/conversion.py",
     "AI/notes/Agent开发/Anthropic API/code",
     "AI/notes/Agent开发/Anthropic API/01、Anthropic SDK入门/stream_output.py",
+    "AI/notes/Agent开发/Anthropic API/01、Anthropic SDK入门/model_parameters.py",
+    "AI/notes/Agent开发/Anthropic API/4、模型参数.md",
     "AI/notes/Agent开发/AI核心概念.md",
     "AI/notes/Agent开发/AI 核心概念/1、.md",
     "AI/notes/Agent开发/Anthropic API/3、模型速度比较.md",
@@ -289,10 +298,6 @@
     "AI/notes/Claude Code/Claude编程技巧/2、全局规则.md",
     "Rust/notes/Rust基础/21、迭代器.md",
     "Rust/notes/Rust基础/20、闭包.md",
-    "Rust/notes/Rust基础/16、运算符重载.md",
-    "Rust/notes/Rust基础/19、智能指针.md",
-    "AI/notes/Claude Code/7、Subagent.md",
-    "Rust/notes/Rust基础/Cargo workspace.md",
-    "AI/notes/Claude Code/8、MCP.md"
+    "Rust/notes/Rust基础/16、运算符重载.md"
   ]
 }
