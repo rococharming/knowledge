@@ -1,9 +1,9 @@
 
 # 一、Anthropic SDK简介
 
-Anthropic API 是 Anthropic 提供给开发者的 HTTP 接口，用来在程序中调用 Claude 模型。开发者可以通过 API 发送请求，将用户消息、模型名称、可用工具、最大输出长度等参数传给模型，然后获取模型生成的相应
+Anthropic API 是 Anthropic 提供给开发者的 HTTP 接口，用来在程序中调用 Claude 模型。开发者可以通过 API 发送请求，将用户消息、模型名称、可用工具、最大输出长度等参数传给模型，然后获取模型生成的响应。
 
-Anthropic 提供了 Python 实现的 Anthropic SDK 客户端库，用来在程序中调用 Anthropic Messages API。它封装了底层HTTP请求、鉴权、请求参数、响应对象等细节，使得开发者不需要手动拼接请求地址、请求头和JSON数据，
+Anthropic 提供了 Python 实现的 Anthropic SDK 客户端库，用来在程序中调用 Anthropic Messages API。它封装了底层 HTTP 请求、鉴权、请求参数、响应对象等细节，使得开发者不需要手动拼接请求地址、请求头和 JSON 数据。
 
 如果某个第三方模型服务兼容 Anthropic 的 Messages API 格式，也可以继续使用该 SDK，只需要将`base_url`和`api_key`改成对应服务商提供的地址和密钥即可。
 

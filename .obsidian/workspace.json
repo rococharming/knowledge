@@ -4,24 +4,75 @@
     "type": "split",
     "children": [
       {
-        "id": "3a37b7933ba63895",
-        "type": "tabs",
+        "id": "9d766b2f5ef6c1f4",
+        "type": "split",
         "children": [
           {
-            "id": "d0d70990e84a0558",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Rust/notes/Rust进阶/异步编程/3、Tokio Task.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "3、Tokio Task"
-            }
+            "id": "3a37b7933ba63895",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "dcf281cc8b060339",
+                "type": "leaf",
+                "state": {
+                  "type": "empty",
+                  "state": {},
+                  "icon": "lucide-file",
+                  "title": "新标签页"
+                }
+              }
+            ]
+          },
+          {
+            "id": "532331df390e4468",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "66b8b16dcca9f7b5",
+                "type": "leaf",
+                "pinned": true,
+                "state": {
+                  "type": "terminal:terminal",
+                  "state": {
+                    "terminal:terminal": {
+                      "cwd": "/Users/11185032/spf/knowledge",
+                      "focus": false,
+                      "profile": {
+                        "args": [
+                          "--login"
+                        ],
+                        "executable": "/opt/homebrew/bin/fish",
+                        "followTheme": true,
+                        "name": "",
+                        "platforms": {
+                          "darwin": true
+                        },
+                        "pythonExecutable": "python3",
+                        "restoreHistory": false,
+                        "rightClickAction": "copyPaste",
+                        "successExitCodes": [
+                          "0",
+                          "SIGINT",
+                          "SIGTERM"
+                        ],
+                        "terminalOptions": {
+                          "documentOverride": null
+                        },
+                        "type": "integrated",
+                        "useWin32Conhost": true
+                      },
+                      "serial": null
+                    }
+                  },
+                  "pinned": true,
+                  "icon": "terminal",
+                  "title": "终端：✳ 纠正Anthropic API笔记中的错别字"
+                }
+              }
+            ]
           }
-        ]
+        ],
+        "direction": "horizontal"
       }
     ],
     "direction": "vertical"
@@ -137,13 +188,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Rust/notes/Rust进阶/异步编程/3、Tokio Task.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "3、Tokio Task 的大纲"
+              "title": "大纲"
             }
           },
           {
@@ -197,37 +247,40 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "d0d70990e84a0558",
+  "active": "dcf281cc8b060339",
   "lastOpenFiles": [
-    "assets/Pasted image 20260615104000.png",
-    "assets/Pasted image 20260615093802.png",
-    "Rust/notes/Rust进阶/异步编程/2、Tokio Runtime.md",
-    "assets/Pasted image 20260614011824.png",
-    "assets/Pasted image 20260614010843.png",
-    "assets/Pasted image 20260614010808.png",
-    "assets/Pasted image 20260613175906.png",
-    "assets/Pasted image 20260613174430.png",
+    "AI/notes/Agent开发/Anthropic API/6、多模态能力.md",
+    "AI/notes/Agent开发/Anthropic API/code/pokemon3.jpeg",
+    "AI/notes/Agent开发/Anthropic API/code/pokemon1.jpeg",
+    "AI/notes/Agent开发/Anthropic API/code/pokemon2.jpeg",
+    "AI/notes/Agent开发/Anthropic API/code/下载.jpeg",
+    "assets/Pasted image 20260615161213.png",
+    "AI/notes/Agent开发/Anthropic API/code/test.jpeg",
+    "AI/notes/Agent开发/Anthropic API/下载.jpeg",
+    "AI/notes/Agent开发/Anthropic API/images.webp",
+    "AI/notes/Agent开发/Anthropic API/code/image.py",
+    "通用计算机知识/notes/2、终端ANSI转义字符.md",
     "AI/notes/Agent开发/Anthropic API/5、流式处理.md",
+    "AI/notes/Agent开发/Anthropic API/code/stream_conversion.py",
+    "assets/Pasted image 20260615145424.png",
+    "AI/notes/Agent开发/Anthropic API/4、模型参数.md",
+    "AI/notes/Agent开发/Anthropic API/code/async_stream.py",
+    "Python/notes/Python异步基础.md",
+    "Python/notes/未命名",
+    "Rust/notes/Rust进阶/异步编程/3、Tokio Task.md",
+    "assets/Pasted image 20260615104000.png",
+    "Rust/notes/Rust进阶/异步编程/2、Tokio Runtime.md",
     "AI/notes/Agent开发/Anthropic API/1、Anthropic SDK入门.md",
-    "assets/Pasted image 20260612095754.png",
-    "assets/Pasted image 20260612094038.png",
     "通用计算机知识/notes/Git/01_本地仓库基础/7、删除和重命名文件.md",
     "通用计算机知识/notes/Git/01_本地仓库基础/6、撤销修改和取消暂存.md",
     "通用计算机知识/notes/Git/01_本地仓库基础/5、查看修改内容.md",
     "通用计算机知识/notes/Git/01_本地仓库基础/4、查看状态、暂存和提交.md",
-    "assets/Pasted image 20260612004323.png",
-    "assets/Pasted image 20260611235622.png",
     "AI/notes/Agent开发/Anthropic API/code/stream_output.py",
     "AI/notes/Agent开发/Anthropic API/code/model_parameters.py",
     "AI/notes/Agent开发/Anthropic API/code/model.py",
     "AI/notes/Agent开发/Anthropic API/code/conversion.py",
     "AI/notes/Agent开发/Anthropic API/code",
     "AI/notes/Agent开发/Anthropic API/01、Anthropic SDK入门/stream_output.py",
-    "AI/notes/Agent开发/Anthropic API/01、Anthropic SDK入门/model_parameters.py",
-    "AI/notes/Agent开发/Anthropic API/01、Anthropic SDK入门/model.py",
-    "AI/notes/Agent开发/Anthropic API/01、Anthropic SDK入门/conversion.py",
-    "AI/notes/Agent开发/Anthropic API/01、Anthropic SDK入门",
-    "AI/notes/Agent开发/Anthropic API/4、模型参数.md",
     "AI/notes/Agent开发/AI核心概念.md",
     "AI/notes/Agent开发/AI 核心概念/1、.md",
     "AI/notes/Agent开发/Anthropic API/3、模型速度比较.md",
@@ -240,10 +293,6 @@
     "Rust/notes/Rust基础/19、智能指针.md",
     "AI/notes/Claude Code/7、Subagent.md",
     "Rust/notes/Rust基础/Cargo workspace.md",
-    "AI/notes/Claude Code/8、MCP.md",
-    "AI/wiki/entities/Claude Code.md",
-    "Rust/notes/Rust基础/18、集合.md",
-    "Rust/notes/Rust进阶/异步编程/1、异步编程基础.md",
-    "Rust/notes/Rust基础/18、集合（待补充）.md"
+    "AI/notes/Claude Code/8、MCP.md"
   ]
 }

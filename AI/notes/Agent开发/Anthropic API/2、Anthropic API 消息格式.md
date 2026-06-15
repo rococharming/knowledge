@@ -333,7 +333,7 @@ stop_reason='end_turn'
 if response.stop_reason == "end_turn":
 	print(response.content[0].text)
 elif response.stop_reason == "max_tokens":
-	print("输出可能被截断，可以增大 max_tokens 或缩短提示词
+	print("输出可能被截断，可以增大 max_tokens 或缩短提示词")
 	print(response.content[0].text)
 elif response.stop_reason == "stop_sequence":
 	print("模型命中了自定义停止序列。")  
