@@ -748,4 +748,211 @@ let result: Result<(A, B), E> = tokio::try_join!(fa(), fb());
 
 # 十一、select!
 
-`tokio::select!`用来同时等待多个异步分支
+## 1、基本使用
+
+`tokio::select!`用来同时等待多个异步分支，哪个分支先完成，就执行哪个分支对应的处理逻辑，然后整个`select!`表达式结束，没有被选中的其他分支也会被取消。
+
+基本形式如下：
+
+```rust
+tokio::select! {
+	result = future_a() => {
+		// future_a 先完成的处理逻辑
+	}
+	result = future_b() => {
+		// future_b 先完成的处理逻辑
+	}
+}
+```
+
+例如，同时等待一个任务完成或一个超时事件：
+
+```rust
+async fn do_work() -> &'static str {  
+    tokio::time::sleep(tokio::time::Duration::from_secs(3)).await;  
+    "work done!"  
+}  
+  
+#[tokio::main]  
+async fn main() {  
+  
+    tokio::select! {  
+  
+        result = do_work() => {  
+            println!("任务完成：{}", result);  
+        }  
+  
+        _ = tokio::time::sleep(tokio::time::Duration::from_secs(1)) => {  
+            println!("超时!");  
+        }  
+  
+    }  
+  
+}
+```
+
+这段代码中，`sleep(Duration::from_secs(1))` 会先完成，所以输出：
+
+```shell
+超时!
+```
+
+此时 `do_work()` 这个分支没有完成，会被取消。
+
+`select!`的分支语法可以理解为：
+
+```rust
+<pattern> = <async expression> => <handler>
+```
+
+例如：
+
+```rust
+msg = rx.recv() => {
+	println!("收到消息：{msg:?}");
+}
+```
+
+左边的`msg`接收`Future`完成后的结果，右边的代码块是该分支胜出后要执行的逻辑。
+
+`select!`常用于事件循环中，例如同时监听消息和退出信号：
+
+```rust
+use tokio::sync::mpsc;  
+ 
+#[tokio::main]  
+async fn main() {  
+  
+    let (tx, mut rx) = mpsc::channel::<String>(8);  
+  
+  
+    tokio::spawn(async move {  
+  
+        for i in 0..10 {  
+            tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;  
+            tx.send(String::from("Hello, World!")).await.unwrap();  
+        }  
+  
+    });  
+  
+  
+    loop {  
+        tokio::select! {  
+            msg = rx.recv() => {  
+                match msg {  
+                    Some(msg) => {  
+                        println!("收到消息：{}", msg);  
+                    }  
+                    None => {  
+                        break;  
+                    }  
+                }  
+            }  
+  
+            _ = tokio::signal::ctrl_c() => {  
+                println!("收到 Ctrl+C，退出");  
+                break;  
+            }  
+        }  
+  
+  
+    }  
+}
+```
+
+## 2、条件分支
+
+`select!`也支持条件分支：
+
+```rust
+#[tokio::main]  
+async fn main() {  
+  
+    let enable = false;  
+  
+    tokio::select! {  
+        _ = async {  
+            println!("branch A");  
+        }, if enable => {  
+            println!("completed A");  
+        }  
+  
+        _ = async {  
+            println!("branch B");  
+        }, if enable => {  
+            println!("completed B");  
+        }  
+}
+```
+
+这里 `if enabled` 为 `false` 时，第一个分支会被禁用，本轮 `select!` 不会等待它。
+
+如果所有分支都被禁用，可以用 `else` 处理：
+
+```rust
+#[tokio::main]  
+async fn main() {  
+  
+    let enable = false;  
+  
+    tokio::select! {  
+        _ = async {  
+            println!("branch A");  
+        }, if enable => {  
+            println!("completed A");  
+        }  
+  
+        _ = async {  
+            println!("branch B");  
+        }, if enable => {  
+            println!("completed B");  
+        }  
+  
+        else => {  
+            println!("所有分支都不可用");  
+        }  
+    }  
+  
+}
+```
+
+如果所有分支都被禁用，并且没有 `else` 分支，`select!` 会 panic。
+
+## 3、biased;
+
+默认情况下，`select!` 会随机选择检查分支的顺序，这样在循环中多个分支总是 ready 时，可以提供一定公平性。也可以使用 `biased;` 改成从上到下固定顺序轮询：
+
+```rust
+#[tokio::main]  
+async fn main() {  
+  
+    tokio::select! {  
+  
+        biased; 
+         
+        _ = async {  
+            tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;  
+        } => {  
+            println!("completed A");  
+        }  
+  
+        _ = async {  
+            tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;  
+        }  => {  
+            println!("completed B");  
+        }  
+  
+       _ = async {  
+            tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;  
+        }  => {  
+            println!("completed C");  
+        }  
+  
+    }  
+  
+}
+```
+
+这种情况下，总是`completed A`先打印。
+
+使用 `biased;` 后，分支顺序就由你自己负责。如果前面的分支经常 ready，后面的分支可能长期得不到机会，因此一般只有在确实需要固定优先级时才使用。
