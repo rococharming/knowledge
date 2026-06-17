@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "5c0452dbb7e3936c",
+        "id": "afa8ac134dac5f84",
         "type": "tabs",
         "children": [
           {
-            "id": "c0bc905d136039b4",
+            "id": "62364f7a58f8e75f",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 262.50271224975586
+    "width": 200
   },
   "right": {
     "id": "94be849039c638f6",
@@ -197,9 +197,11 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "c0bc905d136039b4",
+  "active": "62364f7a58f8e75f",
   "lastOpenFiles": [
+    "通用计算机知识/notes/Git/01_本地仓库基础/9、灵活查看提交历史.md",
     "Python/notes/6、函数.md",
+    "通用计算机知识/notes/Git/02_提",
     "Python/notes/函数（旧）.md",
     "Python/notes/3、Python字符串.md",
     "Python/notes/dict和set.md",
@@ -241,9 +243,7 @@
     "AI/notes/Agent开发/Anthropic API/code/model.py",
     "AI/notes/Agent开发/Anthropic API/code/conversion.py",
     "AI/notes/Agent开发/Anthropic API/code",
-    "AI/notes/Agent开发/Anthropic API/01、Anthropic SDK入门/stream_output.py",
     "AI/notes/Agent开发/Anthropic API/4、模型参数.md",
-    "AI/notes/Agent开发/AI核心概念.md",
-    "AI/notes/Agent开发/AI 核心概念/1、.md"
+    "AI/notes/Agent开发/AI核心概念.md"
   ]
 }
