@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Python/notes/6、函数.md",
+                "file": "Python/notes/dict和set.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "6、函数"
+              "title": "dict和set"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200.5086555480957
   },
   "right": {
     "id": "94be849039c638f6",
@@ -137,13 +137,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Python/notes/6、函数.md",
+                "file": "Python/notes/dict和set.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "6、函数 的大纲"
+              "title": "dict和set 的大纲"
             }
           },
           {
@@ -199,14 +199,16 @@
   },
   "active": "62364f7a58f8e75f",
   "lastOpenFiles": [
-    "通用计算机知识/notes/Git/01_本地仓库基础/9、灵活查看提交历史.md",
+    "Python/notes/list和tuple.md",
+    "Python/notes/dict和set.md",
+    "Python/notes/8、循环.md",
+    "Python/notes/7、列表和元组.md",
     "Python/notes/6、函数.md",
+    "通用计算机知识/notes/Git/01_本地仓库基础/9、灵活查看提交历史.md",
     "通用计算机知识/notes/Git/02_提",
     "Python/notes/函数（旧）.md",
     "Python/notes/3、Python字符串.md",
-    "Python/notes/dict和set.md",
     "Python/notes/5、条件判断.md",
-    "Python/notes/list和tuple.md",
     "Python/notes/4、数字和数学运算.md",
     "Python/notes/未命名.md",
     "Python/notes/4、布尔值与条件语句.md",
@@ -242,8 +244,6 @@
     "AI/notes/Agent开发/Anthropic API/code/model_parameters.py",
     "AI/notes/Agent开发/Anthropic API/code/model.py",
     "AI/notes/Agent开发/Anthropic API/code/conversion.py",
-    "AI/notes/Agent开发/Anthropic API/code",
-    "AI/notes/Agent开发/Anthropic API/4、模型参数.md",
-    "AI/notes/Agent开发/AI核心概念.md"
+    "AI/notes/Agent开发/Anthropic API/code"
   ]
 }
