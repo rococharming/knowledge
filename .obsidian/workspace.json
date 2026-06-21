@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "00e95d7a399c35ff",
+        "id": "f3352e47c79062df",
         "type": "tabs",
         "children": [
           {
-            "id": "868df4304dfb7683",
+            "id": "491bda9accb2b8f4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "通用计算机知识/notes/Git/01_本地仓库基础/9、灵活查看提交历史.md",
+                "file": "Obsidian/notes/2、Obsidian Web Clipper.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "9、灵活查看提交历史"
+              "title": "2、Obsidian Web Clipper"
             }
           }
         ]
@@ -137,13 +137,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "通用计算机知识/notes/Git/01_本地仓库基础/9、灵活查看提交历史.md",
+                "file": "Obsidian/notes/2、Obsidian Web Clipper.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "9、灵活查看提交历史 的大纲"
+              "title": "2、Obsidian Web Clipper 的大纲"
             }
           },
           {
@@ -197,53 +197,53 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "868df4304dfb7683",
+  "active": "491bda9accb2b8f4",
   "lastOpenFiles": [
-    "Python/notes/6、函数.md",
+    "assets/Pasted image 20260622030528.png",
+    "assets/Pasted image 20260622024353.png",
+    "raw/如何把Obsidian Web Clipper价值最大化？.md",
+    "Obsidian/notes/2、Obsidian Web Clipper.md",
+    "raw",
+    "assets/Pasted image 20260622022558.png",
+    "raw/Codex 接入第三方模型 DeepSeek、GLM、Kimi 教程：CC-Switch 和 Codex++ 两种方案对比.md",
+    "assets/Pasted image 20260622021646.png",
+    "assets/Pasted image 20260622021538.png",
+    "assets/Pasted image 20260622021317.png",
+    "assets/Pasted image 20260622020348.png",
+    "assets/Pasted image 20260622020313.png",
+    "assets/Pasted image 20260622015615.png",
+    "assets/Pasted image 20260622013554.png",
+    "assets/Pasted image 20260622013542.png",
+    "llm-wiki-zh-CN.md",
+    "raw/llm-wiki.md",
+    "llm-wiki.md",
+    "Obsidian/notes/1、Obsidian安装与配置.md",
+    "AI/notes/Codex/Codex接入第三方模型.md",
+    "Obsidian/domain.md.tmp.6812.d7c337daa210",
+    "Obsidian/wiki/syntheses",
+    "Obsidian/wiki/summaries",
+    "Obsidian/wiki/overviews",
+    "Obsidian/wiki/recipes",
+    "Obsidian/wiki/log.md",
+    "Obsidian/wiki/entities",
+    "Obsidian/wiki/index.md",
+    "Obsidian/wiki/concepts",
+    "Obsidian/wiki/comparisons",
+    "Obsidian/raw/videos",
+    "Obsidian/domain.md",
+    "Python/notes/12、类和对象.md",
+    "Python/notes/9、字典和集合.md",
+    "Python/notes/11、异常处理.md",
+    "Python/notes/10、模块.md",
+    "Python/notes/dict和set.md",
     "通用计算机知识/notes/Git/01_本地仓库基础/9、灵活查看提交历史.md",
+    "Python/notes/6、函数.md",
     "Python/notes/函数（旧）.md",
     "Python/notes/3、Python字符串.md",
-    "Python/notes/dict和set.md",
     "Python/notes/5、条件判断.md",
     "Python/notes/list和tuple.md",
     "Python/notes/4、数字和数学运算.md",
     "Python/notes/未命名.md",
-    "Python/notes/4、布尔值与条件语句.md",
-    "assets/Pasted image 20260616104307.png",
-    "assets/Pasted image 20260616104242.png",
-    "Python/notes/3、Python字符串.md.tmp.18913.6a9657ff2570",
-    "assets/Pasted image 20260616003704.png",
-    "assets/Pasted image 20260615235134.png",
-    "assets/Pasted image 20260615233850.png",
-    "assets/Pasted image 20260615231320.png",
-    "assets/Pasted image 20260615230640.png",
-    "assets/Pasted image 20260615230144.png",
-    "assets/Pasted image 20260615224325.png",
-    "Python/notes/2、变量和数据类型.md",
-    "assets/Pasted image 20260615220914.png",
-    "Python/notes/1、安装Python.md",
-    "Python/notes/1、Python介绍.md",
-    "通用计算机知识/notes/Git/01_本地仓库基础/8、忽略规则文件.md",
-    "通用计算机知识/notes/Git/01_本地仓库基础/8、.md",
-    "AI/notes/Agent开发/Anthropic API/5、流式处理.md",
-    "Python/notes/Python异步基础.md",
-    "AI/notes/Agent开发/Anthropic API/code/stream_conversion.py",
-    "AI/notes/Agent开发/Anthropic API/code/image.py",
-    "AI/notes/Agent开发/Anthropic API/code/async_stream.py",
-    "AI/notes/Agent开发/Anthropic API/6、多模态能力.md",
-    "Rust/notes/Rust进阶/异步编程/2、Tokio Runtime.md",
-    "AI/notes/Agent开发/Anthropic API/1、Anthropic SDK入门.md",
-    "通用计算机知识/notes/Git/01_本地仓库基础/7、删除和重命名文件.md",
-    "通用计算机知识/notes/Git/01_本地仓库基础/6、撤销修改和取消暂存.md",
-    "通用计算机知识/notes/Git/01_本地仓库基础/5、查看修改内容.md",
-    "通用计算机知识/notes/Git/01_本地仓库基础/4、查看状态、暂存和提交.md",
-    "AI/notes/Agent开发/Anthropic API/code/stream_output.py",
-    "AI/notes/Agent开发/Anthropic API/code/model_parameters.py",
-    "AI/notes/Agent开发/Anthropic API/code/model.py",
-    "AI/notes/Agent开发/Anthropic API/code/conversion.py",
-    "AI/notes/Agent开发/Anthropic API/code",
-    "AI/notes/Agent开发/Anthropic API/01、Anthropic SDK入门/stream_output.py",
-    "AI/notes/Agent开发/Anthropic API/4、模型参数.md",
-    "AI/notes/Agent开发/AI核心概念.md"
+    "Python/notes/4、布尔值与条件语句.md"
   ]
 }
