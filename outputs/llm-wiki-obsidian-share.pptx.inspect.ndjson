@@ -1,0 +1,63 @@
+{"kind":"deck","id":"pr/aljyj5","name":"Deck"}
+{"kind":"layout","layoutId":"e6919adf-78db-438f-9a7d-d8e4648cd261","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"5e40d4b9-c755-462f-aebe-b678529b97e9","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/kjsujo","slide":1,"title":"Slide 1","textShapes":0}
+{"kind":"image","id":"im/l87ed8ba","slide":1,"name":"","alt":"从 RAG 到 LLM Wiki - PNG rendered slide","bbox":[0,0,1280,720]}
+{"kind":"notes","id":"nt/kjsujo","slide":1,"text":""}
+{"kind":"slide","id":"sl/qg8edk","slide":2,"title":"Slide 2","textShapes":0}
+{"kind":"image","id":"im/hk3q5o7q","slide":2,"name":"","alt":"资料越来越多，知识真的变多了吗？ - PNG rendered slide","bbox":[0,0,1280,720]}
+{"kind":"notes","id":"nt/qg8edk","slide":2,"text":""}
+{"kind":"slide","id":"sl/vf4z0g","slide":3,"title":"Slide 3","textShapes":0}
+{"kind":"image","id":"im/qh0fepkz","slide":3,"name":"","alt":"传统知识库的核心困境 - PNG rendered slide","bbox":[0,0,1280,720]}
+{"kind":"notes","id":"nt/vf4z0g","slide":3,"text":""}
+{"kind":"slide","id":"sl/1e151a","slide":4,"title":"Slide 4","textShapes":0}
+{"kind":"image","id":"im/l0rqd4vm","slide":4,"name":"","alt":"AI 文件问答带来的新可能 - PNG rendered slide","bbox":[0,0,1280,720]}
+{"kind":"notes","id":"nt/1e151a","slide":4,"text":""}
+{"kind":"slide","id":"sl/ahthj7","slide":5,"title":"Slide 5","textShapes":0}
+{"kind":"image","id":"im/hgn29gr2","slide":5,"name":"","alt":"但普通 AI 问答仍然是临时性的 - PNG rendered slide","bbox":[0,0,1280,720]}
+{"kind":"notes","id":"nt/ahthj7","slide":5,"text":""}
+{"kind":"slide","id":"sl/dzazdx","slide":6,"title":"Slide 6","textShapes":0}
+{"kind":"image","id":"im/kb6xkf6d","slide":6,"name":"","alt":"RAG：给大模型一本可检索的参考书 - PNG rendered slide","bbox":[0,0,1280,720]}
+{"kind":"notes","id":"nt/dzazdx","slide":6,"text":""}
+{"kind":"slide","id":"sl/pazzjn","slide":7,"title":"Slide 7","textShapes":0}
+{"kind":"image","id":"im/61032lsz","slide":7,"name":"","alt":"传统 RAG 的三个不足 - PNG rendered slide","bbox":[0,0,1280,720]}
+{"kind":"notes","id":"nt/pazzjn","slide":7,"text":""}
+{"kind":"slide","id":"sl/qzwl51","slide":8,"title":"Slide 8","textShapes":0}
+{"kind":"image","id":"im/donyd0z6","slide":8,"name":"","alt":"GraphRAG：让知识片段之间有关系 - PNG rendered slide","bbox":[0,0,1280,720]}
+{"kind":"notes","id":"nt/qzwl51","slide":8,"text":""}
+{"kind":"slide","id":"sl/bwb5xn","slide":9,"title":"Slide 9","textShapes":0}
+{"kind":"image","id":"im/bat47y1k","slide":9,"name":"","alt":"Agentic RAG：让 Agent 更聪明地检索 - PNG rendered slide","bbox":[0,0,1280,720]}
+{"kind":"notes","id":"nt/bwb5xn","slide":9,"text":""}
+{"kind":"slide","id":"sl/z557s2","slide":10,"title":"Slide 10","textShapes":0}
+{"kind":"image","id":"im/vy90je9c","slide":10,"name":"","alt":"RAG 路线的共同天花板 - PNG rendered slide","bbox":[0,0,1280,720]}
+{"kind":"notes","id":"nt/z557s2","slide":10,"text":""}
+{"kind":"slide","id":"sl/4f6fbi","slide":11,"title":"Slide 11","textShapes":0}
+{"kind":"image","id":"im/mhk3q5o7","slide":11,"name":"","alt":"从检索到编译 - PNG rendered slide","bbox":[0,0,1280,720]}
+{"kind":"notes","id":"nt/4f6fbi","slide":11,"text":""}
+{"kind":"slide","id":"sl/bap4pj","slide":12,"title":"Slide 12","textShapes":0}
+{"kind":"image","id":"im/a5gbq1or","slide":12,"name":"","alt":"LLM Wiki 是什么 - PNG rendered slide","bbox":[0,0,1280,720]}
+{"kind":"notes","id":"nt/bap4pj","slide":12,"text":""}
+{"kind":"slide","id":"sl/k5ynf7","slide":13,"title":"Slide 13","textShapes":0}
+{"kind":"image","id":"im/byhgn29g","slide":13,"name":"","alt":"知识开始产生复利 - PNG rendered slide","bbox":[0,0,1280,720]}
+{"kind":"notes","id":"nt/k5ynf7","slide":13,"text":""}
+{"kind":"slide","id":"sl/y5ls0b","slide":14,"title":"Slide 14","textShapes":0}
+{"kind":"image","id":"im/kf6dcbul","slide":14,"name":"","alt":"LLM Wiki 的三层架构 - PNG rendered slide","bbox":[0,0,1280,720]}
+{"kind":"notes","id":"nt/y5ls0b","slide":14,"text":""}
+{"kind":"slide","id":"sl/ayyb8t","slide":15,"title":"Slide 15","textShapes":0}
+{"kind":"image","id":"im/0z61032l","slide":15,"name":"","alt":"Wiki 页面如何组织知识 - PNG rendered slide","bbox":[0,0,1280,720]}
+{"kind":"notes","id":"nt/ayyb8t","slide":15,"text":""}
+{"kind":"slide","id":"sl/qyucsi","slide":16,"title":"Slide 16","textShapes":0}
+{"kind":"image","id":"im/x0nuxc3y","slide":16,"name":"","alt":"三个核心操作：Ingest / Query / Lint - PNG rendered slide","bbox":[0,0,1280,720]}
+{"kind":"notes","id":"nt/qyucsi","slide":16,"text":""}
+{"kind":"slide","id":"sl/c5re8b","slide":17,"title":"Slide 17","textShapes":0}
+{"kind":"image","id":"im/2p8nqxs7","slide":17,"name":"","alt":"为什么 Obsidian 适合作为前端 - PNG rendered slide","bbox":[0,0,1280,720]}
+{"kind":"notes","id":"nt/c5re8b","slide":17,"text":""}
+{"kind":"slide","id":"sl/wgb793","slide":18,"title":"Slide 18","textShapes":0}
+{"kind":"image","id":"im/wjudg7ad","slide":18,"name":"","alt":"Web Clipper：把外部信息变成原始素材 - PNG rendered slide","bbox":[0,0,1280,720]}
+{"kind":"notes","id":"nt/wgb793","slide":18,"text":""}
+{"kind":"slide","id":"sl/shzi01","slide":19,"title":"Slide 19","textShapes":0}
+{"kind":"image","id":"im/4vmtwra5","slide":19,"name":"","alt":"一个完整工作流示例 - PNG rendered slide","bbox":[0,0,1280,720]}
+{"kind":"notes","id":"nt/shzi01","slide":19,"text":""}
+{"kind":"slide","id":"sl/zcjgxf","slide":20,"title":"Slide 20","textShapes":0}
+{"kind":"image","id":"im/5o7qpg3e","slide":20,"name":"","alt":"知识库成为 Agent 的长期记忆层 - PNG rendered slide","bbox":[0,0,1280,720]}
+{"kind":"notes","id":"nt/zcjgxf","slide":20,"text":""}

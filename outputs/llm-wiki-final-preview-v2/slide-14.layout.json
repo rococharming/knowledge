@@ -1,0 +1,1351 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/0z61032l",
+    "id": "0z61032l",
+    "slide": 14,
+    "layoutId": "/ppt/slideLayouts/slideLayout1.xml",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "/ppt/slideMasters/slideMaster1.xml",
+    "masterLayoutName": "Master",
+    "backgroundColor": "#F8F4EA",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "fontScheme": {
+      "name": "Office",
+      "majorFont": {
+        "latinTypeface": "Calibri Light",
+        "eastAsianTypeface": "Calibri Light",
+        "complexScriptTypeface": "Calibri Light"
+      },
+      "minorFont": {
+        "latinTypeface": "Calibri",
+        "eastAsianTypeface": "Calibri",
+        "complexScriptTypeface": "Calibri"
+      }
+    },
+    "typefaces": [
+      "Calibri",
+      "Calibri Light"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "/ppt/slideLayouts/slideLayout1.xml",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "/ppt/slideMasters/slideMaster1.xml",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "/ppt/slideMasters/slideMaster1.xml",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/qd4vmtwr",
+      "id": "1",
+      "name": "eyebrow",
+      "bbox": [
+        32,
+        14,
+        360,
+        24
+      ],
+      "geometry": "rect",
+      "text": "14 / 趋势展望",
+      "textPreview": "14 / 趋势展望",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "14 / 趋势展望"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "14 / 趋势展望",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "color": "#0F766E",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "14 / 趋势展望",
+              "fontSize": 16,
+              "color": "#0F766E",
+              "bold": true
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/x4nap4r6",
+      "id": "2",
+      "name": "teal-handline",
+      "bbox": [
+        10,
+        44,
+        310,
+        -4
+      ],
+      "geometry": "line",
+      "lineColor": "#0F766E",
+      "lineWidth": 3
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/8jqh0fep",
+      "id": "3",
+      "name": "amber-handline",
+      "bbox": [
+        780,
+        45,
+        460,
+        -4
+      ],
+      "geometry": "line",
+      "lineColor": "#D9902F",
+      "lineWidth": 2.4
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/fa9w3m94",
+      "id": "4",
+      "name": "title",
+      "bbox": [
+        40,
+        66,
+        980,
+        58
+      ],
+      "geometry": "rect",
+      "text": "从检索拼凑，到知识编译",
+      "textPreview": "从检索拼凑，到知识编译",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "从检索拼凑，到知识编译"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "从检索拼凑，到知识编译",
+          "resolvedTextStyle": {
+            "fontSize": 40,
+            "color": "#101816",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "从检索拼凑，到知识编译",
+              "fontSize": 40,
+              "color": "#101816",
+              "bold": true
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/qpg3ex0n",
+      "id": "5",
+      "name": "subtitle",
+      "bbox": [
+        42,
+        128,
+        930,
+        34
+      ],
+      "geometry": "rect",
+      "text": "把 LLM 的理解能力前置，让知识在摄入时开始沉淀",
+      "textPreview": "把 LLM 的理解能力前置，让知识在摄入时开始沉淀",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "把 LLM 的理解能力前置，让知识在摄入时开始沉淀"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "把 LLM 的理解能力前置，让知识在摄入时开始沉淀",
+          "resolvedTextStyle": {
+            "fontSize": 23,
+            "color": "#3D4A45",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "把 LLM 的理解能力前置，让知识在摄入时开始沉淀",
+              "fontSize": 23,
+              "color": "#3D4A45",
+              "bold": true
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/xczed8v6",
+      "id": "6",
+      "name": "page-number",
+      "bbox": [
+        1128,
+        652,
+        92,
+        28
+      ],
+      "geometry": "rect",
+      "text": "14 / 17",
+      "textPreview": "14 / 17",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "14 / 17"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "14 / 17",
+          "resolvedTextStyle": {
+            "fontSize": 18,
+            "color": "#D9902F",
+            "bold": true,
+            "alignment": "right"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "14 / 17",
+              "fontSize": 18,
+              "color": "#D9902F",
+              "bold": true
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/8v6psfil",
+      "id": "7",
+      "name": "retrieve-card",
+      "bbox": [
+        95,
+        235,
+        310,
+        230
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#FFFDF8",
+      "lineColor": "#D9D0BF",
+      "lineWidth": 1.2
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/je9cvixc",
+      "id": "8",
+      "name": "retrieve-card-accent",
+      "bbox": [
+        95,
+        235,
+        310,
+        0
+      ],
+      "geometry": "line",
+      "lineColor": "#D9902F",
+      "lineWidth": 3
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/qtcj6tov",
+      "id": "9",
+      "name": "retrieve-card-title",
+      "bbox": [
+        111,
+        251,
+        278,
+        28
+      ],
+      "geometry": "rect",
+      "text": "检索 - 拼凑",
+      "textPreview": "检索 - 拼凑",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "检索 - 拼凑"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "检索 - 拼凑",
+          "resolvedTextStyle": {
+            "fontSize": 24,
+            "color": "#101816",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "检索 - 拼凑",
+              "fontSize": 24,
+              "color": "#101816",
+              "bold": true
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/svu9knih",
+      "id": "10",
+      "name": "retrieve-card-detail",
+      "bbox": [
+        111,
+        287,
+        278,
+        170
+      ],
+      "geometry": "rect",
+      "text": "快速找到 100 篇论文里的相关片段\n\n但很难自动形成连贯框架",
+      "textPreview": "快速找到 100 篇论文里的相关片段 |  | 但很难自动形成连贯框架",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 4,
+        "lines": [
+          {
+            "index": 1,
+            "text": "快速找到 100"
+          },
+          {
+            "index": 2,
+            "text": "篇论文里的相关片段"
+          },
+          {
+            "index": 3,
+            "text": ""
+          },
+          {
+            "index": 4,
+            "text": "但很难自动形成连贯框架"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "快速找到 100 篇论文里的相关片段",
+          "resolvedTextStyle": {
+            "fontSize": 17,
+            "color": "#3D4A45",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "快速找到 100 篇论文里的相关片段",
+              "fontSize": 17,
+              "color": "#3D4A45"
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        },
+        {
+          "index": 3,
+          "text": "但很难自动形成连贯框架",
+          "resolvedTextStyle": {
+            "fontSize": 17,
+            "color": "#3D4A45",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "但很难自动形成连贯框架",
+              "fontSize": 17,
+              "color": "#3D4A45"
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/hgn29gr2",
+      "id": "11",
+      "name": "shift-card",
+      "bbox": [
+        500,
+        255,
+        280,
+        190
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#E7F1ED",
+      "lineColor": "#D9D0BF",
+      "lineWidth": 1.2
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ap4r65wj",
+      "id": "12",
+      "name": "shift-card-accent",
+      "bbox": [
+        500,
+        255,
+        280,
+        0
+      ],
+      "geometry": "line",
+      "lineColor": "#0F766E",
+      "lineWidth": 3
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/za1gvy90",
+      "id": "13",
+      "name": "shift-card-title",
+      "bbox": [
+        516,
+        271,
+        248,
+        28
+      ],
+      "geometry": "rect",
+      "text": "理解成本前置",
+      "textPreview": "理解成本前置",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "理解成本前置"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "理解成本前置",
+          "resolvedTextStyle": {
+            "fontSize": 23,
+            "color": "#101816",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "理解成本前置",
+              "fontSize": 23,
+              "color": "#101816",
+              "bold": true
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 14,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/s36hcrmh",
+      "id": "14",
+      "name": "shift-card-detail",
+      "bbox": [
+        516,
+        307,
+        248,
+        130
+      ],
+      "geometry": "rect",
+      "text": "从“每次查询时重新理解”\n转移到“内容摄入时先编译”",
+      "textPreview": "从“每次查询时重新理解” | 转移到“内容摄入时先编译”",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "从“每次查询时重新理解”"
+          },
+          {
+            "index": 2,
+            "text": "转移到“内容摄入时先编译”"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "从“每次查询时重新理解”",
+          "resolvedTextStyle": {
+            "fontSize": 17,
+            "color": "#3D4A45",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "从“每次查询时重新理解”",
+              "fontSize": 17,
+              "color": "#3D4A45"
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "转移到“内容摄入时先编译”",
+          "resolvedTextStyle": {
+            "fontSize": 17,
+            "color": "#3D4A45",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "转移到“内容摄入时先编译”",
+              "fontSize": 17,
+              "color": "#3D4A45"
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 15,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/hoza1gvy",
+      "id": "15",
+      "name": "compile-card",
+      "bbox": [
+        880,
+        235,
+        310,
+        230
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#FFFDF8",
+      "lineColor": "#D9D0BF",
+      "lineWidth": 1.2
+    },
+    {
+      "order": 16,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/a1gvy90j",
+      "id": "16",
+      "name": "compile-card-accent",
+      "bbox": [
+        880,
+        235,
+        310,
+        0
+      ],
+      "geometry": "line",
+      "lineColor": "#0F766E",
+      "lineWidth": 3
+    },
+    {
+      "order": 17,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/zidonyd0",
+      "id": "17",
+      "name": "compile-card-title",
+      "bbox": [
+        896,
+        251,
+        278,
+        28
+      ],
+      "geometry": "rect",
+      "text": "知识复利",
+      "textPreview": "知识复利",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "知识复利"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "知识复利",
+          "resolvedTextStyle": {
+            "fontSize": 24,
+            "color": "#101816",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "知识复利",
+              "fontSize": 24,
+              "color": "#101816",
+              "bold": true
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 18,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/s72x4nap",
+      "id": "18",
+      "name": "compile-card-detail",
+      "bbox": [
+        896,
+        287,
+        278,
+        170
+      ],
+      "geometry": "rect",
+      "text": "每多摄入一份材料，知识不是塞进数据库，而是编织进一张增长的网",
+      "textPreview": "每多摄入一份材料，知识不是塞进数据库，而是编织进一张增长的网",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 3,
+        "lines": [
+          {
+            "index": 1,
+            "text": "每多摄入一份材料，知识不是塞"
+          },
+          {
+            "index": 2,
+            "text": "进数据库，而是编织进一张增长"
+          },
+          {
+            "index": 3,
+            "text": "的网"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "每多摄入一份材料，知识不是塞进数据库，而是编织进一张增长的网",
+          "resolvedTextStyle": {
+            "fontSize": 17,
+            "color": "#3D4A45",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "每多摄入一份材料，知识不是塞进数据库，而是编织进一张增长的网",
+              "fontSize": 17,
+              "color": "#3D4A45"
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 19,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/b2hwfyxo",
+      "id": "53",
+      "bbox": [
+        405,
+        350,
+        95,
+        0
+      ],
+      "geometry": "straightConnector1",
+      "lineColor": "#0F766E",
+      "lineWidth": 2.4
+    },
+    {
+      "order": 20,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/4byhgn29",
+      "id": "54",
+      "bbox": [
+        780,
+        350,
+        100,
+        0
+      ],
+      "geometry": "straightConnector1",
+      "lineColor": "#0F766E",
+      "lineWidth": 2.4
+    },
+    {
+      "order": 21,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/wval87ed",
+      "id": "21",
+      "name": "n-1",
+      "bbox": [
+        955,
+        420,
+        34,
+        34
+      ],
+      "geometry": "ellipse",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": ""
+          }
+        ]
+      },
+      "fillColor": "#F7E5B3",
+      "lineColor": "#0F766E",
+      "lineWidth": 1.8
+    },
+    {
+      "order": 22,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/7adsji5s",
+      "id": "22",
+      "name": "n-2",
+      "bbox": [
+        1025,
+        390,
+        42,
+        42
+      ],
+      "geometry": "ellipse",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": ""
+          }
+        ]
+      },
+      "fillColor": "#E7F1ED",
+      "lineColor": "#0F766E",
+      "lineWidth": 1.8
+    },
+    {
+      "order": 23,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/epkzupwb",
+      "id": "23",
+      "name": "n-3",
+      "bbox": [
+        1090,
+        430,
+        34,
+        34
+      ],
+      "geometry": "ellipse",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": ""
+          }
+        ]
+      },
+      "fillColor": "#E7F1ED",
+      "lineColor": "#0F766E",
+      "lineWidth": 1.8
+    },
+    {
+      "order": 24,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/psfil0rq",
+      "id": "24",
+      "name": "n-4",
+      "bbox": [
+        1038,
+        475,
+        38,
+        38
+      ],
+      "geometry": "ellipse",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": ""
+          }
+        ]
+      },
+      "fillColor": "#F7E5B3",
+      "lineColor": "#0F766E",
+      "lineWidth": 1.8
+    },
+    {
+      "order": 25,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/tsvu9kni",
+      "id": "59",
+      "bbox": [
+        984.02,
+        411,
+        40.98,
+        13.98
+      ],
+      "verticalFlip": true,
+      "geometry": "straightConnector1",
+      "lineColor": "#77AFA6",
+      "lineWidth": 1.5
+    },
+    {
+      "order": 26,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/xkf6dcbu",
+      "id": "60",
+      "bbox": [
+        1060.85,
+        425.85,
+        34.13,
+        9.13
+      ],
+      "geometry": "straightConnector1",
+      "lineColor": "#77AFA6",
+      "lineWidth": 1.5
+    },
+    {
+      "order": 27,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/4zidonyd",
+      "id": "61",
+      "bbox": [
+        1046,
+        432,
+        11,
+        43
+      ],
+      "geometry": "straightConnector1",
+      "lineColor": "#77AFA6",
+      "lineWidth": 1.5
+    },
+    {
+      "order": 28,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/fepkzupw",
+      "id": "62",
+      "bbox": [
+        984.02,
+        449.02,
+        59.54,
+        31.54
+      ],
+      "geometry": "straightConnector1",
+      "lineColor": "#77AFA6",
+      "lineWidth": 1.5
+    },
+    {
+      "order": 29,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/mtwra5gb",
+      "id": "63",
+      "bbox": [
+        1070.44,
+        459.02,
+        24.54,
+        21.54
+      ],
+      "horizontalFlip": true,
+      "geometry": "straightConnector1",
+      "lineColor": "#77AFA6",
+      "lineWidth": 1.5
+    },
+    {
+      "order": 30,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/a9w3m94f",
+      "id": "30",
+      "name": "quote-box",
+      "bbox": [
+        285,
+        485,
+        710,
+        56
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#FFF8DD",
+      "lineColor": "#D9D0BF",
+      "lineWidth": 1
+    },
+    {
+      "order": 31,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/zupwb2hw",
+      "id": "31",
+      "name": "quote-text",
+      "bbox": [
+        325,
+        502,
+        630,
+        24
+      ],
+      "geometry": "rect",
+      "text": "快速翻书和深度理解之间，始终隔着一道鸿沟。",
+      "textPreview": "快速翻书和深度理解之间，始终隔着一道鸿沟。",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "快速翻书和深度理解之间，始终隔着一道鸿沟。"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "快速翻书和深度理解之间，始终隔着一道鸿沟。",
+          "resolvedTextStyle": {
+            "fontSize": 21,
+            "color": "#101816",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "快速翻书和深度理解之间，始终隔着一道鸿沟。",
+              "fontSize": 21,
+              "color": "#101816",
+              "bold": true
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 32,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/sfil0rqd",
+      "id": "32",
+      "name": "bottom-note-box",
+      "bbox": [
+        45,
+        588,
+        1030,
+        78
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#FFFDF8",
+      "lineColor": "#D9D0BF",
+      "lineWidth": 1.1
+    },
+    {
+      "order": 33,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/h0fepkzu",
+      "id": "33",
+      "name": "bottom-note-accent",
+      "bbox": [
+        45,
+        588,
+        1030,
+        0
+      ],
+      "geometry": "line",
+      "lineColor": "#0F766E",
+      "lineWidth": 2.6
+    },
+    {
+      "order": 34,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/al87ed8b",
+      "id": "34",
+      "name": "bottom-note",
+      "bbox": [
+        62,
+        606,
+        990,
+        42
+      ],
+      "geometry": "rect",
+      "text": "LLM Wiki 代表的是一种“编译”思路：不是等到提问时再临时拼接资料，而是在素材进入时就完成理解、关联和结构化沉淀。",
+      "textPreview": "LLM Wiki 代表的是一种“编译”思路：不是等到提问时再临时拼接资料，而是在素材进入时就完成理解、关联和结构化沉淀。",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "LLM Wiki 代表的是一种“编译”思路：不是等到提问时再临时拼接资料，而是在素材进入时就完成理解、关联和结构化沉淀。"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "LLM Wiki 代表的是一种“编译”思路：不是等到提问时再临时拼接资料，而是在素材进入时就完成理解、关联和结构化沉淀。",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "color": "#3D4A45",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "LLM Wiki 代表的是一种“编译”思路：不是等到提问时再临时拼接资料，而是在素材进入时就完成理解、关联和结构化沉淀。",
+              "fontSize": 16,
+              "color": "#3D4A45"
+            }
+          ],
+          "bulletCharacter": "",
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

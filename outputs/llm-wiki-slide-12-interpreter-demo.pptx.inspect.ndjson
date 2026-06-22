@@ -1,0 +1,30 @@
+{"kind":"deck","id":"pr/5nh8rv","name":"Deck"}
+{"kind":"layout","layoutId":"8018fc1d-e386-46b9-98ca-4bc6c3b7852c","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"3786c847-c638-41a4-9965-e49d53746d8c","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/dk02n0","slide":1,"title":"12 / Web Clipper 解释器","textShapes":12}
+{"kind":"textbox","id":"sh/90je9cvi","slide":1,"name":"eyebrow","text":"12 / Web Clipper 解释器","textPreview":"12 / Web Clipper 解释器","textChars":20,"textLines":1,"bbox":[32,14,280,24]}
+{"kind":"shape","id":"sh/yd0z6103","slide":1,"name":"teal-handline","bbox":[10,36,310,-8]}
+{"kind":"shape","id":"sh/rytsvu9k","slide":1,"name":"amber-handline","bbox":[780,45,460,-7]}
+{"kind":"textbox","id":"sh/g7adsji5","slide":1,"name":"title","text":"解释器：剪藏前先让模型处理网页","textPreview":"解释器：剪藏前先让模型处理网页","textChars":15,"textLines":1,"bbox":[40,66,980,58]}
+{"kind":"textbox","id":"sh/9s36hcrm","slide":1,"name":"subtitle","text":"普通变量负责提取，提示变量负责总结、翻译、提取和改写","textPreview":"普通变量负责提取，提示变量负责总结、翻译、提取和改写","textChars":26,"textLines":1,"bbox":[42,128,960,34]}
+{"kind":"shape","id":"sh/y1kre1w7","slide":1,"name":"normal-flow","bbox":[90,240,280,210]}
+{"kind":"shape","id":"sh/rmhk3q5o","slide":1,"name":"normal-flow-accent","bbox":[90,240,280,0]}
+{"kind":"textbox","id":"sh/g3ex0nux","slide":1,"name":"normal-flow-title","text":"普通模板变量","textPreview":"普通模板变量","textChars":6,"textLines":1,"bbox":[106,256,248,28]}
+{"kind":"textbox","id":"sh/5o7qpg3e","slide":1,"name":"normal-flow-detail","text":"读取网页中的现成数据\n{{title}} / {{url}} / {{content}}\n\n不调用 AI，只做提取和排版","textPreview":"读取网页中的现成数据 | {{title}} / {{url}} / {{content}} |  | 不调用 AI，只做提取和排版","textChars":60,"textLines":4,"bbox":[106,292,248,150]}
+{"kind":"shape","id":"sh/5gbq1ory","slide":1,"name":"interpreter-flow","bbox":[500,220,320,250]}
+{"kind":"shape","id":"sh/cvixczed","slide":1,"name":"interpreter-flow-accent","bbox":[500,220,320,0]}
+{"kind":"textbox","id":"sh/nap4r65w","slide":1,"name":"interpreter-flow-title","text":"解释器提示变量","textPreview":"解释器提示变量","textChars":7,"textLines":1,"bbox":[516,236,288,28]}
+{"kind":"textbox","id":"sh/upwb2hwf","slide":1,"name":"interpreter-flow-detail","text":"把网页内容和提示词发送给模型\n{{\"用三句话总结这篇文章\"}}\n\n返回摘要、翻译或提取结果","textPreview":"把网页内容和提示词发送给模型 | {{\"用三句话总结这篇文章\"}} |  | 返回摘要、翻译或提取结果","textChars":45,"textLines":4,"bbox":[516,272,288,190]}
+{"kind":"shape","id":"sh/54zidony","slide":1,"name":"note-output","bbox":[950,240,230,210]}
+{"kind":"shape","id":"sh/cj6tovah","slide":1,"name":"note-output-accent","bbox":[950,240,230,0]}
+{"kind":"textbox","id":"sh/nyd0z610","slide":1,"name":"note-output-title","text":"写入笔记","textPreview":"写入笔记","textChars":4,"textLines":1,"bbox":[966,256,198,28]}
+{"kind":"textbox","id":"sh/udg7adsj","slide":1,"name":"note-output-detail","text":"# AI 摘要\n{{\"用简体中文总结核心内容\"}}\n\n# 原始正文\n{{content}}","textPreview":"# AI 摘要 | {{\"用简体中文总结核心内容\"}} |  | # 原始正文 | {{content}}","textChars":45,"textLines":5,"bbox":[966,292,198,150]}
+{"kind":"shape","id":"sh/1032lszq","slide":1,"bbox":[370,345,130,0]}
+{"kind":"shape","id":"sh/cfa9w3m9","slide":1,"bbox":[820,345,130,0]}
+{"kind":"shape","id":"sh/obm58z25","slide":1,"name":"process-box","bbox":[180,488,840,64]}
+{"kind":"textbox","id":"sh/hwfyxobm","slide":1,"name":"process-text","text":"读取网页 → 发送网页内容和提示词 → 模型返回处理结果 → 填入模板 → 保存到 Obsidian","textPreview":"读取网页 → 发送网页内容和提示词 → 模型返回处理结果 → 填入模板 → 保存到 Obsidian","textChars":50,"textLines":1,"bbox":[220,510,760,24]}
+{"kind":"shape","id":"sh/65wjudg7","slide":1,"name":"bottom-note-box","bbox":[45,588,930,78]}
+{"kind":"shape","id":"sh/zqtcj6to","slide":1,"name":"bottom-note-accent","bbox":[45,588,930,0]}
+{"kind":"textbox","id":"sh/oza1gvy9","slide":1,"name":"bottom-note","text":"解释器让 Web Clipper 不只是复制网页，而是在剪藏前完成一次轻量 AI 处理。适合摘要、翻译和结构化提取，但会增加速度、Token 和 API 成本。","textPreview":"解释器让 Web Clipper 不只是复制网页，而是在剪藏前完成一次轻量 AI 处理。适合摘要、翻译和结构化提取，但会增加速度、Token 和 API 成本。","textChars":80,"textLines":1,"bbox":[62,608,890,40]}
+{"kind":"textbox","id":"sh/hk3q5o7q","slide":1,"name":"page-number","text":"12 / 20","textPreview":"12 / 20","textChars":7,"textLines":1,"bbox":[1128,652,92,28]}
+{"kind":"notes","id":"nt/dk02n0","slide":1,"text":""}

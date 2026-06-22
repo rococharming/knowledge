@@ -1,0 +1,49 @@
+{"kind":"deck","id":"pr/sclpom","name":"Deck"}
+{"kind":"layout","layoutId":"901405f0-0672-44ed-8173-e9c7163d628d","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"90a454fb-cb92-4f33-97c0-76e668ffeae4","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/9b1u3c","slide":1,"title":"10 / Web Clipper","textShapes":18}
+{"kind":"textbox","id":"sh/r65wjudg","slide":1,"name":"eyebrow","text":"10 / Web Clipper","textPreview":"10 / Web Clipper","textChars":16,"textLines":1,"bbox":[32,14,280,24]}
+{"kind":"shape","id":"sh/gr2p8nqx","slide":1,"name":"teal-handline","bbox":[10,36,310,-8]}
+{"kind":"shape","id":"sh/9cvixcze","slide":1,"name":"amber-handline","bbox":[780,45,460,-7]}
+{"kind":"textbox","id":"sh/yxobm58z","slide":1,"name":"title","text":"Obsidian Web Clipper：把网页变成 raw 素材","textPreview":"Obsidian Web Clipper：把网页变成 raw 素材","textChars":33,"textLines":1,"bbox":[40,66,940,58]}
+{"kind":"textbox","id":"sh/nih4byhg","slide":1,"name":"subtitle","text":"从外部网页到本地 Markdown，让 LLM Wiki 有稳定的素材入口","textPreview":"从外部网页到本地 Markdown，让 LLM Wiki 有稳定的素材入口","textChars":37,"textLines":1,"bbox":[42,128,960,34]}
+{"kind":"textbox","id":"sh/g3ex0nux","slide":1,"name":"page-number","text":"10 / 20","textPreview":"10 / 20","textChars":7,"textLines":1,"bbox":[1128,652,92,28]}
+{"kind":"shape","id":"sh/5o7qpg3e","slide":1,"name":"browser-card","bbox":[90,235,230,210]}
+{"kind":"shape","id":"sh/y1kre1w7","slide":1,"name":"browser-card-top","bbox":[90,269,230,0]}
+{"kind":"shape","id":"sh/rmhk3q5o","slide":1,"name":"browser-card-dot-0","bbox":[108,248,8,8]}
+{"kind":"shape","id":"sh/fa9w3m94","slide":1,"name":"browser-card-dot-1","bbox":[126,248,8,8]}
+{"kind":"shape","id":"sh/qpg3ex0n","slide":1,"name":"browser-card-dot-2","bbox":[144,248,8,8]}
+{"kind":"textbox","id":"sh/xczed8v6","slide":1,"name":"browser-card-title","text":"网页文章","textPreview":"网页文章","textChars":4,"textLines":1,"bbox":[112,289,186,28]}
+{"kind":"shape","id":"sh/8v6psfil","slide":1,"name":"browser-card-line-1","bbox":[112,335,166,0]}
+{"kind":"shape","id":"sh/fyxobm58","slide":1,"name":"browser-card-line-2","bbox":[112,365,138,0]}
+{"kind":"shape","id":"sh/qd4vmtwr","slide":1,"name":"browser-card-line-3","bbox":[112,395,116,0]}
+{"kind":"shape","id":"sh/x4nap4r6","slide":1,"name":"clipper-card","bbox":[430,265,190,150]}
+{"kind":"shape","id":"sh/8jqh0fep","slide":1,"name":"clipper-card-accent","bbox":[430,265,190,0]}
+{"kind":"textbox","id":"sh/fmlkjm1c","slide":1,"name":"clipper-card-title","text":"Web Clipper","textPreview":"Web Clipper","textChars":11,"textLines":1,"bbox":[446,281,158,26]}
+{"kind":"textbox","id":"sh/q1orytsv","slide":1,"name":"clipper-card-detail","text":"正文 / 元数据 / 高亮\n阅读器模式清理干扰","textPreview":"正文 / 元数据 / 高亮 | 阅读器模式清理干扰","textChars":23,"textLines":2,"bbox":[446,313,158,94]}
+{"kind":"shape","id":"sh/y1kre1w7","slide":1,"name":"markdown-file","bbox":[740,240,190,220]}
+{"kind":"textbox","id":"sh/rmhk3q5o","slide":1,"name":"markdown-file-label","text":".md","textPreview":".md","textChars":3,"textLines":1,"bbox":[760,258,80,26]}
+{"kind":"textbox","id":"sh/g7adsji5","slide":1,"name":"markdown-file-body","text":"title: {{title}}\nurl: {{url}}\nauthor: {{author}}\n\n{{content}}","textPreview":"title: {{title}} | url: {{url}} | author: {{author}} |  | {{content}}","textChars":61,"textLines":5,"bbox":[760,298,154,152]}
+{"kind":"shape","id":"sh/9s36hcrm","slide":1,"name":"raw-card","bbox":[1040,290,160,120]}
+{"kind":"shape","id":"sh/yd0z6103","slide":1,"name":"raw-card-accent","bbox":[1040,290,160,0]}
+{"kind":"textbox","id":"sh/rytsvu9k","slide":1,"name":"raw-card-title","text":"raw/","textPreview":"raw/","textChars":4,"textLines":1,"bbox":[1056,306,128,26]}
+{"kind":"textbox","id":"sh/gfmlkjm1","slide":1,"name":"raw-card-detail","text":"网页内容以 Markdown 形式保存到本地知识库","textPreview":"网页内容以 Markdown 形式保存到本地知识库","textChars":25,"textLines":1,"bbox":[1056,338,128,64]}
+{"kind":"shape","id":"sh/90je9cvi","slide":1,"bbox":[320,340,110,0]}
+{"kind":"shape","id":"sh/ylc7u54z","slide":1,"bbox":[620,340,120,10]}
+{"kind":"shape","id":"sh/r65wjudg","slide":1,"bbox":[930,350,110,0]}
+{"kind":"shape","id":"sh/d8v6psfi","slide":1,"name":"feature-0","bbox":[115,485,270,70]}
+{"kind":"shape","id":"sh/onyd0z61","slide":1,"name":"feature-0-accent","bbox":[115,485,270,0]}
+{"kind":"textbox","id":"sh/z25kb6xk","slide":1,"name":"feature-0-title","text":"一键剪藏","textPreview":"一键剪藏","textChars":4,"textLines":1,"bbox":[131,501,238,26]}
+{"kind":"textbox","id":"sh/6hcrmhk3","slide":1,"name":"feature-0-detail","text":"正文和标题、作者、发布日期等元数据","textPreview":"正文和标题、作者、发布日期等元数据","textChars":17,"textLines":1,"bbox":[131,533,238,14]}
+{"kind":"shape","id":"sh/dg7adsji","slide":1,"name":"feature-1","bbox":[440,485,270,70]}
+{"kind":"shape","id":"sh/ovahoza1","slide":1,"name":"feature-1-accent","bbox":[440,485,270,0]}
+{"kind":"textbox","id":"sh/vahoza1g","slide":1,"name":"feature-1-title","text":"高亮保存","textPreview":"高亮保存","textChars":4,"textLines":1,"bbox":[456,501,238,26]}
+{"kind":"textbox","id":"sh/6tovahoz","slide":1,"name":"feature-1-detail","text":"保留关键段落或选中的页面元素","textPreview":"保留关键段落或选中的页面元素","textChars":14,"textLines":1,"bbox":[456,533,238,14]}
+{"kind":"shape","id":"sh/dsji5sne","slide":1,"name":"feature-2","bbox":[765,485,270,70]}
+{"kind":"shape","id":"sh/o7qpg3ex","slide":1,"name":"feature-2-accent","bbox":[765,485,270,0]}
+{"kind":"textbox","id":"sh/wb2hwfyx","slide":1,"name":"feature-2-title","text":"隐私可控","textPreview":"隐私可控","textChars":4,"textLines":1,"bbox":[781,501,238,26]}
+{"kind":"textbox","id":"sh/lwval87e","slide":1,"name":"feature-2-detail","text":"内容进入本地 Vault，不依赖平台数据锁定","textPreview":"内容进入本地 Vault，不依赖平台数据锁定","textChars":22,"textLines":1,"bbox":[781,533,238,14]}
+{"kind":"shape","id":"sh/e9cvixcz","slide":1,"name":"bottom-note-box","bbox":[45,588,930,78]}
+{"kind":"shape","id":"sh/3q5o7qpg","slide":1,"name":"bottom-note-accent","bbox":[45,588,930,0]}
+{"kind":"textbox","id":"sh/w3m94fu1","slide":1,"name":"bottom-note","text":"Web Clipper 在 LLM Wiki 中更像原材料采集器：它把网页、元数据、高亮和选择内容整理成 Markdown，并放入 raw 层等待后续 Ingest。","textPreview":"Web Clipper 在 LLM Wiki 中更像原材料采集器：它把网页、元数据、高亮和选择内容整理成 Markdown，并放入 raw 层等待后续 Ingest。","textChars":83,"textLines":1,"bbox":[62,608,890,40]}
+{"kind":"notes","id":"nt/9b1u3c","slide":1,"text":""}

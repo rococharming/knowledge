@@ -1,0 +1,31 @@
+{"kind":"slide","id":"sl/tlexon","slide":1,"title":"08 / 核心操作","textShapes":14}
+{"kind":"textbox","id":"sh/udg7adsj","slide":1,"name":"eyebrow","text":"08 / 核心操作","textPreview":"08 / 核心操作","textChars":9,"textLines":1,"bbox":[32,14,260,24]}
+{"kind":"shape","id":"sh/54zidony","slide":1,"name":"teal-handline","bbox":[10,36,310,-8]}
+{"kind":"shape","id":"sh/cj6tovah","slide":1,"name":"amber-handline","bbox":[780,45,460,-7]}
+{"kind":"textbox","id":"sh/nap4r65w","slide":1,"name":"title","text":"LLM Wiki 的核心操作","textPreview":"LLM Wiki 的核心操作","textChars":14,"textLines":1,"bbox":[40,66,930,58]}
+{"kind":"textbox","id":"sh/upwb2hwf","slide":1,"name":"subtitle","text":"Ingest、Query、Lint：让知识库持续生长并保持健康","textPreview":"Ingest、Query、Lint：让知识库持续生长并保持健康","textChars":31,"textLines":1,"bbox":[42,128,900,34]}
+{"kind":"textbox","id":"sh/5gbq1ory","slide":1,"name":"page-number","text":"08 / 20","textPreview":"08 / 20","textChars":7,"textLines":1,"bbox":[1128,652,92,28]}
+{"kind":"shape","id":"sh/cvixczed","slide":1,"name":"ingest-card","bbox":[100,240,250,150]}
+{"kind":"shape","id":"sh/jm1cfa9w","slide":1,"name":"ingest-card-accent","bbox":[100,240,250,0]}
+{"kind":"textbox","id":"sh/u18jqh0f","slide":1,"name":"ingest-card-title","text":"Ingest","textPreview":"Ingest","textChars":6,"textLines":1,"bbox":[116,256,218,26]}
+{"kind":"textbox","id":"sh/w3m94fu1","slide":1,"name":"ingest-card-detail","text":"摄取新素材\n阅读、摘要、更新页面与索引","textPreview":"摄取新素材 | 阅读、摘要、更新页面与索引","textChars":19,"textLines":2,"bbox":[116,288,218,94]}
+{"kind":"shape","id":"sh/loj2t83i","slide":1,"name":"query-card","bbox":[500,240,250,150]}
+{"kind":"shape","id":"sh/ex0nuxc3","slide":1,"name":"query-card-accent","bbox":[500,240,250,0]}
+{"kind":"textbox","id":"sh/3itgfmlk","slide":1,"name":"query-card-title","text":"Query","textPreview":"Query","textChars":5,"textLines":1,"bbox":[516,256,218,26]}
+{"kind":"textbox","id":"sh/wb2hwfyx","slide":1,"name":"query-card-detail","text":"基于 Wiki 回答\n好的答案可归档回 Wiki","textPreview":"基于 Wiki 回答 | 好的答案可归档回 Wiki","textChars":24,"textLines":2,"bbox":[516,288,218,94]}
+{"kind":"shape","id":"sh/lwval87e","slide":1,"name":"lint-card","bbox":[900,240,250,150]}
+{"kind":"shape","id":"sh/e9cvixcz","slide":1,"name":"lint-card-accent","bbox":[900,240,250,0]}
+{"kind":"textbox","id":"sh/3q5o7qpg","slide":1,"name":"lint-card-title","text":"Lint","textPreview":"Lint","textChars":4,"textLines":1,"bbox":[916,256,218,26]}
+{"kind":"textbox","id":"sh/sneloj2t","slide":1,"name":"lint-card-detail","text":"检查知识库健康\n矛盾、陈旧、孤立与缺链","textPreview":"检查知识库健康 | 矛盾、陈旧、孤立与缺链","textChars":19,"textLines":2,"bbox":[916,288,218,94]}
+{"kind":"shape","id":"sh/l87ed8ba","slide":1,"bbox":[350,315,150,0]}
+{"kind":"shape","id":"sh/l0rqd4vm","slide":1,"bbox":[750,315,150,0]}
+{"kind":"shape","id":"sh/wfyxobm5","slide":1,"bbox":[225,390,800,24]}
+{"kind":"textbox","id":"sh/7u54zido","slide":1,"name":"loop-label","text":"摄入 → 提问 → 归档 → 校验 → 再生长","textPreview":"摄入 → 提问 → 归档 → 校验 → 再生长","textChars":23,"textLines":1,"bbox":[390,445,500,32]}
+{"kind":"shape","id":"sh/ed8bat47","slide":1,"name":"insight-card","bbox":[360,500,560,68]}
+{"kind":"shape","id":"sh/lc7u54zi","slide":1,"name":"insight-card-accent","bbox":[360,500,560,0]}
+{"kind":"textbox","id":"sh/wra5gbq1","slide":1,"name":"insight-card-title","text":"关键洞察","textPreview":"关键洞察","textChars":4,"textLines":1,"bbox":[376,516,528,26]}
+{"kind":"textbox","id":"sh/36hcrmhk","slide":1,"name":"insight-card-detail","text":"好的 Query 答案不应该消失在聊天记录中，而应该像素材一样沉淀回 Wiki。","textPreview":"好的 Query 答案不应该消失在聊天记录中，而应该像素材一样沉淀回 Wiki。","textChars":40,"textLines":1,"bbox":[376,548,528,12]}
+{"kind":"shape","id":"sh/eloj2t83","slide":1,"name":"bottom-note-box","bbox":[45,588,930,78]}
+{"kind":"shape","id":"sh/pg3ex0nu","slide":1,"name":"bottom-note-accent","bbox":[45,588,930,0]}
+{"kind":"textbox","id":"sh/wval87ed","slide":1,"name":"bottom-note","text":"LLM Wiki 的日常维护可以概括为三件事：摄入新素材、基于 Wiki 回答问题、定期检查知识库健康。重要的是，查询本身也能反过来成为知识积累的一部分。","textPreview":"LLM Wiki 的日常维护可以概括为三件事：摄入新素材、基于 Wiki 回答问题、定期检查知识库健康。重要的是，查询本身也能反过来成为知识积累的一部分。","textChars":77,"textLines":1,"bbox":[62,608,890,40]}
+{"kind":"notes","id":"nt/tlexon","slide":1,"text":""}

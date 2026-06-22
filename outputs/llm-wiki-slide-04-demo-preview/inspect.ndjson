@@ -1,0 +1,40 @@
+{"kind":"slide","id":"sl/ppzw0k","slide":1,"title":"04 / Agentic RAG","textShapes":19}
+{"kind":"textbox","id":"sh/svu9knih","slide":1,"name":"eyebrow","text":"04 / Agentic RAG","textPreview":"04 / Agentic RAG","textChars":16,"textLines":1,"bbox":[32,14,240,24]}
+{"kind":"shape","id":"sh/za1gvy90","slide":1,"name":"teal-handline","bbox":[10,36,310,-8]}
+{"kind":"shape","id":"sh/ap4r65wj","slide":1,"name":"amber-handline","bbox":[780,45,460,-7]}
+{"kind":"textbox","id":"sh/hoza1gvy","slide":1,"name":"title","text":"Agentic RAG：让 Agent 自主规划检索","textPreview":"Agentic RAG：让 Agent 自主规划检索","textChars":26,"textLines":1,"bbox":[40,66,930,58]}
+{"kind":"textbox","id":"sh/s36hcrmh","slide":1,"name":"subtitle","text":"从固定流水线，转向动态决策过程","textPreview":"从固定流水线，转向动态决策过程","textChars":15,"textLines":1,"bbox":[42,128,900,34]}
+{"kind":"textbox","id":"sh/zidonyd0","slide":1,"name":"page-number","text":"04 / 20","textPreview":"04 / 20","textChars":7,"textLines":1,"bbox":[1128,652,92,28]}
+{"kind":"shape","id":"sh/a1gvy90j","slide":1,"name":"task-card","bbox":[70,285,150,108]}
+{"kind":"shape","id":"sh/lszqtcj6","slide":1,"name":"task-card-accent","bbox":[70,285,150,0]}
+{"kind":"textbox","id":"sh/s72x4nap","slide":1,"name":"task-card-title","text":"复杂任务","textPreview":"复杂任务","textChars":4,"textLines":1,"bbox":[86,301,118,26]}
+{"kind":"textbox","id":"sh/idonyd0z","slide":1,"name":"task-card-detail","text":"问题开放，需要多种信息来源","textPreview":"问题开放，需要多种信息来源","textChars":13,"textLines":1,"bbox":[86,333,118,52]}
+{"kind":"textbox","id":"sh/byhgn29g","slide":1,"name":"agent-core","text":"Agent\n规划","textPreview":"Agent | 规划","textChars":8,"textLines":2,"bbox":[345,260,160,160]}
+{"kind":"textbox","id":"sh/0je9cvix","slide":1,"name":"agent-sub","text":"观察中间结果，调整下一步","textPreview":"观察中间结果，调整下一步","textChars":12,"textLines":1,"bbox":[310,440,230,26]}
+{"kind":"shape","id":"sh/t47y1kre","slide":1,"bbox":[220,339,125,1]}
+{"kind":"textbox","id":"sh/il0rqd4v","slide":1,"name":"tool-vector","text":"向量检索","textPreview":"向量检索","textChars":4,"textLines":1,"bbox":[650,205,124,72]}
+{"kind":"textbox","id":"sh/b6xkf6dc","slide":1,"name":"tool-keyword","text":"关键词搜索","textPreview":"关键词搜索","textChars":5,"textLines":1,"bbox":[822,205,124,72]}
+{"kind":"textbox","id":"sh/0rqd4vmt","slide":1,"name":"tool-graph","text":"图查询","textPreview":"图查询","textChars":3,"textLines":1,"bbox":[650,318,124,72]}
+{"kind":"textbox","id":"sh/tcj6tova","slide":1,"name":"tool-web","text":"网页搜索","textPreview":"网页搜索","textChars":4,"textLines":1,"bbox":[822,318,124,72]}
+{"kind":"textbox","id":"sh/ixczed8v","slide":1,"name":"tool-db","text":"数据库查询","textPreview":"数据库查询","textChars":5,"textLines":1,"bbox":[736,430,124,72]}
+{"kind":"shape","id":"sh/bi9s36hc","slide":1,"bbox":[505,241,145,99]}
+{"kind":"shape","id":"sh/zidonyd0","slide":1,"bbox":[505,241,317,99]}
+{"kind":"shape","id":"sh/a1gvy90j","slide":1,"bbox":[505,340,145,14]}
+{"kind":"shape","id":"sh/hoza1gvy","slide":1,"bbox":[505,340,317,14]}
+{"kind":"shape","id":"sh/s36hcrmh","slide":1,"bbox":[505,340,231,126]}
+{"kind":"shape","id":"sh/za1gvy90","slide":1,"name":"answer-card","bbox":[1042,325,150,92]}
+{"kind":"shape","id":"sh/ap4r65wj","slide":1,"name":"answer-card-accent","bbox":[1042,325,150,0]}
+{"kind":"textbox","id":"sh/hgn29gr2","slide":1,"name":"answer-card-title","text":"生成答案","textPreview":"生成答案","textChars":4,"textLines":1,"bbox":[1058,341,118,26]}
+{"kind":"textbox","id":"sh/svu9knih","slide":1,"name":"answer-card-detail","text":"多轮检索后综合结果","textPreview":"多轮检索后综合结果","textChars":9,"textLines":1,"bbox":[1058,373,118,36]}
+{"kind":"shape","id":"sh/3ylc7u54","slide":1,"bbox":[946,241,96,130]}
+{"kind":"shape","id":"sh/adsji5sn","slide":1,"bbox":[946,354,96,17]}
+{"kind":"shape","id":"sh/kf6dcbul","slide":1,"bbox":[425,417,692,3]}
+{"kind":"textbox","id":"sh/d0z61032","slide":1,"name":"feedback-label","text":"根据中间结果\n反复调整策略","textPreview":"根据中间结果 | 反复调整策略","textChars":13,"textLines":2,"bbox":[555,488,170,48]}
+{"kind":"shape","id":"sh/29gr2p8n","slide":1,"name":"side-summary","bbox":[990,190,210,90]}
+{"kind":"shape","id":"sh/vu9knih4","slide":1,"name":"side-summary-accent","bbox":[990,190,210,0]}
+{"kind":"textbox","id":"sh/knih4byh","slide":1,"name":"side-summary-title","text":"解决什么？","textPreview":"解决什么？","textChars":5,"textLines":1,"bbox":[1006,206,178,26]}
+{"kind":"textbox","id":"sh/d8bat47y","slide":1,"name":"side-summary-detail","text":"更智能地获取知识，而不是持续积累知识。","textPreview":"更智能地获取知识，而不是持续积累知识。","textChars":19,"textLines":1,"bbox":[1006,238,178,34]}
+{"kind":"shape","id":"sh/2lszqtcj","slide":1,"name":"bottom-note-box","bbox":[45,588,930,78]}
+{"kind":"shape","id":"sh/v6psfil0","slide":1,"name":"bottom-note-accent","bbox":[45,588,930,0]}
+{"kind":"textbox","id":"sh/kre1w7mp","slide":1,"name":"bottom-note","text":"Agentic RAG 把检索能力封装为工具，由 Agent 根据任务需要动态调用。它提升了获取知识的智能程度，但仍然没有改变“查询时临时组织知识”的基本模式。","textPreview":"Agentic RAG 把检索能力封装为工具，由 Agent 根据任务需要动态调用。它提升了获取知识的智能程度，但仍然没有改变“查询时临时组织知识”的基本模式。","textChars":80,"textLines":1,"bbox":[62,608,890,40]}
+{"kind":"notes","id":"nt/ppzw0k","slide":1,"text":""}

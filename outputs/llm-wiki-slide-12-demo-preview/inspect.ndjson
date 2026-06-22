@@ -1,0 +1,40 @@
+{"kind":"slide","id":"sl/7l79ih","slide":1,"title":"12 / 每日工作流","textShapes":18}
+{"kind":"textbox","id":"sh/s72x4nap","slide":1,"name":"eyebrow","text":"12 / 每日工作流","textPreview":"12 / 每日工作流","textChars":10,"textLines":1,"bbox":[32,14,280,24]}
+{"kind":"shape","id":"sh/3m94fu18","slide":1,"name":"teal-handline","bbox":[10,36,310,-8]}
+{"kind":"shape","id":"sh/a5gbq1or","slide":1,"name":"amber-handline","bbox":[780,45,460,-7]}
+{"kind":"textbox","id":"sh/h4byhgn2","slide":1,"name":"title","text":"每日工作流：让知识持续进入 Wiki","textPreview":"每日工作流：让知识持续进入 Wiki","textChars":18,"textLines":1,"bbox":[40,66,940,58]}
+{"kind":"textbox","id":"sh/sji5snel","slide":1,"name":"subtitle","text":"剪藏、编译、提问、归档、校验：把一次阅读变成长期资产","textPreview":"剪藏、编译、提问、归档、校验：把一次阅读变成长期资产","textChars":26,"textLines":1,"bbox":[42,128,960,34]}
+{"kind":"shape","id":"sh/3ylc7u54","slide":1,"name":"step-clip","bbox":[70,235,190,125]}
+{"kind":"shape","id":"sh/adsji5sn","slide":1,"name":"step-clip-accent","bbox":[70,235,190,0]}
+{"kind":"textbox","id":"sh/hgn29gr2","slide":1,"name":"step-clip-title","text":"1 网页剪藏","textPreview":"1 网页剪藏","textChars":6,"textLines":1,"bbox":[86,251,158,26]}
+{"kind":"textbox","id":"sh/svu9knih","slide":1,"name":"step-clip-detail","text":"用 Web Clipper 保存网页、元数据和高亮到 raw/","textPreview":"用 Web Clipper 保存网页、元数据和高亮到 raw/","textChars":31,"textLines":1,"bbox":[86,283,158,69]}
+{"kind":"shape","id":"sh/ed8bat47","slide":1,"name":"step-compile","bbox":[310,235,210,125]}
+{"kind":"shape","id":"sh/7u54zido","slide":1,"name":"step-compile-accent","bbox":[310,235,210,0]}
+{"kind":"textbox","id":"sh/wfyxobm5","slide":1,"name":"step-compile-title","text":"2 执行编译","textPreview":"2 执行编译","textChars":6,"textLines":1,"bbox":[326,251,178,26]}
+{"kind":"textbox","id":"sh/l0rqd4vm","slide":1,"name":"step-compile-detail","text":"让 LLM Ingest：摘要、更新索引、补充概念和实体","textPreview":"让 LLM Ingest：摘要、更新索引、补充概念和实体","textChars":28,"textLines":1,"bbox":[326,283,178,69]}
+{"kind":"shape","id":"sh/eloj2t83","slide":1,"name":"step-ask","bbox":[570,235,210,125]}
+{"kind":"shape","id":"sh/36hcrmhk","slide":1,"name":"step-ask-accent","bbox":[570,235,210,0]}
+{"kind":"textbox","id":"sh/wra5gbq1","slide":1,"name":"step-ask-title","text":"3 直接提问","textPreview":"3 直接提问","textChars":6,"textLines":1,"bbox":[586,251,178,26]}
+{"kind":"textbox","id":"sh/lc7u54zi","slide":1,"name":"step-ask-detail","text":"从 Wiki 中检索相关页面，获得带引用的综合回答","textPreview":"从 Wiki 中检索相关页面，获得带引用的综合回答","textChars":25,"textLines":1,"bbox":[586,283,178,69]}
+{"kind":"shape","id":"sh/epkzupwb","slide":1,"name":"step-archive","bbox":[830,235,210,125]}
+{"kind":"shape","id":"sh/7adsji5s","slide":1,"name":"step-archive-accent","bbox":[830,235,210,0]}
+{"kind":"textbox","id":"sh/z61032ls","slide":1,"name":"step-archive-title","text":"4 归档答案","textPreview":"4 归档答案","textChars":6,"textLines":1,"bbox":[846,251,178,26]}
+{"kind":"textbox","id":"sh/al87ed8b","slide":1,"name":"step-archive-detail","text":"高质量回答可以生成新的 Wiki 页面，继续复利","textPreview":"高质量回答可以生成新的 Wiki 页面，继续复利","textChars":24,"textLines":1,"bbox":[846,283,178,69]}
+{"kind":"shape","id":"sh/hcrmhk3q","slide":1,"name":"step-lint","bbox":[1080,235,150,125]}
+{"kind":"shape","id":"sh/orytsvu9","slide":1,"name":"step-lint-accent","bbox":[1080,235,150,0]}
+{"kind":"textbox","id":"sh/zupwb2hw","slide":1,"name":"step-lint-title","text":"5 定期 Lint","textPreview":"5 定期 Lint","textChars":9,"textLines":1,"bbox":[1096,251,118,26]}
+{"kind":"textbox","id":"sh/a9w3m94f","slide":1,"name":"step-lint-detail","text":"检查死链、矛盾、孤立页面和陈旧内容，自建修复","textPreview":"检查死链、矛盾、孤立页面和陈旧内容，自建修复","textChars":22,"textLines":1,"bbox":[1096,283,118,69]}
+{"kind":"shape","id":"sh/h0fepkzu","slide":1,"bbox":[260,297.5,50,0]}
+{"kind":"shape","id":"sh/sfil0rqd","slide":1,"bbox":[520,297.5,50,0]}
+{"kind":"shape","id":"sh/zqtcj6to","slide":1,"bbox":[780,297.5,50,0]}
+{"kind":"shape","id":"sh/65wjudg7","slide":1,"bbox":[1040,297.5,40,0]}
+{"kind":"shape","id":"sh/0je9cvix","slide":1,"bbox":[165,360,990,24]}
+{"kind":"textbox","id":"sh/t47y1kre","slide":1,"name":"loop-label","text":"不是一次性处理，而是一个持续循环","textPreview":"不是一次性处理，而是一个持续循环","textChars":16,"textLines":1,"bbox":[435,430,420,32]}
+{"kind":"shape","id":"sh/idonyd0z","slide":1,"name":"daily-rhythm-box","bbox":[255,472,760,76]}
+{"kind":"textbox","id":"sh/byhgn29g","slide":1,"name":"daily-rhythm-title","text":"日常节奏","textPreview":"日常节奏","textChars":4,"textLines":1,"bbox":[285,494,100,24]}
+{"kind":"textbox","id":"sh/0rqd4vmt","slide":1,"name":"daily-rhythm-body","text":"看到好资料就剪藏；有时间就编译；遇到问题就从 Wiki 问；有价值的回答再沉淀回 Wiki。","textPreview":"看到好资料就剪藏；有时间就编译；遇到问题就从 Wiki 问；有价值的回答再沉淀回 Wiki。","textChars":46,"textLines":1,"bbox":[405,494,560,28]}
+{"kind":"shape","id":"sh/tcj6tova","slide":1,"name":"bottom-note-box","bbox":[45,588,930,78]}
+{"kind":"shape","id":"sh/il0rqd4v","slide":1,"name":"bottom-note-accent","bbox":[45,588,930,0]}
+{"kind":"textbox","id":"sh/b6xkf6dc","slide":1,"name":"bottom-note","text":"实践上，LLM Wiki 可以变成一个很轻的日常循环：资料先进入 raw，再被 LLM 编译进 wiki；后续提问和校验又反过来推动知识库继续生长。","textPreview":"实践上，LLM Wiki 可以变成一个很轻的日常循环：资料先进入 raw，再被 LLM 编译进 wiki；后续提问和校验又反过来推动知识库继续生长。","textChars":74,"textLines":1,"bbox":[62,608,890,40]}
+{"kind":"textbox","id":"sh/032lszqt","slide":1,"name":"page-number","text":"12 / 20","textPreview":"12 / 20","textChars":7,"textLines":1,"bbox":[1128,652,92,28]}
+{"kind":"notes","id":"nt/7l79ih","slide":1,"text":""}

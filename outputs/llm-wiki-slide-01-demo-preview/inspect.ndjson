@@ -1,0 +1,58 @@
+{"kind":"slide","id":"sl/vua2oa","slide":1,"title":"01 / 开场","textShapes":20}
+{"kind":"textbox","id":"sh/cfa9w3m9","slide":1,"name":"eyebrow","text":"01 / 开场","textPreview":"01 / 开场","textChars":7,"textLines":1,"bbox":[60,44,200,28]}
+{"kind":"shape","id":"sh/judg7ads","slide":1,"name":"teal-handline","bbox":[42,84,410,-10]}
+{"kind":"shape","id":"sh/u9knih4b","slide":1,"name":"amber-handline","bbox":[780,90,444,-8]}
+{"kind":"textbox","id":"sh/1orytsvu","slide":1,"name":"title","text":"从 RAG 到 LLM Wiki","textPreview":"从 RAG 到 LLM Wiki","textChars":16,"textLines":1,"bbox":[60,96,820,70]}
+{"kind":"textbox","id":"sh/c7u54zid","slide":1,"name":"subtitle","text":"用 Obsidian + LLM 构建会生长的个人知识库","textPreview":"用 Obsidian + LLM 构建会生长的个人知识库","textChars":28,"textLines":1,"bbox":[64,174,780,42]}
+{"kind":"textbox","id":"sh/jm1cfa9w","slide":1,"name":"left-label","text":"原始资料","textPreview":"原始资料","textChars":4,"textLines":1,"bbox":[168,246,140,28]}
+{"kind":"shape","id":"sh/u18jqh0f","slide":1,"name":"file-pdf","bbox":[104,306,124,154]}
+{"kind":"textbox","id":"sh/5gbq1ory","slide":1,"name":"file-pdf-label","text":"PDF","textPreview":"PDF","textChars":3,"textLines":1,"bbox":[122,326,90,28]}
+{"kind":"shape","id":"sh/cvixczed","slide":1,"name":"file-pdf-rule-1","bbox":[122,378,86,0]}
+{"kind":"shape","id":"sh/m1cfa9w3","slide":1,"name":"file-pdf-rule-2","bbox":[122,402,76,0]}
+{"kind":"shape","id":"sh/bm58z25k","slide":1,"name":"file-pdf-rule-3","bbox":[122,426,64,0]}
+{"kind":"shape","id":"sh/47y1kre1","slide":1,"name":"file-pdf-corner","bbox":[202,308,24,24]}
+{"kind":"shape","id":"sh/tsvu9kni","slide":1,"name":"file-web","bbox":[214,336,124,154]}
+{"kind":"textbox","id":"sh/mp0bi9s3","slide":1,"name":"file-web-label","text":"网页","textPreview":"网页","textChars":2,"textLines":1,"bbox":[232,356,90,28]}
+{"kind":"shape","id":"sh/bat47y1k","slide":1,"name":"file-web-rule-1","bbox":[232,408,86,0]}
+{"kind":"shape","id":"sh/4vmtwra5","slide":1,"name":"file-web-rule-2","bbox":[232,432,76,0]}
+{"kind":"shape","id":"sh/tgfmlkjm","slide":1,"name":"file-web-rule-3","bbox":[232,456,64,0]}
+{"kind":"shape","id":"sh/mhk3q5o7","slide":1,"name":"file-web-corner","bbox":[312,338,24,24]}
+{"kind":"shape","id":"sh/b2hwfyxo","slide":1,"name":"file-meeting","bbox":[316,300,124,154]}
+{"kind":"textbox","id":"sh/7u54zido","slide":1,"name":"file-meeting-label","text":"会议记录","textPreview":"会议记录","textChars":4,"textLines":1,"bbox":[334,320,90,28]}
+{"kind":"shape","id":"sh/ed8bat47","slide":1,"name":"file-meeting-rule-1","bbox":[334,372,86,0]}
+{"kind":"shape","id":"sh/l0rqd4vm","slide":1,"name":"file-meeting-rule-2","bbox":[334,396,76,0]}
+{"kind":"shape","id":"sh/wfyxobm5","slide":1,"name":"file-meeting-rule-3","bbox":[334,420,64,0]}
+{"kind":"shape","id":"sh/36hcrmhk","slide":1,"name":"file-meeting-corner","bbox":[414,302,24,24]}
+{"kind":"shape","id":"sh/eloj2t83","slide":1,"name":"compiler","bbox":[530,278,220,180]}
+{"kind":"textbox","id":"sh/lc7u54zi","slide":1,"name":"compiler-label","text":"LLM\n编译","textPreview":"LLM | 编译","textChars":6,"textLines":2,"bbox":[530,318,220,96]}
+{"kind":"textbox","id":"sh/wra5gbq1","slide":1,"name":"compiler-small","text":"理解 · 抽象 · 关联 · 结构化","textPreview":"理解 · 抽象 · 关联 · 结构化","textChars":18,"textLines":1,"bbox":[505,475,280,28]}
+{"kind":"shape","id":"sh/7adsji5s","slide":1,"name":"node-wiki","bbox":[1020,340,78,78]}
+{"kind":"textbox","id":"sh/epkzupwb","slide":1,"name":"node-wiki-label","text":"Wiki","textPreview":"Wiki","textChars":4,"textLines":1,"bbox":[1008,367,102,24]}
+{"kind":"shape","id":"sh/orytsvu9","slide":1,"name":"node-concept","bbox":[938,276,58,58]}
+{"kind":"textbox","id":"sh/hcrmhk3q","slide":1,"name":"node-concept-label","text":"概念","textPreview":"概念","textChars":2,"textLines":1,"bbox":[926,293,82,24]}
+{"kind":"shape","id":"sh/al87ed8b","slide":1,"name":"node-entity","bbox":[1118,270,58,58]}
+{"kind":"textbox","id":"sh/z61032ls","slide":1,"name":"node-entity-label","text":"实体","textPreview":"实体","textChars":2,"textLines":1,"bbox":[1106,287,82,24]}
+{"kind":"shape","id":"sh/sfil0rqd","slide":1,"name":"node-summary","bbox":[930,424,58,58]}
+{"kind":"textbox","id":"sh/h0fepkzu","slide":1,"name":"node-summary-label","text":"摘要","textPreview":"摘要","textChars":2,"textLines":1,"bbox":[918,441,82,24]}
+{"kind":"shape","id":"sh/a9w3m94f","slide":1,"name":"node-compare","bbox":[1122,430,58,58]}
+{"kind":"textbox","id":"sh/zupwb2hw","slide":1,"name":"node-compare-label","text":"对比","textPreview":"对比","textChars":2,"textLines":1,"bbox":[1110,447,82,24]}
+{"kind":"shape","id":"sh/obm58z25","slide":1,"name":"node-synthesis","bbox":[1030,512,58,58]}
+{"kind":"textbox","id":"sh/hwfyxobm","slide":1,"name":"node-synthesis-label","text":"综合","textPreview":"综合","textChars":2,"textLines":1,"bbox":[1018,529,82,24]}
+{"kind":"shape","id":"sh/t47y1kre","slide":1,"bbox":[987.51,325.51,43.92,25.92]}
+{"kind":"shape","id":"sh/0je9cvix","slide":1,"bbox":[1086.58,319.51,39.92,31.92]}
+{"kind":"shape","id":"sh/byhgn29g","slide":1,"bbox":[979.51,406.58,51.92,25.92]}
+{"kind":"shape","id":"sh/idonyd0z","slide":1,"bbox":[1086.58,406.58,43.92,31.92]}
+{"kind":"shape","id":"sh/tcj6tova","slide":1,"bbox":[1059,418,0,94]}
+{"kind":"shape","id":"sh/0rqd4vmt","slide":1,"bbox":[996,299,122,6]}
+{"kind":"shape","id":"sh/b6xkf6dc","slide":1,"bbox":[979.51,473.51,58.99,46.99]}
+{"kind":"shape","id":"sh/il0rqd4v","slide":1,"bbox":[1079.51,479.51,50.99,40.99]}
+{"kind":"textbox","id":"sh/tovahoza","slide":1,"name":"right-label","text":"Wiki 知识网络","textPreview":"Wiki 知识网络","textChars":9,"textLines":1,"bbox":[980,246,210,30]}
+{"kind":"shape","id":"sh/032lszqt","slide":1,"bbox":[439.85,368,90.15,4.68]}
+{"kind":"shape","id":"sh/ex0nuxc3","slide":1,"bbox":[750,368,270,11]}
+{"kind":"shape","id":"sh/3itgfmlk","slide":1,"name":"opening-note-box","bbox":[76,558,900,96]}
+{"kind":"textbox","id":"sh/w3m94fu1","slide":1,"name":"opening-note-label","text":"开场提示","textPreview":"开场提示","textChars":4,"textLines":1,"bbox":[102,577,120,24]}
+{"kind":"textbox","id":"sh/loj2t83i","slide":1,"name":"opening-note-paragraph","text":"今天不是讲 Obsidian 的具体操作，而是借它说明一种知识库范式：资料如何从“被保存”，变成“被理解、链接和复用”。这条线会先看 RAG 的局限，再进入 LLM Wiki，最后回到 Obsidian 的落地工作流。","textPreview":"今天不是讲 Obsidian 的具体操作，而是借它说明一种知识库范式：资料如何从“被保存”，变成“被理解、链接和复用”。这条线会先看 RAG 的局限，再进入 LLM Wiki，最后回到 Obsidian 的落地工作流。","textChars":109,"textLines":1,"bbox":[64,606,980,42]}
+{"kind":"shape","id":"sh/e9cvixcz","slide":1,"name":"opening-note-accent","bbox":[76,558,900,0]}
+{"kind":"textbox","id":"sh/3q5o7qpg","slide":1,"name":"footer","text":"Ingest · Query · Lint","textPreview":"Ingest · Query · Lint","textChars":21,"textLines":1,"bbox":[66,220,240,28]}
+{"kind":"textbox","id":"sh/wb2hwfyx","slide":1,"name":"page-number","text":"01 / 20","textPreview":"01 / 20","textChars":7,"textLines":1,"bbox":[1128,652,92,28]}
+{"kind":"notes","id":"nt/vua2oa","slide":1,"text":""}

@@ -1,0 +1,31 @@
+{"kind":"deck","id":"pr/srs0jd","name":"Deck"}
+{"kind":"layout","layoutId":"56127ee2-7f1d-4ae6-8d41-f0449ae8842a","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"f6eec708-f90e-496c-98c7-6becd60e1818","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/u5feb7","slide":1,"title":"19 / 总结","textShapes":12}
+{"kind":"textbox","id":"sh/61032lsz","slide":1,"name":"eyebrow","text":"19 / 总结","textPreview":"19 / 总结","textChars":7,"textLines":1,"bbox":[32,14,280,24]}
+{"kind":"shape","id":"sh/dsji5sne","slide":1,"name":"teal-handline","bbox":[10,36,310,-8]}
+{"kind":"shape","id":"sh/o7qpg3ex","slide":1,"name":"amber-handline","bbox":[780,45,460,-7]}
+{"kind":"textbox","id":"sh/vy90je9c","slide":1,"name":"title","text":"总结：从知识访问，到知识积累","textPreview":"总结：从知识访问，到知识积累","textChars":14,"textLines":1,"bbox":[40,66,980,58]}
+{"kind":"textbox","id":"sh/6dcbulwv","slide":1,"name":"subtitle","text":"LLM Wiki 的价值，不是替代检索，而是让知识持续沉淀","textPreview":"LLM Wiki 的价值，不是替代检索，而是让知识持续沉淀","textChars":29,"textLines":1,"bbox":[42,128,960,34]}
+{"kind":"textbox","id":"sh/d4vmtwra","slide":1,"name":"page-number","text":"19 / 20","textPreview":"19 / 20","textChars":7,"textLines":1,"bbox":[1128,652,92,28]}
+{"kind":"shape","id":"sh/oj2t83it","slide":1,"name":"summary-rag","bbox":[95,235,300,180]}
+{"kind":"shape","id":"sh/z25kb6xk","slide":1,"name":"summary-rag-accent","bbox":[95,235,300,0]}
+{"kind":"textbox","id":"sh/6hcrmhk3","slide":1,"name":"summary-rag-title","text":"1. RAG 解决访问","textPreview":"1. RAG 解决访问","textChars":11,"textLines":1,"bbox":[113,253,264,30]}
+{"kind":"textbox","id":"sh/gr2p8nqx","slide":1,"name":"summary-rag-detail","text":"让模型在回答前拿到外部资料，适合快速检索最新信息和私有文档。","textPreview":"让模型在回答前拿到外部资料，适合快速检索最新信息和私有文档。","textChars":30,"textLines":1,"bbox":[113,295,264,110]}
+{"kind":"shape","id":"sh/9cvixcze","slide":1,"name":"summary-wiki","bbox":[490,235,300,180]}
+{"kind":"shape","id":"sh/ylc7u54z","slide":1,"name":"summary-wiki-accent","bbox":[490,235,300,0]}
+{"kind":"textbox","id":"sh/r65wjudg","slide":1,"name":"summary-wiki-title","text":"2. LLM Wiki 解决积累","textPreview":"2. LLM Wiki 解决积累","textChars":16,"textLines":1,"bbox":[508,253,264,30]}
+{"kind":"textbox","id":"sh/g3ex0nux","slide":1,"name":"summary-wiki-detail","text":"把资料编译成结构化、相互链接、可演化的 Markdown Wiki。","textPreview":"把资料编译成结构化、相互链接、可演化的 Markdown Wiki。","textChars":34,"textLines":1,"bbox":[508,295,264,110]}
+{"kind":"shape","id":"sh/5o7qpg3e","slide":1,"name":"summary-obsidian","bbox":[885,235,300,180]}
+{"kind":"shape","id":"sh/yxobm58z","slide":1,"name":"summary-obsidian-accent","bbox":[885,235,300,0]}
+{"kind":"textbox","id":"sh/nih4byhg","slide":1,"name":"summary-obsidian-title","text":"3. Obsidian 承载协作","textPreview":"3. Obsidian 承载协作","textChars":16,"textLines":1,"bbox":[903,253,264,30]}
+{"kind":"textbox","id":"sh/g7adsji5","slide":1,"name":"summary-obsidian-detail","text":"人负责审阅和方向，LLM 负责维护、链接、更新和校验。","textPreview":"人负责审阅和方向，LLM 负责维护、链接、更新和校验。","textChars":27,"textLines":1,"bbox":[903,295,264,110]}
+{"kind":"shape","id":"sh/9s36hcrm","slide":1,"bbox":[395,325,95,0]}
+{"kind":"shape","id":"sh/twra5gbq","slide":1,"bbox":[790,325,95,0]}
+{"kind":"shape","id":"sh/4byhgn29","slide":1,"name":"summary-key-message","bbox":[255,465,770,72]}
+{"kind":"shape","id":"sh/bq1oryts","slide":1,"name":"summary-key-accent","bbox":[255,465,770,0]}
+{"kind":"textbox","id":"sh/m58z25kb","slide":1,"name":"summary-key-text","text":"真正的目标：不是保存更多资料，而是让资料变成可复用、可演进的知识。","textPreview":"真正的目标：不是保存更多资料，而是让资料变成可复用、可演进的知识。","textChars":33,"textLines":1,"bbox":[300,489,680,28]}
+{"kind":"shape","id":"sh/t83itgfm","slide":1,"name":"bottom-note-box","bbox":[45,588,930,78]}
+{"kind":"shape","id":"sh/4nap4r65","slide":1,"name":"bottom-note-accent","bbox":[45,588,930,0]}
+{"kind":"textbox","id":"sh/b2hwfyxo","slide":1,"name":"bottom-note","text":"这套分享可以归结为一句话：RAG 让我们更容易访问知识，而 LLM Wiki 让知识开始积累。Obsidian 则提供了一个人和 LLM 都能协作的本地知识工作台。","textPreview":"这套分享可以归结为一句话：RAG 让我们更容易访问知识，而 LLM Wiki 让知识开始积累。Obsidian 则提供了一个人和 LLM 都能协作的本地知识工作台。","textChars":82,"textLines":1,"bbox":[62,608,890,40]}
+{"kind":"notes","id":"nt/u5feb7","slide":1,"text":""}

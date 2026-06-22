@@ -1,0 +1,35 @@
+{"kind":"slide","id":"sl/f017eq","slide":1,"title":"06 / Obsidian","textShapes":16}
+{"kind":"textbox","id":"sh/mlkjm1cf","slide":1,"name":"eyebrow","text":"06 / Obsidian","textPreview":"06 / Obsidian","textChars":13,"textLines":1,"bbox":[32,14,260,24]}
+{"kind":"shape","id":"sh/xc3ylc7u","slide":1,"name":"teal-handline","bbox":[10,36,310,-8]}
+{"kind":"shape","id":"sh/4r65wjud","slide":1,"name":"amber-handline","bbox":[780,45,460,-7]}
+{"kind":"textbox","id":"sh/fepkzupw","slide":1,"name":"title","text":"Obsidian：人和 LLM 共同使用的知识 IDE","textPreview":"Obsidian：人和 LLM 共同使用的知识 IDE","textChars":27,"textLines":1,"bbox":[40,66,930,58]}
+{"kind":"textbox","id":"sh/mtwra5gb","slide":1,"name":"subtitle","text":"LLM Wiki 的核心是 Agent + Markdown 文件目录","textPreview":"LLM Wiki 的核心是 Agent + Markdown 文件目录","textChars":35,"textLines":1,"bbox":[42,128,900,34]}
+{"kind":"textbox","id":"sh/xkf6dcbu","slide":1,"name":"page-number","text":"06 / 20","textPreview":"06 / 20","textChars":7,"textLines":1,"bbox":[1128,652,92,28]}
+{"kind":"shape","id":"sh/4zidonyd","slide":1,"name":"plain-folder-tab","bbox":[99,261,78,28]}
+{"kind":"textbox","id":"sh/fil0rqd4","slide":1,"name":"plain-folder","text":"普通文件夹","textPreview":"普通文件夹","textChars":5,"textLines":1,"bbox":[85,275,170,104]}
+{"kind":"textbox","id":"sh/qxs72x4n","slide":1,"name":"folder-desc","text":"适合 Agent 读写\n不适合人长期浏览和审阅","textPreview":"适合 Agent 读写 | 不适合人长期浏览和审阅","textChars":23,"textLines":2,"bbox":[78,405,190,52]}
+{"kind":"shape","id":"sh/0bi9s36h","slide":1,"name":"obsidian-card","bbox":[500,255,250,145]}
+{"kind":"shape","id":"sh/pwb2hwfy","slide":1,"name":"obsidian-card-accent","bbox":[500,255,250,0]}
+{"kind":"textbox","id":"sh/i5sneloj","slide":1,"name":"obsidian-card-title","text":"Obsidian","textPreview":"Obsidian","textChars":8,"textLines":1,"bbox":[516,271,218,26]}
+{"kind":"textbox","id":"sh/7qpg3ex0","slide":1,"name":"obsidian-card-detail","text":"本地 Markdown、双向链接、反向链接、图谱视图、CLI","textPreview":"本地 Markdown、双向链接、反向链接、图谱视图、CLI","textChars":30,"textLines":1,"bbox":[516,303,218,89]}
+{"kind":"shape","id":"sh/wjudg7ad","slide":1,"bbox":[255,327,245,0.5]}
+{"kind":"textbox","id":"sh/p4r65wju","slide":1,"name":"ide-quote","text":"Obsidian 是 IDE\nLLM 是程序员\nWiki 是代码库","textPreview":"Obsidian 是 IDE | LLM 是程序员 | Wiki 是代码库","textChars":33,"textLines":3,"bbox":[520,430,220,78]}
+{"kind":"shape","id":"sh/ed8v6psf","slide":1,"name":"adv-browse","bbox":[890,210,250,86]}
+{"kind":"shape","id":"sh/7y1kre1w","slide":1,"name":"adv-browse-accent","bbox":[890,210,250,0]}
+{"kind":"textbox","id":"sh/0nuxc3yl","slide":1,"name":"adv-browse-title","text":"更好浏览","textPreview":"更好浏览","textChars":4,"textLines":1,"bbox":[906,226,218,26]}
+{"kind":"textbox","id":"sh/p8nqxs72","slide":1,"name":"adv-browse-detail","text":"[[双向链接]] 可以直接点击跳转","textPreview":"[[双向链接]] 可以直接点击跳转","textChars":17,"textLines":1,"bbox":[906,258,218,30]}
+{"kind":"shape","id":"sh/dcbulwva","slide":1,"name":"adv-review","bbox":[890,325,250,86]}
+{"kind":"shape","id":"sh/kre1w7mp","slide":1,"name":"adv-review-accent","bbox":[890,325,250,0]}
+{"kind":"textbox","id":"sh/val87ed8","slide":1,"name":"adv-review-title","text":"更好审阅","textPreview":"更好审阅","textChars":4,"textLines":1,"bbox":[906,341,218,26]}
+{"kind":"textbox","id":"sh/6psfil0r","slide":1,"name":"adv-review-detail","text":"反向链接、关系图谱、孤立页面都能看见","textPreview":"反向链接、关系图谱、孤立页面都能看见","textChars":18,"textLines":1,"bbox":[906,373,218,30]}
+{"kind":"shape","id":"sh/donyd0z6","slide":1,"name":"adv-local","bbox":[890,440,250,86]}
+{"kind":"shape","id":"sh/k3q5o7qp","slide":1,"name":"adv-local-accent","bbox":[890,440,250,0]}
+{"kind":"textbox","id":"sh/vixczed8","slide":1,"name":"adv-local-title","text":"不锁数据","textPreview":"不锁数据","textChars":4,"textLines":1,"bbox":[906,456,218,26]}
+{"kind":"textbox","id":"sh/2x4nap4r","slide":1,"name":"adv-local-detail","text":"底层仍是 Markdown，Agent 能改，Git 能管","textPreview":"底层仍是 Markdown，Agent 能改，Git 能管","textChars":29,"textLines":1,"bbox":[906,488,218,30]}
+{"kind":"shape","id":"sh/d0z61032","slide":1,"bbox":[750,253,140,74.5]}
+{"kind":"shape","id":"sh/kf6dcbul","slide":1,"bbox":[750,327.5,140,40.5]}
+{"kind":"shape","id":"sh/y90je9cv","slide":1,"bbox":[750,327.5,140,155.5]}
+{"kind":"shape","id":"sh/nuxc3ylc","slide":1,"name":"bottom-note-box","bbox":[45,588,930,78]}
+{"kind":"shape","id":"sh/gbq1oryt","slide":1,"name":"bottom-note-accent","bbox":[45,588,930,0]}
+{"kind":"textbox","id":"sh/5wjudg7a","slide":1,"name":"bottom-note","text":"普通文件夹更像存储层，而 Obsidian 让 Markdown 知识库同时适合人浏览、审阅和协作。它不锁数据，也能通过 CLI 让 Agent 更规范地操作仓库。","textPreview":"普通文件夹更像存储层，而 Obsidian 让 Markdown 知识库同时适合人浏览、审阅和协作。它不锁数据，也能通过 CLI 让 Agent 更规范地操作仓库。","textChars":82,"textLines":1,"bbox":[62,608,890,40]}
+{"kind":"notes","id":"nt/f017eq","slide":1,"text":""}

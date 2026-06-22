@@ -1,0 +1,641 @@
+{"kind":"slide","id":"sl/2x4nap4r","slide":1,"title":"01 / 开场","textShapes":19}
+{"kind":"textbox","id":"sh/nap4r65w","slide":1,"name":"eyebrow","text":"01 / 开场","textPreview":"01 / 开场","textChars":7,"textLines":1,"bbox":[60,44,200,28]}
+{"kind":"shape","id":"sh/cvixczed","slide":1,"name":"teal-handline","bbox":[42,84,410,-10]}
+{"kind":"shape","id":"sh/5gbq1ory","slide":1,"name":"amber-handline","bbox":[780,90,444,-8]}
+{"kind":"textbox","id":"sh/udg7adsj","slide":1,"name":"title","text":"从 RAG 到 LLM Wiki","textPreview":"从 RAG 到 LLM Wiki","textChars":16,"textLines":1,"bbox":[60,96,820,70]}
+{"kind":"textbox","id":"sh/nyd0z610","slide":1,"name":"subtitle","text":"用 Obsidian + LLM 构建会生长的个人知识库","textPreview":"用 Obsidian + LLM 构建会生长的个人知识库","textChars":28,"textLines":1,"bbox":[64,174,780,42]}
+{"kind":"textbox","id":"sh/cj6tovah","slide":1,"name":"left-label","text":"原始资料","textPreview":"原始资料","textChars":4,"textLines":1,"bbox":[168,246,140,28]}
+{"kind":"shape","id":"sh/54zidony","slide":1,"name":"file-pdf","bbox":[104,306,124,154]}
+{"kind":"textbox","id":"sh/u9knih4b","slide":1,"name":"file-pdf-label","text":"PDF","textPreview":"PDF","textChars":3,"textLines":1,"bbox":[122,326,90,28]}
+{"kind":"shape","id":"sh/judg7ads","slide":1,"name":"file-pdf-rule-1","bbox":[122,378,86,0]}
+{"kind":"shape","id":"sh/nyd0z610","slide":1,"name":"file-pdf-rule-2","bbox":[122,402,76,0]}
+{"kind":"shape","id":"sh/udg7adsj","slide":1,"name":"file-pdf-rule-3","bbox":[122,426,64,0]}
+{"kind":"shape","id":"sh/54zidony","slide":1,"name":"file-pdf-corner","bbox":[202,308,24,24]}
+{"kind":"shape","id":"sh/cj6tovah","slide":1,"name":"file-web","bbox":[214,336,124,154]}
+{"kind":"textbox","id":"sh/nap4r65w","slide":1,"name":"file-web-label","text":"网页","textPreview":"网页","textChars":2,"textLines":1,"bbox":[232,356,90,28]}
+{"kind":"shape","id":"sh/upwb2hwf","slide":1,"name":"file-web-rule-1","bbox":[232,408,86,0]}
+{"kind":"shape","id":"sh/5gbq1ory","slide":1,"name":"file-web-rule-2","bbox":[232,432,76,0]}
+{"kind":"shape","id":"sh/cvixczed","slide":1,"name":"file-web-rule-3","bbox":[232,456,64,0]}
+{"kind":"shape","id":"sh/jm1cfa9w","slide":1,"name":"file-web-corner","bbox":[312,338,24,24]}
+{"kind":"shape","id":"sh/u18jqh0f","slide":1,"name":"file-meeting","bbox":[316,300,124,154]}
+{"kind":"textbox","id":"sh/25kb6xkf","slide":1,"name":"file-meeting-label","text":"会议记录","textPreview":"会议记录","textChars":4,"textLines":1,"bbox":[334,320,90,28]}
+{"kind":"shape","id":"sh/rqd4vmtw","slide":1,"name":"file-meeting-rule-1","bbox":[334,372,86,0]}
+{"kind":"shape","id":"sh/kb6xkf6d","slide":1,"name":"file-meeting-rule-2","bbox":[334,396,76,0]}
+{"kind":"shape","id":"sh/9w3m94fu","slide":1,"name":"file-meeting-rule-3","bbox":[334,420,64,0]}
+{"kind":"shape","id":"sh/2t83itgf","slide":1,"name":"file-meeting-corner","bbox":[414,302,24,24]}
+{"kind":"shape","id":"sh/re1w7mp0","slide":1,"name":"compiler","bbox":[530,278,220,180]}
+{"kind":"textbox","id":"sh/kzupwb2h","slide":1,"name":"compiler-label","text":"LLM\n编译","textPreview":"LLM | 编译","textChars":6,"textLines":2,"bbox":[530,318,220,96]}
+{"kind":"textbox","id":"sh/9knih4by","slide":1,"name":"compiler-small","text":"理解 · 抽象 · 关联 · 结构化","textPreview":"理解 · 抽象 · 关联 · 结构化","textChars":18,"textLines":1,"bbox":[505,475,280,28]}
+{"kind":"shape","id":"sh/2p8nqxs7","slide":1,"name":"node-wiki","bbox":[1020,340,78,78]}
+{"kind":"textbox","id":"sh/ra5gbq1o","slide":1,"name":"node-wiki-label","text":"Wiki","textPreview":"Wiki","textChars":4,"textLines":1,"bbox":[1008,367,102,24]}
+{"kind":"shape","id":"sh/xs72x4na","slide":1,"name":"node-concept","bbox":[938,276,58,58]}
+{"kind":"textbox","id":"sh/87ed8bat","slide":1,"name":"node-concept-label","text":"概念","textPreview":"概念","textChars":2,"textLines":1,"bbox":[926,293,82,24]}
+{"kind":"shape","id":"sh/fmlkjm1c","slide":1,"name":"node-entity","bbox":[1118,270,58,58]}
+{"kind":"textbox","id":"sh/q1orytsv","slide":1,"name":"node-entity-label","text":"实体","textPreview":"实体","textChars":2,"textLines":1,"bbox":[1106,287,82,24]}
+{"kind":"shape","id":"sh/1gvy90je","slide":1,"name":"node-summary","bbox":[930,424,58,58]}
+{"kind":"textbox","id":"sh/8z25kb6x","slide":1,"name":"node-summary-label","text":"摘要","textPreview":"摘要","textChars":2,"textLines":1,"bbox":[918,441,82,24]}
+{"kind":"shape","id":"sh/je9cvixc","slide":1,"name":"node-compare","bbox":[1122,430,58,58]}
+{"kind":"textbox","id":"sh/qtcj6tov","slide":1,"name":"node-compare-label","text":"对比","textPreview":"对比","textChars":2,"textLines":1,"bbox":[1110,447,82,24]}
+{"kind":"shape","id":"sh/xczed8v6","slide":1,"name":"node-synthesis","bbox":[1030,512,58,58]}
+{"kind":"textbox","id":"sh/8v6psfil","slide":1,"name":"node-synthesis-label","text":"综合","textPreview":"综合","textChars":2,"textLines":1,"bbox":[1018,529,82,24]}
+{"kind":"shape","id":"sh/lc7u54zi","slide":1,"bbox":[987.51,325.51,43.92,25.92]}
+{"kind":"shape","id":"sh/wra5gbq1","slide":1,"bbox":[1086.58,319.51,39.92,31.92]}
+{"kind":"shape","id":"sh/7adsji5s","slide":1,"bbox":[979.51,406.58,51.92,25.92]}
+{"kind":"shape","id":"sh/epkzupwb","slide":1,"bbox":[1086.58,406.58,43.92,31.92]}
+{"kind":"shape","id":"sh/b6xkf6dc","slide":1,"bbox":[1059,418,0,94]}
+{"kind":"shape","id":"sh/il0rqd4v","slide":1,"bbox":[996,299,122,6]}
+{"kind":"shape","id":"sh/tcj6tova","slide":1,"bbox":[979.51,473.51,58.99,46.99]}
+{"kind":"shape","id":"sh/0rqd4vmt","slide":1,"bbox":[1079.51,479.51,50.99,40.99]}
+{"kind":"textbox","id":"sh/sneloj2t","slide":1,"name":"right-label","text":"Wiki 知识网络","textPreview":"Wiki 知识网络","textChars":9,"textLines":1,"bbox":[980,246,210,30]}
+{"kind":"shape","id":"sh/idonyd0z","slide":1,"bbox":[439.85,368,90.15,4.68]}
+{"kind":"shape","id":"sh/t47y1kre","slide":1,"bbox":[750,368,270,11]}
+{"kind":"shape","id":"sh/il0rqd4v","slide":1,"name":"opening-note-box","bbox":[45,588,1030,78]}
+{"kind":"shape","id":"sh/tcj6tova","slide":1,"name":"opening-note-label","bbox":[62,584,1,1]}
+{"kind":"textbox","id":"sh/0rqd4vmt","slide":1,"name":"opening-note-paragraph","text":"今天不是讲 Obsidian 的具体操作，而是借它说明一种知识库范式：资料如何从“被保存”，变成“被理解、链接和复用”。这条线会先看 RAG 的局限，再进入 LLM Wiki，最后回到 Obsidian 的落地工作流。","textPreview":"今天不是讲 Obsidian 的具体操作，而是借它说明一种知识库范式：资料如何从“被保存”，变成“被理解、链接和复用”。这条线会先看 RAG 的局限，再进入 LLM Wiki，最后回到 Obsidian 的落地工作流。","textChars":109,"textLines":1,"bbox":[62,606,990,42]}
+{"kind":"shape","id":"sh/byhgn29g","slide":1,"name":"opening-note-accent","bbox":[45,588,1030,0]}
+{"kind":"textbox","id":"sh/idonyd0z","slide":1,"name":"footer","text":"Ingest · Query · Lint","textPreview":"Ingest · Query · Lint","textChars":21,"textLines":1,"bbox":[66,220,240,28]}
+{"kind":"textbox","id":"sh/t47y1kre","slide":1,"name":"page-number","text":"01 / 17","textPreview":"01 / 17","textChars":7,"textLines":1,"bbox":[1128,652,92,28]}
+{"kind":"notes","id":"nt/2x4nap4r","slide":1,"text":"从 RAG 到 LLM Wiki\n\n大家好，我今天想要分享的主题是从 RAG 到 LLM Wiki，用 Obsidian + LLM 构建会生长的个人知识库。它不是单纯的 Obsidian 使用教程，而是使用 AI 进行的个人知识管理范式。\n\n当我们手里有越来越多的文章、论文、视频、网页、笔记，并且这些资料还可能具有时效性时，将这些资料保存下来已经远远不够，而是希望沉淀为可复用、可演进的知识。\n\n过去我们经常使用 AI 进行文件问答，或者通过 RAG 为大模型补充资料，这些方式很多时候都像第一次接触这些资料一样，需要重新检索和重新理解。\n\nLLM Wiki 要解决的问题是：如何让 LLM 像一个长期知识库维护者一样，把资料逐步编译成一套结构化、相互链接、会持续生长的 Wiki。\n\n今天的分享将围绕 RAG 的局限、LLM Wiki 的核心思想、以及如何在 Obsidian 落地的路线展开。"}
+{"kind":"slide","id":"sl/re1w7mp0","slide":2,"title":"02 / 传统 RAG","textShapes":27}
+{"kind":"textbox","id":"sh/dg7adsji","slide":2,"name":"eyebrow","text":"02 / 传统 RAG","textPreview":"02 / 传统 RAG","textChars":11,"textLines":1,"bbox":[32,14,360,24]}
+{"kind":"shape","id":"sh/6tovahoz","slide":2,"name":"teal-handline","bbox":[10,44,310,-4]}
+{"kind":"shape","id":"sh/vahoza1g","slide":2,"name":"amber-handline","bbox":[780,45,460,-4]}
+{"kind":"textbox","id":"sh/onyd0z61","slide":2,"name":"title","text":"传统 RAG 的工作原理","textPreview":"传统 RAG 的工作原理","textChars":12,"textLines":1,"bbox":[40,66,980,58]}
+{"kind":"textbox","id":"sh/d8v6psfi","slide":2,"name":"subtitle","text":"在模型生成答案之前，引入外部知识作为上下文","textPreview":"在模型生成答案之前，引入外部知识作为上下文","textChars":21,"textLines":1,"bbox":[42,128,930,34]}
+{"kind":"textbox","id":"sh/6hcrmhk3","slide":2,"name":"stage-build-label","text":"知识库构建阶段","textPreview":"知识库构建阶段","textChars":7,"textLines":1,"bbox":[118,187,220,28]}
+{"kind":"shape","id":"sh/z25kb6xk","slide":2,"name":"source-doc-1","bbox":[70,235,82,102]}
+{"kind":"textbox","id":"sh/oj2t83it","slide":2,"name":"source-doc-1-label","text":"论文","textPreview":"论文","textChars":2,"textLines":1,"bbox":[83,248,58,20]}
+{"kind":"shape","id":"sh/d4vmtwra","slide":2,"name":"source-doc-1-rule-1","bbox":[83,285,56,0]}
+{"kind":"shape","id":"sh/h4byhgn2","slide":2,"name":"source-doc-1-rule-2","bbox":[83,305,50,0]}
+{"kind":"shape","id":"sh/sji5snel","slide":2,"name":"source-doc-2","bbox":[135,258,82,102]}
+{"kind":"textbox","id":"sh/3ylc7u54","slide":2,"name":"source-doc-2-label","text":"网页","textPreview":"网页","textChars":2,"textLines":1,"bbox":[148,271,58,20]}
+{"kind":"shape","id":"sh/adsji5sn","slide":2,"name":"source-doc-2-rule-1","bbox":[148,308,56,0]}
+{"kind":"shape","id":"sh/lszqtcj6","slide":2,"name":"source-doc-2-rule-2","bbox":[148,328,50,0]}
+{"kind":"shape","id":"sh/s72x4nap","slide":2,"name":"source-doc-3","bbox":[200,232,82,102]}
+{"kind":"textbox","id":"sh/3m94fu18","slide":2,"name":"source-doc-3-label","text":"资料","textPreview":"资料","textChars":2,"textLines":1,"bbox":[213,245,58,20]}
+{"kind":"shape","id":"sh/a5gbq1or","slide":2,"name":"source-doc-3-rule-1","bbox":[213,282,56,0]}
+{"kind":"shape","id":"sh/hoza1gvy","slide":2,"name":"source-doc-3-rule-2","bbox":[213,302,50,0]}
+{"kind":"shape","id":"sh/s36hcrmh","slide":2,"name":"chunk-card","bbox":[330,235,130,102]}
+{"kind":"shape","id":"sh/4zidonyd","slide":2,"name":"chunk-card-accent","bbox":[330,235,130,0]}
+{"kind":"textbox","id":"sh/xkf6dcbu","slide":2,"name":"chunk-card-title","text":"文档切片","textPreview":"文档切片","textChars":4,"textLines":1,"bbox":[346,252,98,26]}
+{"kind":"textbox","id":"sh/mtwra5gb","slide":2,"name":"chunk-card-detail","text":"把原始文档切成多个文本片段","textPreview":"把原始文档切成多个文本片段","textChars":13,"textLines":1,"bbox":[346,285,98,44]}
+{"kind":"shape","id":"sh/fepkzupw","slide":2,"name":"embed-card","bbox":[500,235,145,102]}
+{"kind":"shape","id":"sh/4r65wjud","slide":2,"name":"embed-card-accent","bbox":[500,235,145,0]}
+{"kind":"textbox","id":"sh/xc3ylc7u","slide":2,"name":"embed-card-title","text":"向量化","textPreview":"向量化","textChars":3,"textLines":1,"bbox":[516,252,113,26]}
+{"kind":"textbox","id":"sh/mlkjm1cf","slide":2,"name":"embed-card-detail","text":"用嵌入模型将文本片段转换为向量","textPreview":"用嵌入模型将文本片段转换为向量","textChars":15,"textLines":1,"bbox":[516,285,113,44]}
+{"kind":"shape","id":"sh/f6dcbulw","slide":2,"name":"vector-db-card","bbox":[690,235,160,102]}
+{"kind":"shape","id":"sh/4fu18jqh","slide":2,"name":"vector-db-card-accent","bbox":[690,235,160,0]}
+{"kind":"textbox","id":"sh/x0nuxc3y","slide":2,"name":"vector-db-card-title","text":"向量数据库","textPreview":"向量数据库","textChars":5,"textLines":1,"bbox":[706,252,128,26]}
+{"kind":"textbox","id":"sh/nuxc3ylc","slide":2,"name":"vector-db-card-detail","text":"存储向量与元数据，等待查询检索","textPreview":"存储向量与元数据，等待查询检索","textChars":15,"textLines":1,"bbox":[706,285,128,44]}
+{"kind":"shape","id":"sh/u9knih4b","slide":2,"bbox":[281.94,280.85,48.06,5.15]}
+{"kind":"shape","id":"sh/1orytsvu","slide":2,"bbox":[460,286,40,0]}
+{"kind":"shape","id":"sh/c7u54zid","slide":2,"bbox":[645,286,45,0]}
+{"kind":"textbox","id":"sh/n29gr2p8","slide":2,"name":"stage-query-label","text":"查询阶段","textPreview":"查询阶段","textChars":4,"textLines":1,"bbox":[170,390,140,28]}
+{"kind":"shape","id":"sh/yhgn29gr","slide":2,"name":"question-card","bbox":[76,437,150,96]}
+{"kind":"shape","id":"sh/58z25kb6","slide":2,"name":"question-card-accent","bbox":[76,437,150,0]}
+{"kind":"textbox","id":"sh/gn29gr2p","slide":2,"name":"question-card-title","text":"用户问题","textPreview":"用户问题","textChars":4,"textLines":1,"bbox":[92,454,118,26]}
+{"kind":"textbox","id":"sh/neloj2t8","slide":2,"name":"question-card-detail","text":"问题也会被转换为查询向量","textPreview":"问题也会被转换为查询向量","textChars":12,"textLines":1,"bbox":[92,487,118,38]}
+{"kind":"shape","id":"sh/ytsvu9kn","slide":2,"name":"retrieve-card","bbox":[302,437,160,96]}
+{"kind":"shape","id":"sh/q5o7qpg3","slide":2,"name":"retrieve-card-accent","bbox":[302,437,160,0]}
+{"kind":"textbox","id":"sh/jqh0fepk","slide":2,"name":"retrieve-card-title","text":"语义检索","textPreview":"语义检索","textChars":4,"textLines":1,"bbox":[318,454,128,26]}
+{"kind":"textbox","id":"sh/8bat47y1","slide":2,"name":"retrieve-card-detail","text":"从向量库中找出最相关的片段","textPreview":"从向量库中找出最相关的片段","textChars":13,"textLines":1,"bbox":[318,487,128,38]}
+{"kind":"shape","id":"sh/1w7mp0bi","slide":2,"name":"prompt-card","bbox":[538,437,180,96]}
+{"kind":"shape","id":"sh/qh0fepkz","slide":2,"name":"prompt-card-accent","bbox":[538,437,180,0]}
+{"kind":"textbox","id":"sh/j2t83itg","slide":2,"name":"prompt-card-title","text":"写入提示词","textPreview":"写入提示词","textChars":5,"textLines":1,"bbox":[554,454,148,26]}
+{"kind":"textbox","id":"sh/8nqxs72x","slide":2,"name":"prompt-card-detail","text":"把检索片段与用户问题一起放入上下文","textPreview":"把检索片段与用户问题一起放入上下文","textChars":17,"textLines":1,"bbox":[554,487,148,38]}
+{"kind":"shape","id":"sh/18jqh0fe","slide":2,"name":"llm-card","bbox":[794,437,160,96]}
+{"kind":"shape","id":"sh/ulwval87","slide":2,"name":"llm-card-accent","bbox":[794,437,160,0]}
+{"kind":"textbox","id":"sh/j6tovaho","slide":2,"name":"llm-card-title","text":"LLM 生成","textPreview":"LLM 生成","textChars":6,"textLines":1,"bbox":[810,454,128,26]}
+{"kind":"textbox","id":"sh/pwb2hwfy","slide":2,"name":"llm-card-detail","text":"模型基于上下文生成最终答案","textPreview":"模型基于上下文生成最终答案","textChars":13,"textLines":1,"bbox":[810,487,128,38]}
+{"kind":"shape","id":"sh/xs72x4na","slide":2,"bbox":[226,485,76,0]}
+{"kind":"shape","id":"sh/qtcj6tov","slide":2,"bbox":[462,485,76,0]}
+{"kind":"shape","id":"sh/je9cvixc","slide":2,"bbox":[718,485,76,0]}
+{"kind":"shape","id":"sh/8z25kb6x","slide":2,"bbox":[382,337,0,0]}
+{"kind":"shape","id":"sh/wjudg7ad","slide":2,"name":"rag-summary-box","bbox":[982,215,226,288]}
+{"kind":"textbox","id":"sh/7y1kre1w","slide":2,"name":"rag-summary-title","text":"RAG 解决什么？","textPreview":"RAG 解决什么？","textChars":9,"textLines":1,"bbox":[1004,242,180,28]}
+{"kind":"textbox","id":"sh/ed8v6psf","slide":2,"name":"rag-summary-body","text":"让模型在回答前，临时拿到最新资料或私有文档。\n\n它不是把知识写进模型参数，而是把相关片段放进上下文。","textPreview":"让模型在回答前，临时拿到最新资料或私有文档。 |  | 它不是把知识写进模型参数，而是把相关片段放进上下文。","textChars":50,"textLines":3,"bbox":[1004,288,174,120]}
+{"kind":"textbox","id":"sh/p8nqxs72","slide":2,"name":"rag-summary-key","text":"核心动作：检索 → 拼接 → 生成","textPreview":"核心动作：检索 → 拼接 → 生成","textChars":17,"textLines":1,"bbox":[1004,430,174,42]}
+{"kind":"shape","id":"sh/0nuxc3yl","slide":2,"name":"bottom-note-box","bbox":[45,588,1030,78]}
+{"kind":"shape","id":"sh/wval87ed","slide":2,"name":"bottom-note-accent","bbox":[45,588,1030,0]}
+{"kind":"textbox","id":"sh/pg3ex0nu","slide":2,"name":"bottom-note","text":"提到构建 AI 知识库，一开始想到的往往就是 RAG。它的关键不是让模型真的学会这些资料，而是在回答前先检索相关片段，再把片段作为上下文交给大模型。","textPreview":"提到构建 AI 知识库，一开始想到的往往就是 RAG。它的关键不是让模型真的学会这些资料，而是在回答前先检索相关片段，再把片段作为上下文交给大模型。","textChars":74,"textLines":1,"bbox":[62,606,990,42]}
+{"kind":"textbox","id":"sh/epkzupwb","slide":2,"name":"page-number","text":"02 / 17","textPreview":"02 / 17","textChars":7,"textLines":1,"bbox":[1128,652,92,28]}
+{"kind":"notes","id":"nt/re1w7mp0","slide":2,"text":"传统 RAG 的工作原理\n\n首先我们进入传统 RAG 的工作原理。\n大模型的知识主要固化在模型参数中，它不仅受训练数据截止时间限制，也无法直接覆盖企业文档、个人资料等私有领域数据。\n\n所以一提到构建 AI 知识库，我们一开始想到的通常就是 RAG。RAG 是一种通过在模型生成答案之前引入外部知识，使得大模型能够基于最新资料或私有文档回答问题的方法。\n\n传统 RAG 通常包含两个阶段。第一个阶段是知识库构建：先把原始文档切分为多个文本片段，再用嵌入模型把文本片段转换为向量，最后把向量和相关元数据存入向量数据库。\n\n第二个阶段是查询：用户提出问题后，系统把问题也转换成查询向量，从向量数据库中检索语义最相关的文本片段，再把检索结果和用户问题一起写入提示词，最后由大模型根据这些上下文生成答案。\n\n所以 RAG 的关键价值，是让模型在回答之前临时拿到一批外部资料。但它本质上还是一种“查询时检索”的机制，这一点会引出后面我们要讨论的局限。"}
+{"kind":"slide","id":"sl/kzupwb2h","slide":3,"title":"03 / GraphRAG","textShapes":24}
+{"kind":"textbox","id":"sh/36hcrmhk","slide":3,"name":"eyebrow","text":"03 / GraphRAG","textPreview":"03 / GraphRAG","textChars":13,"textLines":1,"bbox":[32,14,360,24]}
+{"kind":"shape","id":"sh/wra5gbq1","slide":3,"name":"teal-handline","bbox":[10,44,310,-4]}
+{"kind":"shape","id":"sh/lc7u54zi","slide":3,"name":"amber-handline","bbox":[780,45,460,-4]}
+{"kind":"textbox","id":"sh/ed8bat47","slide":3,"name":"title","text":"GraphRAG：让知识片段之间有关系","textPreview":"GraphRAG：让知识片段之间有关系","textChars":19,"textLines":1,"bbox":[40,66,980,58]}
+{"kind":"textbox","id":"sh/7u54zido","slide":3,"name":"subtitle","text":"从文本块相似度，走向实体、属性和关系的图结构","textPreview":"从文本块相似度，走向实体、属性和关系的图结构","textChars":22,"textLines":1,"bbox":[42,128,930,34]}
+{"kind":"textbox","id":"sh/wfyxobm5","slide":3,"name":"left-label","text":"传统 RAG","textPreview":"传统 RAG","textChars":6,"textLines":1,"bbox":[122,193,140,28]}
+{"kind":"shape","id":"sh/l0rqd4vm","slide":3,"name":"chunk-1","bbox":[70,245,150,92]}
+{"kind":"shape","id":"sh/e1w7mp0b","slide":3,"name":"chunk-1-accent","bbox":[70,245,150,0]}
+{"kind":"textbox","id":"sh/7mp0bi9s","slide":3,"name":"chunk-1-title","text":"文本片段 A","textPreview":"文本片段 A","textChars":6,"textLines":1,"bbox":[86,261,118,26]}
+{"kind":"textbox","id":"sh/zed8v6ps","slide":3,"name":"chunk-1-detail","text":"提出者 / 背景","textPreview":"提出者 / 背景","textChars":8,"textLines":1,"bbox":[86,293,118,36]}
+{"kind":"shape","id":"sh/6xkf6dcb","slide":3,"name":"chunk-2","bbox":[118,355,150,92]}
+{"kind":"shape","id":"sh/hk3q5o7q","slide":3,"name":"chunk-2-accent","bbox":[118,355,150,0]}
+{"kind":"textbox","id":"sh/oza1gvy9","slide":3,"name":"chunk-2-title","text":"文本片段 B","textPreview":"文本片段 B","textChars":6,"textLines":1,"bbox":[134,371,118,26]}
+{"kind":"textbox","id":"sh/zqtcj6to","slide":3,"name":"chunk-2-detail","text":"核心方法","textPreview":"核心方法","textChars":4,"textLines":1,"bbox":[134,403,118,36]}
+{"kind":"shape","id":"sh/65wjudg7","slide":3,"name":"chunk-3","bbox":[214,255,150,92]}
+{"kind":"shape","id":"sh/hwfyxobm","slide":3,"name":"chunk-3-accent","bbox":[214,255,150,0]}
+{"kind":"textbox","id":"sh/obm58z25","slide":3,"name":"chunk-3-title","text":"文本片段 C","textPreview":"文本片段 C","textChars":6,"textLines":1,"bbox":[230,271,118,26]}
+{"kind":"textbox","id":"sh/zupwb2hw","slide":3,"name":"chunk-3-detail","text":"应用场景 / 局限","textPreview":"应用场景 / 局限","textChars":9,"textLines":1,"bbox":[230,303,118,36]}
+{"kind":"shape","id":"sh/a9w3m94f","slide":3,"name":"fragment-dashed-1","bbox":[220,290,95,10]}
+{"kind":"shape","id":"sh/eloj2t83","slide":3,"name":"fragment-dashed-2","bbox":[214,395,100,-80]}
+{"kind":"shape","id":"sh/36hcrmhk","slide":3,"name":"extractor","bbox":[452,292,180,120]}
+{"kind":"shape","id":"sh/wra5gbq1","slide":3,"name":"extractor-accent","bbox":[452,292,180,0]}
+{"kind":"textbox","id":"sh/lc7u54zi","slide":3,"name":"extractor-title","text":"信息抽取","textPreview":"信息抽取","textChars":4,"textLines":1,"bbox":[468,308,148,26]}
+{"kind":"textbox","id":"sh/ed8bat47","slide":3,"name":"extractor-detail","text":"识别实体、属性、关系","textPreview":"识别实体、属性、关系","textChars":10,"textLines":1,"bbox":[468,340,148,64]}
+{"kind":"shape","id":"sh/ex0nuxc3","slide":3,"bbox":[364,301,88,51]}
+{"kind":"textbox","id":"sh/wfyxobm5","slide":3,"name":"right-label","text":"GraphRAG","textPreview":"GraphRAG","textChars":8,"textLines":1,"bbox":[820,193,160,28]}
+{"kind":"textbox","id":"sh/l0rqd4vm","slide":3,"name":"node-tech","text":"某项技术","textPreview":"某项技术","textChars":4,"textLines":1,"bbox":[820,310,86,58]}
+{"kind":"textbox","id":"sh/e1w7mp0b","slide":3,"name":"node-author","text":"提出者","textPreview":"提出者","textChars":3,"textLines":1,"bbox":[724,236,78,54]}
+{"kind":"textbox","id":"sh/7mp0bi9s","slide":3,"name":"node-method","text":"核心方法","textPreview":"核心方法","textChars":4,"textLines":1,"bbox":[950,235,86,54]}
+{"kind":"textbox","id":"sh/tsvu9kni","slide":3,"name":"node-app","text":"应用场景","textPreview":"应用场景","textChars":4,"textLines":1,"bbox":[718,420,86,54]}
+{"kind":"textbox","id":"sh/47y1kre1","slide":3,"name":"node-limit","text":"局限","textPreview":"局限","textChars":2,"textLines":1,"bbox":[960,420,78,54]}
+{"kind":"textbox","id":"sh/bm58z25k","slide":3,"name":"node-community","text":"图社区摘要","textPreview":"图社区摘要","textChars":5,"textLines":1,"bbox":[850,510,116,54]}
+{"kind":"shape","id":"sh/lc7u54zi","slide":3,"bbox":[763,290,57,49]}
+{"kind":"shape","id":"sh/eloj2t83","slide":3,"bbox":[906,262,44,77]}
+{"kind":"shape","id":"sh/36hcrmhk","slide":3,"bbox":[804,368,59,79]}
+{"kind":"shape","id":"sh/wfyxobm5","slide":3,"bbox":[906,339,54,108]}
+{"kind":"shape","id":"sh/l0rqd4vm","slide":3,"bbox":[804,447,46,90]}
+{"kind":"shape","id":"sh/ed8bat47","slide":3,"bbox":[966,474,33,63]}
+{"kind":"shape","id":"sh/7u54zido","slide":3,"bbox":[863,368,45,142]}
+{"kind":"shape","id":"sh/w7mp0bi9","slide":3,"bbox":[632,263,92,89]}
+{"kind":"shape","id":"sh/x4nap4r6","slide":3,"name":"graphrag-summary-box","bbox":[1072,245,150,260]}
+{"kind":"textbox","id":"sh/qd4vmtwr","slide":3,"name":"graphrag-summary-title","text":"改进点","textPreview":"改进点","textChars":3,"textLines":1,"bbox":[1094,270,105,24]}
+{"kind":"textbox","id":"sh/fyxobm58","slide":3,"name":"graphrag-summary-body","text":"检索对象不再只是文本片段。\n\n还可以是实体、关系、图社区和摘要。","textPreview":"检索对象不再只是文本片段。 |  | 还可以是实体、关系、图社区和摘要。","textChars":32,"textLines":3,"bbox":[1094,314,100,104]}
+{"kind":"textbox","id":"sh/8v6psfil","slide":3,"name":"graphrag-summary-key","text":"解决：知识如何建立关联","textPreview":"解决：知识如何建立关联","textChars":11,"textLines":1,"bbox":[1094,446,104,40]}
+{"kind":"shape","id":"sh/xczed8v6","slide":3,"name":"bottom-note-box","bbox":[45,588,1030,78]}
+{"kind":"shape","id":"sh/qpg3ex0n","slide":3,"name":"bottom-note-accent","bbox":[45,588,1030,0]}
+{"kind":"textbox","id":"sh/fa9w3m94","slide":3,"name":"bottom-note","text":"GraphRAG 的关键变化，是不再只把资料看成孤立文本块，而是抽取实体、属性和关系，把多篇文档里分散的信息连接成一张知识网络。","textPreview":"GraphRAG 的关键变化，是不再只把资料看成孤立文本块，而是抽取实体、属性和关系，把多篇文档里分散的信息连接成一张知识网络。","textChars":64,"textLines":1,"bbox":[62,606,990,42]}
+{"kind":"textbox","id":"sh/8z25kb6x","slide":3,"name":"page-number","text":"03 / 17","textPreview":"03 / 17","textChars":7,"textLines":1,"bbox":[1128,652,92,28]}
+{"kind":"notes","id":"nt/kzupwb2h","slide":3,"text":"GraphRAG：让知识片段之间有关系\n\n后来，为了增强跨文档关联能力，GraphRAG 在传统 RAG 的基础上引入了知识图谱。就像属性图一样，仅仅通过向量之间的相似度来比较语义还远远不够，节点之间还有各种各样的关系。\n\nGraphRAG 不再把文档保存为相互独立的文本块，而是通过信息抽取模型，从文档中识别实体、属性和关系，再将这些知识组织成图结构。\n\n例如，多篇文档可能分别描述某项技术的提出者、核心方法、应用场景和局限。传统 RAG 只能分别检索这些文本片段，而 GraphRAG 可以通过实体和关系将它们连接起来，形成相对完整的知识网络。\n\n相较于传统 RAG，GraphRAG 的主要改进在于：检索对象不再只是孤立的文本片段，还可以是实体、关系、图社区及其摘要。因此，GraphRAG 主要解决的是知识之间如何建立关联的问题，但没有完全改变查询阶段动态检索和生成的基本模式。"}
+{"kind":"slide","id":"sl/9knih4by","slide":4,"title":"04 / Agentic RAG","textShapes":19}
+{"kind":"textbox","id":"sh/itgfmlkj","slide":4,"name":"eyebrow","text":"04 / Agentic RAG","textPreview":"04 / Agentic RAG","textChars":16,"textLines":1,"bbox":[32,14,360,24]}
+{"kind":"shape","id":"sh/pkzupwb2","slide":4,"name":"teal-handline","bbox":[10,44,310,-4]}
+{"kind":"shape","id":"sh/0z61032l","slide":4,"name":"amber-handline","bbox":[780,45,460,-4]}
+{"kind":"textbox","id":"sh/72x4nap4","slide":4,"name":"title","text":"Agentic RAG：让 Agent 自主规划检索","textPreview":"Agentic RAG：让 Agent 自主规划检索","textChars":26,"textLines":1,"bbox":[40,66,980,58]}
+{"kind":"textbox","id":"sh/ih4byhgn","slide":4,"name":"subtitle","text":"从固定流水线，转向动态决策过程","textPreview":"从固定流水线，转向动态决策过程","textChars":15,"textLines":1,"bbox":[42,128,930,34]}
+{"kind":"textbox","id":"sh/p8nqxs72","slide":4,"name":"page-number","text":"04 / 17","textPreview":"04 / 17","textChars":7,"textLines":1,"bbox":[1128,652,92,28]}
+{"kind":"shape","id":"sh/0nuxc3yl","slide":4,"name":"task-card","bbox":[70,285,150,108]}
+{"kind":"shape","id":"sh/7y1kre1w","slide":4,"name":"task-card-accent","bbox":[70,285,150,0]}
+{"kind":"textbox","id":"sh/ed8v6psf","slide":4,"name":"task-card-title","text":"复杂任务","textPreview":"复杂任务","textChars":4,"textLines":1,"bbox":[86,301,118,26]}
+{"kind":"textbox","id":"sh/8v6psfil","slide":4,"name":"task-card-detail","text":"问题开放，需要多种信息来源","textPreview":"问题开放，需要多种信息来源","textChars":13,"textLines":1,"bbox":[86,333,118,52]}
+{"kind":"textbox","id":"sh/xczed8v6","slide":4,"name":"agent-core","text":"Agent\n规划","textPreview":"Agent | 规划","textChars":8,"textLines":2,"bbox":[345,260,160,160]}
+{"kind":"textbox","id":"sh/qpg3ex0n","slide":4,"name":"agent-sub","text":"观察中间结果，调整下一步","textPreview":"观察中间结果，调整下一步","textChars":12,"textLines":1,"bbox":[310,440,230,26]}
+{"kind":"shape","id":"sh/p8nqxs72","slide":4,"bbox":[220,339,125,1]}
+{"kind":"textbox","id":"sh/8jqh0fep","slide":4,"name":"tool-vector","text":"向量检索","textPreview":"向量检索","textChars":4,"textLines":1,"bbox":[650,205,124,72]}
+{"kind":"textbox","id":"sh/x4nap4r6","slide":4,"name":"tool-keyword","text":"关键词搜索","textPreview":"关键词搜索","textChars":5,"textLines":1,"bbox":[822,205,124,72]}
+{"kind":"textbox","id":"sh/qd4vmtwr","slide":4,"name":"tool-graph","text":"图查询","textPreview":"图查询","textChars":3,"textLines":1,"bbox":[650,318,124,72]}
+{"kind":"textbox","id":"sh/fyxobm58","slide":4,"name":"tool-web","text":"网页搜索","textPreview":"网页搜索","textChars":4,"textLines":1,"bbox":[822,318,124,72]}
+{"kind":"textbox","id":"sh/87ed8bat","slide":4,"name":"tool-db","text":"数据库查询","textPreview":"数据库查询","textChars":5,"textLines":1,"bbox":[736,430,124,72]}
+{"kind":"shape","id":"sh/7ed8bat4","slide":4,"bbox":[505,241,145,99]}
+{"kind":"shape","id":"sh/0bi9s36h","slide":4,"bbox":[505,241,317,99]}
+{"kind":"shape","id":"sh/pwb2hwfy","slide":4,"bbox":[505,340,145,14]}
+{"kind":"shape","id":"sh/94fu18jq","slide":4,"bbox":[505,340,317,14]}
+{"kind":"shape","id":"sh/kjm1cfa9","slide":4,"bbox":[505,340,231,126]}
+{"kind":"shape","id":"sh/loj2t83i","slide":4,"name":"answer-card","bbox":[1042,325,150,92]}
+{"kind":"shape","id":"sh/w3m94fu1","slide":4,"name":"answer-card-accent","bbox":[1042,325,150,0]}
+{"kind":"textbox","id":"sh/3itgfmlk","slide":4,"name":"answer-card-title","text":"生成答案","textPreview":"生成答案","textChars":4,"textLines":1,"bbox":[1058,341,118,26]}
+{"kind":"textbox","id":"sh/ex0nuxc3","slide":4,"name":"answer-card-detail","text":"多轮检索后综合结果","textPreview":"多轮检索后综合结果","textChars":9,"textLines":1,"bbox":[1058,373,118,36]}
+{"kind":"shape","id":"sh/ra5gbq1o","slide":4,"bbox":[946,241,96,130]}
+{"kind":"shape","id":"sh/2p8nqxs7","slide":4,"bbox":[946,354,96,17]}
+{"kind":"shape","id":"sh/9knih4by","slide":4,"bbox":[425,417,692,3]}
+{"kind":"textbox","id":"sh/vahoza1g","slide":4,"name":"feedback-label","text":"根据中间结果\n反复调整策略","textPreview":"根据中间结果 | 反复调整策略","textChars":13,"textLines":2,"bbox":[555,488,170,48]}
+{"kind":"shape","id":"sh/ovahoza1","slide":4,"name":"side-summary","bbox":[990,190,210,90]}
+{"kind":"shape","id":"sh/dg7adsji","slide":4,"name":"side-summary-accent","bbox":[990,190,210,0]}
+{"kind":"textbox","id":"sh/6hcrmhk3","slide":4,"name":"side-summary-title","text":"解决什么？","textPreview":"解决什么？","textChars":5,"textLines":1,"bbox":[1006,206,178,26]}
+{"kind":"textbox","id":"sh/z25kb6xk","slide":4,"name":"side-summary-detail","text":"更智能地获取知识，而不是持续积累知识。","textPreview":"更智能地获取知识，而不是持续积累知识。","textChars":19,"textLines":1,"bbox":[1006,238,178,34]}
+{"kind":"shape","id":"sh/onyd0z61","slide":4,"name":"bottom-note-box","bbox":[45,588,1030,78]}
+{"kind":"shape","id":"sh/d8v6psfi","slide":4,"name":"bottom-note-accent","bbox":[45,588,1030,0]}
+{"kind":"textbox","id":"sh/6dcbulwv","slide":4,"name":"bottom-note","text":"Agentic RAG 把检索能力封装为工具，由 Agent 根据任务需要动态调用。它提升了获取知识的智能程度，但仍然没有改变“查询时临时组织知识”的基本模式。","textPreview":"Agentic RAG 把检索能力封装为工具，由 Agent 根据任务需要动态调用。它提升了获取知识的智能程度，但仍然没有改变“查询时临时组织知识”的基本模式。","textChars":80,"textLines":1,"bbox":[62,606,990,42]}
+{"kind":"notes","id":"nt/9knih4by","slide":4,"text":"Agentic RAG：让 Agent 自主规划检索\n\nAgentic RAG 则由 Agent 自主规划检索，将向量检索、关键词搜索、图查询、网页搜索和数据库查询等能力封装为工具，由 Agent 根据任务需要自主调用。\n\n在 Agentic RAG 中，Agent 不必依赖单次检索，而是可以根据中间结果不断调整策略。这种方式将固定的检索流水线转变为动态决策过程，使系统能够处理更复杂、更开放的任务。\n\n但 Agentic RAG 并没有改变知识使用的基本范式。因此，Agentic RAG 主要解决的是如何更加智能地获取知识，而不是如何持续积累和演化知识。"}
+{"kind":"slide","id":"sl/25kb6xkf","slide":5,"title":"05 / RAG 的天花板","textShapes":20}
+{"kind":"textbox","id":"sh/val87ed8","slide":5,"name":"eyebrow","text":"05 / RAG 的天花板","textPreview":"05 / RAG 的天花板","textChars":13,"textLines":1,"bbox":[32,14,360,24]}
+{"kind":"shape","id":"sh/kre1w7mp","slide":5,"name":"teal-handline","bbox":[10,44,310,-4]}
+{"kind":"shape","id":"sh/dcbulwva","slide":5,"name":"amber-handline","bbox":[780,45,460,-4]}
+{"kind":"textbox","id":"sh/2x4nap4r","slide":5,"name":"title","text":"RAG 优化了访问能力，但缺少知识积累","textPreview":"RAG 优化了访问能力，但缺少知识积累","textChars":19,"textLines":1,"bbox":[40,66,980,58]}
+{"kind":"textbox","id":"sh/vixczed8","slide":5,"name":"subtitle","text":"检索更准、关联更强、策略更聪明，但知识仍在查询时临时组织","textPreview":"检索更准、关联更强、策略更聪明，但知识仍在查询时临时组织","textChars":28,"textLines":1,"bbox":[42,128,930,34]}
+{"kind":"textbox","id":"sh/k3q5o7qp","slide":5,"name":"page-number","text":"05 / 17","textPreview":"05 / 17","textChars":7,"textLines":1,"bbox":[1128,652,92,28]}
+{"kind":"shape","id":"sh/donyd0z6","slide":5,"name":"rag-opt","bbox":[86,238,190,112]}
+{"kind":"shape","id":"sh/29gr2p8n","slide":5,"name":"rag-opt-accent","bbox":[86,238,190,0]}
+{"kind":"textbox","id":"sh/vu9knih4","slide":5,"name":"rag-opt-title","text":"传统 RAG","textPreview":"传统 RAG","textChars":6,"textLines":1,"bbox":[102,254,158,26]}
+{"kind":"textbox","id":"sh/3ylc7u54","slide":5,"name":"rag-opt-detail","text":"优化检索质量","textPreview":"优化检索质量","textChars":6,"textLines":1,"bbox":[102,286,158,56]}
+{"kind":"shape","id":"sh/adsji5sn","slide":5,"name":"graph-opt","bbox":[322,238,190,112]}
+{"kind":"shape","id":"sh/h4byhgn2","slide":5,"name":"graph-opt-accent","bbox":[322,238,190,0]}
+{"kind":"textbox","id":"sh/sji5snel","slide":5,"name":"graph-opt-title","text":"GraphRAG","textPreview":"GraphRAG","textChars":8,"textLines":1,"bbox":[338,254,158,26]}
+{"kind":"textbox","id":"sh/3m94fu18","slide":5,"name":"graph-opt-detail","text":"增强知识关联","textPreview":"增强知识关联","textChars":6,"textLines":1,"bbox":[338,286,158,56]}
+{"kind":"shape","id":"sh/a5gbq1or","slide":5,"name":"agentic-opt","bbox":[558,238,190,112]}
+{"kind":"shape","id":"sh/lszqtcj6","slide":5,"name":"agentic-opt-accent","bbox":[558,238,190,0]}
+{"kind":"textbox","id":"sh/s72x4nap","slide":5,"name":"agentic-opt-title","text":"Agentic RAG","textPreview":"Agentic RAG","textChars":11,"textLines":1,"bbox":[574,254,158,26]}
+{"kind":"textbox","id":"sh/zidonyd0","slide":5,"name":"agentic-opt-detail","text":"改进检索策略","textPreview":"改进检索策略","textChars":6,"textLines":1,"bbox":[574,286,158,56]}
+{"kind":"shape","id":"sh/mp0bi9s3","slide":5,"bbox":[276,294,46,0]}
+{"kind":"shape","id":"sh/uxc3ylc7","slide":5,"bbox":[512,294,46,0]}
+{"kind":"shape","id":"sh/r65wjudg","slide":5,"name":"temporary-use","bbox":[372,420,300,110]}
+{"kind":"shape","id":"sh/gr2p8nqx","slide":5,"name":"temporary-use-accent","bbox":[372,420,300,0]}
+{"kind":"textbox","id":"sh/9cvixcze","slide":5,"name":"temporary-use-title","text":"共同问题","textPreview":"共同问题","textChars":4,"textLines":1,"bbox":[388,436,268,26]}
+{"kind":"textbox","id":"sh/yxobm58z","slide":5,"name":"temporary-use-detail","text":"直到用户提问时，知识才被临时检索和组织。","textPreview":"直到用户提问时，知识才被临时检索和组织。","textChars":20,"textLines":1,"bbox":[388,468,268,54]}
+{"kind":"shape","id":"sh/j6tovaho","slide":5,"bbox":[522,350,131,70]}
+{"kind":"shape","id":"sh/g3ex0nux","slide":5,"name":"karpathy-pain-box","bbox":[842,215,340,302]}
+{"kind":"shape","id":"sh/5o7qpg3e","slide":5,"name":"pain-accent","bbox":[842,215,340,0]}
+{"kind":"textbox","id":"sh/y1kre1w7","slide":5,"name":"pain-title","text":"Karpathy 提到的痛点","textPreview":"Karpathy 提到的痛点","textChars":14,"textLines":1,"bbox":[872,248,250,28]}
+{"kind":"shape","id":"sh/rmhk3q5o","slide":5,"name":"pain-dot-1","bbox":[874,307,12,12]}
+{"kind":"textbox","id":"sh/dsji5sne","slide":5,"name":"pain-1-title","text":"没有知识积累","textPreview":"没有知识积累","textChars":6,"textLines":1,"bbox":[900,302,210,22]}
+{"kind":"textbox","id":"sh/o7qpg3ex","slide":5,"name":"pain-1-detail","text":"每次查询都重新发现知识","textPreview":"每次查询都重新发现知识","textChars":11,"textLines":1,"bbox":[900,326,220,22]}
+{"kind":"shape","id":"sh/vmtwra5g","slide":5,"name":"pain-dot-2","bbox":[874,369,12,12]}
+{"kind":"textbox","id":"sh/61032lsz","slide":5,"name":"pain-2-title","text":"跨文档推理弱","textPreview":"跨文档推理弱","textChars":6,"textLines":1,"bbox":[900,364,210,22]}
+{"kind":"textbox","id":"sh/d4vmtwra","slide":5,"name":"pain-2-detail","text":"片段之间难以自然综合","textPreview":"片段之间难以自然综合","textChars":10,"textLines":1,"bbox":[900,388,220,22]}
+{"kind":"shape","id":"sh/oj2t83it","slide":5,"name":"pain-dot-3","bbox":[874,431,12,12]}
+{"kind":"textbox","id":"sh/vy90je9c","slide":5,"name":"pain-3-title","text":"工程链路过重","textPreview":"工程链路过重","textChars":6,"textLines":1,"bbox":[900,426,210,22]}
+{"kind":"textbox","id":"sh/6dcbulwv","slide":5,"name":"pain-3-detail","text":"索引、检索、编排都更复杂","textPreview":"索引、检索、编排都更复杂","textChars":12,"textLines":1,"bbox":[900,450,220,22]}
+{"kind":"shape","id":"sh/d8v6psfi","slide":5,"name":"bottom-note-box","bbox":[45,588,1030,78]}
+{"kind":"shape","id":"sh/onyd0z61","slide":5,"name":"bottom-note-accent","bbox":[45,588,1030,0]}
+{"kind":"textbox","id":"sh/szqtcj6t","slide":5,"name":"bottom-note","text":"现有 RAG 技术主要提升的是知识访问能力，而不是完整的知识积累能力。LLM Wiki 关注的正是下一步：让大模型成为知识体系的持续构建者和维护者。","textPreview":"现有 RAG 技术主要提升的是知识访问能力，而不是完整的知识积累能力。LLM Wiki 关注的正是下一步：让大模型成为知识体系的持续构建者和维护者。","textChars":74,"textLines":1,"bbox":[62,606,990,42]}
+{"kind":"notes","id":"nt/25kb6xkf","slide":5,"text":"RAG 优化了访问能力，但缺少知识积累\n\n因此，现有 RAG 技术主要围绕检索质量、知识关联和检索策略进行优化，但缺少持续演化的知识沉淀机制。\n\n即使文档数量不断增加、查询次数不断累积，知识库的内部结构也可能没有发生实质变化。原始知识依然主要以文本块、向量、实体或关系的形式存在，直到用户提问时才被临时检索和组织。\n\n这意味着 RAG 系统通常具备的是知识访问能力，而不是完整的知识积累能力。Karpathy 指出 RAG 的三个痛点问题：没有知识积累、跨文档推理弱、工程链路过重。\n\nLLM Wiki 关注的正是这一方向：将大模型从查询阶段的临时知识使用者，进一步转变为知识体系的持续构建者和维护者。"}
+{"kind":"slide","id":"sl/rqd4vmtw","slide":6,"title":"06 / Obsidian","textShapes":16}
+{"kind":"textbox","id":"sh/hgn29gr2","slide":6,"name":"eyebrow","text":"06 / Obsidian","textPreview":"06 / Obsidian","textChars":13,"textLines":1,"bbox":[32,14,360,24]}
+{"kind":"shape","id":"sh/ap4r65wj","slide":6,"name":"teal-handline","bbox":[10,44,310,-4]}
+{"kind":"shape","id":"sh/za1gvy90","slide":6,"name":"amber-handline","bbox":[780,45,460,-4]}
+{"kind":"textbox","id":"sh/s36hcrmh","slide":6,"name":"title","text":"Obsidian：人和 LLM 共同使用的知识 IDE","textPreview":"Obsidian：人和 LLM 共同使用的知识 IDE","textChars":27,"textLines":1,"bbox":[40,66,980,58]}
+{"kind":"textbox","id":"sh/hoza1gvy","slide":6,"name":"subtitle","text":"LLM Wiki 的核心是 Agent + Markdown 文件目录","textPreview":"LLM Wiki 的核心是 Agent + Markdown 文件目录","textChars":35,"textLines":1,"bbox":[42,128,930,34]}
+{"kind":"textbox","id":"sh/a1gvy90j","slide":6,"name":"page-number","text":"06 / 17","textPreview":"06 / 17","textChars":7,"textLines":1,"bbox":[1128,652,92,28]}
+{"kind":"shape","id":"sh/zidonyd0","slide":6,"name":"plain-folder-tab","bbox":[99,261,78,28]}
+{"kind":"textbox","id":"sh/s72x4nap","slide":6,"name":"plain-folder","text":"普通文件夹","textPreview":"普通文件夹","textChars":5,"textLines":1,"bbox":[85,275,170,104]}
+{"kind":"textbox","id":"sh/lszqtcj6","slide":6,"name":"folder-desc","text":"适合 Agent 读写\n不适合人长期浏览和审阅","textPreview":"适合 Agent 读写 | 不适合人长期浏览和审阅","textChars":23,"textLines":2,"bbox":[78,405,190,52]}
+{"kind":"shape","id":"sh/h0fepkzu","slide":6,"name":"obsidian-card","bbox":[500,255,250,145]}
+{"kind":"shape","id":"sh/sfil0rqd","slide":6,"name":"obsidian-card-accent","bbox":[500,255,250,0]}
+{"kind":"textbox","id":"sh/zupwb2hw","slide":6,"name":"obsidian-card-title","text":"Obsidian","textPreview":"Obsidian","textChars":8,"textLines":1,"bbox":[516,271,218,26]}
+{"kind":"textbox","id":"sh/a9w3m94f","slide":6,"name":"obsidian-card-detail","text":"本地 Markdown、双向链接、反向链接、图谱视图、CLI","textPreview":"本地 Markdown、双向链接、反向链接、图谱视图、CLI","textChars":30,"textLines":1,"bbox":[516,303,218,89]}
+{"kind":"shape","id":"sh/1w7mp0bi","slide":6,"bbox":[255,327,245,0.5]}
+{"kind":"textbox","id":"sh/orytsvu9","slide":6,"name":"ide-quote","text":"Obsidian 是 IDE\nLLM 是程序员\nWiki 是代码库","textPreview":"Obsidian 是 IDE | LLM 是程序员 | Wiki 是代码库","textChars":33,"textLines":3,"bbox":[520,430,220,78]}
+{"kind":"shape","id":"sh/z61032ls","slide":6,"name":"adv-browse","bbox":[890,210,250,86]}
+{"kind":"shape","id":"sh/al87ed8b","slide":6,"name":"adv-browse-accent","bbox":[890,210,250,0]}
+{"kind":"textbox","id":"sh/hk3q5o7q","slide":6,"name":"adv-browse-title","text":"更好浏览","textPreview":"更好浏览","textChars":4,"textLines":1,"bbox":[906,226,218,26]}
+{"kind":"textbox","id":"sh/oza1gvy9","slide":6,"name":"adv-browse-detail","text":"[[双向链接]] 可以直接点击跳转","textPreview":"[[双向链接]] 可以直接点击跳转","textChars":17,"textLines":1,"bbox":[906,258,218,30]}
+{"kind":"shape","id":"sh/kf6dcbul","slide":6,"name":"adv-review","bbox":[890,325,250,86]}
+{"kind":"shape","id":"sh/d0z61032","slide":6,"name":"adv-review-accent","bbox":[890,325,250,0]}
+{"kind":"textbox","id":"sh/29gr2p8n","slide":6,"name":"adv-review-title","text":"更好审阅","textPreview":"更好审阅","textChars":4,"textLines":1,"bbox":[906,341,218,26]}
+{"kind":"textbox","id":"sh/vu9knih4","slide":6,"name":"adv-review-detail","text":"反向链接、关系图谱、孤立页面都能看见","textPreview":"反向链接、关系图谱、孤立页面都能看见","textChars":18,"textLines":1,"bbox":[906,373,218,30]}
+{"kind":"shape","id":"sh/knih4byh","slide":6,"name":"adv-local","bbox":[890,440,250,86]}
+{"kind":"shape","id":"sh/d8bat47y","slide":6,"name":"adv-local-accent","bbox":[890,440,250,0]}
+{"kind":"textbox","id":"sh/2lszqtcj","slide":6,"name":"adv-local-title","text":"不锁数据","textPreview":"不锁数据","textChars":4,"textLines":1,"bbox":[906,456,218,26]}
+{"kind":"textbox","id":"sh/v6psfil0","slide":6,"name":"adv-local-detail","text":"底层仍是 Markdown，Agent 能改，Git 能管","textPreview":"底层仍是 Markdown，Agent 能改，Git 能管","textChars":29,"textLines":1,"bbox":[906,488,218,30]}
+{"kind":"shape","id":"sh/psfil0rq","slide":6,"bbox":[750,253,140,74.5]}
+{"kind":"shape","id":"sh/e1w7mp0b","slide":6,"bbox":[750,327.5,140,40.5]}
+{"kind":"shape","id":"sh/7mp0bi9s","slide":6,"bbox":[750,327.5,140,155.5]}
+{"kind":"shape","id":"sh/a1gvy90j","slide":6,"name":"bottom-note-box","bbox":[45,588,1030,78]}
+{"kind":"shape","id":"sh/hoza1gvy","slide":6,"name":"bottom-note-accent","bbox":[45,588,1030,0]}
+{"kind":"textbox","id":"sh/s36hcrmh","slide":6,"name":"bottom-note","text":"普通文件夹更像存储层，而 Obsidian 让 Markdown 知识库同时适合人浏览、审阅和协作。它不锁数据，也能通过 CLI 让 Agent 更规范地操作仓库。","textPreview":"普通文件夹更像存储层，而 Obsidian 让 Markdown 知识库同时适合人浏览、审阅和协作。它不锁数据，也能通过 CLI 让 Agent 更规范地操作仓库。","textChars":82,"textLines":1,"bbox":[62,606,990,42]}
+{"kind":"notes","id":"nt/rqd4vmtw","slide":6,"text":"Obsidian：人和 LLM 共同使用的知识 IDE\n\nLLM Wiki 的核心是 Agent 加 Markdown 文件目录。因此理论上，我们完全可以让 Agent 直接操作一个本地文件夹。\n\n但普通文件夹更像存储层，它适合 Agent 读写，却不适合人长期浏览和审阅。所以这里使用 Obsidian 来管理本地知识库。\n\n它主要有三大优势：第一，更好浏览，Agent 写出的双向链接在 Obsidian 里可以直接点击跳转；第二，更好审阅，可以查看反向链接、关系图谱和孤立页面；第三，不锁数据，Obsidian 的底层仍然是本地 Markdown 文件，Agent 可以直接改，Git 可以直接管，也可以随时迁移。\n\n此外，Obsidian 还推出了 Obsidian CLI，使得 Agent 更方便、更规范地操作 Obsidian 仓库。用 Karpathy 的话来说：Obsidian 是 IDE，LLM 是程序员，Wiki 是代码库。"}
+{"kind":"slide","id":"sl/kb6xkf6d","slide":7,"title":"07 / 架构","textShapes":12}
+{"kind":"textbox","id":"sh/itgfmlkj","slide":7,"name":"eyebrow","text":"07 / 架构","textPreview":"07 / 架构","textChars":7,"textLines":1,"bbox":[32,14,360,24]}
+{"kind":"shape","id":"sh/pkzupwb2","slide":7,"name":"teal-handline","bbox":[10,44,310,-4]}
+{"kind":"shape","id":"sh/0z61032l","slide":7,"name":"amber-handline","bbox":[780,45,460,-4]}
+{"kind":"textbox","id":"sh/72x4nap4","slide":7,"name":"title","text":"LLM Wiki 的三层架构","textPreview":"LLM Wiki 的三层架构","textChars":14,"textLines":1,"bbox":[40,66,980,58]}
+{"kind":"textbox","id":"sh/ih4byhgn","slide":7,"name":"subtitle","text":"raw / wiki / schema：事实来源、知识产物与维护规则","textPreview":"raw / wiki / schema：事实来源、知识产物与维护规则","textChars":34,"textLines":1,"bbox":[42,128,930,34]}
+{"kind":"textbox","id":"sh/p8nqxs72","slide":7,"name":"page-number","text":"07 / 17","textPreview":"07 / 17","textChars":7,"textLines":1,"bbox":[1128,652,92,28]}
+{"kind":"shape","id":"sh/0nuxc3yl","slide":7,"name":"raw-layer-tab","bbox":[109,256,78,28]}
+{"kind":"textbox","id":"sh/7y1kre1w","slide":7,"name":"raw-layer","text":"raw/","textPreview":"raw/","textChars":4,"textLines":1,"bbox":[95,270,180,110]}
+{"kind":"textbox","id":"sh/ed8v6psf","slide":7,"name":"raw-desc","text":"原始资料\n文章 / 论文 / 图片 / 视频\n不可变，LLM 只读","textPreview":"原始资料 | 文章 / 论文 / 图片 / 视频 | 不可变，LLM 只读","textChars":33,"textLines":3,"bbox":[84,410,205,72]}
+{"kind":"shape","id":"sh/8v6psfil","slide":7,"name":"wiki-layer-tab","bbox":[529,236,78,28]}
+{"kind":"textbox","id":"sh/xczed8v6","slide":7,"name":"wiki-layer","text":"wiki/","textPreview":"wiki/","textChars":5,"textLines":1,"bbox":[515,250,210,130]}
+{"kind":"textbox","id":"sh/qpg3ex0n","slide":7,"name":"wiki-desc","text":"LLM 生成的 Markdown 页面\nsummaries / entities / concepts\ncomparisons / syntheses ...","textPreview":"LLM 生成的 Markdown 页面 | summaries / entities / concepts | comparisons / syntheses ...","textChars":79,"textLines":3,"bbox":[476,410,290,78]}
+{"kind":"shape","id":"sh/fa9w3m94","slide":7,"name":"schema-layer","bbox":[930,260,230,120]}
+{"kind":"shape","id":"sh/8jqh0fep","slide":7,"name":"schema-layer-accent","bbox":[930,260,230,0]}
+{"kind":"textbox","id":"sh/x4nap4r6","slide":7,"name":"schema-layer-title","text":"schema","textPreview":"schema","textChars":6,"textLines":1,"bbox":[946,276,198,26]}
+{"kind":"textbox","id":"sh/qd4vmtwr","slide":7,"name":"schema-layer-detail","text":"AGENTS.md / CLAUDE.md\n告诉 LLM 如何维护 Wiki","textPreview":"AGENTS.md / CLAUDE.md | 告诉 LLM 如何维护 Wiki","textChars":38,"textLines":2,"bbox":[946,308,198,64]}
+{"kind":"textbox","id":"sh/fyxobm58","slide":7,"name":"schema-desc","text":"关键配置文件：让 LLM 成为有纪律的维护者，而不是普通聊天机器人。","textPreview":"关键配置文件：让 LLM 成为有纪律的维护者，而不是普通聊天机器人。","textChars":34,"textLines":1,"bbox":[902,410,285,58]}
+{"kind":"shape","id":"sh/m94fu18j","slide":7,"bbox":[275,315,240,10]}
+{"kind":"shape","id":"sh/x0nuxc3y","slide":7,"bbox":[725,315,205,5]}
+{"kind":"shape","id":"sh/4fu18jqh","slide":7,"bbox":[620,380,425,0]}
+{"kind":"shape","id":"sh/wb2hwfyx","slide":7,"name":"bottom-note-box","bbox":[45,588,1030,78]}
+{"kind":"shape","id":"sh/3q5o7qpg","slide":7,"name":"bottom-note-accent","bbox":[45,588,1030,0]}
+{"kind":"textbox","id":"sh/e9cvixcz","slide":7,"name":"bottom-note","text":"LLM Wiki 不是把所有资料混在一起，而是分成三层：raw 保留事实来源，wiki 承载结构化知识，schema 规定维护方式和工作流。","textPreview":"LLM Wiki 不是把所有资料混在一起，而是分成三层：raw 保留事实来源，wiki 承载结构化知识，schema 规定维护方式和工作流。","textChars":70,"textLines":1,"bbox":[62,606,990,42]}
+{"kind":"notes","id":"nt/kb6xkf6d","slide":7,"text":"LLM Wiki 的三层架构\n\nLLM Wiki 可以分为三层。第一层是原始资料，也就是 raw 目录。它保存来源文档集合，可以是文章、技术博客、论文、图片、视频等。这一层是不可变的，LLM 从中读取，但不修改它们。\n\n第二层是 Wiki 页面，也就是 wiki 目录。它是由 LLM 生成的 Markdown 文件目录，可以再细分为 summaries 摘要、entities 实体、concepts 概念、comparisons 比较、overviews 概览、syntheses 综合结论等等。\n\n第三层是 schema，例如 Claude Code 的 CLAUDE.md，或者 Codex 的 AGENTS.md。它是 Wiki 的维护规范文档，用来告诉 LLM 这个 Wiki 的构建方式、命名约定，以及在摄入素材、回答问题、维护 Wiki 时应该遵循什么工作流。\n\n这是非常关键的配置文件，因为它让 LLM 成为有纪律的 Wiki 维护者，而不是普通的聊天机器人。"}
+{"kind":"slide","id":"sl/9w3m94fu","slide":8,"title":"08 / 核心操作","textShapes":14}
+{"kind":"textbox","id":"sh/ed8v6psf","slide":8,"name":"eyebrow","text":"08 / 核心操作","textPreview":"08 / 核心操作","textChars":9,"textLines":1,"bbox":[32,14,360,24]}
+{"kind":"shape","id":"sh/p4r65wju","slide":8,"name":"teal-handline","bbox":[10,44,310,-4]}
+{"kind":"shape","id":"sh/wjudg7ad","slide":8,"name":"amber-handline","bbox":[780,45,460,-4]}
+{"kind":"textbox","id":"sh/7qpg3ex0","slide":8,"name":"title","text":"LLM Wiki 的核心操作","textPreview":"LLM Wiki 的核心操作","textChars":14,"textLines":1,"bbox":[40,66,980,58]}
+{"kind":"textbox","id":"sh/i5sneloj","slide":8,"name":"subtitle","text":"Ingest、Query、Lint：让知识库持续生长并保持健康","textPreview":"Ingest、Query、Lint：让知识库持续生长并保持健康","textChars":31,"textLines":1,"bbox":[42,128,930,34]}
+{"kind":"textbox","id":"sh/pwb2hwfy","slide":8,"name":"page-number","text":"08 / 17","textPreview":"08 / 17","textChars":7,"textLines":1,"bbox":[1128,652,92,28]}
+{"kind":"shape","id":"sh/0bi9s36h","slide":8,"name":"ingest-card","bbox":[100,240,250,150]}
+{"kind":"shape","id":"sh/7ed8bat4","slide":8,"name":"ingest-card-accent","bbox":[100,240,250,0]}
+{"kind":"textbox","id":"sh/itgfmlkj","slide":8,"name":"ingest-card-title","text":"Ingest","textPreview":"Ingest","textChars":6,"textLines":1,"bbox":[116,256,218,26]}
+{"kind":"textbox","id":"sh/cvixczed","slide":8,"name":"ingest-card-detail","text":"摄取新素材\n阅读、摘要、更新页面与索引","textPreview":"摄取新素材 | 阅读、摘要、更新页面与索引","textChars":19,"textLines":2,"bbox":[116,288,218,94]}
+{"kind":"shape","id":"sh/5gbq1ory","slide":8,"name":"query-card","bbox":[500,240,250,150]}
+{"kind":"shape","id":"sh/upwb2hwf","slide":8,"name":"query-card-accent","bbox":[500,240,250,0]}
+{"kind":"textbox","id":"sh/nap4r65w","slide":8,"name":"query-card-title","text":"Query","textPreview":"Query","textChars":5,"textLines":1,"bbox":[516,256,218,26]}
+{"kind":"textbox","id":"sh/cj6tovah","slide":8,"name":"query-card-detail","text":"基于 Wiki 回答\n好的答案可归档回 Wiki","textPreview":"基于 Wiki 回答 | 好的答案可归档回 Wiki","textChars":24,"textLines":2,"bbox":[516,288,218,94]}
+{"kind":"shape","id":"sh/54zidony","slide":8,"name":"lint-card","bbox":[900,240,250,150]}
+{"kind":"shape","id":"sh/udg7adsj","slide":8,"name":"lint-card-accent","bbox":[900,240,250,0]}
+{"kind":"textbox","id":"sh/nyd0z610","slide":8,"name":"lint-card-title","text":"Lint","textPreview":"Lint","textChars":4,"textLines":1,"bbox":[916,256,218,26]}
+{"kind":"textbox","id":"sh/cfa9w3m9","slide":8,"name":"lint-card-detail","text":"检查知识库健康\n矛盾、陈旧、孤立与缺链","textPreview":"检查知识库健康 | 矛盾、陈旧、孤立与缺链","textChars":19,"textLines":2,"bbox":[916,288,218,94]}
+{"kind":"shape","id":"sh/z61032ls","slide":8,"bbox":[350,315,150,0]}
+{"kind":"shape","id":"sh/al87ed8b","slide":8,"bbox":[750,315,150,0]}
+{"kind":"shape","id":"sh/032lszqt","slide":8,"bbox":[225,390,800,24]}
+{"kind":"textbox","id":"sh/nqxs72x4","slide":8,"name":"loop-label","text":"摄入 → 提问 → 归档 → 校验 → 再生长","textPreview":"摄入 → 提问 → 归档 → 校验 → 再生长","textChars":23,"textLines":1,"bbox":[390,445,500,32]}
+{"kind":"shape","id":"sh/u54zidon","slide":8,"name":"insight-card","bbox":[360,500,560,68]}
+{"kind":"shape","id":"sh/5kb6xkf6","slide":8,"name":"insight-card-accent","bbox":[360,500,560,0]}
+{"kind":"textbox","id":"sh/czed8v6p","slide":8,"name":"insight-card-title","text":"关键洞察","textPreview":"关键洞察","textChars":4,"textLines":1,"bbox":[376,516,528,26]}
+{"kind":"textbox","id":"sh/neloj2t8","slide":8,"name":"insight-card-detail","text":"好的 Query 答案不应该消失在聊天记录中，而应该像素材一样沉淀回 Wiki。","textPreview":"好的 Query 答案不应该消失在聊天记录中，而应该像素材一样沉淀回 Wiki。","textChars":40,"textLines":1,"bbox":[376,548,528,12]}
+{"kind":"shape","id":"sh/ytsvu9kn","slide":8,"name":"bottom-note-box","bbox":[45,588,1030,78]}
+{"kind":"shape","id":"sh/58z25kb6","slide":8,"name":"bottom-note-accent","bbox":[45,588,1030,0]}
+{"kind":"textbox","id":"sh/gn29gr2p","slide":8,"name":"bottom-note","text":"LLM Wiki 的日常维护可以概括为三件事：摄入新素材、基于 Wiki 回答问题、定期检查知识库健康。重要的是，查询本身也能反过来成为知识积累的一部分。","textPreview":"LLM Wiki 的日常维护可以概括为三件事：摄入新素材、基于 Wiki 回答问题、定期检查知识库健康。重要的是，查询本身也能反过来成为知识积累的一部分。","textChars":77,"textLines":1,"bbox":[62,606,990,42]}
+{"kind":"notes","id":"nt/9w3m94fu","slide":8,"text":"LLM Wiki 的核心操作\n\n管理 LLM Wiki 知识库主要有三个操作，分别是 Ingest、Query 和 Lint。\n\nIngest 是摄取，也就是将新的素材放入 raw 原始资料集合，并告诉 LLM 处理它。一个典型流程是：LLM 阅读素材，生成摘要页面，更新 index，更新相关的实体页面和概念页面，并在 log 中追加条目。\n\nQuery 是查询。你向 Wiki 提问，LLM 搜索相关页面，阅读它们，并综合出一个带引用的答案。这里有一个重要洞察：好的答案可以作为新页面归档回 Wiki。你要求的一次对比、一次分析、一个你发现的关联，都不应该消失在聊天记录里。\n\nLint 是校验。定期让 LLM 对 Wiki 做健康检查，查找页面矛盾、陈旧说法、孤立页面、缺失交叉引用，以及可以通过网络搜索填补的数据空白。"}
+{"kind":"slide","id":"sl/2hwfyxob","slide":9,"title":"09 / index 与 log","textShapes":15}
+{"kind":"textbox","id":"sh/neloj2t8","slide":9,"name":"eyebrow","text":"09 / index 与 log","textPreview":"09 / index 与 log","textChars":16,"textLines":1,"bbox":[32,14,360,24]}
+{"kind":"shape","id":"sh/czed8v6p","slide":9,"name":"teal-handline","bbox":[10,44,310,-4]}
+{"kind":"shape","id":"sh/5kb6xkf6","slide":9,"name":"amber-handline","bbox":[780,45,460,-4]}
+{"kind":"textbox","id":"sh/u54zidon","slide":9,"name":"title","text":"index.md 与 log.md：导航和时间线","textPreview":"index.md 与 log.md：导航和时间线","textChars":24,"textLines":1,"bbox":[40,66,980,58]}
+{"kind":"textbox","id":"sh/nqxs72x4","slide":9,"name":"subtitle","text":"一个按内容组织，一个按时间记录，帮助人和 LLM 理解 Wiki 的增长","textPreview":"一个按内容组织，一个按时间记录，帮助人和 LLM 理解 Wiki 的增长","textChars":36,"textLines":1,"bbox":[42,128,930,34]}
+{"kind":"shape","id":"sh/cbulwval","slide":9,"name":"index-card","bbox":[90,215,430,300]}
+{"kind":"shape","id":"sh/5sneloj2","slide":9,"name":"index-card-accent","bbox":[90,215,430,0]}
+{"kind":"textbox","id":"sh/y90je9cv","slide":9,"name":"index-card-title","text":"index.md","textPreview":"index.md","textChars":8,"textLines":1,"bbox":[112,235,386,30]}
+{"kind":"textbox","id":"sh/nuxc3ylc","slide":9,"name":"index-label","text":"内容地图","textPreview":"内容地图","textChars":4,"textLines":1,"bbox":[365,242,110,26]}
+{"kind":"textbox","id":"sh/36hcrmhk","slide":9,"name":"index-body","text":"按类别列出 Wiki 页面：\nentities / concepts / summaries ...\n\n每个页面包含：\n链接、一句话摘要、日期或来源数量","textPreview":"按类别列出 Wiki 页面： | entities / concepts / summaries ... |  | 每个页面包含： | 链接、一句话摘要、日期或来源数量","textChars":76,"textLines":5,"bbox":[116,282,355,120]}
+{"kind":"textbox","id":"sh/eloj2t83","slide":9,"name":"index-flow","text":"Query 时：先读 index → 找相关页 → 深入阅读","textPreview":"Query 时：先读 index → 找相关页 → 深入阅读","textChars":30,"textLines":1,"bbox":[116,435,350,30]}
+{"kind":"shape","id":"sh/lc7u54zi","slide":9,"name":"index-line-1","bbox":[116,405,320,0]}
+{"kind":"shape","id":"sh/wra5gbq1","slide":9,"name":"index-line-2","bbox":[116,420,260,0]}
+{"kind":"shape","id":"sh/7u54zido","slide":9,"name":"log-card","bbox":[760,215,430,300]}
+{"kind":"shape","id":"sh/ed8bat47","slide":9,"name":"log-card-accent","bbox":[760,215,430,0]}
+{"kind":"textbox","id":"sh/l0rqd4vm","slide":9,"name":"log-card-title","text":"log.md","textPreview":"log.md","textChars":6,"textLines":1,"bbox":[782,235,386,30]}
+{"kind":"textbox","id":"sh/wfyxobm5","slide":9,"name":"log-label","text":"演进时间线","textPreview":"演进时间线","textChars":5,"textLines":1,"bbox":[1000,242,140,26]}
+{"kind":"textbox","id":"sh/7mp0bi9s","slide":9,"name":"log-body","text":"按时间顺序，仅追加记录：\nIngest / Query / Lint\n\n记录发生了什么、何时发生，\n以及最近做过哪些维护。","textPreview":"按时间顺序，仅追加记录： | Ingest / Query / Lint |  | 记录发生了什么、何时发生， | 以及最近做过哪些维护。","textChars":61,"textLines":5,"bbox":[786,282,355,130]}
+{"kind":"textbox","id":"sh/e1w7mp0b","slide":9,"name":"log-example","text":"## [2026-04-02] ingest | 文章标题","textPreview":"## [2026-04-02] ingest | 文章标题","textChars":29,"textLines":1,"bbox":[786,438,350,24]}
+{"kind":"textbox","id":"sh/qxs72x4n","slide":9,"name":"log-tip","text":"可用 grep / tail 快速查看最近记录","textPreview":"可用 grep / tail 快速查看最近记录","textChars":23,"textLines":1,"bbox":[786,466,330,24]}
+{"kind":"textbox","id":"sh/fil0rqd4","slide":9,"name":"bridge-box","text":"帮助 LLM\n定位与回忆","textPreview":"帮助 LLM | 定位与回忆","textChars":12,"textLines":2,"bbox":[552,315,176,92]}
+{"kind":"shape","id":"sh/9gr2p8nq","slide":9,"bbox":[520,361,32,4]}
+{"kind":"shape","id":"sh/fyxobm58","slide":9,"bbox":[728,361,32,4]}
+{"kind":"shape","id":"sh/m94fu18j","slide":9,"name":"bottom-note-box","bbox":[45,588,1030,78]}
+{"kind":"shape","id":"sh/fu18jqh0","slide":9,"name":"bottom-note-accent","bbox":[45,588,1030,0]}
+{"kind":"textbox","id":"sh/4fu18jqh","slide":9,"name":"bottom-note","text":"index.md 让 Wiki 具备内容入口，log.md 让 Wiki 保留演进历史。前者帮助 LLM 找到该读什么，后者帮助 LLM 理解最近发生了什么。","textPreview":"index.md 让 Wiki 具备内容入口，log.md 让 Wiki 保留演进历史。前者帮助 LLM 找到该读什么，后者帮助 LLM 理解最近发生了什么。","textChars":79,"textLines":1,"bbox":[62,606,990,42]}
+{"kind":"textbox","id":"sh/x0nuxc3y","slide":9,"name":"page-number","text":"09 / 17","textPreview":"09 / 17","textChars":7,"textLines":1,"bbox":[1128,652,92,28]}
+{"kind":"notes","id":"nt/2hwfyxob","slide":9,"text":"index.md 与 log.md：导航和时间线\n\n在 LLM Wiki 中，有两个特殊文件会帮助 LLM 和你在 Wiki 增长时进行导航，它们是 index.md 和 log.md。\n\nindex.md 是内容导向的。它是 Wiki 中所有内容的目录，每个页面都列出链接、一句话摘要，以及可选的元数据，比如日期或素材数量。LLM 在每次 ingest 时会更新它。回答 query 时，LLM 会先阅读 index.md，找到相关页面，然后再深入阅读。\n\nlog.md 则是时间导向的。它是按时间顺序、仅追加的记录，用来记录发生了什么、什么时候发生，例如 ingest、query、lint。log 提供了 Wiki 演进的时间线，也帮助 LLM 理解最近做过什么。"}
+{"kind":"slide","id":"sl/r2p8nqxs","slide":10,"title":"10 / Web Clipper","textShapes":18}
+{"kind":"textbox","id":"sh/m1cfa9w3","slide":10,"name":"eyebrow","text":"10 / Web Clipper","textPreview":"10 / Web Clipper","textChars":16,"textLines":1,"bbox":[32,14,360,24]}
+{"kind":"shape","id":"sh/tsvu9kni","slide":10,"name":"teal-handline","bbox":[10,44,310,-4]}
+{"kind":"shape","id":"sh/47y1kre1","slide":10,"name":"amber-handline","bbox":[780,45,460,-4]}
+{"kind":"textbox","id":"sh/bat47y1k","slide":10,"name":"title","text":"Obsidian Web Clipper：把网页变成 raw 素材","textPreview":"Obsidian Web Clipper：把网页变成 raw 素材","textChars":33,"textLines":1,"bbox":[40,66,980,58]}
+{"kind":"textbox","id":"sh/mp0bi9s3","slide":10,"name":"subtitle","text":"从外部网页到本地 Markdown，让 LLM Wiki 有稳定的素材入口","textPreview":"从外部网页到本地 Markdown，让 LLM Wiki 有稳定的素材入口","textChars":37,"textLines":1,"bbox":[42,128,930,34]}
+{"kind":"textbox","id":"sh/tgfmlkjm","slide":10,"name":"page-number","text":"10 / 17","textPreview":"10 / 17","textChars":7,"textLines":1,"bbox":[1128,652,92,28]}
+{"kind":"shape","id":"sh/4vmtwra5","slide":10,"name":"browser-card","bbox":[90,235,230,210]}
+{"kind":"shape","id":"sh/b2hwfyxo","slide":10,"name":"browser-card-top","bbox":[90,269,230,0]}
+{"kind":"shape","id":"sh/mhk3q5o7","slide":10,"name":"browser-card-dot-0","bbox":[108,248,8,8]}
+{"kind":"shape","id":"sh/0z61032l","slide":10,"name":"browser-card-dot-1","bbox":[126,248,8,8]}
+{"kind":"shape","id":"sh/pkzupwb2","slide":10,"name":"browser-card-dot-2","bbox":[144,248,8,8]}
+{"kind":"textbox","id":"sh/itgfmlkj","slide":10,"name":"browser-card-title","text":"网页文章","textPreview":"网页文章","textChars":4,"textLines":1,"bbox":[112,289,186,28]}
+{"kind":"shape","id":"sh/7ed8bat4","slide":10,"name":"browser-card-line-1","bbox":[112,335,166,0]}
+{"kind":"shape","id":"sh/0nuxc3yl","slide":10,"name":"browser-card-line-2","bbox":[112,365,138,0]}
+{"kind":"shape","id":"sh/p8nqxs72","slide":10,"name":"browser-card-line-3","bbox":[112,395,116,0]}
+{"kind":"shape","id":"sh/ih4byhgn","slide":10,"name":"clipper-card","bbox":[430,265,190,150]}
+{"kind":"shape","id":"sh/72x4nap4","slide":10,"name":"clipper-card-accent","bbox":[430,265,190,0]}
+{"kind":"textbox","id":"sh/wjudg7ad","slide":10,"name":"clipper-card-title","text":"Web Clipper","textPreview":"Web Clipper","textChars":11,"textLines":1,"bbox":[446,281,158,26]}
+{"kind":"textbox","id":"sh/p4r65wju","slide":10,"name":"clipper-card-detail","text":"正文 / 元数据 / 高亮\n阅读器模式清理干扰","textPreview":"正文 / 元数据 / 高亮 | 阅读器模式清理干扰","textChars":23,"textLines":2,"bbox":[446,313,158,94]}
+{"kind":"shape","id":"sh/9gr2p8nq","slide":10,"name":"markdown-file","bbox":[740,240,190,220]}
+{"kind":"textbox","id":"sh/gvy90je9","slide":10,"name":"markdown-file-label","text":".md","textPreview":".md","textChars":3,"textLines":1,"bbox":[760,258,80,26]}
+{"kind":"textbox","id":"sh/ra5gbq1o","slide":10,"name":"markdown-file-body","text":"title: {{title}}\nurl: {{url}}\nauthor: {{author}}\n\n{{content}}","textPreview":"title: {{title}} | url: {{url}} | author: {{author}} |  | {{content}}","textChars":61,"textLines":5,"bbox":[760,298,154,152]}
+{"kind":"shape","id":"sh/2p8nqxs7","slide":10,"name":"raw-card","bbox":[1040,290,160,120]}
+{"kind":"shape","id":"sh/94fu18jq","slide":10,"name":"raw-card-accent","bbox":[1040,290,160,0]}
+{"kind":"textbox","id":"sh/kjm1cfa9","slide":10,"name":"raw-card-title","text":"raw/","textPreview":"raw/","textChars":4,"textLines":1,"bbox":[1056,306,128,26]}
+{"kind":"textbox","id":"sh/r2p8nqxs","slide":10,"name":"raw-card-detail","text":"网页内容以 Markdown 形式保存到本地知识库","textPreview":"网页内容以 Markdown 形式保存到本地知识库","textChars":25,"textLines":1,"bbox":[1056,338,128,64]}
+{"kind":"shape","id":"sh/bq1oryts","slide":10,"bbox":[320,340,110,0]}
+{"kind":"shape","id":"sh/4byhgn29","slide":10,"bbox":[620,340,120,10]}
+{"kind":"shape","id":"sh/twra5gbq","slide":10,"bbox":[930,350,110,0]}
+{"kind":"shape","id":"sh/u9knih4b","slide":10,"name":"feature-0","bbox":[115,485,270,70]}
+{"kind":"shape","id":"sh/judg7ads","slide":10,"name":"feature-0-accent","bbox":[115,485,270,0]}
+{"kind":"textbox","id":"sh/cfa9w3m9","slide":10,"name":"feature-0-title","text":"一键剪藏","textPreview":"一键剪藏","textChars":4,"textLines":1,"bbox":[131,501,238,26]}
+{"kind":"textbox","id":"sh/1032lszq","slide":10,"name":"feature-0-detail","text":"正文和标题、作者、发布日期等元数据","textPreview":"正文和标题、作者、发布日期等元数据","textChars":17,"textLines":1,"bbox":[131,533,238,14]}
+{"kind":"shape","id":"sh/u18jqh0f","slide":10,"name":"feature-1","bbox":[440,485,270,70]}
+{"kind":"shape","id":"sh/jm1cfa9w","slide":10,"name":"feature-1-accent","bbox":[440,485,270,0]}
+{"kind":"textbox","id":"sh/c7u54zid","slide":10,"name":"feature-1-title","text":"高亮保存","textPreview":"高亮保存","textChars":4,"textLines":1,"bbox":[456,501,238,26]}
+{"kind":"textbox","id":"sh/1orytsvu","slide":10,"name":"feature-1-detail","text":"保留关键段落或选中的页面元素","textPreview":"保留关键段落或选中的页面元素","textChars":14,"textLines":1,"bbox":[456,533,238,14]}
+{"kind":"shape","id":"sh/upwb2hwf","slide":10,"name":"feature-2","bbox":[765,485,270,70]}
+{"kind":"shape","id":"sh/nap4r65w","slide":10,"name":"feature-2-accent","bbox":[765,485,270,0]}
+{"kind":"textbox","id":"sh/3ex0nuxc","slide":10,"name":"feature-2-title","text":"隐私可控","textPreview":"隐私可控","textChars":4,"textLines":1,"bbox":[781,501,238,26]}
+{"kind":"textbox","id":"sh/at47y1kr","slide":10,"name":"feature-2-detail","text":"内容进入本地 Vault，不依赖平台数据锁定","textPreview":"内容进入本地 Vault，不依赖平台数据锁定","textChars":22,"textLines":1,"bbox":[781,533,238,14]}
+{"kind":"shape","id":"sh/lkjm1cfa","slide":10,"name":"bottom-note-box","bbox":[45,588,1030,78]}
+{"kind":"shape","id":"sh/szqtcj6t","slide":10,"name":"bottom-note-accent","bbox":[45,588,1030,0]}
+{"kind":"textbox","id":"sh/32lszqtc","slide":10,"name":"bottom-note","text":"Web Clipper 在 LLM Wiki 中更像原材料采集器：它把网页、元数据、高亮和选择内容整理成 Markdown，并放入 raw 层等待后续 Ingest。","textPreview":"Web Clipper 在 LLM Wiki 中更像原材料采集器：它把网页、元数据、高亮和选择内容整理成 Markdown，并放入 raw 层等待后续 Ingest。","textChars":83,"textLines":1,"bbox":[62,606,990,42]}
+{"kind":"notes","id":"nt/r2p8nqxs","slide":10,"text":"Obsidian Web Clipper：把网页变成 raw 素材\n\n接下来是 Obsidian Web Clipper。它是 Obsidian 官方推出的浏览器插件，可以把网页内容以 Markdown 形式直接保存到 Obsidian Vault，方便离线阅读、标注和整理。\n\n对 LLM Wiki 来说，Web Clipper 的位置非常重要，它更像是 raw 素材层的入口。当我们看到一篇网页文章时，不只是把链接收藏起来，而是把正文、标题、作者、发布日期、URL 等元数据一起保存成 Markdown。\n\n它还支持网页高亮和选择保存，也有类似阅读器模式的干净视图，可以去掉广告、侧边栏等干扰。这样，当我们后续让 LLM 进行 Ingest 时，它面对的是一个相对干净、结构化、可追溯的原始素材。"}
+{"kind":"slide","id":"sl/7ed8bat4","slide":11,"title":"11 / 模板与变量","textShapes":16}
+{"kind":"textbox","id":"sh/5o7qpg3e","slide":11,"name":"eyebrow","text":"11 / 模板与变量","textPreview":"11 / 模板与变量","textChars":10,"textLines":1,"bbox":[32,14,360,24]}
+{"kind":"shape","id":"sh/yxobm58z","slide":11,"name":"teal-handline","bbox":[10,44,310,-4]}
+{"kind":"shape","id":"sh/nih4byhg","slide":11,"name":"amber-handline","bbox":[780,45,460,-4]}
+{"kind":"textbox","id":"sh/gr2p8nqx","slide":11,"name":"title","text":"模板与变量：让剪藏内容更规范","textPreview":"模板与变量：让剪藏内容更规范","textChars":14,"textLines":1,"bbox":[40,66,980,58]}
+{"kind":"textbox","id":"sh/9cvixcze","slide":11,"name":"subtitle","text":"同一类网页用同一种格式保存，后续 Ingest 更稳定","textPreview":"同一类网页用同一种格式保存，后续 Ingest 更稳定","textChars":27,"textLines":1,"bbox":[42,128,930,34]}
+{"kind":"textbox","id":"sh/ylc7u54z","slide":11,"name":"page-number","text":"11 / 17","textPreview":"11 / 17","textChars":7,"textLines":1,"bbox":[1128,652,92,28]}
+{"kind":"shape","id":"sh/r65wjudg","slide":11,"name":"template-card","bbox":[85,250,190,145]}
+{"kind":"shape","id":"sh/gfmlkjm1","slide":11,"name":"template-card-accent","bbox":[85,250,190,0]}
+{"kind":"textbox","id":"sh/90je9cvi","slide":11,"name":"template-card-title","text":"模板","textPreview":"模板","textChars":2,"textLines":1,"bbox":[101,266,158,26]}
+{"kind":"textbox","id":"sh/lc7u54zi","slide":11,"name":"template-card-detail","text":"决定剪藏内容\n以什么格式保存","textPreview":"决定剪藏内容 | 以什么格式保存","textChars":14,"textLines":2,"bbox":[101,298,158,89]}
+{"kind":"shape","id":"sh/wra5gbq1","slide":11,"name":"vars-card","bbox":[360,230,190,185]}
+{"kind":"shape","id":"sh/36hcrmhk","slide":11,"name":"vars-card-accent","bbox":[360,230,190,0]}
+{"kind":"textbox","id":"sh/eloj2t83","slide":11,"name":"vars-card-title","text":"变量","textPreview":"变量","textChars":2,"textLines":1,"bbox":[376,246,158,26]}
+{"kind":"textbox","id":"sh/l0rqd4vm","slide":11,"name":"vars-card-detail","text":"{{title}}\n{{url}}\n{{author}}\n{{content}}","textPreview":"{{title}} | {{url}} | {{author}} | {{content}}","textChars":40,"textLines":4,"bbox":[376,278,158,129]}
+{"kind":"shape","id":"sh/wfyxobm5","slide":11,"name":"filters-card","bbox":[635,250,210,145]}
+{"kind":"shape","id":"sh/7u54zido","slide":11,"name":"filters-card-accent","bbox":[635,250,210,0]}
+{"kind":"textbox","id":"sh/ed8bat47","slide":11,"name":"filters-card-title","text":"筛选器","textPreview":"筛选器","textChars":3,"textLines":1,"bbox":[651,266,178,26]}
+{"kind":"textbox","id":"sh/psfil0rq","slide":11,"name":"filters-card-detail","text":"date / join / replace\n对变量结果做处理","textPreview":"date / join / replace | 对变量结果做处理","textChars":30,"textLines":2,"bbox":[651,298,178,89]}
+{"kind":"shape","id":"sh/w7mp0bi9","slide":11,"name":"output-md","bbox":[955,215,205,235]}
+{"kind":"textbox","id":"sh/wb2hwfyx","slide":11,"name":"output-md-label","text":".md","textPreview":".md","textChars":3,"textLines":1,"bbox":[975,233,80,26]}
+{"kind":"textbox","id":"sh/lwval87e","slide":11,"name":"output-md-body","text":"title: {{title}}\nurl: {{url}}\nauthor: {{author}}\n\n{{content}}","textPreview":"title: {{title}} | url: {{url}} | author: {{author}} |  | {{content}}","textChars":61,"textLines":5,"bbox":[975,273,169,167]}
+{"kind":"shape","id":"sh/dg7adsji","slide":11,"bbox":[275,322.5,85,0]}
+{"kind":"shape","id":"sh/ovahoza1","slide":11,"bbox":[550,322.5,85,0]}
+{"kind":"shape","id":"sh/vahoza1g","slide":11,"bbox":[845,322.5,110,10]}
+{"kind":"shape","id":"sh/loj2t83i","slide":11,"name":"variable-types-box","bbox":[118,455,690,100]}
+{"kind":"shape","id":"sh/ex0nuxc3","slide":11,"name":"variable-types-accent","bbox":[118,455,690,0]}
+{"kind":"textbox","id":"sh/3itgfmlk","slide":11,"name":"variable-types-title","text":"变量来源","textPreview":"变量来源","textChars":4,"textLines":1,"bbox":[140,476,110,24]}
+{"kind":"textbox","id":"sh/szqtcj6t","slide":11,"name":"variable-types-body","text":"预设变量 · Meta 变量 · Schema.org 变量 · 选择器变量 · 提示变量","textPreview":"预设变量 · Meta 变量 · Schema.org 变量 · 选择器变量 · 提示变量","textChars":45,"textLines":1,"bbox":[260,478,505,24]}
+{"kind":"textbox","id":"sh/lkjm1cfa","slide":11,"name":"variable-types-note","text":"不同网站提供的数据不一样，模板要根据页面变量选择合适来源。","textPreview":"不同网站提供的数据不一样，模板要根据页面变量选择合适来源。","textChars":29,"textLines":1,"bbox":[140,518,620,24]}
+{"kind":"shape","id":"sh/bi9s36hc","slide":11,"name":"bottom-note-box","bbox":[45,588,1030,78]}
+{"kind":"shape","id":"sh/ixczed8v","slide":11,"name":"bottom-note-accent","bbox":[45,588,1030,0]}
+{"kind":"textbox","id":"sh/tovahoza","slide":11,"name":"bottom-note","text":"模板不是固定文本，而是一套可复用的保存规则。通过变量提取标题、链接、作者、正文和结构化数据，Web Clipper 能让 raw 素材更稳定、更适合 LLM 后续处理。","textPreview":"模板不是固定文本，而是一套可复用的保存规则。通过变量提取标题、链接、作者、正文和结构化数据，Web Clipper 能让 raw 素材更稳定、更适合 LLM 后续处理。","textChars":84,"textLines":1,"bbox":[62,606,990,42]}
+{"kind":"notes","id":"nt/7ed8bat4","slide":11,"text":"模板与变量：让剪藏内容更规范\n\nWeb Clipper 的另一个关键能力是模板与变量。模板决定了剪藏内容以什么格式保存到 Obsidian。它不是一段固定文本，而是一套可以复用的保存规则。\n\n模板中的变量会在剪藏网页时被替换为当前页面中的实际数据。比如 title 会变成页面标题，url 会变成当前页面 URL，author 会变成作者，content 会变成正文内容。\n\n不同网站提供的数据并不完全相同，所以 Web Clipper 支持多类变量来源。预设变量比较简单通用，Meta 变量适合提取网页 head 中的描述和封面信息，Schema.org 变量来自 JSON-LD 结构化数据，选择器变量可以通过 CSS 选择器精确提取页面元素，提示变量则可以调用语言模型分析页面。\n\n这件事对 LLM Wiki 很重要。因为原始素材越规范，后续 Ingest 时 LLM 就越容易理解来源、正文、日期、作者和上下文。"}
+{"kind":"slide","id":"sl/itgfmlkj","slide":12,"title":"12 / Web Clipper 解释器","textShapes":12}
+{"kind":"textbox","id":"sh/eloj2t83","slide":12,"name":"eyebrow","text":"12 / Web Clipper 解释器","textPreview":"12 / Web Clipper 解释器","textChars":20,"textLines":1,"bbox":[32,14,360,24]}
+{"kind":"shape","id":"sh/lc7u54zi","slide":12,"name":"teal-handline","bbox":[10,44,310,-4]}
+{"kind":"shape","id":"sh/wra5gbq1","slide":12,"name":"amber-handline","bbox":[780,45,460,-4]}
+{"kind":"textbox","id":"sh/7u54zido","slide":12,"name":"title","text":"解释器：剪藏前先让模型处理网页","textPreview":"解释器：剪藏前先让模型处理网页","textChars":15,"textLines":1,"bbox":[40,66,980,58]}
+{"kind":"textbox","id":"sh/ed8bat47","slide":12,"name":"subtitle","text":"普通变量负责提取，提示变量负责总结、翻译、提取和改写","textPreview":"普通变量负责提取，提示变量负责总结、翻译、提取和改写","textChars":26,"textLines":1,"bbox":[42,128,930,34]}
+{"kind":"shape","id":"sh/l0rqd4vm","slide":12,"name":"normal-flow","bbox":[90,240,280,210]}
+{"kind":"shape","id":"sh/wfyxobm5","slide":12,"name":"normal-flow-accent","bbox":[90,240,280,0]}
+{"kind":"textbox","id":"sh/7mp0bi9s","slide":12,"name":"normal-flow-title","text":"普通模板变量","textPreview":"普通模板变量","textChars":6,"textLines":1,"bbox":[106,256,248,28]}
+{"kind":"textbox","id":"sh/e1w7mp0b","slide":12,"name":"normal-flow-detail","text":"读取网页中的现成数据\n{{title}} / {{url}} / {{content}}\n\n不调用 AI，只做提取和排版","textPreview":"读取网页中的现成数据 | {{title}} / {{url}} / {{content}} |  | 不调用 AI，只做提取和排版","textChars":60,"textLines":4,"bbox":[106,292,248,150]}
+{"kind":"shape","id":"sh/0rqd4vmt","slide":12,"name":"interpreter-flow","bbox":[500,220,320,250]}
+{"kind":"shape","id":"sh/tcj6tova","slide":12,"name":"interpreter-flow-accent","bbox":[500,220,320,0]}
+{"kind":"textbox","id":"sh/il0rqd4v","slide":12,"name":"interpreter-flow-title","text":"解释器提示变量","textPreview":"解释器提示变量","textChars":7,"textLines":1,"bbox":[516,236,288,28]}
+{"kind":"textbox","id":"sh/b6xkf6dc","slide":12,"name":"interpreter-flow-detail","text":"把网页内容和提示词发送给模型\n{{\"用三句话总结这篇文章\"}}\n\n返回摘要、翻译或提取结果","textPreview":"把网页内容和提示词发送给模型 | {{\"用三句话总结这篇文章\"}} |  | 返回摘要、翻译或提取结果","textChars":45,"textLines":4,"bbox":[516,272,288,190]}
+{"kind":"shape","id":"sh/0je9cvix","slide":12,"name":"note-output","bbox":[950,240,230,210]}
+{"kind":"shape","id":"sh/t47y1kre","slide":12,"name":"note-output-accent","bbox":[950,240,230,0]}
+{"kind":"textbox","id":"sh/idonyd0z","slide":12,"name":"note-output-title","text":"写入笔记","textPreview":"写入笔记","textChars":4,"textLines":1,"bbox":[966,256,198,28]}
+{"kind":"textbox","id":"sh/byhgn29g","slide":12,"name":"note-output-detail","text":"# AI 摘要\n{{\"用简体中文总结核心内容\"}}\n\n# 原始正文\n{{content}}","textPreview":"# AI 摘要 | {{\"用简体中文总结核心内容\"}} |  | # 原始正文 | {{content}}","textChars":45,"textLines":5,"bbox":[966,292,198,150]}
+{"kind":"shape","id":"sh/cbulwval","slide":12,"bbox":[370,345,130,0]}
+{"kind":"shape","id":"sh/neloj2t8","slide":12,"bbox":[820,345,130,0]}
+{"kind":"shape","id":"sh/tsvu9kni","slide":12,"name":"process-box","bbox":[180,488,840,64]}
+{"kind":"textbox","id":"sh/47y1kre1","slide":12,"name":"process-text","text":"读取网页 → 发送网页内容和提示词 → 模型返回处理结果 → 填入模板 → 保存到 Obsidian","textPreview":"读取网页 → 发送网页内容和提示词 → 模型返回处理结果 → 填入模板 → 保存到 Obsidian","textChars":50,"textLines":1,"bbox":[220,510,760,24]}
+{"kind":"shape","id":"sh/bm58z25k","slide":12,"name":"bottom-note-box","bbox":[45,588,1030,78]}
+{"kind":"shape","id":"sh/m1cfa9w3","slide":12,"name":"bottom-note-accent","bbox":[45,588,1030,0]}
+{"kind":"textbox","id":"sh/tgfmlkjm","slide":12,"name":"bottom-note","text":"解释器让 Web Clipper 不只是复制网页，而是在剪藏前完成一次轻量 AI 处理。适合摘要、翻译和结构化提取，但会增加速度、Token 和 API 成本。","textPreview":"解释器让 Web Clipper 不只是复制网页，而是在剪藏前完成一次轻量 AI 处理。适合摘要、翻译和结构化提取，但会增加速度、Token 和 API 成本。","textChars":80,"textLines":1,"bbox":[62,606,990,42]}
+{"kind":"textbox","id":"sh/4vmtwra5","slide":12,"name":"page-number","text":"12 / 17","textPreview":"12 / 17","textChars":7,"textLines":1,"bbox":[1128,652,92,28]}
+{"kind":"notes","id":"nt/itgfmlkj","slide":12,"text":"解释器：剪藏前先让模型处理网页\n\nWeb Clipper 还有一个很有用的能力，叫解释器。普通 Web Clipper 的工作方式是读取网页内容，根据模板整理格式，然后保存到 Obsidian。\n\n普通模板变量直接读取网页中的现成数据，比如 title、url、content。这些变量不会让 AI 处理内容，只是提取网页已有的信息。\n\n启用解释器后，流程会多一步：Web Clipper 会把网页内容和提示词发送给模型，模型根据提示词返回摘要、翻译、提取结果或改写结果，再把这些结果填入模板，最后保存到 Obsidian。\n\n解释器提示变量的语法是双大括号里面写一段自然语言提示词，例如“用三句话总结这篇文章”。它的价值在于，剪藏进入 raw 层之前，已经可以完成一次轻量的 AI 处理。\n\n不过它也有边界：解释器需要配置提供商、模型和 API 密钥，运行速度会更慢，也会消耗 Token 和费用。"}
+{"kind":"slide","id":"sl/pkzupwb2","slide":13,"title":"13 / 每日工作流","textShapes":18}
+{"kind":"textbox","id":"sh/hwfyxobm","slide":13,"name":"eyebrow","text":"13 / 每日工作流","textPreview":"13 / 每日工作流","textChars":10,"textLines":1,"bbox":[32,14,360,24]}
+{"kind":"shape","id":"sh/65wjudg7","slide":13,"name":"teal-handline","bbox":[10,44,310,-4]}
+{"kind":"shape","id":"sh/zqtcj6to","slide":13,"name":"amber-handline","bbox":[780,45,460,-4]}
+{"kind":"textbox","id":"sh/oza1gvy9","slide":13,"name":"title","text":"每日工作流：让知识持续进入 Wiki","textPreview":"每日工作流：让知识持续进入 Wiki","textChars":18,"textLines":1,"bbox":[40,66,980,58]}
+{"kind":"textbox","id":"sh/hk3q5o7q","slide":13,"name":"subtitle","text":"剪藏、编译、提问、归档、校验：把一次阅读变成长期资产","textPreview":"剪藏、编译、提问、归档、校验：把一次阅读变成长期资产","textChars":26,"textLines":1,"bbox":[42,128,930,34]}
+{"kind":"shape","id":"sh/6xkf6dcb","slide":13,"name":"step-clip","bbox":[70,235,190,125]}
+{"kind":"shape","id":"sh/zed8v6ps","slide":13,"name":"step-clip-accent","bbox":[70,235,190,0]}
+{"kind":"textbox","id":"sh/orytsvu9","slide":13,"name":"step-clip-title","text":"1 网页剪藏","textPreview":"1 网页剪藏","textChars":6,"textLines":1,"bbox":[86,251,158,26]}
+{"kind":"textbox","id":"sh/hcrmhk3q","slide":13,"name":"step-clip-detail","text":"用 Web Clipper 保存网页、元数据和高亮到 raw/","textPreview":"用 Web Clipper 保存网页、元数据和高亮到 raw/","textChars":31,"textLines":1,"bbox":[86,283,158,69]}
+{"kind":"shape","id":"sh/d4vmtwra","slide":13,"name":"step-compile","bbox":[310,235,210,125]}
+{"kind":"shape","id":"sh/oj2t83it","slide":13,"name":"step-compile-accent","bbox":[310,235,210,0]}
+{"kind":"textbox","id":"sh/vy90je9c","slide":13,"name":"step-compile-title","text":"2 执行编译","textPreview":"2 执行编译","textChars":6,"textLines":1,"bbox":[326,251,178,26]}
+{"kind":"textbox","id":"sh/6dcbulwv","slide":13,"name":"step-compile-detail","text":"让 LLM Ingest：摘要、更新索引、补充概念和实体","textPreview":"让 LLM Ingest：摘要、更新索引、补充概念和实体","textChars":28,"textLines":1,"bbox":[326,283,178,69]}
+{"kind":"shape","id":"sh/dsji5sne","slide":13,"name":"step-ask","bbox":[570,235,210,125]}
+{"kind":"shape","id":"sh/o7qpg3ex","slide":13,"name":"step-ask-accent","bbox":[570,235,210,0]}
+{"kind":"textbox","id":"sh/vmtwra5g","slide":13,"name":"step-ask-title","text":"3 直接提问","textPreview":"3 直接提问","textChars":6,"textLines":1,"bbox":[586,251,178,26]}
+{"kind":"textbox","id":"sh/61032lsz","slide":13,"name":"step-ask-detail","text":"从 Wiki 中检索相关页面，获得带引用的综合回答","textPreview":"从 Wiki 中检索相关页面，获得带引用的综合回答","textChars":25,"textLines":1,"bbox":[586,283,178,69]}
+{"kind":"shape","id":"sh/dg7adsji","slide":13,"name":"step-archive","bbox":[830,235,210,125]}
+{"kind":"shape","id":"sh/ovahoza1","slide":13,"name":"step-archive-accent","bbox":[830,235,210,0]}
+{"kind":"textbox","id":"sh/k3q5o7qp","slide":13,"name":"step-archive-title","text":"4 归档答案","textPreview":"4 归档答案","textChars":6,"textLines":1,"bbox":[846,251,178,26]}
+{"kind":"textbox","id":"sh/donyd0z6","slide":13,"name":"step-archive-detail","text":"高质量回答可以生成新的 Wiki 页面，继续复利","textPreview":"高质量回答可以生成新的 Wiki 页面，继续复利","textChars":24,"textLines":1,"bbox":[846,283,178,69]}
+{"kind":"shape","id":"sh/2x4nap4r","slide":13,"name":"step-lint","bbox":[1080,235,150,125]}
+{"kind":"shape","id":"sh/vixczed8","slide":13,"name":"step-lint-accent","bbox":[1080,235,150,0]}
+{"kind":"textbox","id":"sh/kre1w7mp","slide":13,"name":"step-lint-title","text":"5 定期 Lint","textPreview":"5 定期 Lint","textChars":9,"textLines":1,"bbox":[1096,251,118,26]}
+{"kind":"textbox","id":"sh/dcbulwva","slide":13,"name":"step-lint-detail","text":"检查死链、矛盾、孤立页面和陈旧内容，自建修复","textPreview":"检查死链、矛盾、孤立页面和陈旧内容，自建修复","textChars":22,"textLines":1,"bbox":[1096,283,118,69]}
+{"kind":"shape","id":"sh/8nqxs72x","slide":13,"bbox":[260,297.5,50,0]}
+{"kind":"shape","id":"sh/18jqh0fe","slide":13,"bbox":[520,297.5,50,0]}
+{"kind":"shape","id":"sh/qh0fepkz","slide":13,"bbox":[780,297.5,50,0]}
+{"kind":"shape","id":"sh/j2t83itg","slide":13,"bbox":[1040,297.5,40,0]}
+{"kind":"shape","id":"sh/crmhk3q5","slide":13,"bbox":[165,360,990,24]}
+{"kind":"textbox","id":"sh/ap4r65wj","slide":13,"name":"loop-label","text":"不是一次性处理，而是一个持续循环","textPreview":"不是一次性处理，而是一个持续循环","textChars":16,"textLines":1,"bbox":[435,430,420,32]}
+{"kind":"shape","id":"sh/hgn29gr2","slide":13,"name":"daily-rhythm-box","bbox":[255,472,760,76]}
+{"kind":"textbox","id":"sh/svu9knih","slide":13,"name":"daily-rhythm-title","text":"日常节奏","textPreview":"日常节奏","textChars":4,"textLines":1,"bbox":[285,494,100,24]}
+{"kind":"textbox","id":"sh/zidonyd0","slide":13,"name":"daily-rhythm-body","text":"看到好资料就剪藏；有时间就编译；遇到问题就从 Wiki 问；有价值的回答再沉淀回 Wiki。","textPreview":"看到好资料就剪藏；有时间就编译；遇到问题就从 Wiki 问；有价值的回答再沉淀回 Wiki。","textChars":46,"textLines":1,"bbox":[405,494,560,28]}
+{"kind":"shape","id":"sh/a1gvy90j","slide":13,"name":"bottom-note-box","bbox":[45,588,1030,78]}
+{"kind":"shape","id":"sh/hoza1gvy","slide":13,"name":"bottom-note-accent","bbox":[45,588,1030,0]}
+{"kind":"textbox","id":"sh/s36hcrmh","slide":13,"name":"bottom-note","text":"实践上，LLM Wiki 可以变成一个很轻的日常循环：资料先进入 raw，再被 LLM 编译进 wiki；后续提问和校验又反过来推动知识库继续生长。","textPreview":"实践上，LLM Wiki 可以变成一个很轻的日常循环：资料先进入 raw，再被 LLM 编译进 wiki；后续提问和校验又反过来推动知识库继续生长。","textChars":74,"textLines":1,"bbox":[62,606,990,42]}
+{"kind":"textbox","id":"sh/3m94fu18","slide":13,"name":"page-number","text":"13 / 17","textPreview":"13 / 17","textChars":7,"textLines":1,"bbox":[1128,652,92,28]}
+{"kind":"notes","id":"nt/pkzupwb2","slide":13,"text":"每日工作流：让知识持续进入 Wiki\n\n如果把前面这些概念落到日常实践中，LLM Wiki 可以变成一个很轻量的工作流。\n\n第一步是网页剪藏。看到有价值的文章、博客、资料，就用 Obsidian Web Clipper 把正文、元数据和高亮保存到 raw 目录。\n\n第二步是执行编译，也就是让 LLM 进行 Ingest。它会阅读素材，生成摘要，更新 index，补充相关的概念页面、实体页面和交叉引用。\n\n第三步是直接从 Wiki 提问。这个时候，LLM 不再只是面对原始网页，而是先读已经整理过的 Wiki 页面，再给出综合回答。\n\n第四步是归档答案。如果某个回答质量很高，比如一次对比、一次分析、一个新的关联发现，就可以把它整理成新的 Wiki 页面。\n\n第五步是定期 Lint，自建修复。让 LLM 检查死链、矛盾、孤立页面、陈旧说法和缺失的交叉引用。"}
+{"kind":"slide","id":"sl/0z61032l","slide":14,"title":"14 / 趋势展望","textShapes":12}
+{"kind":"textbox","id":"sh/qd4vmtwr","slide":14,"name":"eyebrow","text":"14 / 趋势展望","textPreview":"14 / 趋势展望","textChars":9,"textLines":1,"bbox":[32,14,360,24]}
+{"kind":"shape","id":"sh/x4nap4r6","slide":14,"name":"teal-handline","bbox":[10,44,310,-4]}
+{"kind":"shape","id":"sh/8jqh0fep","slide":14,"name":"amber-handline","bbox":[780,45,460,-4]}
+{"kind":"textbox","id":"sh/fa9w3m94","slide":14,"name":"title","text":"从检索拼凑，到知识编译","textPreview":"从检索拼凑，到知识编译","textChars":11,"textLines":1,"bbox":[40,66,980,58]}
+{"kind":"textbox","id":"sh/qpg3ex0n","slide":14,"name":"subtitle","text":"把 LLM 的理解能力前置，让知识在摄入时开始沉淀","textPreview":"把 LLM 的理解能力前置，让知识在摄入时开始沉淀","textChars":25,"textLines":1,"bbox":[42,128,930,34]}
+{"kind":"textbox","id":"sh/xczed8v6","slide":14,"name":"page-number","text":"14 / 17","textPreview":"14 / 17","textChars":7,"textLines":1,"bbox":[1128,652,92,28]}
+{"kind":"shape","id":"sh/8v6psfil","slide":14,"name":"retrieve-card","bbox":[95,235,310,230]}
+{"kind":"shape","id":"sh/je9cvixc","slide":14,"name":"retrieve-card-accent","bbox":[95,235,310,0]}
+{"kind":"textbox","id":"sh/qtcj6tov","slide":14,"name":"retrieve-card-title","text":"检索 - 拼凑","textPreview":"检索 - 拼凑","textChars":7,"textLines":1,"bbox":[111,251,278,28]}
+{"kind":"textbox","id":"sh/svu9knih","slide":14,"name":"retrieve-card-detail","text":"快速找到 100 篇论文里的相关片段\n\n但很难自动形成连贯框架","textPreview":"快速找到 100 篇论文里的相关片段 |  | 但很难自动形成连贯框架","textChars":31,"textLines":3,"bbox":[111,287,278,170]}
+{"kind":"shape","id":"sh/hgn29gr2","slide":14,"name":"shift-card","bbox":[500,255,280,190]}
+{"kind":"shape","id":"sh/ap4r65wj","slide":14,"name":"shift-card-accent","bbox":[500,255,280,0]}
+{"kind":"textbox","id":"sh/za1gvy90","slide":14,"name":"shift-card-title","text":"理解成本前置","textPreview":"理解成本前置","textChars":6,"textLines":1,"bbox":[516,271,248,28]}
+{"kind":"textbox","id":"sh/s36hcrmh","slide":14,"name":"shift-card-detail","text":"从“每次查询时重新理解”\n转移到“内容摄入时先编译”","textPreview":"从“每次查询时重新理解” | 转移到“内容摄入时先编译”","textChars":26,"textLines":2,"bbox":[516,307,248,130]}
+{"kind":"shape","id":"sh/hoza1gvy","slide":14,"name":"compile-card","bbox":[880,235,310,230]}
+{"kind":"shape","id":"sh/a1gvy90j","slide":14,"name":"compile-card-accent","bbox":[880,235,310,0]}
+{"kind":"textbox","id":"sh/zidonyd0","slide":14,"name":"compile-card-title","text":"知识复利","textPreview":"知识复利","textChars":4,"textLines":1,"bbox":[896,251,278,28]}
+{"kind":"textbox","id":"sh/s72x4nap","slide":14,"name":"compile-card-detail","text":"每多摄入一份材料，知识不是塞进数据库，而是编织进一张增长的网","textPreview":"每多摄入一份材料，知识不是塞进数据库，而是编织进一张增长的网","textChars":30,"textLines":1,"bbox":[896,287,278,170]}
+{"kind":"shape","id":"sh/b2hwfyxo","slide":14,"bbox":[405,350,95,0]}
+{"kind":"shape","id":"sh/4byhgn29","slide":14,"bbox":[780,350,100,0]}
+{"kind":"shape","id":"sh/wval87ed","slide":14,"name":"n-1","bbox":[955,420,34,34]}
+{"kind":"shape","id":"sh/7adsji5s","slide":14,"name":"n-2","bbox":[1025,390,42,42]}
+{"kind":"shape","id":"sh/epkzupwb","slide":14,"name":"n-3","bbox":[1090,430,34,34]}
+{"kind":"shape","id":"sh/psfil0rq","slide":14,"name":"n-4","bbox":[1038,475,38,38]}
+{"kind":"shape","id":"sh/tsvu9kni","slide":14,"bbox":[984.02,411,40.98,13.98]}
+{"kind":"shape","id":"sh/xkf6dcbu","slide":14,"bbox":[1060.85,425.85,34.13,9.13]}
+{"kind":"shape","id":"sh/4zidonyd","slide":14,"bbox":[1046,432,11,43]}
+{"kind":"shape","id":"sh/fepkzupw","slide":14,"bbox":[984.02,449.02,59.54,31.54]}
+{"kind":"shape","id":"sh/mtwra5gb","slide":14,"bbox":[1070.44,459.02,24.54,21.54]}
+{"kind":"shape","id":"sh/a9w3m94f","slide":14,"name":"quote-box","bbox":[285,485,710,56]}
+{"kind":"textbox","id":"sh/zupwb2hw","slide":14,"name":"quote-text","text":"快速翻书和深度理解之间，始终隔着一道鸿沟。","textPreview":"快速翻书和深度理解之间，始终隔着一道鸿沟。","textChars":21,"textLines":1,"bbox":[325,502,630,24]}
+{"kind":"shape","id":"sh/sfil0rqd","slide":14,"name":"bottom-note-box","bbox":[45,588,1030,78]}
+{"kind":"shape","id":"sh/h0fepkzu","slide":14,"name":"bottom-note-accent","bbox":[45,588,1030,0]}
+{"kind":"textbox","id":"sh/al87ed8b","slide":14,"name":"bottom-note","text":"LLM Wiki 代表的是一种“编译”思路：不是等到提问时再临时拼接资料，而是在素材进入时就完成理解、关联和结构化沉淀。","textPreview":"LLM Wiki 代表的是一种“编译”思路：不是等到提问时再临时拼接资料，而是在素材进入时就完成理解、关联和结构化沉淀。","textChars":60,"textLines":1,"bbox":[62,606,990,42]}
+{"kind":"notes","id":"nt/0z61032l","slide":14,"text":"从检索拼凑，到知识编译\n\n信息增长的速度，早已超过了人类手动整理信息的速度。单纯的“检索-拼凑”模式，可以让你瞬间找到一百篇论文的相关片段，却很难帮你从中提炼出一个真正连贯的知识框架。快速翻书和深度理解之间，始终隔着一道鸿沟。\n\n而 LLM Wiki 所代表的“编译”思路，正在被越来越多的项目和产品采纳。它的本质，是把 LLM 的理解能力前置：将理解成本从每次查询的时刻，转移到内容摄入的那一刻。\n\n每多摄入一份材料，知识不是被塞进数据库，而是被编织进一张不断生长的网。这正是知识积累的复利效应。"}
+{"kind":"slide","id":"sl/72x4nap4","slide":15,"title":"15 / 技术融合","textShapes":17}
+{"kind":"textbox","id":"sh/6xkf6dcb","slide":15,"name":"eyebrow","text":"15 / 技术融合","textPreview":"15 / 技术融合","textChars":9,"textLines":1,"bbox":[32,14,360,24]}
+{"kind":"shape","id":"sh/hk3q5o7q","slide":15,"name":"teal-handline","bbox":[10,44,310,-4]}
+{"kind":"shape","id":"sh/oza1gvy9","slide":15,"name":"amber-handline","bbox":[780,45,460,-4]}
+{"kind":"textbox","id":"sh/zqtcj6to","slide":15,"name":"title","text":"技术融合方向：不是替代，而是组合","textPreview":"技术融合方向：不是替代，而是组合","textChars":16,"textLines":1,"bbox":[40,66,980,58]}
+{"kind":"textbox","id":"sh/65wjudg7","slide":15,"name":"subtitle","text":"RAG 提供广度，LLM Wiki 负责沉淀，多模态扩展知识边界","textPreview":"RAG 提供广度，LLM Wiki 负责沉淀，多模态扩展知识边界","textChars":32,"textLines":1,"bbox":[42,128,930,34]}
+{"kind":"textbox","id":"sh/hwfyxobm","slide":15,"name":"page-number","text":"15 / 17","textPreview":"15 / 17","textChars":7,"textLines":1,"bbox":[1128,652,92,28]}
+{"kind":"shape","id":"sh/obm58z25","slide":15,"name":"rag-layer","bbox":[110,245,255,150]}
+{"kind":"shape","id":"sh/zupwb2hw","slide":15,"name":"rag-layer-accent","bbox":[110,245,255,0]}
+{"kind":"textbox","id":"sh/a9w3m94f","slide":15,"name":"rag-layer-title","text":"RAG","textPreview":"RAG","textChars":3,"textLines":1,"bbox":[126,261,223,28]}
+{"kind":"textbox","id":"sh/8bat47y1","slide":15,"name":"rag-layer-detail","text":"面向海量材料的快速检索\n适合广度与低延迟访问","textPreview":"面向海量材料的快速检索 | 适合广度与低延迟访问","textChars":22,"textLines":2,"bbox":[126,297,223,90]}
+{"kind":"shape","id":"sh/1w7mp0bi","slide":15,"name":"wiki-layer","bbox":[500,220,285,200]}
+{"kind":"shape","id":"sh/q5o7qpg3","slide":15,"name":"wiki-layer-accent","bbox":[500,220,285,0]}
+{"kind":"textbox","id":"sh/jqh0fepk","slide":15,"name":"wiki-layer-title","text":"LLM Wiki","textPreview":"LLM Wiki","textChars":8,"textLines":1,"bbox":[516,236,253,28]}
+{"kind":"textbox","id":"sh/8nqxs72x","slide":15,"name":"wiki-layer-detail","text":"把高价值材料编译成结构化知识网络\n适合长期理解和复用","textPreview":"把高价值材料编译成结构化知识网络 | 适合长期理解和复用","textChars":26,"textLines":2,"bbox":[516,272,253,140]}
+{"kind":"shape","id":"sh/18jqh0fe","slide":15,"name":"agent-layer","bbox":[920,245,255,150]}
+{"kind":"shape","id":"sh/qh0fepkz","slide":15,"name":"agent-layer-accent","bbox":[920,245,255,0]}
+{"kind":"textbox","id":"sh/j2t83itg","slide":15,"name":"agent-layer-title","text":"Agent","textPreview":"Agent","textChars":5,"textLines":1,"bbox":[936,261,223,28]}
+{"kind":"textbox","id":"sh/crmhk3q5","slide":15,"name":"agent-layer-detail","text":"基于 Wiki 长期记忆执行任务\n把知识用于行动和决策","textPreview":"基于 Wiki 长期记忆执行任务 | 把知识用于行动和决策","textChars":27,"textLines":2,"bbox":[936,297,223,90]}
+{"kind":"shape","id":"sh/k3q5o7qp","slide":15,"bbox":[365,320,135,0]}
+{"kind":"shape","id":"sh/donyd0z6","slide":15,"bbox":[785,320,135,0]}
+{"kind":"shape","id":"sh/gbq1oryt","slide":15,"name":"multimodal-box","bbox":[250,455,780,90]}
+{"kind":"shape","id":"sh/nuxc3ylc","slide":15,"name":"multimodal-accent","bbox":[250,455,780,0]}
+{"kind":"textbox","id":"sh/y90je9cv","slide":15,"name":"multimodal-title","text":"多模态 LLM Wiki","textPreview":"多模态 LLM Wiki","textChars":12,"textLines":1,"bbox":[280,482,220,26]}
+{"kind":"textbox","id":"sh/58z25kb6","slide":15,"name":"multimodal-body","text":"从纯文本走向图片、视频字幕、音频转写、会议记录等多模态知识的统一编译。","textPreview":"从纯文本走向图片、视频字幕、音频转写、会议记录等多模态知识的统一编译。","textChars":35,"textLines":1,"bbox":[510,484,470,26]}
+{"kind":"textbox","id":"sh/gn29gr2p","slide":15,"name":"modality-0","text":"文本","textPreview":"文本","textChars":2,"textLines":1,"bbox":[310,520,76,28]}
+{"kind":"textbox","id":"sh/n29gr2p8","slide":15,"name":"modality-1","text":"图片","textPreview":"图片","textChars":2,"textLines":1,"bbox":[425,520,76,28]}
+{"kind":"textbox","id":"sh/yhgn29gr","slide":15,"name":"modality-2","text":"视频","textPreview":"视频","textChars":2,"textLines":1,"bbox":[540,520,76,28]}
+{"kind":"textbox","id":"sh/5kb6xkf6","slide":15,"name":"modality-3","text":"音频","textPreview":"音频","textChars":2,"textLines":1,"bbox":[655,520,76,28]}
+{"kind":"shape","id":"sh/czed8v6p","slide":15,"name":"bottom-note-box","bbox":[45,588,1030,78]}
+{"kind":"shape","id":"sh/qtcj6tov","slide":15,"name":"bottom-note-accent","bbox":[45,588,1030,0]}
+{"kind":"textbox","id":"sh/je9cvixc","slide":15,"name":"bottom-note","text":"LLM Wiki 并不是 RAG 的替代品。更现实的方向是组合：RAG 负责从海量资料中提供广度，LLM Wiki 负责把高价值内容沉淀成长期知识。","textPreview":"LLM Wiki 并不是 RAG 的替代品。更现实的方向是组合：RAG 负责从海量资料中提供广度，LLM Wiki 负责把高价值内容沉淀成长期知识。","textChars":74,"textLines":1,"bbox":[62,606,990,42]}
+{"kind":"notes","id":"nt/72x4nap4","slide":15,"text":"技术融合方向：不是替代，而是组合\n\n最后看一下技术融合方向。第一点，LLM Wiki 并不是 RAG 的替代品，两者可以结合。\n\nRAG 依然适合处理海量文档、快速检索和低延迟访问；而 LLM Wiki 更适合把高价值材料沉淀为结构化知识网络。所以一个更合理的组合是：RAG 作为外围检索通道，LLM Wiki 作为核心知识沉淀层。\n\n第二个方向是多模态 LLM Wiki。也就是从纯文本走向多模态知识的统一编译。未来不只是文章和 Markdown，图片、视频字幕、音频转写、会议记录、产品截图，都可以进入同一个知识编译流程。\n\n最终的目标，是让不同模态的信息都能被整理为可查询、可链接、可演化的知识结构。"}
+{"kind":"slide","id":"sl/ih4byhgn","slide":16,"title":"16 / 总结","textShapes":12}
+{"kind":"textbox","id":"sh/7qpg3ex0","slide":16,"name":"eyebrow","text":"16 / 总结","textPreview":"16 / 总结","textChars":7,"textLines":1,"bbox":[32,14,360,24]}
+{"kind":"shape","id":"sh/0bi9s36h","slide":16,"name":"teal-handline","bbox":[10,44,310,-4]}
+{"kind":"shape","id":"sh/pwb2hwfy","slide":16,"name":"amber-handline","bbox":[780,45,460,-4]}
+{"kind":"textbox","id":"sh/ed8v6psf","slide":16,"name":"title","text":"总结：从知识访问，到知识积累","textPreview":"总结：从知识访问，到知识积累","textChars":14,"textLines":1,"bbox":[40,66,980,58]}
+{"kind":"textbox","id":"sh/7y1kre1w","slide":16,"name":"subtitle","text":"LLM Wiki 的价值，不是替代检索，而是让知识持续沉淀","textPreview":"LLM Wiki 的价值，不是替代检索，而是让知识持续沉淀","textChars":29,"textLines":1,"bbox":[42,128,930,34]}
+{"kind":"textbox","id":"sh/wjudg7ad","slide":16,"name":"page-number","text":"16 / 17","textPreview":"16 / 17","textChars":7,"textLines":1,"bbox":[1128,652,92,28]}
+{"kind":"shape","id":"sh/p4r65wju","slide":16,"name":"summary-rag","bbox":[95,235,300,180]}
+{"kind":"shape","id":"sh/ih4byhgn","slide":16,"name":"summary-rag-accent","bbox":[95,235,300,0]}
+{"kind":"textbox","id":"sh/72x4nap4","slide":16,"name":"summary-rag-title","text":"1. RAG 解决访问","textPreview":"1. RAG 解决访问","textChars":11,"textLines":1,"bbox":[113,253,264,30]}
+{"kind":"textbox","id":"sh/zqtcj6to","slide":16,"name":"summary-rag-detail","text":"让模型在回答前拿到外部资料，适合快速检索最新信息和私有文档。","textPreview":"让模型在回答前拿到外部资料，适合快速检索最新信息和私有文档。","textChars":30,"textLines":1,"bbox":[113,295,264,110]}
+{"kind":"shape","id":"sh/65wjudg7","slide":16,"name":"summary-wiki","bbox":[490,235,300,180]}
+{"kind":"shape","id":"sh/hwfyxobm","slide":16,"name":"summary-wiki-accent","bbox":[490,235,300,0]}
+{"kind":"textbox","id":"sh/obm58z25","slide":16,"name":"summary-wiki-title","text":"2. LLM Wiki 解决积累","textPreview":"2. LLM Wiki 解决积累","textChars":16,"textLines":1,"bbox":[508,253,264,30]}
+{"kind":"textbox","id":"sh/zed8v6ps","slide":16,"name":"summary-wiki-detail","text":"把资料编译成结构化、相互链接、可演化的 Markdown Wiki。","textPreview":"把资料编译成结构化、相互链接、可演化的 Markdown Wiki。","textChars":34,"textLines":1,"bbox":[508,295,264,110]}
+{"kind":"shape","id":"sh/6xkf6dcb","slide":16,"name":"summary-obsidian","bbox":[885,235,300,180]}
+{"kind":"shape","id":"sh/hk3q5o7q","slide":16,"name":"summary-obsidian-accent","bbox":[885,235,300,0]}
+{"kind":"textbox","id":"sh/oza1gvy9","slide":16,"name":"summary-obsidian-title","text":"3. Obsidian 承载协作","textPreview":"3. Obsidian 承载协作","textChars":16,"textLines":1,"bbox":[903,253,264,30]}
+{"kind":"textbox","id":"sh/z61032ls","slide":16,"name":"summary-obsidian-detail","text":"人负责审阅和方向，LLM 负责维护、链接、更新和校验。","textPreview":"人负责审阅和方向，LLM 负责维护、链接、更新和校验。","textChars":27,"textLines":1,"bbox":[903,295,264,110]}
+{"kind":"shape","id":"sh/54zidony","slide":16,"bbox":[395,325,95,0]}
+{"kind":"shape","id":"sh/udg7adsj","slide":16,"bbox":[790,325,95,0]}
+{"kind":"shape","id":"sh/72x4nap4","slide":16,"name":"summary-key-message","bbox":[220,465,840,72]}
+{"kind":"shape","id":"sh/0nuxc3yl","slide":16,"name":"summary-key-accent","bbox":[220,465,840,0]}
+{"kind":"textbox","id":"sh/p8nqxs72","slide":16,"name":"summary-key-text","text":"真正的目标：让资料变成可复用、可演进的知识。","textPreview":"真正的目标：让资料变成可复用、可演进的知识。","textChars":22,"textLines":1,"bbox":[280,489,720,28]}
+{"kind":"shape","id":"sh/itgfmlkj","slide":16,"name":"bottom-note-box","bbox":[45,588,1030,78]}
+{"kind":"shape","id":"sh/7ed8bat4","slide":16,"name":"bottom-note-accent","bbox":[45,588,1030,0]}
+{"kind":"textbox","id":"sh/0z61032l","slide":16,"name":"bottom-note","text":"这套分享可以归结为一句话：RAG 让我们更容易访问知识，而 LLM Wiki 让知识开始积累。Obsidian 则提供了一个人和 LLM 都能协作的本地知识工作台。","textPreview":"这套分享可以归结为一句话：RAG 让我们更容易访问知识，而 LLM Wiki 让知识开始积累。Obsidian 则提供了一个人和 LLM 都能协作的本地知识工作台。","textChars":82,"textLines":1,"bbox":[62,606,990,42]}
+{"kind":"notes","id":"nt/ih4byhgn","slide":16,"text":"总结：从知识访问，到知识积累\n\n最后我们简单总结一下。RAG 解决的是知识访问问题。它让模型可以在回答之前拿到外部资料，适合快速检索最新信息、企业文档和个人资料。\n\nLLM Wiki 关注的是知识积累问题。它不是只在查询时临时拼接片段，而是把资料逐步编译成结构化、相互链接、可演化的 Markdown Wiki。\n\nObsidian 则提供了一个合适的承载层。它底层是本地 Markdown，适合 LLM 读写；同时又有双向链接、图谱、属性和插件，适合人浏览和审阅。\n\n所以真正的目标不是保存更多资料，而是让资料变成可复用、可演进的知识。"}
+{"kind":"slide","id":"sl/p8nqxs72","slide":17,"title":"17 / Q&A","textShapes":11}
+{"kind":"textbox","id":"sh/d8v6psfi","slide":17,"name":"eyebrow","text":"17 / Q&A","textPreview":"17 / Q&A","textChars":8,"textLines":1,"bbox":[32,14,360,24]}
+{"kind":"shape","id":"sh/6hcrmhk3","slide":17,"name":"teal-handline","bbox":[10,44,310,-4]}
+{"kind":"shape","id":"sh/z25kb6xk","slide":17,"name":"amber-handline","bbox":[780,45,460,-4]}
+{"kind":"textbox","id":"sh/ovahoza1","slide":17,"name":"thanks-title","text":"谢谢","textPreview":"谢谢","textChars":2,"textLines":1,"bbox":[100,150,420,90]}
+{"kind":"textbox","id":"sh/dg7adsji","slide":17,"name":"thanks-subtitle","text":"欢迎交流：如何把自己的资料编译成会生长的 Wiki","textPreview":"欢迎交流：如何把自己的资料编译成会生长的 Wiki","textChars":25,"textLines":1,"bbox":[106,252,760,40]}
+{"kind":"shape","id":"sh/6tovahoz","slide":17,"name":"thanks-raw","bbox":[150,385,150,94]}
+{"kind":"shape","id":"sh/vahoza1g","slide":17,"name":"thanks-raw-accent","bbox":[150,385,150,0]}
+{"kind":"textbox","id":"sh/o7qpg3ex","slide":17,"name":"thanks-raw-title","text":"raw/","textPreview":"raw/","textChars":4,"textLines":1,"bbox":[168,403,114,30]}
+{"kind":"textbox","id":"sh/dsji5sne","slide":17,"name":"thanks-raw-detail","text":"原始资料","textPreview":"原始资料","textChars":4,"textLines":1,"bbox":[168,445,114,24]}
+{"kind":"shape","id":"sh/pwb2hwfy","slide":17,"name":"thanks-llm","bbox":[460,360,170,120]}
+{"kind":"shape","id":"sh/0bi9s36h","slide":17,"name":"thanks-llm-accent","bbox":[460,360,170,0]}
+{"kind":"textbox","id":"sh/7qpg3ex0","slide":17,"name":"thanks-llm-title","text":"LLM","textPreview":"LLM","textChars":3,"textLines":1,"bbox":[478,378,134,30]}
+{"kind":"textbox","id":"sh/i5sneloj","slide":17,"name":"thanks-llm-detail","text":"理解与编译","textPreview":"理解与编译","textChars":5,"textLines":1,"bbox":[478,420,134,50]}
+{"kind":"shape","id":"sh/p4r65wju","slide":17,"name":"thanks-wiki","bbox":[790,385,190,94]}
+{"kind":"shape","id":"sh/wjudg7ad","slide":17,"name":"thanks-wiki-accent","bbox":[790,385,190,0]}
+{"kind":"textbox","id":"sh/7y1kre1w","slide":17,"name":"thanks-wiki-title","text":"wiki/","textPreview":"wiki/","textChars":5,"textLines":1,"bbox":[808,403,154,30]}
+{"kind":"textbox","id":"sh/ed8v6psf","slide":17,"name":"thanks-wiki-detail","text":"长期知识资产","textPreview":"长期知识资产","textChars":6,"textLines":1,"bbox":[808,445,154,24]}
+{"kind":"shape","id":"sh/m1cfa9w3","slide":17,"bbox":[300,420,160,12]}
+{"kind":"shape","id":"sh/2x4nap4r","slide":17,"bbox":[630,420,160,12]}
+{"kind":"textbox","id":"sh/wval87ed","slide":17,"name":"closing-line","text":"保存只是开始，沉淀才会产生复利。","textPreview":"保存只是开始，沉淀才会产生复利。","textChars":16,"textLines":1,"bbox":[320,535,640,36]}
+{"kind":"textbox","id":"sh/pg3ex0nu","slide":17,"name":"page-number","text":"17 / 17","textPreview":"17 / 17","textChars":7,"textLines":1,"bbox":[1128,652,92,28]}
+{"kind":"notes","id":"nt/p8nqxs72","slide":17,"text":"谢谢\n\n以上就是今天的分享。\n如果只记住一句话，我希望是：保存只是开始，沉淀才会产生复利。\n当 LLM 能够持续帮助我们整理、链接、更新和校验知识时，个人知识库就不再只是资料仓库，而会逐渐变成长期记忆层。\n\n谢谢大家，欢迎交流。"}

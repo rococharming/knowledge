@@ -1,0 +1,53 @@
+{"kind":"deck","id":"pr/r2y6nn","name":"Deck"}
+{"kind":"layout","layoutId":"8608da5e-556f-409c-ae61-ef487d8d8ce0","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"d30d9c3b-c456-4637-9af6-333f1eb339ec","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/2oc1dg","slide":1,"title":"03 / GraphRAG","textShapes":24}
+{"kind":"textbox","id":"sh/oza1gvy9","slide":1,"name":"eyebrow","text":"03 / GraphRAG","textPreview":"03 / GraphRAG","textChars":13,"textLines":1,"bbox":[32,14,220,24]}
+{"kind":"shape","id":"sh/zed8v6ps","slide":1,"name":"teal-handline","bbox":[10,36,310,-8]}
+{"kind":"shape","id":"sh/6xkf6dcb","slide":1,"name":"amber-handline","bbox":[780,45,460,-7]}
+{"kind":"textbox","id":"sh/hwfyxobm","slide":1,"name":"title","text":"GraphRAG：让知识片段之间有关系","textPreview":"GraphRAG：让知识片段之间有关系","textChars":19,"textLines":1,"bbox":[40,66,900,58]}
+{"kind":"textbox","id":"sh/obm58z25","slide":1,"name":"subtitle","text":"从文本块相似度，走向实体、属性和关系的图结构","textPreview":"从文本块相似度，走向实体、属性和关系的图结构","textChars":22,"textLines":1,"bbox":[42,128,850,34]}
+{"kind":"textbox","id":"sh/zqtcj6to","slide":1,"name":"left-label","text":"传统 RAG","textPreview":"传统 RAG","textChars":6,"textLines":1,"bbox":[122,193,140,28]}
+{"kind":"shape","id":"sh/65wjudg7","slide":1,"name":"chunk-1","bbox":[70,245,150,92]}
+{"kind":"shape","id":"sh/h0fepkzu","slide":1,"name":"chunk-1-accent","bbox":[70,245,150,0]}
+{"kind":"textbox","id":"sh/sfil0rqd","slide":1,"name":"chunk-1-title","text":"文本片段 A","textPreview":"文本片段 A","textChars":6,"textLines":1,"bbox":[86,261,118,26]}
+{"kind":"textbox","id":"sh/qtcj6tov","slide":1,"name":"chunk-1-detail","text":"提出者 / 背景","textPreview":"提出者 / 背景","textChars":8,"textLines":1,"bbox":[86,293,118,36]}
+{"kind":"shape","id":"sh/je9cvixc","slide":1,"name":"chunk-2","bbox":[118,355,150,92]}
+{"kind":"shape","id":"sh/8z25kb6x","slide":1,"name":"chunk-2-accent","bbox":[118,355,150,0]}
+{"kind":"textbox","id":"sh/1gvy90je","slide":1,"name":"chunk-2-title","text":"文本片段 B","textPreview":"文本片段 B","textChars":6,"textLines":1,"bbox":[134,371,118,26]}
+{"kind":"textbox","id":"sh/q1orytsv","slide":1,"name":"chunk-2-detail","text":"核心方法","textPreview":"核心方法","textChars":4,"textLines":1,"bbox":[134,403,118,36]}
+{"kind":"shape","id":"sh/fmlkjm1c","slide":1,"name":"chunk-3","bbox":[214,255,150,92]}
+{"kind":"shape","id":"sh/87ed8bat","slide":1,"name":"chunk-3-accent","bbox":[214,255,150,0]}
+{"kind":"textbox","id":"sh/xs72x4na","slide":1,"name":"chunk-3-title","text":"文本片段 C","textPreview":"文本片段 C","textChars":6,"textLines":1,"bbox":[230,271,118,26]}
+{"kind":"textbox","id":"sh/qd4vmtwr","slide":1,"name":"chunk-3-detail","text":"应用场景 / 局限","textPreview":"应用场景 / 局限","textChars":9,"textLines":1,"bbox":[230,303,118,36]}
+{"kind":"shape","id":"sh/fyxobm58","slide":1,"name":"fragment-dashed-1","bbox":[220,290,95,10]}
+{"kind":"shape","id":"sh/7y1kre1w","slide":1,"name":"fragment-dashed-2","bbox":[214,395,100,-80]}
+{"kind":"shape","id":"sh/ed8v6psf","slide":1,"name":"extractor","bbox":[452,292,180,120]}
+{"kind":"shape","id":"sh/p4r65wju","slide":1,"name":"extractor-accent","bbox":[452,292,180,0]}
+{"kind":"textbox","id":"sh/wjudg7ad","slide":1,"name":"extractor-title","text":"信息抽取","textPreview":"信息抽取","textChars":4,"textLines":1,"bbox":[468,308,148,26]}
+{"kind":"textbox","id":"sh/7qpg3ex0","slide":1,"name":"extractor-detail","text":"识别实体、属性、关系","textPreview":"识别实体、属性、关系","textChars":10,"textLines":1,"bbox":[468,340,148,64]}
+{"kind":"shape","id":"sh/i5sneloj","slide":1,"bbox":[364,301,88,51]}
+{"kind":"textbox","id":"sh/pwb2hwfy","slide":1,"name":"right-label","text":"GraphRAG","textPreview":"GraphRAG","textChars":8,"textLines":1,"bbox":[820,193,160,28]}
+{"kind":"textbox","id":"sh/0bi9s36h","slide":1,"name":"node-tech","text":"某项技术","textPreview":"某项技术","textChars":4,"textLines":1,"bbox":[820,310,86,58]}
+{"kind":"textbox","id":"sh/7ed8bat4","slide":1,"name":"node-author","text":"提出者","textPreview":"提出者","textChars":3,"textLines":1,"bbox":[724,236,78,54]}
+{"kind":"textbox","id":"sh/itgfmlkj","slide":1,"name":"node-method","text":"核心方法","textPreview":"核心方法","textChars":4,"textLines":1,"bbox":[950,235,86,54]}
+{"kind":"textbox","id":"sh/8bat47y1","slide":1,"name":"node-app","text":"应用场景","textPreview":"应用场景","textChars":4,"textLines":1,"bbox":[718,420,86,54]}
+{"kind":"textbox","id":"sh/1w7mp0bi","slide":1,"name":"node-limit","text":"局限","textPreview":"局限","textChars":2,"textLines":1,"bbox":[960,420,78,54]}
+{"kind":"textbox","id":"sh/q5o7qpg3","slide":1,"name":"node-community","text":"图社区摘要","textPreview":"图社区摘要","textChars":5,"textLines":1,"bbox":[850,510,116,54]}
+{"kind":"shape","id":"sh/jqh0fepk","slide":1,"bbox":[763,290,57,49]}
+{"kind":"shape","id":"sh/8nqxs72x","slide":1,"bbox":[906,262,44,77]}
+{"kind":"shape","id":"sh/18jqh0fe","slide":1,"bbox":[804,368,59,79]}
+{"kind":"shape","id":"sh/qh0fepkz","slide":1,"bbox":[906,339,54,108]}
+{"kind":"shape","id":"sh/j2t83itg","slide":1,"bbox":[804,447,46,90]}
+{"kind":"shape","id":"sh/crmhk3q5","slide":1,"bbox":[966,474,33,63]}
+{"kind":"shape","id":"sh/1cfa9w3m","slide":1,"bbox":[863,368,45,142]}
+{"kind":"shape","id":"sh/d4vmtwra","slide":1,"bbox":[632,263,92,89]}
+{"kind":"shape","id":"sh/oj2t83it","slide":1,"name":"graphrag-summary-box","bbox":[1072,245,150,260]}
+{"kind":"textbox","id":"sh/vy90je9c","slide":1,"name":"graphrag-summary-title","text":"改进点","textPreview":"改进点","textChars":3,"textLines":1,"bbox":[1094,270,105,24]}
+{"kind":"textbox","id":"sh/6dcbulwv","slide":1,"name":"graphrag-summary-body","text":"检索对象不再只是文本片段。\n\n还可以是实体、关系、图社区和摘要。","textPreview":"检索对象不再只是文本片段。 |  | 还可以是实体、关系、图社区和摘要。","textChars":32,"textLines":3,"bbox":[1094,314,100,104]}
+{"kind":"textbox","id":"sh/dsji5sne","slide":1,"name":"graphrag-summary-key","text":"解决：知识如何建立关联","textPreview":"解决：知识如何建立关联","textChars":11,"textLines":1,"bbox":[1094,446,104,40]}
+{"kind":"shape","id":"sh/o7qpg3ex","slide":1,"name":"bottom-note-box","bbox":[45,588,930,78]}
+{"kind":"shape","id":"sh/vmtwra5g","slide":1,"name":"bottom-note-accent","bbox":[45,588,930,0]}
+{"kind":"textbox","id":"sh/61032lsz","slide":1,"name":"bottom-note","text":"GraphRAG 的关键变化，是不再只把资料看成孤立文本块，而是抽取实体、属性和关系，把多篇文档里分散的信息连接成一张知识网络。","textPreview":"GraphRAG 的关键变化，是不再只把资料看成孤立文本块，而是抽取实体、属性和关系，把多篇文档里分散的信息连接成一张知识网络。","textChars":64,"textLines":1,"bbox":[62,608,890,40]}
+{"kind":"textbox","id":"sh/dg7adsji","slide":1,"name":"page-number","text":"03 / 20","textPreview":"03 / 20","textChars":7,"textLines":1,"bbox":[1128,652,92,28]}
+{"kind":"notes","id":"nt/2oc1dg","slide":1,"text":""}
