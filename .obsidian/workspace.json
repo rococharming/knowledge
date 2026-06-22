@@ -199,10 +199,14 @@
   },
   "active": "491bda9accb2b8f4",
   "lastOpenFiles": [
+    "Obsidian/notes/2、Obsidian Web Clipper.md",
+    "Obsidian/notes/2、Obsidian Web Clipper.md.tmp.13601.b5d4d87c4a0d",
+    "Clippings/翻译请求处理.md",
+    "Clippings",
+    "assets/Pasted image 20260622101038.png",
     "assets/Pasted image 20260622030528.png",
     "assets/Pasted image 20260622024353.png",
     "raw/如何把Obsidian Web Clipper价值最大化？.md",
-    "Obsidian/notes/2、Obsidian Web Clipper.md",
     "raw",
     "assets/Pasted image 20260622022558.png",
     "raw/Codex 接入第三方模型 DeepSeek、GLM、Kimi 教程：CC-Switch 和 Codex++ 两种方案对比.md",
@@ -212,8 +216,6 @@
     "assets/Pasted image 20260622020348.png",
     "assets/Pasted image 20260622020313.png",
     "assets/Pasted image 20260622015615.png",
-    "assets/Pasted image 20260622013554.png",
-    "assets/Pasted image 20260622013542.png",
     "llm-wiki-zh-CN.md",
     "raw/llm-wiki.md",
     "llm-wiki.md",
@@ -228,8 +230,6 @@
     "Obsidian/wiki/entities",
     "Obsidian/wiki/index.md",
     "Obsidian/wiki/concepts",
-    "Obsidian/wiki/comparisons",
-    "Obsidian/raw/videos",
     "Obsidian/domain.md",
     "Python/notes/12、类和对象.md",
     "Python/notes/9、字典和集合.md",
@@ -243,7 +243,6 @@
     "Python/notes/5、条件判断.md",
     "Python/notes/list和tuple.md",
     "Python/notes/4、数字和数学运算.md",
-    "Python/notes/未命名.md",
-    "Python/notes/4、布尔值与条件语句.md"
+    "Python/notes/未命名.md"
   ]
 }
