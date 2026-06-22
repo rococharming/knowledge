@@ -4,79 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "4862cf06cc397d71",
-        "type": "split",
+        "id": "4a589bf88a70e459",
+        "type": "tabs",
         "children": [
           {
-            "id": "f3352e47c79062df",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "491bda9accb2b8f4",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "Obsidian/notes/2、Obsidian Web Clipper.md",
-                    "mode": "source",
-                    "source": false
-                  },
-                  "icon": "lucide-file",
-                  "title": "2、Obsidian Web Clipper"
-                }
-              }
-            ]
-          },
-          {
-            "id": "0a15c693ded21620",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "9d07638d8d091760",
-                "type": "leaf",
-                "pinned": true,
-                "state": {
-                  "type": "terminal:terminal",
-                  "state": {
-                    "terminal:terminal": {
-                      "cwd": "/Users/songpengfei/knowledge",
-                      "focus": false,
-                      "profile": {
-                        "args": [
-                          "--login"
-                        ],
-                        "executable": "/opt/homebrew/bin/fish",
-                        "followTheme": true,
-                        "name": "",
-                        "platforms": {
-                          "darwin": true
-                        },
-                        "pythonExecutable": "python3",
-                        "restoreHistory": false,
-                        "rightClickAction": "copyPaste",
-                        "successExitCodes": [
-                          "0",
-                          "SIGINT",
-                          "SIGTERM"
-                        ],
-                        "terminalOptions": {
-                          "documentOverride": null
-                        },
-                        "type": "integrated",
-                        "useWin32Conhost": true
-                      },
-                      "serial": null
-                    }
-                  },
-                  "pinned": true,
-                  "icon": "terminal",
-                  "title": "终端：~/knowledge"
-                }
-              }
-            ]
+            "id": "1ac10523c2552082",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Obsidian/notes/3、从 RAG 到 LLM-Wiki.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "3、从 RAG 到 LLM-Wiki"
+            }
           }
-        ],
-        "direction": "horizontal"
+        ]
       }
     ],
     "direction": "vertical"
@@ -192,12 +137,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "Obsidian/notes/3、从 RAG 到 LLM-Wiki.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "3、从 RAG 到 LLM-Wiki 的大纲"
             }
           },
           {
@@ -251,11 +197,32 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "9d07638d8d091760",
+  "active": "1ac10523c2552082",
   "lastOpenFiles": [
+    "Clippings/llm_wiki_30min_20260622_205007.pptx",
+    "Clippings/llm_wiki_30min_20260622_205929.pptx",
+    "Obsidian/notes/1、Obsidian安装与配置.md",
     "Obsidian/notes/2、Obsidian Web Clipper.md",
-    "Clippings/如何把Obsidian Web Clipper价值最大化？.md",
+    "Obsidian/notes/3、从 RAG 到 LLM-Wiki.md",
+    "Clippings/从RAG到LLM Wiki：一文看懂大模型+知识的演进路线.md",
+    "README.md",
+    "llm-wiki-zh-CN.md",
+    "llm-wiki.md",
+    "Clippings/使用 Rust 开发 AI Agent - 02（上）调用LLM.md",
+    "Clippings/使用 Rust 开发 AI Agent - 02（上）调用LLM 1.md",
+    "Clippings/Obsidian 学习交流.md",
+    "Clippings/最近爆火的 Harness Engineering 到底是个啥？一期讲透！.md",
+    "Clippings/最近爆火的 Harness Engineering 到底是个啥？一期讲透！ 1.md",
+    "Clippings/零度解说 – GPT-5.6 被泄露！Claude最强对手来了，AI游戏、3D设计全面实测！这次OpenAI 真的发力了！ 零度解说.md",
     "Clippings",
+    "AI/raw/others/Obsidian Template零基础教程，从零搭建你的首个代码模板.md",
+    "AI/raw/others/GPT-5.6 被泄露！Claude最强对手来了，AI游戏、3D设计全面实测！这次OpenAI 真的发力了！ 零度解说.md",
+    "AI/raw/others/Explore the .claude directory.md",
+    "Clippings/Obsidian Template零基础教程，从零搭建你的首个代码模板.md",
+    "assets/Pasted image 20260622164010.png",
+    "AI/notes/llm-wiki/1、LLM Wiki介绍.md",
+    "BlueOS开发/raw/最小系统开发环境.md",
+    "BlueOS开发/notes/1、UI预览调研.md",
     "assets/Pasted image 20260622132035.png",
     "assets/Pasted image 20260622131725.png",
     "assets/Pasted image 20260622131617.png",
@@ -267,37 +234,16 @@
     "Clippings/翻译请求处理.md",
     "assets/Pasted image 20260622101038.png",
     "assets/Pasted image 20260622030528.png",
-    "assets/Pasted image 20260622024353.png",
     "raw/如何把Obsidian Web Clipper价值最大化？.md",
     "raw",
     "raw/Codex 接入第三方模型 DeepSeek、GLM、Kimi 教程：CC-Switch 和 Codex++ 两种方案对比.md",
-    "llm-wiki-zh-CN.md",
     "raw/llm-wiki.md",
-    "llm-wiki.md",
-    "Obsidian/notes/1、Obsidian安装与配置.md",
     "AI/notes/Codex/Codex接入第三方模型.md",
     "Obsidian/domain.md.tmp.6812.d7c337daa210",
     "Obsidian/wiki/syntheses",
     "Obsidian/wiki/summaries",
     "Obsidian/wiki/overviews",
     "Obsidian/wiki/recipes",
-    "Obsidian/wiki/log.md",
-    "Obsidian/wiki/entities",
-    "Obsidian/wiki/index.md",
-    "Obsidian/wiki/concepts",
-    "Obsidian/domain.md",
-    "Python/notes/12、类和对象.md",
-    "Python/notes/9、字典和集合.md",
-    "Python/notes/11、异常处理.md",
-    "Python/notes/10、模块.md",
-    "Python/notes/dict和set.md",
-    "通用计算机知识/notes/Git/01_本地仓库基础/9、灵活查看提交历史.md",
-    "Python/notes/6、函数.md",
-    "Python/notes/函数（旧）.md",
-    "Python/notes/3、Python字符串.md",
-    "Python/notes/5、条件判断.md",
-    "Python/notes/list和tuple.md",
-    "Python/notes/4、数字和数学运算.md",
-    "Python/notes/未命名.md"
+    "Obsidian/wiki/entities"
   ]
 }
