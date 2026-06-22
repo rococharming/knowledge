@@ -2,10 +2,10 @@
   "editor:download-attachments": [
     {
       "modifiers": [
-        "Ctrl",
+        "Mod",
         "Shift"
       ],
-      "key": "D"
+      "key": "S"
     }
   ]
 }
