@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Obsidian/notes/llm-wiki-final-speaker-script.md",
+                "file": "AI/notes/Agent开发/OpenAI API/1、OpenAI API 格式详解.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "llm-wiki-final-speaker-script"
+              "title": "1、OpenAI API 格式详解"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 262.50271224975586
+    "width": 261.5086555480957
   },
   "right": {
     "id": "94be849039c638f6",
@@ -137,13 +137,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Obsidian/notes/llm-wiki-final-speaker-script.md",
+                "file": "AI/notes/Agent开发/OpenAI API/1、OpenAI API 格式详解.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "llm-wiki-final-speaker-script 的大纲"
+              "title": "1、OpenAI API 格式详解 的大纲"
             }
           },
           {
@@ -199,6 +199,15 @@
   },
   "active": "1ac10523c2552082",
   "lastOpenFiles": [
+    "assets/Pasted image 20260624014411.png",
+    "assets/Pikachu.png",
+    "assets/Pasted image 20260624005243.png",
+    "assets/Pasted image 20260624004902.png",
+    "Rust/notes/Rust进阶/异步编程/3、Tokio Task（待重构和补充）.md",
+    "AI/notes/Agent开发/OpenAI API/1、OpenAI API 格式详解.md",
+    "AI/notes/Agent开发/OpenAI API",
+    "Obsidian/notes/3、LLM Wiki.md",
+    "Obsidian/notes/llm-wiki-final-speaker-script.md",
     "Obsidian/notes/llm-wiki-final-editable-v4.key",
     "outputs/llm-wiki-final-speaker-script-v4.md",
     "outputs/llm-wiki-final-editable-v4.pptx.inspect.ndjson",
@@ -216,17 +225,10 @@
     "outputs/llm-wiki-final-preview-v4/slide-13.png",
     "outputs/llm-wiki-final-preview-v4/slide-12.layout.json",
     "outputs/llm-wiki-final-preview-v4/slide-12.png",
-    "outputs/llm-wiki-final-preview-v4/slide-11.layout.json",
-    "outputs/llm-wiki-final-preview-v4/slide-11.png",
-    "outputs/llm-wiki-final-preview-v4/slide-10.layout.json",
-    "outputs/llm-wiki-final-preview-v4/slide-10.png",
-    "outputs/llm-wiki-final-preview-v4/slide-09.png",
     "AI/notes/llm-wiki/1、LLM Wiki介绍.md",
     "outputs/llm-wiki-final-speaker-script-v2.md",
-    "Obsidian/notes/llm-wiki-final-speaker-script.md",
     "outputs/llm-wiki-final-speaker-script.md",
     "Clippings/从RAG到LLM Wiki：一文看懂大模型+知识的演进路线.md",
-    "Obsidian/notes/3、LLM Wiki.md",
     "Obsidian/notes/2、Obsidian Web Clipper.md",
     "Obsidian/notes/1、Obsidian安装与配置.md",
     "Obsidian/notes/3、从 RAG 到 LLM-Wiki.md",
@@ -242,8 +244,6 @@
     "AI/raw/others/Obsidian Template零基础教程，从零搭建你的首个代码模板.md",
     "AI/raw/others/GPT-5.6 被泄露！Claude最强对手来了，AI游戏、3D设计全面实测！这次OpenAI 真的发力了！ 零度解说.md",
     "AI/raw/others/Explore the .claude directory.md",
-    "Clippings/Obsidian Template零基础教程，从零搭建你的首个代码模板.md",
-    "BlueOS开发/raw/最小系统开发环境.md",
-    "BlueOS开发/notes/1、UI预览调研.md"
+    "Clippings/Obsidian Template零基础教程，从零搭建你的首个代码模板.md"
   ]
 }
