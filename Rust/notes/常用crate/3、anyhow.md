@@ -9,7 +9,7 @@
 - `std::io::Error`
 - `std::num::ParseIntError`
 - `serde_json::Error`
-- 自定义错误类型
+- ...
 
 如果严格为所有错误定义统一枚举，代码会比较繁琐。
 
@@ -165,8 +165,6 @@ Caused by:
 `failed to read file`会被追加到错误链中。
 
 ## 3、with_context
-
-更常用的是：
 
 ```rust
 use anyhow::{Context, Result};  
@@ -360,47 +358,3 @@ OS错误
 ```
 
 这是 `anyhow` 最有价值的能力之一。
-
-
-# 七、与 thiserror 的关系
-
-很多初学者容易把`anyhow`和`thiserror`混为一谈，但它们定位完全不同。
-
-|crate|用途|
-|---|---|
-|`anyhow`|使用错误|
-|`thiserror`|定义错误|
-
-例如库 crate：
-
-```rust
-#[derive(Error, Debug)]  
-pub enum ConfigError {  
-	#[error("invalid config")]  
-	InvalidConfig,  
-}
-```
-
-对外返回：
-
-```rust
-Result<T, ConfigError>
-```
-
-应用程序调用时：
-
-```rust
-use anyhow::{Context, Result};
-
-fn main() -> Result<()> {
-    load_config()
-        .context("failed to load config")?;
-
-    Ok(())
-}
-```
-
-这是 Rust 社区最常见的组合：
-
-- 库层：thiserror
-- 应用层：anyhow
