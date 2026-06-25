@@ -499,3 +499,255 @@ tracing::error!(
     "failed to update user"
 );
 ```
+
+## 6、Span
+
+可以使用`info_span!`等宏创建 Span：
+
+```rust
+use tracing::info_span;  
+  
+  
+fn handle_request(request_id: u64) {  
+  
+    let span = info_span!("http_request", request_id = %request_id);  
+  
+    let _enter = span.enter();  
+  
+    tracing::info!("validating request");  
+    tracing::info!("request completed");  
+  
+}  
+  
+  
+fn main() {  
+  
+    tracing_subscriber::fmt()  
+        .init();  
+  
+    handle_request(10);  
+}
+```
+
+
+`enter()`返回一个 guard。guard 存活期间，当前执行流位于该 Span 中；guard 被丢弃时退出 Span。
+
+执行：
+
+```shell
+cargo run
+```
+
+就能看到 Span：
+
+![[Pasted image 20260625130021.png|600]]
+
+两条 Event 都包含`http_request`及其`request_id`字段，因为它们发生在同一个 Span 中。这正是 Span 相比重复手写`request_id`的价值。
+
+## 7、异步代码不能跨await持有EnterGuard
+
+下面的写法是不推荐的：
+
+```rust
+use tracing::info_span;  
+  
+  
+async fn load_user() {  
+    tracing::info!("load user");  
+}  
+  
+async fn save_record() {  
+    tracing::info!("save record");  
+}  
+  
+async fn other_task() {  
+    tokio::time::sleep(std::time::Duration::from_secs(1)).await;  
+    tracing::info!("other task");  
+  
+}  
+  
+async fn handle_request(request_id: u64) {  
+    let span = info_span!("http_request", request_id = %request_id);  
+  
+    let _guard = span.enter();  
+    load_user().await;  
+    tokio::time::sleep(std::time::Duration::from_secs(10)).await;  
+    save_record().await;  
+  
+}  
+  
+#[tokio::main(flavor = "current_thread")]  
+async fn main() {  
+  
+    tracing_subscriber::fmt()  
+        .init();  
+  
+    tokio::spawn(other_task());  
+  
+    handle_request(10).await;  
+}
+```
+
+这里特意指定`flavor = "current_thread`使用当前线程 Runtime ，让同一线程跑不同的异步任务。
+
+输出：
+
+```
+2026-06-25T05:06:54.254841Z  INFO http_request{request_id=10}: hello_cargo: load user
+2026-06-25T05:06:55.256122Z  INFO http_request{request_id=10}: hello_cargo: other task
+2026-06-25T05:07:04.256540Z  INFO http_request{request_id=10}: hello_cargo: save record
+```
+
+异步任务在`.await`处可能暂停，运行时线程会继续执行其他任务（`other_task`）。此时`_guard`仍然存活，可能让同一线程上其他任务产生的事件错误地进入当前 Span。
+
+因此，`Span::enter()`的 guard 不应该跨越`.await`。
+
+对于异步函数应该优先使用`#[instrument]`：
+
+```rust
+use tracing::{info_span, instrument};  
+  
+  
+async fn load_user() {  
+    tracing::info!("load user");  
+}  
+  
+async fn save_record() {  
+    tracing::info!("save record");  
+}  
+  
+async fn other_task() {  
+    tokio::time::sleep(std::time::Duration::from_secs(1)).await;  
+    tracing::info!("other task");  
+  
+}  
+  
+#[instrument]  
+async fn handle_request(request_id: u64) {  
+  
+    load_user().await;  
+    tokio::time::sleep(std::time::Duration::from_secs(10)).await;  
+    save_record().await;  
+  
+}  
+  
+#[tokio::main(flavor = "current_thread")]  
+async fn main() {  
+  
+    tracing_subscriber::fmt()  
+        .init();  
+  
+    tokio::spawn(other_task());  
+  
+    handle_request(10).await;  
+}
+```
+
+输出：
+
+![[Pasted image 20260625131420.png|600]]
+
+这里看到了`handle_request{request_id=10}`这个Span。
+
+也可以手动为 Future 附加 Span：
+
+```rust
+use tracing::{info_span, instrument, Instrument};  
+  
+  
+async fn load_user() {  
+    tracing::info!("load user");  
+}  
+  
+async fn save_record() {  
+    tracing::info!("save record");  
+}  
+  
+async fn other_task() {  
+    tokio::time::sleep(std::time::Duration::from_secs(1)).await;  
+    tracing::info!("other task");  
+  
+}  
+  
+  
+async fn handle_request(request_id: u64) {  
+  
+    let span = tracing::info_span!("http_request", request_id);  
+    async {  
+        load_user().await;  
+        tokio::time::sleep(std::time::Duration::from_secs(10)).await;  
+        save_record().await;  
+    }  
+    .instrument(span)  
+    .await;  
+      
+}  
+  
+#[tokio::main(flavor = "current_thread")]  
+async fn main() {  
+  
+    tracing_subscriber::fmt()  
+        .init();  
+  
+    tokio::spawn(other_task());  
+  
+    handle_request(10).await;  
+}
+```
+
+`instrument(span)`会在 Future 每次被轮询时进入 Span，在 Future 暂停时退出 Span，因此`other_task`不会受到污染。
+
+## 8、instrument属性
+
+默认情况下，`#[instrument]`会：
+
+- 使用函数名作为 Span 名
+- 使用`Debug`记录函数参数
+- 让函数内部的 Event 继承这个 Span
+
+```rust
+#[tracing::instrument]
+async fn find_user(user_id: u64) -> Result<User, AppError> {
+    tracing::debug!("querying database");
+
+    database_find_user(user_id).await
+}
+```
+
+对于大型对象、敏感信息或没有实现`Debug`的参数，使用`skip`：
+
+```rust
+#[tracing::instrument(skip(db, password))]
+async fn login(
+    db: &Database,
+    user_id: u64,
+    password: &str,
+) -> Result<User, AppError> {
+    authenticate(db, user_id, password).await
+}
+```
+
+常用配置：
+
+```rust
+#[tracing::instrument(
+    name = "create_order",
+    level = "info",
+    skip(db, request),
+    fields(
+        user_id = request.user_id,
+        order_id = tracing::field::Empty,
+    ),
+    err
+)]
+async fn create_order(
+    db: &Database,
+    request: CreateOrder,
+) -> Result<Order, AppError> {
+    let order = db.insert_order(request).await?;
+
+    tracing::Span::current().record("order_id", order.id);
+
+    Ok(order)
+}
+```

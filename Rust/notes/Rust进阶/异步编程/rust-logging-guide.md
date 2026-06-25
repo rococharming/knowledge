@@ -584,47 +584,104 @@ INFO http_request{request_id=42}: request completed
 
 ## 7、异步代码不能跨await持有EnterGuard
 
-下面的写法是错误的：
+下面通过一个完整示例观察这个问题：
 
 ```rust
-async fn handle_request(request_id: u64) {
-    let span = tracing::info_span!("http_request", request_id);
-    let _guard = span.enter();
+use std::time::Duration;
+use tracing::info_span;
 
-    load_user().await;
-    save_record().await;
+async fn first_step() {
+    tracing::info!("first step");
+}
+
+async fn second_step() {
+    tracing::info!("second step");
+}
+
+async fn other_task() {
+    tokio::time::sleep(Duration::from_millis(100)).await;
+    tracing::info!("other task");
+}
+
+async fn handle_task(task_id: u64) {
+    let span = info_span!("handle_task", task_id);
+    let _enter = span.enter();
+
+    first_step().await;
+    tokio::time::sleep(Duration::from_secs(1)).await;
+    second_step().await;
+}
+
+#[tokio::main(flavor = "current_thread")]
+async fn main() {
+    tracing_subscriber::fmt().init();
+
+    tokio::spawn(other_task());
+
+    handle_task(10).await;
 }
 ```
 
-异步任务在`.await`处可能暂停，运行时线程会继续执行其他任务。此时`_guard`仍然存活，可能让同一线程上其他任务产生的事件错误地进入当前 Span。
+`handle_task`进入 Span 后，会在一秒定时器处暂停。current-thread runtime 随后使用同一个线程执行`other_task`，但此时`_enter`仍然存活，因此线程仍被认为处于`handle_task` Span 中。
 
-因此，`Span::enter()`的 guard 不应该跨越`.await`。
-
-异步函数优先使用`#[instrument]`：
-
-```rust
-use tracing::instrument;
-
-#[instrument]
-async fn handle_request(request_id: u64) {
-    tracing::info!("validating request");
-
-    load_user().await;
-
-    tracing::info!("request completed");
-}
-```
-
-`#[instrument]`会为每次函数调用创建 Span，并在 Future 每次被轮询时进入对应 Span，能够正确适配异步任务的暂停和恢复。
-
-输出效果与同步 Span 类似：
+输出的关键部分类似：
 
 ```text
-INFO handle_request{request_id=42}: validating request
-INFO handle_request{request_id=42}: request completed
+INFO handle_task{task_id=10}: first step
+INFO handle_task{task_id=10}: other task
+INFO handle_task{task_id=10}: second step
 ```
 
-区别在于 Span 会随着 Future 的每次轮询正确进入和退出，不会因为任务在`.await`处暂停而污染同一线程上其他任务的上下文。
+第二行是错误的上下文：`other_task`与`handle_task`没有关系，却被标记成属于`handle_task{task_id=10}`。
+
+这是因为`Span::enter()`管理的是当前执行线程的 Span 上下文，而不是某个 Future 独有的上下文。Future 在`.await`处暂停时，局部变量`_enter`不会被丢弃；同一线程接着轮询其他 Future 时，就可能错误继承这个 Span。
+
+因此，`Span::enter()`返回的 guard 不应该跨越`.await`。
+
+异步函数可以使用`#[instrument]`修正：
+
+```rust
+use std::time::Duration;
+
+async fn first_step() {
+    tracing::info!("first step");
+}
+
+async fn second_step() {
+    tracing::info!("second step");
+}
+
+async fn other_task() {
+    tokio::time::sleep(Duration::from_millis(100)).await;
+    tracing::info!("other task");
+}
+
+#[tracing::instrument]
+async fn handle_task(task_id: u64) {
+    first_step().await;
+    tokio::time::sleep(Duration::from_secs(1)).await;
+    second_step().await;
+}
+
+#[tokio::main(flavor = "current_thread")]
+async fn main() {
+    tracing_subscriber::fmt().init();
+
+    tokio::spawn(other_task());
+
+    handle_task(10).await;
+}
+```
+
+此时输出的关键部分类似：
+
+```text
+INFO handle_task{task_id=10}: first step
+INFO other task
+INFO handle_task{task_id=10}: second step
+```
+
+`#[instrument]`会为函数调用创建 Span，并在 Future 每次被轮询时进入 Span，在 Future 暂停时退出 Span。因此，运行时转去轮询`other_task`时，`handle_task`的 Span 不会污染它。
 
 ## 8、instrument属性
 
@@ -636,60 +693,93 @@ INFO handle_request{request_id=42}: request completed
 
 ```rust
 #[tracing::instrument]
-async fn find_user(user_id: u64) -> Result<User, AppError> {
-    tracing::debug!("querying database");
+async fn run_task(task_id: u64) {
+    tracing::info!("task started");
 
-    database_find_user(user_id).await
+    tokio::task::yield_now().await;
+
+    tracing::info!("task completed");
 }
 ```
 
-对于大型对象、敏感信息或没有实现`Debug`的参数，使用`skip`：
+调用`run_task(10).await`后，输出的关键部分类似：
+
+```text
+INFO run_task{task_id=10}: task started
+INFO run_task{task_id=10}: task completed
+```
+
+默认 Span 名是函数名`run_task`，参数`task_id`被自动记录为字段。
+
+如果某个参数内容较大、不希望出现在日志中，或者没有实现`Debug`，可以使用`skip`：
 
 ```rust
-#[tracing::instrument(skip(db, password))]
-async fn login(
-    db: &Database,
-    user_id: u64,
-    password: &str,
-) -> Result<User, AppError> {
-    authenticate(db, user_id, password).await
+#[tracing::instrument(skip(values))]
+async fn sum_values(task_id: u64, values: Vec<u64>) -> u64 {
+    let sum = values.iter().sum();
+
+    tracing::info!(sum, "calculation completed");
+
+    sum
 }
 ```
 
-常用配置：
+调用：
+
+```rust
+sum_values(10, vec![1, 2, 3]).await;
+```
+
+输出的关键部分类似：
+
+```text
+INFO sum_values{task_id=10}: calculation completed sum=6
+```
+
+`values`没有出现在 Span 中，但普通参数`task_id`仍会被自动记录。
+
+还可以通过`name`、`level`、`fields`和`err`定制 Span：
 
 ```rust
 #[tracing::instrument(
-    name = "create_order",
+    name = "double_number",
     level = "info",
-    skip(db, request),
     fields(
-        user_id = request.user_id,
-        order_id = tracing::field::Empty,
+        result = tracing::field::Empty,
     ),
     err
 )]
-async fn create_order(
-    db: &Database,
-    request: CreateOrder,
-) -> Result<Order, AppError> {
-    let order = db.insert_order(request).await?;
+async fn double_number(number: i32) -> Result<i32, &'static str> {
+    if number < 0 {
+        return Err("number cannot be negative");
+    }
 
-    tracing::Span::current().record("order_id", order.id);
+    let result = number * 2;
+    tracing::Span::current().record("result", result);
 
-    Ok(order)
+    Ok(result)
 }
 ```
 
-当函数成功返回时，`order_id`会在数据库写入完成后补充到当前 Span。返回`Err`时，`err`会自动生成一条错误事件。
+调用：
 
-概念上的输出可能类似：
-
-```text
-ERROR create_order{user_id=42}: error=database unavailable
+```rust
+double_number(5).await.unwrap();
 ```
 
-因为数据库写入失败时还没有获得订单 ID，所以`order_id`仍为空，不会显示具体值。具体格式由 Subscriber 决定。使用`err`后，上层通常不应再无差别地记录一次同样的错误，否则容易产生重复日志。
+成功时，`result`最初是空字段，计算完成后通过`Span::current().record(...)`补充为`10`。
+
+如果调用：
+
+```rust
+let _ = double_number(-1).await;
+```
+
+`err`会在函数返回`Err`时自动记录错误，关键输出类似：
+
+```text
+ERROR double_number{number=-1}: error=number cannot be negative
+```
 
 其中：
 
@@ -700,7 +790,7 @@ ERROR create_order{user_id=42}: error=database unavailable
 - `err`：返回`Err`时记录错误
 - `ret`：记录返回值，通常只适合小而安全的值
 
-敏感信息、认证令牌、密码、完整请求体不应该写入日志。
+使用`err`后，上层通常不应再无差别地记录一次相同错误，否则容易产生重复日志。敏感信息、认证令牌和密码等参数则应该使用`skip`排除。
 
 ## 9、为Future附加Span
 

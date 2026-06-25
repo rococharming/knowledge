@@ -6,7 +6,7 @@
       {
         "id": "4a589bf88a70e459",
         "type": "tabs",
-        "dimension": 73.52380952380952,
+        "dimension": 37.46715712033631,
         "children": [
           {
             "id": "cdddc1ff4f0bcb97",
@@ -27,7 +27,7 @@
       {
         "id": "45383388fac70358",
         "type": "tabs",
-        "dimension": 26.476190476190474,
+        "dimension": 62.53284287966368,
         "children": [
           {
             "id": "bc80bdafc9554128",
@@ -221,10 +221,12 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "cdddc1ff4f0bcb97",
+  "active": "bc80bdafc9554128",
   "lastOpenFiles": [
-    "Rust/notes/Rust进阶/异步编程/rust-logging-guide.md",
     "Rust/notes/Cookbook/2、Rust日志系统.md",
+    "Rust/notes/Rust进阶/异步编程/rust-logging-guide.md",
+    "assets/Pasted image 20260625131420.png",
+    "assets/Pasted image 20260625130021.png",
     "assets/Pasted image 20260625020433.png",
     "assets/Pasted image 20260625002111.png",
     "assets/Pasted image 20260625001329.png",
@@ -244,9 +246,7 @@
     "outputs/llm-wiki-final-editable-v4.pptx",
     "outputs/llm-wiki-final-preview-v4/contact-sheet.webp",
     "outputs/llm-wiki-final-preview-v4/slide-17.layout.json",
-    "outputs/llm-wiki-final-preview-v4/slide-17.png",
     "outputs/llm-wiki-final-preview-v4/slide-16.layout.json",
-    "outputs/llm-wiki-final-preview-v4/slide-16.png",
     "outputs/llm-wiki-final-preview-v4/slide-15.layout.json",
     "outputs/llm-wiki-final-preview-v4/slide-14.layout.json",
     "outputs/llm-wiki-final-preview-v4/slide-13.layout.json",
