@@ -1,10 +1,10 @@
 
 # 一、async def 
 
-`async fn`用来定义异步函数。异步函数被调用时，不会立即执行函数体，而是返回一个协程对象。
+`async def`用来定义异步函数。异步函数被调用时，不会立即执行函数体，而是返回一个协程对象。
 
 ```python
-async fn func():
+async def func():
 	...
 ```
 

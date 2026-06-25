@@ -402,7 +402,7 @@ fn main() {
 
 `.with_env_filter`则用于把前面创建的`EnvFilter`安装到 Subscriber 上。
 
-`.init`构建 Subscriber，并注册为全局默认Subscriber。
+`.init()`构建 Subscriber，并注册为全局默认Subscriber。
 
 `fmt()`返回的是 builder，因此可以通过链式方法继续配置时间、target、线程 ID、JSON 格式和输出位置。
 

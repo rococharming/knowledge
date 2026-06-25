@@ -84,7 +84,7 @@ greeting[0] = 'H' # TypeError: 'str' object does not support item assignment
 
 ## 1、判断字符或子串是否存在
 
-有时，你可能需要查看一个字符串中是否包含一个或多个字符，Python 提供了`in`操作符，它返回一个布尔值，判断字符或子串是否存在某个字符串中。
+有时，你可能需要查看一个字符串中是否包含一个或多个字符，Python 提供了`in`操作符，它返回一个布尔值，判断字符或子串是否存在于某个字符串中。
 
 ```python
 my_str = "Hello world"  
@@ -527,7 +527,7 @@ print(my_bytes[0])
 
 ### （4）\x转义写法
 
- `b'...'`字面量必须是 ASCII 字符，而不是能是其他非 ASCII 字符：
+ `b'...'`字面量必须是 ASCII 字符，而不是其他非 ASCII 字符：
  
 ```python
 print(b"ABC")  # 正确
@@ -915,7 +915,7 @@ print(f"The area of a circle with radius {r} is {s:.2f}")
 
 # 六、字符串切片
 
-字符串切片允许你提取字符串的一部分仅处理其中的特定部分。
+字符串切片允许你提取字符串的一部分，仅处理其中的特定部分。
 
 基本语法：
 
@@ -969,7 +969,7 @@ print(my_str[0:11:2])  # Hlowrd
 
 含义：切片从索引 `0` 开始，在 `11` 之前停止，并提取每隔一个的字符。
 
-一个比较有用技巧是通过将 step 设置为 `-1`，并将 `start` 和 `stop` 留空来反转一个字符串：
+一个比较有用的技巧是通过将 step 设置为 `-1`，并将 `start` 和 `stop` 留空来反转一个字符串：
 
 ```python
 my_str = 'Hello world'

@@ -173,18 +173,18 @@ print(response.content[0].text)
 
 ## 2、Message对象字段
 
-|字段|示例值|说明|
-|---|---|---|
-|`id`|`'msg_uFjxw6Qx263pF9FIsITrpaKb'`|本次响应对象的唯一标识，通常用于日志、排查问题或追踪请求|
-|`container`|`None`|容器相关信息。普通文本对话中通常为 `None`；如果服务商支持代码执行、文件处理等容器能力，可能会出现相关信息|
-|`content`|`[TextBlock(...)]`|模型生成的内容块列表。普通文本回复通常在第一个 `TextBlock` 中|
-|`model`|`'kimi-for-coding'`|实际生成响应的模型名称|
-|`role`|`'assistant'`|当前响应的角色。模型返回的消息通常是 `assistant`|
-|`stop_details`|`None`|停止生成的扩展细节。不同服务商兼容实现可能不同，普通请求中通常为 `None`|
-|`stop_reason`|`'end_turn'`|模型停止生成的原因|
-|`stop_sequence`|`None`|如果因为自定义停止序列而停止，这里会记录触发停止的字符串；否则通常为 `None`|
-|`type`|`'message'`|返回对象类型，Messages API 的响应通常是 `message`|
-|`usage`|`Usage(...)`|本次请求的 token 使用情况，包括输入、输出、缓存等统计|
+| 字段              | 示例值                              | 说明                                                       |
+| --------------- | -------------------------------- | -------------------------------------------------------- |
+| `id`            | `'msg_uFjxw6Qx263pF9FIsITrpaKb'` | 本次响应对象的唯一标识，通常用于日志、排查问题或追踪请求                             |
+| `container`     | `None`                           | 容器相关信息。普通文本对话中通常为 `None`；如果服务商支持代码执行、文件处理等容器能力，可能会出现相关信息 |
+| `content`       | `[TextBlock(...)]`               | 模型生成的内容块列表。普通文本回复通常在第一个 `TextBlock` 中                    |
+| `model`         | `'kimi-for-coding'`              | 实际生成响应的模型名称                                              |
+| `role`          | `'assistant'`                    | 当前响应的角色。模型返回的消息通常是 `assistant`                           |
+| `stop_details`  | `None`                           | 停止生成的扩展细节。不同服务商兼容实现可能不同，普通请求中通常为 `None`                  |
+| `stop_reason`   | `'end_turn'`                     | 模型停止生成的原因                                                |
+| `stop_sequence` | `None`                           | 如果因为自定义停止序列而停止，这里会记录触发停止的字符串；否则通常为 `None`                |
+| `type`          | `'message'`                      | 返回对象类型，Messages API 的响应通常是 `message`                     |
+| `usage`         | `Usage(...)`                     | 本次请求的 token 使用情况，包括输入、输出、缓存等统计                           |
 
 这里最常用的字段是`content`、`stop_reason`和`usage`。
 
