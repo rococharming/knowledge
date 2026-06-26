@@ -83,6 +83,7 @@ cargo test
 - [[Cargo]] — Cargo 工具实体概览
 - [[Edition]] — 语言规则版本与迁移
 - [[Package与Crate]] — 编译单元与项目结构
+- [[Cargo.toml 表语法]] — `[ ]` 表与 `[[ ]]` 数组表的区别
 - [[rustc]] — Rust 编译器
 
 ## 来源

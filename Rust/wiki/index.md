@@ -88,6 +88,7 @@ date: 2026-05-21
 - [[相等性比较]] — PartialEq/Eq 的区别与实现，部分相等与完全相等的语义承诺
 - [[有序性比较]] — PartialOrd/Ord 的层次关系、区间类型示例与 Reverse 反转排序
 - [[索引运算符]] — Index/IndexMut 的定义、HashMap 索引限制与 entry API 替代方案
+- [[Cargo.toml 表语法]] — `Cargo.toml` 中 `[ ]` 表与 `[[ ]]` 数组表的区别与用途
 
 ## comparisons
 

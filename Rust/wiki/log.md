@@ -144,3 +144,12 @@
 - 基于: Rust Wiki 暂无 tracing 专题页面；结合当前异步日志笔记与 tracing 官方文档核对
 - 结果: 仅查询
 - 类型: query
+
+## [2026-06-26] Query | Cargo.toml 中 [ ] 与 [[ ]] 语法的区别
+
+- 范围: 单领域
+- 基于: `[[Cargo构建配置]]`, `[[Package与Crate]]`（Wiki 暂无 TOML 表语法专题页面，补充 TOML 通用规则）
+- 结果: 查询并归档
+- 类型: query
+- 归档分类: concepts
+- 创建: `[[Cargo.toml 表语法]]`

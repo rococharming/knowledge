@@ -1,0 +1,651 @@
+# 一、Git管理的文件类型
+
+Git 是一个分布式版本控制系统，它既可以管理**文本文件**，也可以管理**二进制文件**。
+
+不过，Git 最擅长管理的还是文本文件，例如：
+
+|文件类型|示例|
+|---|---|
+|纯文本|`.txt`、`.md`|
+|网页相关|`.html`、`.css`、`.js`、`.json`|
+|程序源码|`.c`、`.cpp`、`.rs`、`.java`、`.py`|
+|配置文件|`.xml`、`.toml`、`.yaml`、`.ini`|
+对于文本文件，Git 可以非常精细地比较差异（**diff**）：
+
+- 哪一行被修改了
+- 哪一行被删除了
+- 新增了哪些内容
+
+因此，在查看历史、对比改动、解决冲突时，文本文件非常友好。
+
+二进制文件也能纳入 Git 管理，但 Git 无法直接展示具体修改了哪一部分。对于二进制文件，Git最多只能判断：
+
+- 文件是否发生变化
+- 文件大小是否变化
+- 文件内容校验值是否变化
+
+常见二进制文件包括：
+
+| 文件类型  | 示例                          |
+| ----- | --------------------------- |
+| 图片    | `.png`、`.jpg`、`.gif`、`.svg` |
+| 音视频   | `.mp3`、`.mp4`、`.wav`        |
+| 文档    | `.pdf`、`.docx`、`.xlsx`      |
+| 可执行文件 | `.exe`、无后缀的可执行程序            |
+| 库     | `.a`、`.lib`、`.so`、`.dll`    |
+
+> 如果项目中有大量大文件（静态库、视频、设计稿等），通常会考虑使用**Git LFS**（Large File Storage）管理
+
+# 二、本地操作命令主线
+
+Git 本地操作的基本闭环是：
+
+```text
+查看状态
+  │
+  ▼
+加入暂存区
+  │
+  ▼
+提交到本地仓库
+  │
+  ▼
+查看历史
+```
+
+对应命令是：
+
+```shell
+git status
+  │
+  ▼
+git add
+  │
+  ▼
+git commit
+  │
+  ▼
+git log
+```
+
+几个常用命令的作用如下：
+
+| 命令             | 作用             |
+| -------------- | -------------- |
+| `git status`   | 查看工作区和暂存区状态    |
+| `git add`      | 把工作区变更加入暂存区    |
+| `git commit`   | 把暂存区内容提交到本地仓库  |
+| `git ls-files` | 查看 Git 当前跟踪的文件 |
+| `git log`      | 查看提交历史         |
+# 三、使用 git status 查看状态
+
+## 1、普通状态查看
+
+`git status`用于查看当前仓库的状态。
+
+```shell
+git status
+```
+
+它主要展示：
+
+- 当前分支
+- 工作区变化
+- 暂存区变化
+- 未追踪文件
+- 操作提示
+
+例如，新建一个文件：
+
+```shell
+echo "hello" > b.txt
+```
+
+查看状态：
+
+```
+git status
+```
+
+可以看到：
+
+```shell
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        b.txt
+```
+
+这表示 `b.txt` 还没有被 Git 跟踪。
+
+加入暂存区：
+
+```shell
+git add b.txt
+```
+
+再次查看状态：
+
+```shell
+git status
+```
+
+可以看到：
+
+```shell
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   b.txt
+```
+
+这表示 `b.txt` 已经进入暂存区，等待提交。
+
+提交：
+
+```shell
+git commit -m "add b.txt"
+```
+
+再次查看状态：
+
+```shell
+git status
+```
+
+如果没有新的修改，会看到：
+
+```shell
+nothing to commit, working tree clean
+```
+
+这表示工作区和暂存区都是干净的。
+
+
+## 2、简洁状态查看
+
+`git status -s`可以用简洁模式查看状态：
+
+```shell
+git status -s
+```
+
+输出格式通常是：
+
+```shell
+XY 文件名
+```
+
+其中：
+
+|位置|含义|
+|---|---|
+|`X`|暂存区相对于本地仓库的状态|
+|`Y`|工作区相对于暂存区的状态|
+
+常见状态如下：
+
+| 输出         | 含义                            |
+| ---------- | ----------------------------- |
+| `?? b.txt` | `b.txt` 是未跟踪文件                |
+| `A  a.txt` | `b.txt` 是新文件，已经加入暂存区          |
+| ` M a.txt` | `a.txt` 已被跟踪，工作区有修改，但还没有暂存    |
+| `M  a.txt` | `a.txt` 的修改已经加入暂存区            |
+| `MM a.txt` | `a.txt` 有一部分修改已暂存，暂存后工作区又继续修改 |
+
+例如：
+
+```shell
+echo "hello" > b.txt
+git status -s
+```
+
+可能看到：
+
+```shell
+?? b.txt
+```
+
+加入暂存区：
+
+```shell
+git add c.txt
+git status -s
+```
+
+可能看到：
+
+```shell
+A  c.txt
+```
+
+继续修改：
+
+```
+echo "new line" >> c.txt
+git status -s
+```
+
+可能看到：
+
+```
+AM c.txt
+```
+
+这里的 `AM` 表示：`c.txt` 是新文件，已经有一版内容进入暂存区，但工作区中又出现了新的修改。
+
+# 四、使用 git add 加入暂存区
+
+## 1、暂存指定文件
+
+`git add`用于把工作区的变更加入暂存区。
+
+基本形式：
+
+```shell
+git add <filename>
+```
+
+例如：
+
+```shell
+git add a.txt
+```
+
+执行后，`a.txt` 当前内容会进入暂存区，等待下一次提交。
+
+需要注意的是，`git add` 加入暂存区的是文件当前内容的快照。
+
+如果执行：
+
+```shell
+git add a.txt
+```
+
+之后又继续修改 `a.txt`，后续新修改不会自动进入暂存区，需要再次执行：
+
+```shell
+git add a.txt
+```
+
+`git add` 可以重复执行，每次都会把文件当前内容重新写入暂存区。
+
+## 2、暂存当前目录范围内的变更
+
+常用写法是：
+
+```shell
+git add .
+```
+
+`.` 表示当前目录。
+
+它的作用范围是：当前目录以及子目录中的变更。
+
+如果在仓库根目录执行：
+
+```shell
+git add .
+```
+
+通常会处理整个仓库中的变更。
+
+如果在某个子目录中执行：
+
+```shell
+git add .
+```
+
+通常只处理这个子目录及其子目录范围内的变更。
+
+
+## 3、git add 处理的变更类型
+
+`git add`不只用于添加新文件，也可以暂存多种工作区变更：
+
+| 变更类型 | 示例                             |
+| ---- | ------------------------------ |
+| 新增文件 | 新建 `a.txt` 后执行 `git add a.txt` |
+| 修改文件 | 修改已跟踪文件后执行 `git add a.txt`     |
+| 删除文件 | 删除已跟踪文件后执行 `git add a.txt`     |
+
+也就是说，`git add` 的核心作用不是“添加文件”，而是把工作区的变更加入暂存区。
+
+# 五、使用 git commit 提交变更
+
+## 1、创建一次提交
+
+`git commit`用于把暂存区中的内容提交到本地仓库，形成一次新的提交记录。
+
+常见形式：
+
+```shell
+git commit -m "commit message"
+```
+
+例如：
+
+```shell
+git commit -m "add a.txt"
+```
+
+`-m` 用于直接在命令行中写提交说明。
+
+提交说明会保存在仓库历史中，用来描述本地提交做了什么。提交信息应尽量简洁、明确，方便后续查看历史。
+
+## 2、提交前检查暂存区
+
+`git commit`提交的是暂存区内容。
+
+如果暂存区没有内容，执行`git commit`不会创建新的提交。
+
+提交前通常先执行：
+
+```shell
+git status
+```
+
+或者：
+
+```shell
+git diff --staged
+```
+
+其中：
+
+| 命令                  | 作用                  |
+| ------------------- | ------------------- |
+| `git status`        | 查看哪些内容已经进入暂存区       |
+| `git diff --staged` | 查看暂存区相对于最近一次提交的具体差异 |
+这样可以避免把不该提交的内容提交进去，也可以避免漏提交某些修改。
+
+## 3、使用编辑器编写提交信息
+
+如果不使用`-m`，直接执行：
+
+```shell
+git commit
+```
+
+Git 会打开一个编辑器，让你输入提交说明。
+
+默认打开哪个编辑器，取决于Git配置和当前系统环境。常见可能是`vim`、`nano`、`VS Code`等。
+
+如果希望 Git 默认用 VS Code 编辑提交信息，可以配置：
+
+```shell
+git config --global core.editor "code --wait"
+```
+
+之后执行：
+
+```shell
+git commit
+```
+
+Git 会打开 VS Code。写完提交信息后，保存并关闭编辑器窗口，Git 就会继续完成提交。
+
+这里要求终端中可以正常使用 `code` 命令。
+
+
+## 4、多行提交信息
+
+实际工程中，多行提交信息很常见。
+
+可以通过多个 `-m` 编写提交标题和正文：
+
+```shell
+git commit -m "add user login page" -m "Create login form and basic validation.
+  
+This prepares the frontend for the authentication flow."
+```
+
+实际提交信息类似：
+
+```text
+add user login page
+
+Create login form and basic validation.
+
+This prepares the frontend for the authentication flow.
+```
+
+两个`-m`之间会自动添加空行。
+
+一般结构是：
+
+```text
+标题
+
+正文说明
+```
+
+其中：
+
+| 部分    | 作用                  |
+| ----- | ------------------- |
+| 第一行   | 简短说明本次提交做了什么        |
+| 空行后正文 | 补充说明为什么这样改、改了哪些关键内容 |
+
+如果提交说明比较长，更推荐直接使用编辑器编写，格式更清晰。
+
+
+# 六、使用 git ls-files 查看已跟踪文件
+
+## 1、查看当前被 Git 跟踪的文件
+
+`git ls-files`用于列出 Git 当前已经跟踪的文件。
+
+```shell
+git ls-files
+```
+
+它通常包括：
+
+|类型|说明|
+|---|---|
+|已经提交过的文件|已经存在于版本历史中|
+|已经加入暂存区的文件|准备进入下一次提交|
+例如：
+
+```
+git ls-files
+```
+
+可能输出：
+
+```text
+a.txt
+b.txt
+src/main.rs
+```
+
+这表示这些文件已经被 Git 纳入管理。
+
+需要注意的是，`git ls-files` 默认主要展示 Git 已跟踪的文件，不等同于 `ls`。`ls` 查看的是工作区目录内容，`git ls-files` 查看的是 Git 当前索引中记录的文件。
+
+
+## 2、查看暂存区索引信息
+
+```shell
+git ls-files --stage
+```
+
+输出会包含更底层的索引信息，例如：
+
+```text
+100644 e69de29bb2d1d6434b8b29ae775ad8c2e48c5391 0	a.txt
+```
+
+其中通常包括：
+
+| 字段   | 说明              |
+| ---- | --------------- |
+| 文件模式 | 例如普通文件 `100644` |
+| 对象哈希 | Git 对应文件内容对象的哈希 |
+| 阶段编号 | 普通状态通常是 `0`     |
+| 文件名  | 文件路径            |
+这个命令偏底层，用来观察暂存区索引信息，日常开发不一定常用。
+
+100644是 Git 记录的文件模式，表示这个文件的类型和基本权限。
+
+- 100：普通文件类型
+- 644：普通文件权限
+
+在 Git 中常见的文件模式有：
+
+|模式|含义|
+|---|---|
+|`100644`|普通文件，不可执行|
+|`100755`|普通文件，可执行|
+|`120000`|符号链接|
+|`160000`|Git 子模块|
+## 3、查看未跟踪且未被忽略的文件
+
+可以使用：
+
+```shell
+git ls-files --others --exclude-standard
+```
+
+它会列出：未被 Git 跟踪 且没有被标准忽略规则忽略的文件。
+
+这里的标准忽略规则包括 `.gitignore`、`.git/info/exclude` 等。
+
+例如，新建一个文件：
+
+```shell
+echo "hello" > d.txt
+```
+
+查看未跟踪文件：
+
+```shell
+git ls-files --others --exclude-standard
+```
+
+可能输出：
+
+```text
+d.txt
+```
+
+这说明 `d.txt` 还没有被 Git 管理，并且没有被忽略规则排除。
+
+
+# 七、使用 git log 查看提交历史
+
+## 1、查看完整提交历史
+
+`git log`用于查看当前仓库的提交历史：
+
+```shell
+git log
+```
+
+执行后，可能看到类似信息：
+
+```shell
+commit ce55c4bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Author: Zhang San <zhangsan@example.com>
+Date:   Mon Apr 20 21:xx:xx 2026 +0800
+
+    add a.txt
+```
+
+其中：
+
+| 内容       | 说明                         |
+| -------- | -------------------------- |
+| `commit` | 提交哈希，用来标识一次提交              |
+| `Author` | 提交作者和邮箱，来自 `git config` 配置 |
+| `Date`   | 提交时间                       |
+| 提交说明     | `git commit -m` 中写入的内容     |
+
+提交哈希通常很长，但日常使用时一般只需要前几位。例如：
+
+```text
+ce55c4b
+```
+
+只要这个短哈希在当前仓库中能唯一标识某次提交，Git 就可以识别它。
+
+`git log` 默认可能进入分页显示。如果提交记录较多，可以按 `q` 退出。
+
+## 2、简洁查看提交历史
+
+实际使用中，最常用的是：
+
+```shell
+git log --oneline
+```
+
+它会把每次提交压缩成一行显示：
+
+```shell
+ce55c4b add b.txt
+a1b2c3d add a.txt
+```
+
+这种方式适合快速查看提交历史。
+
+## 3、查看提交图
+
+查看分支结构时，可以使用：
+
+```shell
+git log --oneline --graph
+```
+
+`--graph` 会用字符图显示提交之间的关系。
+
+如果希望同时显示分支名、标签等信息，可以使用：
+
+```shell
+git log --oneline --graph --decorate
+```
+
+如果希望查看所有分支的提交历史，可以加上 `--all`：
+
+```shell
+git log --oneline --graph --decorate --all
+```
+
+这些选项组合后，常用于观察分支合并关系。
+
+
+## 4、限制显示条数
+
+如果提交记录很多，可以只查看最近几条：
+
+```shell
+git log --oneline -n 5
+```
+
+也可以写成：
+
+```shell
+git log --oneline -5
+```
+
+两者都表示只查看最近 5 条提交。
+
+
+## 5、查看某个文件的提交历史
+
+如果只想查看某个文件相关的提交，可以执行：
+
+```shell
+git log --oneline -- a.txt
+```
+
+这里的 `--` 用来分隔 Git 参数和文件路径。
+
+当文件名可能和分支名、标签名、参数名混淆时，`--` 可以明确告诉 Git：后面的内容是路径。
+
+
+# 八、本地操作检查习惯
+
+本地操作中，建议养成一个固定检查习惯：
+
+- 修改前后看 status
+- 提交前看 diff --staged
+- 
