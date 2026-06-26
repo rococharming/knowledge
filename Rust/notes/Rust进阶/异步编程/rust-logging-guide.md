@@ -756,6 +756,7 @@ async fn double_number(number: i32) -> Result<i32, &'static str> {
 
     let result = number * 2;
     tracing::Span::current().record("result", result);
+    tracing::info!("calculation completed");
 
     Ok(result)
 }
@@ -767,7 +768,21 @@ async fn double_number(number: i32) -> Result<i32, &'static str> {
 double_number(5).await.unwrap();
 ```
 
-成功时，`result`最初是空字段，计算完成后通过`Span::current().record(...)`补充为`10`。
+输出的关键部分类似：
+
+```text
+INFO double_number{number=5 result=10}: calculation completed
+```
+
+`result`在创建 Span 时还没有值，因此先用`tracing::field::Empty`声明这个字段。计算完成后，`Span::current().record("result", result)`把字段更新为`10`，随后产生的`info!`事件就会携带更新后的 Span 字段。
+
+需要注意，`record(...)`只负责更新 Span 字段，本身不会创建日志 Event。默认的格式化 Subscriber 通常也不会仅因为 Span 字段发生变化就打印一行日志。如果没有后面的：
+
+```rust
+tracing::info!("calculation completed");
+```
+
+成功路径可能不会显示任何日志。
 
 如果调用：
 
@@ -978,6 +993,96 @@ tracing::info!(user_id = 42, "user logged in");
 ```
 
 实际 JSON 还可能包含时间戳、target和 Span 信息。`.flatten_event(true)`会把`message`和`user_id`等 Event 字段提升到 JSON 顶层；如果不启用，它们通常位于`fields`对象中。`.with_current_span(true)`和`.with_span_list(true)`则会附加当前 Span及完整 Span 路径。
+
+### current span和span list
+
+这两个配置都用于把 Event 所在的 Span 上下文写入 JSON，但记录范围不同：
+
+| 配置 | JSON 字段 | 记录内容 |
+| --- | --- | --- |
+| `.with_current_span(true)` | `span` | 当前最内层 Span |
+| `.with_span_list(true)` | `spans` | 当前进入的全部 Span，按最外层到最内层排列 |
+
+例如，下面创建了两个嵌套 Span：
+
+```rust
+fn main() {
+    tracing_subscriber::fmt()
+        .json()
+        .flatten_event(true)
+        .with_current_span(true)
+        .with_span_list(true)
+        .init();
+
+    let task_span = tracing::info_span!("task", task_id = 10);
+    let _task_guard = task_span.enter();
+
+    let step_span = tracing::info_span!("step", step = 1);
+    let _step_guard = step_span.enter();
+
+    tracing::info!(value = 42, "calculation completed");
+}
+```
+
+Event 产生时，Span 的嵌套关系是：
+
+```text
+task{task_id=10}
+└── step{step=1}
+    └── calculation completed
+```
+
+JSON 的关键结构大致如下：
+
+```json
+{
+  "level": "INFO",
+  "message": "calculation completed",
+  "value": 42,
+  "span": {
+    "name": "step",
+    "step": 1
+  },
+  "spans": [
+    {
+      "name": "task",
+      "task_id": 10
+    },
+    {
+      "name": "step",
+      "step": 1
+    }
+  ]
+}
+```
+
+其中：
+
+- `span`只保存当前最内层的`step` Span
+- `spans`保存完整路径：先是外层`task`，再是内层`step`
+- Event 自身的`message`和`value`不属于 Span，它们仍是 Event 字段
+
+如果配置：
+
+```rust
+.with_current_span(false)
+.with_span_list(true)
+```
+
+JSON 中不会出现`span`，但仍会通过`spans`保留完整 Span 路径。
+
+如果配置：
+
+```rust
+.with_current_span(true)
+.with_span_list(false)
+```
+
+JSON 中只会保留当前最内层的`span`，无法看到它外面的`task` Span。
+
+如果 Event 不在任何 Span 中，这两个字段通常不会出现。
+
+> `tracing-subscriber`的 JSON formatter 默认就会记录 current span 和 span list，因此显式写`.with_current_span(true)`和`.with_span_list(true)`主要是让配置意图更加清楚。传入`false`才是关闭对应信息。
 
 容器环境通常直接把 JSON 日志写到`stdout`，再由日志采集系统负责持久化、检索和归档。应用程序不一定需要自己写日志文件。
 

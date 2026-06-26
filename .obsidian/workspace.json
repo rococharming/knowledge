@@ -4,12 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "4a589bf88a70e459",
+        "id": "ad9fdbf54118f4bc",
         "type": "tabs",
-        "dimension": 37.46715712033631,
         "children": [
           {
-            "id": "cdddc1ff4f0bcb97",
+            "id": "ce9a86c44cdbd194",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -20,27 +19,6 @@
               },
               "icon": "lucide-file",
               "title": "2、Rust日志系统"
-            }
-          }
-        ]
-      },
-      {
-        "id": "45383388fac70358",
-        "type": "tabs",
-        "dimension": 62.53284287966368,
-        "children": [
-          {
-            "id": "bc80bdafc9554128",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Rust/notes/Rust进阶/异步编程/rust-logging-guide.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "rust-logging-guide"
             }
           }
         ]
@@ -100,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 261.5086555480957,
-    "collapsed": true
+    "width": 261.5086555480957
   },
   "right": {
     "id": "94be849039c638f6",
@@ -203,8 +180,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 276.5,
-    "collapsed": true
+    "width": 276.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -221,10 +197,12 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "bc80bdafc9554128",
+  "active": "ce9a86c44cdbd194",
   "lastOpenFiles": [
-    "Rust/notes/Cookbook/2、Rust日志系统.md",
     "Rust/notes/Rust进阶/异步编程/rust-logging-guide.md",
+    "Rust/notes/Cookbook/2、Rust日志系统.md",
+    "assets/Pasted image 20260626012238.png",
+    "Python/wiki/log.md",
     "assets/Pasted image 20260625131420.png",
     "assets/Pasted image 20260625130021.png",
     "assets/Pasted image 20260625020433.png",
@@ -244,7 +222,6 @@
     "outputs/llm-wiki-final-speaker-script-v4.md",
     "outputs/llm-wiki-final-editable-v4.pptx.inspect.ndjson",
     "outputs/llm-wiki-final-editable-v4.pptx",
-    "outputs/llm-wiki-final-preview-v4/contact-sheet.webp",
     "outputs/llm-wiki-final-preview-v4/slide-17.layout.json",
     "outputs/llm-wiki-final-preview-v4/slide-16.layout.json",
     "outputs/llm-wiki-final-preview-v4/slide-15.layout.json",
@@ -266,7 +243,6 @@
     "Clippings/Obsidian 学习交流.md",
     "Clippings/最近爆火的 Harness Engineering 到底是个啥？一期讲透！.md",
     "Clippings/最近爆火的 Harness Engineering 到底是个啥？一期讲透！ 1.md",
-    "Clippings/零度解说 – GPT-5.6 被泄露！Claude最强对手来了，AI游戏、3D设计全面实测！这次OpenAI 真的发力了！ 零度解说.md",
-    "AI/raw/others/Obsidian Template零基础教程，从零搭建你的首个代码模板.md"
+    "Clippings/零度解说 – GPT-5.6 被泄露！Claude最强对手来了，AI游戏、3D设计全面实测！这次OpenAI 真的发力了！ 零度解说.md"
   ]
 }
