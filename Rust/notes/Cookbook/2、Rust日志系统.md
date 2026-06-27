@@ -17,7 +17,7 @@
 
 它们都采用“记录接口”+“输出实现”的分离设计。
 
-- 库通常只记录日志，不负责初始化，因此之需要依赖`log`或`tracing`。
+- 库通常只记录日志，不负责初始化，因此只需要依赖`log`或`tracing`。
 - 最终二进制程序负责选择输出方式并完成初始化
 
 ## 2、日志级别
@@ -179,8 +179,8 @@ RUST_LOG=info, my_app::network=debug cargo run
 
 这表示：
 
-- 默认只输出`WARN`及以上
-- `myapp:network`模块输出`DEBUG`及以上
+- 默认只输出`INFO`及以上
+- `my_app::network`模块输出`DEBUG`及以上
 
 如果希望环境变量未设置时使用默认级别，可以使用`Builder`：
 
@@ -286,7 +286,7 @@ RUST_LOG=warn,net=info cargo run
 对于普通日志，模块路径已经足够。只有在需要按业务类别过滤，而模块边界又不能表达这种分类时，才自定义`target`。
 
 
-## 6、log与env-logger的局限
+## 6、log与env_logger的局限
 
 传统日志记录通常是一条独立文本：
 
@@ -309,14 +309,14 @@ log::info!("request {} completed with status {}", request_id, status);
 | -------------------- | ------------------------- |
 | `tracing`            | 提供 Event、Span、日志宏和插桩接口    |
 | `tracing-subscriber` | 收集、过滤、格式化并输出 Event 与 Span |
-如果只依赖`tracing`并调用`info!`等宏，却没有安装 Subscriber，产生的 Event 和 Span 就没有接收者，就看到任何输出。
+如果只依赖`tracing`并调用`info!`等宏，却没有安装 Subscriber，产生的 Event 和 Span 就没有接收者，也就看不到任何输出。
 
 ## 2、Event、Span和Subscriber
 
 `tracing`有三个核心概念：
 
 - **Event**：某个时间点发生的事件，类似一条日志
-- **Span**：一条有开始和结束的执行上下文
+- **Span**：一个有开始和结束的执行上下文
 - **Subscriber**：收集、过滤、格式化输出 Event 和 Span
 
 普通日志描述的是某个瞬间发生的事情：
@@ -333,12 +333,12 @@ error!("数据库连接失败");
 例如：
 
 ```rust
-let span = tracing::info_span!("handle_request", request_id = 42)'
+let span = tracing::info_span!("handle_request", request_id = 42);
 let _guard = span.enter();  // 进入上下文
 
 tracing::info!("开始处理请求");
 do_something();
-tracing::info!("请求处理完成")；
+tracing::info!("请求处理完成");
 ```
 
 这里的`handle_request`就是一个`Span`，可理解为：
@@ -423,7 +423,7 @@ RUST_LOG=debug cargo run
 
 ## 4、结构化日志
 
-`tracing`的宏不仅可以能记录消息，还能独立记录字段：
+`tracing`的宏不仅可以记录消息，还能独立记录字段：
 
 ```rust
 use tracing_subscriber::EnvFilter;  
@@ -544,7 +544,7 @@ cargo run
 
 两条 Event 都包含`http_request`及其`request_id`字段，因为它们发生在同一个 Span 中。这正是 Span 相比重复手写`request_id`的价值。
 
-## 7、异步代码不能跨await持有EnterGuard
+## 7、异步代码不能跨 await 持有 EnterGuard
 
 下面通过一个完整示例观察这个问题：
 
@@ -644,9 +644,9 @@ async fn main() {
 2026-06-25T15:22:31.676296Z  INFO handle_task{task_id=10}: hello_cargo: second step
 ```
 
-`#[instrument]`会为函数调用创建 Span，当 Future 被轮询时进入 Span，当 Future 暂停时退出 Span。因此，运行时转去轮询`other_task`时，`handle_task`的 Span 不会污染他。
+`#[instrument]`会为函数调用创建 Span，当 Future 被轮询时进入 Span，当 Future 暂停时退出 Span。因此，运行时转去轮询`other_task`时，`handle_task`的 Span 不会污染它。
 
-## 8、instrument属性
+## 8、instrument 属性
 
 默认情况下，`#[instrument]`会：
 
@@ -786,7 +786,7 @@ Err("number must be positive")
 使用`err`后，上层通常不应再无差别地记录一次相同错误，否则容易产生重复日志。敏感信息、认证令牌和密码等参数则应该使用`skip`排除。
 
 
-## 9、为Future附加Span
+## 9、为 Future 附加 Span
 
 除了使用`#[instrument]`，还可以通过`Instrument`来为`Future`附加上下文。当轮询该`Future`时进入 Span，当 Future 暂停时退出 Span。
 
@@ -835,7 +835,7 @@ async fn main() {
 
 # 四、tracing-subscriber
 
-## 1、初始化 Subsciber
+## 1、初始化 Subscriber
 
 `tracing`只负责产生 `Event` 和 `Span`。程序必须初始化 Subscriber，日志才会被处理。
 
@@ -885,7 +885,7 @@ RUST_LOG=debug cargo run
 默认`INFO`，只为当前应用的数据库模块开启`DEBUG`。
 
 ```shell
-RUST_LOG=debug, my_app:database=debug cargo run
+RUST_LOG=info,my_app::database=debug cargo run
 ```
 
 关闭依赖库的噪声：
@@ -981,8 +981,6 @@ tracing::info!(user_id = 42, "user logged in");
   "user_id": 42
 }
 ```
-
-实际 JSON 还可能包含时间戳、target和 Span 信息。
 
 实际 JSON 还可能包含时间戳、target和 Span 信息。`.flatten_event(true)`会把`message`和`user_id`等 Event 字段提升到 JSON 顶层；如果不启用，它们通常位于`fields`对象中。`.with_current_span(true)`和`.with_span_list(true)`则会附加当前 Span及完整 Span 路径。
 
@@ -1092,7 +1090,7 @@ async fn main() {
 
 `non_blocking`会创建后台工作线程。日志先进入队列，再由后台线程写入文件。
 
-运行后，`./logs`目录中会生成按天滚动的日志文件。
+运行后，`./log`目录中会生成按天滚动的日志文件。
 
 ![[Pasted image 20260626012238.png|500]]
 
@@ -1247,3 +1245,186 @@ fn init_tracing() -> WorkerGuard {
 
 # 五、异步程序完整示例
 
+下面是一个适合 Tokio 应用的最小完整示例：
+
+```toml
+[dependencies]
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "time"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+```
+
+```rust
+use std::time::Duration;  
+use tracing::{info, instrument, warn, error};  
+use tracing_subscriber::EnvFilter;  
+  
+fn init_tracing() {  
+    let filter = EnvFilter::try_from_default_env()  
+        .unwrap_or_else(|_| EnvFilter::new("info"));  
+  
+    tracing_subscriber::fmt()  
+        .with_env_filter(filter)  
+        .with_target(false)  
+        .compact()  
+        .init();  
+}  
+  
+#[instrument(  
+    name = "process_request",    skip(body),    fields(body_len = body.len()))]  
+async fn process_request(request_id: u64, body: Vec<u8>) -> Result<(), &'static str> {  
+    info!("request received");  
+  
+    tokio::time::sleep(Duration::from_millis(20)).await;  
+  
+    if body.is_empty() {  
+        return Err("request body is empty");  
+    }  
+  
+    info!(status=200, "request completed!");  
+  
+    Ok(())  
+}  
+  
+  
+  
+#[tokio::main]  
+async fn main() {  
+    init_tracing();  
+  
+    let first = tokio::spawn(process_request(1, vec![1, 2, 3]));  
+    let second = tokio::spawn(process_request(2, Vec::new()));  
+  
+    let (first_result, second_result) = tokio::join!(first, second);  
+  
+    for (task_name, result) in [  
+        ("first", first_result),  
+        ("second", second_result),  
+    ] {  
+        match result {  
+            Ok(Ok(())) => {}  
+            Ok(Err(e)) => {  
+                warn!(task = task_name, error = %e, "request processing failed");  
+            }  
+            Err(e) => {  
+                error!(task = task_name, error = %e, "task failed to complete");  
+  
+            }  
+        }  
+    }  
+  
+}
+```
+
+结果：
+
+```
+2026-06-27T05:27:00.367460Z  INFO process_request: request received request_id=2 body_len=0
+2026-06-27T05:27:00.367837Z  INFO process_request: request received request_id=1 body_len=3
+2026-06-27T05:27:00.389977Z  INFO process_request: request completed! status=200 request_id=1 body_len=3
+2026-06-27T05:27:00.390056Z  WARN request processing failed task="second" error=request body is empty
+```
+
+两个请求由 Tokio 并发执行，因此前几条日志的顺序不能作为业务保证。不过，每条请求内部的日志都带有自己的`request_id`和`body_len`，即使交错输出也能区分所属请求。
+
+第二个请求返回业务错误，但任务本身正常完成，所以匹配的是`Ok(Err(error))`分支；只有任务发生 panic、被取消或运行时关闭时，才会进入`Err(error)`分支并得到`JoinError`。
+
+这个例子体现了几个关键原则：
+
+- 在启动异步任务前初始化 Subscriber
+- 使用`#[instrument]`建立请求级 Span
+- 使用结构化字段记录 ID、长度和状态码
+- 使用`skip`避免记录完整请求体
+- 在任务汇总边界统一记录业务错误，避免同一个错误被重复记录
+- 区分任务正常完成、业务函数返回`Err`和任务本身未正常完成
+
+# 六、日志设计原则
+
+## 1、记录有用的上下文
+
+一条错误日志至少应该回答：
+
+- 哪个操作失败
+- 失败原因是什么
+- 影响哪个请求、用户或任务
+- 是否会重试
+
+推荐：
+
+```rust
+tracing::warn!(
+    request_id,
+    attempt,
+    error = %err,
+    "request failed, retrying"
+);
+```
+
+不推荐：
+
+```rust
+tracing::warn!("failed");
+```
+
+## 2、稳定字段比拼接文本更重要
+
+推荐：
+
+```rust
+tracing::info!(
+    request_id,
+    status = 200,
+    elapsed_ms,
+    "request completed"
+);
+```
+
+不推荐：
+
+```rust
+tracing::info!(
+    "request {} completed: status={}, elapsed={}ms",
+    request_id,
+    200,
+    elapsed_ms,
+);
+```
+
+人可以阅读两种写法，但只有前者便于日志平台稳定提取和聚合字段。
+
+## 3、不要泄露敏感信息
+
+日志中不应该记录：
+
+- 密码
+- Token、Cookie、Authorization Header
+- 私钥和密钥
+- 完整银行卡号
+- 未脱敏的个人隐私数据
+
+使用`#[instrument]`时要特别注意：函数参数默认会通过`Debug`记录。敏感参数必须使用`skip`排除。
+
+## 4、避免重复记录同一个错误
+
+如果底层函数记录错误后又把`Err`返回，上层每传播一次都再记录一遍，最终会产生多条内容近似的错误日志。
+
+通常选择一个最有上下文的边界记录：
+
+- 底层库：返回包含原因的错误
+- 业务边界：补充业务上下文
+- 请求入口：记录最终响应和状态
+
+错误传播本身不需要每一层都打日志。
+
+## 5、控制高频路径日志
+
+循环、轮询、每条消息和每次网络读写都可能是高频路径。此类日志通常使用`DEBUG`或`TRACE`，并避免记录大型对象。
+
+如果构造日志字段的成本很高，可以先判断该级别是否启用：
+
+```rust
+if tracing::enabled!(tracing::Level::DEBUG) {
+    let snapshot = build_expensive_snapshot();
+    tracing::debug!(snapshot = ?snapshot, "state snapshot");
+}
+```
