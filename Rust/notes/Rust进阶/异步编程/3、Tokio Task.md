@@ -41,15 +41,7 @@ Tokio Task 是由 Tokio Runtime 调度的一段异步执行单元。每个 Task 
 
 可以把关系理解为：
 
-```text
-async fn / async 块
-        │ 调用
-        ▼
-      Future
-        │ tokio::spawn
-        ▼
-   Tokio Task ──由 Runtime 调度──> worker thread
-```
+![[tokio-task-from-future.png|400]]
 
 Task 和 OS 线程都能表示一段独立推进的执行逻辑，但它们不是同一层次的概念：
 
@@ -66,9 +58,10 @@ Tokio 官方文档把 Task 类比为异步的 green thread。这个类比强调�
 ## 3、Task 如何被推进
 
 一个 Task 的典型生命周期如下：
-![[Pasted image 20260627150931.png|400]]
 
-Task 使用协作式调度。它必须执行到能返回控制权的位置，Runtime 才能调度其他 Task。最常见的位置是一个尚未就绪的 `.await`；也可以显式调用 `tokio::task::yield_now().await`。
+![[Pasted image 20260627150931.png|600]]
+
+Task 使用==协作式调度==。它必须执行到能返回控制权的位置，Runtime 才能调度其他 Task。最常见的位置是一个尚未就绪的 `.await`；也可以显式调用 `tokio::task::yield_now().await`。
 
 
 # 二、使用 spawn 创建 Task
@@ -95,7 +88,7 @@ async fn main() {
 `tokio::spawn()`有如下特点：
 
 - 创建一个独立的 Task，Future 不再只是当前 Task 的一个子 Future。
-- 立即返回一个句柄，调用者不会同步等待新 Task 完成，句柄可用于可等待结果、观察 panic 或请求取消
+- 立即返回一个句柄，该句柄可用于等待结果、观察 panic 或请求取消
 - 只负责“提交 + 排队”，不会在当前这一行调用栈里立刻去 poll 那个 Future。 真正的 poll 由 Runtime 调度器稍后另找时机执行
 - 它必须在 Tokio Runtime 上下文中调用，否则会 panic
 
@@ -136,36 +129,77 @@ async fn main() {
 
 `tokio::spawn()`返回一个句柄`JoinHandle<T>`，其中`T`是异步任务的返回值。
 
-通过对句柄`.await`，会返回一个`Result<T>`，`T`正是异步任务的返回值。
+对句柄`.await`，返回`Result<T>`，`T`正是异步任务的返回值。
 
 `handle.await` 挂起的是当前 Task，不会像 `std::thread::JoinHandle::join()` 那样阻塞 worker thread。
 
-## 3、Runtime::spawn 和 Handle::spawn
-
+## 3、Runtime::spawn
 如果显式持有 Runtime，也可以直接向它提交 Task：
 
 ```rust
-use tokio::runtime::Runtime;
-
-fn main() {
-    let rt = Runtime::new().unwrap();
-
-    let handle = rt.spawn(async { 10 });
-    let value = rt.block_on(handle).unwrap();
-
-    println!("{value}");
+use tokio::runtime::Runtime;  
+  
+  
+fn main() {  
+  
+    let rt = Runtime::new().unwrap();  
+  
+    let handle = rt.spawn(async {  
+        tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;  
+        println!("child done");  
+        10  
+    });  
+  
+    let v = rt.block_on(handle).unwrap();  
+    println!("value: {}", v);  
 }
 ```
 
-Handle 是对 Runtime 的一个轻量句柄，可以`clone()`；而 Runtime 本身是**独占**的，不能 clone。
+这里需要注意，`Runtime::block_on()`传入的是`JoinHandle<T>`句柄，`JoinHandle<T>`本身是实现了`Future`的值，即`Future<Output = Result<T, JoinError>>`。
 
-很多时候只想给其他组件提交 task 的能力，但不想把整个 Runtime 的控制权 / 所有权交出去。这个时候可以通过 clone 一个 Handle，让对方拿着它也可以 spawn。
+## 4、Handle::spawn
+Handle 是对 Runtime 的一个轻量句柄，可以`clone()`；而 Runtime 本身是**独占**的，不能 clone。
 
 最典型的就是将句柄送到一个同步线程：
 
 ```rust
+use std::thread;
+use tokio::runtime::Runtime;
+use tokio::time::{sleep, Duration};
 
+fn main() {
+    let rt = Runtime::new().unwrap();
+
+    // 只把提交 Task 的能力交给同步线程，Runtime 仍由 main 持有。
+    let runtime_handle = rt.handle().clone();
+
+    let submitter = thread::spawn(move || {
+        println!("submit task from sync thread");
+
+        runtime_handle.spawn(async {
+            sleep(Duration::from_secs(1)).await;
+            println!("async task done");
+            10
+        })
+    });
+
+    // 第一次 join 等待同步线程完成“提交 Task”，得到 Tokio JoinHandle。
+    let task_handle = submitter.join().unwrap();
+
+    // 再由 Runtime 驱动并等待异步 Task 完成。
+    let value = rt.block_on(task_handle).unwrap();
+    println!("value: {value}");
+}
 ```
+
+这里有两个不同体系的句柄：
+
+- `submitter` 是 `std::thread::JoinHandle`，`join()` 会阻塞 `main` 线程，直到同步线程完成 Task 的提交
+- `task_handle` 是 `tokio::task::JoinHandle<i32>`，它实现了 `Future`，可以传给 `rt.block_on()` 等待异步 Task 的结果
+
+同步线程不在 Tokio Runtime 的异步上下文中，因此不能直接调用 `tokio::spawn()`；但它持有与特定 Runtime 关联的 `Handle`，所以可以通过 `runtime_handle.spawn()` 向该 Runtime 提交 Task。整个过程中，`Runtime` 的所有权始终留在 `main` 线程。
+
+总结：
 
 | 写法 | 典型位置 |
 | --- | --- |
@@ -190,6 +224,7 @@ Result<T, tokio::task::JoinError>
 | `Ok(value)`                       | Task 正常完成     |
 | `Err(err)` 且 `err.is_cancelled()` | Task 被取消      |
 | `Err(err)` 且 `err.is_panic()`     | Task 内部 panic |
+| `Err(err)`                        | 其他错误          |
 
 ```rust
 let handle = tokio::spawn(async { 5 + 3 });
@@ -241,40 +276,13 @@ let handle = tokio::spawn(async {
 drop(handle); // Task 仍然运行，但无法再等待结果
 ```
 
+总结：
+
 | 操作 | Task 是否继续 | 能否再等待结果 |
 | --- | --- | --- |
 | `handle.await` | 运行到完成 | 可以取得结果 |
 | `drop(handle)` | 是 | 不可以 |
 | `handle.abort()` | 请求取消 | 仍可 await 确认终止 |
-
-因此，不应把“丢弃句柄”当作 fire-and-forget 的默认做法。无主的后台 Task 难以处理错误，也难以在程序关闭时确认已经清理完成。
-
-## 4、JoinHandle 的取消安全
-
-`&mut JoinHandle<T>` 是 cancel safe 的。它在 `select!` 中未被选中时，结果不会凭空丢失：
-
-```rust
-let mut handle = tokio::spawn(async {
-    tokio::time::sleep(std::time::Duration::from_secs(1)).await;
-    10
-});
-
-tokio::select! {
-    result = &mut handle => {
-        println!("task finished: {result:?}");
-        return;
-    }
-    _ = tokio::time::sleep(std::time::Duration::from_millis(100)) => {
-        println!("not finished yet");
-    }
-}
-
-let value = handle.await.unwrap();
-println!("{value}");
-```
-
-这里超时分支先完成，只是停止等待 `JoinHandle`；已经 spawn 的 Task 仍在运行。
-
 
 # 四、所有权、Send 与 'static
 
@@ -283,18 +291,20 @@ println!("{value}");
 `tokio::spawn` 的签名可以简化为：
 
 ```rust
-pub fn spawn<F>(future: F) -> JoinHandle<F::Output>
+pub fn spawn<F>(future: F) -> JoinHandle<F::Output> 
 where
-    F: Future + Send + 'static,
-    F::Output: Send + 'static,
+	F: Future + Send + 'static
+	F::Output: Send + 'static
 ```
 
-| 约束 | 含义 |
-| --- | --- |
-| `F: Send` | 挂起的 Future 可以安全地在线程间移动 |
-| `F: 'static` | Future 不持有可能提前失效的借用 |
-| `F::Output: Send` | 输出可以安全地在线程间传递 |
-| `F::Output: 'static` | 输出不依赖可能提前失效的借用 |
+`F: Future`很显然，要求传入一个`Future`。
+
+| 约束                   | 含义                     |
+| -------------------- | ---------------------- |
+| `F: Send`            | 挂起的`Future`可以在线程间安全地移动 |
+| `F: 'static`         | `Future`不持有可能提前失效的借用   |
+| `F::Output: Send`    | 输出可以安全地在线程间传递          |
+| `F::Output: 'static` | 输出不依赖可能提前失效的借用         |
 
 多线程 Runtime 可能在一个 worker thread 上挂起 Task，又在另一个 worker thread 上继续轮询它，所以普通 spawn Task 必须是 `Send`。
 
@@ -309,7 +319,7 @@ let text = String::from("hello");
 
 tokio::spawn(async {
     println!("{text}");
-});
+}).await.unwarp();
 ```
 
 通常使用 `async move` 把所有权移入 Future：
@@ -329,23 +339,119 @@ tokio::spawn(async move {
 ```rust
 use std::sync::Arc;
 
-let data = Arc::new(String::from("hello"));
+#[tokio::main]
+async fn main() {
+    let data = Arc::new(String::from("hello"));
 
-let h1 = {
-    let data = Arc::clone(&data);
-    tokio::spawn(async move { println!("task 1: {data}") })
-};
+    let h1 = {
+        let data = Arc::clone(&data);
+        tokio::spawn(async move {
+            println!("task 1: {data}");
+        })
+    };
 
-let h2 = {
-    let data = Arc::clone(&data);
-    tokio::spawn(async move { println!("task 2: {data}") })
-};
+    let h2 = {
+        let data = Arc::clone(&data);
+        tokio::spawn(async move {
+            println!("task 2: {data}");
+        })
+    };
 
-h1.await.unwrap();
-h2.await.unwrap();
+    h1.await.unwrap();
+    h2.await.unwrap();
+
+    // main 仍然持有一个 Arc，底层 String 不会被提前释放。
+    println!("main: {data}");
+}
 ```
 
-`Arc` 只解决共享所有权。如果还要修改数据，需要结合合适的同步原语；选择 `std::sync::Mutex` 还是 `tokio::sync::Mutex`，取决于锁是否会跨 `.await` 持有等因素。
+`Arc::clone()` 只增加原子引用计数，不会复制底层 `String`。三个 `Arc` 共同拥有同一个值，因此两个 Task 和 `main` 都能安全读取它。
+
+### （1）共享可变状态：Arc\<Mutex\<T>>
+
+`Arc` 只解决**谁拥有数据**的问题，不允许直接通过共享引用修改内部数据。如果多个 Task 需要修改同一份状态，通常把 `Mutex<T>` 放进 `Arc`：
+
+```rust
+use std::sync::{Arc, Mutex};
+
+#[tokio::main]
+async fn main() {
+    let counter = Arc::new(Mutex::new(0));
+    let mut handles = Vec::new();
+
+    for _ in 0..10 {
+        let counter = Arc::clone(&counter);
+
+        handles.push(tokio::spawn(async move {
+            // 临界区很短，并且其中没有 .await。
+            {
+                let mut value = counter.lock().unwrap();
+                *value += 1;
+            } // MutexGuard 在 .await 之前释放
+
+            tokio::task::yield_now().await;
+        }));
+    }
+
+    for handle in handles {
+        handle.await.unwrap();
+    }
+
+    println!("counter: {}", *counter.lock().unwrap());
+}
+```
+
+这里使用 `std::sync::Mutex` 是合适的，因为锁只保护一次很短的同步操作，`MutexGuard` 不会跨越 `.await`。同步 Mutex 等锁时会阻塞当前线程，所以临界区必须足够短，并且不能在持锁期间执行阻塞操作。
+
+### （2）锁必须跨越 await：tokio::sync::Mutex
+
+如果业务逻辑确实要求在持锁期间等待异步操作，应使用 `tokio::sync::Mutex`。它的 `lock()` 本身是异步的，等待锁时会挂起当前 Task，而不是阻塞 worker thread：
+
+```rust
+use std::sync::Arc;
+use tokio::{
+    sync::Mutex,
+    time::{sleep, Duration},
+};
+
+#[tokio::main]
+async fn main() {
+    let value = Arc::new(Mutex::new(0));
+
+    let h1 = {
+        let value = Arc::clone(&value);
+        tokio::spawn(async move {
+            let mut value = value.lock().await;
+            sleep(Duration::from_millis(100)).await;
+            *value += 1;
+        })
+    };
+
+    let h2 = {
+        let value = Arc::clone(&value);
+        tokio::spawn(async move {
+            let mut value = value.lock().await;
+            sleep(Duration::from_millis(100)).await;
+            *value += 1;
+        })
+    };
+
+    h1.await.unwrap();
+    h2.await.unwrap();
+
+    println!("value: {}", *value.lock().await);
+}
+```
+
+这个例子中，锁保护范围包含 `sleep(...).await`，所以另一个 Task 必须等前一个 Task 释放锁后才能进入临界区。虽然 Tokio Mutex 允许这样写，但持锁跨越 `.await` 会降低并发度；如果不需要维持某个跨异步操作的不变量，应尽早释放锁。
+
+选择原则可以概括为：
+
+| 场景 | 建议 |
+| --- | --- |
+| 临界区很短，且不跨 `.await` | 优先考虑 `std::sync::Mutex` |
+| 必须在持锁期间 `.await` | 使用 `tokio::sync::Mutex` |
+| 数据可以由单个 Task 独占 | 优先考虑 channel，通过消息修改状态 |
 
 ## 3、Task 中能否使用 !Send 值
 
@@ -383,33 +489,139 @@ tokio::spawn(async {
 
 ## 1、为什么需要本地 Task
 
-`spawn_local` 可以创建不要求 `Send` 的 Task，适合使用 `Rc<T>`、`RefCell<T>` 或线程绑定资源的场景。
+普通的 `tokio::spawn` 要求 Future 满足 `Send`。原因是多线程 Runtime 可以把挂起的 Task 移到另一个 worker thread 上继续执行。如果 Future 持有跨越 `.await` 的 `Rc<T>`、`RefCell<T>` 或线程绑定资源，它就不能在线程之间安全移动，也就不能交给 `tokio::spawn`。
 
-本地 Task 只能在创建它的线程上运行，不能被 Runtime 移动到其他 worker thread。常见承载环境是 `LocalSet`：
+`spawn_local` 用于创建不要求 `Send` 的本地 Task。作为代价，这个 Task 被限制在驱动本地执行环境的线程上：它可以在该线程上多次挂起、恢复，但不能被 Runtime 迁移到其他 worker thread。
+
+Tokio 通常使用 `LocalSet` 提供这个本地执行环境。下面的程序同时创建：
+
+- 一个通过 `spawn_local` 创建的 `!Send` Task，持有跨越 `.await` 的 `Rc`
+- 一个通过 `tokio::spawn` 创建的普通 `Send` Task，持有跨越 `.await` 的 `Arc`
 
 ```rust
-use std::rc::Rc;
-use tokio::runtime::Runtime;
-use tokio::task::LocalSet;
+use std::{
+    rc::Rc,
+    sync::Arc,
+    thread,
+};
+use tokio::{
+    runtime::Builder,
+    task::LocalSet,
+    time::{sleep, Duration},
+};
 
 fn main() {
-    let rt = Runtime::new().unwrap();
+    let rt = Builder::new_multi_thread()
+        .worker_threads(2)
+        .enable_all()
+        .build()
+        .unwrap();
+
     let local = LocalSet::new();
+    let local_thread = thread::current().id();
 
-    rt.block_on(local.run_until(async {
-        let handle = tokio::task::spawn_local(async {
-            let value = Rc::new(10);
+    println!("run_until thread: {local_thread:?}");
 
-            tokio::time::sleep(std::time::Duration::from_secs(1)).await;
-            println!("{value}");
+    rt.block_on(local.run_until(async move {
+        // Rc 会跨越 await，因此这个 Future 是 !Send。
+        let local_data = Rc::new(String::from("local data"));
+
+        let local_handle = tokio::task::spawn_local(async move {
+            let before = thread::current().id();
+            println!("local task before await: {before:?}");
+
+            sleep(Duration::from_millis(100)).await;
+
+            let after = thread::current().id();
+            println!("local task after await:  {after:?}");
+            println!("local_data: {local_data}");
+
+            // 本地 Task 始终由运行 LocalSet 的线程推进。
+            assert_eq!(before, local_thread);
+            assert_eq!(after, local_thread);
         });
 
-        handle.await.unwrap();
+        // LocalSet 内也能创建普通的 Send Task。
+        let send_data = Arc::new(String::from("send data"));
+
+        let send_handle = tokio::spawn(async move {
+            println!(
+                "Send task before await: {:?}",
+                thread::current().id()
+            );
+
+            sleep(Duration::from_millis(100)).await;
+
+            println!(
+                "Send task after await:  {:?}",
+                thread::current().id()
+            );
+            println!("Send data: {send_data}");
+        });
+
+        local_handle.await.unwrap();
+        send_handle.await.unwrap();
     }));
 }
 ```
 
-`LocalSet` 不是 Runtime。它只是一个本地 Task 集合，仍然需要 Runtime 驱动。
+结果；
+
+```
+run until thread: ThreadId(1)
+local task before await: ThreadId(1)
+Send task before await: ThreadId(2)
+Send task after await: ThreadId(3)
+Send data: send data
+local task after await: ThreadId(1)
+local data: local data
+```
+
+这个例子中的执行关系是：
+
+```text
+main 线程
+  └─ Runtime::block_on(...)
+       └─ LocalSet::run_until(...)
+            ├─ spawn_local：!Send Task，只在 main 线程上执行
+            └─ tokio::spawn：Send Task，由 Runtime 正常调度
+```
+
+本地 Task 在 `sleep(...).await` 前后的线程 ID 必定与调用 `run_until` 的线程相同，因此可以安全地让 `Rc` 跨越 `.await`。普通 `Send` Task 则不属于 `LocalSet`，它由多线程 Runtime 正常调度；它可能在任意可用的 worker thread 上执行，也可能在挂起后由另一个线程继续执行。线程 ID 的具体输出不能作为固定调度顺序来依赖。
+
+### （1）LocalSet 的职责
+
+`LocalSet` 不是 Runtime，也不会自己创建线程。它是一个本地 Task 集合，负责保证其中的 Task 在同一线程上执行；I/O 驱动、定时器和实际的执行能力仍由 Runtime 提供。
+
+`LocalSet` 本身也是 `!Send`、`!Sync` 的，不能把它随意移动或共享到其他线程。更准确地说，“本地 Task 固定在线程上”指的是：本地 Task 始终在运行并驱动这个 `LocalSet` 的线程上被轮询。
+
+### （2）run_until 做了什么
+
+```rust
+rt.block_on(local.run_until(main_future));
+```
+
+这行代码可以分成两层理解：
+
+1. `local.run_until(main_future)` 进入该 `LocalSet` 的上下文，使其中的 `spawn_local` 把 Task 加入这个本地集合
+2. `rt.block_on(...)` 在当前线程上驱动这个组合 Future，同时推进 `main_future` 和已经加入 `LocalSet` 的本地 Task
+
+`run_until` 的结束条件是传入的 `main_future` 完成，而不是自动等待 LocalSet 中所有 Task 完成。本例在 `main_future` 中等待了 `local_handle`，所以本地 Task 一定会在 `run_until` 返回前完成。
+
+如果没有等待句柄：
+
+```rust
+local.run_until(async {
+    tokio::task::spawn_local(async {
+        do_work().await;
+    });
+}).await;
+```
+
+外层 Future 很快完成，尚未完成的本地 Task 会留在 `LocalSet` 中。它不会被自动转移到 Runtime 的普通任务队列，只有下一次调用 `run_until`，或者直接等待整个 `LocalSet` 时，才会继续被推进。
+
+> [!warning]
+> `run_until` 应直接用于 `Runtime::block_on`，或者用于 `#[tokio::main]` / `#[tokio::test]` 提供的根异步上下文，不能放进 `tokio::spawn` 创建的普通 Task 中运行。
 
 ## 2、spawn 与 spawn_local 的选择
 
@@ -531,23 +743,57 @@ let value = tokio::task::block_in_place(|| {
 需要提前停止长时间阻塞操作时，应让闭包自己周期性检查停止标志：
 
 ```rust
-use std::sync::{
-    Arc,
-    atomic::{AtomicBool, Ordering},
+use std::{
+    sync::{
+        Arc,
+        atomic::{AtomicBool, Ordering},
+    },
+    thread,
+    time::Duration,
 };
 
-let stop = Arc::new(AtomicBool::new(false));
-let worker_stop = Arc::clone(&stop);
+fn do_one_bounded_step(step: usize) {
+    println!("processing step {step}");
 
-let handle = tokio::task::spawn_blocking(move || {
-    while !worker_stop.load(Ordering::Relaxed) {
-        do_one_bounded_step();
-    }
-});
+    // 模拟一个耗时有限、最终一定会返回的同步操作。
+    thread::sleep(Duration::from_millis(200));
+}
 
-stop.store(true, Ordering::Relaxed);
-handle.await.unwrap();
+#[tokio::main]
+async fn main() {
+    let stop = Arc::new(AtomicBool::new(false));
+    let worker_stop = Arc::clone(&stop);
+
+    let handle = tokio::task::spawn_blocking(move || {
+        let mut completed_steps = 0;
+
+        while !worker_stop.load(Ordering::SeqCst) {
+            do_one_bounded_step(completed_steps);
+            completed_steps += 1;
+        }
+
+        println!("blocking task observed the stop flag");
+        completed_steps
+    });
+
+    // 让阻塞任务先执行一段时间。这里挂起的是异步 Task，
+    // 不会阻塞 Tokio 的 worker thread。
+    tokio::time::sleep(Duration::from_millis(550)).await;
+
+    println!("requesting stop");
+    stop.store(true, Ordering::SeqCst);
+
+    // 等待闭包观察停止标志并自行返回。
+    let completed_steps = handle.await.unwrap();
+    println!("completed {completed_steps} steps");
+}
 ```
+
+这里没有强制杀死 blocking thread。主异步 Task 只是把共享的原子标志设置为 `true`，阻塞闭包在下一轮循环开始时观察到它，然后主动退出。整个过程属于**协作式停止**。
+
+`Ordering::SeqCst` 提供最强、最容易理解的内存顺序保证，适合这个教学示例。某些性能敏感场景可以根据同步关系改用 Acquire/Release，但需要单独证明其正确性，不能只为减少开销而随意替换。
+
+停止响应速度取决于 `do_one_bounded_step()` 的最长执行时间。如果一个步骤可能永久阻塞或长时间不返回，闭包就没有机会再次检查停止标志，这种方式同样无法及时停止它。因此，每个步骤都必须是有界并且最终会返回的。
 
 
 # 七、Task 的取消
@@ -648,10 +894,36 @@ tokio::select! {
 
 未选中的是“等待 `JoinHandle`”这个分支；独立 Task 不会自动取消。如需超时后终止它，要显式调用 `handle.abort()`，或发送协作式取消信号。
 
+## 4、JoinHandle 的取消安全
+
+`&mut JoinHandle<T>` 是 cancel safe 的。它在 `select!` 中未被选中时，结果不会凭空丢失：
+
+```rust
+let mut handle = tokio::spawn(async {
+    tokio::time::sleep(std::time::Duration::from_secs(1)).await;
+    10
+});
+
+tokio::select! {
+    result = &mut handle => {
+        println!("task finished: {result:?}");
+        return;
+    }
+    _ = tokio::time::sleep(std::time::Duration::from_millis(100)) => {
+        println!("not finished yet");
+    }
+}
+
+let value = handle.await.unwrap();
+println!("{value}");
+```
+
+这里超时分支先完成，只是停止等待 `JoinHandle`；已经 spawn 的 Task 仍在运行。
+
 
 # 八、管理多个 Task
 
-## 1、Vec<JoinHandle\<T>>
+## 1、Vec\<JoinHandle\<T>>
 
 任务数量固定、希望按创建顺序收集结果时，可以保存句柄：
 
@@ -833,4 +1105,3 @@ tokio::select! {
 ## 5、不要忽略 JoinError
 
 生产代码中直接 `.await.unwrap()` 只适合“子 Task panic 就应让当前流程失败”的明确场景。后台 Task 应记录或传播 panic、取消和业务错误，否则故障可能悄无声息。
-

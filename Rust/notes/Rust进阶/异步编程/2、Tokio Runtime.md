@@ -689,9 +689,9 @@ tokio::spawn(async move {
 
 Tokio runtime 中常见两类线程：
 
-| 线程类型 | 作用 |
-| --- | --- |
-| worker thread | 执行普通异步任务，负责调度和 `poll` |
+| 线程类型            | 作用                              |
+| --------------- | ------------------------------- |
+| worker thread   | 执行普通异步任务，负责调度和 `poll`           |
 | blocking thread | 执行通过 `spawn_blocking` 提交的同步阻塞代码 |
 
 worker thread 不适合长期阻塞。下面这种写法会直接卡住 worker 线程：
