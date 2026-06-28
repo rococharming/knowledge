@@ -193,7 +193,7 @@ fn main() {
 }
 ```
 
-## 3、使用 #[tokio::main]
+## 3、使用 \#\[tokio::main]
 
 手动创建 runtime 能清楚展示运行时的创建和驱动过程。实际应用程序入口通常会写得更简洁，Tokio 提供了 `#[tokio::main]` 宏：
 

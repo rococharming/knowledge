@@ -2,8 +2,6 @@
 
 ## 1、Future 只是异步计算
 
-本篇建立在 [[1、异步编程基础]] 和 [[2、Tokio Runtime]] 之上：前者已经介绍 `Future`、`Poll`、`Waker` 与 `.await`，后者已经介绍 Runtime、worker thread 和阻塞线程池。本篇只用这些概念解释 Task 的边界，重点放在 Task 的创建、所有权、结果、取消和并发管理。
-
 调用异步函数不会立即执行函数体，而是返回一个 `Future`。
 
 ```rust
@@ -37,7 +35,7 @@ let value = handle.await.unwrap();
 - `tokio::spawn(future)` 才会把 Future 包装成一个可独立调度的 Tokio Task
 - `Runtime::block_on(future)` 驱动的是 Runtime 的根 Future；根 Future 完成并不意味着所有 spawn 出来的 Task 都已完成
 
-## 2、什么是 Tokio Task
+## 2、Tokio Task
 
 Tokio Task 是由 Tokio Runtime 调度的一段异步执行单元。每个 Task 内部持有一个顶层 Future，Runtime 通过反复调用它的 `poll` 来推进任务。
 
@@ -55,36 +53,20 @@ async fn / async 块
 
 Task 和 OS 线程都能表示一段独立推进的执行逻辑，但它们不是同一层次的概念：
 
-| 对比项 | Tokio Task | OS 线程 |
-| --- | --- | --- |
-| 调度者 | Tokio Runtime | 操作系统 |
-| 数量 | 通常可以创建很多 | 数量受系统资源约束更明显 |
-| 切换方式 | 在 `.await` 等位置协作式让出 | 操作系统可抢占调度 |
-| 栈 | 编译器生成的状态机保存跨 `.await` 状态 | 通常拥有独立线程栈 |
-| 适合场景 | 大量 I/O 并发 | 阻塞代码、CPU 计算、少量并发 |
+| 对比项  | Tokio Task               | OS 线程            |
+| ---- | ------------------------ | ---------------- |
+| 调度者  | Tokio Runtime            | 操作系统             |
+| 数量   | 通常可以创建很多                 | 数量受系统资源约束更明显     |
+| 切换方式 | 在 `.await` 等位置协作式让出      | 除了主动让出，操作系统可抢占调度 |
+| 栈    | 编译器生成的状态机保存跨 `.await` 状态 | 通常拥有独立线程栈        |
+| 适合场景 | 大量 I/O 并发                | 阻塞代码、CPU 计算、少量并发 |
 
 Tokio 官方文档把 Task 类比为异步的 green thread。这个类比强调它是轻量并发单元，但不能据此认为 Task 就是一个更小的 OS 线程。
 
 ## 3、Task 如何被推进
 
 一个 Task 的典型生命周期如下：
-
-```text
-spawn
-  │
-  ▼
-进入就绪队列 ──> worker thread 调用 poll
-                       │
-             ┌─────────┴─────────┐
-             ▼                   ▼
-       Poll::Pending          Poll::Ready(value)
-             │                   │
-      等待 I/O、定时器等           ▼
-             │                Task 完成
-          Waker 唤醒               │
-             │                   ▼
-             └──> 重新进入就绪队列  JoinHandle 得到结果
-```
+![[Pasted image 20260627150931.png|400]]
 
 Task 使用协作式调度。它必须执行到能返回控制权的位置，Runtime 才能调度其他 Task。最常见的位置是一个尚未就绪的 `.await`；也可以显式调用 `tokio::task::yield_now().await`。
 
@@ -110,16 +92,12 @@ async fn main() {
 }
 ```
 
-它有以下语义：
+`tokio::spawn()`有如下特点：
 
-| 语义 | 说明 |
-| --- | --- |
-| 创建独立 Task | Future 不再只是当前 Task 的一个子 Future |
-| 立即返回 | 调用者不会同步等待新 Task 完成 |
-| 后台推进 | 即使暂时不 `.await` 句柄，Task 也可以开始运行 |
-| 不同步 poll | `spawn` 调用本身保证不会同步轮询传入的 Future |
-| 返回句柄 | 可等待结果、观察 panic 或请求取消 |
-| 依赖 Runtime | 必须在 Tokio Runtime 上下文中调用，否则会 panic |
+- 创建一个独立的 Task，Future 不再只是当前 Task 的一个子 Future。
+- 立即返回一个句柄，调用者不会同步等待新 Task 完成，句柄可用于可等待结果、观察 panic 或请求取消
+- 只负责“提交 + 排队”，不会在当前这一行调用栈里立刻去 poll 那个 Future。 真正的 poll 由 Runtime 调度器稍后另找时机执行
+- 它必须在 Tokio Runtime 上下文中调用，否则会 panic
 
 > [!note] 并发不等于并行
 > `spawn` 创建的是并发 Task。它们可能在同一线程上交替运行；只有在多线程 Runtime 上，才可能同时运行在不同 worker thread 上。
@@ -156,6 +134,10 @@ async fn main() {
 }
 ```
 
+`tokio::spawn()`返回一个句柄`JoinHandle<T>`，其中`T`是异步任务的返回值。
+
+通过对句柄`.await`，会返回一个`Result<T>`，`T`正是异步任务的返回值。
+
 `handle.await` 挂起的是当前 Task，不会像 `std::thread::JoinHandle::join()` 那样阻塞 worker thread。
 
 ## 3、Runtime::spawn 和 Handle::spawn
@@ -175,11 +157,14 @@ fn main() {
 }
 ```
 
-Runtime 的 `Handle` 也能用于提交 Task，适合把 Runtime 能力传给其他同步组件：
+Handle 是对 Runtime 的一个轻量句柄，可以`clone()`；而 Runtime 本身是**独占**的，不能 clone。
+
+很多时候只想给其他组件提交 task 的能力，但不想把整个 Runtime 的控制权 / 所有权交出去。这个时候可以通过 clone 一个 Handle，让对方拿着它也可以 spawn。
+
+最典型的就是将句柄送到一个同步线程：
 
 ```rust
-let runtime_handle = rt.handle().clone();
-let task_handle = runtime_handle.spawn(async { 10 });
+
 ```
 
 | 写法 | 典型位置 |
@@ -187,7 +172,6 @@ let task_handle = runtime_handle.spawn(async { 10 });
 | `tokio::spawn(...)` | 已处于 Tokio Runtime 上下文的异步代码 |
 | `runtime.spawn(...)` | 同步代码明确持有某个 `Runtime` |
 | `handle.spawn(...)` | 只需要提交 Task，不需要持有整个 `Runtime` |
-
 
 # 三、JoinHandle：结果、错误与分离
 
@@ -201,11 +185,11 @@ Result<T, tokio::task::JoinError>
 
 因为 Task 可能正常结束，也可能被取消或 panic：
 
-| 结果 | 含义 |
-| --- | --- |
-| `Ok(value)` | Task 正常完成 |
-| `Err(err)` 且 `err.is_cancelled()` | Task 被取消 |
-| `Err(err)` 且 `err.is_panic()` | Task 内部 panic |
+| 结果                                | 含义            |
+| --------------------------------- | ------------- |
+| `Ok(value)`                       | Task 正常完成     |
+| `Err(err)` 且 `err.is_cancelled()` | Task 被取消      |
+| `Err(err)` 且 `err.is_panic()`     | Task 内部 panic |
 
 ```rust
 let handle = tokio::spawn(async { 5 + 3 });
@@ -667,7 +651,7 @@ tokio::select! {
 
 # 八、管理多个 Task
 
-## 1、Vec<JoinHandle<T>>
+## 1、Vec<JoinHandle\<T>>
 
 任务数量固定、希望按创建顺序收集结果时，可以保存句柄：
 
@@ -850,16 +834,3 @@ tokio::select! {
 
 生产代码中直接 `.await.unwrap()` 只适合“子 Task panic 就应让当前流程失败”的明确场景。后台 Task 应记录或传播 panic、取消和业务错误，否则故障可能悄无声息。
 
-
-# 十一、参考资料
-
-- [Tokio 官方文档：task 模块](https://docs.rs/tokio/latest/tokio/task/)
-- [Tokio 官方教程：Spawning](https://tokio.rs/tokio/tutorial/spawning)
-- [Tokio API：spawn](https://docs.rs/tokio/latest/tokio/task/fn.spawn.html)
-- [Tokio API：JoinHandle](https://docs.rs/tokio/latest/tokio/task/struct.JoinHandle.html)
-- [Tokio API：JoinSet](https://docs.rs/tokio/latest/tokio/task/struct.JoinSet.html)
-- [Tokio API：LocalSet](https://docs.rs/tokio/latest/tokio/task/struct.LocalSet.html)
-- [Tokio API：spawn_blocking](https://docs.rs/tokio/latest/tokio/task/fn.spawn_blocking.html)
-- [Tokio API：block_in_place](https://docs.rs/tokio/latest/tokio/task/fn.block_in_place.html)
-- [Tokio Util：CancellationToken](https://docs.rs/tokio-util/latest/tokio_util/sync/struct.CancellationToken.html)
-- [Tokio Util：TaskTracker](https://docs.rs/tokio-util/latest/tokio_util/task/struct.TaskTracker.html)
