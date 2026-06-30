@@ -1,3 +1,8 @@
+---
+title: Git 的安装与配置
+date: 2026-06-05
+tags: [git, version-control]
+---
 
 # 一、Git简介
 
@@ -222,7 +227,47 @@ git config --global init.defaultBranch
 ```
 
 
-## 2、凭证管理
+## 2、默认编辑器
+
+Git 在某些操作中需要打开文本编辑器，例如：
+
+- 执行不带 `-m` 的 `git commit`
+- 使用 `git commit --amend` 修改提交信息
+- 执行某些需要编辑提交信息的合并、变基或撤销操作
+
+如果希望 Git 默认使用 VS Code，可以配置：
+
+```shell
+git config --global core.editor "code --wait"
+```
+
+查看当前配置：
+
+```shell
+git config --global core.editor
+```
+
+配置值中的两部分分别表示：
+
+| 内容 | 作用 |
+| --- | --- |
+| `code` | 调用 VS Code 的命令行工具打开 Git 生成的临时编辑文件 |
+| `--wait` | 让 `code` 命令继续等待，直到该编辑文件被关闭，再将控制权交还给 Git |
+
+Git 启动编辑器后，会等待编辑器退出，然后读取保存后的内容继续操作。普通 `code` 命令在打开文件后往往会立即返回；如果不加 `--wait`，Git 可能在还没来得及编辑和保存时就继续执行，导致提交信息为空或操作被取消。
+
+> [!tip] 完成编辑后需要关闭文件
+> 在 VS Code 中保存 Git 打开的临时文件后，还需要关闭该文件的编辑器标签页。此时 `code --wait` 才会结束等待，Git 也才会继续执行，不需要退出整个 VS Code。
+
+使用该配置前，需要确保终端中可以正常执行：
+
+```shell
+code --version
+```
+
+如果终端提示找不到 `code` 命令，需要先在 VS Code 的命令面板中执行 `Shell Command: Install 'code' command in PATH`。
+
+## 3、凭证管理
 
 `macOS`上常见的凭证管理配置是：
 
@@ -297,4 +342,3 @@ git@github.com:xxx/yyy.git
 ```
 
 SSH 认证通常需要 SSH 密钥完成。配置好 SSH 公钥后，执行 `git clone`、`git pull`、`git push` 时就不需要反复输入 Token。
-
