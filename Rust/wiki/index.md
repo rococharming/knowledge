@@ -105,6 +105,7 @@ _（暂无）_
 ## recipes
 
 - [[Cargo 命令速查]] — Cargo 核心命令分类速查，涵盖创建、构建、测试、依赖管理
+- [[Cargo 依赖声明写法]] — `[dependencies]` 字符串写法与内联表写法，`package` 重命名、`features` 裁剪等字段
 - [[rustup 命令速查]] — rustup 工具链安装、更新、切换命令速查
 - [[RsProxy 镜像源配置]] — 国内环境下通过 RsProxy 加速 Rust 安装和依赖下载
 - [[VS Code Rust 开发环境配置]] — 在 VS Code 中配置 rust-analyzer 等插件搭建 Rust 开发环境
