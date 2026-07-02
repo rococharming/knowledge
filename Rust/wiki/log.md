@@ -169,3 +169,10 @@
 - 类型: query
 - 归档分类: recipes
 - 创建: `[[Cargo 依赖声明写法]]`
+
+## [2026-07-01] Query | winit 在 macOS 上 AppKit 的作用
+
+- 范围: 单领域
+- 基于: 用户笔记 `notes/常用crate/4、winit.md`（wiki 暂无 winit 页面，从 notes 区读取参考）
+- 结果: 仅查询
+- 类型: query
