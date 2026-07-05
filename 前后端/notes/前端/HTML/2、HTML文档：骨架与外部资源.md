@@ -1,6 +1,6 @@
 ---
-title: HTML文档结构与外部资源
-date: 2026-06-30
+title: HTML文档：骨架与外部资源
+date: 2026-07-03
 tags: [HTML, 前端基础, HTML文档结构]
 source_count: 1
 ---
@@ -15,7 +15,7 @@ source_count: 1
 - 引入网站图标
 - 提前连接外部资源所在的服务器
 
-`link` 是一个 **空元素（void element）** ，不能包含内容，也不需要结束标签。关于空元素的基本概念，可以参考 [[1、HTML的作用、元素与属性#2、空元素|空元素]]。
+`link` 是一个 **空元素（void element）** ，不能包含内容，也不需要结束标签。关于空元素的基本概念，可以参考 [[1、HTML基础：元素与属性#2、空元素|空元素]]。
 
 `link` 元素通常放在 `head` 元素中，因为它描述的是文档配置或文档与外部资源的关系，而不是直接展示在网页中的内容。
 
@@ -111,7 +111,6 @@ HTML 文档模板也常称为 **HTML boilerplate** ，它是一份可以重复�
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>前端学习清单</title>
-    <link rel="stylesheet" href="./css/main.css">
   </head>
   <body>
     <h1>今天的学习任务</h1>
@@ -273,7 +272,6 @@ UTF-8 是 Web 中广泛使用的 Unicode 字符编码。它可以表示 Unicode 
     <title>我的编程书签</title>
 
     <link rel="icon" href="./assets/bookmark-icon.png" type="image/png">
-    <link rel="stylesheet" href="./css/main.css">
   </head>
   <body>
     <main>
@@ -284,7 +282,7 @@ UTF-8 是 Web 中广泛使用的 Unicode 字符编码。它可以表示 Unicode 
 </html>
 ```
 
-以后创建新的 HTML 文件时，可以先复制这份模板，再根据项目需要修改语言、标题、样式表和页面内容。
+以后创建新的 HTML 文件时，可以先复制这份模板，再根据项目需要修改语言、标题和页面内容。
 
 # 五、总结
 

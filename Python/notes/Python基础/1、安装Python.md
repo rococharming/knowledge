@@ -1,3 +1,8 @@
+---
+title: 安装Python
+date: 2026-06-27
+tags: [Python, Python基础]
+---
 
 # 一、简介
 
@@ -442,4 +447,3 @@ source .venv/bin/activate
 ```shell
 deactivate
 ```
-

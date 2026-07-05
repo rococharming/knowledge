@@ -1,3 +1,8 @@
+---
+title: Python字符串
+date: 2026-06-27
+tags: [Python, Python基础]
+---
 
 # 一、定义字符串
 
@@ -977,4 +982,3 @@ print(my_str[::-1]) # dlrow olleH
 ```
 
 step 为`-1`表示从右往左，每次移动一个位置。
-

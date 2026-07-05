@@ -1,0 +1,366 @@
+---
+title: HTML多媒体：音频与视频元素
+date: 2026-07-03
+tags: [HTML, 前端基础, 多媒体, 可访问性]
+source_count: 1
+---
+
+# 一、HTML中的多媒体元素
+
+HTML 使用 `audio` 和 `video` 元素在网页中嵌入多媒体内容：
+
+- `audio` 用于播放音乐、播客和语音等音频
+- `video` 用于播放教学视频、动画和影片等视频
+
+这两个元素都可以加载本地文件或网络资源，并使用浏览器自带的播放器控制播放。
+
+| 元素 | 常见格式 |
+|---|---|
+| `audio` | MP3、WAV、Ogg |
+| `video` | MP4、WebM、Ogg |
+
+浏览器是否能够播放某种媒体，不仅取决于文件扩展名，还取决于文件使用的编码格式。因此，实际项目中可以准备多种格式，让浏览器选择自己支持的资源。
+
+# 二、audio元素
+
+## 1、嵌入音频
+
+使用 `audio` 元素和 `src` 属性可以加载音频文件：
+
+```html
+<audio src="./media/morning-podcast.mp3"></audio>
+```
+
+`src` 是 source 的缩写，用于指定音频资源的位置。
+
+这段代码虽然加载了音频，但页面上默认不会出现播放器。如果希望用户能够播放、暂停或调整音量，需要添加 `controls` 属性：
+
+```html
+<audio src="./media/morning-podcast.mp3" controls></audio>
+```
+
+`controls` 是布尔属性。只要它出现在开始标签中，浏览器就会显示内置播放控件；移除它后，控件就不会显示。
+
+> [!note] 播放器外观并不完全相同
+> 浏览器和操作系统会决定原生播放器的具体外观与功能。即使添加了 `controls`，不同浏览器显示的按钮也可能不同。
+
+## 2、常用audio属性
+
+`audio` 常用属性如下：
+
+| 属性 | 类型 | 作用 |
+|---|---|---|
+| `src` | 普通属性 | 指定音频文件的位置 |
+| `controls` | 布尔属性 | 显示浏览器内置播放控件 |
+| `loop` | 布尔属性 | 播放结束后从头重新播放 |
+| `muted` | 布尔属性 | 初始状态为静音 |
+| `autoplay` | 布尔属性 | 请求页面加载后自动播放 |
+| `preload` | 普通属性 | 提示浏览器如何预加载音频 |
+
+让一段背景音循环播放，并在初始状态下静音：
+
+```html
+<audio
+  src="./media/forest-ambience.mp3"
+  controls
+  loop
+  muted
+></audio>
+```
+
+这里的 `controls`、`loop` 和 `muted` 都是布尔属性。布尔属性由“是否存在”决定状态，而不是由字符串 `true` 或 `false` 决定。关于布尔属性可以参考 [[1、HTML基础：元素与属性#4、布尔属性|布尔属性]]。
+
+## 3、preload属性
+
+`preload` 用于提示浏览器在用户播放之前应预先加载多少媒体数据：
+
+```html
+<audio
+  src="./media/morning-podcast.mp3"
+  controls
+  preload="metadata"
+></audio>
+```
+
+常见值包括：
+
+| 值 | 含义 |
+|---|---|
+| `none` | 不主动预加载音频 |
+| `metadata` | 只预加载时长等媒体信息 |
+| `auto` | 浏览器可以自行决定是否预加载整个音频 |
+
+`preload` 只是提供给浏览器的提示，浏览器可能根据网络环境、流量策略等因素采用不同做法。
+
+# 三、video元素
+
+## 1、嵌入视频
+
+`video` 元素的基本用法与 `audio` 类似：
+
+```html
+<video src="./media/html-introduction.mp4" controls width="640"></video>
+```
+
+- `src` 指定视频文件
+- `controls` 显示播放控件
+- `width` 设置播放器的显示宽度
+
+实际项目通常使用 CSS 控制视频尺寸，并让视频适应不同大小的屏幕：
+
+```css
+video {
+  max-width: 100%;
+  height: auto;
+}
+```
+
+## 2、video的常用属性
+
+`video` 支持许多与 `audio` 相同的属性：
+
+```html
+<video
+  src="./media/html-introduction.mp4"
+  controls
+  loop
+  muted
+  width="640"
+></video>
+```
+
+这里的 `controls`、`loop` 和 `muted` 与它们在 `audio` 中的作用相同。
+
+## 3、poster封面图
+
+`poster` 是 `video` 特有的属性，用于设置视频播放前或视频加载期间显示的封面图：
+
+```html
+<video
+  src="./media/html-introduction.mp4"
+  controls
+  width="640"
+  poster="./images/html-course-cover.jpg"
+></video>
+```
+
+封面图可以提前告诉用户视频的主题，也能避免视频尚未加载时只显示一块空白区域。
+
+`audio` 不支持 `poster`，因为音频播放器没有视频画面。
+
+# 四、使用source提供多种格式
+
+## 1、为什么需要多种格式
+
+介绍完 `audio` 和 `video` 后，可以看到它们都能直接通过 `src` 指定一个媒体文件。但是，并非所有浏览器都支持相同的容器格式和音视频编码。
+
+为了提高兼容性，可以在 `audio` 或 `video` 内部放置多个 `source` 元素，让浏览器选择自己能够播放的资源。
+
+关于容器格式与编码格式的区别，可以这样理解：
+
+- MP4、WebM 和 Ogg 等是媒体的容器格式
+- H.264、VP9、AV1、AAC 和 Opus 等是媒体的编码格式
+- 浏览器需要同时支持容器及其中的编码，才能正确播放媒体
+
+即使两个文件都以 `.mp4` 结尾，它们内部使用的编码也可能不同，因此浏览器不一定都能播放。
+
+## 2、为audio提供多种格式
+
+可以为同一段音频准备多个版本：
+
+```html
+<audio controls>
+  <source src="./media/morning-podcast.ogg" type="audio/ogg">
+  <source src="./media/morning-podcast.mp3" type="audio/mpeg">
+  <p>你的浏览器无法播放该音频。</p>
+</audio>
+```
+
+## 3、为video提供多种格式
+
+视频也可以使用相同的方式提供多个资源：
+
+```html
+<video
+  controls
+  width="640"
+  poster="./images/html-course-cover.jpg"
+>
+  <source src="./media/html-introduction.webm" type="video/webm">
+  <source src="./media/html-introduction.mp4" type="video/mp4">
+  <p>你的浏览器不支持HTML视频播放。</p>
+</video>
+```
+
+浏览器会按照 `source` 的书写顺序进行检查：
+
+1. 检查第一个资源是否受支持
+2. 如果不支持，则继续检查下一个资源
+3. 选择第一个能够播放的资源
+4. 如果所有资源都不支持，则显示元素内部的后备内容
+
+`source` 是空元素，不需要结束标签。
+
+## 4、type属性
+
+`type` 用于说明资源的媒体类型，也称为 MIME 类型：
+
+```html
+<source src="./media/morning-podcast.mp3" type="audio/mpeg">
+<source src="./media/html-introduction.webm" type="video/webm">
+```
+
+提供正确的 `type` 后，浏览器可以先判断自己是否支持这种媒体类型，不必下载文件后再判断。
+
+常见媒体类型包括：
+
+| 文件 | MIME类型 |
+|---|---|
+| MP3 音频 | `audio/mpeg` |
+| WAV 音频 | `audio/wav` |
+| Ogg 音频 | `audio/ogg` |
+| MP4 视频 | `video/mp4` |
+| WebM 视频 | `video/webm` |
+
+> [!tip] src属性与source元素二选一
+> 只有一个媒体文件时，可以直接在 `audio` 或 `video` 上使用 `src`；需要提供多种格式时，把多个 `source` 放在媒体元素内部会更清晰。
+
+# 五、自动播放与静音
+
+## 1、autoplay属性
+
+添加 `autoplay` 可以请求浏览器在资源可播放后自动开始播放：
+
+```html
+<video
+  src="./media/product-preview.mp4"
+  autoplay
+  muted
+  loop
+  playsinline
+></video>
+```
+
+不过，现代浏览器通常会阻止带声音的媒体自动播放，以避免突然发声打扰用户。需要自动播放的视频一般同时使用 `muted`。
+
+`playsinline` 表示在支持的移动设备上尽量让视频在页面内播放，而不是自动进入全屏模式。
+
+> [!warning] 不要依赖autoplay
+> 即使添加了 `autoplay` 和 `muted`，自动播放仍可能受浏览器设置、省电模式或用户偏好影响。页面的重要信息不能依赖媒体自动播放才能被用户看到。
+
+## 2、为用户保留控制权
+
+普通音频和主要视频内容通常应添加 `controls`，让用户能够自行决定何时播放、暂停和调整音量。
+
+自动播放、无限循环和背景声音都应谨慎使用。突然播放声音不仅会打扰用户，也可能给使用辅助技术或对声音敏感的用户带来困难。
+
+# 六、字幕与可访问性
+
+## 1、使用track添加字幕
+
+视频只有画面和声音并不足以让所有用户顺利理解内容。可以使用 `track` 元素为视频提供字幕：
+
+```html
+<video
+  controls
+  width="640"
+  poster="./images/html-course-cover.jpg"
+>
+  <source src="./media/html-introduction.mp4" type="video/mp4">
+  <track
+    src="./captions/html-introduction-zh.vtt"
+    kind="subtitles"
+    srclang="zh"
+    label="简体中文"
+    default
+  >
+</video>
+```
+
+`track` 的常用属性：
+
+| 属性 | 作用 |
+|---|---|
+| `src` | 指定字幕文件的位置 |
+| `kind` | 指定文本轨道的类型 |
+| `srclang` | 指定字幕语言 |
+| `label` | 设置播放器中显示的字幕名称 |
+| `default` | 默认启用该文本轨道 |
+
+字幕文件通常使用 WebVTT 格式，扩展名为 `.vtt`。
+
+## 2、不要只依赖媒体传达信息
+
+为了提高可访问性，还应根据内容提供：
+
+- 视频字幕
+- 音频文字稿
+- 对重要画面的文字说明
+- 无法播放媒体时的后备内容
+
+这些信息不仅能帮助听觉或视觉障碍用户，也方便处于静音环境、网络条件较差或暂时无法播放媒体的用户。
+
+# 七、完整示例
+
+下面是一个包含音频、视频、多格式资源和字幕的学习页面：
+
+```html
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML多媒体练习</title>
+  </head>
+  <body>
+    <main>
+      <h1>HTML多媒体练习</h1>
+
+      <section>
+        <h2>课程音频</h2>
+
+        <audio controls preload="metadata">
+          <source src="./media/lesson-audio.ogg" type="audio/ogg">
+          <source src="./media/lesson-audio.mp3" type="audio/mpeg">
+          <p>你的浏览器无法播放课程音频。</p>
+        </audio>
+      </section>
+
+      <section>
+        <h2>课程视频</h2>
+
+        <video
+          controls
+          preload="metadata"
+          poster="./images/lesson-cover.jpg"
+        >
+          <source src="./media/lesson-video.webm" type="video/webm">
+          <source src="./media/lesson-video.mp4" type="video/mp4">
+          <track
+            src="./captions/lesson-video-zh.vtt"
+            kind="subtitles"
+            srclang="zh"
+            label="简体中文"
+            default
+          >
+          <p>你的浏览器无法播放课程视频。</p>
+        </video>
+      </section>
+    </main>
+  </body>
+</html>
+```
+
+# 八、总结
+
+- `audio` 用于嵌入音频，`video` 用于嵌入视频
+- `src` 指定媒体资源的位置，`controls` 显示浏览器内置播放器
+- `loop` 让媒体循环播放，`muted` 让媒体初始静音
+- `preload` 用于提示浏览器预加载多少媒体数据
+- 多个 `source` 可以为同一媒体提供不同格式
+- 浏览器会按照书写顺序选择第一个支持的 `source`
+- `type` 用于声明资源的 MIME 类型
+- `poster` 用于设置视频封面图，不适用于音频
+- 带声音的自动播放通常会被浏览器阻止，自动播放视频一般需要配合 `muted`
+- `track` 可以为视频添加字幕，提高可访问性
+- 音视频应提供后备提示，重要内容还应提供字幕或文字稿

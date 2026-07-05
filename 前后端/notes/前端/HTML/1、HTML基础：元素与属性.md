@@ -1,6 +1,6 @@
 ---
-title: HTML的作用、元素与属性
-date: 2026-06-29
+title: HTML基础：元素与属性
+date: 2026-07-03
 tags: [HTML, 前端基础]
 source_count: 1
 ---
