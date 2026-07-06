@@ -1,4 +1,4 @@
-# 一、JSON简介
+# 一、概述
 
 `JSON`全称是 JavaScript Object Notation，即 JavaScript 对象表示法。
 

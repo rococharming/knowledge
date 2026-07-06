@@ -1,6 +1,6 @@
 ---
-title: HTML元数据：搜索摘要与社交分享
-date: 2026-07-03
+title: Meta元数据与Open Graph
+date: 2026-07-05
 tags: [HTML, 前端基础, SEO, OpenGraph]
 source_count: 1
 ---
@@ -18,7 +18,7 @@ source_count: 1
 </head>
 ```
 
-`meta` 是空元素，不需要结束标签。关于 `head` 的基础结构，可以参考 [[2、HTML文档：骨架与外部资源#5、head中的常用元素|head中的常用元素]]。
+`meta` 是空元素，不需要结束标签。关于 `head` 的基础结构，可以参考 [[2、文档结构与外部资源#5、head中的常用元素|head中的常用元素]]。
 
 不同的元数据可以帮助浏览器、搜索引擎和社交平台理解页面，但它们的用途并不相同：
 
