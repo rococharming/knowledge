@@ -14,7 +14,7 @@
 | Windows | Win32                |
 | macOS   | AppKit               |
 | Linux   | X11 / Wayland        |
-| Web     | HTML Canvas + DOM 事件 |
+
 
 `winit` 在生态中是很多图形/GUI 框架的**底座**，可以理解成"Rust 版的 GLFW/SDL 窗口部分"。
 
