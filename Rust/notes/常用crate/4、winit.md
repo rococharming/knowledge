@@ -9,14 +9,16 @@
 
 它**只负责开窗口和收事件，不负责画图**。把窗口画上像素是 GPU 渲染库（如 `wgpu`、`vulkano`、`glutin`）或即时模式 GUI（如 `egui`）的工作。winit 通过 `raw-window-handle` 把底层窗口句柄"递"给渲染库。
 
+`winit` 是一个跨平台窗口库，每个操作系统平台的窗口系统完全不同，`winit`必须调用操作系统原生的窗口 API。因此，后端就是 `winit` 在某个平台上实际调用的底层系统 API。
+
+各个平台的后端如下表所示：
+
 | 平台      | 后端                   |
 | ------- | -------------------- |
 | Windows | Win32                |
 | macOS   | AppKit               |
 | Linux   | X11 / Wayland        |
-
-
-`winit` 在生态中是很多图形/GUI 框架的**底座**，可以理解成"Rust 版的 GLFW/SDL 窗口部分"。
+特别需要注意的是，Linux 上没有唯一的窗口系统。`X11`是老牌显示协议，几乎所有的 Linux 桌面都支持。Wayland 是新一代替代协议，现在发行版（如 Ubuntu较新版本）默认用它。`winit`编译时两个都支持，运行时自动检测该用哪个。
 
 ## 2、核心三件套
 
@@ -25,6 +27,8 @@
 | `EventLoop`          | 事件循环，程序的心脏，不断派发事件       |
 | `Window`             | 一个窗口对象                  |
 | `ApplicationHandler` | 你实现的 trait，事件循环把事件回调到这里 |
+
+![[winit-core-three.png]]
 
 > winit `0.30` 相比 `0.29` 做了较大重构：旧的 `Event` 大枚举 + 闭包式 `run` 被替换成 `ApplicationHandler` trait + `run_app`，事件按生命周期、窗口、设备等分类回调。两套 API 不兼容。本文基于 `0.30`。
 
@@ -53,8 +57,6 @@ winit = "0.30"
 > 如果只跑 Linux X11 后端，可以 `cargo add winit --no-default-features --features x11`；如果同时需要把窗口交给 GPU 库渲染，通常还要加 `--features rwh_06`（启用 `raw-window-handle` 0.6 接口）。
 
 # 三、最小示例
-
-![[Pasted image 20260630160322.png|600]]
 
 先写一个能弹出窗口、点关闭按钮退出的程序：
 
@@ -103,28 +105,164 @@ cargo run
 
 会弹出一个标题为 `Hello winit` 的空窗口；点击窗口的关闭按钮，程序退出。
 
+![[Pasted image 20260708023809.png|500]]
+
 核心关系：
 
-| 写法 | 作用 |
-| --- | --- |
-| `EventLoop::new()` | 创建事件循环 |
-| `impl ApplicationHandler for App` | 让 `App` 成为事件回调对象 |
-| `event_loop.run_app(&mut app)` | 启动事件循环，把事件派发给 `App` |
-| `fn resumed` | 窗口可创建时回调，通常在此 `create_window` |
-| `fn window_event` | 窗口收到事件时回调 |
-| `event_loop.exit()` | 请求退出事件循环 |
+| 写法                                | 作用                            |
+| --------------------------------- | ----------------------------- |
+| `EventLoop::new()`                | 创建事件循环                        |
+| `impl ApplicationHandler for App` | 让 `App` 成为事件回调对象              |
+| `event_loop.run_app(&mut app)`    | 启动事件循环，把事件派发给 `App`           |
+| `fn resumed`                      | 窗口可创建时回调，通常在此 `create_window` |
+| `fn window_event`                 | 窗口收到事件时回调                     |
+| `event_loop.exit()`               | 请求退出事件循环                      |
 
-几个关键点：
+## 1、程序启动顺序
+
+这个例子不是从上到下一次性执行完的程序，而是典型的**事件驱动**程序。真正的执行顺序大致是：
+
+1. `main` 创建 `EventLoop`。
+2. `main` 创建一个空的 `App`。
+3. `run_app` 启动事件循环，并把 `App` 交给 winit。
+4. winit 在合适的生命周期时机调用 `App::resumed`。
+5. `resumed` 中创建真正的系统窗口，并保存到 `App.window`。
+6. 用户操作窗口时，系统产生 `WindowEvent`。
+7. winit 把这些窗口事件派发给 `App::window_event`。
+8. 如果收到 `CloseRequested`，调用 `event_loop.exit()` 请求结束事件循环。
+9. 事件循环结束后，`run_app` 返回，`main` 结束。
+
+所以，`run_app` 之后程序会进入事件循环，不是立即继续往下跑。窗口程序的大部分逻辑都发生在 winit 回调你的方法时。
+
+## 2、导入的类型
+
+```rust
+use winit::application::ApplicationHandler;
+use winit::event::WindowEvent;
+use winit::event_loop::{ActiveEventLoop, EventLoop};
+use winit::window::{Window, WindowId};
+```
+
+这几行把示例需要的核心类型引入当前文件：
+
+| 类型 | 作用 |
+| --- | --- |
+| `ApplicationHandler` | 需要由你的应用状态实现的 trait，winit 通过它回调你的代码 |
+| `WindowEvent` | 窗口相关事件枚举，例如关闭、缩放、鼠标、键盘、重绘 |
+| `EventLoop` | 事件循环对象，负责接收系统事件并派发回调 |
+| `ActiveEventLoop` | 事件循环运行期间传给回调的句柄，可用于创建窗口、退出循环等 |
+| `Window` | 一个系统窗口对象 |
+| `WindowId` | 窗口 ID，用于区分多个窗口 |
+
+这里同时出现 `EventLoop` 和 `ActiveEventLoop`，容易混淆：`EventLoop` 是你在 `main` 中创建并启动的事件循环本体；`ActiveEventLoop` 是事件循环已经跑起来之后，winit 在回调中临时交给你的操作句柄。
+
+## 3、App 保存应用状态
+
+```rust
+#[derive(Default)]
+struct App {
+    window: Option<Window>,
+}
+```
+
+`App` 是这个 GUI 程序自己的状态对象。winit 不要求你必须叫它 `App`，这里只是一个常见命名。
+
+`window` 使用 `Option<Window>`，是因为程序一开始还没有窗口。窗口不能在结构体初始化时直接创建，而要等事件循环启动后，在 `resumed` 回调里通过 `ActiveEventLoop` 创建。因此初始状态是 `None`，创建成功后再变成 `Some(window)`。
+
+`#[derive(Default)]` 的作用是让 Rust 自动生成 `App::default()`。由于 `Option<Window>` 的默认值是 `None`，所以这个派生刚好等价于创建一个“还没有窗口”的 `App`。
+
+## 4、实现 ApplicationHandler
+
+```rust
+impl ApplicationHandler for App {
+    fn resumed(&mut self, event_loop: &ActiveEventLoop) {
+        let attrs = Window::default_attributes().with_title("Hello winit");
+        let window = event_loop.create_window(attrs).unwrap();
+        self.window = Some(window);
+    }
+
+    fn window_event(
+        &mut self,
+        event_loop: &ActiveEventLoop,
+        _window_id: WindowId,
+        event: WindowEvent,
+    ) {
+        if let WindowEvent::CloseRequested = event {
+            event_loop.exit();
+        }
+    }
+}
+```
+
+`ApplicationHandler` 是 winit `0.30` 的核心入口。你不再把一个大闭包传给事件循环，而是实现一个 trait，让 winit 在不同事件发生时调用对应方法。
+
+`resumed` 表示应用进入可运行状态。很多平台要求窗口必须在事件循环启动后创建，所以窗口创建代码通常放在这里：
+
+```rust
+let attrs = Window::default_attributes().with_title("Hello winit");
+```
+
+这行先构造窗口属性。`Window::default_attributes()` 给出一组默认窗口配置，`with_title("Hello winit")` 在默认配置基础上设置窗口标题。
+
+```rust
+let window = event_loop.create_window(attrs).unwrap();
+```
+
+这行通过 `ActiveEventLoop` 创建窗口。创建窗口可能失败，所以返回的是 `Result`；示例里用 `unwrap()` 简化处理，真实项目里可以改成更明确的错误处理。
+
+```rust
+self.window = Some(window);
+```
+
+这行把窗口保存到 `App` 中。这个保存动作很重要：如果不保存 `Window`，窗口对象会在 `resumed` 结束时被丢弃，窗口也就无法作为应用状态继续存在。
+
+`window_event` 负责处理窗口事件。参数里的 `_window_id` 前面带下划线，表示这个示例暂时不用它；如果程序有多个窗口，就可以用 `WindowId` 判断事件来自哪个窗口。
+
+```rust
+if let WindowEvent::CloseRequested = event {
+    event_loop.exit();
+}
+```
+
+这段只关心一种事件：用户点击关闭按钮时产生的 `CloseRequested`。收到它以后调用 `event_loop.exit()`，意思是请求事件循环退出。注意它不是直接杀掉进程，而是告诉 winit：事件循环可以结束了。
+
+## 5、main 只负责搭建和启动
+
+```rust
+fn main() {
+    let event_loop = EventLoop::new().unwrap();
+    let mut app = App::default();
+    event_loop.run_app(&mut app).unwrap();
+}
+```
+
+`EventLoop::new()` 创建事件循环。它也可能失败，所以返回 `Result`，示例里继续用 `unwrap()` 简化。
+
+`let mut app = App::default();` 创建应用状态。这里必须是 `mut`，因为 winit 调用 `resumed` 时需要修改 `app.window`，调用其他回调时也可能修改应用状态。
+
+`event_loop.run_app(&mut app)` 启动事件循环。这里传入的是 `&mut app`，表示 winit 在事件循环运行期间可以反复通过可变引用回调并修改这个 `App`。
+
+这一行通常会阻塞很久：只要窗口程序还在运行，事件循环就会持续等待系统事件。只有调用 `event_loop.exit()` 之后，它才会结束并返回。
+
+## 6、最重要的心智模型
 
 - `App` 用 `#[derive(Default)]`，省得手写构造；`window` 用 `Option<Window>` 是因为窗口在 `resumed` 里才创建，初始为 `None`。
 - `ApplicationHandler` 中**只有 `resumed` 和 `window_event` 是必须实现**的，其余方法都有默认实现。
 - `create_window` 返回 `Result<Window, OsError>`，这里用 `unwrap()` 是示例简化。
+- `main` 不是窗口逻辑的主战场，真正的窗口逻辑在 `ApplicationHandler` 的回调里。
+- `EventLoop` 像调度器：它等系统事件，然后在合适的时候调用你的 `App`。
+- `Window` 是系统窗口对象，通常要保存在 `App` 里，否则创建出来的窗口无法稳定地作为程序状态存在。
+- `window_event` 是处理用户输入、窗口关闭、窗口缩放、重绘请求等事件的主要入口。
 
 # 四、窗口的创建与配置
 
 ## 1、在 resumed 中创建
 
-窗口创建必须发生在事件循环启动之后，因此放在 `resumed` 回调里。`resumed` 会在应用启动、以及从挂起状态恢复时被调用，所以这里要做"幂等"处理：只在还没有窗口时才创建。
+窗口创建通常放在`resumed`回调里。对于桌面程序，可以把它理解为事件循环启动后、适合创建窗口的时机；对于 Android、iOS等平台，它还可能对应应用从挂起或缓存状态恢复。
+
+例如在 Android 上，用户按 Home 键把 App 切到后台，系统可能会销毁底层的渲染表面；当用户重新打开 App 时，应用会再次进入恢复状态，`resumed` 可能被重新调用。
+
+由于 `resumed` 可能被调用多次，这里需要做幂等处理：只有 `self.window` 为 `None` 时才创建窗口，避免重复创建多个 `Window`。
 
 ```rust
 fn resumed(&mut self, event_loop: &ActiveEventLoop) {
@@ -134,6 +272,34 @@ fn resumed(&mut self, event_loop: &ActiveEventLoop) {
     }
 }
 ```
+
+需要注意，这里的判断只保证窗口对象不会重复创建；如果程序还持有渲染表面或图形资源，移动端恢复时还需要额外处理这些资源的释放与重建。
+
+```rust
+struct App {  
+	window: Option<Window>,  
+	renderer: Option<Renderer>,  
+}
+
+impl ApplicationHandler for App {
+	fn resumed(&mut self, event_loop: &ActiveEventLoop) {
+	    if self.window.is_none() {
+	        let attrs = Window::default_attributes().with_title("Hello winit");
+	        self.window = Some(event_loop.create_window(attrs).unwrap());
+	    }
+	
+	    if self.renderer.is_none() {
+	        // 基于 window 重新创建 renderer / surface
+	    }
+	}
+	
+	fn suspended(&mut self, _event_loop: &ActiveEventLoop) {
+	    // Android 上需要释放和 surface 相关的图形资源
+	    self.renderer = None;
+	}
+}
+```
+
 
 ## 2、常用窗口属性
 
@@ -179,6 +345,63 @@ fn resumed(&mut self, event_loop: &ActiveEventLoop) {
 | `MouseInput { state, button, .. }` | 鼠标按键按下/抬起 |
 | `KeyboardInput { event, .. }` | 键盘按键 |
 | `RedrawRequested` | 窗口需要重绘 |
+
+先看 `RedrawRequested` 之前这些常见事件。它们都出现在 `window_event` 的 `event: WindowEvent` 参数里，通常用 `match` 分支逐个处理：
+
+```rust
+use winit::event::{ElementState, MouseButton, WindowEvent};
+use winit::keyboard::{KeyCode, PhysicalKey};
+
+fn window_event(
+    &mut self,
+    event_loop: &ActiveEventLoop,
+    _window_id: WindowId,
+    event: WindowEvent,
+) {
+    match event {
+        WindowEvent::CloseRequested => {
+            event_loop.exit();
+        }
+        WindowEvent::Resized(size) => {
+            println!("new size: {} x {}", size.width, size.height);
+        }
+        WindowEvent::Focused(is_focused) => {
+            println!("focused: {is_focused}");
+        }
+        WindowEvent::CursorMoved { position, .. } => {
+            println!("cursor: {}, {}", position.x, position.y);
+        }
+        WindowEvent::MouseInput { state, button, .. } => {
+            if button == MouseButton::Left && state == ElementState::Pressed {
+                println!("left mouse pressed");
+            }
+        }
+        WindowEvent::KeyboardInput { event, .. } => {
+            if event.state == ElementState::Pressed {
+                if let PhysicalKey::Code(KeyCode::Escape) = event.physical_key {
+                    event_loop.exit();
+                }
+            }
+        }
+        _ => {}
+    }
+}
+```
+
+逐个理解：
+
+| 事件 | 典型用途 | 示例里的处理 |
+| --- | --- | --- |
+| `CloseRequested` | 用户点窗口关闭按钮时触发 | 调用 `event_loop.exit()` 退出程序 |
+| `Resized(size)` | 窗口尺寸变化时触发 | 读取 `size.width` 和 `size.height`，实际项目里常用来更新渲染 surface |
+| `Focused(is_focused)` | 窗口获得或失去焦点时触发 | `true` 表示窗口获得焦点，`false` 表示失去焦点 |
+| `CursorMoved { position, .. }` | 鼠标在窗口内部移动时触发 | 读取鼠标位置 `position.x`、`position.y` |
+| `MouseInput { state, button, .. }` | 鼠标按键按下或松开时触发 | 判断左键是否被按下 |
+| `KeyboardInput { event, .. }` | 键盘输入时触发 | 判断 `Esc` 是否按下，并用它退出程序 |
+
+其中 `state` 通常是 `ElementState::Pressed` 或 `ElementState::Released`。也就是说，鼠标和键盘事件一般都要同时判断“哪个键”和“按下还是松开”。
+
+`CursorMoved` 和 `MouseInput` 经常配合使用：前者告诉你鼠标在哪里，后者告诉你鼠标按钮发生了什么。例如做拖拽时，通常会在鼠标左键按下时记录状态，在移动时根据当前位置更新对象。
 
 对 `RedrawRequested` 做个说明：当窗口需要重绘（首次显示、从遮挡中露出、手动 `request_redraw`）时，系统会发送这个事件。**渲染代码应该写在这里**，因为这是真正画图的时机。
 
@@ -239,10 +462,10 @@ fn window_event(
 
 ## 2、物理键与逻辑键
 
-| 概念 | 类型 | 含义 |
-| --- | --- | --- |
-| 物理键 | `PhysicalKey` | 键盘上的物理位置，与布局无关（如 `KeyCode::KeyW`） |
-| 逻辑键 | `Key<Character>` | 经过输入法/布局映射后的字符（如输入"中"） |
+| 概念  | 类型               | 含义                                |
+| --- | ---------------- | --------------------------------- |
+| 物理键 | `PhysicalKey`    | 键盘上的物理位置，与布局无关（如 `KeyCode::KeyW`） |
+| 逻辑键 | `Key<Character>` | 经过输入法/布局映射后的字符（如输入"中"）            |
 
 做游戏、快捷键（如 WASD 移动）用物理键；做文本输入用逻辑键，通常配合 `WindowEvent::KeyboardInput` 之外的 `WindowEvent::Ime` 处理中文输入。
 
@@ -272,49 +495,95 @@ fn about_to_wait(&mut self, _event_loop: &ActiveEventLoop) {
 
 # 八、与渲染库配合
 
-winit 本身不画图。典型搭配是：
+winit 本身不画图，它只负责创建系统窗口、运行事件循环、接收输入和窗口事件。真正把像素画到窗口里的，是 `wgpu`、`vulkano`、`glutin`、`softbuffer`、`egui` 这类渲染或 GUI 库。两者的关系可以先理解成：
 
-```text
-winit（开窗口 + 收事件）
-        ↓ 通过 raw-window-handle 交出窗口句柄
-渲染库（wgpu / vulkano / glutin / egui）
-        ↓ 把画面画到窗口上
+![[assets/winit-window-render-flow.png|500]]
+
+这里最容易混淆的是：**winit 的 `Window` 不是渲染画布本身，而是系统窗口的 Rust 包装对象**。它代表“这个窗口存在”，可以设置标题、查询大小、请求重绘、拿到窗口 ID，也负责在 drop 时关闭窗口。渲染库不会接管这个 `Window`，通常只是通过它拿到底层句柄，然后创建自己的渲染目标。
+
+`raw-window-handle` 就是这中间的“通用身份证”。不同平台的窗口系统完全不同：Windows 有 Win32 窗口句柄，macOS 有 AppKit / Cocoa 对象，Linux 有 X11 / Wayland surface。渲染库如果要跨平台，就不能只认识某一种平台句柄，所以 Rust 生态用 `raw-window-handle` 把这些底层窗口信息包装成统一接口。
+
+也就是说：
+
+| 对象                         | 谁创建                 | 谁持有                  | 作用                   |
+| -------------------------- | ------------------- | -------------------- | -------------------- |
+| `Window`                   | winit               | 通常保存在你的 `App` 里      | 代表系统窗口，处理窗口级操作       |
+| raw window/display handle  | winit 从 `Window` 暴露 | 临时借给渲染库使用            | 告诉渲染库底层窗口在哪里         |
+| `Surface` / OpenGL context | 渲染库                 | 通常保存在你的 `Renderer` 里 | 表示“可以往这个窗口呈现画面”的渲染目标 |
+
+所以 `Window` 和 `Surface` 不是同一个东西。`Window` 是系统窗口；`Surface` 是渲染库基于这个窗口创建的“呈现目标”。`Surface` 依赖窗口存在，因此通常要让 `Window` 活得比 `Surface` 久。最常见的结构是：
+
+```rust
+struct App {
+    window: Option<Window>,
+    renderer: Option<Renderer>,
+}
+
+struct Renderer {
+    // wgpu::Surface、device、queue、config、pipeline 等
+}
 ```
 
-要让 winit 实现 `raw-window-handle` 0.6 接口，依赖里要带 `rwh_06` feature：
+创建顺序通常是：
+
+```text
+resumed
+  -> event_loop.create_window(...)
+  -> 得到 winit::Window
+  -> Renderer::new(&window)
+  -> 渲染库通过 &Window 拿 handle
+  -> 创建 surface / device / pipeline
+  -> Window 存进 App，Renderer 也存进 App
+```
+
+以 `wgpu` 为例，常见写法是：
+
+```rust
+let surface = instance.create_surface(&window)?;
+```
+
+这句话可以拆成两层意思：
+
+1. `&window` 还是 winit 的窗口对象，所有权没有交给 `wgpu`。
+2. `wgpu` 通过 `&window` 读取底层窗口 handle，然后创建一个绑定到该窗口的 `Surface`。
+
+要让 winit 的 `Window` 暴露 `raw-window-handle` 0.6 接口，依赖里通常要打开 `rwh_06` feature：
+
+```toml
+winit = { version = "0.30", features = ["rwh_06"] }
+```
+
+如果你关闭默认 feature，只启用某个平台后端，也可以写成：
 
 ```toml
 winit = { version = "0.30", default-features = false, features = ["rwh_06", "x11"] }
 ```
 
-随后 `Window` 就能作为 `HasWindowHandle` 交给渲染库使用。具体的渲染集成属于 `wgpu` 等库的范畴，超出 winit 入门范围。
+和渲染库配合后，`window_event` 里的几个事件就会有明确分工：
 
-# 九、常见使用模式
+| winit 信号 | 通常做什么 |
+| --- | --- |
+| `resumed` | 创建 `Window`，然后用 `&Window` 初始化渲染器 |
+| `WindowEvent::Resized(size)` | 窗口大小变了，通知渲染器重新配置 surface 尺寸 |
+| `WindowEvent::RedrawRequested` | 现在需要画一帧，调用 `renderer.render()` |
+| `window.request_redraw()` | 请求 winit 稍后再发一次 `RedrawRequested` |
+| `suspended` | 移动端常用来释放或暂停 surface 相关资源 |
 
-一个"持续重绘 + Esc 退出"的最小骨架，可以直接作为后续接入渲染库的起点：
+放在代码结构里，大致是这样：
 
 ```rust
-use winit::application::ApplicationHandler;
-use winit::event::{ElementState, KeyEvent, WindowEvent};
-use winit::event_loop::{ActiveEventLoop, EventLoop};
-use winit::keyboard::{KeyCode, PhysicalKey};
-use winit::window::{Window, WindowId};
-
-struct App {
-    window: Option<Window>,
-}
-
-impl App {
-    fn new() -> Self {
-        Self { window: None }
-    }
-}
-
 impl ApplicationHandler for App {
     fn resumed(&mut self, event_loop: &ActiveEventLoop) {
         if self.window.is_none() {
-            let attrs = Window::default_attributes().with_title("winit demo");
-            self.window = Some(event_loop.create_window(attrs).unwrap());
+            let attrs = Window::default_attributes().with_title("Render demo");
+            let window = event_loop.create_window(attrs).unwrap();
+
+            // Renderer 通过 &Window 创建 surface / device / pipeline。
+            // 注意：Window 仍然由 App 保存，Renderer 不接管窗口本身。
+            let renderer = Renderer::new(&window);
+
+            self.window = Some(window);
+            self.renderer = Some(renderer);
         }
     }
 
@@ -325,42 +594,83 @@ impl ApplicationHandler for App {
         event: WindowEvent,
     ) {
         match event {
-            WindowEvent::CloseRequested => event_loop.exit(),
-            WindowEvent::KeyboardInput {
-                event:
-                    KeyEvent {
-                        state: ElementState::Pressed,
-                        physical_key: PhysicalKey::Code(KeyCode::Escape),
-                        ..
-                    },
-                ..
-            } => event_loop.exit(),
-            WindowEvent::RedrawRequested => {
-                // 渲染逻辑写在这里
-                // 画完一帧后，若需要持续动画，在 about_to_wait 中 request_redraw
+            WindowEvent::CloseRequested => {
+                event_loop.exit();
             }
-            _ => (),
+            WindowEvent::Resized(size) => {
+                if let Some(renderer) = &mut self.renderer {
+                    renderer.resize(size);
+                }
+            }
+            WindowEvent::RedrawRequested => {
+                if let Some(renderer) = &mut self.renderer {
+                    renderer.render();
+                }
+            }
+            _ => {}
         }
     }
-
-    fn about_to_wait(&mut self, _event_loop: &ActiveEventLoop) {
-        if let Some(window) = &self.window {
-            window.request_redraw();
-        }
-    }
-}
-
-fn main() {
-    let event_loop = EventLoop::new().unwrap();
-    let mut app = App::new();
-    event_loop.run_app(&mut app).unwrap();
 }
 ```
 
-要点回顾：
+这里 `Renderer::new`、`resize`、`render` 都是你自己封装出来的方法名，不是 winit 固定 API。它们背后的含义一般是：
 
-- 事件循环通过 `EventLoop::new()` 创建，`run_app` 启动，事件回调进 `ApplicationHandler`。
-- 窗口在 `resumed` 里 `create_window`，用 `Option` 持有。
-- 退出用 `event_loop.exit()`，可由 `CloseRequested` 或按键触发。
-- 渲染写在 `RedrawRequested`，持续动画靠 `about_to_wait` 里 `request_redraw`。
-- 真正画图交给渲染库，winit 只通过 `rwh_06` 交出窗口句柄。
+| 方法 | 大致含义 |
+| --- | --- |
+| `Renderer::new(&window)` | 用窗口 handle 创建 surface，并初始化 GPU 资源 |
+| `renderer.resize(size)` | 窗口尺寸变了，重新配置 surface |
+| `renderer.render()` | 编码绘制命令，提交到 GPU，把一帧呈现到窗口上 |
+
+`Resized` 很重要，因为窗口大小变了以后，渲染库内部的 surface 尺寸也要同步变化。否则窗口已经是新尺寸，但后台渲染目标还是旧尺寸，轻则画面拉伸、比例不对，重则呈现失败。
+
+`RedrawRequested` 则是“现在该画一帧了”。普通静态界面只在状态变化时请求重绘；动画、游戏、实时图表会在画完一帧后请求下一帧：
+
+```rust
+WindowEvent::RedrawRequested => {
+    renderer.render();
+
+    if let Some(window) = &self.window {
+        window.request_redraw();
+    }
+}
+```
+
+这会形成“画一帧 → 请求下一帧 → 再画一帧”的循环。普通静态界面不需要一直这么做，只在状态变化时请求重绘即可。
+
+如果直接操作底层图形 API，在真正提交画面前还可以调用：
+
+```rust
+window.pre_present_notify();
+```
+
+它的作用是通知 winit：马上要把这一帧提交给窗口系统了。某些后端可以借此更好地调度 `RedrawRequested`。
+
+`egui` 也可以放进这个模型里理解。`egui` 负责 UI 逻辑，但它仍然需要 winit 提供窗口和输入事件，也需要某个渲染后端把 UI 画出来：
+
+```text
+winit
+  负责窗口和输入事件
+egui-winit
+  把 winit 的鼠标/键盘事件翻译成 egui 输入
+egui
+  计算 UI 形状和交互结果
+egui-wgpu / 其他后端
+  把 egui 输出画到 wgpu surface 上
+```
+
+所以 `egui` 并不是替代 winit，而是通常站在 winit 和渲染后端之上：winit 给它事件，渲染后端帮它把 UI 画出来。
+
+```text
+winit 决定什么时候该处理事件、什么时候该画；
+渲染库决定这一帧具体怎么画。
+```
+
+更具体一点：
+
+| 时机   | winit 给你的信号                    | 你通常调用渲染库做什么               |
+| ---- | ------------------------------ | ------------------------- |
+| 应用恢复 | `resumed`                      | 创建窗口后初始化 surface / device |
+| 窗口缩放 | `WindowEvent::Resized`         | 重新配置 surface 尺寸           |
+| 需要重绘 | `WindowEvent::RedrawRequested` | 编码绘制命令并提交                 |
+| 需要动画 | `request_redraw()`             | 请求下一次 `RedrawRequested`   |
+| 应用挂起 | `suspended`                    | 释放或暂停 surface 相关资源        |

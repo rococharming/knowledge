@@ -1,12 +1,11 @@
 ---
-title: Obsidian 入门与基础使用
+title: Obsidian 入门
 date: 2026-07-07
 tags:
   - obsidian
   - note-taking
 aliases:
   - Obsidian 入门
-  - Obsidian 基础使用
 ---
 
 # 一、Obsidian 概述

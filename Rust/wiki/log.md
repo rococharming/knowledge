@@ -138,17 +138,10 @@
 - 类型: articles
 - 来源: `raw/articles/运算符重载.md`
 
-## [2026-06-25] Query | EnterGuard跨await示例是否有效
-
-- 范围: 单领域
-- 基于: Rust Wiki 暂无 tracing 专题页面；结合当前异步日志笔记与 tracing 官方文档核对
-- 结果: 仅查询
-- 类型: query
-
 ## [2026-06-26] Query | Cargo.toml 中 [ ] 与 [[ ]] 语法的区别
 
 - 范围: 单领域
-- 基于: `[[Cargo构建配置]]`, `[[Package与Crate]]`（Wiki 暂无 TOML 表语法专题页面，补充 TOML 通用规则）
+- 基于: `[[Cargo构建配置]]`, `[[Package与Crate]]`
 - 结果: 查询并归档
 - 类型: query
 - 归档分类: concepts
@@ -169,10 +162,3 @@
 - 类型: query
 - 归档分类: recipes
 - 创建: `[[Cargo 依赖声明写法]]`
-
-## [2026-07-01] Query | winit 在 macOS 上 AppKit 的作用
-
-- 范围: 单领域
-- 基于: 用户笔记 `notes/常用crate/4、winit.md`（wiki 暂无 winit 页面，从 notes 区读取参考）
-- 结果: 仅查询
-- 类型: query
