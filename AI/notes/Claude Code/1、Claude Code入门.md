@@ -4,7 +4,7 @@
 
 它能在终端或IDE中理解代码库、编辑文件、执行命令，并与开发工具协同工作，帮助开发者用**自然语言**完成代码阅读、开发、调试、重构、测试等任务。
 
-`Claude Code`能力建立在`Claude`模型之上，但也可以通过配置**接入国内第三方模型**。
+`Claude Code`能力建立在`Claude`模型之上，但也可以通过配置**接入第三方模型**。
 
 # 二、安装
 
@@ -14,7 +14,7 @@
 curl -fsSL https://claude.ai/install.sh | bash
 ```
 
-这是原生安装方式，支持后台自带更新`Claude Code`，但如果在后续配置文件中设置了`"CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"`，则不会自动更新。
+这是原生安装方式，支持后台自动更新 Claude Code 。但如果在后续配置文件中设置了`"CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"`，则不会自动更新。
 
 下载完成后，执行：
 
@@ -40,7 +40,7 @@ claude update
 
 ## 1、基本原理
 
-进入自己的项目目录，首次启动`Claude Code`:
+进入项目目录，首次启动`Claude Code`:
 
 ```bash
 cd path/to/project
@@ -50,91 +50,102 @@ claude
 会提示登录，但这里不推荐使用官方接口，原因有两点：
 
 - 需要国外手机号验证，比较麻烦
-- 后续使用很有可能被封号
+- Anthropic对中国管控较严，后续使用很有可能被封号
 
-因此，这里更推荐**通过配置接入国内第三方模型**。
+因此，推荐**通过配置接入第三方模型**，需要配置 `BASE_URL + API_KEY + model` 映射。
 
-在国内，想通过网关转发的方式接入第三方模型，需要配置 `base URL + auth + model` 映射。本质上是将 `Claude Code` 默认发给 Anthropic 官方接口的请求，改为发到第三方提供的 Anthropic 兼容接口。
+这里可以把三个配置理解成：
 
-下面介绍几种国内模型的接入方法，按照自己的需要选择其中一个即可。
+- `BASE_URL`：接口地址，也就是 `Claude Code` 应该把请求发到哪里。默认情况下，请求会发往 Anthropic 官方 API；配置第三方模型时，需要把它改成第三方平台提供的 Anthropic 兼容接口地址。
+- `API_KEY`：接口密钥，也就是第三方平台用来识别“是谁在调用 API”的凭证。它类似密码，不应该公开、提交到 Git 仓库或发给别人；如果泄漏，需要在平台后台删除或重新生成。
+- `model`：模型名称，也就是告诉接口实际调用哪个模型。因为 `Claude Code` 内部默认会使用 Claude 的模型别名，所以接入第三方模型时，通常还要把 `sonnet`、`opus`、`haiku`、`fable` 等别名映射到第三方平台真实存在的模型 ID。
+
+其中 `API_KEY` 在 `Claude Code` 配置里常见有两种写法：
+
+- `ANTHROPIC_API_KEY`：把密钥作为 `X-Api-Key` 请求头发送。这是 Anthropic 官方 API Key 的常见形式，也适合兼容这种鉴权方式的第三方平台。
+- `ANTHROPIC_AUTH_TOKEN`：把密钥作为 `Authorization: Bearer ...` 请求头发送。很多第三方平台或网关更习惯使用 Bearer Token 鉴权，因此会要求填写这个变量。
+
+两者本质上都是“让服务端确认你有调用权限”的密钥，只是发送时使用的 HTTP 请求头不同。实际配置时不要两个随意混用，应以对应平台文档或示例为准：平台示例写 `ANTHROPIC_API_KEY` 就填它，写 `ANTHROPIC_AUTH_TOKEN` 就填它。
+
+下面介绍几种国内模型的接入方法，按照自己需求选择其中一个即可。
 
 ## 2、接入MiniMax
 
 首先进入`Minimax`开放平台：[Minimax](https://platform.minimaxi.com)，完成注册并登录。
 
-购买适合自己的Token Plan后，将对应的API Key复制备用，然后在本地编辑配置文件`~/.claude/settings.json`，在文件中增加如下内容：
+可以选择 订阅 Token Plan 或按量计费，生成对应的 API Key 后，复制备用。在本地编辑配置文件`~/.claude/settings.json`，在文件中增加如下内容：
 
 ```json
 {
   "env": {
-    "ANTHROPIC_AUTH_TOKEN": "Your MINIMAX KEY",
     "ANTHROPIC_BASE_URL": "https://api.minimaxi.com/anthropic",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "MiniMax-M2.7",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "MiniMax-M2.7",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "MiniMax-M2.7",
-    "ANTHROPIC_MODEL": "MiniMax-M2.7",
-    "API_TIMEOUT_MS": "3000000",
-    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"
-  },
-}
-```
-
-注意：需要将`**ANTHROPIC_AUTH_TOKEN**`的值填充为刚才复制的**API Key**，注意**API Key**不要给别人，如果泄漏了重新生成一个。
-
-上述的 `env` 键的本质是给 `Claude Code` 使用的环境变量，让它对每次会话都生效。
-
-这里涉及到的环境变量解释如下：
-
-- `ANTHROPIC_BASE_URL`：把 `Claude Code` 默认请求的 API 地址替换为指定的代理或网关。
-
-- `ANTHROPIC_AUTH_TOKEN`：自定义 `HTTP` 请求里的 `Authorization` 头，`Claude Code` 会自动在前面加上 `Bearer`，因此这里就是把 MiniMax Key 当作 Bearer Token 发送给 MiniMax 网关。
-
-- `API_TIMEOUT_MS`：API 请求超时，单位是毫秒（ms）。
-
-- `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC`：配置为`1`表示一键关闭非必要流量。通常是为了让`Claude Code`不去做**自动更新**、反馈、错误上报等额外联网动作，只保留核心请求。
-
-- `ANTHROPIC_MODEL`：当前要使用的模型设置名，这里表示**默认主模型直接指定为`MiniMax-M2.7`**
-
-- `ANTHROPIC_DEFAULT_SONNET_MODEL`：把 Claude Code 里 `sonnet` 这个默认档位映射到具体模型名。意思是在 `Claude Code` 会话下，凡是 `Claude Code` 选择 `Sonnet` 档位时，实际请求走的是 `MiniMax-M2.7`。
-
-- `ANTHROPIC_DEFAULT_OPUS_MODEL`：同理，把 `opus` 档位映射到 `MiniMax-M2.7`。
-
-- `ANTHROPIC_DEFAULT_HAIKU_MODEL`：同理，把 `haiku` 档位映射到 `MiniMax-M2.7`。
-
-## 3、接入Kimi
-
-进入 Kimi Code 官网购买会员订阅计划： https://www.kimi.com/code。
-
-根据自己的需求选择合适的套餐后，访问 Kimi 会员控制台创建并获取 API Key：
-
-点击「新建 API Key」，复制以 sk-kimi- 开头的密钥。这个 Key 是后续连接 Kimi k2.6 的凭证，请妥善保管，如果泄漏需要重新生成。
-
-![[image-20260427220833065.png|600]]
-
-在本地编辑配置文件`~/.claude/settings.json`，增加：
-
-```json
-{
-  "env": {
-    "ANTHROPIC_API_KEY": "Your Kimi Code KEY",
-    "ANTHROPIC_BASE_URL": "https://api.kimi.com/coding/",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "kimi-for-coding",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "kimi-for-coding",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "kimi-for-coding",
-    "ANTHROPIC_MODEL": "kimi-for-coding",
-    "API_TIMEOUT_MS": "3000000",
-    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"
+    "ANTHROPIC_API_KEY": "YOUR API Key",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": 1,
+    "ANTHROPIC_MODEL": "MiniMax-M3",
+    "ANTHROPIC_DEFAULT_FABLE_MODEL": "MiniMax-M3[1M]",
+    "ANTHROPIC_DEFAULT_FABLE_MODEL_NAME": "MiniMax-M3",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL_NAME": "MiniMax-M3",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "MiniMax-M3[1M]",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL_NAME": "MiniMax-M3",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "MiniMax-M3[1M]",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "MiniMax-M3",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL_NAME": "MiniMax-M3"
   }
 }
 ```
 
-注意：需要将 `ANTHROPIC_API_KEY` 的值填充为复制的 API Key，注意 API Key 不要给别人，如果泄漏了重新生成一个。
+部分字段的含义如下：
+
+| 环境变量                                       | 当前值                                  | 含义                                                                                                                                                                           |
+| ------------------------------------------ | ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ANTHROPIC_BASE_URL`                       | `https://api.minimaxi.com/anthropic` | 覆盖 Claude Code 默认的 Anthropic API 地址，让 Claude Code 请求 MiniMax 的 Anthropic 兼容接口。官方说明这个变量用于把请求路由到代理或网关；如果不是 Anthropic 官方 host，MCP tool search 默认会被禁用，部分 Remote Control 行为也会受影响。 |
+| `ANTHROPIC_API_KEY`                        | 需要复制的 Key                            | API Key。Claude Code 会把它作为 `X-Api-Key` 请求头发送。设置后，它会优先于 Claude Pro / Max / Team / Enterprise 登录订阅来使用。                                                                          |
+| `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC` | `1`                                  | 关闭 Claude Code 的非必要流量。官方说明它等价于同时设置 `DISABLE_AUTOUPDATER`、`DISABLE_FEEDBACK_COMMAND`、`DISABLE_ERROR_REPORTING`、`DISABLE_TELEMETRY`。                                           |
+| `ANTHROPIC_MODEL`                          | `MiniMax-M3`                         | 指定 Claude Code 当前会话启动时默认使用的模型。它会覆盖 `settings.json` 里的 `model` 字段，但 `/model` 命令和 `claude --model ...` 仍可覆盖它。                                                                  |
+| `ANTHROPIC_DEFAULT_FABLE_MODEL`            | `MiniMax-M3[1M]`                     | 把 Claude Code 的 `fable` 别名映射到 MiniMax-M3 的 1M 上下文版本。也就是说，当你选择 `/model fable` 时，实际请求这个模型。Fable 相关别名需要 Claude Code 版本支持；官方文档提到 Fable 5 需要 Claude Code v2.1.170 或更高版本。          |
+| `ANTHROPIC_DEFAULT_FABLE_MODEL_NAME`       | `MiniMax-M3`                         | 控制 `/model` 模型选择器里 `fable` 这一项的显示名称。它主要影响 UI 展示，不是实际发送给 API 的模型 ID。`_NAME` 后缀变量用于自定义 pinned model 在模型选择器里的显示名。                                                               |
+
+> [!note]
+> 注意：需要将`**ANTHROPIC_API_KEY**`的值填充为刚才复制的 API Key ，注意 API Key 不要给别人，如果泄漏了重新生成。
+
+上述的 `env` 键的本质是给 `Claude Code` 使用的环境变量，让它对每次会话都生效。
+
+
+## 3、接入Kimi
+
+Kimi 有两个平台入口：
+
+- [Kimi API 开放平台](https://platform.kimi.com)
+- [Kimi Code](https://www.kimi.com/code)
+
+Kimi API 开放平台是更通用的 API 平台，用来按 API Key 调用模型。Kimi Code 则是订阅制，是 Kimi 专门给编程工具准备的一套 Coding API。
+
+以 Kimi API 开放平台 为例，新建 API Key 复制备用。
+
+在本地编辑配置文件`~/.claude/settings.json`，在文件中增加如下内容：
+
+```json
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://api.moonshot.cn/anthropic",
+    "ANTHROPIC_AUTH_TOKEN": "YOUR API KEY",
+    "ANTHROPIC_MODEL": "kimi-k2.7-code",
+    "ANTHROPIC_DEFAULT_FABLE_MODEL": "kimi-k2.7-code",
+    "ANTHROPIC_DEFAULT_FABLE_MODEL_NAME": "kimi-k2.7-code",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "kimi-k2.7-code",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL_NAME": "kimi-k2.7-code",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "kimi-k2.7-code",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL_NAME": "kimi-k2.7-code",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "kimi-k2.7-code",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL_NAME": "kimi-k2.7-code"
+  }
+}
+```
 
 说明：
 
-- `Kimi k2.6` 在 API 层面的内部模型标识符为`kimi-for-coding`，而不是`kimi-k2.6`。也可以不设置这些模型字段，因为 Kimi Code 后端会对这些 `Claude Code` 模型名执行自动映射，将其路由到 `kimi-for-coding`。
+- `kimi-k2.7-code`不支持 1M 上下文，仅支持 256K 上下文。
 
-- 这里使用的是 `ANTHROPIC_API_KEY` 而不是 `ANTHROPIC_AUTH_TOKEN`
 
 ## 4、接入DeepSeek
 
@@ -151,19 +162,48 @@ claude
 ```json
 {
   "env": {
-    "ANTHROPIC_AUTH_TOKEN": "Your DeepSeek KEY",
     "ANTHROPIC_BASE_URL": "https://api.deepseek.com/anthropic",
+        "ANTHROPIC_AUTH_TOKEN": "YOUR API KEY",
+    "ANTHROPIC_DEFAULT_FABLE_MODEL": "deepseek-v4-pro[1M]",
+    "ANTHROPIC_DEFAULT_FABLE_MODEL_NAME": "deepseek-v4-pro",
     "ANTHROPIC_DEFAULT_HAIKU_MODEL": "deepseek-v4-flash",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "deepseek-v4-pro",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "deepseek-v4-pro",
-    "ANTHROPIC_MODEL": "deepseek-v4-pro",
-    "API_TIMEOUT_MS": "3000000",
-    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "deepseek-v4-pro[1M]",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL_NAME": "deepseek-v4-pro",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "deepseek-v4-pro[1M]",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL_NAME": "deepseek-v4-pro",
+    "ANTHROPIC_MODEL": "deepseek-v4-pro"
   }
 }
 ```
 
 
+## 5、接入智谱GLM
+
+进入 [智谱AI开放平台](https://bigmodel.cn/)，注册账号并登录。
+
+智谱 GLM 也可以选择 按用量计费 和 订阅 Coding Plan。
+
+这里以按用量计费为例，生成 API Key 复制备用。
+
+在本地编辑配置文件`~/.claude/settings.json`，增加：
+
+```json
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://open.bigmodel.cn/api/anthropic",
+    "ANTHROPIC_API_KEY": "YOUR API KEY",
+    "ANTHROPIC_DEFAULT_FABLE_MODEL": "glm-5.2[1M]",
+    "ANTHROPIC_DEFAULT_FABLE_MODEL_NAME": "glm-5.2",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "glm-4.7",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL_NAME": "glm-4.7",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "glm-5.2[1M]",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL_NAME": "glm-5.2",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "glm-5.2[1M]",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL_NAME": "glm-5.2",
+    "ANTHROPIC_MODEL": "glm-5.2"
+  }
+}
+```
 
 # 四、基本使用
 
