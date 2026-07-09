@@ -503,6 +503,12 @@ winit 本身不画图，它只负责创建系统窗口、运行事件循环、�
 
 `raw-window-handle` 就是这中间的“通用身份证”。不同平台的窗口系统完全不同：Windows 有 Win32 窗口句柄，macOS 有 AppKit / Cocoa 对象，Linux 有 X11 / Wayland surface。渲染库如果要跨平台，就不能只认识某一种平台句柄，所以 Rust 生态用 `raw-window-handle` 把这些底层窗口信息包装成统一接口。
 
+`raw-window-handle`（rwh）是一个纯接口 crate，它只定义 trait 和平台句柄类型。`winit`和渲染库都依赖它，但两者没有直接依赖。
+
+![[Pasted image 20260708102632.png]]
+
+注意：`winit` 和 `wgpu` 之间没有箭头。`wgpu` 的代码里根本没有 `winit` 这个依赖，它不知道 `winit` 是什么。它们俩唯一的共同语言是 `rwh` 的 trait。
+
 也就是说：
 
 | 对象                         | 谁创建                 | 谁持有                  | 作用                   |
@@ -511,41 +517,7 @@ winit 本身不画图，它只负责创建系统窗口、运行事件循环、�
 | raw window/display handle  | winit 从 `Window` 暴露 | 临时借给渲染库使用            | 告诉渲染库底层窗口在哪里         |
 | `Surface` / OpenGL context | 渲染库                 | 通常保存在你的 `Renderer` 里 | 表示“可以往这个窗口呈现画面”的渲染目标 |
 
-所以 `Window` 和 `Surface` 不是同一个东西。`Window` 是系统窗口；`Surface` 是渲染库基于这个窗口创建的“呈现目标”。`Surface` 依赖窗口存在，因此通常要让 `Window` 活得比 `Surface` 久。最常见的结构是：
-
-```rust
-struct App {
-    window: Option<Window>,
-    renderer: Option<Renderer>,
-}
-
-struct Renderer {
-    // wgpu::Surface、device、queue、config、pipeline 等
-}
-```
-
-创建顺序通常是：
-
-```text
-resumed
-  -> event_loop.create_window(...)
-  -> 得到 winit::Window
-  -> Renderer::new(&window)
-  -> 渲染库通过 &Window 拿 handle
-  -> 创建 surface / device / pipeline
-  -> Window 存进 App，Renderer 也存进 App
-```
-
-以 `wgpu` 为例，常见写法是：
-
-```rust
-let surface = instance.create_surface(&window)?;
-```
-
-这句话可以拆成两层意思：
-
-1. `&window` 还是 winit 的窗口对象，所有权没有交给 `wgpu`。
-2. `wgpu` 通过 `&window` 读取底层窗口 handle，然后创建一个绑定到该窗口的 `Surface`。
+所以 `Window` 和 `Surface` 不是同一个东西：`Window` 是系统窗口，`Surface` 是渲染库基于它创建的”呈现目标”，`Surface` 依赖窗口存在，要让 `Window` 活得更久。以 `wgpu` 为例，核心一行是 `instance.create_surface(&window)`——`&window` 只是借用，wgpu 通过它读到底层句柄再创建 `Surface`，窗口所有权仍归你的 `App`。
 
 要让 winit 的 `Window` 暴露 `raw-window-handle` 0.6 接口，依赖里通常要打开 `rwh_06` feature：
 
@@ -569,18 +541,76 @@ winit = { version = "0.30", default-features = false, features = ["rwh_06", "x11
 | `window.request_redraw()` | 请求 winit 稍后再发一次 `RedrawRequested` |
 | `suspended` | 移动端常用来释放或暂停 surface 相关资源 |
 
-放在代码结构里，大致是这样：
+放在代码结构里，以 wgpu 填充关键部分如下：
 
 ```rust
+use std::sync::Arc;
+
+// wgpu 的核心对象集中存在 Renderer 里
+struct Renderer {
+    surface: wgpu::Surface<'static>, // Arc<Window> 持有引用 → 'static
+    device: wgpu::Device,
+    queue: wgpu::Queue,
+    config: wgpu::SurfaceConfiguration,
+}
+
+impl Renderer {
+    fn new(window: Arc<Window>) -> Self {
+        // ① Instance：wgpu 入口，决定图形后端（Vulkan / Metal / DX12 / WebGPU）
+        let instance = wgpu::Instance::default();
+
+        // ② Surface —— winit ↔ raw-window-handle ↔ wgpu 的关键一行：
+        //    wgpu 通过 rwh 的 trait 从 Window 借出底层句柄创建呈现目标。
+        //    传 Arc\<Window\> 而非 &Window，让 Surface 拿到 'static 生命周期。
+        let surface = instance.create_surface(window).unwrap();
+
+        // ③ Adapter：选一块兼容该 surface 的物理 GPU
+        let adapter = pollster::block_on(instance.request_adapter(
+            &wgpu::RequestAdapterOptions {
+                compatible_surface: Some(&surface),
+                ..Default::default()
+            },
+        ))
+        .unwrap();
+
+        // ④ Device + Queue：逻辑设备 + 命令提交队列
+        let (device, queue) = pollster::block_on(
+            adapter.request_device(&wgpu::DeviceDescriptor { ..Default::default() }),
+        )
+        .unwrap();
+
+        // ⑤ 配置 surface 格式与尺寸后 configure（具体字段略）
+        let config = wgpu::SurfaceConfiguration { /* format/width/height/present_mode ... */ };
+        surface.configure(&device, &config);
+
+        Self { surface, device, queue, config }
+    }
+
+    fn resize(&mut self, size: PhysicalSize<u32>) {
+        self.config.width = size.width;
+        self.config.height = size.height;
+        self.surface.configure(&self.device, &self.config);
+    }
+
+    fn render(&mut self) {
+        // 取当前帧纹理 → 编码绘制命令 → 提交 → present（细节略）
+    }
+}
+
+struct App {
+    window: Option<Arc<Window>>, // Arc：让 Surface 拿到 'static，避免 App 自引用
+    renderer: Option<Renderer>,
+}
+
 impl ApplicationHandler for App {
     fn resumed(&mut self, event_loop: &ActiveEventLoop) {
         if self.window.is_none() {
             let attrs = Window::default_attributes().with_title("Render demo");
-            let window = event_loop.create_window(attrs).unwrap();
+            let window = Arc::new(event_loop.create_window(attrs).unwrap());
 
-            // Renderer 通过 &Window 创建 surface / device / pipeline。
-            // 注意：Window 仍然由 App 保存，Renderer 不接管窗口本身。
-            let renderer = Renderer::new(&window);
+            // Renderer 通过 Window 创建 surface / device / pipeline。
+            // 注意：Window 仍由 App 保存（Arc 共享），Renderer 不独占窗口本身。
+            let renderer = Renderer::new(Arc::clone(&window));
 
             self.window = Some(window);
             self.renderer = Some(renderer);
@@ -613,29 +643,20 @@ impl ApplicationHandler for App {
 }
 ```
 
-这里 `Renderer::new`、`resize`、`render` 都是你自己封装出来的方法名，不是 winit 固定 API。它们背后的含义一般是：
+这里 `Renderer::new`、`resize`、`render` 都是你自己封装出来的方法名，不是 winit 固定 API：`new` 用窗口 handle 创建 surface 并初始化 GPU 资源，`resize` 重新配置 surface，`render` 编码绘制命令提交到 GPU 呈现一帧。
 
-| 方法 | 大致含义 |
-| --- | --- |
-| `Renderer::new(&window)` | 用窗口 handle 创建 surface，并初始化 GPU 资源 |
-| `renderer.resize(size)` | 窗口尺寸变了，重新配置 surface |
-| `renderer.render()` | 编码绘制命令，提交到 GPU，把一帧呈现到窗口上 |
-
-`Resized` 很重要，因为窗口大小变了以后，渲染库内部的 surface 尺寸也要同步变化。否则窗口已经是新尺寸，但后台渲染目标还是旧尺寸，轻则画面拉伸、比例不对，重则呈现失败。
-
-`RedrawRequested` 则是“现在该画一帧了”。普通静态界面只在状态变化时请求重绘；动画、游戏、实时图表会在画完一帧后请求下一帧：
+其中 `Resized` 很关键：窗口大小变了，渲染库的 surface 尺寸必须同步，否则画面拉伸甚至呈现失败。`RedrawRequested` 则是”现在该画一帧”的信号——动画/游戏会在画完一帧后调用 `request_redraw()`，形成”画一帧 → 请求下一帧”的循环：
 
 ```rust
 WindowEvent::RedrawRequested => {
     renderer.render();
-
     if let Some(window) = &self.window {
         window.request_redraw();
     }
 }
 ```
 
-这会形成“画一帧 → 请求下一帧 → 再画一帧”的循环。普通静态界面不需要一直这么做，只在状态变化时请求重绘即可。
+静态界面不需要这个循环，只在状态变化时请求重绘即可。
 
 如果直接操作底层图形 API，在真正提交画面前还可以调用：
 
@@ -658,19 +679,4 @@ egui-wgpu / 其他后端
   把 egui 输出画到 wgpu surface 上
 ```
 
-所以 `egui` 并不是替代 winit，而是通常站在 winit 和渲染后端之上：winit 给它事件，渲染后端帮它把 UI 画出来。
-
-```text
-winit 决定什么时候该处理事件、什么时候该画；
-渲染库决定这一帧具体怎么画。
-```
-
-更具体一点：
-
-| 时机   | winit 给你的信号                    | 你通常调用渲染库做什么               |
-| ---- | ------------------------------ | ------------------------- |
-| 应用恢复 | `resumed`                      | 创建窗口后初始化 surface / device |
-| 窗口缩放 | `WindowEvent::Resized`         | 重新配置 surface 尺寸           |
-| 需要重绘 | `WindowEvent::RedrawRequested` | 编码绘制命令并提交                 |
-| 需要动画 | `request_redraw()`             | 请求下一次 `RedrawRequested`   |
-| 应用挂起 | `suspended`                    | 释放或暂停 surface 相关资源        |
+所以 `egui` 并不是替代 winit，而是通常站在 winit 和渲染后端之上：winit 决定什么时候该处理事件、什么时候该画，渲染库决定这一帧具体怎么画。
