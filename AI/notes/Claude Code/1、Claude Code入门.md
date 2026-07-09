@@ -209,40 +209,34 @@ Kimi API 开放平台是更通用的 API 平台，用来按 API Key 调用模型
 
 ## 1、第一次对话
 
-配置好模型之后，现在就可以进入自己的项目目录，在终端执行：
+配置好模型之后，就可以进入项目目录，在终端执行：
 
-```bash
+```shell
 claude
 ```
 
-即可进入`Claude Code`会话，如下图所示：
+即可进入 Claude Code 会话交流了，如下图所示：
 
-![[image-20260427221731327.png|500]]
+![[Pasted image 20260709103931.png|400]]
 
-例如这里我配置的是`Kimi`模型，并询问`Claude Code`它使用了什么模型。
-
-现在，可以在对话框输入一些以`/`开头（Slash Command）的命令，熟悉`Claude Code`的一些常用操作了。
+现在，可以在对话框输入`/`开头（Slash Command）的命令，熟悉 Claude Code`的一些常用操作了。
 
 ## 2、/usage
 
-`/usage` 用于查看当前 `Claude Code` 会话的成本和用量概览，也可以使用别名 `/cost`。
+`/usage` 用于查看当前 Claude Code 会话的成本和用量概览，也可以使用别名 `/cost`。
 
 如图所示：
 
-![[image-20260427222213715.png|500]]
+![[Pasted image 20260709112423.png|500]]
 
 输出信息解释如下：
 
-- `Total cost`：当前会话的本地估算费用。API 按量用户可参考该信息，但实际账单以 Console 为准；Pro/Max 订阅用户可以忽略。（这里也提示如果是接入第三方模型，估算费用是不准确的。）
+- **Total cost**：当前会话的本地估算费用。API 按量用户可参考该信息，但实际账单以 Console 为准。Pro/Max 订阅用户可以忽略。注意，这里提示如果接入第三方模型，估算费用可能不准确。
+- **Total duration (API)**：当前会话 API 调用的累计耗时。
+- **Total duration (wall)**：当前会话从开始到现在经过的现实时间。
+- **Total code changes**：反映会话跟踪到的变更行数，不一定等同于`git diff`的全部语义，也不一定只限代码，可能包括配置、文档等文件变更。
+- **Usage by model**：按模型统计`input`、`output`、`cache read`、`cache write`。具体含义可参考[[1、AI常见概念汇总#二、Token|Token]]。实际 input tokens ≈ input + cache read + cache write。
 
-- `Total duration (API)`：当前会话 API 调用的累计耗时。
-- `Total duration (wall)`：当前会话从开始到现在经过的现实时间。
-- `Total code changes`：它反映会话跟踪到的变更行数，不一定等同于`git diff`的全部语义，也不一定只限代码，可能包括配置、文档等文件变更。
-- `Usage by model`：按模型统计`input`、`output`、`cache read`、`cache write`
-	- `input`：本会话中按模型累积的普通输入 token。它通常包括：当前新输入、没有命中缓存的上下文、没有被写入缓存的工具结果、文件内容等。
-	- `output`：模型生成的输出 token。包括普通回答，也通常包括 extended thinking / thinking tokens 这类模型内部推理输出相关 token。
-	- `cache write`：本次请求中被写入 prompt cache 的输入 token。它相比普通 input token 更贵。因为后续如果命中，就可以通过`cache read`便宜地复用。
-	- `cache read`：本次请求中从 prompt cache 命中的输入 token。cache read 通常是普通 input 价格的 0.1 倍，也就是约 10%。
 
 > 关于命中缓存 ：本次请求中，有一部分输入上下文没有按普通 input token 计费，而是从 prompt cache 里读出来，显示为 cache read。
 > 
@@ -250,11 +244,6 @@ claude
 > 
 > Prompt caching 的作用就是：把这些稳定上下文写入缓存，后续请求如果还能复用，就从缓存读取。
 
-例如，当我首次打开会话，向模型发送了一句“你好”后，调用`/usage`查看情况：
-
-![[Pasted image 20260514145827.png|500]]
-
-在本次的请求里，输入上下文更接近：4.4k + 41.7k + 0 = 46.1k。
 
 ## 3、/doctor
 
