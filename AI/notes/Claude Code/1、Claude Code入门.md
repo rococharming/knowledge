@@ -237,21 +237,23 @@ claude
 - **Total code changes**：反映会话跟踪到的变更行数，不一定等同于`git diff`的全部语义，也不一定只限代码，可能包括配置、文档等文件变更。
 - **Usage by model**：按模型统计`input`、`output`、`cache read`、`cache write`。具体含义可参考[[1、AI常见概念汇总#二、Token|Token]]。实际 input tokens ≈ input + cache read + cache write。
 
-
-> 关于命中缓存 ：本次请求中，有一部分输入上下文没有按普通 input token 计费，而是从 prompt cache 里读出来，显示为 cache read。
-> 
-> 平时和`Claude Code`对话时，`Claude Code`不只是把你当前这一句话发给模型，而是将很多上下文一起发送，比如 系统提示词、CLAUDE.md、Skill描述、历史对话等。这些内容中有一部分是重复出现的稳定上下文，如果你在同一个项目中重复提问，CLAUDE.md、之前读过的大文件、项目结构、系统提示等可能多轮都不变。如果按普通 input token 计费，就会很贵。
-> 
-> Prompt caching 的作用就是：把这些稳定上下文写入缓存，后续请求如果还能复用，就从缓存读取。
-
-
 ## 3、/doctor
 
-`/doctor` 命令是 `Claude Code` 的诊断命令，用于检查当前 `Claude Code` 的安装、配置和运行环境是否存在明显问题。
+`/doctor` 命令是 `Claude Code` 的自诊断命令，相当于健康检查，会扫描当前安装并报告几类关键状态：
 
-如下图所示：
+| 检查项                       | 用途                                                       |
+| ------------------------- | -------------------------------------------------------- |
+| **Diagnostics**           | 运行环境：版本、提交哈希、平台、路径、安装方式                                  |
+| **Updates**               | 更新通道、是否启用自动更新、上次更新结果                                     |
+| **Background** **server** | 后台守护进程（用于 IDE 集成、statusline 等）                           |
+| **Remote** **Control**    | 是否登录 claude.ai / Anthropic API，能否启用远程控制                  |
+| **MCP**                   | 已配置的 MCP 服务器、传输协议（stdio / http / sse）、连接状态、注册工具数、上下文预算占用 |
+| **Skills**                | 已加载技能列表，及上下文预算占用情况                                       |
+| **Version** **locks**     | 运行中的版本锁（防止多实例冲突）                                         |
 
-![[image-20260427223553784.png|500]]
+示例：jeijei
+
+![[Pasted image 20260709132248.png|500]]
 
 这里还可以看到自动更新是 disabled 的，因为设置了 `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC`。如果希望打开自动更新，移除原先配置中的 `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC`。
 
@@ -259,21 +261,21 @@ claude
 
 `/status` 用于打开 `Claude Code` 设置界面的 Status 页面，查看当前环境状态，例如版本、当前模型、账号状态、连接状态等信息。
 
-![[image-20260427223830018.png|500]]
+![[Pasted image 20260709132655.png|500]]
 
-相关字段解释：
+部分字段解释：
 
 - `Session name`：当前会话名称。默认没有名称，可以通过`/rename`为当前会话取一个别名。之后使用 `/resume` 恢复会话时，可以用会话名来识别，而不必依赖很长的 session ID。
 - `Session ID`：当前会话的唯一标识。
-- `cwd`：当前这个`Claude Code`会话启动时所在的工作目录
-- `Setting sources`：当前生效配置的来源。例如 `User settings` 表示用户级配置生效，通常对应 `~/.claude/settings.json`。除此之外，还可能有项目级配置、企业/组织级配置等。这些配置详见[[Settings|Settings]]。
+- `cwd`：当前会话启动时所在的工作目录
+- `Setting sources`：当前生效配置的来源。例如 `User settings` 表示用户级配置生效，通常对应 `~/.claude/settings.json`。除此之外，还可能有项目级配置等。这些配置详见[[Settings|Settings]]。
 
 
 ## 5、/clear
 
 `/clear` 用于清空当前上下文，开始一个新的上下文对话。别名：`new`和`reset`。它比较适合在任务边界使用：
 
-- 准备开始另一个完全无关的任务
+- 准备开始另一个**完全无关**的任务
 - 会话开始混淆旧问题和新问题
 - 上下文太长，回答开始变慢、变贵、变乱
 - 前面尝试方向错了，想让它重新开始
@@ -284,7 +286,7 @@ claude
 
 ## 6、/compact
 
-`/compact` 用于压缩当前会话上下文，把历史会话整理成较短摘要，从而给后续对话腾出上下文空间。
+`/compact` 用于主动压缩当前会话上下文，把历史会话整理成较短摘要，从而给后续对话腾出上下文空间。
 
 它适合在长任务还没结束、但上下文已经比较长时使用。
 
@@ -298,22 +300,16 @@ claude
 /compact 保留数据库结构、接口变更和未完成 TODO
 ```
 
-如图所示：
-
-![[image-20260427225456532.png|400]]
-
-由于这里对话的上下文比较小，所以压缩并不明显，毕竟这里只发了一句：你好，你是什么模型。可以看到这里提示了使用`ctrl + o`查看压缩的具体情况。
-
-除了手动压缩，`Claude Code`在需要时也可能**自动进行上下文压缩**。
+即使不主动压缩，`Claude Code`也会在上下文临近**自动进行上下文压缩**。但自己主动压缩上下文是一个良好的习惯。
 
 
 ## 7、/model和/effort
 
 `/model` 用于切换当前会话使用的模型。
 
-`/model` 后不带模型名称时，会打开模型选择器（这里 Kimi 都是同一个模型），例如：
+`/model` 后不带模型名称时，会打开模型选择器。例如：
 
-![[image-20260427224621077.png|500]]
+![[Pasted image 20260709133121.png|400]]
 
 `/model` 后带模型名称时，则可以直接切换到指定模型。
 
@@ -325,16 +321,13 @@ claude
 
 对于支持 `effort level` 的模型，还可以执行 `/effort`：
 
-![[Pasted image 20260514155326.png|500]]
-
-> 注意：如果 Claude Code 已经配置为接入第三方模型，或接入兼容 Anthropic API 的模型网关，那么界面中显示的 `Sonnet`、`Opus`、`Haiku` 等名称，不一定代表实际调用的是 Anthropic 官方对应模型。
-> 例如在当前配置中，`Sonnet`、`Opus`、`Haiku` 都被映射到了 `kimi-for-coding`。因此，虽然 Claude Code 界面上仍然显示这些模型名称，但实际请求会被转发到 `kimi-for-coding`，而不是 Anthropic 官方的 Sonnet、Opus 或 Haiku。
+![[Pasted image 20260709133217.png|400]]
 
 
 
 ## 8、/resume
 
-`/resume` 用于恢复或切换到之前的会话。可以通过会话 ID、会话名称恢复，也可以不带参数打开会话选择器。 `/continue` 是它的别名。
+`/resume` 用于恢复或切换到之前的会话。可以通过会话 ID或会话名称恢复，也可以不带参数打开会话选择器。 `/continue` 是它的别名。
 
 示例：
 
