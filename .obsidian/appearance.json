@@ -7,5 +7,7 @@
     "inline-code-highlight",
     "unify-heading-color"
   ],
-  "theme": "obsidian"
+  "theme": "obsidian",
+  "baseFontSize": 16,
+  "baseFontSizeAction": false
 }
