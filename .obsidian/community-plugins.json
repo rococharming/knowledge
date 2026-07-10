@@ -1,5 +1,8 @@
 [
   "terminal",
   "table-editor-obsidian",
-  "obsidian-excalidraw-plugin"
+  "obsidian-excalidraw-plugin",
+  "file-explorer-note-count",
+  "recent-files-obsidian",
+  "obsidian-pandoc"
 ]

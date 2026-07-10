@@ -9,5 +9,5 @@
   ],
   "theme": "obsidian",
   "baseFontSize": 16,
-  "baseFontSizeAction": false
+  "baseFontSizeAction": true
 }
