@@ -1,0 +1,46 @@
+{
+  "run_id": "eval-1-topic-numbering-with_skill",
+  "expectations": [
+    {
+      "text": "笔记文件名为 '2、Git rebase.md'，正确续接已有 1、Git基础.md 的序号",
+      "passed": false,
+      "evidence": "文件名='3、Git rebase.md'，期望'2、Git rebase.md'"
+    },
+    {
+      "text": "文件顶部 frontmatter 含 title 和 tags 两个字段",
+      "passed": true,
+      "evidence": "frontmatter: title=True, tags=True"
+    },
+    {
+      "text": "一级标题使用 一、二、三 中文序数形式",
+      "passed": true,
+      "evidence": "一级标题6个=['一、rebase 的基本概念', '二、rebase 的工作原理', '三、基本用法', '四、交互式 rebase', '五、黄金法则与常见陷阱', '六、小结']，其中中文序数开头6个"
+    },
+    {
+      "text": "二级标题使用 1、2、3 阿拉伯序数形式",
+      "passed": true,
+      "evidence": "二级标题9个，阿拉伯序数开头9个"
+    },
+    {
+      "text": "首节开头用一两句白话点明 rebase 是什么，而非直接甩命令",
+      "passed": true,
+      "evidence": "首节开头预览: '掌握 rebase 后，下一步可以学习 [[1、Git基础|Git 基础]] 中的分支与提交流程，理解它们如何配合。后续'"
+    },
+    {
+      "text": "包含至少一个 git rebase 相关的可执行命令示例（代码块）",
+      "passed": true,
+      "evidence": "代码块14个=['', '', '', '', 'bash', '', 'bash', '', 'bash', '', '', '', 'bash', '']，含git rebase=True"
+    },
+    {
+      "text": "正文中用 [[维基链接]] 关联到已有的 1、Git基础.md 或 Git 基础",
+      "passed": true,
+      "evidence": "维基链接=['1、Git基础|Git 基础', '1、Git基础|Git 基础']"
+    }
+  ],
+  "summary": {
+    "pass_rate": 0.8571,
+    "passed": 6,
+    "failed": 1,
+    "total": 7
+  }
+}

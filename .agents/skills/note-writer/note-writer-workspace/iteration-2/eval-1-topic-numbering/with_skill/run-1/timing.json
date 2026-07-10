@@ -1,0 +1,6 @@
+{
+  "total_tokens": 0,
+  "duration_ms": 232644,
+  "total_duration_seconds": 232.6,
+  "note": "subagent_tokens 报告为 0；duration 来自任务通知。agent 检测到序号 2 被 [[2、Git分支]] 预留，选择让出 2、用序号 3，并在报告中说明冲突——符合 iteration-2 改进的预留检查规则。"
+}

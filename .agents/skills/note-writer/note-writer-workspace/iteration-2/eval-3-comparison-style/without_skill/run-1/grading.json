@@ -1,0 +1,36 @@
+{
+  "run_id": "eval-3-comparison-style-without_skill",
+  "expectations": [
+    {
+      "text": "文件顶部 frontmatter 含 title 和 tags 两个字段",
+      "passed": true,
+      "evidence": "frontmatter: title=True, tags=True"
+    },
+    {
+      "text": "至少包含一个把 HTTP/1.1、HTTP/2、HTTP/3 并列对比的表格",
+      "passed": true,
+      "evidence": "表格8张"
+    },
+    {
+      "text": "笔记内容覆盖 HTTP/1.1、HTTP/2、HTTP/3 三个版本，无明显遗漏",
+      "passed": true,
+      "evidence": "HTTP/1.1=True, HTTP/2=True, HTTP/3=True"
+    },
+    {
+      "text": "以对比/权衡视角组织（差异点、演进、取舍），而非三个版本各自独立平铺",
+      "passed": true,
+      "evidence": "含权衡/选型字眼=True，表格8张"
+    },
+    {
+      "text": "一级标题使用 一、二、三 中文序数形式",
+      "passed": false,
+      "evidence": "一级标题1个=['HTTP/1.1、HTTP/2、HTTP/3 对比笔记']，其中中文序数开头0个"
+    }
+  ],
+  "summary": {
+    "pass_rate": 0.8,
+    "passed": 4,
+    "failed": 1,
+    "total": 5
+  }
+}

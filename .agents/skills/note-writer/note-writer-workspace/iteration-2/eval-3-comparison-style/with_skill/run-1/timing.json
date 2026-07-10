@@ -1,0 +1,6 @@
+{
+  "total_tokens": 0,
+  "duration_ms": 215915,
+  "total_duration_seconds": 215.9,
+  "note": "subagent_tokens 报告为 0；duration 来自任务通知。比 iteration-1（1111.2s）快约 5 倍，自检精简起效。"
+}

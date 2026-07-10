@@ -1,0 +1,6 @@
+{
+  "total_tokens": 0,
+  "duration_ms": 108325,
+  "total_duration_seconds": 108.3,
+  "note": "subagent_tokens 报告为 0，token 计数未由该通道返回；duration 来自任务通知"
+}

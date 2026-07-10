@@ -1,0 +1,51 @@
+{
+  "skill_name": "note-writer",
+  "evals": [
+    {
+      "id": 1,
+      "name": "topic-with-auto-numbering",
+      "prompt": "按 Rust 笔记风格写一篇关于 Git rebase 的技术笔记，保存到 /tmp/note-writer-test/git/ 目录。这个目录里已经有 1、Git基础.md。",
+      "expected_output": "一篇 rebase 笔记。注意：1、Git基础.md 正文预留了 [[2、Git分支]]（文件不存在），按新规则应检测到此预留并向用户说明冲突、由用户定序号；最终文件名应为 2、 或 3、Git rebase.md 之一（取决于用户/agent 对冲突的处理）。中文序数标题，概念先行，配最小可运行示例，frontmatter 含 title+tags，交叉引用到 1、Git基础.md",
+      "files": [],
+      "assertions": [
+        {"name": "检测到正文预留序号并提示", "text": "识别出 1、Git基础.md 正文里 [[2、Git分支]] 预留了序号 2 但文件不存在，向用户说明该冲突（而非无视预留直接占用，也不盲目跳过）"},
+        {"name": "文件名序号合理", "text": "文件名序号为 2 或 3（2、Git rebase.md 或 3、Git rebase.md），即对预留冲突做出了明确处理而非随机编号"},
+        {"name": "frontmatter 含 title 和 tags", "text": "文件顶部 frontmatter 含 title 和 tags 两个字段"},
+        {"name": "一级标题用中文序数", "text": "一级标题使用 一、二、三 中文序数形式"},
+        {"name": "二级标题用阿拉伯序数", "text": "二级标题使用 1、2、3 阿拉伯序数形式"},
+        {"name": "概念先行", "text": "首节开头用一两句白话点明 rebase 是什么，而非直接甩命令"},
+        {"name": "配最小可运行示例", "text": "包含至少一个 git rebase 相关的可执行命令示例（代码块）"},
+        {"name": "交叉引用已有笔记", "text": "正文中用 [[维基链接]] 关联到已有的 1、Git基础.md 或 Git 基础"}
+      ]
+    },
+    {
+      "id": 2,
+      "name": "text-fragment-organize",
+      "prompt": "把下面这段讲解整理成笔记，保存到 /tmp/note-writer-test/ 目录：\n\nDocker 镜像是由多层只读层叠加而成的。每一层对应 Dockerfile 里的一条指令。比如 FROM 产生一层，RUN 产生一层，COPY 产生一层。这种分层结构的好处是复用：如果多个镜像共享相同的基础层，磁盘上只存一份，构建时也能命中缓存。容器启动时，会在镜像层之上加一层可写层，所有修改都写在这层，镜像本身不变，这就是写时复制。分层也意味着删除文件其实只是在新层标记删除，底层文件还在，所以镜像可能比预期大。",
+      "expected_output": "一篇 Docker 镜像分层笔记，文件名用主题名（无序号），结构化为章节，概念先行，用图示或列表表达分层，frontmatter 完整",
+      "files": [],
+      "assertions": [
+        {"name": "文件名用主题名无序号", "text": "文件名用主题名（如 Docker镜像分层.md），不加序号，因为目标目录无序号约定"},
+        {"name": "frontmatter 含 title 和 tags", "text": "文件顶部 frontmatter 含 title 和 tags 两个字段"},
+        {"name": "一级标题用中文序数", "text": "一级标题使用 一、二、三 中文序数形式"},
+        {"name": "结构化为多章节", "text": "把单段文本拆分为多个有标题的章节，而非保留成一大段"},
+        {"name": "覆盖原文所有要点", "text": "笔记覆盖原文要点：分层结构、每层对应指令、复用与缓存、可写层与写时复制、删除文件不减小镜像"},
+        {"name": "概念先行", "text": "首节开头点明 Docker 镜像分层是什么"}
+      ]
+    },
+    {
+      "id": 3,
+      "name": "comparison-style-override",
+      "prompt": "写一篇对比 HTTP/1.1、HTTP/2、HTTP/3 的笔记，--style=对比，保存到 /tmp/note-writer-test/ 目录。",
+      "expected_output": "一篇 HTTP 版本对比笔记，对比风格，多用表格和权衡列举，三个版本并列对比，frontmatter 完整",
+      "files": [],
+      "assertions": [
+        {"name": "frontmatter 含 title 和 tags", "text": "文件顶部 frontmatter 含 title 和 tags 两个字段"},
+        {"name": "使用对比表格", "text": "至少包含一个把 HTTP/1.1、HTTP/2、HTTP/3 并列对比的表格"},
+        {"name": "三个版本都覆盖", "text": "笔记内容覆盖 HTTP/1.1、HTTP/2、HTTP/3 三个版本，无明显遗漏"},
+        {"name": "列举权衡而非平铺", "text": "以对比/权衡视角组织（差异点、演进、取舍），而非三个版本各自独立平铺"},
+        {"name": "一级标题用中文序数", "text": "一级标题使用 一、二、三 中文序数形式"}
+      ]
+    }
+  ]
+}

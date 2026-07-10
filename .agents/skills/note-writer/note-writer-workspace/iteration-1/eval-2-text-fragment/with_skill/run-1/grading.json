@@ -1,0 +1,41 @@
+{
+  "run_id": "eval-2-text-fragment-with_skill",
+  "expectations": [
+    {
+      "text": "文件名用主题名（如 Docker镜像分层.md），不加序号，因为目标目录无序号约定",
+      "passed": true,
+      "evidence": "文件名='Docker 镜像分层.md'，无序号前缀=是"
+    },
+    {
+      "text": "文件顶部 frontmatter 含 title 和 tags 两个字段",
+      "passed": true,
+      "evidence": "frontmatter: title=True, tags=True"
+    },
+    {
+      "text": "一级标题使用 一、二、三 中文序数形式",
+      "passed": true,
+      "evidence": "一级标题6个=['一、镜像分层的基本概念', '二、分层与 Dockerfile 指令的对应', '三、分层的复用价值', '四、容器可写层与写时复制', '五、删除文件与镜像体积', '六、小结']，其中中文序数开头6个"
+    },
+    {
+      "text": "把单段文本拆分为多个有标题的章节，而非保留成一大段",
+      "passed": true,
+      "evidence": "一级标题6个，原文为单段，需拆为≥3章"
+    },
+    {
+      "text": "笔记覆盖原文要点：分层结构、每层对应指令、复用与缓存、可写层与写时复制、删除文件不减小镜像",
+      "passed": true,
+      "evidence": "命中关键词['分层', 'FROM', 'RUN', 'COPY', '复用', '缓存', '写时复制', '删除']，缺失[]"
+    },
+    {
+      "text": "首节开头点明 Docker 镜像分层是什么",
+      "passed": true,
+      "evidence": "首节开头预览: 'Docker 镜像的分层机制把文件系统变更拆成只读层，带来了存储复用与构建缓存的价值，配合容器可写层实现写时复制，让同一'"
+    }
+  ],
+  "summary": {
+    "pass_rate": 1.0,
+    "passed": 6,
+    "failed": 0,
+    "total": 6
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "run_id": "eval-1-topic-numbering-without_skill",
+  "expectations": [
+    {
+      "text": "笔记文件名为 '2、Git rebase.md'，正确续接已有 1、Git基础.md 的序号",
+      "passed": false,
+      "evidence": "文件名='12、变基：git rebase.md'，期望'2、Git rebase.md'"
+    },
+    {
+      "text": "文件顶部 frontmatter 含 title 和 tags 两个字段",
+      "passed": true,
+      "evidence": "frontmatter: title=True, tags=True"
+    },
+    {
+      "text": "一级标题使用 一、二、三 中文序数形式",
+      "passed": true,
+      "evidence": "一级标题9个=['一、什么是 rebase', '二、为什么需要 rebase', '三、基本用法：把分支变基到目标提交', '四、处理冲突', '五、交互式 rebase', '六、rebase 与 merge 的取舍', '七、黄金法则：不要 rebase 已共享的提交', '八、安全地 abort 与恢复', '九、操作流程']，其中中文序数开头9个"
+    },
+    {
+      "text": "二级标题使用 1、2、3 阿拉伯序数形式",
+      "passed": true,
+      "evidence": "二级标题12个，阿拉伯序数开头12个"
+    },
+    {
+      "text": "首节开头用一两句白话点明 rebase 是什么，而非直接甩命令",
+      "passed": true,
+      "evidence": "首节开头预览: '提交前的暂存与检查流程见 [[4、查看状态、暂存和提交]]；查看整理后的提交历史见 [[9、灵活查看提交历史]]；撤销与'"
+    },
+    {
+      "text": "包含至少一个 git rebase 相关的可执行命令示例（代码块）",
+      "passed": true,
+      "evidence": "代码块36个=['text', '', 'text', '', 'text', '', 'shell', '', 'shell', '', 'text', '', 'text', '', 'shell', '', 'shell', '', 'shell', '', 'shell', '', 'shell', '', 'shell', '', 'text', '', 'text', '', 'shell', '', 'shell', '', 'text', '']，含git rebase=True"
+    },
+    {
+      "text": "正文中用 [[维基链接]] 关联到已有的 1、Git基础.md 或 Git 基础",
+      "passed": false,
+      "evidence": "维基链接=['11、撤销提交与恢复历史', '11、撤销提交与恢复历史', '10、修改最近一次提交', '11、撤销提交与恢复历史', '4、查看状态、暂存和提交', '9、灵活查看提交历史', '11、撤销提交与恢复历史']"
+    }
+  ],
+  "summary": {
+    "pass_rate": 0.7143,
+    "passed": 5,
+    "failed": 2,
+    "total": 7
+  }
+}

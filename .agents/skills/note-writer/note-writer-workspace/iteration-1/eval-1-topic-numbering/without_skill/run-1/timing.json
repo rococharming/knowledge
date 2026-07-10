@@ -1,0 +1,6 @@
+{
+  "total_tokens": 0,
+  "duration_ms": 502291,
+  "total_duration_seconds": 502.3,
+  "note": "subagent_tokens 报告为 0；duration 来自任务通知。baseline 误判目录已编号到 11，文件名续成 12。"
+}

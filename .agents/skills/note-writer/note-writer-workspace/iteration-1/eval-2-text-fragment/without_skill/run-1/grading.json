@@ -1,0 +1,41 @@
+{
+  "run_id": "eval-2-text-fragment-without_skill",
+  "expectations": [
+    {
+      "text": "文件名用主题名（如 Docker镜像分层.md），不加序号，因为目标目录无序号约定",
+      "passed": true,
+      "evidence": "文件名='Docker镜像分层原理.md'，无序号前缀=是"
+    },
+    {
+      "text": "文件顶部 frontmatter 含 title 和 tags 两个字段",
+      "passed": true,
+      "evidence": "frontmatter: title=True, tags=True"
+    },
+    {
+      "text": "一级标题使用 一、二、三 中文序数形式",
+      "passed": false,
+      "evidence": "一级标题1个=['Docker 镜像分层原理']，其中中文序数开头0个"
+    },
+    {
+      "text": "把单段文本拆分为多个有标题的章节，而非保留成一大段",
+      "passed": false,
+      "evidence": "一级标题1个，原文为单段，需拆为≥3章"
+    },
+    {
+      "text": "笔记覆盖原文要点：分层结构、每层对应指令、复用与缓存、可写层与写时复制、删除文件不减小镜像",
+      "passed": true,
+      "evidence": "命中关键词['分层', 'FROM', 'RUN', 'COPY', '复用', '缓存', '写时复制', '删除']，缺失[]"
+    },
+    {
+      "text": "首节开头点明 Docker 镜像分层是什么",
+      "passed": true,
+      "evidence": "首节开头预览: '因此镜像实际体积可能比预期更大。常见对策是把会产生大文件再删除的操作（如下载、解压、清理）合并到 **同一条 `RUN`'"
+    }
+  ],
+  "summary": {
+    "pass_rate": 0.6667,
+    "passed": 4,
+    "failed": 2,
+    "total": 6
+  }
+}

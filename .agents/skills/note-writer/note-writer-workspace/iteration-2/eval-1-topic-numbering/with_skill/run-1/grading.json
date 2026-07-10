@@ -1,0 +1,51 @@
+{
+  "run_id": "eval-1-topic-numbering-with_skill",
+  "expectations": [
+    {
+      "text": "1、Git基础.md 正文中有 [[2、Git分支|Git 分支]] 预留链接（序号2被预留给'Git分支'，文件未创建）。agent 应检测到该预留，并在产出/消息中说明序号冲突（自动化 eval 中体现为说明让出/占用原因）",
+      "passed": true,
+      "evidence": "序号预留语义=True，文件名带序号2/3=True（git冲突误命中已排除）"
+    },
+    {
+      "text": "文件名序号为 2 或 3 都算合理：2=占用预留序号，3=让出预留序号。关键是 agent 已识别预留冲突并作出有依据的取舍，而非机械取 max+1",
+      "passed": true,
+      "evidence": "文件名='3、Git rebase.md'，序号=3，合理(2或3)=True"
+    },
+    {
+      "text": "文件顶部 frontmatter 含 title 和 tags 两个字段",
+      "passed": true,
+      "evidence": "frontmatter: title=True, tags=True"
+    },
+    {
+      "text": "一级标题使用 一、二、三 中文序数形式",
+      "passed": true,
+      "evidence": "一级标题4个=['一、rebase 的基本概念', '二、基本用法', '三、进阶用法', '四、延伸']，其中中文序数开头4个"
+    },
+    {
+      "text": "二级标题使用 1、2、3 阿拉伯序数形式",
+      "passed": true,
+      "evidence": "二级标题4个，阿拉伯序数开头4个"
+    },
+    {
+      "text": "首节开头用一两句白话点明 rebase 是什么，而非直接甩命令",
+      "passed": true,
+      "evidence": "首节开头预览: '进一步可以学习 [[2、Git分支|Git 分支]] 中更完整的分支模型，理解 rebase 与 merge 在团队协作'"
+    },
+    {
+      "text": "包含至少一个 git rebase 相关的可执行命令示例（代码块）",
+      "passed": true,
+      "evidence": "代码块10个=['bash', '', 'bash', '', 'bash', '', 'bash', '', 'text', '']，含git rebase=True"
+    },
+    {
+      "text": "正文中用 [[维基链接]] 关联到已有的 1、Git基础.md 或 Git 基础",
+      "passed": true,
+      "evidence": "维基链接=['2、Git分支|Git 分支', '2、Git分支|Git 分支', '1、Git基础|Git 基础']"
+    }
+  ],
+  "summary": {
+    "pass_rate": 1.0,
+    "passed": 8,
+    "failed": 0,
+    "total": 8
+  }
+}

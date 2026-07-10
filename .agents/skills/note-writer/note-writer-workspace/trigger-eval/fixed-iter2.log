@@ -1,0 +1,12 @@
+Evaluating: 把材料变成一篇可长期保存的结构化技术笔记、写到用户指定文件时使用——这是要产出一个带章节、示例、交叉引用的笔记文件，而不是在对话里随口回答。接受任意一类输入：URL、本地文件、内联文本片段、某个主题、或刚才的对话。凡意图是"把…整理成笔记""做成学习笔记""系统梳理…存下来""写成带章节的笔记""存到笔记目录"，或任何旨在生成一篇已保存笔记的表述（即使没有"笔记"二字），都应触发。按统一风格（中文序数标题、概念先行、维基链接交叉引用）只产出单篇笔记。不适用于：查询或检索已有知识库、修改已有笔记、ingest 多篇素材并维护整个 wiki 索引。
+Results: 5/10 passed
+  [FAIL] rate=0/3 expected=True: 把下面这段整理成一篇技术笔记，保存到 /tmp/nw-trigger/x.md：Rust 的所有权规则有三条：每个值有且只有一个所有者，值在
+  [FAIL] rate=0/3 expected=True: 按 Rust 笔记的风格，写一篇关于 Docker 镜像分层的技术笔记，保存到 /tmp/nw-trigger/docker.md
+  [FAIL] rate=0/3 expected=True: 这个链接 https://example.com/http3-explained 帮我做成一篇学习笔记
+  [FAIL] rate=0/3 expected=True: 把我们刚才聊的关于 RAG 检索增强生成的内容，整理成一篇带章节的笔记存下来
+  [FAIL] rate=0/3 expected=True: 我想把 HTTP/2 多路复用这个知识点系统梳理一下，存到我的笔记目录里长期保存
+  [PASS] rate=0/3 expected=False: 把 /tmp/raw-articles/ 下这几篇文章 ingest 到 AI 领域的 wiki，更新 index.md 和 log.md
+  [PASS] rate=0/3 expected=False: 我的知识库里 RAG 和 fine-tuning 的区别是什么？帮我查一下
+  [PASS] rate=0/3 expected=False: 帮我 lint 一下 Rust 领域的 wiki，检查有没有死链、孤立页面和矛盾的主张
+  [PASS] rate=0/3 expected=False: 把 /tmp/notes/git-rebase.md 这篇笔记的标题改一下，在前面加上日期
+  [PASS] rate=0/3 expected=False: 用 Rust 写一个函数，把一个 Vec<T> 原地反转，不要分配新内存
