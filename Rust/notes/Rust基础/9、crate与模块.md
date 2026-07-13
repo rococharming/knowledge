@@ -225,7 +225,7 @@ cargo tree
 ```
 
 结果：
-![[Pasted image 20260520011515.png|500]]
+![[assets/Pasted image 20260520011515.png|500]]
 
 依赖图能帮助理解：项目最终不是只编译自己的代码，而是要把所有相关依赖都构建出来。
 
@@ -274,9 +274,9 @@ cargo clean
 
 最终`cargo build --verbose`结果如下：
 
-![[Pasted image 20260520010913.png]]
+![[assets/Pasted image 20260520010913.png]]
 
-![[Pasted image 20260520011146.png]]
+![[assets/Pasted image 20260520011146.png]]
 
 > 注意：由于配置了镜像源，因此更新依赖索引没有直接使用官方`crates.io`索引，而是使用了`rsproxy`镜像源。
 

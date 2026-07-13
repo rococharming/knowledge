@@ -41,7 +41,7 @@ default -> acceptEdits -> plan
 
 当前模式会显示在状态栏中，如下所示：
 
-![[Pasted image 20260509180642.png|500]]
+![[assets/Pasted image 20260509180642.png|500]]
 
 这里`accept edits on`即为`acceptEdits`模式。
 

@@ -73,7 +73,7 @@ let home: IpAddr = "127.0.0.1"
     .expect("硬编码的 IP 地址应该是合法的");
 ```
 
-![[Pasted image 20260526170746.png|600]]
+![[assets/Pasted image 20260526170746.png|600]]
 
 ## 提供默认值
 
@@ -162,7 +162,7 @@ if let Ok(v) = result.as_mut() {
 
 `Result<T, E>` 带有 `#[must_use]` 属性，如果返回 `Result` 的表达式完全不处理，编译器会发出警告：
 
-![[Pasted image 20260530211324.png|400]]
+![[assets/Pasted image 20260530211324.png|400]]
 
 显式忽略时应写成：
 
@@ -179,7 +179,7 @@ fn build_number() -> i32 { 100 }
 build_number();  // 编译警告
 ```
 
-![[Pasted image 20260530211637.png|400]]
+![[assets/Pasted image 20260530211637.png|400]]
 
 ## 方法速查
 

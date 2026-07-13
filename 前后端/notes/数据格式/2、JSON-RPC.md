@@ -478,7 +478,7 @@ JSON-RPC支持批量请求，也就是一次发送多个请求对象。
 
 一次典型的 JSON-RPC 调用可以理解为：
 
-![[Pasted image 20260518155917.png|500]]
+![[assets/Pasted image 20260518155917.png|500]]
 
 
 JSON-RPC 的重点不在于传输层，而在于消息格式。无论底层走 HTTP 还是 WebSocket，只要双方遵守 JSON-RPC 请求和响应结构，就可以完成远程调用。

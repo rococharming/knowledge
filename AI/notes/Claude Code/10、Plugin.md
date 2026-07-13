@@ -358,13 +358,13 @@ Plugin 通过 `monitors/monitors.json` 配置后台监控器。插件启用时�
 官方 Anthropic Marketplace（`claude-plugins-official`）在启动`Claude Code`时**自动可用**。
 运行 `/plugin` 进入 **Marketplaces** 标签页可看到现有的 marketplaces：
 
-![[Pasted image 20260507163749.png]]
+![[assets/Pasted image 20260507163749.png]]
 
 ### （1）浏览与安装
 
 运行 `/plugin` 进入 **Discover** 标签页浏览可用插件，或在 [claude.com/plugins](https://claude.com/plugins) 查看目录。选择插件后可选择安装范围：
 
-![[Pasted image 20260507163854.png]]
+![[assets/Pasted image 20260507163854.png]]
 
 | 范围           | 说明                                                    |
 | ------------ | ----------------------------------------------------- |
@@ -413,7 +413,7 @@ Claude → Claude Code 内置 LSP 客户端 → 本机语言服务器 → 项目
 
 | 能力       | 说明                                                                                  |
 | -------- | ----------------------------------------------------------------------------------- |
-| **自动诊断** | 每次编辑文件后，语言服务器分析变更并返回错误 / 警告；Claude 可在同一轮修改中发现并修复问题。出现"发现诊断"指示器时，按 **Ctrl+O** 内联查看详情 |
+| **自动诊断** | 每次编辑文件后，语言服务器分析变更并返回错误 / 警告；Claude 可在同一轮修改中发现并修复问题。出现"发现诊断"指示器时，按 <kbd>Ctrl</kbd> + <kbd>O</kbd> 内联查看详情 |
 | **代码导航** | 跳转到定义、查找引用、查看类型信息、发现类型错误、获取符号信息、查找实现、分析调用层级                                         |
 
 支持的语言：
@@ -469,7 +469,7 @@ Claude → Claude Code 内置 LSP 客户端 → 本机语言服务器 → 项目
 
 需要注意，被添加的`Marketplace`源中通常需要包含：`.claude-plugin/marketplace.json`：
 
-![[Pasted image 20260507170420.png]]
+![[assets/Pasted image 20260507170420.png]]
 
 这个文件用于描述`Marketplace`的名称、作者信息以及其中包含哪些插件。
 

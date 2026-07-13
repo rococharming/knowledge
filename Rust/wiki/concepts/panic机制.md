@@ -72,7 +72,7 @@ fn main() {
 }
 ```
 
-![[Pasted image 20260526161155.png|500]]
+![[assets/Pasted image 20260526161155.png|500]]
 
 这说明在安全 Rust 中，panic 不会破坏内存安全。
 
@@ -84,7 +84,7 @@ fn main() {
 RUST_BACKTRACE=1 cargo run
 ```
 
-![[Pasted image 20260526162447.png|800]]
+![[assets/Pasted image 20260526162447.png|800]]
 
 调用栈解读要点：
 

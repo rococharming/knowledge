@@ -154,7 +154,7 @@ println!("addr: {}", addr);
 ```
 结果：
 
-![[Image 79.png]]
+![[assets/Image 79.png]]
 
 这段代码手动构造了一个 IPv4 地址 `127.0.0.1` ，再组合成套接字地址 `127.0.0.1:8080` 。
 ## 3、ToSocketAddrs：统一地址解析机制
@@ -204,7 +204,7 @@ Ok(())
 ```
 结果：
 
-![[Image 80.png]]
+![[assets/Image 80.png]]
 
 注意事项：
 
@@ -268,7 +268,7 @@ curl http://127.0.0.1:8080
 ```
 虽然 `curl` 发起的是HTTP请求，但服务端仅仅监听TCP连接，没有实现HTTP响应，因此 `curl` 执行会报错，但这里不重要，因为只需要观察服务器连接时的打印即可。
 
-![[Image 81.png]]
+![[assets/Image 81.png]]
 ## 3、TcpStream
 
 ### （1）创建方式

@@ -7,7 +7,10 @@
 ```markdown
 ---
 title: 主题名
+date: 2026-07-11
 tags: [标签1, 标签2]
+aliases:
+  - 主题别名
 ---
 
 # 一、主题的基本概念
@@ -62,7 +65,10 @@ tags: [标签1, 标签2]
 ````markdown
 ---
 title: HTTP 缓存机制
+date: 2026-07-11
 tags: [HTTP, 缓存, Web]
+aliases:
+  - HTTP Cache
 ---
 
 # 一、HTTP 缓存的基本概念
@@ -169,7 +175,7 @@ ETag: "abc123"
 
 ## 范例要点说明
 
-- frontmatter 轻量，只有 title 和 tags。
+- frontmatter 包含 title、date、tags、aliases。
 - 标题用 `一、` → `1、` → 表格/示例，层级清晰。
 - 每节概念先行，再展开细节。
 - 代码示例最小化，每个只演示一个点，后跟解释。

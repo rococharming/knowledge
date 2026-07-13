@@ -50,11 +50,14 @@ def create_directory_structure(base_dir: str, domain: str, categories: list[str]
     return paths
 
 
-def generate_domain_md(domain: str, overview: str, categories: list[str], tags: list[str]) -> str:
+def generate_domain_md(domain: str, overview: str, categories: list[str], tags: list[str], base_dir: str) -> str:
     """Generate the domain.md content."""
     today = datetime.now().strftime("%Y-%m-%d")
     cat_lines = "\n".join(f"- `{cat}/` — （请补充说明）" for cat in categories)
     tag_lines = "\n".join(f"- `#{t}` — （请补充说明）" for t in tags)
+    collection = f"knowledge-{domain.lower()}"
+    collection_root = f"{domain}/wiki"
+    qmd_cwd = base_dir
 
     return f"""---
 title: {domain} 领域规则
@@ -87,8 +90,9 @@ wiki 页面按以下子目录组织：
 
 ## qmd 配置
 
-- collection 名称：`knowledge-{domain.lower()}`
-- 索引路径：`./wiki/`
+- collection 名称：`{collection}`
+- collection root：`{collection_root}`
+- qmd 命令工作目录：知识库根目录 `{qmd_cwd}`
 
 ## 特殊约定
 
@@ -100,7 +104,7 @@ def generate_index_md(domain: str, categories: list[str]) -> str:
     """Generate the wiki/index.md content."""
     today = datetime.now().strftime("%Y-%m-%d")
     cat_sections = "\n\n".join(
-        f"## {cat.capitalize()}\n\n_（暂无）_" for cat in categories
+        f"## {cat}\n\n_（暂无）_" for cat in categories
     )
 
     return f"""---
@@ -169,7 +173,47 @@ def update_readme_domains(base_dir: str, domain: str, overview: str) -> bool:
     return True
 
 
-def diagnose_existing(domain_path: str, categories: list[str]) -> dict:
+def update_top_index_domains(base_dir: str, domain: str, overview: str) -> bool:
+    """Upsert the domain in knowledge/index.md, which is the routing source of truth."""
+    index_path = os.path.join(base_dir, "index.md")
+    today = datetime.now().strftime("%Y-%m-%d")
+    if not os.path.exists(index_path):
+        content = f"""---
+title: 知识库领域目录
+date: {today}
+---
+
+# 知识库领域目录
+
+"""
+    else:
+        with open(index_path, encoding="utf-8") as f:
+            content = f.read()
+
+    safe_overview = overview.replace("\n", " ").strip()
+    row = f"- [[{domain}/wiki/index|{domain}]] — {safe_overview}（0 页）"
+    lines = content.rstrip().splitlines()
+    updated = False
+    for i, line in enumerate(lines):
+        if line.startswith(f"- [[{domain}/wiki/index|{domain}]]"):
+            if line != row:
+                lines[i] = row
+                updated = True
+            break
+    else:
+        if lines and lines[-1].startswith("# "):
+            lines.append("")
+        lines.append(row)
+        updated = True
+
+    if not updated:
+        return False
+    with open(index_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines).rstrip() + "\n")
+    return True
+
+
+def diagnose_existing(domain_path: str, categories: list[str], base_dir: str, domain: str) -> dict:
     """Check an existing domain for missing files/directories and report issues."""
     issues = []
     created = []
@@ -209,6 +253,15 @@ def diagnose_existing(domain_path: str, categories: list[str]) -> dict:
         for sec in required_sections:
             if sec not in content:
                 issues.append(f"domain.md missing section: {sec}")
+        if "索引路径：`./wiki/`" in content or "索引路径：./wiki/" in content:
+            issues.append("domain.md uses deprecated qmd path: 索引路径：`./wiki/`; replace with collection root")
+        expected_root = f"collection root：`{domain}/wiki`"
+        if "collection root" not in content:
+            issues.append(f"domain.md missing qmd collection root: `{domain}/wiki`")
+        elif expected_root not in content:
+            issues.append(f"domain.md qmd collection root should be `{domain}/wiki` relative to knowledge root")
+        if "qmd 命令工作目录" not in content:
+            issues.append(f"domain.md missing qmd command cwd: `{base_dir}`")
 
     # Check wiki/index.md
     index_path = os.path.join(domain_path, "wiki", "index.md")
@@ -261,7 +314,7 @@ def main():
 
     # Generate files
     overview = args.overview or f"{domain} 领域的知识积累"
-    domain_md = generate_domain_md(domain, overview, categories, tags)
+    domain_md = generate_domain_md(domain, overview, categories, tags, base_dir)
     index_md = generate_index_md(domain, categories)
     log_md = generate_log_md(domain)
 
@@ -292,10 +345,12 @@ def main():
 
     if update_readme_domains(base_dir, domain, overview):
         print(f"Updated README.md domain table for {domain}")
+    if update_top_index_domains(base_dir, domain, overview):
+        print(f"Updated index.md domain route for {domain}")
 
     # Diagnose if domain already existed
     if existing:
-        diag = diagnose_existing(domain_path, categories)
+        diag = diagnose_existing(domain_path, categories, base_dir, domain)
         if diag["created"]:
             print(f"\nCreated missing directories: {', '.join(diag['created'])}")
         if diag["issues"]:

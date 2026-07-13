@@ -102,6 +102,17 @@ python <skill-path>/scripts/init-domain.py <领域名称> \
 - `## qmd 配置`
 - `## 特殊约定`
 
+**qmd 配置必须使用当前全局路径语义**：
+```markdown
+## qmd 配置
+
+- collection 名称：`knowledge-<领域名规范化>`
+- collection root：`<领域>/wiki`
+- qmd 命令工作目录：知识库根目录 `<工作目录绝对路径>`
+```
+
+禁止生成 `索引路径：./wiki/`，因为它依赖当前工作目录，容易建错 qmd collection。检查已有领域时，如果发现旧的 `索引路径：./wiki/`，应在诊断报告中提示需要迁移为 `collection root`。
+
 **domain.md 必须有 YAML frontmatter**：
 ```yaml
 ---

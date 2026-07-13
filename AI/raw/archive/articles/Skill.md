@@ -105,13 +105,13 @@ fn main() {
 
 结果：
 
-![[Pasted image 20260602110117.png|600]]
+![[assets/Pasted image 20260602110117.png|600]]
 
 可以看到生成了`run-hello-cli` skill。
 
 3. 使用`/run`查看程序真实运行结果
 
-![[Pasted image 20260602111517.png|400]]
+![[assets/Pasted image 20260602111517.png|400]]
 
 可以看到 Claude 会自动加载`run-hello-cli` skill 运行项目。
 
@@ -131,7 +131,7 @@ fn main() {
 
 结果：
 
-![[Pasted image 20260602111951.png|400]]
+![[assets/Pasted image 20260602111951.png|400]]
 
 会发现 Claude Code 除了更改源码，还会更改之前创建的`run-hello-cli` skill内容来适配当前修改并自动验证结果。
 
@@ -145,7 +145,7 @@ fn main() {
 
 结果：
 
-![[Pasted image 20260602112252.png|400]]
+![[assets/Pasted image 20260602112252.png|400]]
 
 然后可以输入：
 
@@ -237,7 +237,7 @@ claude
 
 配置正确时，Claude 会基于当前 `git diff HEAD` 返回改动摘要和潜在风险。
 
-![[Pasted image 20260602113451.png|400]]
+![[assets/Pasted image 20260602113451.png|400]]
 
 # 三、Skill的存储与结构
 

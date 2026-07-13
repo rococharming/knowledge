@@ -33,7 +33,7 @@
 
 ## 1、会话期间切换
 
-在 CLI 中，可以按 `Shift + Tab` 循环切换：
+在 CLI 中，可以按 <kbd>Shift</kbd> + <kbd>Tab</kbd> 循环切换：
 
 ```text
 default -> acceptEdits -> plan
@@ -41,7 +41,7 @@ default -> acceptEdits -> plan
 
 当前模式会显示在状态栏中，如下所示：
 
-![[Pasted image 20260509180642.png|500]]
+![[assets/Pasted image 20260509180642.png|500]]
 
 这里`accept edits on`即为`acceptEdits`模式。
 
@@ -152,7 +152,7 @@ claude -p "run tests" --permission-mode dontAsk
 
 接受方案后，`Claude`会退出`plan`模式，并切换到你选择的执行模式。接受方案还会根据方案内容自动命名会话，除非你已经通过 `--name` 或 `/rename` 设置了会话名称。
 
-如果觉得在终端里编辑计划不方便，可以按 `Ctrl + G`，用默认文本编辑器打开拟议方案并直接修改。
+如果觉得在终端里编辑计划不方便，可以按 <kbd>Ctrl</kbd> + <kbd>G</kbd>，用默认文本编辑器打开拟议方案并直接修改。
 
 如果启用了`showClearContextOnPlanAccept`：
 

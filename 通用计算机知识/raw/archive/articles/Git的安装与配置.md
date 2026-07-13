@@ -36,7 +36,7 @@ xcode-select --install
 git --version
 ```
 
-![[Pasted image 20260604230357.png|222]]
+![[assets/Pasted image 20260604230357.png|222]]
 
 
 ## 2、通过 Homebrew 安装 Git
@@ -118,7 +118,7 @@ git config --global --list
 
 示例：
 
-![[Pasted image 20260604232027.png|200]]
+![[assets/Pasted image 20260604232027.png|200]]
 
 # 四、Git 配置级别
 
@@ -198,7 +198,7 @@ git config --list --show-origin
 
 输出可能类似：
 
-![[Pasted image 20260604233634.png|500]]
+![[assets/Pasted image 20260604233634.png|500]]
 
 `--show-origin` 很适合排查配置来源问题。例如明明全局邮箱已经改了，但某个仓库提交时仍然使用旧邮箱，就可以用这个命令检查是否被本地配置覆盖。
 

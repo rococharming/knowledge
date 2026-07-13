@@ -19,11 +19,11 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 安装完成后，工具存放在 `~/.cargo/bin` 目录下。rustup 会自动将该目录加入 `PATH`。
 
-![[Image 1.png]]
+![[assets/Image 1.png]]
 
 执行 `rustup --version` 验证安装：
 
-![[Image 3.png]]
+![[assets/Image 3.png]]
 
 ## 核心命令
 
@@ -52,7 +52,7 @@ rustup 通过软链接机制管理工具调用：`~/.cargo/bin/cargo` 等命令�
 
 可以通过 `rustup which cargo` 查找真实 cargo 二进制的位置：
 
-![[Image 2.png]]
+![[assets/Image 2.png]]
 
 ## 关联
 

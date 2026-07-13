@@ -22,13 +22,13 @@ npx skills add vercel-labs/skills@find-skills
 
 进入如下界面：
 
-![[Pasted image 20260508101609.png]]
+![[assets/Pasted image 20260508101609.png]]
 
 这里默认已经选择了几个 Agent （如Codex），因为它们的 skill 都放在`.agents/skills`目录下，skills命令默认就安装在该目录。
 
 为了给`Claude Code`也装上，需要在`Additional agents`里按下*空格*选择`Claude Code`，然后回车确认到下一步：
 
-![[Pasted image 20260508101938.png]]
+![[assets/Pasted image 20260508101938.png]]
 
 接下来会让我们选择安装的范围：项目级还是全局？
 
@@ -36,7 +36,7 @@ npx skills add vercel-labs/skills@find-skills
 
 接下来是选择安装的方式：通过符号链接还是复制？
 
-![[Pasted image 20260508102331.png]]
+![[assets/Pasted image 20260508102331.png]]
 
 这里选择符号链接方式，这样方便更新，链接统一指向 .agent/skills 下的 skill，以后更新之需要更新 .agent/skills。
 

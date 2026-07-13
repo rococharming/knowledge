@@ -383,7 +383,7 @@ messages = [
 
 模型会基于这个列表生成下一条 `assistant` 消息：
 
-![[Pasted image 20260611102836.png|400]]
+![[assets/Pasted image 20260611102836.png|400]]
 
 这里的 `assistant` 消息不是让程序现场生成回答，而是把模型之前的回答作为上下文重新传给模型。
 
@@ -582,12 +582,12 @@ while True:
     })
 ```
 
-![[Pasted image 20260611115750.png|300]]
+![[assets/Pasted image 20260611115750.png|300]]
 
 
 结果演示：
 
-![[Pasted image 20260611115738.png|600]]
+![[assets/Pasted image 20260611115738.png|600]]
 
 
 这个脚本能实现最基本的多轮对话，但还没有处理异常、历史裁剪、流式输出、超时和停止原因。正式项目中通常还需要根据 `usage` 和上下文窗口管理历史长度。

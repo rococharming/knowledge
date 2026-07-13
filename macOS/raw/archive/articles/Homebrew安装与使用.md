@@ -107,7 +107,7 @@ brew --version
 
 如果能看到类似输出，说明安装成功：
 
-![[Pasted image 20260513013040.png|300]]
+![[assets/Pasted image 20260513013040.png|300]]
 
 还可以使用下面的命令检查 Homebrew 当前状态：
 

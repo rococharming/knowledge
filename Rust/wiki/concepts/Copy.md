@@ -17,7 +17,7 @@ let num2 = num1;
 println!("{}", num1); // 正确，i32 是 Copy 类型
 ```
 
-![[Image 36.png|400]]
+![[assets/Image 36.png|400]]
 
 `i32` 等简单数值不拥有堆内存，也不需要特殊释放逻辑，因此复制后两者彼此独立。
 

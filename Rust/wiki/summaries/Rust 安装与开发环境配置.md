@@ -15,7 +15,7 @@ Rust 是 Mozilla 于 2006 年发起的系统级编程语言，2015 年发布 1.0
 
 进入 Rust 官网 [https://rust-lang.org/](https://rust-lang.org/)，点击 Install，官网会根据当前操作系统给出对应的安装方案：
 
-![[Image.png|600]]
+![[assets/Image.png|600]]
 
 ## 核心组件
 

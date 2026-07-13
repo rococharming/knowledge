@@ -22,17 +22,17 @@ source_count: 1
 
 如果已使用 `cargo new` 创建了 Rust 项目，直接用 RustRover 打开项目目录即可。RustRover 会自动识别 `Cargo.toml` 并将目录作为 Cargo 项目加载。
 
-![[Pasted image 20260511224024.png]]
+![[assets/Pasted image 20260511224024.png]]
 
 ### 步骤 2：新建项目（可选）
 
 也可以通过 RustRover 的菜单新建项目：`File → New → Project`，选择 Rust 项目类型，按向导完成创建：
 
-![[Pasted image 20260511224649.png]]
+![[assets/Pasted image 20260511224649.png]]
 
-![[Pasted image 20260511224814.png]]
+![[assets/Pasted image 20260511224814.png]]
 
-![[Pasted image 20260511224856.png]]
+![[assets/Pasted image 20260511224856.png]]
 
 ## 核心功能
 
@@ -40,7 +40,7 @@ source_count: 1
 
 RustRover 内置 Rust 代码分析引擎，提供：
 
-- **代码补全**：输入前几个字符后自动弹出补全提示，按 `Enter` 或 `Tab` 接受
+- **代码补全**：输入前几个字符后自动弹出补全提示，按 <kbd>Enter</kbd> 或 <kbd>Tab</kbd> 接受
 - **类型提示**：变量和表达式旁显示推断类型
 - **错误诊断**：语法错误、类型错误、借用检查问题直接在编辑器中标记
 - **Quick Fix**：部分场景下提供快速修复建议
@@ -49,7 +49,7 @@ RustRover 内置 Rust 代码分析引擎，提供：
 
 RustRover 对 Cargo 有内置支持。打开项目后，在 IDE 侧边栏可以看到 Cargo 工具窗口（如未显示，通过 `View → Tool Windows → Cargo` 打开）。
 
-![[Pasted image 20260511225507.png]]
+![[assets/Pasted image 20260511225507.png]]
 
 Cargo 工具窗口中通常列出项目中的各类 target：
 
@@ -65,7 +65,7 @@ Cargo 工具窗口中通常列出项目中的各类 target：
 
 打开 `src/main.rs` 后，`main` 函数左侧会出现绿色运行按钮。点击可选择运行当前程序，或使用顶部工具栏的运行按钮、快捷键运行。
 
-![[Pasted image 20260511230042.png]]
+![[assets/Pasted image 20260511230042.png]]
 
 ### 4. 调试代码
 
@@ -79,7 +79,7 @@ RustRover 提供完整调试器，支持断点、变量查看、单步执行、�
 4. 程序运行到断点处暂停
 5. 在 Debug 窗口中查看变量、调用栈，并进行单步执行
 
-![[Pasted image 20260511231034.png]]
+![[assets/Pasted image 20260511231034.png]]
 
 ## 关联
 

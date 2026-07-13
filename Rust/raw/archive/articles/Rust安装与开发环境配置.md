@@ -22,7 +22,7 @@ Rust 语言在 2006 年作为 Mozilla 员工 `Graydon Hoare`（格雷登·霍尔
 
 进入Rust官网 [https://rust-lang.org/](https://rust-lang.org/) ，点击上方的install，如下图所示：
 
-![[Image.png|600]]
+![[assets/Image.png|600]]
 
 Rust官网比较智能，可以自动识别当前主机的操作系统，从而给出不同的安装方案。
 
@@ -43,7 +43,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 安装完成后，用户可以在`~/.cargo/bin`目录下看到`rustup`、`rustc`、`cargo`等命令入口，如下图所示：
 
-![[Image 1.png]]
+![[assets/Image 1.png]]
 
 需要注意的是，这些命令入口并不一定是真正的编译器或构建工具入口本体；在 `rustup` 管理的环境中，`cargo`、`rustc`、`rustdoc` 等通常是由 `rustup` 管理的代理入口，因此这里的大部分命令都是软链接。
 
@@ -57,7 +57,7 @@ rustup which cargo
 
 结果：
 
-![[Image 2.png]]
+![[assets/Image 2.png]]
 
 上述细节了解即可。要执行这些程序，需要将`~/.cargo/bin`目录加入到`PATH`环境变量。但一般安装过程中，`rustup`会自动配置好。安装完成之后，重启终端即可。
 
@@ -69,7 +69,7 @@ rustup --version
 
 示例：
 
-![[Image 3.png]]
+![[assets/Image 3.png]]
 
 ## 2、设置国内镜像源 ^setting-proxy
 
@@ -129,7 +129,7 @@ rustc --version
 ```bash
 rustup --version
 ```
-![[Image 4.png]]
+![[assets/Image 4.png]]
 
 >注意：这里提示输出的是rustup的版本而非rustc版本，并且也给出了rustc的版本。
 
@@ -170,7 +170,7 @@ rustup show
 - 已安装的工具链（`installed toolchains`）
 - 当前正在使用的工具链（`active toolchain`）
 
-![[Image 5.png|400]]
+![[assets/Image 5.png|400]]
 
 ### （3）安装工具链
 
@@ -246,7 +246,7 @@ rustc main.rs
 
 结果：
 
-![[Image 6.png|400]]
+![[assets/Image 6.png|400]]
 
 ### （2）指定输出文件名
 
@@ -256,7 +256,7 @@ rustc main.rs
 rustc -o hello main.rs
 ```
 
-![[Image 7.png|400]]
+![[assets/Image 7.png|400]]
 
 ### （3）指定Edition
 
@@ -312,7 +312,7 @@ rustc --crate-type=rlib --crate-name=greet lib.rs
 
 编译完成后，当前目录会生成`libgreet.rlib`文件：
 
-![[Image 8.png|500]]
+![[assets/Image 8.png|500]]
 
 ### （2）链接rlib生成可执行文件
 
@@ -328,7 +328,7 @@ rustc -L . --extern greet=libgreet.rlib main.rs
 
 执行完成后，会生成可执行文件。
 
-![[Image 9.png|600]]
+![[assets/Image 9.png|600]]
 
 # 五、Cargo
 
@@ -368,7 +368,7 @@ cargo new hello_cargo
 
 执行后，会在当前目录生成一个 `hello_cargo` 项目文件夹。
 
-![[Image 10.png]]
+![[assets/Image 10.png]]
 
 进入该文件夹后，可以看到类似下面的目录结构：
 
@@ -481,7 +481,7 @@ cargo build --release
 
 构建完成后，就可以运行生成的可执行文件了。以调试构建为例，运行如下：
 
-![[Image 11.png]]
+![[assets/Image 11.png]]
 
 ## 4、构建并运行Cargo项目
 
@@ -495,7 +495,7 @@ cargo run
 
 结果：
 
-![[Image 12.png]]
+![[assets/Image 12.png]]
 
 `cargo run`默认也是调试构建。如果希望以发布模式构建并运行，可以使用：
 
@@ -549,28 +549,28 @@ code .
 
 如果终端提示 `code: command not found`，说明还没有把 VS Code 的 `code` 命令安装到 `PATH` 中。可以在 VS Code 中打开命令面板（`Command + P`），搜索`> Shell Command`并选择`Shell Command: Install 'code' command in PATH`：
 
-![[Pasted image 20260511163624.png]]
+![[assets/Pasted image 20260511163624.png]]
 
 打开项目后，还需要安装Rust相关插件。点击 VS Code 左侧栏的 Extensions，然后搜索并安装以下插件。
 
-![[Image 13.png]]
+![[assets/Image 13.png]]
 
 - `rust-analyzer`：Rust 官方推荐的语言服务器插件，也是`VS Code`开发 Rust 的最核心插件。它可以提供代码补全、类型提示、错误诊断、跳转定义、查找引用、代码重构等。
 - `Error Lens`：可以在错误、警告、提示信息直接显示在代码行旁边，让诊断信息更加醒目。它不是Rust专用插件。也不是必须插件，但对新手比较友好，可以直观地看到错误信息。
 
 安装这些插件后，VS Code 就可以作为 Rust 开发环境使用。当输入代码的前几个字符时，VS Code 会自动弹出代码提示。出现提示后，可以按  `Tab` 或`Enter`接受补全。
 
-![[Image 14.png]]
+![[assets/Image 14.png]]
 
 对于`Cargo`项目，`rust-analyzer`通常会在`main`函数、测试函数等位置上方显示`Run`和`Debug`按钮。
 
 点击`Run`可以直接运行当前程序：
 
-![[Image 15.png]]
+![[assets/Image 15.png]]
 
 点击`Debug`进入调试状态，如下图所示：
 
-![[Image 16.png]]
+![[assets/Image 16.png]]
 
 关于调试相关概念，参考：[[1、调试|调试]]。
 
@@ -580,17 +580,17 @@ code .
 
 如果已经使用`cargo new`创建了一个Rust项目，可以直接用`RustRover`打开项目目录。
 
-![[Pasted image 20260511224024.png]]
+![[assets/Pasted image 20260511224024.png]]
 
 打开项目后，`RustRover`会识别项目中的`Cargo.toml`文件，并将该目录作为一个`Cargo`项目加载。前面已经说过，`Cargo.toml`是`Cargo`项目的核心配置文件，因此`RustRover`通常以它为入口识别项目结构。
 
 当然，也可以新建项目：
 
-![[Pasted image 20260511224649.png]]
+![[assets/Pasted image 20260511224649.png]]
 
-![[Pasted image 20260511224814.png]]
+![[assets/Pasted image 20260511224814.png]]
 
-![[Pasted image 20260511224856.png]]
+![[assets/Pasted image 20260511224856.png]]
 
 下面简单介绍几个功能：
 
@@ -606,7 +606,7 @@ code .
 
 `RustRover`对`Cargo`有内置支持。打开 Cargo 项目后，可以在 IDE 侧边栏看到 Cargo 工具窗口。如果没有，需要从菜单中通过`View → Tool Windows → Cargo` 打开。
 
-![[Pasted image 20260511225507.png]]
+![[assets/Pasted image 20260511225507.png]]
 
 Cargo 工具窗口中通常可以看到项目中的：
 
@@ -622,7 +622,7 @@ Cargo 工具窗口中通常可以看到项目中的：
 
 在`RustRover`中运行Rust程序很方便。打开 `src/main.rs` 后，通常可以在 `main` 函数左侧看到绿色运行按钮。点击该按钮，可以选择运行当前程序。也可以使用顶部工具栏的运行按钮，或者使用快捷键运行。
 
-![[Pasted image 20260511230042.png]]
+![[assets/Pasted image 20260511230042.png]]
 
 4. 调试代码
 
@@ -636,7 +636,7 @@ Cargo 工具窗口中通常可以看到项目中的：
 4. 程序运行到断点处会暂停；
 5. 可以在 Debug 窗口中查看变量、调用栈，并进行单步执行。
 
-![[Pasted image 20260511231034.png]]
+![[assets/Pasted image 20260511231034.png]]
 
 
 
@@ -657,9 +657,9 @@ Cargo 工具窗口中通常可以看到项目中的：
 
 假如现在想在项目中使用随机数，可以添加`rand`crate。在 [crates.io](https://crates.io/) 中搜索 `rand`，如下：
 
-![[Pasted image 20260511232736.png]]
+![[assets/Pasted image 20260511232736.png]]
 
-![[Pasted image 20260511232803.png]]
+![[assets/Pasted image 20260511232803.png]]
 
 `rand` 主页右侧给出了安装该`crate`的方式，一个是使用`cargo add`命令增加（马上介绍），一个就是在`Cargo.toml`的`[dependencies]`下添加`rand = "0.10.1"`（`"0.10.1"`是版本）。
 
@@ -674,7 +674,7 @@ edition = "2024"
 [dependencies]  
 rand = "0.10.1"
 ```
-![[Image 17.png]]
+![[assets/Image 17.png]]
 
 保存 `Cargo.toml` 后，Cargo 会在后续执行构建命令时自动解析并下载依赖，例如执行：
 
@@ -699,7 +699,7 @@ fn main() {
 
 结果：
 
-![[Pasted image 20260511233913.png]]
+![[assets/Pasted image 20260511233913.png]]
 
 此时还可以发现，项目目录下通常会多出一个 `Cargo.lock` 文件。该文件用于**记录当前项目实际使用到的所有 crate 版本及其依赖版本**，由 Cargo 自动生成和管理，一般不需要手动修改。
 

@@ -10,10 +10,11 @@ description: |
   不要凭通用知识回答知识库相关问题，必须使用此 skill 查询 wiki 后作答。
   触发场景包括但不限于：概念解释、工具对比、最佳实践、知识总结、
   "知识库里关于 X 有什么"、跨领域综合问题、任何涉及 wiki 内容的提问等。
-  **此外**：每次 query 完成后都要为涉及的领域追加一条 Query 日志。
+  **此外**：普通 query 只在对话中回答，不写入任何文件；只有当 query 结果被归档为 wiki 页面时，
+  才更新 wiki 页面、索引和 Query 日志。
   如果用户在同一条 query 交流里继续要求"将结果归档为 wiki 页面"、
   "根据 query 结果生成 wiki 页面"、"把刚才的回答整理成 wiki"等，
-  仍然使用此 skill 完成归档流程，并回写同一条 Query 日志补充创建/更新信息，不要新增第二条同题日志。
+  仍然使用此 skill 完成归档流程，并追加一条 Query 归档日志。
 ---
 
 # Query — 知识库查询
@@ -47,7 +48,7 @@ description: |
 
 **必须先读取顶层 `knowledge/index.md`**，获取各领域 wiki 页面数，计算涉及领域的页面总和，选择模式。
 
-随后读取每个涉及领域的 `domain.md`，确认领域分类体系、标签约定和 qmd collection 名称。
+随后读取每个涉及领域的 `domain.md`，确认领域分类体系、标签约定、qmd collection 名称和 collection root。
 
 ### 3. 执行查询
 
@@ -62,8 +63,10 @@ description: |
 
 #### qmd 模式（大规模，>300 页）
 
-1. **执行 `qmd update`** — 确保索引最新
-2. **确定 collection** — 从各领域 `domain.md` 读取 qmd collection 名称
+所有 qmd 命令都必须从知识库根目录 `/Users/songpengfei/knowledge` 执行。
+
+1. **确定 collection** — 从各领域 `domain.md` 读取 qmd collection 名称和 collection root
+2. **执行 `qmd update`** — 对涉及的每个 collection 执行 `qmd update -c <collection>`，确保索引最新
 3. **执行搜索**：
    ```bash
    qmd query "关键词" -c <collection1> -c <collection2> --full -n 10
@@ -114,24 +117,60 @@ description: |
 - 领域概览 → `overviews/`
 
 归档流程：
-1. 创建新页面，包含标准 frontmatter（title, date, tags, source_count）
+1. 创建新页面，包含 Query 归档页 frontmatter（title, date, tags, source_count, type）
 2. 内容精炼为可独立阅读的 wiki 页面
-3. 内部链接使用纯 `[[页面名]]` 格式（不带路径前缀），且**仅指向同一领域 `wiki/` 内的页面**
-4. 更新 `wiki/index.md` 和顶层 `index.md`
-5. 在 `wiki/log.md` 记录 Query 条目，并在同一会话后续归档时回写这条条目
+3. 正文包含 `## 基于页面`，列出本次综合依据的 wiki 页面
+4. 正文底部包含 `## 来源`，写明 Query 归档日期和问题摘要
+5. 内部链接使用纯 `[[页面名]]` 格式（不带路径前缀），且**仅指向同一领域 `wiki/` 内的页面**
+6. 更新 `wiki/index.md` 和顶层 `index.md`
+7. 在 `wiki/log.md` 追加 Query 归档条目
+
+**Query 归档页格式**：
+
+```markdown
+---
+title: 页面标题
+date: YYYY-MM-DD
+tags: [tag1, tag2]
+source_count: 0
+type: query_archive
+---
+
+# 页面标题
+
+[归档后的综合内容]
+
+## 基于页面
+
+- [[来源页面1]]
+- [[来源页面2]]
+
+## 来源
+
+Query 归档（YYYY-MM-DD）：<问题摘要>
+```
+
+**Query 归档页规则**：
+- `type: query_archive` 是正式页面类型，必须写入 frontmatter
+- `source_count` 固定为 `0`，表示没有直接 raw 来源
+- `## 基于页面` 只列 wiki 页面，不列 raw 文件
+- `## 来源` 记录归档动作本身，不伪造 raw 来源
+- 跨领域 Query 归档默认放入最主要领域；`## 基于页面` 可写 `领域/[[页面名]]` 辅助辨认，正文内部 wiki 链接仍优先同领域，避免 Obsidian 链接歧义
+- Query 归档页是 point-in-time 综合；基础页面后续更新时，由 lint 报告是否需要刷新，不自动级联更新
 
 **后续交互中归档的处理**
 
 用户在后续对话中要求归档（如"把刚才的回答整理成 wiki"）时：
 1. **仍然触发此 skill**
 2. **复用之前的查询结果**，不需要重新读取 wiki
-3. **直接执行归档**：创建页面 → 更新索引 → 回写同一条 Query 日志补充创建/更新信息
+3. **直接执行归档**：创建页面 → 更新索引 → 追加 Query 归档日志
 
 **日志规则**：
-- **每次 query 都要写日志**，即使只是只读查询也要记录
-- **同一条 query 会话只保留一条 Query 日志**；如果后续在同一会话里归档 wiki 页面，直接回写这条日志补充创建/更新信息
-- **新的 Query 日志只在新的 query 会话开始时追加**
-- 记录或修改日志时，优先定位到该会话对应的最新 Query 条目，再使用 `Edit` 工具更新它
+- **普通 query 不写日志**：只读查询只在对话中回答，不修改 `wiki/log.md`、`wiki/index.md` 或任何 wiki 页面
+- **只有归档 query 结果时才写日志**：当用户明确要求归档、整理成 wiki、保存为 wiki 页面，或 query 流程实际创建/更新了 wiki 页面时，追加 Query 日志
+- **同一条归档操作只写一条 Query 日志**：一条 query 结果同时创建/更新多个页面时，在同一条日志里列出
+- **不要记录 `结果: 仅查询` 的 Query 条目**；历史日志中这类普通查询记录可删除
+- 记录日志时，使用 `Edit` 工具在 `wiki/log.md` 末尾追加，禁止重写整个文件
 
 **log.md 记录格式**：
 
@@ -140,8 +179,9 @@ description: |
 
 - 范围: <单领域 / 多领域 / 全库>
 - 基于: `[[来源页面1]]`, `[[来源页面2]]`, ...
-- 结果: <仅查询 / 查询并归档>
+- 结果: 查询并归档
 - 类型: query
-- 归档分类: <concepts/comparisons/syntheses/overviews/recipes>（如归档了新页面；如未归档则省略）
-- 创建: `[[新页面名]]`（如归档了新页面；如未归档则省略）
+- 归档分类: <concepts/comparisons/syntheses/overviews/recipes>
+- 创建: `[[新页面名]]`（如创建了新页面）
+- 更新: `[[已有页面名]]`（如更新了已有页面）
 ```

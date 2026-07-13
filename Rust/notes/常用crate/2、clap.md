@@ -111,7 +111,7 @@ cargo run -- --help
 
 输出：
 
-![[Pasted image 20260604181114.png|200]]
+![[assets/Pasted image 20260604181114.png|200]]
 
 **字段上的文档注释会进入帮助信息**，所以 `/// 要处理的文件路径` 会显示在 `<FILE>` 后面。
 
@@ -163,7 +163,7 @@ cargo run -- --help
 
 输出：
 
-![[Pasted image 20260604181907.png|200]]
+![[assets/Pasted image 20260604181907.png|200]]
 
 
 # 五、位置参数、选项和标志
@@ -536,7 +536,7 @@ cargo run -- --help
 
 可以看到可选值：
 
-![[Pasted image 20260604214530.png|500]]
+![[assets/Pasted image 20260604214530.png|500]]
 
 `ValueEnum`用于把命令行参数解析为枚举值；字段配合`#[arg(value_enum)]`后，输入值会被限制在枚举可选项内。
 

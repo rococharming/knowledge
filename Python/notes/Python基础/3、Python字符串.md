@@ -38,7 +38,7 @@ print(my_str_4)
 
 结果：
 
-![[Pasted image 20260615224325.png|50]]
+![[assets/Pasted image 20260615224325.png|50]]
 
 如果字符串内容中包含单引号或双引号，此时有两种方式显示它们：
 
@@ -63,7 +63,7 @@ Python 中的所有数据都成为对象，有些对象是可变的，有些对�
 
 不可变的数据类型一旦声明后就不能被修改，但可以将它们的变量指向新的内容，这称为赋值。但你不能通过添加、删除或替换任何元素更改原始对象本身。
 
-![[Pasted image 20260615230144.png|400]]
+![[assets/Pasted image 20260615230144.png|400]]
 
 字符串就是 Python 典型的不可变类型。
 
@@ -158,7 +158,7 @@ print(name_and_age)
 
 结果：
 
-![[Pasted image 20260615230640.png|300]]
+![[assets/Pasted image 20260615230640.png|300]]
 
 这是因为 Python 在连接时不会自动将其他数据类型如整数转换为字符串。Python 要求所有元素必须是字符串才能进行连接。
 
@@ -185,7 +185,7 @@ print(name_and_age)
 
 内存示意图如下：
 
-![[Pasted image 20260615231320.png|500]]
+![[assets/Pasted image 20260615231320.png|500]]
 
 ## 5、字符串插值
 
@@ -500,7 +500,7 @@ print(type(b"ABC"))
 
 结果：
 
-![[Pasted image 20260528001823.png]]
+![[assets/Pasted image 20260528001823.png]]
 
 
 ### （2）str 和 bytes 区别
@@ -541,7 +541,7 @@ print(b"中文")  # 错误
 
 报错：
 
-![[Pasted image 20260615233850.png|300]]
+![[assets/Pasted image 20260615233850.png|300]]
 
 可以使用`\x##`十六进制序列表示`bytes`字面值。
 
@@ -663,7 +663,7 @@ print(my_str)
 
 这里`my_bytes`是UTF-8字节序列，但错误使用了`gbk`解码，会报错：
 
-![[Pasted image 20260615235134.png|500]]
+![[assets/Pasted image 20260615235134.png|500]]
 
 ### （3）解码错误处理
 
@@ -939,7 +939,7 @@ print(my_slice) # ell
 ```
 
 内存示意图如下：
-![[Pasted image 20260616003704.png|500]]
+![[assets/Pasted image 20260616003704.png|500]]
 
 可以省略`start`，此时表示从索引0开始：
 

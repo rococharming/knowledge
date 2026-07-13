@@ -52,7 +52,7 @@ python3 --version
 which python3
 ```
 
-![[Pasted image 20260527125731.png|500]]
+![[assets/Pasted image 20260527125731.png|500]]
 
 注意，当在终端中输入`python3`时，系统会根据 `PATH` 环境变量中的目录顺序，依次查找名为 `python3` 的可执行文件。如果`Homebrew`的路径排在较后面，可能运行的是`macOS`系统自带的`Python`。此时，推荐把 Homebrew 的环境配置写入 `~/.zprofile`：
 
@@ -75,7 +75,7 @@ python3
 
 会看到类似输出：
 
-![[Pasted image 20260527130236.png|500]]
+![[assets/Pasted image 20260527130236.png|500]]
 
 其中：
 
@@ -117,7 +117,7 @@ exit()
 
 然后按回车，即可退出 Python 交互式环境。
 
-macOS 中也可以使用快捷键`Ctrl + D`。
+macOS 中也可以使用快捷键<kbd>Ctrl</kbd> + <kbd>D</kbd>。
 
 
 ## 2、使用IDLE编写和运行Python
@@ -141,7 +141,7 @@ idle3
 
 出现：
 
-![[Pasted image 20260527130840.png|500]]
+![[assets/Pasted image 20260527130840.png|500]]
 
 说明当前 Python 没有可用的 `Tkinter/Tk` 支持，需要安装。
 
@@ -153,7 +153,7 @@ brew install python-tk
 
 安装完成后，就可以执行`idle3`命令了：
 
-![[Pasted image 20260527131056.png|400]]
+![[assets/Pasted image 20260527131056.png|400]]
 
 打开 `IDLE` 后，一般先看到的是 `IDLE Shell`，进入交互式环境，这适合临时测试代码，但不适合编写完整程序。
 
@@ -177,11 +177,7 @@ print("Hello, Python")
 File → Save
 ```
 
-也可以使用快捷键：
-
-```text
-Command + S
-```
+也可以使用快捷键 <kbd>Command</kbd> + <kbd>S</kbd>。
 
 保存后，在编辑窗口中选择：
 
@@ -284,17 +280,17 @@ Settings → Python → Interpreter
 
 之后，一般会看到当前项目解释器。
 
-![[Pasted image 20260527143446.png|600]]
+![[assets/Pasted image 20260527143446.png|600]]
 
 如果还没有配置，选择`Add Interpreter`，然后选择：`Add Local Interpreter`。
 
 或者点击`PyCharm`右下角：
 
-![[Pasted image 20260527151421.png|300]]
+![[assets/Pasted image 20260527151421.png|300]]
 
 弹出如下界面：
 
-![[Pasted image 20260527152200.png|500]]
+![[assets/Pasted image 20260527152200.png|500]]
 
 这里可以在项目目录下创建一个新的虚拟环境 `.venv`，并且用 Homebrew Python 作为基础解释器。以后在这个项目里安装包，会安装到 `.venv` 里，而不是污染全局 Homebrew Python。
 

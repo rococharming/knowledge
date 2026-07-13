@@ -5,30 +5,30 @@ date: 2026-06-04
 
 # BlueOS开发 Wiki 索引
 
-## Summaries
+## summaries
 
 _（暂无）_
 
-## Architecture
+## architecture
 
 _（暂无）_
 
-## Concepts
+## concepts
 
 _（暂无）_
 
-## Implementations
+## implementations
 
 _（暂无）_
 
-## Research
+## research
 
 _（暂无）_
 
-## Comparisons
+## comparisons
 
 _（暂无）_
 
-## Guides
+## guides
 
 _（暂无）_

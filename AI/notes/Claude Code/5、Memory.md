@@ -163,7 +163,7 @@ CLAUDE_CODE_NEW_INIT=1 claude
 
 新版 `/init` 会询问需要设置哪些内容，例如 `CLAUDE.md`、`skills` 和 `hooks`，然后探索代码库、补充问题，并在写入文件前给出可审查的方案。
 
-![[Pasted image 20260522111533.png|500]]
+![[assets/Pasted image 20260522111533.png|500]]
 
 
 ## 3、使用`/memory`查看和编辑
@@ -182,7 +182,7 @@ CLAUDE_CODE_NEW_INIT=1 claude
 
 示例：
 
-![[Pasted image 20260522112849.png|500]]
+![[assets/Pasted image 20260522112849.png|500]]
 
 
 ## 4、使用`#`快捷写入记忆
@@ -634,7 +634,7 @@ ln -s ~/company-standards/security.md .claude/rules/security.md
 可以通过三种方式控制它：
 
 1. 在会话中运行`/memory`，然后在界面中切换自动记忆开关。
-![[Pasted image 20260526001218.png|500]]
+![[assets/Pasted image 20260526001218.png|500]]
 
 
 2. 在项目设置中设置`autoMemoryEnabled`配置

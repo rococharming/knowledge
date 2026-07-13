@@ -42,7 +42,8 @@ wiki 页面按以下子目录组织：
 ## qmd 配置
 
 - collection 名称：`knowledge-前后端`
-- 索引路径：`./wiki/`
+- collection root：`前后端/wiki`
+- qmd 命令工作目录：知识库根目录 `/Users/songpengfei/knowledge`
 
 ## 特殊约定
 

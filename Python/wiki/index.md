@@ -5,7 +5,7 @@ date: 2026-07-01
 
 # Python Wiki 索引
 
-## Summaries
+## summaries
 
 - [[变量和数据类型]] — 变量赋值、命名规则、动态类型、常见内置类型、`type()` 与 `isinstance()`
 - [[字符串]] — 字符串定义、不可变性、常用操作、`str` 与 `bytes`、编码解码、三种格式化、切片
@@ -21,11 +21,11 @@ date: 2026-07-01
 - [[封装和属性]] — 封装含义、访问约定（`_`/`__`）、Getter/Setter、Property 装饰器、方法 vs Property
 - [[继承和多态]] — 单/多继承、方法重写与 super、MRO、鸭子类型与多态、自定义异常层次
 
-## Entities
+## entities
 
 _（暂无）_
 
-## Concepts
+## concepts
 
 - [[数据类型系统]] — 动态类型、内置类型分类、可变/不可变、可哈希、类型检查
 - [[控制流]] — 条件判断与循环构成的执行流程、短路求值、三元、推导式
@@ -38,18 +38,18 @@ _（暂无）_
 - [[继承]] — 单/多继承、方法重写、`super()`、MRO、继承检查、自定义异常层次
 - [[多态]] — 统一接口、鸭子类型（主要方式）、基于继承的多态、减少类型判断
 
-## Comparisons
+## comparisons
 
 _（暂无）_
 
-## Overviews
+## overviews
 
 _（暂无）_
 
-## Syntheses
+## syntheses
 
 _（暂无）_
 
-## Recipes
+## recipes
 
 _（暂无）_

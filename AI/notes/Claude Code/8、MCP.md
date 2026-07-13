@@ -82,7 +82,7 @@ server:protocol://resource/path
 
 例如，GitHub MCP Server 提供：
 
-![[Pasted image 20260509114604.png]]
+![[assets/Pasted image 20260509114604.png]]
 
 示例，在`Claude Code`会话中提问：
 
@@ -123,7 +123,7 @@ Claude Code 官方文档里写的 MCP prompt 命令格式是：
 
 例如，在 `/` 命令菜单里看到的：
 
-![[Pasted image 20260509115221.png]]
+![[assets/Pasted image 20260509115221.png]]
 
 
 
@@ -370,7 +370,7 @@ https://api.githubcopilot.com/mcp/
 
 例如，在`/mcp`下可以查看`add_issue_commnet`工具说明：
 
-![[Pasted image 20260509155525.png]]
+![[assets/Pasted image 20260509155525.png]]
 
 如果用户说：
 

@@ -31,3 +31,11 @@
 - 创建: `[[Claude Code Skill 系统]]`, `[[Claude Code Skill 系统]]`, `[[Claude Code Skill 创建]]`
 - 类型: articles
 - 来源: `raw/articles/Skill.md`
+
+## [2026-07-13] Lint | AI
+
+- 范围: 本领域
+- 确定性修复: 1 个（规范化 wiki/index.md）
+- 启发式发现: 0 个
+- 建议: 0 条
+- 结果: 自动修复

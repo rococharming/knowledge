@@ -1,6 +1,6 @@
 # LLM Wiki 个人知识库
 
-基于 [Karpathy LLM Wiki](llm-wiki.md) 规范的多领域个人知识库。
+基于 [Karpathy LLM Wiki](llm-wiki.md) 规范的多领域个人知识库。`README.md` 是人类入口说明；LLM 路由以顶层 [index.md](index.md) 和各领域 `domain.md` 为准。
 
 > **LLM 维护** · **Obsidian 浏览** · **Git 管理**
 
@@ -61,8 +61,8 @@ knowledge/
 | [前后端](前后端/wiki/index.md) | Web 前后端开发入门学习，从前端基础到后端架构的系统知识 | 活跃   |
 | [Python](Python/wiki/index.md) | Python 编程语言语法、标准库、工程实践与生态 | 活跃 |
 | [通用计算机知识](通用计算机知识/wiki/index.md) | 操作系统、计算机网络、数据结构与算法、计算机组成原理等通用计算机科学基础知识 | 活跃 |
-| [BlueOS开发](BlueOS开发/wiki/index.md) | 嵌入式操作系统 BlueOS 的内核开发、驱动框架、系统服务与工程实践 | 活跃 |
-| [Obsidian](Obsidian/wiki/index.md) | 聚焦 Obsidian 工具与插件生态，llm-wiki 知识库等搭建 | 活跃 |
+| [BlueOS开发](BlueOS开发/wiki/index.md) | BlueOS（蓝河操作系统）应用层开发：UI 框架、前端框架、快应用（RPK）、开发工具链与工程实践 | 活跃 |
+| [Obsidian](Obsidian/wiki/index.md) | Obsidian 工具与插件生态，以及基于 Obsidian 搭建 llm-wiki 知识库的方法 | 活跃 |
 ---
 
 ## 核心操作
@@ -71,9 +71,9 @@ knowledge/
 
 | 操作 | Skill | 功能描述 |
 |---|---|---|
-| **Ingest** | `ingest` | 将 `raw/` 中的新素材阅读、提取、整合到 `wiki/`。自动分类、生成 frontmatter、更新索引与日志、归档 raw、更新 qmd 搜索索引。 |
-| **Query** | `query` | 基于 `wiki/` 内容回答问题。自动判断领域与规模，选择 index.md 浏览模式或 qmd BM25 搜索模式，综合回答并标注 `[[引用]]`。 |
-| **Lint** | `lint` | 定期健康检查：死链检测、孤立页面修复、索引同步、陈旧内容标记、数据空白识别、矛盾主张检查、缺失交叉引用、重要概念缺页等 9 项专业检查。 |
+| **Ingest** | `ingest` | 将 `raw/` 中的新素材提炼整合到 `wiki/`，维护来源、索引、日志、qmd，并执行同领域有限半径 cascade update。 |
+| **Query** | `query` | 基于 `wiki/` 内容回答问题。普通查询只在对话中回答；只有用户要求归档时才创建 Query 归档页并写日志。 |
+| **Lint** | `lint` | 健康检查分为确定性检查和启发式检查：结构问题可自动修复，内容矛盾、陈旧、缺页等只报告并给建议。 |
 
 ---
 
@@ -87,7 +87,7 @@ knowledge/
 |---|---|---|
 | [`ingest`](.agents/skills/ingest) | "ingest 这篇文章"、"处理 raw 素材"、"把文章整合到知识库" | 将 `raw/` 中的 Markdown 素材提炼、分类、写入 `wiki/`，更新索引与日志，归档 raw，更新 qmd 索引 |
 | [`query`](.agents/skills/query) | "知识库里关于 X 有什么"、概念解释、工具对比、最佳实践建议 | 基于 `wiki/` 内容回答问题，支持小规模 index.md 浏览和大规模 qmd 搜索两种模式 |
-| [`lint`](.agents/skills/lint) | "lint 知识库"、"检查 wiki"、"health check"、"清理死链" | 对知识库执行 9 项系统化健康检查，自动修复结构问题，生成诊断报告 |
+| [`lint`](.agents/skills/lint) | "lint 知识库"、"检查 wiki"、"health check"、"清理死链" | 运行 Markdown 解析式确定性检查脚本，规范索引、计数、qmd 配置，并报告启发式内容问题 |
 | [`init-domain`](.agents/skills/init-domain) | "创建新领域"、"初始化投资知识库"、"搭建新领域" | 通过苏格拉底式提问了解需求，自动生成完整的领域目录结构和 boilerplate 文件 |
 
 ### Obsidian 生态 Skills
@@ -137,7 +137,8 @@ Agent 会自动：
 - 选择查询模式（小规模浏览 index.md / 大规模 qmd 搜索）
 - 读取相关页面
 - 综合回答，标注 `[[引用]]`
-- （可选）将高价值回答归档为新 wiki 页面
+- 普通查询不写入任何文件
+- （用户明确要求时）将高价值回答归档为 `type: query_archive` 的新 wiki 页面
 
 ### 3. 健康检查
 
@@ -146,10 +147,11 @@ Agent 会自动：
 > "lint 一下知识库"
 
 Agent 会自动：
-- 扫描所有领域的 wiki 页面
-- 检测死链、孤立页面、索引不同步、陈旧内容、数据空白等问题
-- 自动修复结构问题（孤立页面加入索引、移除死链、更新计数）
-- 生成 `lint-report-YYYYMMDD.md` 诊断报告
+- 运行 `.agents/skills/lint/scripts/wiki_lint.py`
+- 解析 Markdown，忽略代码块、行内代码和 Obsidian 注释中的伪链接
+- 自动修复确定性结构问题（索引缺项/悬空项、重复分类、页面计数、qmd 配置提示）
+- 在对话中报告启发式问题（矛盾、陈旧、缺页、缺引用、Query 归档页可能过期）
+- 只有发生确定性修复或用户要求留档时才写 `wiki/log.md`
 
 ### 4. 创建新领域
 
@@ -160,7 +162,7 @@ Agent 会通过 `init-domain` skill：
 - 自动生成完整目录结构
 - 生成个性化领域 `domain.md`
 - 更新顶层 `index.md`
-- 更新 README.md 的现有领域表
+- 如 README.md 存在，更新 README.md 的现有领域表
 
 ---
 
@@ -178,6 +180,20 @@ tags: [tag1, tag2]
 source_count: 3
 ---
 ```
+
+Query 归档页使用正式类型：
+
+```markdown
+---
+title: 页面标题
+date: 2026-05-10
+tags: [tag1]
+source_count: 0
+type: query_archive
+---
+```
+
+普通 ingest 页面 `source_count` 为正整数；Query 归档页固定为 `source_count: 0`，正文必须包含 `## 基于页面` 和 `## 来源`。
 
 ### 页面分类
 
@@ -209,6 +225,8 @@ source_count: 3
 | **qmd** | BM25 全文搜索索引 | `cargo install qmd` |
 | **defuddle** | 网页内容提取（ingest 外部文章时使用） | `npm install -g defuddle` |
 | **obsidian-cli** | 与 Obsidian 实例交互 | 见 [Obsidian CLI 文档](https://help.obsidian.md/cli) |
+
+qmd 路径语义：所有 qmd 命令都从知识库根目录执行；每个领域在 `domain.md` 中声明 `collection 名称` 和相对根目录的 `collection root`，例如 `Rust/wiki`。
 
 ---
 

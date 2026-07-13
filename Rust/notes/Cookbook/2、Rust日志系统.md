@@ -113,7 +113,7 @@ fn main() {
 
 不设置`RUST_LOG`，直接运行`cargo run`：
 
-![[Pasted image 20260625001329.png|500]]
+![[assets/Pasted image 20260625001329.png|500]]
 
 默认只会看到`ERROR`日志。
 
@@ -127,7 +127,7 @@ RUST_LOG=debug cargo run
 
 则会输出`DEBUG`及以上级别：
 
-![[Pasted image 20260625002111.png|500]]
+![[assets/Pasted image 20260625002111.png|500]]
 
 `TRACE`仍然不会输出，因为它低于当前设置的`DEBUG`级别。如果使用`RUST_LOG=trace`，五个级别才会全部输出。
 
@@ -387,7 +387,7 @@ fn main() {
 
 输出：
 
-![[Pasted image 20260625020433.png|600]]
+![[assets/Pasted image 20260625020433.png|600]]
 
 `EnvFilter`为过滤器，负责根据规则过滤`Event`和`Span`，判断哪些可以交给 Subscriber 处理。
 
@@ -540,7 +540,7 @@ cargo run
 
 就能看到 Span：
 
-![[Pasted image 20260625130021.png|600]]
+![[assets/Pasted image 20260625130021.png|600]]
 
 两条 Event 都包含`http_request`及其`request_id`字段，因为它们发生在同一个 Span 中。这正是 Span 相比重复手写`request_id`的价值。
 
@@ -1092,7 +1092,7 @@ async fn main() {
 
 运行后，`./log`目录中会生成按天滚动的日志文件。
 
-![[Pasted image 20260626012238.png|500]]
+![[assets/Pasted image 20260626012238.png|500]]
 
 终端不会再显示这条日志，因为`.with_writer(writer)`已经把当前格式化 Subscriber 的输出目标改成了文件 writer。
 

@@ -59,7 +59,7 @@ Tokio 官方文档把 Task 类比为异步的 green thread。这个类比强调�
 
 一个 Task 的典型生命周期如下：
 
-![[Pasted image 20260627150931.png|600]]
+![[assets/Pasted image 20260627150931.png|600]]
 
 Task 使用==协作式调度==。它必须执行到能返回控制权的位置，Runtime 才能调度其他 Task。最常见的位置是一个尚未就绪的 `.await`；也可以显式调用 `tokio::task::yield_now().await`。
 

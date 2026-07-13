@@ -50919,10 +50919,18 @@ var require_map2 = __commonJS({
       return result;
     };
     Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.getDocumentMap = void 0;
+    exports2.getDocumentMap = exports2.FrontmatterParseError = void 0;
     var marked = __importStar((init_marked_esm(), __toCommonJS(marked_esm_exports)));
     var yaml_1 = require_dist();
     var constants_js_1 = require_constants();
+    var FrontmatterParseError3 = class extends Error {
+      constructor(message) {
+        super(message);
+        this.name = "FrontmatterParseError";
+        Object.setPrototypeOf(this, new.target.prototype);
+      }
+    };
+    exports2.FrontmatterParseError = FrontmatterParseError3;
     function getHeadingPositions(document2, tokens, contentOffset) {
       const positions = {
         "": {
@@ -51050,15 +51058,19 @@ var require_map2 = __commonJS({
       return positions;
     }
     function preProcess(document2) {
-      const frontmatterRegex = /^---(?:\r\n|\r|\n)([\s\S]*?)(?:\r\n|\r|\n)---(?:\r\n|\r|\n|$)/;
+      const frontmatterRegex = /^---(?:\r\n|\r|\n)(?:---(?:\r\n|\r|\n|$)|([\s\S]*?)(?:\r\n|\r|\n)---(?:\r\n|\r|\n|$))/;
       let content;
       let contentOffset = 0;
       let frontmatter;
       const match = frontmatterRegex.exec(document2);
       if (match) {
-        const frontmatterText = match[1].trim();
+        const frontmatterText = (match[1] ?? "").trim();
         contentOffset = match[0].length;
-        frontmatter = (0, yaml_1.parse)(frontmatterText);
+        try {
+          frontmatter = (0, yaml_1.parse)(frontmatterText) ?? {};
+        } catch (e) {
+          throw new FrontmatterParseError3(`Could not parse document frontmatter: ${e.message}`);
+        }
         content = document2.slice(contentOffset);
       } else {
         content = document2;
@@ -51353,6 +51365,13 @@ var require_patch = __commonJS({
           content = [content];
         }
         if ((0, typeGuards_js_1.isStringArrayArray)(content)) {
+          if (instruction.rejectIfContentPreexists) {
+            const existingRows = table.token.rows.map((row) => row.map((cell) => cell.text));
+            const allPreexist = content.every((incomingRow) => existingRows.some((existingRow) => existingRow.length === incomingRow.length && existingRow.every((cell, i) => cell === incomingRow[i])));
+            if (allPreexist) {
+              throw new PatchFailed3(PatchFailureReason.ContentAlreadyPreexistsInTarget, instruction, target);
+            }
+          }
           for (const row of content) {
             if (row.length !== table.token.header.length || typeof row === "string") {
               throw new PatchFailed3(PatchFailureReason.TableContentIncorrectColumnCount, instruction, target);
@@ -51381,6 +51400,13 @@ var require_patch = __commonJS({
           content = [content];
         }
         if ((0, typeGuards_js_1.isStringArrayArray)(content)) {
+          if (instruction.rejectIfContentPreexists) {
+            const existingRows = table.token.rows.map((row) => row.map((cell) => cell.text));
+            const allPreexist = content.every((incomingRow) => existingRows.some((existingRow) => existingRow.length === incomingRow.length && existingRow.every((cell, i) => cell === incomingRow[i])));
+            if (allPreexist) {
+              throw new PatchFailed3(PatchFailureReason.ContentAlreadyPreexistsInTarget, instruction, target);
+            }
+          }
           for (const row of content) {
             if (row.length !== table.token.header.length || typeof row === "string") {
               throw new PatchFailed3(PatchFailureReason.TableContentIncorrectColumnCount, instruction, target);
@@ -51406,6 +51432,8 @@ var require_patch = __commonJS({
           return replaceText(document2, instruction, target);
         case types_js_1.ContentType.json:
           return replaceTable(document2, instruction, target);
+        default:
+          throw new PatchError(`Unsupported contentType: ${contentType2}`);
       }
     };
     var prepend = (document2, instruction, target) => {
@@ -51415,6 +51443,8 @@ var require_patch = __commonJS({
           return prependText(document2, instruction, target);
         case types_js_1.ContentType.json:
           return prependTable(document2, instruction, target);
+        default:
+          throw new PatchError(`Unsupported contentType: ${contentType2}`);
       }
     };
     var append = (document2, instruction, target) => {
@@ -51424,6 +51454,8 @@ var require_patch = __commonJS({
           return appendText(document2, instruction, target);
         case types_js_1.ContentType.json:
           return appendTable(document2, instruction, target);
+        default:
+          throw new PatchError(`Unsupported contentType: ${contentType2}`);
       }
     };
     var addTargetHeading = (document2, instruction, map) => {
@@ -51483,7 +51515,7 @@ var require_patch = __commonJS({
       } else if ((0, typeGuards_js_1.isString)(obj1) && (0, typeGuards_js_1.isString)(obj2)) {
         return obj1 + obj2;
       }
-      throw new Error(`Cannot merge objects of different types or unsupported types: ${typeof obj1} and ${typeof obj2}`);
+      throw new MergeNotPossible();
     }
     function regenerateDocumentWithFrontmatter(frontmatter, document2, map) {
       const rawFrontmatterText = Object.values(frontmatter).some((value) => value !== void 0) ? `---
@@ -51587,7 +51619,7 @@ var require_dist2 = __commonJS({
       for (var p in m2) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p)) __createBinding(exports3, m2, p);
     };
     Object.defineProperty(exports2, "__esModule", { value: true });
-    exports2.getDocumentMap = exports2.applyPatch = exports2.TablePartsNotFound = exports2.PatchError = exports2.PatchFailed = exports2.PatchFailureReason = void 0;
+    exports2.FrontmatterParseError = exports2.getDocumentMap = exports2.applyPatch = exports2.TablePartsNotFound = exports2.PatchError = exports2.PatchFailed = exports2.PatchFailureReason = void 0;
     var patch_js_1 = require_patch();
     Object.defineProperty(exports2, "PatchFailureReason", { enumerable: true, get: function() {
       return patch_js_1.PatchFailureReason;
@@ -51607,6 +51639,9 @@ var require_dist2 = __commonJS({
     var map_js_1 = require_map2();
     Object.defineProperty(exports2, "getDocumentMap", { enumerable: true, get: function() {
       return map_js_1.getDocumentMap;
+    } });
+    Object.defineProperty(exports2, "FrontmatterParseError", { enumerable: true, get: function() {
+      return map_js_1.FrontmatterParseError;
     } });
     __exportStar(require_types2(), exports2);
   }
@@ -75470,6 +75505,7 @@ var DEFAULT_SETTINGS = {
   enableInsecureServer: false
 };
 var ERROR_CODE_MESSAGES = {
+  [40005 /* InvalidFrontmatter */]: "Document frontmatter could not be parsed.",
   [40101 /* ApiKeyAuthorizationRequired */]: "Authorization required.  Find your API Key in the 'Local REST API with MCP' section of your Obsidian settings.",
   [40011 /* ContentTypeSpecificationRequired */]: "Content-Type header required; this API accepts data in multiple content-types and you must indicate the content-type of your request body via the Content-Type header.",
   [40012 /* InvalidContentType */]: "Unknown or invalid Content-Type specified in Content-Type header.",
@@ -84889,6 +84925,9 @@ var McpHandler = class {
           if (e instanceof import_markdown_patch3.PatchFailed) {
             throw new Error(e.message);
           }
+          if (e instanceof import_markdown_patch3.FrontmatterParseError) {
+            throw new Error(e.message);
+          }
           throw e;
         }
         return this.text({ message: "OK" });
@@ -84976,11 +85015,31 @@ var McpHandler = class {
       "search_query",
       `Search vault files using a JsonLogic query evaluated against each note's metadata.
 
-The query is a JSON object following the JsonLogic spec (https://jsonlogic.com/operations.html). It is evaluated against a NoteJson object for each file; files where the result is truthy are returned.
+The query is a JSON object evaluated against a NoteJson object for each file; files where the result is truthy are returned.
 
-Each NoteJson has: path (string), content (string), tags (string[]), frontmatter (object), stat ({ctime, mtime, size}), links (string[]), backlinks (string[]).
+Example NoteJson shape:
+{
+  "path": "journal/2024-01-15.md",
+  "content": "# My note\\n\\nSome content here.",
+  "tags": ["daily", "work"],
+  "frontmatter": { "status": "done", "url": "https://example.com", "priority": 2 },
+  "stat": { "ctime": 1705276800000, "mtime": 1705363200000, "size": 1024 },
+  "links": ["projects/foo.md"],
+  "backlinks": ["index.md"]
+}
 
-Extra operators available beyond standard JsonLogic:
+Call vault_read on any file (without targeting) to see the exact shape for a real file in this vault, including its actual frontmatter fields.
+
+Useful JsonLogic operators:
+- {"==": [a, b]} \u2014 equal
+- {"!=": [a, b]} \u2014 not equal
+- {"in": [value, array]} \u2014 array contains value
+- {"<": [a, b]}, {">": [a, b]}, {"<=": [a, b]}, {">=": [a, b]} \u2014 numeric/string comparison
+- {"and": [...]}, {"or": [...]}, {"!": expr} \u2014 boolean logic
+- {"var": "path"} \u2014 access a field (use dot notation for nested: "frontmatter.status")
+- {"if": [cond, then, else]} \u2014 conditional
+
+Extra operators beyond standard JsonLogic:
 - {"glob": ["*.foo", {"var": "path"}]} \u2014 glob pattern match
 - {"regexp": ["^daily/", {"var": "path"}]} \u2014 regular expression match
 
@@ -84989,7 +85048,9 @@ Returns an array of {filename, result} objects where result is the truthy value 
 Examples:
 - Find by tag: {"in": ["myTag", {"var": "tags"}]}
 - Find by frontmatter field: {"==": [{"var": "frontmatter.status"}, "done"]}
-- Find by path glob: {"glob": ["journal/*", {"var": "path"}]}`,
+- Find by path glob: {"glob": ["journal/*", {"var": "path"}]}
+- Modified after a date: {">": [{"var": "stat.mtime"}, 1704067200000]}
+- Multiple conditions: {"and": [{"in": ["work", {"var": "tags"}]}, {"==": [{"var": "frontmatter.status"}, "done"]}]}`,
       {
         query: external_exports.record(external_exports.unknown()).describe("JsonLogic query object to evaluate against each note")
       },
@@ -85472,6 +85533,8 @@ var RequestHandler = class {
         this.returnCannedResponse(res, { statusCode: 404 });
       } else if (e instanceof import_markdown_patch4.PatchFailed) {
         this.returnCannedResponse(res, { errorCode: 40080 /* PatchFailed */, message: e.reason });
+      } else if (e instanceof import_markdown_patch4.FrontmatterParseError) {
+        this.returnCannedResponse(res, { errorCode: 40005 /* InvalidFrontmatter */, message: e.message });
       } else {
         this.returnCannedResponse(res, { statusCode: 500, message: e.message });
       }
@@ -85522,6 +85585,8 @@ var RequestHandler = class {
         this.returnCannedResponse(res, { statusCode: 404 });
       } else if (e instanceof import_markdown_patch4.PatchFailed) {
         this.returnCannedResponse(res, { errorCode: 40080 /* PatchFailed */, message: e.reason });
+      } else if (e instanceof import_markdown_patch4.FrontmatterParseError) {
+        this.returnCannedResponse(res, { errorCode: 40005 /* InvalidFrontmatter */, message: e.message });
       } else {
         this.returnCannedResponse(res, { statusCode: 500, message: e.message });
       }

@@ -77,7 +77,7 @@ codex
 
 如果你已经购买了支持 Codex 的 ChatGPT 套餐，通常选择：`Sign in with ChatGPT`
 
-![[Pasted image 20260517221219.png|500]]
+![[assets/Pasted image 20260517221219.png|500]]
 
 浏览器会打开登录页面，完成登录后即可使用。
 
@@ -164,11 +164,11 @@ cat prompt.txt | codex exec -
 
 在会话中，执行`/model`命令可以切换模型：
 
-![[Pasted image 20260517234142.png|600]]
+![[assets/Pasted image 20260517234142.png|600]]
 
 选择指定的模型之后，会要求你选择模型推理能力：
 
-![[Pasted image 20260517234245.png|600]]
+![[assets/Pasted image 20260517234245.png|600]]
 
 当然，在启动 CLI 时也可以直接指定模型，例如：
 
@@ -197,7 +197,7 @@ codex --model gpt-5.5
 
 如果是在交互式对话中粘贴图片，粘贴后的效果如下：
 
-![[Pasted image 20260517235136.png|500]]
+![[assets/Pasted image 20260517235136.png|500]]
 
 如果在命令行提供图片文件：
 
@@ -252,9 +252,9 @@ codex resume
 
 会打开一个历史会话记录列表供我们选择：
 
-![[Pasted image 20260517231147.png|500]]
+![[assets/Pasted image 20260517231147.png|500]]
 
-选择对应的会话按`Enter`键即可恢复对话。
+选择对应的会话按 <kbd>Enter</kbd> 键即可恢复对话。
 
 其他命令：
 
@@ -285,42 +285,42 @@ codex exec resume <SESSION_ID> "执行这个计划"
 
 执行`/clear`可以清空终端并开始新会话，旧会话仍然可以通过会话历史恢复。
 
-按下`Ctrl + L`只会清空屏幕，但不会开始新的对话，仍然在当前会话中。
+按下 <kbd>Ctrl</kbd> + <kbd>L</kbd> 只会清空屏幕，但不会开始新的对话，仍然在当前会话中。
 
 
 ## 8、复制最近一次的输出
 
-执行`/copy`或按下`Ctrl + O`可以复制`Codex`最近一次已完成的输出。如果当前回合仍在运行，`Codex`会复制最近一次已经完成的输出，而不是复制正在生成中的文本。
+执行`/copy`或按下 <kbd>Ctrl</kbd> + <kbd>O</kbd> 可以复制`Codex`最近一次已完成的输出。如果当前回合仍在运行，`Codex`会复制最近一次已经完成的输出，而不是复制正在生成中的文本。
 
 
 ## 9、运行本地shell命令
 
-在对话框中输入`!`，可以切换到`Shell Mode`，之后可以执行Shell命令并查看结果。
+在对话框中输入 <kbd>!</kbd>，可以切换到`Shell Mode`，之后可以执行Shell命令并查看结果。
 
-![[Pasted image 20260521012525.png|600]]
+![[assets/Pasted image 20260521012525.png|600]]
 
 
 ## 10、运行中输入
 
-当`Codex`正在执行任务时，此时输入框新的提示词按`Enter`会注入当前会话，`Codex`会停下来先分析新的提示词再继续任务。
+当`Codex`正在执行任务时，此时输入框新的提示词按 <kbd>Enter</kbd> 会注入当前会话，`Codex`会停下来先分析新的提示词再继续任务。
 
-如果按`Tab`则将新提示词、斜杠命令、! shell命令排队到下一回合，也就是等当前回合任务结束。
+如果按 <kbd>Tab</kbd> 则将新提示词、斜杠命令、! shell命令排队到下一回合，也就是等当前回合任务结束。
 
 
 ## 11、搜索提示词历史
 
-在`Codex`的输入框中，按`Ctrl + R`可以搜索之前输入过的提示词历史。它适合在你想复用、修改或找回某条旧提示词时使用。
+在`Codex`的输入框中，按 <kbd>Ctrl</kbd> + <kbd>R</kbd> 可以搜索之前输入过的提示词历史。它适合在你想复用、修改或找回某条旧提示词时使用。
 
-![[Pasted image 20260521013607.png|500]]
+![[assets/Pasted image 20260521013607.png|500]]
 
-输入几个字段后，会显示以前输入过的提示词，此时按 `Enter` 接受匹配，或按 `Esc` 取消。
+输入几个字段后，会显示以前输入过的提示词，此时按 <kbd>Enter</kbd> 接受匹配，或按 <kbd>Esc</kbd> 取消。
 
 
 ## 12、提示编译器
 
-当在输入框中编写提示语需要换行，按`Ctrl + J`。
+当在输入框中编写提示语需要换行，按 <kbd>Ctrl</kbd> + <kbd>J</kbd>。
 
-在编写较长的提示语时，可以按`Ctrl + G`切换到完整编辑模式，然后将编辑后的内容发给模型，这样更方便。
+在编写较长的提示语时，可以按 <kbd>Ctrl</kbd> + <kbd>G</kbd> 切换到完整编辑模式，然后将编辑后的内容发给模型，这样更方便。
 
 但前提是需要设置好环境变量`VISUAL`或`EDITOR`。
 
@@ -333,14 +333,14 @@ export VISUAL="code --wait"
 
 ## 13、@引用工作区文件
 
-在 Codex 的输入框中输入 `@`，可以打开一个面向当前工作区根目录的模糊文件搜索界面。按 Tab 或 Enter 可以把当前高亮的文件路径插入到消息中。
+在 Codex 的输入框中输入 `@`，可以打开一个面向当前工作区根目录的模糊文件搜索界面。按 <kbd>Tab</kbd> 或 Enter 可以把当前高亮的文件路径插入到消息中。
 
-![[Pasted image 20260521021403.png|500]]
+![[assets/Pasted image 20260521021403.png|500]]
 
 
 ## 14、编辑历史消息并从中分叉
 
-当输入框为空时，连续按两次 `Esc` 可以编辑上一条用户消息。继续按 `Esc` 可以在 transcript 中继续向前回溯，然后按 `Enter` 可以从那个位置分叉出新的对话路径。
+当输入框为空时，连续按两次 <kbd>Esc</kbd> 可以编辑上一条用户消息。继续按 <kbd>Esc</kbd> 可以在 transcript 中继续向前回溯，然后按 <kbd>Enter</kbd> 可以从那个位置分叉出新的对话路径。
 
 
 ## 15、设置工作根目录与额外可写目录
@@ -371,7 +371,7 @@ codex --cd apps/frontend --add-dir ../backend --add-dir ../shared
 
 ## 16、退出会话
 
-执行`/exit`或者按`Ctrl + C`退出会话。
+执行`/exit`或者按 <kbd>Ctrl</kbd> + <kbd>C</kbd> 退出会话。
 
 # 四、网页搜索
 
@@ -419,7 +419,7 @@ web_search = "disabled"
 输入`/resume`会打开审查预设（review presets），如下图所示：
 
 
-![[Pasted image 20260518002722.png]]
+![[assets/Pasted image 20260518002722.png]]
 
 - 根据你选择的模式，读取 diff
 - 生成建议，包括潜在问题、风险点、优化建议

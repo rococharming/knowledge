@@ -37,7 +37,7 @@ which fish
 
 Apple Silicon Mac 安装的 fish 通常位于：
 
-![[Pasted image 20260513215534.png|400]]
+![[assets/Pasted image 20260513215534.png|400]]
 
 如果想查看 fish 版本，可以执行：
 
@@ -105,7 +105,7 @@ chsh -s /opt/homebrew/bin/fish
 
 执行后，关闭终端并重新打开。重新打开后，终端应该会自动进入 fish。
 
-![[Pasted image 20260513220811.png|400]]
+![[assets/Pasted image 20260513220811.png|400]]
 
 可以用下面的命令验证当前默认 shell：
 
@@ -129,7 +129,7 @@ ps -p $fish_pid
 
 查看 fish shell 进程：
 
-![[Pasted image 20260513221124.png|200]]
+![[assets/Pasted image 20260513221124.png|200]]
 
 # 四、fish配置文件
 

@@ -5,7 +5,7 @@ date: 2026-06-26
 
 # 通用计算机知识 Wiki 索引
 
-## Summaries
+## summaries
 
 - [[字符编码体系]] — 字符编码从 ASCII 到 Unicode 的演进脉络与核心概念体系
 - [[ANSI转义字符]] — 终端 ANSI 转义序列素材的整体摘要，涵盖 CSI 结构与 SGR 显示属性
@@ -19,11 +19,11 @@ date: 2026-06-26
 - [[Git 忽略规则]] — .gitignore 用法、查看忽略与停止跟踪摘要
 - [[Git 灵活查看提交历史]] — git log/stat/-p、单文件历史与 git blame 摘要
 
-## Entities
+## entities
 
 - [[Git]] — 分布式版本控制系统，由 Linus Torvalds 于 2005 年开发
 
-## Concepts
+## concepts
 
 - [[字符编码基础]] — ASCII、ANSI、Unicode 等字符编码核心概念
 - [[UTF-8]] — 最主流的 Unicode 变长编码方式，兼容 ASCII
@@ -43,18 +43,18 @@ date: 2026-06-26
 - [[Git 远程仓库]] — 远程仓库克隆、origin 别名与地址管理
 - [[Git 提交历史查看]] — git log 高级用法、git show 与 git blame
 
-## Comparisons
+## comparisons
 
 _（暂无）_
 
-## Overviews
+## overviews
 
 _（暂无）_
 
-## Syntheses
+## syntheses
 
 _（暂无）_
 
-## Recipes
+## recipes
 
 _（暂无）_

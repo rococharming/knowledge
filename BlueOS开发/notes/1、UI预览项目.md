@@ -34,7 +34,7 @@ BlueOS（vivo的手表/折叠屏等设备的操作系统）的快应用使用 RP
 
 ## 1、分层总览
 
-![[Pasted image 20260626153726.png|400]]
+![[assets/Pasted image 20260626153726.png|400]]
 
 
 ## 2、入口层
@@ -103,7 +103,7 @@ SimAppThread 全部 16 个方法都是"转发器"，把 AIDL LaunchInfo 转成�
 
 ## 6、渲染管线
 
-![[Pasted image 20260626155344.png|500]]
+![[assets/Pasted image 20260626155344.png|500]]
 
 两套坐标缩放（关键设计，避免缩放混乱）：
 - scale_x/scale_y = layout / window：触摸输入用，把窗口坐标放大到 layout 坐标（2200×2480 体系）

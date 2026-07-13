@@ -33,11 +33,11 @@ source_count: 1
 
 `rustup --version` 输出示例（同时显示 rustc 版本）：
 
-![[Image 4.png]]
+![[assets/Image 4.png]]
 
 `rustup show` 输出示例（当前目标平台、已安装的工具链、当前活跃工具链）：
 
-![[Image 5.png|400]]
+![[assets/Image 5.png|400]]
 
 ## 工具链版本说明
 

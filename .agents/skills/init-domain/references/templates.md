@@ -43,7 +43,8 @@ wiki 页面按以下子目录组织：
 ## qmd 配置
 
 - collection 名称：`knowledge-<领域小写>`
-- 索引路径：`./wiki/`
+- collection root：`<领域>/wiki`
+- qmd 命令工作目录：知识库根目录 `<工作目录绝对路径>`
 
 ## 特殊约定
 
@@ -60,31 +61,31 @@ date: <YYYY-MM-DD>
 
 # <领域> Wiki 索引
 
-## Summaries
+## summaries
 
 _（暂无）_
 
-## Entities
+## entities
 
 _（暂无）_
 
-## Concepts
+## concepts
 
 _（暂无）_
 
-## Comparisons
+## comparisons
 
 _（暂无）_
 
-## Overviews
+## overviews
 
 _（暂无）_
 
-## Syntheses
+## syntheses
 
 _（暂无）_
 
-## Recipes
+## recipes
 
 _（暂无）_
 ```
@@ -93,8 +94,4 @@ _（暂无）_
 
 ```markdown
 # <领域> Wiki 操作日志
-
-## [<YYYY-MM-DD>] init-domain | 领域初始化
-- 创建领域目录结构
-- 生成领域 domain.md
 ```

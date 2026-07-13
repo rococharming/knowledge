@@ -51,7 +51,7 @@ chsh -s /opt/homebrew/bin/fish
 
 关闭终端并重新打开，应自动进入 fish。
 
-![[Pasted image 20260513220811.png|400]]
+![[assets/Pasted image 20260513220811.png|400]]
 
 ## 验证
 
@@ -69,7 +69,7 @@ echo $SHELL
 ps -p $fish_pid
 ```
 
-![[Pasted image 20260513221124.png|200]]
+![[assets/Pasted image 20260513221124.png|200]]
 
 ## 来源
 

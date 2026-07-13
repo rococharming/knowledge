@@ -25,7 +25,7 @@ Claude Code = 一个 agent loop
 
 # 二、核心模式
 
-![[Pasted image 20260527104340.png|600]]
+![[assets/Pasted image 20260527104340.png|600]]
 
 ```python
 def agent_loop(messages):

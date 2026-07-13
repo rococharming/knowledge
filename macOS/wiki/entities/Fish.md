@@ -26,7 +26,7 @@ brew install fish
 
 Apple Silicon Mac 上默认安装路径通常为 `/opt/homebrew/bin/fish`。
 
-![[Pasted image 20260513215534.png|400]]
+![[assets/Pasted image 20260513215534.png|400]]
 
 查看版本：
 

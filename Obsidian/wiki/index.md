@@ -5,30 +5,30 @@ date: 2026-06-21
 
 # Obsidian Wiki 索引
 
-## Summaries
+## summaries
 
 _（暂无）_
 
-## Entities
+## entities
 
 _（暂无）_
 
-## Concepts
+## concepts
 
 _（暂无）_
 
-## Comparisons
+## comparisons
 
 _（暂无）_
 
-## Overviews
+## overviews
 
 _（暂无）_
 
-## Syntheses
+## syntheses
 
 _（暂无）_
 
-## Recipes
+## recipes
 
 _（暂无）_

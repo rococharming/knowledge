@@ -106,13 +106,13 @@ fn main() {
 
 结果：
 
-![[Pasted image 20260602110117.png|600]]
+![[assets/Pasted image 20260602110117.png|600]]
 
 可以看到生成了`run-hello-cli` skill。
 
 3. 使用`/run`查看程序真实运行结果
 
-![[Pasted image 20260602111517.png|400]]
+![[assets/Pasted image 20260602111517.png|400]]
 
 可以看到 Claude 会自动加载`run-hello-cli` skill 运行项目。
 
@@ -132,7 +132,7 @@ fn main() {
 
 结果：
 
-![[Pasted image 20260602111951.png|400]]
+![[assets/Pasted image 20260602111951.png|400]]
 
 会发现 Claude Code 除了更改源码，还会更改之前创建的`run-hello-cli` skill内容来适配当前修改并自动验证结果。
 
@@ -146,7 +146,7 @@ fn main() {
 
 结果：
 
-![[Pasted image 20260602112252.png|400]]
+![[assets/Pasted image 20260602112252.png|400]]
 
 然后可以输入：
 
@@ -238,7 +238,7 @@ claude
 
 配置正确时，Claude 会基于当前 `git diff HEAD` 返回改动摘要和潜在风险。
 
-![[Pasted image 20260602113451.png|400]]
+![[assets/Pasted image 20260602113451.png|400]]
 
 # 三、Skill的存储与结构
 
@@ -473,7 +473,7 @@ allowed-tools: Read Grep
 | `agent`                    | 否   | 当`context: fork`设置时使用的 subagent 类型                                                                                                                                        |
 | `hooks`                    | 否   | 限定于该skill生命周期的钩子，在skill执行过程中的某些时机（开始前、调用工具前、调用工具后、结束时），自动触发一段额外逻辑。                                                                                                        |
 | `paths`                    | 否   | skill的适用文件范围，Claude只在处理匹配这些路径模式的文件时才自动加载。接受逗号分隔的字符串和YAML列表。使用与**路径特定规则**相同的格式。                                                                                            |
-| `shell`                    | 否   | 决定此 skill 中 `` !`command` ``和`` ```! ``块的shell。接受 `bash`（默认）或 `powershell`。设置 `powershell` 在 Windows 上通过 PowerShell 运行内联 shell 命令。需要 `CLAUDE_CODE_USE_POWERSHELL_TOOL=1`。 |
+| `shell`                    | 否   | 决定此 skill 中 `` !`<command>` ``和`` ```! ``块的shell。接受 `bash`（默认）或 `powershell`。设置 `powershell` 在 Windows 上通过 PowerShell 运行内联 shell 命令。需要 `CLAUDE_CODE_USE_POWERSHELL_TOOL=1`。 |
 
 ## 5、参数传递
 
@@ -537,7 +537,7 @@ allowed-tools: Bash(gh *)
 
 这是预处理，不是 Claude 执行的内容。Claude 只看到最终结果。
 
-> 内联形式仅在 `!` 出现在行首或紧跟在空白之后时被识别。如果 `!` 跟在另一个字符之后，占位符将保留为字面文本，命令不会运行。
+> 内联形式仅在 <kbd>!</kbd> 出现在行首或紧跟在空白之后时被识别。如果 <kbd>!</kbd> 跟在另一个字符之后，占位符将保留为字面文本，命令不会运行。
 
 对于多行命令，使用以 ` ```! ` 开头的围栏代码块而不是内联形式：
 
@@ -747,7 +747,7 @@ Skill(deploy *)
 
 1. 打开 `/skills` 菜单
 2. 选中某个 Skill
-3. 按 `Space` 循环切换状态
-4. 按 `Enter` 保存配置
+3. 按 <kbd>Space</kbd> 循环切换状态
+4. 按 <kbd>Enter</kbd> 保存配置
 
 保存后，配置会写入`.claude/settings.local.json`。

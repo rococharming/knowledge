@@ -1,20 +1,204 @@
 {
   "recentFiles": [
     {
+      "basename": "README",
+      "path": "README.md"
+    },
+    {
+      "basename": "未命名",
+      "path": "AI/notes/Codex/未命名.md"
+    },
+    {
+      "basename": "domain",
+      "path": "Python/domain.md"
+    },
+    {
+      "basename": "字符串转换标志",
+      "path": "Python/wiki/concepts/字符串转换标志.md"
+    },
+    {
+      "basename": "Cargo 依赖声明写法",
+      "path": "Rust/wiki/recipes/Cargo 依赖声明写法.md"
+    },
+    {
       "basename": "AGENTS",
       "path": "AGENTS.md"
     },
     {
-      "basename": "2026-07-10-视频内容一键保存到 Obsidian：打通本地知识库",
-      "path": "Clippings/Bilibili/2026-07-10-视频内容一键保存到 Obsidian：打通本地知识库.md"
+      "basename": "1、Claude Code入门",
+      "path": "AI/notes/Claude Code/1、Claude Code入门.md"
     },
     {
-      "basename": "2026-07-10-周五",
-      "path": "02_日记/2026-07-10-周五.md"
+      "basename": "2、Claude Code工作原理（待完善）",
+      "path": "AI/notes/Claude Code/2、Claude Code工作原理（待完善）.md"
+    },
+    {
+      "basename": "todo",
+      "path": "AI/notes/Claude Code/todo.md"
+    },
+    {
+      "basename": "Pasted image 20260713022422",
+      "path": "assets/Pasted image 20260713022422.png"
+    },
+    {
+      "basename": "1、HTML元素、属性与基础语义",
+      "path": "前后端/notes/前端/HTML/1、HTML元素、属性与基础语义.md"
+    },
+    {
+      "basename": "6、响应式图片、版权与SVG",
+      "path": "前后端/notes/前端/HTML/6、响应式图片、版权与SVG.md"
+    },
+    {
+      "basename": "7、替换元素、iframe与嵌入安全",
+      "path": "前后端/notes/前端/HTML/7、替换元素、iframe与嵌入安全.md"
+    },
+    {
+      "basename": "5、音视频媒体与字幕可访问性",
+      "path": "前后端/notes/前端/HTML/5、音视频媒体与字幕可访问性.md"
+    },
+    {
+      "basename": "4、元数据、SEO与Open Graph",
+      "path": "前后端/notes/前端/HTML/4、元数据、SEO与Open Graph.md"
+    },
+    {
+      "basename": "3、语义化分组、标识符与脚本加载",
+      "path": "前后端/notes/前端/HTML/3、语义化分组、标识符与脚本加载.md"
+    },
+    {
+      "basename": "2、HTML文档骨架与资源引用",
+      "path": "前后端/notes/前端/HTML/2、HTML文档骨架与资源引用.md"
+    },
+    {
+      "basename": "log",
+      "path": "前后端/wiki/log.md"
+    },
+    {
+      "basename": "index",
+      "path": "前后端/wiki/index.md"
+    },
+    {
+      "basename": "Todo",
+      "path": "Obsidian/notes/Todo.md"
+    },
+    {
+      "basename": "1、Terminal",
+      "path": "Obsidian/notes/常用插件/1、Terminal.md"
+    },
+    {
+      "basename": "8、AI + Obsidian",
+      "path": "Obsidian/notes/8、AI + Obsidian.md"
+    },
+    {
+      "basename": "1、qmd 本地 Markdown 搜索引擎",
+      "path": "Obsidian/notes/补充/1、qmd 本地 Markdown 搜索引擎.md"
+    },
+    {
+      "basename": "7、LLM Wiki",
+      "path": "Obsidian/notes/7、LLM Wiki.md"
+    },
+    {
+      "basename": "index",
+      "path": "Obsidian/wiki/index.md"
+    },
+    {
+      "basename": "index",
+      "path": "Rust/wiki/index.md"
+    },
+    {
+      "basename": "log",
+      "path": "Rust/wiki/log.md"
+    },
+    {
+      "basename": "llm-wiki",
+      "path": "llm-wiki.md"
+    },
+    {
+      "basename": "llm-wiki-zh-CN",
+      "path": "llm-wiki-zh-CN.md"
+    },
+    {
+      "basename": "llm-wiki",
+      "path": "Clippings/llm-wiki.md"
+    },
+    {
+      "basename": "2026-07-11-AI 讲解 Rust 入门教程（基于 Rust Book）-P3-1.2 你的第一个 Rust 程序：Hello World",
+      "path": "Clippings/Bilibili/2026-07-11-AI 讲解 Rust 入门教程（基于 Rust Book）-P3-1.2 你的第一个 Rust 程序：Hello World.md"
+    },
+    {
+      "basename": "6、Obsidian CLI",
+      "path": "Obsidian/notes/6、Obsidian CLI.md"
+    },
+    {
+      "basename": "5、Bilibili Obsidian Clipper",
+      "path": "Obsidian/notes/5、Bilibili Obsidian Clipper.md"
+    },
+    {
+      "basename": "4、Obsidian Web Clipper",
+      "path": "Obsidian/notes/4、Obsidian Web Clipper.md"
     },
     {
       "basename": "1、Obsidian入门",
       "path": "Obsidian/notes/1、Obsidian入门.md"
+    },
+    {
+      "basename": "3、Obsidian 插件",
+      "path": "Obsidian/notes/3、Obsidian 插件.md"
+    },
+    {
+      "basename": "2、Obsidian 扩展语法",
+      "path": "Obsidian/notes/2、Obsidian 扩展语法.md"
+    },
+    {
+      "basename": "5、JSON-LD",
+      "path": "通用计算机知识/notes/数据格式/5、JSON-LD.md"
+    },
+    {
+      "basename": "1、JSON",
+      "path": "通用计算机知识/notes/数据格式/1、JSON.md"
+    },
+    {
+      "basename": "2、XML",
+      "path": "通用计算机知识/notes/数据格式/2、XML.md"
+    },
+    {
+      "basename": "4、YAML",
+      "path": "通用计算机知识/notes/数据格式/4、YAML.md"
+    },
+    {
+      "basename": "3、Markdown",
+      "path": "通用计算机知识/notes/数据格式/3、Markdown.md"
+    },
+    {
+      "basename": "size_of 与 size_of_val",
+      "path": "Rust/wiki/concepts/size_of 与 size_of_val.md"
+    },
+    {
+      "basename": "Result处理",
+      "path": "Rust/wiki/concepts/Result处理.md"
+    },
+    {
+      "basename": "Trait对象与动态分发",
+      "path": "Rust/wiki/concepts/Trait对象与动态分发.md"
+    },
+    {
+      "basename": "Trait关联项",
+      "path": "Rust/wiki/concepts/Trait关联项.md"
+    },
+    {
+      "basename": "有序性比较",
+      "path": "Rust/wiki/concepts/有序性比较.md"
+    },
+    {
+      "basename": "单元测试",
+      "path": "Rust/wiki/concepts/单元测试.md"
+    },
+    {
+      "basename": "常量与静态变量",
+      "path": "Rust/wiki/concepts/常量与静态变量.md"
+    },
+    {
+      "basename": "变量与可变性",
+      "path": "Rust/wiki/concepts/变量与可变性.md"
     }
   ],
   "omittedPaths": [],

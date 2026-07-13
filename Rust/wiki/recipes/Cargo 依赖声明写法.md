@@ -3,6 +3,7 @@ title: Cargo 依赖声明写法
 date: 2026-06-30
 tags: [rust, cargo, dependencies, toml]
 source_count: 0
+type: query_archive
 ---
 
 # Cargo 依赖声明写法
@@ -93,6 +94,12 @@ winit = { version = "0.30", default-features = false, features = ["rwh_06", "x11
 - [[Cargo]] — 执行依赖解析的构建工具实体
 - [[路径与导入]] — `use ... as ...` 模块级重命名，与 `package` 对照
 
+## 基于页面
+
+- [[语义化版本]]
+- [[Cargo.toml 表语法]]
+- [[Package与Crate]]
+
 ## 来源
 
-Query 综合归档（2026-06-30），基于 [[Cargo.toml 表语法]]、[[语义化版本]]、[[Package与Crate]] 及 Cargo 通用规范。
+Query 归档（2026-06-30）：Cargo 依赖 `^0.1` 的版本解析知识点

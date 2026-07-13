@@ -24,7 +24,7 @@ claude --version
 
 如果看到版本，说明安装成功：
 
-![[image-20260427214629504.png|400]]
+![[assets/image-20260427214629504.png|400]]
 
 可以执行如下命令手动更新：
 
@@ -34,7 +34,7 @@ claude update
 
 如下图所示：
 
-![[image-20260427214617672.png|400]]
+![[assets/image-20260427214617672.png|400]]
 
 # 三、配置接入第三方模型
 
@@ -142,7 +142,7 @@ claude
 
 登录后，在右边侧边栏找到 API Keys，点击「创建 API key」：
 
-![[Pasted image 20260514142220.png|600]]
+![[assets/Pasted image 20260514142220.png|600]]
 
 复制后保留备用。
 
@@ -317,7 +317,7 @@ claude
 
 执行`/resume`会打开会话选择器：
 
-![[image-20260427225053266.png|500]]
+![[assets/image-20260427225053266.png|500]]
 
 选择指定会话进行恢复。
 
@@ -342,7 +342,7 @@ claude
 
 进入`Claude Code`会话后，默认是`default`模式：
 
-![[image-20260427231651146.png|500]]
+![[assets/image-20260427231651146.png|500]]
 
 按`Shift + Tab`键在权限模式之间循环切换。
 
@@ -351,9 +351,9 @@ default -> acceptEdits -> plan
 ```
 
 当前模式会显示在状态栏中，如下：
-![[image-20260427232015230.png|500]]
+![[assets/image-20260427232015230.png|500]]
 
-![[image-20260427232042012.png|500]]
+![[assets/image-20260427232042012.png|500]]
 
 
 `Claude Code`还有**Yolo 模式**：`bypassPermissions`，也就是跳过权限检查的模式。
@@ -378,7 +378,7 @@ claude --permission-mode bypassPermissions
 
 如图所示：
 
-![[image-20260427233202841.png|500]]
+![[assets/image-20260427233202841.png|500]]
 
 
 # 六、简单实战
@@ -393,7 +393,7 @@ claude --permission-mode bypassPermissions
 
 如图所示：
 
-![[image-20260427234137834.png|600]]
+![[assets/image-20260427234137834.png|600]]
 
 在整个过程中，`Claude Code`会和你确认一些功能需求。确认完成后，它会生成一份较完整的实现计划。
 
@@ -405,30 +405,30 @@ claude --permission-mode bypassPermissions
 
 **沟通需求**：
 
-![[image-20260427234331376.png|600]]
+![[assets/image-20260427234331376.png|600]]
 
-![[image-20260427234350263.png|600]]
+![[assets/image-20260427234350263.png|600]]
 
-![[image-20260427234413903.png|600]]
+![[assets/image-20260427234413903.png|600]]
 
 **生成方案**：
 
-![[image-20260427234632965.png|600]]
+![[assets/image-20260427234632965.png|600]]
 
 **执行计划**：
 
-![[image-20260427234715436.png|600]]
+![[assets/image-20260427234715436.png|600]]
 
 最终的效果如下：
 
-![[image-20260427234915059.png|600]]
+![[assets/image-20260427234915059.png|600]]
 
 # 七、补充
 
 1. 在`Claude Code`会话中，按下`!`可进入Bash执行命令
 2. macOS下，在对话框输入内容，换行需要按`Option + Shift`。如果使用的终端是`Terminal`，还需要在`Terminal`设置勾选如下选项才能生效
 
-![[image-20260427235238808.png|500]]
+![[assets/image-20260427235238808.png|500]]
 
 3. 如果觉得在对话框输入内容不方便，按下`Ctrl + G`可以打开默认编辑器来编辑对话内容，比如默认打开`VS Code`。
 4. 对话框支持图片输入，可以直接将图片拖到对话框。

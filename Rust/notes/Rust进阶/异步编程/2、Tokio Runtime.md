@@ -568,7 +568,7 @@ trait Future {
 
 即使线程 A 一直在计算，没有主动停下来，操作系统也会通过时间片机制把 CPU 从线程 A 手里“抢回来”，再分配给线程 B。
 
-![[Pasted image 20260613174430.png|300]]
+![[assets/Pasted image 20260613174430.png|300]]
 
 ### （2）Tokio 协作式调度
 
@@ -590,7 +590,7 @@ async fn task_a() {
 
 执行到 `tokio::time::sleep(...).await` 时，如果定时器还没到，当前任务会返回 `Poll::Pending`，相当于告诉 Tokio 我现在不能继续了，你可以先去运行别的任务。
 
-![[Pasted image 20260613175906.png|300]]
+![[assets/Pasted image 20260613175906.png|300]]
 
 ### （3）核心区别
 
@@ -943,7 +943,7 @@ fn main() {
 
 原因是普通线程里的同步代码没有 `.await` 边界，Tokio 不能安全地把它中途停掉。
 
-![[Pasted image 20260614010843.png|50]]
+![[assets/Pasted image 20260614010843.png|50]]
 
 ## 2、shutdown_timeout
 
@@ -973,7 +973,7 @@ fn main() {
 
 结果：
 
-![[Pasted image 20260614010808.png|100]]
+![[assets/Pasted image 20260614010808.png|100]]
 
 但注意，`shutdown_timeout` 不会强杀已经运行的 blocking task。超过时间后，runtime 不再等待这些任务结束；已经开始执行的 blocking task 可能继续运行，直到闭包自己返回或进程结束。
 
@@ -1024,7 +1024,7 @@ fn main() {
 
 这段代码运行会`panic`：
 
-![[Pasted image 20260614011824.png|400]]
+![[assets/Pasted image 20260614011824.png|400]]
 
 因为普通 `main` 函数中没有进入 Tokio runtime，无法调用 `tokio::spawn`。
 

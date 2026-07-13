@@ -7,7 +7,7 @@ HTTP 通信是通过请求与响应完成的。
 
 客户端发送的消息叫**请求**，服务端发送的消息叫**响应**。
 
-![[Pasted image 20260512210519.png|300]]
+![[assets/Pasted image 20260512210519.png|300]]
 
 一次最基本的HTTP通信可以理解为：
 
@@ -645,20 +645,20 @@ Set-Cookie: session_id=abc123; HttpOnly; Path=/
 以 Chrome 浏览器为例，可以通过以下方式打开开发者工具：
 
 - 右键页面空白处或页面元素，点击**检查**
-- macOS 快捷键 `Command + Option + I`
-- Windows/Linux 快捷键 `Ctrl + Shift + I`
-- 按`F12`
+- macOS 快捷键 <kbd>Command</kbd> + <kbd>Option</kbd> + <kbd>I</kbd>
+- Windows/Linux 快捷键 <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd>
+- 按 <kbd>F12</kbd>
 
 打开开发者工具后，切换到 **Network** 面板。
 
-![[Pasted image 20260515002512.png|800]]
+![[assets/Pasted image 20260515002512.png|800]]
 
 
 ### （2）请求列表
 
 刷新页面，浏览器发出的请求就会显示在请求列表中：
 
-![[Pasted image 20260515002624.png]]
+![[assets/Pasted image 20260515002624.png]]
 
 
 请求列表中通常可以看到这些信息：
@@ -701,7 +701,7 @@ Set-Cookie: session_id=abc123; HttpOnly; Path=/
 
 点击请求列表中的某一个请求后，会显示该请求的详情。例如：
 
-![[Pasted image 20260515004831.png|800]]
+![[assets/Pasted image 20260515004831.png|800]]
 
 常见标签如下：
 
@@ -743,7 +743,7 @@ curl https://httpbin.org/get
 
 结果：
 
-![[Pasted image 20260515015111.png|600]]
+![[assets/Pasted image 20260515015111.png|600]]
 
 其中：
 
@@ -758,7 +758,7 @@ curl https://httpbin.org/get
 curl "https://httpbin.org/get?name=Tom&age=26"
 ```
 
-![[Pasted image 20260515020439.png|600]]
+![[assets/Pasted image 20260515020439.png|600]]
 
 > 当URL里有&等查询字符，建议加双引号将URL包裹，因为&在Shell里有特殊含义，可能会将URL错误拆分
 
@@ -791,7 +791,7 @@ curl -i https://httpbin.org/get
 
 结果：
 
-![[Pasted image 20260517172021.png|600]]
+![[assets/Pasted image 20260517172021.png|600]]
 
 
 因为这里 curl 走了代理，所以一开始 curl 先向代理服务器发送了 CONNECT 请求，让代理服务器建立到 httpbin.org 的 TCP 连接，所以先看到的是代理服务器返回给`curl`的响应：
@@ -802,7 +802,7 @@ HTTP/1.1 200 Connection established
 
 当代理建立起`curl`与httpbin.org的TCP隧道后，执行TLS加密后，代理负责原样转发两者的数据。
 
-![[Pasted image 20260517175852.png|500]]
+![[assets/Pasted image 20260517175852.png|500]]
 
 如果只想查看响应头，可以使用`-I`：
 
@@ -820,7 +820,7 @@ curl -I https://httpbin.org/get
 
 结果：
 
-![[Pasted image 20260517180715.png|500]]
+![[assets/Pasted image 20260517180715.png|500]]
 
 ### （4）指定请求方法
 
@@ -867,7 +867,7 @@ curl https://httpbin.org/get \
 
 结果：
 
-![[Pasted image 20260517181815.png|400]]
+![[assets/Pasted image 20260517181815.png|400]]
 
 发送认证信息：
 
@@ -878,7 +878,7 @@ curl -i https://httpbin.org/bearer \
 
 结果：
 
-![[Pasted image 20260517182020.png|400]]
+![[assets/Pasted image 20260517182020.png|400]]
 
 多个请求头可以写多个 `-H`：
 
@@ -890,7 +890,7 @@ curl https://httpbin.org/get \
 
 结果：
 
-![[Pasted image 20260517182219.png|500]]
+![[assets/Pasted image 20260517182219.png|500]]
 
 这里的 `Accept` 表示客户端希望接收 JSON，`User-Agent` 表示客户端身份。
 
@@ -914,7 +914,7 @@ curl https://httpbin.org/post \
   -d "username=Tom&password=123456"
 ```
 
-![[Pasted image 20260517182708.png|500]]
+![[assets/Pasted image 20260517182708.png|500]]
 
 使用 `-d` 时，`curl` 默认会发送 POST 请求，并且默认使用类似传统表单的提交方式。
 
@@ -1012,7 +1012,7 @@ avatar=@avatar.png
 
 因为 `multipart/form-data` 需要带 boundary，手动设置容易漏掉，导致服务器无法正确解析请求体。
 
-![[Pasted image 20260517185758.png|500]]
+![[assets/Pasted image 20260517185758.png|500]]
 
 ### （10）查看详细请求过程
 

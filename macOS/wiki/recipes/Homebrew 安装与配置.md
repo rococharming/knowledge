@@ -65,7 +65,7 @@ brew --version
 
 正常输出类似：
 
-![[Pasted image 20260513013040.png]]
+![[assets/Pasted image 20260513013040.png]]
 
 进一步检查环境健康：
 

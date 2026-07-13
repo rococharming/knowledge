@@ -3,6 +3,7 @@ title: Cargo.toml 表语法
 date: 2026-06-26
 tags: [rust, cargo, toml]
 source_count: 0
+type: query_archive
 ---
 
 # Cargo.toml 表语法
@@ -79,6 +80,11 @@ bin = [
 - [[Package与Crate]] — 多二进制 crate 组织、`src/bin/` 约定与 `cargo run --bin`
 - [[Cargo]] — 构建工具与包管理器实体
 
+## 基于页面
+
+- [[Cargo构建配置]]
+- [[Package与Crate]]
+
 ## 来源
 
-Query 综合归档（2026-06-26），基于 [[Cargo构建配置]]、[[Package与Crate]] 及 TOML 通用规范。
+Query 归档（2026-06-26）：Cargo.toml 中 `[ ]` 与 `[[ ]]` 语法的区别

@@ -118,7 +118,7 @@ fn main() {
 
 输出：
 
-![[Pasted image 20260603205320.png|400]]
+![[assets/Pasted image 20260603205320.png|400]]
 
 `serde_json::to_string()`生成紧凑 JSON，适合网络传输和存储。
 
@@ -153,7 +153,7 @@ fn main() {
 
 结果：
 
-![[Pasted image 20260603210920.png|200]]
+![[assets/Pasted image 20260603210920.png|200]]
 
 > 这里 s 使用 原始字符串 可以减少 JSON 中双引号的转义。
 
@@ -242,7 +242,7 @@ fn main() {
 
 结果：
 
-![[Pasted image 20260603212524.png|200]]
+![[assets/Pasted image 20260603212524.png|200]]
 
 此时字段映射关系是：
 
@@ -288,7 +288,7 @@ fn main() {
 
 结果：
 
-![[Pasted image 20260603212946.png|200]]
+![[assets/Pasted image 20260603212946.png|200]]
 
 由于 JSON 字符串中没有 `email` 字段，所以这里结构体`email`为 None。
 
@@ -327,7 +327,7 @@ fn main() {
 
 结果：
 
-![[Pasted image 20260603213434.png|200]]
+![[assets/Pasted image 20260603213434.png|200]]
 
 如果希望`None`字段不出现在 JSON 字段中，可以使用：
 
@@ -418,7 +418,7 @@ fn main() {
 
 此时结果为：
 
-![[Pasted image 20260603214202.png|200]]
+![[assets/Pasted image 20260603214202.png|200]]
 
 因为`String`的默认值是""。
 
@@ -459,7 +459,7 @@ fn main() {
 
 输出结果：
 
-![[Pasted image 20260603214406.png|200]]
+![[assets/Pasted image 20260603214406.png|200]]
 
 `default` 适合处理外部数据字段缺失，但业务上可以接受默认值的场景。
 
@@ -500,7 +500,7 @@ fn main() {
 
 结果：
 
-![[Pasted image 20260603214753.png|200]]
+![[assets/Pasted image 20260603214753.png|200]]
 
 序列化时不会出现`email`字段。
 
@@ -538,7 +538,7 @@ fn main() {
 
 这里 `String` 的默认值是 `""`。
 
-![[Pasted image 20260603215041.png|200]]
+![[assets/Pasted image 20260603215041.png|200]]
 
 ## 7、扁平化字段
 
@@ -622,7 +622,7 @@ fn main() {
 
 结果：
 
-![[Pasted image 20260603215905.png|200]]
+![[assets/Pasted image 20260603215905.png|200]]
 
 `flatten` 常用于把公共字段、扩展字段或嵌套配置展开到父结构中。
 
@@ -660,7 +660,7 @@ fn main() {
 
 结果：
 
-![[Pasted image 20260603220646.png|100]]
+![[assets/Pasted image 20260603220646.png|100]]
 
 `Value` 可以表示任意合法 JSON 值，例如对象、数组、字符串、数字、布尔值和 `null`。
 
@@ -890,7 +890,7 @@ fn main() {
 
 结果：
 
-![[Pasted image 20260603223720.png|300]]
+![[assets/Pasted image 20260603223720.png|300]]
 
 - 对于结构体变体，值为对象。
 - 对于元组变体，值为数组。
@@ -927,7 +927,7 @@ fn main() {
 
 结果：
 
-![[Pasted image 20260603224340.png|300]]
+![[assets/Pasted image 20260603224340.png|300]]
 
 注意，`#[serde(tag = "type")]`对元组型变体不可用。
 
@@ -967,7 +967,7 @@ fn main() {
 
 结果：
 
-![[Pasted image 20260603224606.png|300]]
+![[assets/Pasted image 20260603224606.png|300]]
 
 这种格式适合外层固定包含类型字段，具体数据统一放进 `data`、`payload`、`content` 等字段中。
 

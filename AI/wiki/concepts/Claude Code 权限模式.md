@@ -62,7 +62,7 @@ source_count: 2
 - 批准并手动审阅每次编辑
 - 继续规划并给出反馈
 
-可按 `Ctrl + G` 用默认编辑器打开拟议方案直接修改。若启用 `showClearContextOnPlanAccept`，批准时可选择清除规划上下文。
+可按 <kbd>Ctrl</kbd> + <kbd>G</kbd> 用默认编辑器打开拟议方案直接修改。若启用 `showClearContextOnPlanAccept`，批准时可选择清除规划上下文。
 
 适用场景：大型改造前的方案设计、陌生项目梳理、代码评审、重构计划制定。
 
@@ -123,7 +123,7 @@ claude --dangerously-skip-permissions
 
 ### 会话期间切换
 
-按 `Shift + Tab` 循环切换：
+按 <kbd>Shift</kbd> + <kbd>Tab</kbd> 循环切换：
 ```
 default -> acceptEdits -> plan
 ```

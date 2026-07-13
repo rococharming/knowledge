@@ -82,17 +82,17 @@ claude
 - `plan`：只读分析模式，出方案但不动代码
 - `bypassPermissions`：跳过权限检查，风险最高
 
-按 `Shift + Tab` 在模式间循环切换。
+按 <kbd>Shift</kbd> + <kbd>Tab</kbd> 在模式间循环切换。
 
 ## 实用快捷键
 
 | 快捷键 | 功能 |
 |---|---|
-| `!` | 进入 Bash 执行命令 |
-| `Option + Shift` | 换行（macOS） |
-| `Ctrl + G` | 打开默认编辑器编辑对话内容 |
-| `Ctrl + O` | 查看 compact 压缩详情 |
-| `Shift + Tab` | 切换权限模式 |
+| <kbd>!</kbd> | 进入 Bash 执行命令 |
+| <kbd>Option</kbd> + <kbd>Shift</kbd> | 换行（macOS） |
+| <kbd>Ctrl</kbd> + <kbd>G</kbd> | 打开默认编辑器编辑对话内容 |
+| <kbd>Ctrl</kbd> + <kbd>O</kbd> | 查看 compact 压缩详情 |
+| <kbd>Shift</kbd> + <kbd>Tab</kbd> | 切换权限模式 |
 
 ## 记忆系统
 

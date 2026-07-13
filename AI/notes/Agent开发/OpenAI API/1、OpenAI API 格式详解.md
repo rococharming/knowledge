@@ -49,13 +49,13 @@ Authorization: Bearer YOUR_API_KEY
 
 打开 Hoppscotch，以 Deepseek 为例，一次 request 请求如下：
 
-![[Pasted image 20260624004902.png]]
+![[assets/Pasted image 20260624004902.png]]
 
 注：需要指定请求头的内容类型`Content_Type`和授权`Authorization`。
 
 点击发送后，得到如下的 JSON 响应体：
 
-![[Pasted image 20260624005243.png]]
+![[assets/Pasted image 20260624005243.png]]
 
 # 三、请求体字段
 
@@ -94,7 +94,7 @@ user message 是用户消息，即一次提问，包含以下字段：
 
 这里举一个请求多模态，包含图像信息的消息：让AI识别下图中的内容。
 
-![[Pikachu.png]]
+![[assets/Pikachu.png]]
 
 因为涉及多模态，这里使用 kimi 模型，不过，kimi 模型不支持外链图片，也就是不允许直接抓公网 URL 图片，因此这里采用 base64 的方式。
 
@@ -115,7 +115,7 @@ data:image/png;base64,xxx
 xxx就是上面生成的base64 文本字符串。
 
 
-![[Pasted image 20260624014411.png|600]]
+![[assets/Pasted image 20260624014411.png|600]]
 
 ### （3）assistant message
 

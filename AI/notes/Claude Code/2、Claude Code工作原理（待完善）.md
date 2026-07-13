@@ -1,11 +1,11 @@
 
 # 一、Agentic Loop
 
-![[Pasted image 20260709035533.png|400]]
+
 
 当你给`Claude Code`一个任务时，它通常为围绕三个阶段展开工作：**收集上下文**、**执行操作**、**验证结果**。
 
-![[Pasted image 20260521102454.png|600]]
+![[assets/Pasted image 20260521102454.png|600]]
 
 `Agentic Loop`（智能体循环）的过程可以理解为一个持续循环的过程：
 

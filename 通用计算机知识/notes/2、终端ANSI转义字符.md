@@ -26,7 +26,7 @@ print("\033[36mhello\033[0m")
 
 终端输出：
 
-![[Pasted image 20260602222010.png]]
+![[assets/Pasted image 20260602222010.png]]
 
 ANSI转义序列可以控制很多终端行为：
 

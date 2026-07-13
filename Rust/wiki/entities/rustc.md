@@ -24,11 +24,11 @@ rustc -o hello main.rs     # 指定输出文件名
 
 默认输出：
 
-![[Image 6.png|400]]
+![[assets/Image 6.png|400]]
 
 指定输出文件名：
 
-![[Image 7.png|400]]
+![[assets/Image 7.png|400]]
 
 ### 指定 Edition
 
@@ -63,7 +63,7 @@ rustc --crate-type=rlib --crate-name=greet lib.rs
 
 生成 `libgreet.rlib` 文件：
 
-![[Image 8.png|500]]
+![[assets/Image 8.png|500]]
 
 ### 链接 rlib 到可执行文件
 
@@ -88,7 +88,7 @@ rustc -L . --extern greet=libgreet.rlib main.rs
 
 执行完成后生成可执行文件：
 
-![[Image 9.png|600]]
+![[assets/Image 9.png|600]]
 
 ## 与 Cargo 的关系
 

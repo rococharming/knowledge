@@ -170,7 +170,7 @@ source_count: 1
 - `fullscreen`：TUI 模式，输入框固定底部，支持 `/focus`
 
 ### /terminal-setup
-配置终端快捷键兼容性，如 `Shift + Enter` 换行、`Option + Enter` 换行、visual bell 等。
+配置终端快捷键兼容性，如 <kbd>Shift</kbd> + <kbd>Enter</kbd> 换行、<kbd>Option</kbd> + <kbd>Enter</kbd> 换行、visual bell 等。
 
 ### /sandbox
 切换沙盒模式，隔离 Bash 命令对子进程、文件系统、网络的访问。

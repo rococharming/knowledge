@@ -20,9 +20,9 @@ source_count: 1
 
 ### 步骤 1：安装 `code` 命令到 PATH
 
-确保 VS Code 的 `code` 命令已在系统 PATH 中。若终端提示 `code: command not found`，在 VS Code 中打开命令面板（`Cmd+P`），搜索 `> Shell Command` 并选择 `Shell Command: Install 'code' command in PATH`：
+确保 VS Code 的 `code` 命令已在系统 PATH 中。若终端提示 `code: command not found`，在 VS Code 中打开命令面板（<kbd>Cmd</kbd> + <kbd>P</kbd>），搜索 `> Shell Command` 并选择 `Shell Command: Install 'code' command in PATH`：
 
-![[Pasted image 20260511163624.png]]
+![[assets/Pasted image 20260511163624.png]]
 
 ### 步骤 2：用 VS Code 打开 Rust 项目
 
@@ -36,7 +36,7 @@ code .
 
 在 VS Code 左侧 Extensions（插件）面板中搜索并安装：
 
-![[Image 13.png]]
+![[assets/Image 13.png]]
 
 1. **rust-analyzer**（必装）
    - 提供代码补全、类型推导、错误提示、跳转到定义等功能
@@ -59,21 +59,21 @@ fn main() {
 
 输入代码前几个字符时 VS Code 会自动弹出补全提示：
 
-![[Image 14.png]]
+![[assets/Image 14.png]]
 
 ## 使用方法
 
 ### 运行代码
 
-打开 `main.rs`，点击 `main` 函数上方的 **Run** 按钮（▶️），或直接按 `Ctrl+F5`（macOS: `Cmd+F5`）。
+打开 `main.rs`，点击 `main` 函数上方的 **Run** 按钮（▶️），或直接按 <kbd>Ctrl</kbd> + <kbd>F5</kbd>（macOS: <kbd>Cmd</kbd> + <kbd>F5</kbd>）。
 
-![[Image 15.png]]
+![[assets/Image 15.png]]
 
 ### 调试代码
 
-点击 `main` 函数上方的 **Debug** 按钮（🐛），或使用快捷键 `F5`。VS Code 会自动启动调试会话，支持断点、变量查看、单步执行等功能。
+点击 `main` 函数上方的 **Debug** 按钮（🐛），或使用快捷键 <kbd>F5</kbd>。VS Code 会自动启动调试会话，支持断点、变量查看、单步执行等功能。
 
-![[Image 16.png]]
+![[assets/Image 16.png]]
 
 ### 检查代码
 
@@ -81,7 +81,7 @@ fn main() {
 cargo check
 ```
 
-或使用 VS Code 命令面板（`Ctrl+Shift+P`）搜索 **Rust Analyzer: Run Cargo Check**。
+或使用 VS Code 命令面板（<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>）搜索 **Rust Analyzer: Run Cargo Check**。
 
 ## 关联
 

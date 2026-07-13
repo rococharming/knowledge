@@ -2,8 +2,8 @@
   "terminal",
   "table-editor-obsidian",
   "obsidian-excalidraw-plugin",
+  "obsidian-local-rest-api",
   "file-explorer-note-count",
   "recent-files-obsidian",
-  "obsidian-pandoc",
-  "obsidian-local-rest-api"
+  "obsidian-pandoc"
 ]

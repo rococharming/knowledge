@@ -105,7 +105,7 @@ cargo run
 
 会弹出一个标题为 `Hello winit` 的空窗口；点击窗口的关闭按钮，程序退出。
 
-![[Pasted image 20260708023809.png|500]]
+![[assets/Pasted image 20260708023809.png|500]]
 
 核心关系：
 
@@ -397,7 +397,7 @@ fn window_event(
 | `Focused(is_focused)` | 窗口获得或失去焦点时触发 | `true` 表示窗口获得焦点，`false` 表示失去焦点 |
 | `CursorMoved { position, .. }` | 鼠标在窗口内部移动时触发 | 读取鼠标位置 `position.x`、`position.y` |
 | `MouseInput { state, button, .. }` | 鼠标按键按下或松开时触发 | 判断左键是否被按下 |
-| `KeyboardInput { event, .. }` | 键盘输入时触发 | 判断 `Esc` 是否按下，并用它退出程序 |
+| `KeyboardInput { event, .. }` | 键盘输入时触发 | 判断 <kbd>Esc</kbd> 是否按下，并用它退出程序 |
 
 其中 `state` 通常是 `ElementState::Pressed` 或 `ElementState::Released`。也就是说，鼠标和键盘事件一般都要同时判断“哪个键”和“按下还是松开”。
 
@@ -458,7 +458,7 @@ fn window_event(
 }
 ```
 
-按 `Esc` 退出程序。
+按 <kbd>Esc</kbd> 退出程序。
 
 ## 2、物理键与逻辑键
 
@@ -505,7 +505,7 @@ winit 本身不画图，它只负责创建系统窗口、运行事件循环、�
 
 `raw-window-handle`（rwh）是一个纯接口 crate，它只定义 trait 和平台句柄类型。`winit`和渲染库都依赖它，但两者没有直接依赖。
 
-![[Pasted image 20260708102632.png]]
+![[assets/Pasted image 20260708102632.png]]
 
 注意：`winit` 和 `wgpu` 之间没有箭头。`wgpu` 的代码里根本没有 `winit` 这个依赖，它不知道 `winit` 是什么。它们俩唯一的共同语言是 `rwh` 的 trait。
 

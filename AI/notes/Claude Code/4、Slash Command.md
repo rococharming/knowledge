@@ -74,7 +74,7 @@ MCP Server 可以暴露Prompts，这些 Prompts 会在 `Claude Code` 会话中�
 
 示例
 
-![[Pasted image 20260519143634.png|400]]
+![[assets/Pasted image 20260519143634.png|400]]
 
 通过上图，可以看到当前上下文的使用情况，包括 System prompt、System tools、Skills、Messages、Free spaces以及Autocompact buffer的占比。其中的 Autocompact buffer 是为自动压缩上下文预留的一块安全缓冲区。
 
@@ -85,7 +85,7 @@ MCP Server 可以暴露Prompts，这些 Prompts 会在 `Claude Code` 会话中�
 
 `/branch`后可跟`name`参数，用于给新会话取名字。
 
-![[Pasted image 20260519145213.png|500]]
+![[assets/Pasted image 20260519145213.png|500]]
 
 `/branch`适合用于方案设计、对比、评估、解释，但不适合多个会话并行修改同一个项目目录。因为`/branch`不会创建独立工作区，如果两个会话在同一个目录并行修改同一批文件，会出现互相覆盖的问题。
 
@@ -126,11 +126,11 @@ claude --worktree solution-b
 
 `/rewind`是`Claude Code`的回退命令，用于打开 checkpoint 回退菜单，把对话或代码恢复到之前的某个点。
 
-![[Pasted image 20260519154625.png|500]]
+![[assets/Pasted image 20260519154625.png|500]]
 
 选择某个点之后，会继续让你选择恢复的内容：恢复代码和会话、恢复会话、恢复代码等。
 
-![[Pasted image 20260519154721.png|500]]
+![[assets/Pasted image 20260519154721.png|500]]
 
 
 `/rewind`可以回退两类东西：
@@ -145,7 +145,7 @@ claude --worktree solution-b
 
 `/background`把当前会话挂到后台继续跑，当前终端可以释放出来。`/background [prompt]`在挂到后台前，再给 Claude Code 发送一条额外指令。
 
-![[Pasted image 20260519155224.png|500]]
+![[assets/Pasted image 20260519155224.png|500]]
 
 通过执行：
 
@@ -155,7 +155,7 @@ claude agents
 
 可以监控和管理后台 session。
 
-![[Pasted image 20260519155647.png|500]]
+![[assets/Pasted image 20260519155647.png|500]]
 
 
 ### （7）/stop
@@ -164,11 +164,11 @@ claude agents
 
 通过`claude attach xxx`进入后台会话：
 
-![[Pasted image 20260519182641.png|500]]
+![[assets/Pasted image 20260519182641.png|500]]
 
 进入会话后，可执行`/stop`关闭当前后台会话：
 
-![[Pasted image 20260519182731.png|500]]
+![[assets/Pasted image 20260519182731.png|500]]
 
 
 ### （8）/focus
@@ -195,7 +195,7 @@ claude agents
 
 `/stats`用于查看`Claude Code`的使用统计信息，它本质上等价于`/usage`，只是打开时默认进入`Stats`标签页。
 
-![[Pasted image 20260519160905.png|500]]
+![[assets/Pasted image 20260519160905.png|500]]
 
 
 ### （2）/fast
@@ -237,7 +237,7 @@ Fast mode 当前只支持 Opus 4.7 和 Opus 4.6。
 
 `/diff`是`Claude Code`的查看改动命令，用于打开一个交互式 diff 查看器，帮助你看清楚当前工作区里发生了哪些代码变化。它会显示当前`git diff`以及每轮对话带来的改动，通过左右方向键在当前 Git diff 和单轮 Claude 改动之间切换，用上下方向键浏览文件。
 
-![[Pasted image 20260519180001.png|500]]
+![[assets/Pasted image 20260519180001.png|500]]
 
 
 ### （3）/review
@@ -321,14 +321,14 @@ Fast mode 当前只支持 Opus 4.7 和 Opus 4.6。
 | `/theme`                     | 切换 Claude Code 终端主题。                                               |
 | `/color [color\|default]`    | 设置当前会话输入栏 / prompt bar 颜色。使用 `default` 可恢复默认颜色。                    |
 | `/tui [default\|fullscreen]` | 切换终端 UI 渲染模式。                                                      |
-| `/terminal-setup`            | 配置终端快捷键，例如 Shift/Option + Enter 换行等。                               |
+| `/terminal-setup`            | 配置终端快捷键，例如 <kbd>Shift</kbd>/<kbd>Option</kbd> + <kbd>Enter</kbd> 换行等。 |
 | `/sandbox`                   | 切换沙盒模式。仅在支持的平台可用。                                                  |
 
 ### （1）/config
 
 `/config`用于打开`Claude Code`的设置界面，如下：
 
-![[Pasted image 20260519195535.png|400]]
+![[assets/Pasted image 20260519195535.png|400]]
 
 | 设置项                                       |                 当前值 | 含义                                                                                                                        |
 | ----------------------------------------- | ------------------: | ------------------------------------------------------------------------------------------------------------------------- |
@@ -374,7 +374,7 @@ Fast mode 当前只支持 Opus 4.7 和 Opus 4.6。
 | ask   | 执行前询问你     |
 | deny  | 拒绝某些工具调用   |
 
-![[Pasted image 20260519210640.png|500]]
+![[assets/Pasted image 20260519210640.png|500]]
 
 在权限界面中，可以查看、添加和删除规则、管理Workspace（工作目录）、并查看`auto`模式下最近拒绝的操作（Recently denied）。
 
@@ -397,7 +397,7 @@ Fast mode 当前只支持 Opus 4.7 和 Opus 4.6。
 
 `/memory`用于编辑`CLAUDE.md`记忆文件，开启或关闭 auto-memory，并查看 auto-memory entries。
 
-![[Pasted image 20260519211918.png|500]]
+![[assets/Pasted image 20260519211918.png|500]]
 
 
 ### （5）/agents
@@ -408,7 +408,7 @@ Agent 可以理解为有特定职责、工具权限、提示词配置的子代�
 
 `/agents`适合在项目中配置可复用的专业subagent。
 
-![[Pasted image 20260519212207.png|500]]
+![[assets/Pasted image 20260519212207.png|500]]
 
 在`/agents`页面下可以查看运行中的子代理、创建子代理。
 
@@ -418,7 +418,7 @@ Agent 可以理解为有特定职责、工具权限、提示词配置的子代�
 
 Hooks 可以在特定事件发生时自动执行，比如工具调用前、工具调用后、会话结束等。它适合用来做自动格式化、日志记录、权限增强、通知等自动化操作。
 
-![[Pasted image 20260519213124.png|500]]
+![[assets/Pasted image 20260519213124.png|500]]
 
 ### （7）/plugin
 
@@ -432,7 +432,7 @@ Hooks 可以在特定事件发生时自动执行，比如工具调用前、工�
 - LSP servers
 - monitors
 
-![[Pasted image 20260519213157.png|500]]
+![[assets/Pasted image 20260519213157.png|500]]
 
 插件适合把一组项目或团队常用能力整体分发。
 
@@ -453,7 +453,7 @@ Hooks 可以在特定事件发生时自动执行，比如工具调用前、工�
 - 按 token 数排序
 - 隐藏某些 Skill，使其不再出现在 `/` 菜单或不再被 Claude 自动使用
 
-![[Pasted image 20260519213425.png|500]]
+![[assets/Pasted image 20260519213425.png|500]]
 
 ### （10）/ide
 
@@ -469,11 +469,11 @@ Hooks 可以在特定事件发生时自动执行，比如工具调用前、工�
 
 如下图所示：
 
-![[Pasted image 20260519215748.png|500]]
+![[assets/Pasted image 20260519215748.png|500]]
 
 在 IDE 中选中对应代码，Claude Code可以直接感知并操作，修改的代码会以diff view 形式显示在 VS Code 中：
 
-![[Pasted image 20260519220044.png|500]]
+![[assets/Pasted image 20260519220044.png|500]]
 
 ### （11）/statusline
 
@@ -641,7 +641,7 @@ chmod +x ~/.claude/statusline.sh
 
 之后，启动`Claude Code`，就可以看到如下的状态栏了：
 
-![[Pasted image 20260519224809.png]]
+![[assets/Pasted image 20260519224809.png]]
 
 
 ### （12）/keybindings
@@ -652,18 +652,18 @@ chmod +x ~/.claude/statusline.sh
 
 `/theme` 用于切换 Claude Code 终端主题。
 
-![[Pasted image 20260519225804.png|500]]
+![[assets/Pasted image 20260519225804.png|500]]
 
 
 ### （14）/color
 
 `/color [color|default]` 用于设置当前会话框的颜色。
 
-![[Pasted image 20260519225853.png|500]]
+![[assets/Pasted image 20260519225853.png|500]]
 
 例如，下面设置为了紫色：
 
-![[Pasted image 20260519225924.png|500]]
+![[assets/Pasted image 20260519225924.png|500]]
 
 
 ### （15）/tui
@@ -674,17 +674,17 @@ chmod +x ~/.claude/statusline.sh
 
 `fullscreen` 会启用 fullscreen / alt-screen renderer，使 Claude Code 以更完整的 TUI 方式运行，输入框固定在底部，适合长任务和复杂工具调用场景。`/focus` 等功能需要 fullscreen renderer 才能使用。
 
-![[Pasted image 20260519230701.png|500]]
+![[assets/Pasted image 20260519230701.png|500]]
 
 ### （16）/terminal-setup
 
-`/terminal-setup` 用于配置当前终端与 Claude Code 的快捷键兼容性，典型用途是让 `Shift + Enter` 可以在输入框中插入换行，而不是提交 prompt。
+`/terminal-setup` 用于配置当前终端与 Claude Code 的快捷键兼容性，典型用途是让 <kbd>Shift</kbd> + <kbd>Enter</kbd> 可以在输入框中插入换行，而不是提交 prompt。
 
-在 macOS Terminal.app 里，`Option` 键默认可能被当作用来输入特殊字符的键，比如 `Option + Enter`用于换行。
+在 macOS Terminal.app 里，<kbd>Option</kbd> 键默认可能被当作用来输入特殊字符的键，比如 <kbd>Option</kbd> + <kbd>Enter</kbd> 用于换行。
 
 `bell`是终端里的提醒机制，以前可能是发出提示音，现在切换成 `visual bell` 后，提醒会以视觉方式出现，比如窗口闪一下、标签页提示、Dock 图标出现提醒点等，而不是发出声音。
 
-![[Pasted image 20260519231137.png|500]]
+![[assets/Pasted image 20260519231137.png|500]]
 
 
 
@@ -694,7 +694,7 @@ chmod +x ~/.claude/statusline.sh
 
 执行`/sandbox`的界面如下：
 
-![[Pasted image 20260519231725.png|500]]
+![[assets/Pasted image 20260519231725.png|500]]
 
 这里有三个选项：
 
@@ -725,13 +725,13 @@ chmod +x ~/.claude/statusline.sh
 
 `/status` 用于打开 Settings 界面的 Status 标签页，查看当前 Claude Code 状态。它可以在 Claude 正在响应时执行，不需要等待当前响应结束。
 
-![[Pasted image 20260519232240.png|500]]
+![[assets/Pasted image 20260519232240.png|500]]
 
 ### （2）/doctor
 
 `/doctor` 用于诊断 Claude Code 安装与配置健康状态。
 
-![[Pasted image 20260519232505.png|500]]
+![[assets/Pasted image 20260519232505.png|500]]
 
 ### （3）/help
 
@@ -831,4 +831,3 @@ chmod +x ~/.claude/statusline.sh
 | `/loop [interval] [prompt]`                     | 在当前会话保持打开时循环运行 Prompt。可指定间隔，也可让 Claude 自行控制节奏。别名：`/proactive`。                                                           |
 | `/simplify [focus]`                             | 检查最近变更的文件，寻找代码复用、质量和效率问题，并尝试修复。会并行启动三个 review agents，聚合发现后应用修复。                                                          |
 | `/fewer-permission-prompts`                     | 分析你过去常用的只读 Bash 和 MCP 工具调用，自动生成一组推荐 allowlist，写入项目 `.claude/settings.json`，减少以后反复出现的权限确认。                                |
-

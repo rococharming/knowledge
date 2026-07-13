@@ -89,7 +89,7 @@ ___
 | 粗斜体 | `***文本***` | ***粗斜体文本*** |
 | 删除线 | `~~文本~~` | ~~删除文本~~ |
 
-在 Obsidian 中，粗体快捷键通常为 `Ctrl + B`（Windows）或 `Command + B`（macOS），斜体快捷键通常为 `Ctrl + I` 或 `Command + I`。
+在 Obsidian 中，粗体快捷键通常为 <kbd>Ctrl</kbd> + <kbd>B</kbd>（Windows）或 <kbd>Command</kbd> + <kbd>B</kbd>（macOS），斜体快捷键通常为 <kbd>Ctrl</kbd> + <kbd>I</kbd> 或 <kbd>Command</kbd> + <kbd>I</kbd>。
 
 > [!warning] Obsidian 中文排版
 > 中文正文中的粗体标记两侧应留空格，例如：`这是 **重点内容** 示例`，以避免解析异常。
@@ -172,7 +172,7 @@ ___
 | `- [ ]` | 未完成 |
 | `- [x]` | 已完成 |
 
-在 Obsidian 中，通常可以使用 `Ctrl + L`（Windows）或 `Command + L`（macOS）切换任务状态。
+在 Obsidian 中，通常可以使用 <kbd>Ctrl</kbd> + <kbd>L</kbd>（Windows）或 <kbd>Command</kbd> + <kbd>L</kbd>（macOS）切换任务状态。
 
 # 五、代码
 
@@ -239,7 +239,7 @@ fn main() {
 
 ## 4. 图片
 
-标准 Markdown 图片语法是在链接前添加 `!`：
+标准 Markdown 图片语法是在链接前添加 <kbd>!</kbd>：
 
 ```markdown
 ![图片替代文本](https://example.com/image.jpg "可选标题")

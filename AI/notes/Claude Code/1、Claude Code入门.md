@@ -1,10 +1,10 @@
 # 一、简介
 
-`Claude Code`是Anthropic推出的AI代码工具。
+`Claude Code` 是 Anthropic 推出的 AI 代码工具。
 
-它能在终端或IDE中理解代码库、编辑文件、执行命令，并与开发工具协同工作，帮助开发者用**自然语言**完成代码阅读、开发、调试、重构、测试等任务。
+它能在终端或 IDE 中理解代码库、编辑文件、执行命令，并与开发工具协同工作，帮助开发者用**自然语言**完成代码阅读、开发、调试、重构、测试等任务。
 
-`Claude Code`能力建立在`Claude`模型之上，但也可以通过配置**接入第三方模型**。
+`Claude Code` 的能力建立在 `Claude` 模型之上，但也可以通过配置**接入第三方模型**。
 
 # 二、安装
 
@@ -14,7 +14,7 @@
 curl -fsSL https://claude.ai/install.sh | bash
 ```
 
-这是原生安装方式，支持后台自动更新 Claude Code 。但如果在后续配置文件中设置了`"CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"`，则不会自动更新。
+这是原生安装方式，支持后台自动更新 Claude Code。但如果在后续配置文件中设置了`"CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"`，则不会自动更新。
 
 下载完成后，执行：
 
@@ -24,7 +24,7 @@ claude --version
 
 如果看到版本，说明安装成功：
 
-![[image-20260427214629504.png|400]]
+![[assets/image-20260427214629504.png|400]]
 
 可以执行如下命令手动更新：
 
@@ -34,13 +34,13 @@ claude update
 
 如下图所示：
 
-![[image-20260427214617672.png|400]]
+![[assets/image-20260427214617672.png|400]]
 
 # 三、配置接入第三方模型
 
 ## 1、基本原理
 
-进入项目目录，首次启动`Claude Code`:
+进入项目目录，首次启动`Claude Code`：
 
 ```bash
 cd path/to/project
@@ -50,7 +50,7 @@ claude
 会提示登录，但这里不推荐使用官方接口，原因有两点：
 
 - 需要国外手机号验证，比较麻烦
-- Anthropic对中国管控较严，后续使用很有可能被封号
+- Anthropic 对中国管控较严，后续使用很有可能被封号
 
 因此，推荐**通过配置接入第三方模型**，需要配置 `BASE_URL + API_KEY + model` 映射。
 
@@ -73,7 +73,7 @@ claude
 
 首先进入`Minimax`开放平台：[Minimax](https://platform.minimaxi.com)，完成注册并登录。
 
-可以选择 订阅 Token Plan 或按量计费，生成对应的 API Key 后，复制备用。在本地编辑配置文件`~/.claude/settings.json`，在文件中增加如下内容：
+可以选择订阅 Token Plan 或按量计费，生成对应的 API Key 后，复制备用。在本地编辑配置文件`~/.claude/settings.json`，在文件中增加如下内容：
 
 ```json
 {
@@ -106,7 +106,7 @@ claude
 | `ANTHROPIC_DEFAULT_FABLE_MODEL_NAME`       | `MiniMax-M3`                         | 控制 `/model` 模型选择器里 `fable` 这一项的显示名称。它主要影响 UI 展示，不是实际发送给 API 的模型 ID。`_NAME` 后缀变量用于自定义 pinned model 在模型选择器里的显示名。                                                               |
 
 > [!note]
-> 注意：需要将`**ANTHROPIC_API_KEY**`的值填充为刚才复制的 API Key ，注意 API Key 不要给别人，如果泄漏了重新生成。
+> 注意：需要将`ANTHROPIC_API_KEY`的值填充为刚才复制的 API Key，注意 API Key 不要给别人，如果泄漏了重新生成。
 
 上述的 `env` 键的本质是给 `Claude Code` 使用的环境变量，让它对每次会话都生效。
 
@@ -120,7 +120,7 @@ Kimi 有两个平台入口：
 
 Kimi API 开放平台是更通用的 API 平台，用来按 API Key 调用模型。Kimi Code 则是订阅制，是 Kimi 专门给编程工具准备的一套 Coding API。
 
-以 Kimi API 开放平台 为例，新建 API Key 复制备用。
+以 Kimi API 开放平台为例，新建 API Key 复制备用。
 
 在本地编辑配置文件`~/.claude/settings.json`，在文件中增加如下内容：
 
@@ -153,7 +153,7 @@ Kimi API 开放平台是更通用的 API 平台，用来按 API Key 调用模型
 
 登录后，在右边侧边栏找到 API Keys，点击「创建 API key」：
 
-![[Pasted image 20260514142220.png|600]]
+![[assets/Pasted image 20260514142220.png|600]]
 
 复制后保留备用。
 
@@ -163,7 +163,7 @@ Kimi API 开放平台是更通用的 API 平台，用来按 API Key 调用模型
 {
   "env": {
     "ANTHROPIC_BASE_URL": "https://api.deepseek.com/anthropic",
-        "ANTHROPIC_AUTH_TOKEN": "YOUR API KEY",
+    "ANTHROPIC_AUTH_TOKEN": "YOUR API KEY",
     "ANTHROPIC_DEFAULT_FABLE_MODEL": "deepseek-v4-pro[1M]",
     "ANTHROPIC_DEFAULT_FABLE_MODEL_NAME": "deepseek-v4-pro",
     "ANTHROPIC_DEFAULT_HAIKU_MODEL": "deepseek-v4-flash",
@@ -179,9 +179,9 @@ Kimi API 开放平台是更通用的 API 平台，用来按 API Key 调用模型
 
 ## 5、接入智谱GLM
 
-进入 [智谱AI开放平台](https://bigmodel.cn/)，注册账号并登录。
+进入 [智谱 AI 开放平台](https://bigmodel.cn/)，注册账号并登录。
 
-智谱 GLM 也可以选择 按用量计费 和 订阅 Coding Plan。
+智谱 GLM 也可以选择按用量计费和订阅 Coding Plan。
 
 这里以按用量计费为例，生成 API Key 复制备用。
 
@@ -217,9 +217,9 @@ claude
 
 即可进入 Claude Code 会话交流了，如下图所示：
 
-![[Pasted image 20260709103931.png|400]]
+![[assets/Pasted image 20260709103931.png|400]]
 
-现在，可以在对话框输入`/`开头（Slash Command）的命令，熟悉 Claude Code`的一些常用操作了。
+现在，可以在对话框输入`/`开头（Slash Command）的命令，熟悉 Claude Code 的一些常用操作了。
 
 ## 2、/usage
 
@@ -227,7 +227,7 @@ claude
 
 如图所示：
 
-![[Pasted image 20260709112423.png|500]]
+![[assets/Pasted image 20260709112423.png|500]]
 
 输出信息解释如下：
 
@@ -251,9 +251,9 @@ claude
 | **Skills**                | 已加载技能列表，及上下文预算占用情况                                       |
 | **Version** **locks**     | 运行中的版本锁（防止多实例冲突）                                         |
 
-示例：jeijei
+示例：
 
-![[Pasted image 20260709132248.png|500]]
+![[assets/Pasted image 20260709132248.png|500]]
 
 这里还可以看到自动更新是 disabled 的，因为设置了 `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC`。如果希望打开自动更新，移除原先配置中的 `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC`。
 
@@ -261,7 +261,7 @@ claude
 
 `/status` 用于打开 `Claude Code` 设置界面的 Status 页面，查看当前环境状态，例如版本、当前模型、账号状态、连接状态等信息。
 
-![[Pasted image 20260709132655.png|500]]
+![[assets/Pasted image 20260709132655.png|500]]
 
 部分字段解释：
 
@@ -300,7 +300,7 @@ claude
 /compact 保留数据库结构、接口变更和未完成 TODO
 ```
 
-即使不主动压缩，`Claude Code`也会在上下文临近**自动进行上下文压缩**。但自己主动压缩上下文是一个良好的习惯。
+即使不主动压缩，`Claude Code` 也会在上下文临近上限时**自动进行上下文压缩**。但自己主动压缩上下文是一个良好的习惯。
 
 
 ## 7、/model和/effort
@@ -309,7 +309,7 @@ claude
 
 `/model` 后不带模型名称时，会打开模型选择器。例如：
 
-![[Pasted image 20260709133121.png|400]]
+![[assets/Pasted image 20260709133121.png|400]]
 
 `/model` 后带模型名称时，则可以直接切换到指定模型。
 
@@ -321,13 +321,13 @@ claude
 
 对于支持 `effort level` 的模型，还可以执行 `/effort`：
 
-![[Pasted image 20260709133217.png|400]]
+![[assets/Pasted image 20260709133217.png|400]]
 
 
 
 ## 8、/resume
 
-`/resume` 用于恢复或切换到之前的会话。可以通过会话 ID或会话名称恢复，也可以不带参数打开会话选择器。 `/continue` 是它的别名。
+`/resume` 用于恢复或切换到之前的会话。可以通过会话 ID 或会话名称恢复，也可以不带参数打开会话选择器。`/continue` 是它的别名。
 
 示例：
 
@@ -337,76 +337,75 @@ claude
 /resume <session-id>
 ```
 
-执行`/resume`会打开会话选择器：
+执行 `/resume` 会打开会话选择器：
 
-![[image-20260427225053266.png|500]]
+![[assets/image-20260427225053266.png|500]]
 
 ## 9、/exit
 
-`/exit` 用于退出当前`Claude Code`会话，返回 shell。它的别名是 `/quit`。
-
-
+`/exit` 用于退出当前 `Claude Code` 会话，返回 shell。它的别名是 `/quit`。
 
 # 五、权限模式
 
-权限模式（Permission Mode）用于控制`Claude Code`会话在编辑文件、执行命令或发起网络请求前，是否需要向用户确认。不同模式对应不同的自主程度：监督越多，越安全；确认越少，效率越高，但风险也更大。
+权限模式（Permission Mode）用于控制 Claude Code 会话在编辑文件、执行命令或发起网络请求前，是否需要向用户确认。不同模式对应不同的自主程度：监督越多，越安全；确认越少，效率越高，但风险也更大。
 
 选择什么权限模式，依据具体的实际情况来定。
 
-有关权限模式的更详细介绍参考[[3、Permission Mode|权限模式]]。
+日常使用中，Claude Code 会话启动后默认有三种权限模式：
 
-日常使用中，`Claude Code`会话打开默认有三种权限模式：
+- `default`：默认模式。该模式下，Claude Code 可以读取文件，但进行文件编辑、运行命令或其他可能产生影响的操作前，会先向你确认。
+- `acceptEdits`：自动编辑模式。不仅可以读取文件，同时自动批准在**工作目录内**进行文件创建和编辑。
+- `plan`：计划模式。它也是只读模式。在该模式下，Claude Code 会阅读和分析代码，探索项目结构，并给出修改方案，但不会直接修改源代码。`plan` 并不是完全不执行命令，`Claude Code` 仍然可能运行相关命令进行探索，只是不会编辑代码和文件。
 
-- `default`：默认模式，它是最保守，最适合日常使用的模式。**在该模式下，`Claude Code` 可以读取文件，但进行文件编辑、运行命令或其他可能产生影响的操作前，会先向你确认**。简单来说就是**边做边问**，该模式适合新手、敏感项目、生产相关代码，或者希望逐步审查 `Claude Code` 每一步操作的场景。
-- `acceptEdits`：自动编辑模式，它可以读取文件，自动批准 `Claude Code` 在**工作目录内**进行文件创建和编辑。它会自动批准一些常见文件系统命令，例如 `mkdir`、`touch`、`rm`、`mv`、`cp` 等。但它并不是完全放开，如果操作超出工作目录、涉及[[3、Permission Mode#^protected-path|受保护路径]]，或者涉及更敏感的 Bash 命令，`Claude Code` 仍然会和你确认。简单来说就是**直接改，但危险操作仍会问**。该模式适合你已经比较信任当前任务方向，希望提高迭代效率，之后再通过编辑器或 `git diff` 统一审查改动的场景。
-- `plan`：规模模式，它也是只读模式。在该模式下，`Claude Code` 会阅读和分析代码，探索项目结构，并给出修改方案，但不会直接修改源代码。`plan` 并不是完全不执行命令，`Claude Code` 仍然可能运行相关命令进行探索，只是不会编辑代码和文件。简单来说就是**先看、先分析、先出方案，不直接动代码**。适合大型改造前的方案设计、陌生项目梳理、代码评审、重构计划制定等。
+进入 Claude Code 会话后，默认是`default`模式：
 
-进入`Claude Code`会话后，默认是`default`模式：
+![[assets/Pasted image 20260713022422.png|600]]
 
-![[image-20260427231651146.png|500]]
-
-按`Shift + Tab`键在权限模式之间循环切换。
+按 <kbd>Shift</kbd> + <kbd>Tab</kbd> 键在权限模式之间循环切换。
 
 ```text
 default -> acceptEdits -> plan
 ```
 
 当前模式会显示在状态栏中，如下：
-![[image-20260427232015230.png|500]]
 
-![[image-20260427232042012.png|500]]
+![[assets/Pasted image 20260713022548.png|600]]
 
 
-`Claude Code`还有**Yolo 模式**：`bypassPermissions`，也就是跳过权限检查的模式。
+![[assets/Pasted image 20260713022607.png|600]]
 
-`bypassPermissions`会禁用权限提示和安全检查，工具调用会立即执行，包括受保护路径。可以简单理解为：**基本不问，直接执行**。
+此外，Claude Code 还有 **Yolo 模式**：`bypassPermissions`，也就是跳过权限检查。
 
-它的自主性最高，但风险也最大。适合非常确定环境安全、任务边界清晰，并且你愿意承担误操作风险的场景。不建议在真实工作目录、生产项目、重要代码仓库或包含敏感凭据的环境中随便使用。
+`bypassPermissions`会禁用权限提示和安全检查，工具调用会立即执行。可以简单理解为：**基本不问，直接执行**。
 
-启动`Claude Code`时，如果增加`--dangerously-skip-permissions`，就会进入`bypassPermissions`。
+它的自主性最高，但风险也最大。适合非常确定环境安全、任务边界清晰，并且你愿意承担误操作风险的场景。
 
-```bash
+启动 Claude Code 时，如果增加`--dangerously-skip-permissions`，就会进入`bypassPermissions`。
+
+```shell
 claude --dangerously-skip-permissions
 ```
 
-此时`bypassPermissions`也加入了`Shift + Tab`的模式循环中。
+此时`bypassPermissions`也加入了 <kbd>Shift</kbd> + <kbd>Tab</kbd> 的模式循环中。
 
-也可以指定 `--permission-mode` 为 `bypassPermissions` 进入：
+也可以通过指定 `--permission-mode` 为 `bypassPermissions` 进入：
 
-```bash
+```shell
 claude --permission-mode bypassPermissions
 ```
 
 如图所示：
 
-![[image-20260427233202841.png|500]]
+![[assets/Pasted image 20260713022832.png|600]]
 
 
-# 六、简单实战
+有关权限模式的更详细介绍参考[[3、Permission Mode|权限模式]]。
 
-下面进行一个简单实战：让`Claude Code`实现一个网页版的TodoList应用：
+# 六、快速入门实战
 
-这里先计划方案，创建项目目录进入会话后，先切换到`plan mode`，在对话框输入：
+下面进行一个简单实战：让 Claude Code 实现一个网页版的待办事项应用：
+
+这里先指定计划方案，创建项目目录进入会话后，先切换到`plan mode`，在对话框输入：
 
 ```text
 设计一个 todo 应用，通过 HTML + CSS + JavaScript 实现，请你规划下需求和技术方案
@@ -414,11 +413,11 @@ claude --permission-mode bypassPermissions
 
 如图所示：
 
-![[image-20260427234137834.png|600]]
+![[assets/image-20260427234137834.png|600]]
 
-在整个过程中，`Claude Code`会和你确认一些功能需求。确认完成后，它会生成一份较完整的实现计划。
+在整个过程中，Claude Code 会和你确认一些功能需求。确认完成后，它会生成一份较完整的实现计划。
 
-如果计划符合你的预期，可以让`Claude Code`直接按计划自动执行；
+如果计划符合你的预期，可以让 Claude Code 直接按计划开始执行；
 
 如果对当前计划还不满意，也可以继续补充需求，再让它重新调整方案。
 
@@ -426,30 +425,30 @@ claude --permission-mode bypassPermissions
 
 **沟通需求**：
 
-![[image-20260427234331376.png|600]]
+![[assets/image-20260427234331376.png|600]]
 
-![[image-20260427234350263.png|600]]
+![[assets/image-20260427234350263.png|600]]
 
-![[image-20260427234413903.png|600]]
+![[assets/image-20260427234413903.png|600]]
 
 **生成方案**：
 
-![[image-20260427234632965.png|600]]
+![[assets/image-20260427234632965.png|600]]
 
 **执行计划**：
 
-![[image-20260427234715436.png|600]]
+![[assets/image-20260427234715436.png|600]]
 
-最终的效果如下：
+任务完成后，最终的效果如下：
 
-![[image-20260427234915059.png|600]]
+![[assets/image-20260427234915059.png|600]]
 
-# 七、补充
+# 七、Tips
 
-1. 在`Claude Code`会话中，按下`!`可进入Bash执行命令
-2. macOS下，在对话框输入内容，换行需要按`Option + Shift`。如果使用的终端是`Terminal`，还需要在`Terminal`设置勾选如下选项才能生效
+1. 在 Claude Code 会话中，按下 <kbd>!</kbd> 可进入 Bash 执行命令。
+2. macOS 下，在对话框输入内容，换行需要按 <kbd>Option</kbd> + <kbd>Enter</kbd>。如果使用的终端是`Terminal`，还需要在`Terminal`设置中勾选「将 <kbd>Option</kbd> 键用作 <kbd>Meta</kbd> 键」才能生效；Windows 下的换行快捷键是 <kbd>Shift</kbd> + <kbd>Enter</kbd>。
 
-![[image-20260427235238808.png|500]]
+![[assets/image-20260427235238808.png|500]]
 
-3. 如果觉得在对话框输入内容不方便，按下`Ctrl + G`可以打开默认编辑器来编辑对话内容，比如默认打开`VS Code`。
-4. 对话框支持图片输入，可以直接将图片拖到对话框。
+3. 如果觉得在对话框输入内容不方便，按下 <kbd>Ctrl</kbd> + <kbd>G</kbd> 可以打开默认编辑器来编辑对话内容，比如默认打开 `VS Code`。
+4. 对话框支持图片输入，可以直接将图片拖到对话框或按 <kbd>Ctrl</kbd> + <kbd>V</kbd> 粘贴。

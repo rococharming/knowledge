@@ -1,136 +1,112 @@
 # 全局 Schema — LLM Wiki 知识库
 
-本仓库是一个基于 Karpathy [LLM Wiki](llm-wiki.md) 规范的多领域个人知识库。由 **LLM 维护**、**Obsidian 浏览**、**Git 管理**。
-
----
+本仓库是基于 Karpathy [LLM Wiki](llm-wiki.md) 规范的多领域个人知识库，由 **LLM 维护**、**Obsidian 浏览**、**Git 管理**。
 
 ## 一、仓库架构
 
-```
+```text
 knowledge/
-├── AGENTS.md              # 全局规则主文件（所有领域通用）
+├── AGENTS.md              # 全局规则主文件
 ├── CLAUDE.md -> AGENTS.md # Claude Code 兼容入口
-├── llm-wiki.md            # LLM Wiki 规范原文（Karpathy）
-├── index.md               # 顶层目录 — 领域列表与路由（标注各领域 wiki 页面数）
+├── index.md               # 顶层领域路由
 ├── assets/                # 共享媒体资产
-├── <领域>/                # 每个领域独立目录
-│   ├── domain.md          # 领域规则：名称约定、分类体系、qmd collection 名等
-│   ├── raw/               # 不可变层 — 来源文档（只读）
-│   ├── wiki/              # 编译输出层 — LLM 专属工作区
-│   │   ├── index.md       # 领域总目录：按分类组织的页面索引
-│   │   └── log.md         # 操作日志（仅追加）
-│   └── notes/             # 个人笔记区 — 用户手写，LLM 不修改
-│
-└── <新领域>/
+└── <领域>/
+    ├── domain.md          # 领域规则
+    ├── raw/               # 来源文档，只读
+    ├── wiki/              # LLM 编译输出层
+    │   ├── index.md
+    │   └── log.md
+    └── notes/             # 用户个人笔记，禁止 LLM 修改
 ```
 
-### 三层分离（每个领域内）
+### 三层分离
 
 | 层 | 目录 | 权限 | 说明 |
 |---|---|---|---|
-| **不可变层** | `raw/` | **内容只读** | 来源文档按类型分子目录。LLM 从中读取但**绝不修改文件内容**；ingest 完成后可将原文件移动到 `archive/`，并在 `log.md` 中记录归档路径。 |
-| **编译输出层** | `wiki/` | **LLM 专属** | LLM 创建、更新、提炼知识页面，解决矛盾，维护交叉引用。若手动修改 wiki，应让 LLM 随后检查链接、`index.md`、`log.md` 与内容一致性。 |
-| **个人笔记区** | `notes/` | **禁止修改** | 用户手写的个人笔记、日记、思考。LLM **绝不写入或修改**此目录。 |
+| 不可变层 | `raw/` | 内容只读 | LLM 可读取但不改内容；ingest 后可移动到 `archive/` 并记录日志 |
+| 编译输出层 | `wiki/` | LLM 专属 | 创建、更新、提炼页面，维护交叉引用、索引和日志 |
+| 个人笔记区 | `notes/` | 禁止修改 | 用户手写笔记、日记、思考，LLM 不写入、不修改 |
 
 ### Schema 分层
 
-- **全局规则**（本文件 `AGENTS.md`）：所有领域通用的架构约定、文件规范、操作原则。根目录 `CLAUDE.md` 是指向 `AGENTS.md` 的软链接，供 Claude Code 自动加载同一份全局规则。
-- **领域规则**（`<领域>/domain.md`）：该领域特有的名称约定、分类体系、qmd collection 名称、领域术语等。领域目录不使用 agent 专属文件名；处理某个领域前，必须主动读取该领域的 `domain.md`。新增领域时必须创建 `domain.md`；已有领域若结构不完整，可用 `init-domain` skill 检查并补充。
+- 全局规则：`AGENTS.md`。`CLAUDE.md` 必须是指向 `AGENTS.md` 的软链接。
+- 领域规则：`<领域>/domain.md`。处理任何领域前必须读取对应 `domain.md`。
+- 新增领域必须创建 `domain.md`；补全领域结构使用 `init-domain` skill，不覆盖已有内容。
 
-### 导航与查询机制
+### 导航与查询
 
-查询时 LLM 通过**双层索引**定位内容：
+查询通过双层索引定位内容：
 
-1. **顶层 `index.md`** — 领域路由表，列出各领域的 `wiki/index.md` 链接，并标注各领域当前 wiki 页面数，帮助快速判断规模。
-2. **领域 `wiki/index.md`** — 该领域的内容总目录，按分类组织页面链接与摘要。
+1. 顶层 `index.md`：领域路由表，标注各领域 `wiki/index.md` 与页面数。
+2. 领域 `wiki/index.md`：该领域内容总目录，按分类组织页面链接与摘要。
 
-**查询流程**：根据问题内容判断涉及哪些领域 → 读取顶层 `index.md` 定位领域 → 读取对应领域的 `domain.md` → 读取该领域 `wiki/index.md` → 深入具体页面 → 综合回答。
+处理领域内 ingest、query、lint 或结构维护任务前，必须先读该领域 `domain.md`，再读 `wiki/index.md` 或具体页面。
 
-处理任何领域内的 ingest、query、lint 或结构维护任务前，必须先读取该领域的 `domain.md`，再读取 `wiki/index.md` 或具体页面。
+### Wiki 页面分类
 
-### 页面分类约定
-
-`wiki/` 内的页面按内容类型分类，建议统一在 `index.md` 中组织：
+`wiki/` 页面按内容类型组织，领域可在 `domain.md` 中扩展分类：
 
 | 类型 | 说明 | 示例 |
 |---|---|---|
-| **summaries** | 单个来源的摘要 | `[[某篇文章摘要]]` |
-| **entities** | 实体页面（人、组织、产品、框架） | `[[Claude Code]]` |
-| **concepts** | 概念页面（方法论、技术、理论） | `[[RAG]]` |
-| **comparisons** | 对比分析 | `[[RAG vs Fine-tuning]]` |
-| **overviews** | 领域概览 | `[[AI 编程工具概览]]` |
-| **syntheses** | 综合结论、最终判断 | `[[LLM 编程最佳实践]]` |
-| **recipes** | 可复用方法、配方、流程模板 | `[[PPT 制作流程]]` |
+| summaries | 单来源摘要 | `[[某篇文章摘要]]` |
+| entities | 人、组织、产品、框架等实体 | `[[Claude Code]]` |
+| concepts | 概念、方法、理论 | `[[RAG]]` |
+| comparisons | 对比分析 | `[[RAG vs Fine-tuning]]` |
+| overviews | 领域概览 | `[[AI 编程工具概览]]` |
+| syntheses | 综合结论、最终判断 | `[[LLM 编程最佳实践]]` |
+| recipes | 可复用流程、配方 | `[[PPT 制作流程]]` |
 
-各领域可在上述基础上扩展额外分类，具体约定写入该领域 `domain.md`。
+### raw/ 固定分类
 
-### raw/ 分类（固定）
+`raw/` 下固定使用：`articles/`、`papers/`、`books/`、`videos/`、`podcasts/`、`others/`、`archive/`。
 
-`raw/` 下的子目录按来源类型划分，分类固定：
+## 二、核心操作
 
-| 目录 | 说明 |
-|---|---|
-| `articles/` | 网络文章、博客 |
-| `papers/` | 学术论文 |
-| `books/` | 书籍章节 |
-| `videos/` | 视频转录 |
-| `podcasts/` | 播客转录 |
-| `others/` | 其他来源 |
-| `archive/` | 已归档（ingest 后移动） |
+执行下列操作时必须优先调用对应 skill；skill 不可用时才按本文件原则做最小 fallback，并说明降级原因。
 
----
+| 操作 | Skill | 含义 |
+|---|---|---|
+| Ingest | `ingest` | 将 `raw/` 新素材提炼整合到 `wiki/`，更新 `index.md` / `log.md`，归档 raw |
+| Query | `query` | 基于 `wiki/` 回答问题，可将高价值结果归档为 wiki 页面 |
+| Lint | `lint` | 健康检查：死链、孤立页面、矛盾、陈旧内容、缺失引用、数据空白 |
 
-## 二、核心操作（概述）
-
-知识库有三种操作。完整工作流由独立 skill 实现，此处只说明概念：
-
-> 执行这些操作时，必须优先调用对应 skill（`ingest`、`query`、`lint`）。如果 skill 不可用，才按本文件中的架构原则执行最小 fallback 流程，并在结果中说明降级原因。
-
-| 操作 | 含义 |
-|---|---|
-| **Ingest** | 将 `raw/` 中的新素材阅读、提取、整合到 `wiki/`。可能触及 10+ 页面，更新 `index.md` 和 `log.md`。 |
-| **Query** | 基于 `wiki/` 内容回答问题。有价值的答案可归档为新 wiki 页面，使探索成果复合增长。 |
-| **Lint** | 定期健康检查：死链、孤立页面、矛盾主张、陈旧内容、缺失交叉引用、重要概念缺页、数据空白。 |
-
-**log.md 只记录以上三种操作**。init-domain 等搭建类操作不写入日志。
-
----
+`log.md` 只记录以上三类操作。`init-domain` 等搭建类操作不写入日志。
 
 ## 三、Obsidian 生态与 Skill 使用
 
-本仓库的底层是本地 Markdown 文件，但使用 **Obsidian** 作为浏览和阅读层。因此文件操作应遵循 Obsidian 生态规范。
+本仓库底层是 Markdown 文件，但使用 **Obsidian** 作为浏览和阅读层。因此笔记、画布、Bases、网页素材等操作应优先使用对应 skill，而不是直接用通用文件工具。
 
-### 默认使用 Obsidian Skills
+| Skill | 定位 | 触发场景 |
+|---|---|---|
+| `obsidian-cli` | Obsidian 应用操作入口 | 读取、创建、搜索、追加笔记，管理属性、标签、任务、反向链接 |
+| `obsidian-markdown` | Obsidian Markdown 语法规范 | `.md` 笔记、frontmatter、维基链接、嵌入、Callout、标签 |
+| `json-canvas` | Canvas 专用 | `.canvas`、思维导图、流程图、节点和边线 |
+| `obsidian-bases` | Bases 专用 | `.base`、表格/卡片视图、筛选器、公式、摘要 |
+| `defuddle` | 网页清洗入口 | 网页 URL、文章、博客、在线文档提取为干净 Markdown |
 
-当用户要求创建、编辑、读取、搜索、管理笔记或文件时，**优先调用对应的 Obsidian skill**，而非直接使用通用文件操作工具。
+使用原则：
 
-| 场景 | 触发的 Skill |
-|---|---|
-| 创建/编辑 `.md` 文件 | `obsidian-markdown` |
-| 创建/编辑 `.canvas` 文件 | `json-canvas` |
-| 创建/编辑 `.base` 文件 | `obsidian-bases` |
-| 与 Obsidian 应用交互（读取/创建/搜索笔记、管理任务属性等） | `obsidian-cli` |
-| 提取网页内容 | `defuddle` |
+- 仓库操作优先 `obsidian-cli`：读取、创建、搜索、追加、属性、标签、反向链接等任务，优先通过 Obsidian CLI。
+- Markdown 内容规范用 `obsidian-markdown`：任何创建或修改 `.md` 文件的操作，都必须先经过 `obsidian-markdown`skill 检查/生成内容。
+- 专门文件用专门 skill：`.canvas` 用 `json-canvas`；`.base` 用 `obsidian-bases`。
+- 网页内容先清洗：标准网页 URL 先用 `defuddle` 提取干净 Markdown，再决定写入笔记、进入 `raw/`，或交给 `note-writer` / `ingest`。
 
-### 例外情况
+可直接使用通用文件操作的例外：
 
-仅在以下情况可直接使用通用文件操作：
-- 用户明确要求不使用 skill
-- 操作目标明确不是 Obsidian 文件（如纯代码文件、配置文件）
-- skill 不可用时回退到通用工具
+- 用户明确要求不使用 skill。
+- 操作目标明确不是 Obsidian 文件，如纯代码文件、配置文件。
+- 对应 skill 不可用，只能 fallback。
 
-### 搜索规范
+搜索规范：
 
-- **标签搜索**：优先使用 `obsidian tag` 命令，比全文搜索更规范。
-- **wiki 页面搜索**：小规模使用 `index.md`；规模增大后使用 qmd CLI（每个领域独立 collection，具体名称见该领域 `domain.md`）。
-
----
+- 标签搜索优先使用 `obsidian tag` 命令。
+- wiki 页面小规模用 `index.md`；大规模用 qmd CLI。每个领域 collection 名见 `domain.md`。
 
 ## 四、Wiki 页面规范
 
-### Markdown 页面规范
+### Frontmatter
 
-所有 wiki 页面的 `.md` 笔记应包含标准 frontmatter：
+所有 wiki 页面应包含标准 frontmatter：
 
 ```markdown
 ---
@@ -141,37 +117,37 @@ source_count: 3
 ---
 ```
 
-- `title`：页面标题
-- `date`：创建或最后更新日期
-- `tags`：主题标签（可用 frontmatter 或正文 `#标签`）
-- `source_count`：该页面基于多少个 raw 素材（可选）
+- `title`：页面标题。
+- `date`：创建或最后更新日期。
+- `tags`：主题标签，可用 frontmatter 或正文 `#标签`。
+- `source_count`：页面基于多少个 raw 素材；普通 ingest 页面为正整数，Query 归档页固定为 `0`。
+- `type`：页面类型，可选。省略时表示普通 wiki 页面；Query 归档页必须写 `type: query_archive`。
+- `source_ids`：可选稳定溯源字段；普通 ingest 页面可记录 raw 归档路径与 ingest 日期，用于后续陈旧检测和来源追踪。
 
-### Obsidian 特殊字符
+### Query 归档页
 
-- 使用粗体语法时，`**加粗内容**` 两侧必须留空格，避免 Obsidian 解析异常。
+Query 归档页是基于已有 wiki 页面和一次查询回答形成的二次综合页面，不直接来自 raw 素材。
 
-在 Markdown 标题和普通正文中，`<` 可能被 Obsidian 解析为 HTML 语法，导致该位置之后的内容无法正常渲染。
+Query 归档页必须满足：
 
-书写 Rust 泛型等包含尖括号的文本时，每个不在行内代码或代码围栏中的 `<` 都必须转义为 `\<`：
+- frontmatter 包含 `type: query_archive`。
+- `source_count: 0`，表示没有直接 raw 来源。
+- 正文包含 `## 基于页面`，列出本次综合依据的 wiki 页面，使用 `[[页面名]]`。
+- 正文底部仍保留 `## 来源`，写明 `Query 归档（YYYY-MM-DD）` 和问题摘要。
+- 可以放在 `concepts/`、`comparisons/`、`syntheses/`、`overviews/`、`recipes/` 等语义分类下，不单独强制新目录。
+- 跨领域 Query 归档默认放入最主要领域；`## 基于页面` 可用 `领域/[[页面名]]` 辅助辨认，正文 wiki 链接仍优先同领域页面。
+- Query 归档页是 point-in-time 综合；后续相关基础页面变化时，由 lint 报告是否需要刷新，不自动级联更新。
 
-- 正确：`Arc\<Mutex\<T>>`
-- 错误：`Arc<Mutex<T>>`
+### Obsidian Markdown 规则
 
-反引号包裹的行内代码和代码围栏内的 `<` 不需要转义。创建或修改 Markdown 笔记后，必须检查所有标题是否含有未转义且不在行内代码中的 `<`。
-
-### 链接与引用
-
-- **内部链接**：使用 `[[维基链接]]` 语法，Obsidian 中可点击跳转。
-- **图片/附件**：使用 `![[文件名]]` 嵌入语法。
-- **附件存放**：附件统一存放顶层 `assets/`
-
-### 标签系统
-
-- 正文内标签：`#标签`
-- frontmatter 标签：`tags: [标签1, 标签2]`
-- 领域特有标签体系在 `<领域>/domain.md` 中定义。
-
----
+- 内部链接使用 `[[维基链接]]`。
+- 图片/附件使用 `![[文件名]]`，附件统一放顶层 `assets/`。
+- 粗体语法两侧留空格，避免 Obsidian 解析异常。
+- Markdown 标题和普通正文中，未包在反引号或代码块里的 `<` 必须转义为 `\<`，如 `Arc\<Mutex\<T>>`。
+- 行内代码和代码围栏内的 `<` 不转义。
+- 快捷键统一使用 HTML `<kbd>` 标签标注，例如 <kbd>Ctrl</kbd> + <kbd>G</kbd>。
+- 创建或修改 Markdown 笔记后，必须检查标题是否含有未转义的 `<`。
+- 标签可写正文 `#标签` 或 frontmatter `tags: [标签1, 标签2]`；领域标签体系写入 `<领域>/domain.md`。
 
 ## 五、多领域查询与搜索策略
 
@@ -179,25 +155,35 @@ source_count: 3
 
 | 查询类型 | 小规模 | 大规模 |
 |---|---|---|
-| **单领域** | 该领域 wiki 页面数 ≤ 300 | 该领域 wiki 页面数 > 300 |
-| **多领域** | 涉及领域页面数总和 ≤ 300 | 涉及领域页面数总和 > 300 |
+| 单领域 | 该领域 wiki 页面数 ≤ 300 | 该领域 wiki 页面数 > 300 |
+| 多领域 | 涉及领域页面数总和 ≤ 300 | 涉及领域页面数总和 > 300 |
 
-顶层 `index.md` 应为每个领域标注当前 wiki 页面数，便于快速判断。
+顶层 `index.md` 应标注各领域当前 wiki 页面数。
 
 ### 小规模：index.md 模式
 
-1. LLM 快速扫一眼目录结构，了解有哪些领域
-2. 根据用户问题内容判断涉及哪些领域（用户也可能显式指定）
-3. 并行读取相关领域的 `wiki/index.md`
-4. 从 `index.md` 中定位最相关的页面链接
-5. 读取具体页面内容
-6. 综合回答，带 `[[引用]]`
+1. 扫顶层 `index.md` 判断领域。
+2. 读取相关领域 `domain.md` 与 `wiki/index.md`。
+3. 从索引定位具体页面。
+4. 读取页面后综合回答，并带 `[[引用]]`。
 
 ### 大规模：qmd 模式
 
-超出阈值时启用 `qmd search` 做 BM25 关键词匹配，默认检索所有 collection（跨领域）。
+超过阈值时启用 `qmd search` 做 BM25 关键词匹配，默认检索相关领域 collection。
 
-**索引维护**：
+qmd 路径语义：
 
-- `ingest` 后自动执行 `qmd update`
-- `query` 进入 qmd 模式前自动执行 `qmd update`，确保跨机器切换时索引不过期
+- 所有 qmd 命令从知识库根目录执行，即 `/Users/songpengfei/knowledge`。
+- 每个领域的 `domain.md` 必须声明 `collection 名称` 和 `collection root`。
+- `collection root` 一律写成相对知识库根目录的路径：`<领域>/wiki`，例如 `Rust/wiki`、`AI/wiki`。
+- 禁止在全局规则或领域规则里把 qmd 路径写成裸 `./wiki/`，因为它依赖当前工作目录，容易建错 collection。
+
+索引维护：
+
+- `ingest` 后从知识库根目录执行 `qmd update -c <collection>`。
+- `query` 进入 qmd 模式前，从知识库根目录对涉及 collection 执行 `qmd update -c <collection>`，避免跨机器切换导致索引过期。
+- `lint` 的确定性检查应体检 qmd 配置和 collection 可用性；缺少 qmd CLI 时只报告，不阻塞其他结构修复。
+
+### README 定位
+
+`README.md` 是给人阅读的入口说明；顶层 `index.md` 才是 LLM 路由的权威来源。两者不一致时，以 `index.md` 和各领域 `domain.md` 为准，并在维护时同步 README。

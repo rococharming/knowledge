@@ -28,7 +28,7 @@ Claude Code 提供六种权限模式（Permission Mode），在便利性和监�
 
 三种切换途径：
 
-1. **会话中**：按 `Shift + Tab` 循环切换（`dontAsk` 和未启用的模式不在循环中）
+1. **会话中**：按 <kbd>Shift</kbd> + <kbd>Tab</kbd> 循环切换（`dontAsk` 和未启用的模式不在循环中）
 2. **启动时**：`claude --permission-mode <mode>`，也支持 `-p` 非交互式运行
 3. **配置文件**：用户级 `~/settings.json` 或项目级 `.claude/settings.json`
 

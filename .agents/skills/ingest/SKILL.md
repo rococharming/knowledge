@@ -16,9 +16,9 @@ description: |
 
 ## 概述
 
-将 `<domain>/raw/` 下的 Markdown 素材阅读、提取、整合到 `<domain>/wiki/`，并更新索引、日志和 qmd 搜索索引。
+将 `<domain>/raw/` 下的 Markdown 素材阅读、提取、整合到 `<domain>/wiki/`，执行必要的级联更新，并更新索引、日志和 qmd 搜索索引。
 
-**核心职责边界**：ingest 只处理"新素材 vs 现有页面"的矛盾与补充。全站性的陈旧扫描、孤立页面检测、跨页面矛盾排查由 `lint` 负责。
+**核心职责边界**：ingest 只处理"新素材 vs 现有页面"的矛盾、补充与直接级联影响。全站性的陈旧扫描、孤立页面检测、跨页面矛盾排查由 `lint` 负责。
 
 ## 触发条件（必须使用的场景）
 
@@ -159,7 +159,7 @@ description: |
    - **强匹配**：标题相同或语义等价 → 进入矛盾验证
    - **弱匹配**：部分重叠、同义词、同一上层主题 → 进入矛盾验证，标记"可能聚合/并入"
    - **无匹配**：全新主题 → 直接创建
-3. **qmd 辅助匹配**（可选）：若标题未直接匹配但概念较复杂，可用 `qmd search -c knowledge-<domain> "<关键词>"` 辅助发现相关页面
+3. **qmd 辅助匹配**（可选）：若标题未直接匹配但概念较复杂，可从知识库根目录执行 `qmd search -c <collection> "<关键词>"` 辅助发现相关页面；`<collection>` 必须从该领域 `domain.md` 读取
 
 **分类隔离原则**：即使主题相同，不同分类的页面也应分别维护。如 `entities/Cargo` 与 `recipes/Cargo 安装配置` 是两个独立页面。
 
@@ -209,7 +209,8 @@ source_count: N
 - `date`：创建或最后更新日期
 - `tags`：标签数组，使用英文小写，遵循各领域 `domain.md` 中的标签体系
 - `source_count`：整数，该页面基于多少个 raw 素材（新建为 1，更新则递增）
-- **禁止**添加任何其他 frontmatter 字段（如 `source`、`author`、`url` 等）
+- **普通 ingest 页面禁止**添加任何其他 frontmatter 字段（如 `source`、`author`、`url` 等）
+- 例外：`type: query_archive` 只用于 Query 归档页，由 `query` skill 创建；ingest 不创建该类型页面，也不把 raw 素材并入 Query 归档页
 
 **页面内容规范：**
 - 内容必须提炼而非照搬原文，突出结构化和可检索性
@@ -246,137 +247,49 @@ source_count: N
 - 再为 wiki 页面选择不会与 raw 冲突的文件名
 - 不要反过来修改来源链接去适配 wiki 命名
 
-### 步骤 6：更新领域索引（wiki/index.md）
+### 步骤 6：级联更新（Cascade Updates）
 
-更新 `<domain>/wiki/index.md`：
+主页面写入后、索引和日志更新前，检查同领域直接受影响页面。扫描半径只包括：本轮显式引用页面、同分类相近页面、同一素材产出的页面、直接父级 overview/synthesis/recipe/entity 页面，必要时用本领域 qmd 取最多 5 个候选。
 
-```markdown
----
-title: <Domain> Wiki 索引
-date: YYYY-MM-DD
----
+允许自动做小改动：补交叉引用、补“相关页面”、更新直接受影响的概览/综合/配方局部段落、修正经验证的新旧事实冲突。禁止跨领域级联、全库陈旧扫描、修改 `notes/`/`raw/`、修改 `type: query_archive` 正文。
 
-# <Domain> Wiki 索引
+日志中固定写 `级联更新:`，按 `更新 / 跳过 / 候选未改` 记录结果；Query 归档页可能过期时只报告给用户或交给 lint。
 
-## summaries
+### 步骤 7：收尾
 
-- [[页面名]] — 一句话摘要
-
-## entities
-
-- [[页面名]] — 一句话摘要
-
-## concepts
-
-- [[页面名]] — 一句话摘要
-
-## comparisons
-
-## overviews
-
-## syntheses
-
-## recipes
-```
-
-- 按分类组织，每个分类下只列出属于该分类的页面
-- 使用 `[[页面名]]` 格式的 wiki 链接（**不要**使用 `[[路径/文件名.md|页面名]]` 格式）
-- 每个链接后附 1-2 句话的摘要
-- 空分类保留标题
-- 不要重复列出同一个页面
-
-### 步骤 7：更新顶层索引（index.md）
-
-**重要：顶层 index.md 位于仓库根目录，文件路径是 `index.md`。**
-
-读取顶层 `index.md`，统计当前领域 `wiki/` 下所有 `.md` 页面的数量（**排除** `wiki/index.md` 和 `wiki/log.md`），更新该领域条目中的页数标注：
-
-```markdown
-- [[<domain>/wiki/index|<domain>]] — <领域概述>（<N> 页）
-```
-
-若该领域不在顶层 index.md 中，添加新条目并标注页数。
-
-### 步骤 8：更新日志（wiki/log.md）
-
-在 `<domain>/wiki/log.md` **尾部追加**记录。使用 `Edit` 工具在文件末尾插入新记录，**禁止**重写整个文件。
-
-**追加方法**：读取 `log.md` 文件末尾的 2-3 行内容作为 `old_string`，确保匹配的是文件真正的末尾。`new_string` 为原有末尾内容后紧跟新日志记录：
-
-```markdown
-## [YYYY-MM-DD] Ingest | <文件名>
-
-- 创建: `[[页面名1]]`, `[[页面名2]]`, ...
-- 更新: `[[页面名3]]` (source_count: N→M), `[[页面名4]]` (source_count: N→M), ...
-- 修正: 经搜索验证，更新 xxx 说明（简述修正内容）
-- 类型: <articles/papers/books/videos/podcasts/others>
-- 来源: `raw/<类型>/<文件名>.md`
-```
-
-**日志规范：**
-- 每个 raw 文件一条独立记录，以 `## [YYYY-MM-DD] Ingest | <文件名>` 为标题
-- 标题中的 `<文件名>` 为实际处理的 raw 文件名（不含路径）
-- 记录中引用 wiki 页面使用 `[[页面名]]` 格式
-- 单个 raw 素材产生多个页面时，在一条记录中列出所有创建和更新的页面
-- 若发生实质性内容修正（矛盾验证后更新），在 `修正:` 字段中简述
-- 若只有内容补充无矛盾，只记录 `更新:` 和 source_count 变化
-- 不要在单条记录中合并多个文件的信息
-- **统一前缀格式**使得 log 可用简单 Unix 工具解析：`grep "^## \[" log.md | tail -5`
-
-### 步骤 9：归档 raw 文件
-
-将已处理的文件移动到 `<domain>/raw/archive/<类型>/`：
-- `raw/articles/foo.md` → `raw/archive/articles/foo.md`
-- 如果 `archive/<类型>/` 目录不存在，先创建
-
-### 步骤 10：更新 qmd 索引
-
-执行 qmd 索引更新：
+1. 更新 `<domain>/wiki/index.md`：按分类小写标题组织，使用 `[[页面名]]`，无重复项。
+2. 更新顶层 `index.md` 页面计数，排除 `wiki/index.md` 和 `wiki/log.md`。
+3. 在 `<domain>/wiki/log.md` 尾部追加一条 Ingest 日志；每个 raw 文件一条，包含创建、更新、级联更新、修正、类型、来源。
+4. 移动 raw 文件到 `<domain>/raw/archive/<类型>/`。
+5. 从知识库根目录执行 `qmd update -c <collection>`；collection 和 root 必须从 `domain.md` 读取。缺 collection 时先创建：
 
 ```bash
-qmd update -c knowledge-<domain>
+qmd collection add <collection-root> --name <collection> --mask "**/*.md"
+qmd context add qmd://<collection>/ "<领域描述>"
+qmd update -c <collection>
 ```
 
-其中 `<domain>` 为领域目录名的小写形式。
-
-如果该领域尚未创建 qmd collection，先执行：
+6. 建议运行确定性 lint：
 
 ```bash
-qmd collection add ./wiki/ --name knowledge-<domain> --mask "**/*.md"
-qmd context add qmd://knowledge-<domain>/ "<领域描述>"
-qmd update -c knowledge-<domain>
+python .agents/skills/lint/scripts/wiki_lint.py --root /Users/songpengfei/knowledge --fix
 ```
-
-领域描述从该领域的 `domain.md` 中提取。
 
 ## 完成检查清单
 
-每轮 ingest 完成后，逐项验证：
-
-- [ ] 所有新 wiki 页面都有正确的 frontmatter（title, date, tags, source_count）
-- [ ] 更新的 wiki 页面 source_count 已正确递增
-- [ ] frontmatter 中没有额外字段（如 source、author 等）
-- [ ] 页面分类符合分类决策表
-- [ ] **每篇 raw 素材都产出了 `summaries/` 页面**（除非明确属于 2.4 规定的例外）
-- [ ] 同一素材产生的多个页面之间互相引用
-- [ ] 新/更新页面与现有页面有合理的交叉引用
-- [ ] 每个 wiki 页面底部都有 `## 来源` 章节，使用 Obsidian 链接格式 `[[<文件名>]]`
-- [ ] 更新页面时，来源章节已追加新素材（不重复已有条目）
-- [ ] wiki/index.md 按分类正确组织，使用 `[[页面名]]` 格式
-- [ ] **顶层 index.md 已更新页数**（仓库根目录的 `index.md`）
-- [ ] wiki/log.md 中每个 raw 文件有独立的 Ingest 记录，包含创建/更新/修正信息
-- [ ] 所有已处理的 raw 文件已移动到 archive/
-- [ ] qmd update 已执行
+- [ ] 新/更新页面 frontmatter 正确，普通 ingest 页没有 `type: query_archive`
+- [ ] 每篇有效 raw 产出 `summaries/` 页面，除非明确说明例外
+- [ ] 同素材页面互链，并与现有页面建立合理交叉引用
+- [ ] 已做同领域有限半径级联检查并记录
+- [ ] 每个页面底部有 `## 来源`，来源链接保留 raw 文件名语义
+- [ ] `wiki/index.md`、顶层 `index.md`、`wiki/log.md` 已更新
+- [ ] raw 已归档，qmd 已更新
 
 ## 关键原则
 
-- **绝不修改 `notes/` 目录**
-- **`raw/` 内容只读**，处理完后移动到 `archive/`
-- 素材不跨领域，在哪个领域 `raw/` 下就属于哪个领域
-- 交互式提炼以用户意图为导向，自动处理以内容质量为导向
-- 每次 ingest 后必须更新 qmd 索引
-- **主动拆解**：内容丰富的素材应拆分为多个页面
-- **优先聚合**：同级细粒度概念优先聚合为上层主题页，避免 wiki 碎片化
-- **素材不等于事实**：raw 素材中的主张需经交叉验证后方可写入 wiki
-- **分类隔离**：同一主题跨越不同分类时，优先分页面而非合并
-- **避免命名冲突**：wiki 页面文件名（不含 `.md`）不得与归档的 raw 素材文件名相同。若核心概念名称与素材文件名重合，wiki 页面应使用更精确的命名（如 `所有权系统.md`），否则 Obsidian 的 `[[...]]` 来源链接会产生歧义
+- 不修改 `notes/`。
+- `raw/` 内容只读，完成后移动到 `archive/`。
+- 素材属于其所在领域，不自动跨领域 ingest。
+- 内容丰富的素材可拆页；同级细碎概念优先聚合，避免 wiki 碎片化。
+- 素材不等于事实；冲突主张要验证后再写入。
+- wiki 页面文件名不得与 raw 文件名冲突，避免 Obsidian 来源链接歧义。
