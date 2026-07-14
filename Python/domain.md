@@ -43,7 +43,7 @@ wiki 页面按以下子目录组织：
 
 - collection 名称：`knowledge-python`
 - collection root：`Python/wiki`
-- qmd 命令工作目录：知识库根目录 `/Users/songpengfei/knowledge`
+- collection 注册：由 `qmd_sync.py` 根据 Git 根目录与 collection root 幂等同步；本机配置不写入仓库
 
 ## 特殊约定
 

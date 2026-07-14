@@ -100,7 +100,7 @@ knowledge/
 搜索规范：
 
 - 标签搜索优先使用 `obsidian tag` 命令。
-- wiki 页面小规模用 `index.md`；大规模用 qmd CLI。每个领域 collection 名见 `domain.md`。
+- wiki 查询默认先用 `index.md`；大规模时优先用 qmd，小规模定位失败或存在语义表述差异时可用 qmd 兜底。每个领域 collection 名见 `domain.md`。
 
 ## 四、Wiki 页面规范
 
@@ -135,12 +135,12 @@ Query 归档页必须满足：
 - 正文包含 `## 基于页面`，列出本次综合依据的 wiki 页面，使用 `[[页面名]]`。
 - 正文底部仍保留 `## 来源`，写明 `Query 归档（YYYY-MM-DD）` 和问题摘要。
 - 可以放在 `concepts/`、`comparisons/`、`syntheses/`、`overviews/`、`recipes/` 等语义分类下，不单独强制新目录。
-- 跨领域 Query 归档默认放入最主要领域；`## 基于页面` 可用 `领域/[[页面名]]` 辅助辨认，正文 wiki 链接仍优先同领域页面。
+- 跨领域 Query 归档默认放入最主要领域；`## 基于页面` 和正文可链接其他领域的依据页。跨领域或重名页面使用路径限定链接，如 `[[AI/wiki/concepts/RAG|RAG]]`。
 - Query 归档页是 point-in-time 综合；后续相关基础页面变化时，由 lint 报告是否需要刷新，不自动级联更新。
 
 ### Obsidian Markdown 规则
 
-- 内部链接使用 `[[维基链接]]`。
+- 同领域且名称唯一时使用 `[[页面名]]`；跨领域或重名页面使用 `[[领域/wiki/分类/页面名|页面名]]`。
 - 图片/附件使用 `![[文件名]]`，附件统一放顶层 `assets/`。
 - 粗体语法两侧留空格，避免 Obsidian 解析异常。
 - Markdown 标题和普通正文中，未包在反引号或代码块里的 `<` 必须转义为 `\<`，如 `Arc\<Mutex\<T>>`。
@@ -149,41 +149,35 @@ Query 归档页必须满足：
 - 创建或修改 Markdown 笔记后，必须检查标题是否含有未转义的 `<`。
 - 标签可写正文 `#标签` 或 frontmatter `tags: [标签1, 标签2]`；领域标签体系写入 `<领域>/domain.md`。
 
-## 五、多领域查询与搜索策略
+## 五、查询与搜索策略
 
-### 规模阈值
+`index.md` 是默认导航入口，qmd 是可选的本地搜索加速器，不替代 wiki，也不应成为 ingest/query 的前置依赖。约 300 页只作为经验参考：索引仍易浏览时优先 index-first；页面较多、索引定位失败、表述差异明显或需要跨页召回时使用 qmd。
 
-| 查询类型 | 小规模 | 大规模 |
+1. 领域不明确或涉及多领域时，先读顶层 `index.md` 完成路由。
+2. 读取相关领域的 `domain.md`；小规模查询再读 `wiki/index.md` 定位页面。
+3. 需要 qmd 时按问题类型召回候选：
+
+| 问题类型 | 命令 | 条件 |
 |---|---|---|
-| 单领域 | 该领域 wiki 页面数 ≤ 300 | 该领域 wiki 页面数 > 300 |
-| 多领域 | 涉及领域页面数总和 ≤ 300 | 涉及领域页面数总和 > 300 |
+| 已知标题、实体名、代码符号或精确短语 | `qmd search` | 只需 BM25 文本索引 |
+| 知道概念含义，但不知道原文用词 | `qmd vsearch` | `qmd status` 显示向量已生成，且 `qmd doctor` 确认本地模型与推理环境可用 |
+| 同时需要关键词锚点、语义召回、消歧和重排 | 结构化 `qmd query` | 提供 `intent:` + `lex:`/`vec:`，向量与本地模型可用 |
 
-顶层 `index.md` 应标注各领域当前 wiki 页面数。
+4. qmd 结果只作候选：默认以 `--json -n 10` 获取结果，不在搜索阶段使用 `--full`。选出少量高相关页面后，用 `qmd get` / `qmd multi-get` 回读原文，再综合并标注 `[[引用]]`。
+5. 多领域查询优先逐 collection 检索，再由 Agent 合并，避免大 collection 占满全局 Top-K。
 
-### 小规模：index.md 模式
+qmd collection 规则：
 
-1. 扫顶层 `index.md` 判断领域。
-2. 读取相关领域 `domain.md` 与 `wiki/index.md`。
-3. 从索引定位具体页面。
-4. 读取页面后综合回答，并带 `[[引用]]`。
-
-### 大规模：qmd 模式
-
-超过阈值时启用 `qmd search` 做 BM25 关键词匹配，默认检索相关领域 collection。
-
-qmd 路径语义：
-
-- 所有 qmd 命令从知识库根目录执行，即 `/Users/songpengfei/knowledge`。
-- 每个领域的 `domain.md` 必须声明 `collection 名称` 和 `collection root`。
+- 每个领域的 `domain.md` 声明建议的 `collection 名称` 和 `collection root`，供启用 qmd 的机器注册。
 - `collection root` 一律写成相对知识库根目录的路径：`<领域>/wiki`，例如 `Rust/wiki`、`AI/wiki`。
-- 禁止在全局规则或领域规则里把 qmd 路径写成裸 `./wiki/`，因为它依赖当前工作目录，容易建错 collection。
+- qmd 的本机配置（默认 `~/.config/qmd/index.yml`）保存绝对路径，不进入 Git；collection 注册后，`search`、`query`、`get` 等命令可从任意目录执行，并用 `-c <collection>` 限定范围。
+- 统一使用 `.agents/skills/init-domain/scripts/qmd_sync.py` 同步本机配置：`--check` 只读检查，普通 `--apply` 补注册缺失 collection 和根 context，只维护 BM25。路径冲突只报告，不自动覆盖。
+- 本知识库锁定并验证 qmd `2.5.3`。首次启用语义检索必须由用户显式执行 `qmd_sync.py --apply --semantic`：脚本下载并校验固定模型、将机器本地 qmd 配置指向本机 GGUF 文件、执行 `qmd embed` 与 `qmd doctor`。不要用 `qmd pull` 代替这套流程。
+- `init-domain` 默认对新领域执行 `qmd_sync.py --apply --domain <领域>`；qmd 未安装时跳过。每次进入 qmd 检索前由 Agent 对相关领域执行低成本 `--check`，缺失时执行 `--apply`；新机器因而会在首次使用时自动恢复配置。
 
 索引维护：
 
-- `ingest` 后从知识库根目录执行 `qmd update -c <collection>`。
-- `query` 进入 qmd 模式前，从知识库根目录对涉及 collection 执行 `qmd update -c <collection>`，避免跨机器切换导致索引过期。
-- `lint` 的确定性检查应体检 qmd 配置和 collection 可用性；缺少 qmd CLI 时只报告，不阻塞其他结构修复。
-
-### README 定位
-
-`README.md` 是给人阅读的入口说明；顶层 `index.md` 才是 LLM 路由的权威来源。两者不一致时，以 `index.md` 和各领域 `domain.md` 为准，并在维护时同步 README。
+- `ingest` 或 Query 归档改变 wiki 后执行 `qmd_sync.py --apply --refresh --domain <领域>`：先补齐本机配置，再统一运行一次 `qmd update`；语义/混合检索已启用时随后增量 `qmd embed`。
+- 普通 query 不做例行 `update/embed`。只有首次使用发现缺失 collection 时，`--apply` 会在注册后运行一次 `qmd update`；配置健康但索引过期时回退到 `wiki/index.md`，除非用户同时要求维护索引。
+- `lint` 只执行 `qmd_sync.py --check` 与 `qmd_semantic.py --check`，并体检文档数、路径、context、模型与向量状态，不执行 `--apply`、`update` 或 `embed`。
+- qmd 未安装不是知识库结构错误，不阻塞 index-first 工作流。

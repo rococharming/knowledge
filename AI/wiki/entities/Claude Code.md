@@ -1,112 +1,76 @@
 ---
 title: Claude Code
-date: 2026-05-14
-tags: [coding-tool, agent]
+date: 2026-07-14
+tags: [coding-tool, agent, workflow]
 source_count: 1
 ---
 
 # Claude Code
 
-**Claude Code** 是 Anthropic 推出的 AI 代码工具，能够在终端或 IDE 中理解代码库、编辑文件、执行命令，并与开发工具协同工作。
+Claude Code 是 Anthropic 推出的 AI 编程工具，面向终端、IDE 和代码库工作流。它基于 Claude 模型能力运行，也可以通过兼容 Anthropic API 的网关或第三方平台接入其他模型。
 
-## 核心能力
+## 定位
 
-- **代码理解**：读取和分析项目代码库结构
-- **文件编辑**：自动创建、修改、删除文件
-- **命令执行**：在终端执行 shell 命令
-- **自然语言交互**：通过对话完成代码阅读、开发、调试、重构、测试等任务
+Claude Code 的核心价值是把自然语言任务转化为代码库内的实际操作。它可以阅读项目结构、理解上下文、编辑文件、运行命令、执行测试，并在必要时和用户确认风险较高的动作。
 
-## 安装
+## 安装与验证
 
-以 macOS 为例，在终端执行：
+macOS、Linux 和 WSL 可使用官方安装脚本安装：
 
 ```bash
 curl -fsSL https://claude.ai/install.sh | bash
 ```
 
-安装后验证：
+安装后用以下命令验证：
 
 ```bash
 claude --version
 ```
 
-手动更新：
+更完整的环境检查可以运行：
+
+```bash
+claude doctor
+```
+
+原生安装通常支持后台自动更新；需要立即更新时可执行：
 
 ```bash
 claude update
 ```
 
-## 基本使用
+## 常用命令
 
-### 启动会话
-
-```bash
-cd path/to/project
-claude
-```
-
-### 常用 Slash Commands
-
-| 命令 | 别名 | 作用 |
-|---|---|---|
-| `/usage` | `/cost` | 查看当前会话成本和用量概览 |
-| `/doctor` | — | 诊断安装、配置和环境问题 |
-| `/status` | — | 查看环境状态（版本、模型、连接等） |
-| `/clear` | `/new`, `/reset` | 清空当前上下文，开始新对话 |
-| `/compact` | — | 压缩历史上下文，腾出空间 |
-| `/model` | — | 切换当前会话使用的模型 |
-| `/effort` | — | 切换 effort level（适用于支持的模型） |
-| `/resume` | `/continue` | 恢复或切换到之前的会话 |
-| `/exit` | `/quit` | 退出会话 |
-
-### /usage 输出说明
-
-- **Total cost**：会话的本地估算费用（接入第三方模型时不准确）
-- **Total duration (API)**：API 调用累计耗时
-- **Total duration (wall)**：会话经过的现实时间
-- **Total code changes**：会话跟踪到的变更行数
-- **Usage by model**：按模型统计 input、output、cache read、cache write
-
-### 会话管理技巧
-
-- `/clear` 适合任务边界切换，但不会删除旧会话，后续仍可通过 `/resume` 恢复
-- `/compact [instructions]` 可在长任务中压缩上下文，保留重点信息
-- 使用 `/rename` 为会话命名，便于后续通过名称识别和恢复
+| 命令 | 用途 |
+|---|---|
+| `/usage` 或 `/cost` | 查看当前会话的费用、耗时和模型用量估算 |
+| `/doctor` | 打开诊断检查，查看安装、更新、后台服务、MCP、技能和版本锁等状态 |
+| `/status` | 查看当前会话、模型、账号、连接和配置来源等状态 |
+| `/clear` | 清空当前上下文，开始新的任务上下文 |
+| `/compact` | 压缩当前会话上下文，保留后续任务所需摘要 |
+| `/model` | 查看或切换当前模型 |
+| `/effort` | 调整支持推理强度设置的模型的 effort level |
+| `/resume` 或 `/continue` | 恢复或切换到历史会话 |
+| `/exit` 或 `/quit` | 退出当前会话 |
 
 ## 权限模式
 
-详见 [[Claude Code 权限模式]]。支持四种模式：
+Claude Code 的权限模式决定它在编辑文件、运行命令或执行潜在高风险操作前是否需要用户确认。
 
-- `default`：保守模式，编辑和执行前逐一确认
-- `acceptEdits`：自动批准工作目录内的文件编辑和常见文件系统命令
-- `plan`：只读分析模式，出方案但不动代码
-- `bypassPermissions`：跳过权限检查，风险最高
-
-按 <kbd>Shift</kbd> + <kbd>Tab</kbd> 在模式间循环切换。
-
-## 实用快捷键
-
-| 快捷键 | 功能 |
+| 模式 | 适用场景 |
 |---|---|
-| <kbd>!</kbd> | 进入 Bash 执行命令 |
-| <kbd>Option</kbd> + <kbd>Shift</kbd> | 换行（macOS） |
-| <kbd>Ctrl</kbd> + <kbd>G</kbd> | 打开默认编辑器编辑对话内容 |
-| <kbd>Ctrl</kbd> + <kbd>O</kbd> | 查看 compact 压缩详情 |
-| <kbd>Shift</kbd> + <kbd>Tab</kbd> | 切换权限模式 |
+| `default` | 默认监督模式，适合日常使用和不确定任务 |
+| `acceptEdits` | 自动批准工作目录内的编辑，适合边界明确的开发任务 |
+| `plan` | 只读规划和分析，适合先探索代码库或制定方案 |
+| `bypassPermissions` | 跳过权限检查，风险最高，只适合完全可信且边界清晰的环境 |
 
-## 记忆系统
+可以用 <kbd>Shift</kbd> + <kbd>Tab</kbd> 在可用模式之间切换。`bypassPermissions` 也可以通过 `--dangerously-skip-permissions` 或 `--permission-mode bypassPermissions` 启动，但应谨慎使用。
 
-Claude Code 支持跨会话持久化记忆的完整机制，详见 [[Claude Code 记忆系统]]：
+## 相关页面
 
-- **CLAUDE.md**：用户手动编写的持久指令文件，支持托管策略、用户级、项目级、本地级四级作用范围
-- **auto memory**：Claude Code 自动积累的项目经验、调试记录和偏好
-- **.claude/rules/**：可按路径生效的规则拆分机制
-
-## 模型配置
-
-Claude Code 默认调用 Anthropic 官方接口，但可通过配置 `base URL + auth + model` 映射接入国内第三方模型。详见 [[Claude Code 安装与配置]]。
-
-> 注意：接入第三方模型时，界面中显示的 `Sonnet`、`Opus`、`Haiku` 等名称只是档位标识，实际请求会被转发到配置的第三方模型。
+- [[Claude Code 入门指南]]
+- [[Claude Code 第三方模型接入]]
+- [[Claude Code 配置第三方模型]]
 
 ## 来源
 

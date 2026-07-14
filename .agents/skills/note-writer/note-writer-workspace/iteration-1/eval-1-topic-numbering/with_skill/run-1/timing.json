@@ -1,6 +1,0 @@
-{
-  "total_tokens": 0,
-  "duration_ms": 617668,
-  "total_duration_seconds": 617.7,
-  "note": "subagent_tokens 报告为 0，token 计数未由该通道返回；duration 来自任务通知。with-skill 比 baseline 慢，因需读 SKILL.md+references 并执行 6 项自检。"
-}

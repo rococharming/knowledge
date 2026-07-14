@@ -73,6 +73,7 @@ python <skill-path>/scripts/init-domain.py <领域名称> \
   - 生成缺失的文件（`domain.md`、`wiki/index.md`、`wiki/log.md`）
   - **绝不覆盖已有文件**（保护用户的个性化内容）
   - 输出诊断报告，列出发现的完整性问题（如 domain.md 缺少 frontmatter 或必要章节）
+- **qmd 同步**：若本机已安装 qmd，脚本最后调用同目录的 `qmd_sync.py --apply --domain <领域>`，幂等注册 collection、补根 context，并只在配置发生变化时运行一次 `qmd update`；它不下载模型或首次生成向量，未安装 qmd 时跳过
 
 **脚本会创建/补全**：
 - `raw/` 及其 7 个固定子目录（articles、papers、books、videos、podcasts、others、archive）
@@ -102,13 +103,13 @@ python <skill-path>/scripts/init-domain.py <领域名称> \
 - `## qmd 配置`
 - `## 特殊约定`
 
-**qmd 配置必须使用当前全局路径语义**：
+领域文件声明的是可移植的 qmd 注册建议；本机已安装 qmd 时，`init-domain` 默认据此自动注册。可用 `--skip-qmd-sync` 明确跳过。配置必须使用当前全局路径语义：
 ```markdown
 ## qmd 配置
 
 - collection 名称：`knowledge-<领域名规范化>`
 - collection root：`<领域>/wiki`
-- qmd 命令工作目录：知识库根目录 `<工作目录绝对路径>`
+- collection 注册：由 `qmd_sync.py` 根据 Git 根目录与 collection root 幂等同步；本机配置不写入仓库
 ```
 
 禁止生成 `索引路径：./wiki/`，因为它依赖当前工作目录，容易建错 qmd collection。检查已有领域时，如果发现旧的 `索引路径：./wiki/`，应在诊断报告中提示需要迁移为 `collection root`。
@@ -145,6 +146,7 @@ domain: <领域>
 - 初始文件：index.md、log.md
 - 顶层索引：已更新 knowledge/index.md
 - README：已更新现有领域表
+- qmd：已注册 / 已存在 / 未安装而跳过 / 存在路径冲突
 
 你可以开始放入素材到 <领域>/raw/ 并让我 ingest 了。
 ```
@@ -167,4 +169,5 @@ domain: <领域>
 - **不在 log.md 中记录 init-domain**：log.md 仅记录 ingest、query、lint 三种操作。init-domain 是搭建脚手架，不是知识操作，不应写入日志
 - **保持和全局 AGENTS.md 一致**：领域规则不能和全局规则冲突（如文件格式、三层分离原则）
 - **必须使用脚本**：不要手动用 mkdir/Write 创建目录，始终使用 bundled 脚本
+- **qmd 同步保持幂等**：不直接拼写 `qmd collection add`；使用 `scripts/qmd_sync.py`。普通 `--apply` 只维护 collection/context/BM25；路径冲突只报告。首次语义初始化只能在用户明确授权后执行 `--apply --semantic`
 - **尊重用户的"随便"**：如果用户说"默认就行"，跳过提问，直接使用默认值执行

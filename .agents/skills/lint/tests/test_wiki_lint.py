@@ -156,6 +156,18 @@ knowledge-ai (qmd://knowledge-ai/)
             ),
             "/Users/songpengfei/knowledge/Rust/wiki",
         )
+        self.assertEqual(
+            wiki_lint.parse_qmd_collection_context_count(
+                "Collection: knowledge-rust\n  Contexts: 1\n"
+            ),
+            1,
+        )
+        self.assertEqual(
+            wiki_lint.parse_qmd_status(
+                "Documents\n  Total:    205 files indexed\n  Vectors:  0 embedded\n  Pending:  205 need embedding\n"
+            ),
+            {"total": 205, "vectors": 0, "pending": 205},
+        )
 
 
 if __name__ == "__main__":

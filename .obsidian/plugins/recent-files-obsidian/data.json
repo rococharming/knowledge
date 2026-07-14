@@ -1,8 +1,60 @@
 {
   "recentFiles": [
     {
+      "basename": "3、Superpowers",
+      "path": "AI/notes/常用Skill和插件汇总/3、Superpowers.md"
+    },
+    {
+      "basename": "4、gstack",
+      "path": "AI/notes/常用Skill和插件汇总/4、gstack.md"
+    },
+    {
+      "basename": "10、HTML文本语义与描述列表",
+      "path": "前后端/notes/前端/HTML/10、HTML文本语义与描述列表.md"
+    },
+    {
       "basename": "README",
       "path": "README.md"
+    },
+    {
+      "basename": "1、qmd 本地 Markdown 搜索引擎",
+      "path": "Obsidian/notes/补充/1、qmd 本地 Markdown 搜索引擎.md"
+    },
+    {
+      "basename": "1、Git 分支的基本概念与操作",
+      "path": "通用计算机知识/notes/Git/02_分支管理/1、Git 分支的基本概念与操作.md"
+    },
+    {
+      "basename": "AGENTS",
+      "path": "AGENTS.md"
+    },
+    {
+      "basename": "domain",
+      "path": "Rust/domain.md"
+    },
+    {
+      "basename": "llm-wiki",
+      "path": "llm-wiki.md"
+    },
+    {
+      "basename": "index",
+      "path": "Obsidian/wiki/index.md"
+    },
+    {
+      "basename": "1、AI常见概念汇总",
+      "path": "AI/notes/1、AI常见概念汇总.md"
+    },
+    {
+      "basename": "1、Claude Code入门",
+      "path": "AI/notes/Claude Code/1、Claude Code入门.md"
+    },
+    {
+      "basename": "index",
+      "path": "index.md"
+    },
+    {
+      "basename": "1、HTML基础",
+      "path": "前后端/notes/前端/HTML/1、HTML基础.md"
     },
     {
       "basename": "未命名",
@@ -21,14 +73,6 @@
       "path": "Rust/wiki/recipes/Cargo 依赖声明写法.md"
     },
     {
-      "basename": "AGENTS",
-      "path": "AGENTS.md"
-    },
-    {
-      "basename": "1、Claude Code入门",
-      "path": "AI/notes/Claude Code/1、Claude Code入门.md"
-    },
-    {
       "basename": "2、Claude Code工作原理（待完善）",
       "path": "AI/notes/Claude Code/2、Claude Code工作原理（待完善）.md"
     },
@@ -39,34 +83,6 @@
     {
       "basename": "Pasted image 20260713022422",
       "path": "assets/Pasted image 20260713022422.png"
-    },
-    {
-      "basename": "1、HTML元素、属性与基础语义",
-      "path": "前后端/notes/前端/HTML/1、HTML元素、属性与基础语义.md"
-    },
-    {
-      "basename": "6、响应式图片、版权与SVG",
-      "path": "前后端/notes/前端/HTML/6、响应式图片、版权与SVG.md"
-    },
-    {
-      "basename": "7、替换元素、iframe与嵌入安全",
-      "path": "前后端/notes/前端/HTML/7、替换元素、iframe与嵌入安全.md"
-    },
-    {
-      "basename": "5、音视频媒体与字幕可访问性",
-      "path": "前后端/notes/前端/HTML/5、音视频媒体与字幕可访问性.md"
-    },
-    {
-      "basename": "4、元数据、SEO与Open Graph",
-      "path": "前后端/notes/前端/HTML/4、元数据、SEO与Open Graph.md"
-    },
-    {
-      "basename": "3、语义化分组、标识符与脚本加载",
-      "path": "前后端/notes/前端/HTML/3、语义化分组、标识符与脚本加载.md"
-    },
-    {
-      "basename": "2、HTML文档骨架与资源引用",
-      "path": "前后端/notes/前端/HTML/2、HTML文档骨架与资源引用.md"
     },
     {
       "basename": "log",
@@ -89,16 +105,8 @@
       "path": "Obsidian/notes/8、AI + Obsidian.md"
     },
     {
-      "basename": "1、qmd 本地 Markdown 搜索引擎",
-      "path": "Obsidian/notes/补充/1、qmd 本地 Markdown 搜索引擎.md"
-    },
-    {
       "basename": "7、LLM Wiki",
       "path": "Obsidian/notes/7、LLM Wiki.md"
-    },
-    {
-      "basename": "index",
-      "path": "Obsidian/wiki/index.md"
     },
     {
       "basename": "index",
@@ -107,10 +115,6 @@
     {
       "basename": "log",
       "path": "Rust/wiki/log.md"
-    },
-    {
-      "basename": "llm-wiki",
-      "path": "llm-wiki.md"
     },
     {
       "basename": "llm-wiki-zh-CN",
@@ -187,18 +191,6 @@
     {
       "basename": "有序性比较",
       "path": "Rust/wiki/concepts/有序性比较.md"
-    },
-    {
-      "basename": "单元测试",
-      "path": "Rust/wiki/concepts/单元测试.md"
-    },
-    {
-      "basename": "常量与静态变量",
-      "path": "Rust/wiki/concepts/常量与静态变量.md"
-    },
-    {
-      "basename": "变量与可变性",
-      "path": "Rust/wiki/concepts/变量与可变性.md"
     }
   ],
   "omittedPaths": [],

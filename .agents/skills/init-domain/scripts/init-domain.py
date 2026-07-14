@@ -21,8 +21,10 @@ Example:
 
 import argparse
 import os
+import subprocess
 import sys
 from datetime import datetime
+from pathlib import Path
 
 
 def create_directory_structure(base_dir: str, domain: str, categories: list[str]):
@@ -50,14 +52,13 @@ def create_directory_structure(base_dir: str, domain: str, categories: list[str]
     return paths
 
 
-def generate_domain_md(domain: str, overview: str, categories: list[str], tags: list[str], base_dir: str) -> str:
+def generate_domain_md(domain: str, overview: str, categories: list[str], tags: list[str]) -> str:
     """Generate the domain.md content."""
     today = datetime.now().strftime("%Y-%m-%d")
     cat_lines = "\n".join(f"- `{cat}/` — （请补充说明）" for cat in categories)
     tag_lines = "\n".join(f"- `#{t}` — （请补充说明）" for t in tags)
     collection = f"knowledge-{domain.lower()}"
     collection_root = f"{domain}/wiki"
-    qmd_cwd = base_dir
 
     return f"""---
 title: {domain} 领域规则
@@ -92,7 +93,7 @@ wiki 页面按以下子目录组织：
 
 - collection 名称：`{collection}`
 - collection root：`{collection_root}`
-- qmd 命令工作目录：知识库根目录 `{qmd_cwd}`
+- collection 注册：由 `qmd_sync.py` 根据 Git 根目录与 collection root 幂等同步；本机配置不写入仓库
 
 ## 特殊约定
 
@@ -260,8 +261,8 @@ def diagnose_existing(domain_path: str, categories: list[str], base_dir: str, do
             issues.append(f"domain.md missing qmd collection root: `{domain}/wiki`")
         elif expected_root not in content:
             issues.append(f"domain.md qmd collection root should be `{domain}/wiki` relative to knowledge root")
-        if "qmd 命令工作目录" not in content:
-            issues.append(f"domain.md missing qmd command cwd: `{base_dir}`")
+        if "collection 注册" not in content:
+            issues.append("domain.md missing qmd collection registration rule")
 
     # Check wiki/index.md
     index_path = os.path.join(domain_path, "wiki", "index.md")
@@ -280,6 +281,25 @@ def diagnose_existing(domain_path: str, categories: list[str], base_dir: str, do
     return {"created": created, "issues": issues}
 
 
+def sync_qmd_collection(base_dir: str, domain: str) -> None:
+    """Best-effort local qmd registration; never blocks domain initialization."""
+    script = Path(__file__).resolve().with_name("qmd_sync.py")
+    if not script.exists():
+        print("qmd-sync skipped: helper script not found")
+        return
+    completed = subprocess.run(
+        [sys.executable, str(script), "--root", base_dir, "--apply", "--domain", domain],
+        check=False,
+        text=True,
+        capture_output=True,
+    )
+    output = (completed.stdout or completed.stderr).strip()
+    if output:
+        print(f"\n{output}")
+    if completed.returncode != 0:
+        print("qmd-sync did not complete; domain files were still initialized successfully")
+
+
 def main():
     parser = argparse.ArgumentParser(description="Initialize or repair a domain for the knowledge base")
     parser.add_argument("domain", help="Domain name (e.g., 心理学, 投资, AI)")
@@ -293,6 +313,8 @@ def main():
                         help="Output directory")
     parser.add_argument("--check-existing", action="store_true",
                         help="If domain exists, diagnose and repair missing files instead of exiting")
+    parser.add_argument("--skip-qmd-sync", action="store_true",
+                        help="Do not reconcile this domain with local qmd configuration")
 
     args = parser.parse_args()
 
@@ -314,7 +336,7 @@ def main():
 
     # Generate files
     overview = args.overview or f"{domain} 领域的知识积累"
-    domain_md = generate_domain_md(domain, overview, categories, tags, base_dir)
+    domain_md = generate_domain_md(domain, overview, categories, tags)
     index_md = generate_index_md(domain, categories)
     log_md = generate_log_md(domain)
 
@@ -359,6 +381,9 @@ def main():
                 print(f"  - {issue}")
         else:
             print("\nDiagnosis: no issues found, domain is complete")
+
+    if not args.skip_qmd_sync:
+        sync_qmd_collection(base_dir, domain)
 
     print(f"\nDomain '{domain}' {'repaired' if existing else 'initialized'} successfully at {domain_path}")
     print(f"Wiki categories: {', '.join(categories)}")

@@ -1,6 +1,0 @@
-{
-  "total_tokens": 0,
-  "duration_ms": 168343,
-  "total_duration_seconds": 168.3,
-  "note": "subagent_tokens 报告为 0；duration 来自任务通知。baseline 文件名用 baseline_Git rebase.md（前缀避开序号约定）。"
-}

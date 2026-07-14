@@ -355,8 +355,8 @@ def check_qmd_config(domain: Path, report: Report) -> None:
         report.issues.append(Issue("warning", str(domain / "domain.md"), "missing qmd collection name"))
     if expected_root not in text:
         report.issues.append(Issue("warning", str(domain / "domain.md"), f"missing qmd collection root `{name}/wiki`"))
-    if "qmd 命令工作目录" not in text:
-        report.issues.append(Issue("warning", str(domain / "domain.md"), "missing qmd command cwd"))
+    if "collection 注册" not in text:
+        report.issues.append(Issue("warning", str(domain / "domain.md"), "missing qmd collection registration rule"))
 
 
 def qmd_config(domain: Path) -> Tuple[Optional[str], Optional[str]]:
@@ -395,9 +395,25 @@ def parse_qmd_collection_path(output: str) -> Optional[str]:
     return None
 
 
+def parse_qmd_collection_context_count(output: str) -> Optional[int]:
+    for line in output.splitlines():
+        match = re.match(r"^\s+Contexts:\s+(\d+)\s*$", line)
+        if match:
+            return int(match.group(1))
+    return None
+
+
+def parse_qmd_status(output: str) -> Dict[str, int]:
+    status: Dict[str, int] = {}
+    for line in output.splitlines():
+        match = re.match(r"^\s+(Total|Vectors|Pending):\s+(\d+)", line)
+        if match:
+            status[match.group(1).lower()] = int(match.group(2))
+    return status
+
+
 def check_qmd_state(root: Path, domains: Iterable[Path], report: Report) -> None:
     if shutil.which("qmd") is None:
-        report.issues.append(Issue("info", "qmd", "qmd binary not found; collection state was not checked"))
         return
     try:
         result = subprocess.run(
@@ -416,12 +432,30 @@ def check_qmd_state(root: Path, domains: Iterable[Path], report: Report) -> None
         return
 
     collections = parse_qmd_collection_list(result.stdout)
+    status_result = subprocess.run(
+        ["qmd", "status"],
+        cwd=str(root),
+        check=False,
+        text=True,
+        capture_output=True,
+    )
+    if status_result.returncode == 0:
+        status = parse_qmd_status(status_result.stdout)
+        pending = status.get("pending", 0)
+        if pending > 0:
+            report.issues.append(
+                Issue(
+                    "info",
+                    "qmd",
+                    f"qmd has {pending} documents pending embeddings; vsearch and hybrid query are not fully ready",
+                )
+            )
+
     for domain in domains:
         collection, collection_root = qmd_config(domain)
         if not collection or not collection_root:
             continue
         if collection not in collections:
-            report.issues.append(Issue("warning", str(domain / "domain.md"), f"qmd collection missing: {collection}"))
             continue
         expected_files = len(list((domain / "wiki").rglob("*.md")))
         actual_files = collections.get(collection, -1)
@@ -430,7 +464,7 @@ def check_qmd_state(root: Path, domains: Iterable[Path], report: Report) -> None
                 Issue(
                     "warning",
                     collection,
-                    f"qmd file count differs from wiki: {actual_files} indexed vs {expected_files} files; run qmd update -c {collection}",
+                    f"qmd file count differs from wiki: {actual_files} indexed vs {expected_files} files; run qmd update",
                 )
             )
         show = subprocess.run(
@@ -443,10 +477,15 @@ def check_qmd_state(root: Path, domains: Iterable[Path], report: Report) -> None
         if show.returncode != 0:
             continue
         actual_path = parse_qmd_collection_path(show.stdout)
+        context_count = parse_qmd_collection_context_count(show.stdout)
         expected_path = str((root / collection_root).resolve())
         if actual_path and actual_path != expected_path:
             report.issues.append(
                 Issue("warning", collection, f"qmd collection path is {actual_path}, expected {expected_path}")
+            )
+        if context_count == 0:
+            report.issues.append(
+                Issue("info", collection, "qmd collection has no root context; cross-collection disambiguation may be weaker")
             )
 
 

@@ -1,6 +1,6 @@
 # LLM Wiki 个人知识库
 
-基于 [Karpathy LLM Wiki](llm-wiki.md) 规范的多领域个人知识库。`README.md` 是人类入口说明；LLM 路由以顶层 [index.md](index.md) 和各领域 `domain.md` 为准。
+基于 [Karpathy LLM Wiki](llm-wiki.md) 规范的多领域个人知识库。
 
 > **LLM 维护** · **Obsidian 浏览** · **Git 管理**
 
@@ -63,17 +63,18 @@ knowledge/
 | [通用计算机知识](通用计算机知识/wiki/index.md) | 操作系统、计算机网络、数据结构与算法、计算机组成原理等通用计算机科学基础知识 | 活跃 |
 | [BlueOS开发](BlueOS开发/wiki/index.md) | BlueOS（蓝河操作系统）应用层开发：UI 框架、前端框架、快应用（RPK）、开发工具链与工程实践 | 活跃 |
 | [Obsidian](Obsidian/wiki/index.md) | Obsidian 工具与插件生态，以及基于 Obsidian 搭建 llm-wiki 知识库的方法 | 活跃 |
+
 ---
 
 ## 核心操作
 
 知识库有三种核心操作，每种操作由独立的 Agent Skill 实现：
 
-| 操作 | Skill | 功能描述 |
-|---|---|---|
-| **Ingest** | `ingest` | 将 `raw/` 中的新素材提炼整合到 `wiki/`，维护来源、索引、日志、qmd，并执行同领域有限半径 cascade update。 |
-| **Query** | `query` | 基于 `wiki/` 内容回答问题。普通查询只在对话中回答；只有用户要求归档时才创建 Query 归档页并写日志。 |
-| **Lint** | `lint` | 健康检查分为确定性检查和启发式检查：结构问题可自动修复，内容矛盾、陈旧、缺页等只报告并给建议。 |
+| 操作         | Skill    | 功能描述                                                                 |
+| ---------- | -------- | -------------------------------------------------------------------- |
+| **Ingest** | `ingest` | 将 `raw/` 中的新素材提炼整合到 `wiki/`，维护来源、索引和日志，并对同领域受影响页面做联动更新；qmd 已启用时同步索引。 |
+| **Query**  | `query`  | 基于 `wiki/` 内容回答问题。普通查询只在对话中回答；只有用户要求归档时才创建 Query 归档页并写日志。            |
+| **Lint**   | `lint`   | 健康检查分为确定性检查和启发式检查：结构问题可自动修复，内容矛盾、陈旧、缺页等只报告并给建议。                      |
 
 ---
 
@@ -83,12 +84,12 @@ knowledge/
 
 ### 知识库核心 Skills
 
-| Skill | 触发场景 | 功能 |
-|---|---|---|
-| [`ingest`](.agents/skills/ingest) | "ingest 这篇文章"、"处理 raw 素材"、"把文章整合到知识库" | 将 `raw/` 中的 Markdown 素材提炼、分类、写入 `wiki/`，更新索引与日志，归档 raw，更新 qmd 索引 |
-| [`query`](.agents/skills/query) | "知识库里关于 X 有什么"、概念解释、工具对比、最佳实践建议 | 基于 `wiki/` 内容回答问题，支持小规模 index.md 浏览和大规模 qmd 搜索两种模式 |
-| [`lint`](.agents/skills/lint) | "lint 知识库"、"检查 wiki"、"health check"、"清理死链" | 运行 Markdown 解析式确定性检查脚本，规范索引、计数、qmd 配置，并报告启发式内容问题 |
-| [`init-domain`](.agents/skills/init-domain) | "创建新领域"、"初始化投资知识库"、"搭建新领域" | 通过苏格拉底式提问了解需求，自动生成完整的领域目录结构和 boilerplate 文件 |
+| Skill                                       | 触发场景                                       | 功能                                                               |
+| ------------------------------------------- | ------------------------------------------ | ---------------------------------------------------------------- |
+| [`ingest`](.agents/skills/ingest)           | "ingest 这篇文章"、"处理 raw 素材"、"把文章整合到知识库"      | 将 `raw/` 中的 Markdown 素材提炼、分类、写入 `wiki/`，更新索引与日志并归档 raw；qmd 已启用时同步索引 |
+| [`query`](.agents/skills/query)             | "知识库里关于 X 有什么"、概念解释、工具对比、最佳实践建议            | 基于 `wiki/` 内容回答问题，支持小规模 index.md 浏览和大规模 qmd 搜索两种模式               |
+| [`lint`](.agents/skills/lint)               | "lint 知识库"、"检查 wiki"、"health check"、"清理死链" | 运行 Markdown 解析式确定性检查脚本，规范索引、计数、qmd 配置，并报告启发式内容问题                 |
+| [`init-domain`](.agents/skills/init-domain) | "创建新领域"、"初始化投资知识库"、"搭建新领域"                 | 通过苏格拉底式提问了解需求，自动生成完整的领域目录结构和模板文件                          |
 
 ### Obsidian 生态 Skills
 
@@ -104,13 +105,62 @@ knowledge/
 
 ## 快速开始
 
+### 0. 首次打开与可选搜索配置
+
+用 Obsidian 打开仓库根目录后即可使用 index-first 的 ingest、query 和 lint；qmd 不是必需依赖，未安装或未注册 collection 不影响知识库的基本工作流。
+
+如果希望在页面较多、索引难以定位或存在语义表述差异时使用 BM25、向量及混合检索，需要先在每台新机器上手动安装本知识库已经验证的版本。qmd 要求 Node.js ≥ 22，建议使用 Node.js 22 LTS。推荐的 npm 安装会自带 `better-sqlite3` 与 `sqlite-vec` 原生模块。
+
+```zsh
+npm install -g @tobilu/qmd@2.5.3
+qmd --version
+qmd doctor
+```
+
+#### BM25：建议一次性恢复，也可按需自动配置
+
+只启用 collection 和 BM25 文本检索时，建议在新机器上执行一次：
+
+```zsh
+python3 .agents/skills/init-domain/scripts/qmd_sync.py --check
+python3 .agents/skills/init-domain/scripts/qmd_sync.py --apply
+qmd status
+```
+
+`--check` 只读检查；普通 `--apply` 根据所有 `domain.md` 幂等补注册缺失 collection 和根 context，并仅在配置变化时运行一次 `qmd update`。路径冲突不会被自动覆盖。
+
+这一步不是强制启动步骤，也可以延迟到实际工作流按领域自动完成：
+
+- `init-domain` 自动注册新领域 collection。
+- `ingest` 自动补齐当前领域 collection，并在 wiki 变化后刷新 BM25。
+- `query` 进入 qmd 模式时先检查当前领域，缺失 collection 时自动补注册；qmd 不可用时回退 `wiki/index.md`。
+- `lint` 只报告配置问题，不自动注册 collection 或更新索引。
+
+主动执行一次普通 `--apply` 的好处是立即恢复全部现有领域；不主动执行则是“遇到哪个领域，再配置哪个领域”。
+
+#### 语义检索：必须由用户显式初始化一次
+
+需要 `vsearch` 或完整混合 `query` 时，由用户在每台新机器上明确执行一次语义初始化：
+
+```zsh
+python3 .agents/skills/init-domain/scripts/qmd_sync.py --apply --semantic
+qmd status
+```
+
+`--semantic` 会下载约 2.56 GB、共三个固定 GGUF 模型并校验文件，以适合中文的 Qwen3 Embedding 建立向量，将本机 qmd 配置改为已校验模型的绝对路径，执行 `qmd embed`，最后以 `qmd doctor` 验证实际推理。因为涉及大文件下载和全库向量生成，普通 `init-domain`、`ingest`、`query` 和 `lint` 都不会隐式触发首次语义初始化。
+
+这套流程还能避免 qmd 的 `hf:` 模型地址在部分网络中卡在 `Gathering information`。
+
+语义初始化成功后，后续 `ingest` 和 Query 归档会在 wiki 变化时维护 BM25，并对已启用语义检索的机器增量执行 `qmd embed`；普通只读 query、lint 或内容未变化时不例行 embed。
+
+collection 注册信息、文本索引、向量、模型和绝对路径配置都只保存在本机，不进入 Git；Git 只同步 `domain.md` 声明、脚本、版本和模型校验值，因此能够在不同机器上按上述步骤重建。
+
 ### 1. 添加新素材
 
 将文章、论文、视频转录等 Markdown 文件放入对应领域的 `raw/<类型>/` 目录：
 
 ```
 AI/raw/articles/new-article.md
-Rust/raw/papers/new-paper.md
 ```
 
 然后请求 LLM Agent 进行 ingest：
@@ -123,21 +173,21 @@ Agent 会自动：
 - 创建/更新 `wiki/` 页面（含标准 frontmatter）
 - 更新 `wiki/index.md` 和 `wiki/log.md`
 - 将 raw 文件归档到 `raw/archive/`
-- 更新 qmd 搜索索引
+- 本机已安装 qmd 时运行 `qmd_sync.py --apply --refresh --domain <领域>`，补齐配置并更新一次文本索引；已经启用语义检索时再增量运行 `qmd embed`
 
 ### 2. 查询知识
 
 向 LLM Agent 提问，它会基于 `wiki/` 内容回答：
 
 > "Rust 所有权和借用的核心规则是什么？"
-> "知识库里关于 RAG 和 Fine-tuning 的对比有什么？"
 
 Agent 会自动：
 - 判断涉及领域
-- 选择查询模式（小规模浏览 index.md / 大规模 qmd 搜索）
-- 读取相关页面
+- 先用 `index.md` 导航；页面较多、索引定位失败或存在明显表述差异时，可用 qmd 召回候选
+- 使用 qmd 时，按问题类型选择 BM25 `search`、语义 `vsearch` 或结构化混合 `query`
+- 从候选中选择少量高相关页面，通常 3–5 篇；简单问题可以更少，再用 `get` / `multi-get` 回读原文
 - 综合回答，标注 `[[引用]]`
-- 普通查询不写入任何文件
+- 普通查询不写入 wiki，也不做例行 `qmd update` / `qmd embed`；使用 qmd 前由 Agent 先 `--check`，发现 collection 缺失时自动 `--apply`，路径冲突或索引过期时回退到 `wiki/index.md`
 - （用户明确要求时）将高价值回答归档为 `type: query_archive` 的新 wiki 页面
 
 ### 3. 健康检查
@@ -149,8 +199,9 @@ Agent 会自动：
 Agent 会自动：
 - 运行 `.agents/skills/lint/scripts/wiki_lint.py`
 - 解析 Markdown，忽略代码块、行内代码和 Obsidian 注释中的伪链接
-- 自动修复确定性结构问题（索引缺项/悬空项、重复分类、页面计数、qmd 配置提示）
-- 在对话中报告启发式问题（矛盾、陈旧、缺页、缺引用、Query 归档页可能过期）
+- 自动修复确定性结构问题（索引缺项/悬空项、重复分类、页面计数）
+- 在对话中报告启发式问题（矛盾、陈旧、孤立页面、缺页、缺引用、Query 归档页可能过期）
+- 先执行 `qmd_sync.py --check` 和 `qmd_semantic.py --check`，再检查已注册 collection 的路径、文档数量、context、模型配置和向量状态；不执行 `--apply`、`qmd update` 或 `qmd embed`
 - 只有发生确定性修复或用户要求留档时才写 `wiki/log.md`
 
 ### 4. 创建新领域
@@ -163,6 +214,7 @@ Agent 会通过 `init-domain` skill：
 - 生成个性化领域 `domain.md`
 - 更新顶层 `index.md`
 - 如 README.md 存在，更新 README.md 的现有领域表
+- 在 `domain.md` 中生成可移植的 qmd collection 声明；本机已安装 qmd 时自动调用 `qmd_sync.py --apply --domain <领域>`，未安装时跳过
 
 ---
 
@@ -219,14 +271,14 @@ type: query_archive
 
 ## 依赖工具
 
-| 工具 | 用途 | 安装 |
-|---|---|---|
-| **Obsidian** | 浏览和阅读知识库 | [obsidian.md](https://obsidian.md) |
-| **qmd** | BM25 全文搜索索引 | `cargo install qmd` |
-| **defuddle** | 网页内容提取（ingest 外部文章时使用） | `npm install -g defuddle` |
-| **obsidian-cli** | 与 Obsidian 实例交互 | 见 [Obsidian CLI 文档](https://help.obsidian.md/cli) |
+| 工具               | 用途                     |
+| ---------------- | ---------------------- |
+| **Obsidian**     | 浏览和阅读知识库               |
+| **qmd**          | BM25、向量与混合检索索引        |
+| **defuddle**     | 网页内容提取（ingest 外部文章时使用） |
+| **obsidian-cli** | 与 Obsidian 实例交互        |
 
-qmd 路径语义：所有 qmd 命令都从知识库根目录执行；每个领域在 `domain.md` 中声明 `collection 名称` 和相对根目录的 `collection root`，例如 `Rust/wiki`。
+qmd 是可选的本地搜索加速器。每个领域在 `domain.md` 中声明 collection 名称和相对根目录的 `collection root`（如 `Rust/wiki`），共享 `qmd_sync.py` 负责从 Git 根目录推导本机绝对路径并幂等同步。注册信息不进入 Git；qmd 未安装不影响 index-first 查询和其他知识库操作。
 
 ---
 
@@ -245,4 +297,5 @@ qmd 路径语义：所有 qmd 命令都从知识库根目录执行；每个领�
 
 - **Git 管理**：所有变更通过 Git 跟踪，便于跨设备同步和版本回溯
 - **LLM 维护**：日常 ingest、query、lint 操作由 LLM Agent 执行
-- **手动编辑**：可直接编辑 `wiki/` 和 `notes/` 中的文件，但修改后建议让 LLM Agent 执行 lint 确保一致性
+- **个人笔记**：用户直接编辑各领域的 `notes/`，LLM 默认不修改
+- **Wiki 内容**：`wiki/` 是 LLM 编译输出层；如有必要人工修改，随后应让 LLM Agent 执行 lint，检查索引、链接、来源与页面计数
