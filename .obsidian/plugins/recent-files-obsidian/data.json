@@ -1,6 +1,26 @@
 {
   "recentFiles": [
     {
+      "basename": "5、Matt Pocock Skills",
+      "path": "AI/notes/常用Skill和插件汇总/5、Matt Pocock Skills.md"
+    },
+    {
+      "basename": "2026-07-15-周三",
+      "path": "02_日记/2026-07-15-周三.md"
+    },
+    {
+      "basename": "How to Use Matt Pocock's Skills for Claude Code A Complete Guide",
+      "path": "Clippings/How to Use Matt Pocock's Skills for Claude Code A Complete Guide.md"
+    },
+    {
+      "basename": "Matt Pocock Skills 怎麼用在 Coding  Planning",
+      "path": "Clippings/Matt Pocock Skills 怎麼用在 Coding  Planning.md"
+    },
+    {
+      "basename": "打造真实项目的 AI 编程环境：Matt Pocock 的 Skill 工作流完整上手攻略",
+      "path": "Clippings/打造真实项目的 AI 编程环境：Matt Pocock 的 Skill 工作流完整上手攻略.md"
+    },
+    {
       "basename": "3、Superpowers",
       "path": "AI/notes/常用Skill和插件汇总/3、Superpowers.md"
     },
@@ -179,26 +199,6 @@
     {
       "basename": "3、Markdown",
       "path": "通用计算机知识/notes/数据格式/3、Markdown.md"
-    },
-    {
-      "basename": "size_of 与 size_of_val",
-      "path": "Rust/wiki/concepts/size_of 与 size_of_val.md"
-    },
-    {
-      "basename": "Result处理",
-      "path": "Rust/wiki/concepts/Result处理.md"
-    },
-    {
-      "basename": "Trait对象与动态分发",
-      "path": "Rust/wiki/concepts/Trait对象与动态分发.md"
-    },
-    {
-      "basename": "Trait关联项",
-      "path": "Rust/wiki/concepts/Trait关联项.md"
-    },
-    {
-      "basename": "有序性比较",
-      "path": "Rust/wiki/concepts/有序性比较.md"
     }
   ],
   "omittedPaths": [],
