@@ -1,20 +1,64 @@
 {
   "recentFiles": [
     {
+      "basename": "3、搜索功能、环境变量与输出流",
+      "path": "Rust/notes/项目/01_minigrep/3、搜索功能、环境变量与输出流.md"
+    },
+    {
+      "basename": "11、引用生命周期",
+      "path": "Rust/notes/Rust基础/11、引用生命周期.md"
+    },
+    {
+      "basename": "5、字符串",
+      "path": "Rust/notes/Rust基础/5、字符串.md"
+    },
+    {
+      "basename": "2、项目重构与错误处理",
+      "path": "Rust/notes/项目/01_minigrep/2、项目重构与错误处理.md"
+    },
+    {
+      "basename": "4、YAML",
+      "path": "通用计算机知识/notes/数据格式/4、YAML.md"
+    },
+    {
+      "basename": "6、Obsidian CLI",
+      "path": "Obsidian/notes/6、Obsidian CLI.md"
+    },
+    {
+      "basename": "7、LLM Wiki",
+      "path": "Obsidian/notes/7、LLM Wiki.md"
+    },
+    {
+      "basename": "8、AI + Obsidian",
+      "path": "Obsidian/notes/8、AI + Obsidian.md"
+    },
+    {
+      "basename": "5、Bilibili Obsidian Clipper",
+      "path": "Obsidian/notes/5、Bilibili Obsidian Clipper.md"
+    },
+    {
+      "basename": "4、Obsidian Web Clipper",
+      "path": "Obsidian/notes/4、Obsidian Web Clipper.md"
+    },
+    {
+      "basename": "3、Obsidian 插件",
+      "path": "Obsidian/notes/3、Obsidian 插件.md"
+    },
+    {
+      "basename": "2、Obsidian 扩展语法",
+      "path": "Obsidian/notes/2、Obsidian 扩展语法.md"
+    },
+    {
+      "basename": "1、Obsidian入门",
+      "path": "Obsidian/notes/1、Obsidian入门.md"
+    },
+    {
       "basename": "2026-07-16-周四",
       "path": "02_日记/2026-07-16-周四.md"
     },
     {
       "basename": "2026-07-15-周三",
       "path": "02_日记/2026-07-15-周三.md"
-    },
-    {
-      "basename": "3、搜索功能、环境变量与输出流",
-      "path": "Rust/notes/项目/01_minigrep/3、搜索功能、环境变量与输出流.md"
-    },
-    {
-      "basename": "2、项目重构与错误处理",
-      "path": "Rust/notes/项目/01_minigrep/2、项目重构与错误处理.md"
     },
     {
       "basename": "1、命令行参数与文件读取",
@@ -155,50 +199,6 @@
     {
       "basename": "Cargo 依赖声明写法",
       "path": "Rust/wiki/recipes/Cargo 依赖声明写法.md"
-    },
-    {
-      "basename": "2、Claude Code工作原理（待完善）",
-      "path": "AI/notes/Claude Code/2、Claude Code工作原理（待完善）.md"
-    },
-    {
-      "basename": "todo",
-      "path": "AI/notes/Claude Code/todo.md"
-    },
-    {
-      "basename": "Pasted image 20260713022422",
-      "path": "assets/Pasted image 20260713022422.png"
-    },
-    {
-      "basename": "log",
-      "path": "前后端/wiki/log.md"
-    },
-    {
-      "basename": "index",
-      "path": "前后端/wiki/index.md"
-    },
-    {
-      "basename": "Todo",
-      "path": "Obsidian/notes/Todo.md"
-    },
-    {
-      "basename": "1、Terminal",
-      "path": "Obsidian/notes/常用插件/1、Terminal.md"
-    },
-    {
-      "basename": "8、AI + Obsidian",
-      "path": "Obsidian/notes/8、AI + Obsidian.md"
-    },
-    {
-      "basename": "7、LLM Wiki",
-      "path": "Obsidian/notes/7、LLM Wiki.md"
-    },
-    {
-      "basename": "index",
-      "path": "Rust/wiki/index.md"
-    },
-    {
-      "basename": "log",
-      "path": "Rust/wiki/log.md"
     }
   ],
   "omittedPaths": [],
