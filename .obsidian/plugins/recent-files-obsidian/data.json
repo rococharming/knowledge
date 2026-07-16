@@ -1,20 +1,32 @@
 {
   "recentFiles": [
     {
-      "basename": "Git  Submodule",
-      "path": "通用计算机知识/notes/Git/Git  Submodule.md"
-    },
-    {
-      "basename": "草稿记忆",
-      "path": "00_Inbox/草稿记忆.md"
-    },
-    {
       "basename": "2026-07-16-周四",
       "path": "02_日记/2026-07-16-周四.md"
     },
     {
       "basename": "2026-07-15-周三",
       "path": "02_日记/2026-07-15-周三.md"
+    },
+    {
+      "basename": "3、搜索功能、环境变量与输出流",
+      "path": "Rust/notes/项目/01_minigrep/3、搜索功能、环境变量与输出流.md"
+    },
+    {
+      "basename": "2、项目重构与错误处理",
+      "path": "Rust/notes/项目/01_minigrep/2、项目重构与错误处理.md"
+    },
+    {
+      "basename": "1、命令行参数与文件读取",
+      "path": "Rust/notes/项目/01_minigrep/1、命令行参数与文件读取.md"
+    },
+    {
+      "basename": "Git  Submodule",
+      "path": "通用计算机知识/notes/Git/Git  Submodule.md"
+    },
+    {
+      "basename": "草稿记忆",
+      "path": "00_Inbox/草稿记忆.md"
     },
     {
       "basename": "1、Git 安装与配置",
@@ -187,18 +199,6 @@
     {
       "basename": "log",
       "path": "Rust/wiki/log.md"
-    },
-    {
-      "basename": "llm-wiki-zh-CN",
-      "path": "llm-wiki-zh-CN.md"
-    },
-    {
-      "basename": "llm-wiki",
-      "path": "Clippings/llm-wiki.md"
-    },
-    {
-      "basename": "2026-07-11-AI 讲解 Rust 入门教程（基于 Rust Book）-P3-1.2 你的第一个 Rust 程序：Hello World",
-      "path": "Clippings/Bilibili/2026-07-11-AI 讲解 Rust 入门教程（基于 Rust Book）-P3-1.2 你的第一个 Rust 程序：Hello World.md"
     }
   ],
   "omittedPaths": [],
