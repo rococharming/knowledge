@@ -1,3 +1,10 @@
+---
+title: Todo
+date: 2026-07-13
+tags: [Obsidian]
+aliases:
+  - Todo
+---
 
 >[!todo]
 >- [ ] 安装主题，CSS片段修改部分主题样式

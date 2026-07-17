@@ -1,8 +1,16 @@
+---
+title: Rust原生网络编程
+date: 2026-05-09
+tags: [Rust, Rust进阶, 网络编程]
+aliases:
+  - Rust原生网络编程
+---
+
 # 一、std::net模块
 
 ## 1、概述
 
-`std::net` 是Rust标准库中负责原生网络编程的模块。它提供了 **基于操作系统套接字（socket）的TCP/UDP网络原语，以及IP地址、套接字地址、地址解析等基础类型** 。简单来说， `std::net` 解决的是如何在不依赖第三方网络框架的前提下，直接使用Rust标准库完成网络通信。
+`std::net` 是 Rust 标准库中负责原生网络编程的模块。它提供了 **基于操作系统套接字（socket）的 TCP/UDP 网络原语，以及 IP 地址、套接字地址、地址解析等基础类型** 。简单来说， `std::net` 解决的是如何在不依赖第三方网络框架的前提下，直接使用 Rust 标准库完成网络通信。
 
 `std::net` **本身主要提供同步、阻塞式网络接口** 。也就是说，一个线程在执行 `accept` 、 `read` 、 `recv` 等操作时，如果数据暂时没有送达，通常会阻塞等待。
 
@@ -96,9 +104,9 @@ octets: [u8; 16];
 ```
 ### （3）SocketAddr、SocketAddrV4、SocketAddrV6
 
-`SocketAddr` 表示套接字地址，它又分为IPv4地址和IPv6地址。
+`SocketAddr` 表示套接字地址，它又分为 IPv4 地址和 IPv6 地址。
 
-`SocketAddr` 是枚举类型，可以是V4或V6，，定义如下：
+`SocketAddr` 是枚举类型，可以是 IPv4 或 IPv6，定义如下：
 
 ```rust
 enum SocketAddr {
@@ -334,12 +342,12 @@ Ok(())
 ```
 注意事项：
 
-TCP是字节流，不是消息包协议。一次 `read` 读到的数据，不一定对应一次 `write` 写出的完整业务消息
+TCP 是字节流，不是消息包协议。一次 `read` 读到的数据，不一定对应一次 `write` 写出的完整业务消息。
 
-`read` 返回0，往往表示对端已关闭连接
+`read` 返回 0，往往表示对端已关闭连接。
 ## 4、基于std::io的TCP读写
 
-网络读写本质上也是I/O，因此 `TcpStream` 的使用和文件读写在抽象层面是想通的，这也是Rust在统一I/O设计的重要体现。 `Read` 和 `Write` 是最核心的 I/O trait
+网络读写本质上也是 I/O，因此 `TcpStream` 的使用和文件读写在抽象层面是相通的，这也是 Rust 在统一 I/O 设计上的重要体现。`Read` 和 `Write` 是最核心的 I/O trait。
 
 读取
 

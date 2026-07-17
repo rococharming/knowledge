@@ -1,3 +1,12 @@
+---
+title: Codex App
+date: 2026-05-19
+tags: [AI, Codex]
+aliases:
+  - Codex App
+  - CodexApp
+---
+
 # 一、简介
 
 `Codex App` 是一款桌面端应用，支持并行处理多个 Codex 任务与对话，并内置 worktree 支持、自动化工作流及 Git 集成。

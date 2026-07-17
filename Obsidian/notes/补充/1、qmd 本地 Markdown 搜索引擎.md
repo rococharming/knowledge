@@ -1,7 +1,7 @@
 ---
 title: qmd 本地 Markdown 搜索引擎
 date: 2026-07-14
-tags: [qmd, Markdown, 知识检索, LLM-Wiki]
+tags: [Obsidian, 补充, Markdown, qmd]
 aliases:
   - QMD
   - Query Markup Documents

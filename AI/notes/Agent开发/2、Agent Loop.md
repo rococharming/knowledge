@@ -1,3 +1,12 @@
+---
+title: Agent Loop
+date: 2026-06-02
+tags: [AI, Agent]
+aliases:
+  - Agent Loop
+  - AgentLoop
+---
+
 # 一、核心理念
 
 > "One loop & Bash is all you need" — 一个工具 + 一个循环 = 一个 Agent。

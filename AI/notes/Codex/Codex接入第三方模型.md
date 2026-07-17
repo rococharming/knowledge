@@ -1,3 +1,10 @@
+---
+title: Codex接入第三方模型
+date: 2026-06-22
+tags: [AI, Codex]
+aliases:
+  - Codex接入第三方模型
+---
 
 # 一、为什么不能直接改个baseurl + API key
 

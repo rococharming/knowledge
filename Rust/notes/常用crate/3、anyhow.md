@@ -1,6 +1,14 @@
+---
+title: anyhow
+date: 2026-06-08
+tags: [Rust, RustCrate, anyhow]
+aliases:
+  - anyhow
+---
+
 # 一、简介
 
-`anyhow`是 Rust 生态中最常用的应用层错误处理 crate 之一。
+`anyhow`是 Rust 生态中最常用的应用层错误处理 crate 之一。它建立在 `Result`、`?` 和错误传播这些基础概念之上，相关内容见 [[Rust/notes/Rust基础/15、错误处理|错误处理]]。
 
 它提供了统一的`anyhow::Error`类型，可以将不同来源的错误统一封装，从而简化错误传播和错误处理代码。
 

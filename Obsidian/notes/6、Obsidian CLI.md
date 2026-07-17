@@ -1,14 +1,11 @@
 ---
 title: Obsidian CLI
 date: 2026-07-12
-tags:
-  - Obsidian
-  - CLI
-  - AI-Agent
-  - 知识管理
+tags: [Obsidian, CLI, AI-Agent, 知识管理]
 aliases:
   - Obsidian 命令行界面
   - obsidian-cli
+  - Obsidian CLI
 ---
 
 # 一、Obsidian CLI 的概念

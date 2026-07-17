@@ -1,3 +1,10 @@
+---
+title: UI预览架构设计
+date: 2026-07-07
+tags: [BlueOS]
+aliases:
+  - UI预览架构设计
+---
 
 # 一、整体架构与角色
 

@@ -1,3 +1,12 @@
+---
+title: Tool Use
+date: 2026-05-08
+tags: [AI, Agent]
+aliases:
+  - Tool Use
+  - ToolUse
+---
+
 # 一、核心理念
 
 > "加一个工具，只加一个 handler" — 循环不用动，新工具注册进 dispatch map 就行。

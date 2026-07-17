@@ -1,7 +1,7 @@
 ---
 title: HTML分组与脚本
 date: 2026-07-13
-tags: [HTML, 前端基础, 语义化HTML, JavaScript]
+tags: [Web, 前端, HTML, 前端基础]
 aliases:
   - 语义化分组、标识符与脚本加载
   - div与section

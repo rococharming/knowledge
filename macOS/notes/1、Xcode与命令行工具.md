@@ -1,3 +1,11 @@
+---
+title: Xcode与命令行工具
+date: 2026-05-12
+tags: [macOS, Xcode]
+aliases:
+  - Xcode与命令行工具
+---
+
 # 一、简介
 
 ## 1、Xcode Command Line Tools

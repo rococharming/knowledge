@@ -1,17 +1,11 @@
 ---
 title: HTML文本语义与描述列表
 date: 2026-07-13
-tags:
-  - HTML
-  - 前端基础
-  - 语义化HTML
-  - 文本语义
-  - 列表
+tags: [Web, 前端, HTML, 前端基础]
 aliases:
   - 细微语义元素与描述列表
   - HTML细微语义元素
   - em与strong
-  - description list
 ---
 
 # 一、细微语义元素解决什么问题

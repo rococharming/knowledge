@@ -1,7 +1,10 @@
 ---
 title: XML数据格式
 date: 2026-07-03
-tags: [data-format, xml]
+tags: [计算机基础, 数据格式, XML, data-format]
+aliases:
+  - XML数据格式
+  - XML
 ---
 
 # 一、XML概述

@@ -2,6 +2,8 @@
 title: Python字符串
 date: 2026-06-27
 tags: [Python, Python基础]
+aliases:
+  - Python字符串
 ---
 
 # 一、定义字符串

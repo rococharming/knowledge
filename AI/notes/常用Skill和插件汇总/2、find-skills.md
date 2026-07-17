@@ -1,3 +1,11 @@
+---
+title: find-skills
+date: 2026-05-08
+tags: [AI, Skill]
+aliases:
+  - find-skills
+---
+
 # 一、概述
 
 `find-skills`是 Vercel Labs skills 仓库中的一个 Agent Skill。它的作用是：

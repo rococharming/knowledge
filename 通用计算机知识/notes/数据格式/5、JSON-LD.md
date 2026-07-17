@@ -1,11 +1,7 @@
 ---
 title: JSON-LD
 date: 2026-07-12
-tags:
-  - data-format
-  - json-ld
-  - structured-data
-  - semantic-web
+tags: [计算机基础, 数据格式, JSON-LD, JSON]
 aliases:
   - JSON for Linked Data
   - 结构化数据

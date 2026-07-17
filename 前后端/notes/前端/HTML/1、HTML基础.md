@@ -1,7 +1,7 @@
 ---
 title: HTML基础
 date: 2026-07-13
-tags: [HTML, 前端基础, 语义化HTML, 可访问性]
+tags: [Web, 前端, HTML, 前端基础]
 aliases:
   - HTML元素、属性与基础语义
   - HTML元素与属性

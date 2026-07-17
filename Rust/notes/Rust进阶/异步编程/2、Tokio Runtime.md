@@ -1,3 +1,12 @@
+---
+title: Tokio Runtime
+date: 2026-06-15
+tags: [Rust, Rust进阶, 异步编程, Tokio]
+aliases:
+  - Tokio Runtime
+  - TokioRuntime
+---
+
 # 一、概述
 
 
@@ -13,7 +22,7 @@ async fn hello() {
 
 调用 `hello()` 时，函数体不会立刻执行，而是返回一个 `Future`。这个 `Future` 必须被某个执行器不断 `poll`，才会真正向前推进，因此需要 Runtime 提供执行器。
 
-Tokio Runtime 就是 Rust 生态中最主流的异步运行时之一。它负责提供：
+Tokio Runtime 就是 Rust 生态中最主流的异步运行时之一。它负责驱动 Future，并调度 [[Rust/notes/Rust进阶/异步编程/3、Tokio Task|Tokio Task]]。它负责提供：
 
 | 组成     | 作用                                     |
 | ------ | -------------------------------------- |

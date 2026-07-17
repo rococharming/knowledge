@@ -1,7 +1,7 @@
 ---
 title: Git 分支的基本概念与操作
 date: 2026-07-14
-tags: [git, version-control, branch]
+tags: [计算机基础, Git, Git分支, git]
 aliases:
   - Git branch
   - Git 分支

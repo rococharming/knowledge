@@ -1,3 +1,11 @@
+---
+title: Cargo workspace
+date: 2026-05-28
+tags: [Rust, Rust基础, Cargo]
+aliases:
+  - Cargo workspace
+  - Cargoworkspace
+---
 
 # 一、基本概念
 

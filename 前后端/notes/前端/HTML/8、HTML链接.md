@@ -1,12 +1,11 @@
 ---
 title: HTML链接
 date: 2026-07-13
-tags: [HTML, 前端基础, 链接, 路径, CSS]
+tags: [Web, 前端, HTML, 前端基础]
 aliases:
   - 链接目标、路径语法与链接状态
   - HTML链接目标
   - HTML路径语法
-  - 链接状态
 ---
 
 # 一、链接不只是跳转

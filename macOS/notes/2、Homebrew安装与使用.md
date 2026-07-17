@@ -1,3 +1,11 @@
+---
+title: Homebrew安装与使用
+date: 2026-05-13
+tags: [macOS, Homebrew]
+aliases:
+  - Homebrew安装与使用
+---
+
 \
 # 一、简介
 

@@ -1,3 +1,11 @@
+---
+title: gstack
+date: 2026-07-15
+tags: [AI, Skill]
+aliases:
+  - gstack
+---
+
 # 一、gstack概述
 
 gstack 是一套 AI 工程工作流工具集，将 Agent 变成一个有完整流程的工程团队。

@@ -1,13 +1,11 @@
 ---
 title: Markdown
 date: 2026-07-06
-tags:
-  - data-format
-  - markdown
-  - obsidian
+tags: [计算机基础, 数据格式, Markdown, data-format]
 aliases:
   - Markdown 语法
   - Markdown 基础
+  - Markdown
 ---
 
 # 一、概述

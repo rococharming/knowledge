@@ -1,3 +1,11 @@
+---
+title: Anthropic SDK入门
+date: 2026-06-11
+tags: [AI, Agent, Anthropic]
+aliases:
+  - Anthropic SDK入门
+  - AnthropicSDK入门
+---
 
 # 一、Anthropic SDK简介
 

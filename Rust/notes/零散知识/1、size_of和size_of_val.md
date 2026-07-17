@@ -1,3 +1,11 @@
+---
+title: size_of和size_of_val
+date: 2026-05-12
+tags: [Rust, 零散知识]
+aliases:
+  - size_of和size_of_val
+---
+
 # 一、概述
 
 Rust 标准库中的 `std::mem::size_of` 和 `std::mem::size_of_val` 都用于查看数据在内存中占用的字节数。

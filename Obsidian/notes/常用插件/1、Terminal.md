@@ -1,10 +1,11 @@
 ---
 title: Terminal 插件
 date: 2026-07-13
-tags: [Obsidian, 插件, Terminal, 终端]
+tags: [Obsidian, Obsidian插件, 插件, Terminal]
 aliases:
   - Obsidian Terminal
   - Terminal 插件
+  - Terminal
 ---
 
 # 一、概述

@@ -1,3 +1,12 @@
+---
+title: Understand Anything
+date: 2026-07-01
+tags: [AI, Skill]
+aliases:
+  - Understand Anything
+  - UnderstandAnything
+---
+
 # 一、简介
 
 `Understand Anything` 是一个代码库理解工具。它会扫描项目中的文件、函数、类和依赖关系，并结合 LLM 将代码架构与业务流程转换成交互式知识图谱。

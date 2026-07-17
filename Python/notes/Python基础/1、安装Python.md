@@ -2,6 +2,8 @@
 title: 安装Python
 date: 2026-06-27
 tags: [Python, Python基础]
+aliases:
+  - 安装Python
 ---
 
 # 一、简介

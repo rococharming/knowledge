@@ -1,3 +1,11 @@
+---
+title: Rust安装与开发环境配置
+date: 2026-05-09
+tags: [Rust, Rust基础]
+aliases:
+  - Rust安装与开发环境配置
+---
+
 # 一、Rust简介
 
 Rust 语言在 2006 年作为 Mozilla 员工 `Graydon Hoare`（格雷登·霍尔）的私人项目出现，Mozilla 于2009年开始赞助该项目。第一个有版本的 Rust 编译器于2012年1月发布。 **Rust 1.0 作为第一个稳定版本于 2015年5月15日 发布** 。
@@ -451,7 +459,7 @@ mod tests {
 }
 ```
 
-其中，`#[cfg(test)]` 和 `#[test]` 是与测试相关的内容，后续可以再详细介绍。 ^d6141b
+其中，`#[cfg(test)]` 和 `#[test]` 是与测试相关的内容，详见[[Rust/notes/Rust基础/16、测试|测试]]。
 
 ## 3、构建Cargo项目
 
@@ -572,7 +580,7 @@ code .
 
 ![[assets/Image 16.png]]
 
-关于调试相关概念，参考：[[1、调试|调试]]。
+关于调试相关概念，参考：[[Rust/notes/其他/1、调试|调试]]。
 
 ## 2、RustRover
 

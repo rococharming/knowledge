@@ -1,3 +1,11 @@
+---
+title: Claude Code工作原理（待完善）
+date: 2026-05-21
+tags: [AI, ClaudeCode]
+aliases:
+  - Claude Code工作原理（待完善）
+  - ClaudeCode工作原理（待完善）
+---
 
 # 一、Agentic Loop
 

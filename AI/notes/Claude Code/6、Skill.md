@@ -1,3 +1,11 @@
+---
+title: Skill
+date: 2026-05-08
+tags: [AI, ClaudeCode, Skill]
+aliases:
+  - Skill
+---
+
 # 一、概述
 
 ## 1、Skill概念

@@ -1,3 +1,12 @@
+---
+title: Rust UI 预览架构
+date: 2026-07-09
+tags: [BlueOS, Rust]
+aliases:
+  - Rust UI 预览架构
+  - RustUI预览架构
+---
+
 # 一、基础知识
 
 ## 1、应用与 PMS/AMS/IMS

@@ -1,3 +1,11 @@
+---
+title: Rust日志系统
+date: 2026-05-08
+tags: [Rust, Cookbook]
+aliases:
+  - Rust日志系统
+---
+
 # 一、概述
 
 ## 1、Rust日志生态
@@ -477,7 +485,7 @@ let status = 200;
 tracing::info!(user_id, status, "request completed");
 ```
 
-`?`表示使用`Debug`格式，`%`表示使用`Display`格式：
+`?`表示使用`Debug`格式，`%`表示使用`Display`格式；这和 [[Rust/notes/Cookbook/3、格式化输出|格式化输出]] 中的格式化 Trait 是同一套机制：
 
 ```rust
 tracing::debug!(request = ?request, "received request");
@@ -596,7 +604,7 @@ async fn main() {
 
 第二行是错误的上下文：`other_task`与`handle_task`没有关系，却被标记成属于`handle_task{task_id=10}`。
 
-这是因为`Span::enter()`管理的是当前执行线程的 Span 上下文，而不是某个 Future 独有的上下文。Future 在`.await`处暂停时，局部变量`_enter`不会被丢弃；同一线程接着轮询其他 Future 时，就可能错误继承这个 Span。
+这是因为`Span::enter()`管理的是当前执行线程的 Span 上下文，而不是某个 Future 独有的上下文。结合 [[Rust/notes/Rust进阶/异步编程/3、Tokio Task|Tokio Task]] 理解 Task 调度，会更容易看出为什么跨 `.await` 持有 guard 有问题。Future 在`.await`处暂停时，局部变量`_enter`不会被丢弃；同一线程接着轮询其他 Future 时，就可能错误继承这个 Span。
 
 因此，`Span::enter()`的 guard 不应该跨越`.await`。
 

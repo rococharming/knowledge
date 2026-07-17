@@ -1,3 +1,10 @@
+---
+title: UI预览项目
+date: 2026-06-26
+tags: [BlueOS]
+aliases:
+  - UI预览项目
+---
 
 >`tools_uipreview` 是 vivo BlueOS 快应用框架的桌面端 UI 模拟器。使用纯 Rust 在 Windows 平台把整套 BlueOS 应用运行时（PMS / AMS / IMS 三大系统服务 + 应用生命周期 + Skia 渲染 + 输入事件）“单进程模拟”跑起来，让快应用（RPK包）无需真机即可在 PC 上预览。
 

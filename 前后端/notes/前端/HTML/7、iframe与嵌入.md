@@ -1,12 +1,11 @@
 ---
 title: iframe与嵌入
 date: 2026-07-13
-tags: [HTML, 前端基础, iframe, 安全, 可访问性]
+tags: [Web, 前端, HTML, 前端基础]
 aliases:
   - 替换元素、iframe与嵌入安全
   - 替换元素与iframe
   - HTML iframe
-  - 嵌入安全
 ---
 
 # 一、替换元素的概念

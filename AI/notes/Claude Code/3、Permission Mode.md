@@ -1,3 +1,11 @@
+---
+title: Permission Mode
+date: 2026-05-09
+tags: [AI, ClaudeCode]
+aliases:
+  - Permission Mode
+  - PermissionMode
+---
 
 # 一、概述
 

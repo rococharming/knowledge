@@ -1,14 +1,11 @@
 ---
 title: Obsidian Web Clipper
 date: 2026-07-12
-tags:
-  - Obsidian
-  - Web-Clipper
-  - 浏览器插件
-  - 知识管理
+tags: [Obsidian, Web-Clipper, 浏览器插件, 知识管理]
 aliases:
   - Web Clipper
   - Obsidian 剪藏
+  - Obsidian Web Clipper
 ---
 
 # 一、概述

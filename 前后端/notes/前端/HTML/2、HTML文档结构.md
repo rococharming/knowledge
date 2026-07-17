@@ -1,7 +1,7 @@
 ---
 title: HTML文档结构
 date: 2026-07-13
-tags: [HTML, 前端基础, 文档结构, 外部资源]
+tags: [Web, 前端, HTML, 前端基础]
 aliases:
   - HTML文档骨架与资源引用
   - HTML Boilerplate

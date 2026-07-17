@@ -1,10 +1,11 @@
 ---
 title: Git Submodule
 date: 2026-07-16
-tags: [git, version-control, submodule]
+tags: [计算机基础, Git, git, version-control]
 aliases:
   - Git 子模块
   - git submodule
+  - Git Submodule
 ---
 
 # 一、Git Submodule 的核心模型

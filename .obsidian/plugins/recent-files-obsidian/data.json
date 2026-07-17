@@ -1,12 +1,104 @@
 {
   "recentFiles": [
     {
-      "basename": "3、搜索功能、环境变量与输出流",
-      "path": "Rust/notes/项目/01_minigrep/3、搜索功能、环境变量与输出流.md"
+      "basename": "6、Ponytail",
+      "path": "AI/notes/常用Skill和插件汇总/6、Ponytail.md"
+    },
+    {
+      "basename": "5、Matt Pocock Skills",
+      "path": "AI/notes/常用Skill和插件汇总/5、Matt Pocock Skills.md"
+    },
+    {
+      "basename": "记忆区",
+      "path": "00_Inbox/记忆区.md"
+    },
+    {
+      "basename": "Claude Code 入门指南",
+      "path": "AI/wiki/summaries/Claude Code 入门指南.md"
+    },
+    {
+      "basename": "Claude Code 入门实战流程",
+      "path": "AI/wiki/recipes/Claude Code 入门实战流程.md"
+    },
+    {
+      "basename": "Claude Code 第三方模型接入",
+      "path": "AI/wiki/recipes/Claude Code 第三方模型接入.md"
+    },
+    {
+      "basename": "index",
+      "path": "index.md"
+    },
+    {
+      "basename": "Claude Code",
+      "path": "AI/wiki/entities/Claude Code.md"
+    },
+    {
+      "basename": "Claude Code 权限模式",
+      "path": "AI/wiki/concepts/Claude Code 权限模式.md"
+    },
+    {
+      "basename": "Claude Code 常用命令",
+      "path": "AI/wiki/concepts/Claude Code 常用命令.md"
+    },
+    {
+      "basename": "1、Claude Code入门",
+      "path": "AI/notes/Claude Code/1、Claude Code入门.md"
     },
     {
       "basename": "11、引用生命周期",
       "path": "Rust/notes/Rust基础/11、引用生命周期.md"
+    },
+    {
+      "basename": "1、Rust安装与开发环境配置",
+      "path": "Rust/notes/Rust基础/1、Rust安装与开发环境配置.md"
+    },
+    {
+      "basename": "2、Rust基础语法",
+      "path": "Rust/notes/Rust基础/2、Rust基础语法.md"
+    },
+    {
+      "basename": "3、所有权",
+      "path": "Rust/notes/Rust基础/3、所有权.md"
+    },
+    {
+      "basename": "22、迭代器",
+      "path": "Rust/notes/Rust基础/22、迭代器.md"
+    },
+    {
+      "basename": "19、集合",
+      "path": "Rust/notes/Rust基础/19、集合.md"
+    },
+    {
+      "basename": "README",
+      "path": "README.md"
+    },
+    {
+      "basename": "index",
+      "path": "Rust/wiki/index.md"
+    },
+    {
+      "basename": "log",
+      "path": "Rust/wiki/log.md"
+    },
+    {
+      "basename": "index",
+      "path": "AI/wiki/index.md"
+    },
+    {
+      "basename": "log",
+      "path": "AI/wiki/log.md"
+    },
+    {
+      "basename": "2026-07-17-周五",
+      "path": "02_日记/2026-07-17-周五.md"
+    },
+    {
+      "basename": "2026-07-16-周四",
+      "path": "02_日记/2026-07-16-周四.md"
+    },
+    {
+      "basename": "3、搜索功能、环境变量与输出流",
+      "path": "Rust/notes/项目/01_minigrep/3、搜索功能、环境变量与输出流.md"
     },
     {
       "basename": "5、字符串",
@@ -53,10 +145,6 @@
       "path": "Obsidian/notes/1、Obsidian入门.md"
     },
     {
-      "basename": "2026-07-16-周四",
-      "path": "02_日记/2026-07-16-周四.md"
-    },
-    {
       "basename": "2026-07-15-周三",
       "path": "02_日记/2026-07-15-周三.md"
     },
@@ -67,10 +155,6 @@
     {
       "basename": "Git  Submodule",
       "path": "通用计算机知识/notes/Git/Git  Submodule.md"
-    },
-    {
-      "basename": "草稿记忆",
-      "path": "00_Inbox/草稿记忆.md"
     },
     {
       "basename": "1、Git 安装与配置",
@@ -109,96 +193,12 @@
       "path": "Clippings/打造真实项目的 AI 编程环境：Matt Pocock 的 Skill 工作流完整上手攻略.md"
     },
     {
-      "basename": "5、Matt Pocock Skills",
-      "path": "AI/notes/常用Skill和插件汇总/5、Matt Pocock Skills.md"
-    },
-    {
       "basename": "Matt Pocock Skills 怎麼用在 Coding  Planning",
       "path": "Clippings/Matt Pocock Skills 怎麼用在 Coding  Planning.md"
     },
     {
       "basename": "How to Use Matt Pocock's Skills for Claude Code A Complete Guide",
       "path": "Clippings/How to Use Matt Pocock's Skills for Claude Code A Complete Guide.md"
-    },
-    {
-      "basename": "3、Superpowers",
-      "path": "AI/notes/常用Skill和插件汇总/3、Superpowers.md"
-    },
-    {
-      "basename": "4、gstack",
-      "path": "AI/notes/常用Skill和插件汇总/4、gstack.md"
-    },
-    {
-      "basename": "10、HTML文本语义与描述列表",
-      "path": "前后端/notes/前端/HTML/10、HTML文本语义与描述列表.md"
-    },
-    {
-      "basename": "3、Tool Use",
-      "path": "AI/notes/Agent开发/3、Tool Use.md"
-    },
-    {
-      "basename": "2026-7-13 会议记录",
-      "path": "03_会议/2026-7-13 会议记录.md"
-    },
-    {
-      "basename": "README",
-      "path": "README.md"
-    },
-    {
-      "basename": "1、qmd 本地 Markdown 搜索引擎",
-      "path": "Obsidian/notes/补充/1、qmd 本地 Markdown 搜索引擎.md"
-    },
-    {
-      "basename": "1、Git 分支的基本概念与操作",
-      "path": "通用计算机知识/notes/Git/02_分支管理/1、Git 分支的基本概念与操作.md"
-    },
-    {
-      "basename": "AGENTS",
-      "path": "AGENTS.md"
-    },
-    {
-      "basename": "domain",
-      "path": "Rust/domain.md"
-    },
-    {
-      "basename": "llm-wiki",
-      "path": "llm-wiki.md"
-    },
-    {
-      "basename": "index",
-      "path": "Obsidian/wiki/index.md"
-    },
-    {
-      "basename": "1、AI常见概念汇总",
-      "path": "AI/notes/1、AI常见概念汇总.md"
-    },
-    {
-      "basename": "1、Claude Code入门",
-      "path": "AI/notes/Claude Code/1、Claude Code入门.md"
-    },
-    {
-      "basename": "index",
-      "path": "index.md"
-    },
-    {
-      "basename": "1、HTML基础",
-      "path": "前后端/notes/前端/HTML/1、HTML基础.md"
-    },
-    {
-      "basename": "未命名",
-      "path": "AI/notes/Codex/未命名.md"
-    },
-    {
-      "basename": "domain",
-      "path": "Python/domain.md"
-    },
-    {
-      "basename": "字符串转换标志",
-      "path": "Python/wiki/concepts/字符串转换标志.md"
-    },
-    {
-      "basename": "Cargo 依赖声明写法",
-      "path": "Rust/wiki/recipes/Cargo 依赖声明写法.md"
     }
   ],
   "omittedPaths": [],

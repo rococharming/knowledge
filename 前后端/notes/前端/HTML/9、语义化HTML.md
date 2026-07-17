@@ -1,7 +1,7 @@
 ---
 title: 语义化HTML
 date: 2026-07-13
-tags: [HTML, 前端基础, 语义化HTML, 可访问性, SEO]
+tags: [Web, 前端, HTML, 前端基础]
 aliases:
   - 语义化HTML、结构层级与表现分离
   - HTML结构层级

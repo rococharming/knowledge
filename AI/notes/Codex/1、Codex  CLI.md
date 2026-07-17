@@ -1,3 +1,11 @@
+---
+title: Codex CLI
+date: 2026-05-18
+tags: [AI, Codex]
+aliases:
+  - Codex CLI
+  - CodexCLI
+---
 
 # 一、简介
 

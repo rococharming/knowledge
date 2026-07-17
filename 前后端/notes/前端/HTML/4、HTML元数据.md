@@ -1,7 +1,7 @@
 ---
 title: HTML元数据
 date: 2026-07-13
-tags: [HTML, 前端基础, SEO, OpenGraph]
+tags: [Web, 前端, HTML, 前端基础]
 aliases:
   - 元数据、SEO与Open Graph
   - Meta Description

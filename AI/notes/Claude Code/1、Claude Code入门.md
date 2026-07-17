@@ -1,3 +1,12 @@
+---
+title: Claude Code入门
+date: 2026-05-08
+tags: [AI, ClaudeCode]
+aliases:
+  - Claude Code入门
+  - ClaudeCode入门
+---
+
 # 一、简介
 
 `Claude Code` 是 Anthropic 推出的 AI 代码工具。

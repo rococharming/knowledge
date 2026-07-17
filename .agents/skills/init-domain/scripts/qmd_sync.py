@@ -343,12 +343,12 @@ def main() -> int:
             cwd=str(root),
             check=False,
             text=True,
-            capture_output=True,
+            stdout=subprocess.PIPE,
         )
         try:
             semantic_result = json.loads(semantic.stdout)
         except json.JSONDecodeError:
-            detail = semantic.stderr.strip() or semantic.stdout.strip() or "unknown error"
+            detail = semantic.stdout.strip() or "unknown error"
             result["findings"].append(
                 asdict(Finding("error", "semantic_failed", "", "", f"语义环境配置失败：{detail.splitlines()[0]}"))
             )

@@ -1,6 +1,14 @@
+---
+title: clap
+date: 2026-06-04
+tags: [Rust, RustCrate, clap]
+aliases:
+  - clap
+---
+
 # 一、简介
 
-`clap`是 Rust 常用的命令行参数解析 crate，用于把终端输入的参数解析成 Rust 中的结构体、枚举和字段值。它支持位置参数、选项参数、布尔标志、默认值、子命令、自动帮助信息和参数校验。
+`clap`是 Rust 常用的命令行参数解析 crate，用于把终端输入的参数解析成 Rust 中的结构体、枚举和字段值。它支持位置参数、选项参数、布尔标志、默认值、子命令、自动帮助信息和参数校验。和 [[Rust/notes/项目/01_minigrep/1、命令行参数与文件读取|命令行参数与文件读取]] 中手动读取 `env::args` 相比，`clap` 更适合正式 CLI。
 
 `clap` 同时提供 `derive` API 和 `builder` API，快速入门阶段优先使用 `derive` API，即通过派生宏自动实现相关 Trait 。
 

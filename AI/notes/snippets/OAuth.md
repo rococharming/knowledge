@@ -1,3 +1,11 @@
+---
+title: OAuth
+date: 2026-05-09
+tags: [AI]
+aliases:
+  - OAuth
+---
+
 # 一、概述
 
 `OAuth`可以理解成一种**授权别人代你做事，但不把密码告诉别人**。

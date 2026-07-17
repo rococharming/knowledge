@@ -1,3 +1,11 @@
+---
+title: Cargo多个bin目标配置
+date: 2026-06-26
+tags: [Rust, 零散知识, Cargo]
+aliases:
+  - Cargo多个bin目标配置
+---
+
 # 一、概述
 
 通常一个 Cargo 二进制项目默认入口是 `src/main.rs`，Cargo 会自动生成一个与 package 同名的 bin target，无需额外声明。

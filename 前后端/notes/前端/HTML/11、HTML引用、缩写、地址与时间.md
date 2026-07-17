@@ -1,7 +1,7 @@
 ---
 title: HTML引用、缩写、地址与时间
 date: 2026-07-14
-tags: [HTML, 前端基础, 语义化HTML, 可访问性, 文本语义]
+tags: [Web, 前端, HTML, 前端基础]
 aliases:
   - HTML引用与时间语义
   - blockquote与q

@@ -1,3 +1,11 @@
+---
+title: Subagent
+date: 2026-05-08
+tags: [AI, ClaudeCode, Subagent]
+aliases:
+  - Subagent
+---
+
 # 一、概述
 
 `SubAgent`是**专门处理特定任务的AI助手**。当`Claude Code`判断当前任务符合某`SubAgent`的描述时，会自动将任务委托给它，由子代理独立完成后返回结果。

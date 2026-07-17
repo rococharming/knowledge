@@ -1,10 +1,7 @@
 ---
 title: Bilibili Obsidian Clipper 笔记
 date: 2026-07-11
-tags:
-  - Obsidian
-  - Bilibili
-  - AI
+tags: [Obsidian, Bilibili, AI, Bilibili Obsidian Clipper]
 aliases:
   - Bilibili Obsidian Clipper
   - B 站视频剪藏

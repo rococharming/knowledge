@@ -1,3 +1,10 @@
+---
+title: AI核心概念
+date: 2026-06-11
+tags: [AI, Agent]
+aliases:
+  - AI核心概念
+---
 
 # 一、Token与文本表示
 

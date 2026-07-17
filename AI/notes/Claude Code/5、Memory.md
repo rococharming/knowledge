@@ -1,3 +1,11 @@
+---
+title: Memory
+date: 2026-05-08
+tags: [AI, ClaudeCode]
+aliases:
+  - Memory
+---
+
 # 一、概述
 
 在 `Claude Code` 中，每次会话都会从一个新的上下文窗口开始。想要跨对话保留项目背景、使用偏好和协作经验，主要依赖两类机制：

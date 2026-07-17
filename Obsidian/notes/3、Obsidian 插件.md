@@ -1,10 +1,11 @@
 ---
 title: Obsidian 插件
 date: 2026-07-11
-tags: [obsidian, plugin, note-taking]
+tags: [Obsidian, obsidian, plugin, note-taking]
 aliases:
   - Obsidian 插件系统
   - Obsidian Plugins
+  - Obsidian 插件
 ---
 
 # 一、插件系统的基本概念

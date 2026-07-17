@@ -1,3 +1,11 @@
+---
+title: MCP
+date: 2026-05-08
+tags: [AI, ClaudeCode, MCP]
+aliases:
+  - MCP
+---
+
 # 一、MCP的概念
 
 `MCP`全称`Model Context Protocol`（模型上下文协议），它是一套开发协议，用来让 AI Agent（如`Claude Code`、`Codex`等）以统一方式连接外部工具、数据源、数据库和API。

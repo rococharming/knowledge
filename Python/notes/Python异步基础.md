@@ -1,3 +1,10 @@
+---
+title: Python异步基础
+date: 2026-06-15
+tags: [Python, 异步编程]
+aliases:
+  - Python异步基础
+---
 
 # 一、async def 
 

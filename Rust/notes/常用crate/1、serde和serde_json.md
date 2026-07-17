@@ -1,3 +1,11 @@
+---
+title: serde和serde_json
+date: 2026-06-04
+tags: [Rust, RustCrate, serde, serde_json]
+aliases:
+  - serde和serde_json
+---
+
 # 一、serde和serde_json定位
 
 ## 1、serde简介

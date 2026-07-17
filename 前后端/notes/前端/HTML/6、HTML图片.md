@@ -1,12 +1,11 @@
 ---
 title: HTML图片
 date: 2026-07-13
-tags: [HTML, 前端基础, 图像优化, SVG, 版权]
+tags: [Web, 前端, HTML, 前端基础]
 aliases:
   - 响应式图片、版权与SVG
   - HTML图像优化
   - 响应式图片
-  - SVG矢量图
 ---
 
 # 一、图像优化的目标

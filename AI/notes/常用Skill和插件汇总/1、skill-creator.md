@@ -1,3 +1,10 @@
+---
+title: skill-creator
+date: 2026-05-08
+tags: [AI, Skill]
+aliases:
+  - skill-creator
+---
 
 # 一、简介
 

@@ -1,3 +1,10 @@
+---
+title: HTTP请求与响应
+date: 2026-05-14
+tags: [Web, HTTP]
+aliases:
+  - HTTP请求与响应
+---
 
 # 一、HTTP消息概述
 

@@ -1,3 +1,11 @@
+---
+title: JSON-RPC
+date: 2026-05-18
+tags: [Web, 数据格式, JSON-RPC, JSON]
+aliases:
+  - JSON-RPC
+---
+
 # 一、简介
 
 `JSON-RPC`是一种基于 JSON 的远程过程调用协议。

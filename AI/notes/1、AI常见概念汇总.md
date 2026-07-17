@@ -1,12 +1,13 @@
 ---
 title: AI 常见概念汇总
 date: 2026-07-09
-tags:
-  - AI
-  - LLM
-  - token
+tags: [AI, LLM, token]
+aliases:
+  - AI 常见概念汇总
+  - AI常见概念汇总
 source_count: 0
 ---
+
 # 二、Token
 
 ## 1、概念

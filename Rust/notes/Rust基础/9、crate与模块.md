@@ -1,3 +1,11 @@
+---
+title: crate与模块
+date: 2026-05-20
+tags: [Rust, Rust基础, 模块]
+aliases:
+  - crate与模块
+---
+
 # 一、Package、Crate与依赖
 
 ## 1、Package的基本概念

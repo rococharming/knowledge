@@ -1,10 +1,11 @@
 ---
 title: Git 安装与配置
 date: 2026-07-14
-tags: [git, version-control, development-tools]
+tags: [计算机基础, Git, Git基础, git]
 aliases:
   - Git 配置
   - git config
+  - Git 安装与配置
 ---
 
 # 一、Git 的基本定位

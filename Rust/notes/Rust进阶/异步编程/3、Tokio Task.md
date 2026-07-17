@@ -1,3 +1,12 @@
+---
+title: Tokio Task
+date: 2026-05-09
+tags: [Rust, Rust进阶, 异步编程, Tokio]
+aliases:
+  - Tokio Task
+  - TokioTask
+---
+
 # 一、从 Future 到 Task
 
 ## 1、Future 只是异步计算
@@ -37,7 +46,7 @@ let value = handle.await.unwrap();
 
 ## 2、Tokio Task
 
-Tokio Task 是由 Tokio Runtime 调度的一段异步执行单元。每个 Task 内部持有一个顶层 Future，Runtime 通过反复调用它的 `poll` 来推进任务。
+Tokio Task 是由 [[Rust/notes/Rust进阶/异步编程/2、Tokio Runtime|Tokio Runtime]] 调度的一段异步执行单元。每个 Task 内部持有一个顶层 Future，Runtime 通过反复调用它的 `poll` 来推进任务。
 
 可以把关系理解为：
 
@@ -676,7 +685,7 @@ async fn calculate_in_batches() {
 
 ## 3、spawn_blocking
 
-[[2、Tokio Runtime#五、阻塞代码和 spawn_blocking|Tokio Runtime 的阻塞代码章节]] 已经解释了 worker thread 和 blocking thread 的运行机制。这里从 Task 管理角度补充 API 的选择：同步阻塞代码不应直接放在普通 Task 中。
+[[Rust/notes/Rust进阶/异步编程/2、Tokio Runtime#五、阻塞代码和 spawn_blocking|Tokio Runtime]] 已经解释了 worker thread 和 blocking thread 的运行机制。这里从 Task 管理角度补充 API 的选择：同步阻塞代码不应直接放在普通 Task 中。
 
 ```rust
 #[tokio::main]

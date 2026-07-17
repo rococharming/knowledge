@@ -1,7 +1,7 @@
 ---
 title: 创建 Git 仓库
 date: 2026-07-14
-tags: [git, version-control, repository]
+tags: [计算机基础, Git, Git基础, git]
 aliases:
   - Git 仓库
   - git init

@@ -97,6 +97,24 @@ def model_is_valid(path: Path, spec: ModelSpec) -> bool:
     return path.is_file() and path.stat().st_size == spec.size and sha256_file(path) == spec.sha256
 
 
+def format_bytes(size: int) -> str:
+    value = float(size)
+    for unit in ("B", "KiB", "MiB", "GiB"):
+        if value < 1024 or unit == "GiB":
+            return f"{value:.1f} {unit}" if unit != "B" else f"{size} B"
+        value /= 1024
+    return f"{size} B"
+
+
+def print_download_progress(spec: ModelSpec, downloaded: int, total: int, final: bool = False) -> None:
+    percent = (downloaded / total * 100) if total else 0
+    line = (
+        f"下载 {spec.filename}: {format_bytes(downloaded)} / {format_bytes(total)} "
+        f"({percent:5.1f}%)"
+    )
+    print(f"\r{line}", end="\n" if final else "", file=sys.stderr, flush=True)
+
+
 def download_model(spec: ModelSpec, destination: Path) -> None:
     destination.parent.mkdir(parents=True, exist_ok=True)
     fd, temporary_name = tempfile.mkstemp(prefix=f".{spec.filename}.", suffix=".part", dir=destination.parent)
@@ -105,8 +123,14 @@ def download_model(spec: ModelSpec, destination: Path) -> None:
     try:
         request = urllib.request.Request(spec.url, headers={"User-Agent": "llm-wiki-qmd-bootstrap/1"})
         with urllib.request.urlopen(request) as response, temporary.open("wb") as output:
+            total = int(response.headers.get("Content-Length") or spec.size)
+            downloaded = 0
+            print_download_progress(spec, downloaded, total)
             while block := response.read(1024 * 1024):
                 output.write(block)
+                downloaded += len(block)
+                print_download_progress(spec, downloaded, total)
+            print_download_progress(spec, downloaded, total, final=True)
         if not model_is_valid(temporary, spec):
             raise RuntimeError(f"模型校验失败：{spec.filename}")
         temporary.replace(destination)

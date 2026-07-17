@@ -1,12 +1,11 @@
 ---
 title: Obsidian 扩展语法
 date: 2026-07-07
-tags:
-  - obsidian
-  - markdown
+tags: [Obsidian, obsidian, markdown, Obsidian Markdown 扩展]
 aliases:
   - Obsidian Markdown 扩展
   - Obsidian Flavored Markdown
+  - Obsidian 扩展语法
 ---
 
 # 一、概述

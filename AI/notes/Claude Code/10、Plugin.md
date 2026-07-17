@@ -1,3 +1,11 @@
+---
+title: Plugin
+date: 2026-05-08
+tags: [AI, ClaudeCode, Plugin]
+aliases:
+  - Plugin
+---
+
 # 一、概述
 
 `Claude Code`支持两种添加自定义skill、agent和hook的方式，以 skill 为例：

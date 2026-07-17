@@ -1,3 +1,11 @@
+---
+title: Agent Harness
+date: 2026-05-20
+tags: [AI, Agent]
+aliases:
+  - Agent Harness
+  - AgentHarness
+---
 
 # 一、Claude Code
 

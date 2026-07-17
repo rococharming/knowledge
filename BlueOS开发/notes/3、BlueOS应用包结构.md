@@ -1,3 +1,11 @@
+---
+title: BlueOS应用包结构
+date: 2026-07-08
+tags: [BlueOS]
+aliases:
+  - BlueOS应用包结构
+---
+
 # 一、整体结论
 
 BlueOS Studio 中一个应用从开发到运行，通常会经历下面几层形态：

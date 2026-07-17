@@ -1,11 +1,10 @@
 ---
 title: Obsidian 入门
 date: 2026-07-07
-tags:
-  - obsidian
-  - note-taking
+tags: [Obsidian, obsidian, note-taking, Obsidian 入门]
 aliases:
   - Obsidian 入门
+  - Obsidian入门
 ---
 
 # 一、Obsidian 概述

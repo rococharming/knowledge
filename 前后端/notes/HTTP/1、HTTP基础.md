@@ -1,3 +1,11 @@
+---
+title: HTTP基础
+date: 2026-05-13
+tags: [Web, HTTP]
+aliases:
+  - HTTP基础
+---
+
 # 一、HTTP基础概述
 
 ## 1、HTTP基本概念

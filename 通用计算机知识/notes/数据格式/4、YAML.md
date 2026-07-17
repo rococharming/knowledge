@@ -1,9 +1,7 @@
 ---
 title: YAML
 date: 2026-07-11
-tags:
-  - data-format
-  - yaml
+tags: [计算机基础, 数据格式, YAML, data-format]
 aliases:
   - YAML
   - YAML语法

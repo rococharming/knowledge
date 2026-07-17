@@ -1,3 +1,11 @@
+---
+title: OpenAI API 格式详解
+date: 2026-06-24
+tags: [AI, Agent, OpenAI]
+aliases:
+  - OpenAI API 格式详解
+  - OpenAIAPI格式详解
+---
 
 # 一、前置准备
 

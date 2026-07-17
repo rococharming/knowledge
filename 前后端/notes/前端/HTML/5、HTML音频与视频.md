@@ -1,7 +1,7 @@
 ---
 title: HTML音频与视频
 date: 2026-07-13
-tags: [HTML, 前端基础, 多媒体, 可访问性]
+tags: [Web, 前端, HTML, 前端基础]
 aliases:
   - 音视频媒体与字幕可访问性
   - audio与video

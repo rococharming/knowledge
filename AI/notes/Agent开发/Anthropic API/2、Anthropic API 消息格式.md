@@ -1,3 +1,11 @@
+---
+title: Anthropic API 消息格式
+date: 2026-06-11
+tags: [AI, Agent, Anthropic]
+aliases:
+  - Anthropic API 消息格式
+  - AnthropicAPI消息格式
+---
 
 # 一、Message API 的消息结构
 

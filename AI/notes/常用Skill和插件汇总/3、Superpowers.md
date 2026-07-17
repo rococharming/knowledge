@@ -1,3 +1,11 @@
+---
+title: Superpowers
+date: 2026-07-15
+tags: [AI, Skill]
+aliases:
+  - Superpowers
+---
+
 # 一、概述
 
 `Superpowers` 是一套面向 Coding Agent 的工程工作流 Skill 集合。它不替代 `Claude Code`、`Codex`、`Cursor` 这类 Agent，也不会让模型本身变聪明；它的作用是把开发过程管起来：

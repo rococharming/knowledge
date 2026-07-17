@@ -1,3 +1,12 @@
+---
+title: fish shell 安装与使用
+date: 2026-05-14
+tags: [macOS, fish]
+aliases:
+  - fish shell 安装与使用
+  - fishshell安装与使用
+---
+
 # 一、fish shell 简介
 
 `fish shell`是一个强调易用性和交互体验的`shell`。它的全称是 friendly interactive shell，主要面向日常命令行交互使用。
