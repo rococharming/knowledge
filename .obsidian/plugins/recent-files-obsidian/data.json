@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Git  Submodule",
+      "path": "通用计算机知识/notes/Git/Git  Submodule.md"
+    },
+    {
       "basename": "6、Ponytail",
       "path": "AI/notes/常用Skill和插件汇总/6、Ponytail.md"
     },
@@ -151,10 +155,6 @@
     {
       "basename": "1、命令行参数与文件读取",
       "path": "Rust/notes/项目/01_minigrep/1、命令行参数与文件读取.md"
-    },
-    {
-      "basename": "Git  Submodule",
-      "path": "通用计算机知识/notes/Git/Git  Submodule.md"
     },
     {
       "basename": "1、Git 安装与配置",

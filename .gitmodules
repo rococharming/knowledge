@@ -1,3 +1,6 @@
 [submodule "Rust/notes/项目/01_minigrep/minigrep"]
 	path = Rust/notes/项目/01_minigrep/minigrep
 	url = git@github.com:rococharming/minigrep.git
+[submodule "Rust/notes/项目/02_rlog/rlog"]
+	path = Rust/notes/项目/02_rlog/rlog
+	url = git@github.com:rococharming/rlog.git

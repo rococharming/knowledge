@@ -30,8 +30,6 @@ Ponytail 主要用于减少以下问题：
 
 Ponytail 会按照一条固定顺序选择实现方案，并在找到第一个可靠方案后停止继续增加复杂度。开始选择方案之前，它仍要求 Agent 阅读相关代码并追踪真实流程。
 
-
-
 例如，需要增加日期输入时，Agent 不应该直接安装日期组件库，而应先判断：
 
 1. 项目是否已经存在日期组件。
@@ -65,52 +63,28 @@ node --version
 
 两条命令必须分开发送。
 
-Claude Code 桌面端也可以在 Code 页面中输入相同命令，或者通过输入框旁边的 `+` 进入：
-
-```
-Plugins → Add plugin
-```
-
 安装完成后，新建一个会话，使 Ponytail 的 Skill 和 Hook 进入新的上下文。
 
 ## 2、在 ChatGPT 桌面端中使用
 
-ChatGPT 桌面端存在插件管理能力，但不能直接据此判断 Ponytail 已经进入默认插件目录。
+ChatGPT 桌面端存在插件管理能力，需要先添加插件市场：
 
-Ponytail 当前提供的 Codex 安装方式是：
+![[assets/Pasted image 20260720095655.png|600]]
 
-```
-codex plugin marketplace add DietrichGebert/ponytail
-codex plugin add ponytail@ponytail
-```
+![[assets/Pasted image 20260720095807.png|600]]
 
-安装完成后，可以启动 Codex CLI：
+添加完成后，安装 ponytail 插件。
 
-```
-codex
-```
+![[assets/Pasted image 20260720100026.png|600]]
 
-然后打开：
-
-```
-/hooks
-```
-
-检查并信任 Ponytail 的生命周期钩子。
-
-如果 ChatGPT 桌面端中的 Codex 工作区能够读取相同的插件配置，重启应用并新建任务后，可以在插件页面检查 Ponytail 是否已经出现。
-
-如果插件成功加载，可以在提示框中输入 `@`，选择 Ponytail 提供的 Skill，例如：
-
-```
-@ponytail full
-@ponytail-review
-@ponytail-audit
-```
 
 ## 3、审查 Hook
 
 安装后，应检查并信任 Ponytail 的生命周期钩子。
+
+![[assets/Pasted image 20260720100133.png|600]]
+
+![[assets/Pasted image 20260720100355.png|600]]
 
 Hook 会在特定生命周期执行本地命令，因此应先确认其来源和行为。
 
@@ -126,7 +100,7 @@ Ponytail 使用 Hook 完成以下工作：
 
 ## 1、规则不是只在点命令时才生效
 
-Codex 插件清单会加载 Ponytail 的六个 Skill 和一份钩子配置。其运行链如下：
+Ponytail 具有 6 个 Skill 和一份钩子配置。其运行链如下：
 
 ```text
 新任务开始
