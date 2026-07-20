@@ -1,16 +1,24 @@
 {
   "recentFiles": [
     {
+      "basename": "3、Cargo Feature",
+      "path": "Rust/notes/零散知识/3、Cargo Feature.md"
+    },
+    {
+      "basename": "5、Matt Pocock Skills",
+      "path": "AI/notes/常用Skill和插件汇总/5、Matt Pocock Skills.md"
+    },
+    {
+      "basename": "GitHub CI",
+      "path": "通用计算机知识/notes/GitHub/GitHub CI.md"
+    },
+    {
       "basename": "Git  Submodule",
       "path": "通用计算机知识/notes/Git/Git  Submodule.md"
     },
     {
       "basename": "6、Ponytail",
       "path": "AI/notes/常用Skill和插件汇总/6、Ponytail.md"
-    },
-    {
-      "basename": "5、Matt Pocock Skills",
-      "path": "AI/notes/常用Skill和插件汇总/5、Matt Pocock Skills.md"
     },
     {
       "basename": "记忆区",
@@ -191,14 +199,6 @@
     {
       "basename": "打造真实项目的 AI 编程环境：Matt Pocock 的 Skill 工作流完整上手攻略",
       "path": "Clippings/打造真实项目的 AI 编程环境：Matt Pocock 的 Skill 工作流完整上手攻略.md"
-    },
-    {
-      "basename": "Matt Pocock Skills 怎麼用在 Coding  Planning",
-      "path": "Clippings/Matt Pocock Skills 怎麼用在 Coding  Planning.md"
-    },
-    {
-      "basename": "How to Use Matt Pocock's Skills for Claude Code A Complete Guide",
-      "path": "Clippings/How to Use Matt Pocock's Skills for Claude Code A Complete Guide.md"
     }
   ],
   "omittedPaths": [],
