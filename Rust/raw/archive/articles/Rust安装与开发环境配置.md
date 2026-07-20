@@ -150,7 +150,6 @@ rustup --version
 ```shell
 rustup self update
 ```
-
 ### （2）更新Rust工具链
 
 ```shell
@@ -160,7 +159,6 @@ rustup update  # 更新已经安装的 toolchain
 > 现在 `rustup update` 也会在更新 toolchain 时自动检查并更新 `rustup` 自身
 
 ## 3、安装Rust工具链
-
 ### （1）Rust工具链分类
 
 Rust 的工具链主要有三种发布通道：
@@ -244,7 +242,6 @@ fn main() {
 	println!("Hello, world!");
 }
 ```
-
 ### （1）默认输出
 
 执行：
@@ -288,7 +285,7 @@ Rust需要同时满足**稳定性和进化性**：
 rustc main.rs --edition=2021
 ```
 
-`rustc` 也可以直接编译库产物，例如 `rlib`。不过实际项目通常交给 Cargo 管理构建、依赖和链接。相关内容放在 [[13、crate与模块|crate 与模块]] 中单独说明。
+`rustc` 也可以直接编译库产物，例如 `rlib`。不过实际项目通常交给 Cargo 管理构建、依赖和链接。相关内容放在 [[9、crate与模块|crate 与模块]] 中单独说明。
 
 # 五、Cargo
 
@@ -411,7 +408,7 @@ mod tests {
 }
 ```
 
-其中，`#[cfg(test)]` 和 `#[test]` 是与测试相关的内容，详见[[Rust/notes/Rust基础/20、测试|测试]]。
+其中，`#[cfg(test)]` 和 `#[test]` 是与测试相关的内容，详见[[Rust/notes/Rust基础/16、测试|测试]]。
 
 ## 3、构建Cargo项目
 
@@ -485,7 +482,7 @@ cargo clean
 
 ## 7、测试
 
-Cargo 还提供了 `cargo test` 用于运行测试。关于测试的内容较多，参考[[Rust/notes/Rust基础/20、测试|测试]]。
+Cargo 还提供了 `cargo test` 用于运行测试。关于测试的内容较多，参考[[Rust/notes/Rust基础/16、测试|测试]]。
 
 命令如下：
 

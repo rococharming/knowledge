@@ -17,19 +17,7 @@ GitHub CI 通常指用 GitHub Actions 实现的持续集成流程：在代码提
 
 GitHub Actions 的工作流文件一般放在仓库的 `.github/workflows/` 目录下，文件格式是 [[通用计算机知识/notes/数据格式/4、YAML|YAML]]。一个工作流由触发条件、权限、环境变量、Job 和 Step 组成。
 
-```text
-事件触发
-  ↓
-创建临时运行环境
-  ↓
-检出代码
-  ↓
-安装依赖或工具链
-  ↓
-运行检查、测试、构建
-  ↓
-返回成功或失败
-```
+![[assets/Pasted image 20260720154919.png|600]]
 
 > 简单来说，CI 是把“本地应该跑的检查”搬到统一、可复现的远端环境里，避免只在某个人机器上能通过。
 
@@ -99,9 +87,7 @@ env:
 
 对 Rust 项目来说，`CARGO_TERM_COLOR=always` 会让 Cargo 在 Actions 日志里保留彩色输出，便于区分错误、警告和构建状态。它只影响日志显示，不影响检查结果。
 
-# 三、Job 和 Step 的执行模型
-
-## 1、jobs：一组独立任务
+## 5、jobs：一组独立任务
 
 一个工作流可以包含多个 Job。每个 Job 通常在独立运行器上执行。
 
@@ -120,9 +106,9 @@ jobs:
 - `name: Rust checks`：GitHub 页面上显示的 Job 名称。
 - `runs-on: ubuntu-latest`：在 GitHub 提供的 Ubuntu 运行器上执行。
 
-`ubuntu-latest` 是浮动标签，GitHub 可能随时间切换到底层更新的 Ubuntu 版本。如果项目对系统版本敏感，应改用固定运行环境。
+`ubuntu-latest` 是一个别名，不是固定系统版本。它当前指向 GitHub 认为最新稳定的 Ubuntu runner 镜像。GitHub 官方说明 `-latest` 标签会逐步迁移，迁移期可能持续 1-2 个月；如果不想被自动迁移影响，应写固定标签，比如`ubuntu-24.04`。
 
-## 2、steps：Job 内部的顺序步骤
+## 6、steps：Job 内部的顺序步骤
 
 `steps` 是 Job 中按顺序执行的动作。前一个 Step 失败时，后续 Step 默认不会继续执行。
 
@@ -146,11 +132,11 @@ Step 有两种常见写法：
 
 > 注意：第三方 Action 版本要固定到明确版本，如 `@v6` 或具体提交 SHA。不要长期使用浮动分支名作为关键 CI 依赖。
 
-# 四、Rust 项目的典型 CI
+# 三、Rust 项目的典型 CI
 
-## 1、完整示例
+## 1、跨平台完整示例
 
-下面是一份 Rust 命令行项目常见的 CI 配置：
+下面是一份 Rust 命令行项目常见的跨平台 CI 配置。它会在 Linux x64、Windows x64、macOS ARM64 和 macOS Intel x64 四种环境里运行同一组检查，并构建 release 产物。
 
 ```yaml
 name: Rust CI
@@ -171,9 +157,33 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  rust-checks:
-    name: Rust checks
-    runs-on: ubuntu-latest
+  build:
+    name: Build ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Linux x64
+            os: ubuntu-24.04
+            target: x86_64-unknown-linux-gnu
+            artifact: release-linux-x64
+
+          - name: Windows x64
+            os: windows-2025
+            target: x86_64-pc-windows-msvc
+            artifact: release-windows-x64
+
+          - name: macOS ARM64
+            os: macos-15
+            target: aarch64-apple-darwin
+            artifact: release-macos-arm64
+
+          - name: macOS Intel x64
+            os: macos-15-intel
+            target: x86_64-apple-darwin
+            artifact: release-macos-intel-x64
 
     steps:
       - name: Checkout repository
@@ -183,134 +193,252 @@ jobs:
         run: |
           rustup toolchain install stable --profile minimal --component rustfmt,clippy
           rustup default stable
+          rustup target add ${{ matrix.target }}
 
       - name: Check formatting
         run: cargo fmt --all -- --check
 
       - name: Run Clippy
-        run: cargo clippy --all-targets --all-features --locked -- -D warnings
+        run: cargo clippy --all-targets --all-features --locked --target ${{ matrix.target }} -- -D warnings
 
       - name: Run tests
-        run: cargo test --all-targets --all-features --locked
+        run: cargo test --all-targets --all-features --locked --target ${{ matrix.target }}
 
       - name: Build release
-        run: cargo build --release --locked
+        run: cargo build --release --locked --target ${{ matrix.target }}
+
+      - name: Upload release artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ matrix.artifact }}
+          path: target/${{ matrix.target }}/release
+          if-no-files-found: error
+          retention-days: 7
 ```
 
-这份配置覆盖了四类基础质量门禁：格式、静态检查、测试和 release 构建。
+这份配置覆盖了四类基础质量门禁：格式、静态检查、测试和 release 构建。它还通过 `strategy.matrix` 把同一个 Job 展开成四个平台版本，用同一套步骤验证项目在不同操作系统和 CPU 架构上的表现。最后的 `Upload release artifact` 会把每个平台的 release 构建目录上传到本次 Actions 运行记录里，方便在 CI 页面下载。
 
-## 2、安装 Rust 工具链
+## 2、Job 与 matrix
+
+```yaml
+jobs:
+  build:
+    name: Build ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+```
+
+`build` 是 Job 的内部标识符。它主要给工作流内部引用使用，例如其他 Job 可以通过 `needs: build` 表示“等 build 这个 Job 完成后再运行”。
+
+`name: Build ${{ matrix.name }}` 是 GitHub Actions 页面上显示的名称。`${{ matrix.name }}` 会被替换为当前 matrix 项里的 `name`，所以最终会显示成 `Build Linux x64`、`Build Windows x64`、`Build macOS ARM64` 等。
+
+`runs-on: ${{ matrix.os }}` 表示当前 Job 要在哪种 GitHub-hosted runner 上执行。`${{ matrix.os }}` 会被替换为 `ubuntu-24.04`、`windows-2025`、`macos-15` 或 `macos-15-intel`。
+
+## 3、strategy 与 fail-fast
+
+```yaml
+strategy:
+  fail-fast: false
+  matrix:
+    include:
+      - name: Linux x64
+        os: ubuntu-24.04
+        target: x86_64-unknown-linux-gnu
+```
+
+`strategy` 定义 Job 的运行策略。最常见的策略是 `matrix`，表示“用多组参数展开同一个 Job”。
+
+`matrix.include` 用对象列表显式描述每一种构建组合。这里每一项都有三个字段：
+
+- `name`：人类可读的平台名称，用在页面显示里。
+- `os`：GitHub runner 标签，决定 CI 在哪种机器上运行。
+- `target`：Rust 编译目标，决定 Cargo 生成给哪个平台和架构运行的二进制。
+- `artifact`：上传到 GitHub Actions 页面时使用的产物名称。
+
+`fail-fast: false` 表示 matrix 中某个平台失败时，不要提前取消其他平台。例如 Linux 失败后，Windows 和 macOS 仍然会继续运行。跨平台 CI 通常建议这样写，因为它能一次看出到底是单个平台失败，还是所有平台都失败。
+
+## 4、Rust target
+
+`target` 的名字是 Rust 工具链约定好的固定名称，不能随便起。常见 target 如下：
+
+| target | 含义 |
+|---|---|
+| `x86_64-unknown-linux-gnu` | Linux x64，使用 GNU libc |
+| `x86_64-pc-windows-msvc` | Windows x64，使用 MSVC 工具链 |
+| `aarch64-apple-darwin` | macOS ARM64，也就是 Apple Silicon |
+| `x86_64-apple-darwin` | macOS Intel x64 |
+
+`runs-on` 和 `target` 不是一回事。`runs-on` 决定“CI 在哪台机器上跑”，`target` 决定“编译出来的程序给哪个平台运行”。
+
+```yaml
+os: macos-15
+target: aarch64-apple-darwin
+```
+
+这表示在 GitHub 提供的 macOS ARM64 runner 上运行，并构建 macOS ARM64 二进制。
+
+如果不写 `--target`，Cargo 会默认使用当前 runner 自己的平台。显式写 `target` 的好处是产物平台更清楚，后续上传二进制 artifact 或发布 Release 时也更容易命名和区分。
+
+## 5、Checkout repository
+
+```yaml
+- name: Checkout repository
+  uses: actions/checkout@v6
+```
+
+这一步使用 `actions/checkout` 把当前仓库代码下载到 runner 的工作目录中。没有这一步，后面的 `cargo fmt`、`cargo clippy`、`cargo test` 和 `cargo build` 通常找不到项目文件。
+
+`uses` 表示调用一个已有 Action。`actions/checkout@v6` 中：
+
+- `actions/checkout` 是 Action 名称。
+- `@v6` 是版本引用，表示使用该 Action 的 v6 版本。
+
+关键 CI 依赖不要长期写成 `@main` 或 `@master` 这样的浮动分支名。浮动分支名会随着分支最新提交变化，今天和明天运行的代码可能不同。更严格的做法是固定到明确版本标签，甚至固定到完整提交 SHA。
+
+## 6、Set up Rust
 
 ```yaml
 - name: Set up Rust
   run: |
     rustup toolchain install stable --profile minimal --component rustfmt,clippy
     rustup default stable
+    rustup target add ${{ matrix.target }}
 ```
 
-`rustup toolchain install stable` 安装 stable Rust 工具链。`--profile minimal` 减少不必要组件下载，`--component rustfmt,clippy` 额外安装格式化和静态检查工具。
+这一步安装并选择 Rust 工具链，同时安装当前平台要用的编译目标。
+
+第一行：
+
+```bash
+rustup toolchain install stable --profile minimal --component rustfmt,clippy
+```
+
+参数含义：
+
+- `rustup toolchain install stable`：安装 Rust stable 工具链。
+- `--profile minimal`：使用最小安装配置，减少 CI 下载和安装时间。
+- `--component rustfmt,clippy`：额外安装 `rustfmt` 和 `clippy` 组件。
+
+`rustfmt` 是 Rust 官方格式化工具，供 `cargo fmt` 使用。`clippy` 是 Rust 官方静态检查工具，供 `cargo clippy` 使用。
+
+第二行：
+
+```bash
+rustup default stable
+```
+
+把当前 runner 的默认 Rust 工具链切换为 `stable`。后续执行 `cargo`、`rustc` 时会默认使用 stable。
+
+第三行：
+
+```bash
+rustup target add ${{ matrix.target }}
+```
+
+安装当前 matrix 指定的 Rust 编译目标。例如在 `macOS ARM64` 这一项里，`${{ matrix.target }}` 会替换成 `aarch64-apple-darwin`。
 
 如果仓库已经有 `rust-toolchain.toml`，通常可以让 CI 读取仓库内固定的 Rust 版本，而不是在命令里手写 `stable`。
 
-## 3、检查格式
+## 7、Check formatting
 
 ```yaml
 - name: Check formatting
   run: cargo fmt --all -- --check
 ```
 
-`cargo fmt --all` 检查整个 Cargo 工作区。后面的 `-- --check` 表示把 `--check` 传给底层 `rustfmt`，只检查格式，不自动修改文件。
+这一步检查代码格式。
+
+参数含义：
+
+- `cargo fmt`：通过 Cargo 调用 `rustfmt`。
+- `--all`：检查整个 Cargo workspace 中的所有 package。
+- `--`：Cargo 参数和 `rustfmt` 参数的分隔符。前面的参数给 `cargo fmt`，后面的参数转交给底层 `rustfmt`。
+- `--check`：只检查格式是否正确，不自动修改文件。
 
 CI 不应该偷偷改代码。格式不对时让工作流失败，再由开发者本地运行 `cargo fmt --all` 修复。
 
-## 4、运行 Clippy
+## 8、Run Clippy
 
 ```yaml
 - name: Run Clippy
-  run: cargo clippy --all-targets --all-features --locked -- -D warnings
+  run: cargo clippy --all-targets --all-features --locked --target ${{ matrix.target }} -- -D warnings
 ```
 
-这条命令做了几件事：
+这一步运行 Clippy 静态检查。
 
-- **`--all-targets`**：检查库、二进制、测试、示例等目标。
-- **`--all-features`**：启用所有 Cargo feature。
-- **`--locked`**：禁止 CI 自动修改 `Cargo.lock`。
-- **`-D warnings`**：把 warning 当作 error。
+参数含义：
+
+- `cargo clippy`：运行 Rust 官方 Clippy 检查器。
+- `--all-targets`：检查库、二进制、测试、示例和 benchmark 等目标。
+- `--all-features`：启用所有 Cargo feature。
+- `--locked`：要求使用现有 `Cargo.lock`，不允许 CI 自动解析出新版本并改动锁文件。
+- `--target ${{ matrix.target }}`：针对当前 matrix 指定的平台进行检查。
+- `--`：Cargo/Clippy 参数分隔符。后面的参数传给 Clippy。
+- `-D warnings`：deny warnings，把所有 warning 当作 error。
+
+`-D warnings` 的好处是避免 warning 长期堆积；代价是 Rust 或 Clippy 升级后，新出现的 warning 可能让 CI 失败。
 
 > 注意：如果项目的 feature 互相排斥，就不能简单使用 `--all-features`。这种情况下应拆成多个明确的 feature 组合。
 
-## 5、运行测试
+## 9、Run tests
 
 ```yaml
 - name: Run tests
-  run: cargo test --all-targets --all-features --locked
+  run: cargo test --all-targets --all-features --locked --target ${{ matrix.target }}
 ```
 
-`cargo test` 会编译并运行测试。配合 `--all-targets` 和 `--all-features`，可以发现只在测试、示例或可选功能中出现的问题。
+这一步编译并运行测试。
 
-## 6、构建 release
+参数含义：
+
+- `cargo test`：编译并运行 Rust 测试。
+- `--all-targets`：测试库、二进制、示例等目标中可测试的部分。
+- `--all-features`：启用所有 Cargo feature 后运行测试。
+- `--locked`：使用现有 `Cargo.lock`，防止 CI 隐式更新依赖版本。
+- `--target ${{ matrix.target }}`：为当前平台 target 编译和运行测试。
+
+在这份配置里，每个 target 都在对应的原生 runner 上测试：Windows target 在 Windows runner 上，macOS ARM target 在 macOS ARM runner 上，macOS Intel target 在 macOS Intel runner 上。因此测试可以真正运行，而不是只做交叉编译检查。
+
+## 10、Build release
 
 ```yaml
 - name: Build release
-  run: cargo build --release --locked
+  run: cargo build --release --locked --target ${{ matrix.target }}
 ```
 
-`cargo build --release` 使用发布配置编译项目。它不会自动上传二进制产物，只是确认正式构建配置能通过。
+这一步构建 release 版本。
 
-# 五、常见配置取舍
+参数含义：
 
-## 1、是否固定 Rust 版本
+- `cargo build`：编译项目。
+- `--release`：使用 release profile 编译，通常会开启优化，产物更接近正式发布版本。
+- `--locked`：要求依赖版本完全符合 `Cargo.lock`。
+- `--target ${{ matrix.target }}`：为当前 matrix 指定的平台生成二进制。
 
-| 方案 | 适用场景 | 代价 |
-|---|---|---|
-| `stable` | 希望持续跟进稳定版 Rust | CI 结果可能随 Rust 更新变化 |
-| `rust-toolchain.toml` | 希望团队和 CI 使用同一版本 | 需要主动升级工具链 |
-| 手写具体版本 | 临时固定环境 | 版本信息分散在 CI 文件里 |
+`cargo build --release` 本身不会自动发布，也不会自动上传二进制。它只确认正式构建配置能通过，并在 runner 的临时工作目录里生成 release 产物。要在 CI 页面下载产物，需要继续使用 `actions/upload-artifact` 上传。
 
-普通项目优先使用 `rust-toolchain.toml`。这样本地和 CI 更一致，CI 文件也更少藏项目策略。
+## 11、Upload release artifact
 
-## 2、是否使用缓存
+```yaml
+- name: Upload release artifact
+  uses: actions/upload-artifact@v7
+  with:
+    name: ${{ matrix.artifact }}
+    path: target/${{ matrix.target }}/release
+    if-no-files-found: error
+    retention-days: 7
+```
 
-Cargo 缓存可以减少下载和编译时间，但不是最小可用 CI 的必需项。
+这一步把 release 构建结果上传为 GitHub Actions artifact。工作流完成后，可以在对应的 Actions run 页面下载这些 artifact。
 
-先写无缓存版本更简单。只有当 CI 变慢且影响开发节奏时，再引入缓存，例如缓存 Cargo registry、Git 依赖和 `target/` 中可复用的部分。
+参数含义：
 
-## 3、是否拆分多个 Job
+- `uses: actions/upload-artifact@v7`：调用 GitHub 官方的 artifact 上传 Action。
+- `with`：给 Action 传入参数。
+- `name: ${{ matrix.artifact }}`：artifact 在 Actions 页面显示的名称。例如 `release-linux-x64`、`release-windows-x64`。
+- `path: target/${{ matrix.target }}/release`：要上传的文件或目录。这里上传当前 target 的 release 构建目录。
+- `if-no-files-found: error`：如果路径没有匹配到文件，就让 step 失败。这样可以避免 CI 看起来成功，但实际没有上传任何产物。
+- `retention-days: 7`：artifact 保留 7 天。这个值可以按需要调大，但保留时间越长，占用的存储配额越久。
 
-单 Job 的优点是配置短、执行顺序清楚。缺点是格式检查失败时，测试结果也看不到。
+上传整个 `release` 目录最通用，因为示例不需要提前知道二进制名称。实际项目里，如果只想上传最终二进制，可以把 `path` 收窄到具体文件，例如 Linux/macOS 的 `target/${{ matrix.target }}/release/your_binary_name`，Windows 的 `target/${{ matrix.target }}/release/your_binary_name.exe`。
 
-多个 Job 可以并行运行格式、Clippy、测试和构建，但配置会变多。项目小的时候，单 Job 足够；项目变大或 CI 时间明显变长时，再拆分。
-
-
-# 六、排查 CI 失败的顺序
-
-## 1、先看失败的 Step
-
-GitHub Actions 日志会标出哪个 Step 失败。排查时先定位失败 Step，再看该 Step 的最后一段错误输出。
-
-常见对应关系：
-
-| 失败 Step | 常见原因 | 本地复现命令 |
-|---|---|---|
-| Check formatting | 代码格式不符合 rustfmt | `cargo fmt --all -- --check` |
-| Run Clippy | Clippy lint 或 warning | `cargo clippy --all-targets --all-features --locked -- -D warnings` |
-| Run tests | 测试失败或测试目标编译失败 | `cargo test --all-targets --all-features --locked` |
-| Build release | release 配置编译失败 | `cargo build --release --locked` |
-
-## 2、优先本地复现
-
-CI 命令应该尽量能在本地直接运行。能本地复现，就不要只在网页日志里猜。
-
-如果本地通过但 CI 失败，优先检查：
-
-- Rust 版本是否一致。
-- 操作系统是否一致。
-- 环境变量是否一致。
-- 是否漏提交 `Cargo.lock`。
-- 是否依赖本地没有提交的文件。
-
-# 七、小结
-
-GitHub CI 的最小有效版本是：在 Pull Request 和主分支提交时，自动检出代码并运行项目必须通过的检查。Rust 项目通常先覆盖 `cargo fmt`、`cargo clippy`、`cargo test` 和 `cargo build --release`。
-
-配置 CI 时先保持简单：固定最小权限、明确触发条件、能本地复现每条命令。缓存、矩阵、多 Job 和发布流程都可以等项目真的需要时再加。
+artifact 只是给 CI 页面下载用，不等于正式发布。若要发布到 GitHub Release，还需要额外的 release job、标签触发条件，以及能写入 Release 的权限。

@@ -8,7 +8,7 @@ aliases:
 
 # 一、简介
 
-`clap`是 Rust 常用的命令行参数解析 crate，用于把终端输入的参数解析成 Rust 中的结构体、枚举和字段值。它支持位置参数、选项参数、布尔标志、默认值、子命令、自动帮助信息和参数校验。和 [[Rust/notes/项目/01_minigrep/1、命令行参数与文件读取|命令行参数与文件读取]] 中手动读取 `env::args` 相比，`clap` 更适合正式 CLI。
+`clap`是 Rust 常用的命令行参数解析 crate，用于把终端输入的参数解析成 Rust 中的结构体、枚举和字段值。它支持位置参数、选项参数、布尔标志、默认值、子命令、自动帮助信息和参数校验。和 [[Rust/notes/项目/01_minigrep/2、命令行参数与文件读取|命令行参数与文件读取]] 中手动读取 `env::args` 相比，`clap` 更适合正式 CLI。
 
 `clap` 同时提供 `derive` API 和 `builder` API，快速入门阶段优先使用 `derive` API，即通过派生宏自动实现相关 Trait 。
 
@@ -171,14 +171,13 @@ cargo run -- --help
 
 输出：
 
-![[assets/Pasted image 20260604181907.png|200]]
+![[assets/Pasted image 20260720175421.png|300]]
 
-
-# 五、位置参数、选项和标志
+# 五、位置参数、选项参数和布尔标志
 
 ## 1、位置参数
 
-位置参数不带`--`或`-`，依靠出现顺序解析。
+位置参数不带长选项`--`或短选项`-`，依靠出现顺序解析。
 
 ```rust
 use clap::Parser;  
@@ -264,8 +263,13 @@ Cli { file: "input.txt", output: Some("result.txt") }
 --output result.txt
 ```
 
-`Option<PathBuf>` 表示这个选项可以不传。
+`Option<PathBuf>` 表示这个选项可以不传，因此，直接输入：
 
+```shell
+cargo run -- input.txt
+```
+
+也是正确的，只不过解析出来的`output`字段是`None`。
 
 ## 3、布尔标志
 
@@ -310,7 +314,7 @@ Cli { verbose: true }
 不传时：
 
 ```shell
-cargo run --
+cargo run
 ```
 
 输出：
@@ -349,7 +353,7 @@ fn main() {
 运行：
 
 ```shell
-cargo run --
+cargo run
 ```
 
 输出：
@@ -385,7 +389,7 @@ fn main() {
 运行：
 
 ```shell
-cargo run --
+cargo run
 ```
 
 输出：
@@ -523,6 +527,8 @@ fn main() {
     println!("{:?}", cli);  
 }
 ```
+
+> 注意，实现`ValueEnum` Trait 必须保证同时实现 `Clone` Trait。
 
 运行：
 

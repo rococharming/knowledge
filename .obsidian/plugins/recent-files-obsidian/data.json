@@ -1,28 +1,136 @@
 {
   "recentFiles": [
     {
-      "basename": "3、Cargo Feature",
-      "path": "Rust/notes/零散知识/3、Cargo Feature.md"
+      "basename": "1、Node.js 和 npm",
+      "path": "前后端/notes/后端/Node.js与npm/1、Node.js 和 npm.md"
     },
     {
-      "basename": "5、Matt Pocock Skills",
-      "path": "AI/notes/常用Skill和插件汇总/5、Matt Pocock Skills.md"
+      "basename": "记忆区",
+      "path": "00_Inbox/记忆区.md"
+    },
+    {
+      "basename": "2、变量绑定与常量",
+      "path": "Rust/notes/Rust基础/2、变量绑定与常量.md"
+    },
+    {
+      "basename": "5、函数、语句与表达式",
+      "path": "Rust/notes/Rust基础/5、函数、语句与表达式.md"
+    },
+    {
+      "basename": "3、基本数据类型",
+      "path": "Rust/notes/Rust基础/3、基本数据类型.md"
+    },
+    {
+      "basename": "1、Rust安装与开发环境配置",
+      "path": "Rust/notes/Rust基础/1、Rust安装与开发环境配置.md"
+    },
+    {
+      "basename": "6、注释与rustdoc",
+      "path": "Rust/notes/Rust基础/6、注释与rustdoc.md"
+    },
+    {
+      "basename": "7、所有权",
+      "path": "Rust/notes/Rust基础/7、所有权.md"
+    },
+    {
+      "basename": "4、控制流",
+      "path": "Rust/notes/Rust基础/4、控制流.md"
+    },
+    {
+      "basename": "3、共享可变状态",
+      "path": "Rust/notes/Rust进阶/多线程编程/3、共享可变状态.md"
+    },
+    {
+      "basename": "Unsafe Rust",
+      "path": "Rust/notes/Rust进阶/Unsafe Rust.md"
+    },
+    {
+      "basename": "crate与模块",
+      "path": "Rust/raw/articles/crate与模块.md"
+    },
+    {
+      "basename": "log",
+      "path": "Rust/wiki/log.md"
+    },
+    {
+      "basename": "Cargo",
+      "path": "Rust/wiki/entities/Cargo.md"
+    },
+    {
+      "basename": "rustc",
+      "path": "Rust/wiki/entities/rustc.md"
+    },
+    {
+      "basename": "Rust 安装与镜像源配置",
+      "path": "Rust/wiki/recipes/Rust 安装与镜像源配置.md"
+    },
+    {
+      "basename": "Rust IDE 环境配置",
+      "path": "Rust/wiki/recipes/Rust IDE 环境配置.md"
+    },
+    {
+      "basename": "Cargo 依赖管理",
+      "path": "Rust/notes/Rust基础/Cargo 依赖管理.md"
+    },
+    {
+      "basename": "2026-07-20-周一",
+      "path": "02_日记/2026-07-20-周一.md"
+    },
+    {
+      "basename": "2、clap",
+      "path": "Rust/notes/常用crate/2、clap.md"
+    },
+    {
+      "basename": "index",
+      "path": "Rust/wiki/index.md"
+    },
+    {
+      "basename": "3、模块拆分与文件读取",
+      "path": "Rust/notes/项目/02_rlog/3、模块拆分与文件读取.md"
+    },
+    {
+      "basename": "1、日志分析 CLI 项目目标",
+      "path": "Rust/notes/项目/02_rlog/1、日志分析 CLI 项目目标.md"
+    },
+    {
+      "basename": "2、命令行参数设计",
+      "path": "Rust/notes/项目/02_rlog/2、命令行参数设计.md"
+    },
+    {
+      "basename": "4、搜索功能、环境变量与输出流",
+      "path": "Rust/notes/项目/01_minigrep/4、搜索功能、环境变量与输出流.md"
+    },
+    {
+      "basename": "3、项目重构与错误处理",
+      "path": "Rust/notes/项目/01_minigrep/3、项目重构与错误处理.md"
+    },
+    {
+      "basename": "2、命令行参数与文件读取",
+      "path": "Rust/notes/项目/01_minigrep/2、命令行参数与文件读取.md"
+    },
+    {
+      "basename": "1、minigrep 项目目标",
+      "path": "Rust/notes/项目/01_minigrep/1、minigrep 项目目标.md"
     },
     {
       "basename": "GitHub CI",
       "path": "通用计算机知识/notes/GitHub/GitHub CI.md"
     },
     {
+      "basename": "3、Cargo Feature",
+      "path": "Rust/notes/零散知识/3、Cargo Feature.md"
+    },
+    {
       "basename": "Git  Submodule",
       "path": "通用计算机知识/notes/Git/Git  Submodule.md"
     },
     {
-      "basename": "6、Ponytail",
-      "path": "AI/notes/常用Skill和插件汇总/6、Ponytail.md"
+      "basename": "5、Matt Pocock Skills",
+      "path": "AI/notes/常用Skill和插件汇总/5、Matt Pocock Skills.md"
     },
     {
-      "basename": "记忆区",
-      "path": "00_Inbox/记忆区.md"
+      "basename": "6、Ponytail",
+      "path": "AI/notes/常用Skill和插件汇总/6、Ponytail.md"
     },
     {
       "basename": "Claude Code 入门指南",
@@ -57,40 +165,8 @@
       "path": "AI/notes/Claude Code/1、Claude Code入门.md"
     },
     {
-      "basename": "11、引用生命周期",
-      "path": "Rust/notes/Rust基础/11、引用生命周期.md"
-    },
-    {
-      "basename": "1、Rust安装与开发环境配置",
-      "path": "Rust/notes/Rust基础/1、Rust安装与开发环境配置.md"
-    },
-    {
-      "basename": "2、Rust基础语法",
-      "path": "Rust/notes/Rust基础/2、Rust基础语法.md"
-    },
-    {
-      "basename": "3、所有权",
-      "path": "Rust/notes/Rust基础/3、所有权.md"
-    },
-    {
-      "basename": "22、迭代器",
-      "path": "Rust/notes/Rust基础/22、迭代器.md"
-    },
-    {
-      "basename": "19、集合",
-      "path": "Rust/notes/Rust基础/19、集合.md"
-    },
-    {
       "basename": "README",
       "path": "README.md"
-    },
-    {
-      "basename": "index",
-      "path": "Rust/wiki/index.md"
-    },
-    {
-      "basename": "log",
-      "path": "Rust/wiki/log.md"
     },
     {
       "basename": "index",
@@ -103,102 +179,6 @@
     {
       "basename": "2026-07-17-周五",
       "path": "02_日记/2026-07-17-周五.md"
-    },
-    {
-      "basename": "2026-07-16-周四",
-      "path": "02_日记/2026-07-16-周四.md"
-    },
-    {
-      "basename": "3、搜索功能、环境变量与输出流",
-      "path": "Rust/notes/项目/01_minigrep/3、搜索功能、环境变量与输出流.md"
-    },
-    {
-      "basename": "5、字符串",
-      "path": "Rust/notes/Rust基础/5、字符串.md"
-    },
-    {
-      "basename": "2、项目重构与错误处理",
-      "path": "Rust/notes/项目/01_minigrep/2、项目重构与错误处理.md"
-    },
-    {
-      "basename": "4、YAML",
-      "path": "通用计算机知识/notes/数据格式/4、YAML.md"
-    },
-    {
-      "basename": "6、Obsidian CLI",
-      "path": "Obsidian/notes/6、Obsidian CLI.md"
-    },
-    {
-      "basename": "7、LLM Wiki",
-      "path": "Obsidian/notes/7、LLM Wiki.md"
-    },
-    {
-      "basename": "8、AI + Obsidian",
-      "path": "Obsidian/notes/8、AI + Obsidian.md"
-    },
-    {
-      "basename": "5、Bilibili Obsidian Clipper",
-      "path": "Obsidian/notes/5、Bilibili Obsidian Clipper.md"
-    },
-    {
-      "basename": "4、Obsidian Web Clipper",
-      "path": "Obsidian/notes/4、Obsidian Web Clipper.md"
-    },
-    {
-      "basename": "3、Obsidian 插件",
-      "path": "Obsidian/notes/3、Obsidian 插件.md"
-    },
-    {
-      "basename": "2、Obsidian 扩展语法",
-      "path": "Obsidian/notes/2、Obsidian 扩展语法.md"
-    },
-    {
-      "basename": "1、Obsidian入门",
-      "path": "Obsidian/notes/1、Obsidian入门.md"
-    },
-    {
-      "basename": "2026-07-15-周三",
-      "path": "02_日记/2026-07-15-周三.md"
-    },
-    {
-      "basename": "1、命令行参数与文件读取",
-      "path": "Rust/notes/项目/01_minigrep/1、命令行参数与文件读取.md"
-    },
-    {
-      "basename": "1、Git 安装与配置",
-      "path": "通用计算机知识/notes/Git/01_本地仓库基础/1、Git 安装与配置.md"
-    },
-    {
-      "basename": "2、创建 Git 仓库",
-      "path": "通用计算机知识/notes/Git/01_本地仓库基础/2、创建 Git 仓库.md"
-    },
-    {
-      "basename": "3、工作区域与文件状态",
-      "path": "通用计算机知识/notes/Git/01_本地仓库基础/3、工作区域与文件状态.md"
-    },
-    {
-      "basename": "4、查看状态、暂存和提交",
-      "path": "通用计算机知识/notes/Git/01_本地仓库基础/4、查看状态、暂存和提交.md"
-    },
-    {
-      "basename": "8、忽略规则文件",
-      "path": "通用计算机知识/notes/Git/01_本地仓库基础/8、忽略规则文件.md"
-    },
-    {
-      "basename": "7、删除和重命名文件",
-      "path": "通用计算机知识/notes/Git/01_本地仓库基础/7、删除和重命名文件.md"
-    },
-    {
-      "basename": "6、撤销修改和取消暂存",
-      "path": "通用计算机知识/notes/Git/01_本地仓库基础/6、撤销修改和取消暂存.md"
-    },
-    {
-      "basename": "5、查看修改内容",
-      "path": "通用计算机知识/notes/Git/01_本地仓库基础/5、查看修改内容.md"
-    },
-    {
-      "basename": "打造真实项目的 AI 编程环境：Matt Pocock 的 Skill 工作流完整上手攻略",
-      "path": "Clippings/打造真实项目的 AI 编程环境：Matt Pocock 的 Skill 工作流完整上手攻略.md"
     }
   ],
   "omittedPaths": [],
