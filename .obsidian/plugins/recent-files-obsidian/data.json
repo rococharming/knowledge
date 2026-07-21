@@ -1,6 +1,78 @@
 {
   "recentFiles": [
     {
+      "basename": "5、Matt Pocock Skills",
+      "path": "AI/notes/常用Skill和插件汇总/5、Matt Pocock Skills.md"
+    },
+    {
+      "basename": "5、查看修改内容",
+      "path": "通用计算机知识/notes/Git/01_本地仓库基础/5、查看修改内容.md"
+    },
+    {
+      "basename": "4、查看状态、暂存和提交",
+      "path": "通用计算机知识/notes/Git/01_本地仓库基础/4、查看状态、暂存和提交.md"
+    },
+    {
+      "basename": "3、工作区域与文件状态",
+      "path": "通用计算机知识/notes/Git/01_本地仓库基础/3、工作区域与文件状态.md"
+    },
+    {
+      "basename": "2、协作中的撤销与历史修复",
+      "path": "通用计算机知识/notes/Git/03_远程仓库与协作/2、协作中的撤销与历史修复.md"
+    },
+    {
+      "basename": "1、远程仓库认证与凭证管理",
+      "path": "通用计算机知识/notes/Git/03_远程仓库与协作/1、远程仓库认证与凭证管理.md"
+    },
+    {
+      "basename": "Git  Submodule",
+      "path": "通用计算机知识/notes/Git/Git  Submodule.md"
+    },
+    {
+      "basename": "2、创建 Git 仓库",
+      "path": "通用计算机知识/notes/Git/01_本地仓库基础/2、创建 Git 仓库.md"
+    },
+    {
+      "basename": "1、Git 安装与配置",
+      "path": "通用计算机知识/notes/Git/01_本地仓库基础/1、Git 安装与配置.md"
+    },
+    {
+      "basename": "Git 安装与首次配置",
+      "path": "通用计算机知识/wiki/recipes/Git 安装与首次配置.md"
+    },
+    {
+      "basename": "Git 版本控制系统",
+      "path": "通用计算机知识/wiki/entities/Git 版本控制系统.md"
+    },
+    {
+      "basename": "记忆区",
+      "path": "00_Inbox/记忆区.md"
+    },
+    {
+      "basename": "1、Xcode与命令行工具",
+      "path": "macOS/notes/1、Xcode与命令行工具.md"
+    },
+    {
+      "basename": "6、错误处理与发布构建",
+      "path": "Rust/notes/项目/02_rlog/6、错误处理与发布构建.md"
+    },
+    {
+      "basename": "3、模块拆分与文件读取",
+      "path": "Rust/notes/项目/02_rlog/3、模块拆分与文件读取.md"
+    },
+    {
+      "basename": "2、命令行参数设计",
+      "path": "Rust/notes/项目/02_rlog/2、命令行参数设计.md"
+    },
+    {
+      "basename": "4、日志过滤与级别解析",
+      "path": "Rust/notes/项目/02_rlog/4、日志过滤与级别解析.md"
+    },
+    {
+      "basename": "1、Node.js 和 npm",
+      "path": "前后端/notes/后端/Node.js与npm/1、Node.js 和 npm.md"
+    },
+    {
       "basename": "2026-07-21-周二",
       "path": "02_日记/2026-07-21-周二.md"
     },
@@ -11,14 +83,6 @@
     {
       "basename": "2026-07-20-周一",
       "path": "02_日记/2026-07-20-周一.md"
-    },
-    {
-      "basename": "1、Node.js 和 npm",
-      "path": "前后端/notes/后端/Node.js与npm/1、Node.js 和 npm.md"
-    },
-    {
-      "basename": "记忆区",
-      "path": "00_Inbox/记忆区.md"
     },
     {
       "basename": "2、变量绑定与常量",
@@ -93,16 +157,8 @@
       "path": "Rust/wiki/index.md"
     },
     {
-      "basename": "3、模块拆分与文件读取",
-      "path": "Rust/notes/项目/02_rlog/3、模块拆分与文件读取.md"
-    },
-    {
       "basename": "1、日志分析 CLI 项目目标",
       "path": "Rust/notes/项目/02_rlog/1、日志分析 CLI 项目目标.md"
-    },
-    {
-      "basename": "2、命令行参数设计",
-      "path": "Rust/notes/项目/02_rlog/2、命令行参数设计.md"
     },
     {
       "basename": "4、搜索功能、环境变量与输出流",
@@ -129,14 +185,6 @@
       "path": "Rust/notes/零散知识/3、Cargo Feature.md"
     },
     {
-      "basename": "Git  Submodule",
-      "path": "通用计算机知识/notes/Git/Git  Submodule.md"
-    },
-    {
-      "basename": "5、Matt Pocock Skills",
-      "path": "AI/notes/常用Skill和插件汇总/5、Matt Pocock Skills.md"
-    },
-    {
       "basename": "6、Ponytail",
       "path": "AI/notes/常用Skill和插件汇总/6、Ponytail.md"
     },
@@ -147,46 +195,6 @@
     {
       "basename": "Claude Code 入门实战流程",
       "path": "AI/wiki/recipes/Claude Code 入门实战流程.md"
-    },
-    {
-      "basename": "Claude Code 第三方模型接入",
-      "path": "AI/wiki/recipes/Claude Code 第三方模型接入.md"
-    },
-    {
-      "basename": "index",
-      "path": "index.md"
-    },
-    {
-      "basename": "Claude Code",
-      "path": "AI/wiki/entities/Claude Code.md"
-    },
-    {
-      "basename": "Claude Code 权限模式",
-      "path": "AI/wiki/concepts/Claude Code 权限模式.md"
-    },
-    {
-      "basename": "Claude Code 常用命令",
-      "path": "AI/wiki/concepts/Claude Code 常用命令.md"
-    },
-    {
-      "basename": "1、Claude Code入门",
-      "path": "AI/notes/Claude Code/1、Claude Code入门.md"
-    },
-    {
-      "basename": "README",
-      "path": "README.md"
-    },
-    {
-      "basename": "index",
-      "path": "AI/wiki/index.md"
-    },
-    {
-      "basename": "log",
-      "path": "AI/wiki/log.md"
-    },
-    {
-      "basename": "2026-07-17-周五",
-      "path": "02_日记/2026-07-17-周五.md"
     }
   ],
   "omittedPaths": [],

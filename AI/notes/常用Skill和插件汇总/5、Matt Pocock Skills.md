@@ -41,10 +41,16 @@ npx skills@latest add mattpocock/skills
 
 这套标准让不同 Agent 能识别同一份 `SKILL.md`。安装器会让你选择需要的 Skill、目标 Agent 以及安装范围，并把 Skill 复制到项目中，便于阅读和按团队规则修改。
 
-如果已安装 [[2、find-skills|find-skills]]，也可先用它搜索、筛选需要的 Skill。
+注意，安装时会看到技能分为两组：
 
-> [!tip]
-> 第一次不必全部安装。可先选 `setup-matt-pocock-skills`、`grill-with-docs`、`to-spec`、`to-tickets`、`implement` 和 `diagnosing-bugs`，覆盖从规划到实现、调试的主干。
+- Mattpocock Skills
+- Other
+
+使用时，大部分情况下使用的是  Mattpocock Skills，Other 下按需要选取。
+
+这里安装选择  Mattpocock Skills 的所有技能。
+
+![[assets/Pasted image 20260722015709.png|600]]
 
 ## 2、Claude Code 插件方式
 
@@ -57,7 +63,7 @@ npx skills@latest add mattpocock/skills
 
 插件方式安装的是只读、跟随官方更新的完整 Skill 集；`skills.sh` 方式更适合希望针对项目裁剪和修改的团队。
 
-## 3、每个项目先初始化
+# 三、项目初始化
 
 安装时必须包含 `setup-matt-pocock-skills`，然后在每个准备使用这套工作流的项目中运行一次：
 
@@ -74,7 +80,7 @@ npx skills@latest add mattpocock/skills
 
 它不会直接开始开发功能，也不会立即创建某个功能的规格和任务，而是先生成一组配置文档，，供 `grill-with-docs`、`to-spec`、`to-tickets`、`implement` 等后续 Skill 使用。
 
-### （1）执行前提
+## 1、执行前提
 
 最低前提只有三项：
 
@@ -90,7 +96,7 @@ git init
 
 Git 是否初始化、是否存在远程仓库，主要影响任务追踪器的推荐结果，并不会决定 Skill 能否运行。
 
-### （2）先探查项目现状
+## 2、先探查项目现状
 
 执行后，Skill 不会立即创建文件，而是先检查当前项目，例如：
 
@@ -102,11 +108,15 @@ Git 是否初始化、是否存在远程仓库，主要影响任务追踪器的�
 
 探查后会告诉你当前项目的现状，然后继续向下初始化。
 
-### （3）选择任务追踪器
+![[assets/Pasted image 20260722021245.png|600]]
+
+## 3、选择任务追踪器
 
 第一项需要确认的是 `Issue Tracker`，也就是项目把规格、Bug 和任务记录在哪里。
 
 > `Issue Tracker` 是用于记录需求、Bug、任务状态和依赖的系统。GitHub Issues、GitLab Issues、Linear 都属于 Issue Tracker。对于不依赖平台的个人项目，也可以直接用本地 Markdown 文件记录。
+
+![[assets/Pasted image 20260722021516.png|600]]
 
 常见选择包括：
 
@@ -124,9 +134,9 @@ Skill 会根据当前环境给出建议：
 - 没有 remote：通常推荐 Local Markdown。
 - 已存在 `.scratch/`：会将其视为项目可能已经采用本地任务模式的信号。
 
-确认使用 Local Markdown 后，相关约定会写入：`docs/agents/issue-tracker.md`。
+这里希望在本地管理相关文档，选择 Local Markdown 后，相关约定会写入：`docs/agents/issue-tracker.md`。
 
-这里记录的不是具体任务，而是告诉其他 Skill：
+`issue-tracker.md`记录的不是具体任务，而是告诉其他 Skill：
 
 > 当它们需要“发布到任务追踪器”或“读取某个任务”时，应该执行什么操作。
 
@@ -156,11 +166,9 @@ Skill 会根据当前环境给出建议：
 > [!note]
 > `spec` 是 specification 的缩写，表示规格文档，重点描述“要实现什么、边界是什么、如何验收”。PRD 是 Product Requirements Document，即产品需求文档。在这套 Skills 中，两者有时会被作为接近的概念使用，但 `spec` 通常更贴近具体功能的可实现、可验收描述。
 
-如果以后将项目关联到 GitHub 或 GitLab，可以修改：`docs/agents/issue-tracker.md`
+如果以后将项目关联到 GitHub 或 GitLab，可以修改：`docs/agents/issue-tracker.md`。也可以重新运行初始化流程，将任务追踪方式切换到远程 Issues。
 
-也可以重新运行初始化流程，将任务追踪方式切换到远程 Issues。
-
-一个普通任务可能如下：
+一个普通任务（Issue）可能如下：
 
 ```markdown
 # Validate preview app directory
@@ -199,7 +207,7 @@ Blocked by: 01, 02
 Status: ready-for-agent
 ```
 
-### （4）配置 Triage 状态
+## 4、配置 Triage 状态
 
 Triage 是对新任务进行分析、补充和分流的过程，也就是先判断：
 
@@ -210,7 +218,9 @@ Triage 是对新任务进行分析、补充和分流的过程，也就是先判�
 
 只有安装了 `triage` Skill，初始化流程才会配置这一部分。如果没有安装，Skill 会跳过该步骤，也不会创建`docs/agents/triage-labels.md`。
 
-默认使用五种状态角色：
+![[assets/Pasted image 20260722021830.png|600]]
+
+这里选择保持默认，默认有五种状态角色：
 
 |状态|含义|
 |---|---|
@@ -224,19 +234,15 @@ Triage 是对新任务进行分析、补充和分流的过程，也就是先判�
 
 ![[assets/Pasted image 20260717145925.png|600]]
 
-Skill 通常只会询问一个问题：
 
-```
-是否保留默认的 Triage 标签？
-```
 
-如果项目没有自定义标签，直接使用默认名称即可。
-
-### （5）配置领域文档布局
+## 5、配置领域文档布局
 
 接下来，Skill 会根据项目规模选择领域文档布局。
 
-普通项目通常默认使用`single-context`：
+![[assets/Pasted image 20260722022141.png]]
+
+由于当前没有`monorepo`信号，自动识别为单项目上下文`single-context`，因此需要在根目录创建：
 
 ```
 CONTEXT.md 
@@ -247,7 +253,7 @@ docs/adr/
 > single-context 表示整个项目共享一套领域上下文。
 > 项目术语和长期规则统一记录在根目录的 `CONTEXT.md` 中，架构决策统一保存在 `docs/adr/` 下。它适合大多数单体项目和中小型仓库。
 
-对于大型 monorepo，才可能使用多个上下文：
+对于大型`monorepo`，才可能使用多个上下文：
 
 ```
 CONTEXT-MAP.md
@@ -280,7 +286,7 @@ packages/
 >ADR 是 Architecture Decision Record，即架构决策记录。它不描述“准备实现什么功能”，而是记录“做出了什么技术选择、为什么这样选择、考虑过哪些替代方案”。
 
 
-### （6）选择 Agent 入口文件
+## 6、选择 Agent 入口文件
 
 完成前面的配置后，Skill 需要把这些约定链接到项目的 Agent 入口文件。
 
@@ -320,9 +326,13 @@ Triage 使用默认五个标准标签。详见 `docs/agents/triage-labels.md`。
 本仓库使用 single-context 领域文档布局。详见 `docs/agents/domain.md`。
 ```
 
-### （7）初始化完成后的文件
+## 7、初始化完成后的文件
 
-采用 Local Markdown、默认 Triage 标签和 single-context 后，项目中通常会新增：
+最后，Agent 会给出完整的配置草稿，供你审阅。
+
+![[assets/Pasted image 20260722022550.png|600]]
+
+例如这里采用 Local Markdown、默认 Triage 标签和 single-context 后，项目中通常会新增：
 
 ```
 project/
@@ -351,7 +361,7 @@ docs/adr/
 
 因此，初始化的重点不是提前创建所有空目录，而是先确定后续 Skill 应该遵守什么规则。
 
-# 三、Skills 的整体结构
+# 四、Skills 的整体结构
 
 ## 1、用户调用与模型调用
 
@@ -454,13 +464,13 @@ codebase-design
 ### （1）新功能
 
 ```
-grill-with-docs
+grill-with-docs(澄清需求)
       ↓
-to-spec
+to-spec(形成规格)
       ↓
-to-tickets
+to-tickets(拆分任务)
       ↓
-implement
+implement(逐个实现)
    ├── tdd
    └── code-review
 ```
@@ -478,25 +488,21 @@ implement
 |`tdd`|如何用快速反馈驱动实现|
 |`code-review`|如何检查实现质量和规格完成度|
 
-完整流程是：
+`grill`即盘问和拷问的意思，如果只是想与 AI 探讨交流，可以选择`grill-me` skill，如果想在澄清需求的同时生成文档，选择`grill-with-docs`。
 
-```
-模糊想法
-    ↓
-澄清需求
-    ↓
-形成规格
-    ↓
-拆分任务
-    ↓
-逐个实现
-    ↓
-测试与审查
-```
+例如当前项目通过纯前端（HTML + CSS + 原生JS）实现了一个带优先级的待办事项应用。现在想增加一个数据导入和导出的功能：
 
-并非所有新功能都必须完整经过每一个步骤。
+![[assets/Pasted image 20260722024056.png|600]]
 
-如果功能很小，并且经过需求澄清后可以在当前会话中直接完成，可以采用：
+调用`grill-with-docs`，Agent 就开始逐个问题询问并提供一些选项供我们选择。
+
+经过几轮询问后，需求会基本实现。
+
+> `grill-with-docs` 和 superpowers 的`brainstorming`的区别：
+> `brainstorming` 倾向于尽快对话完生成文档，`grill-with-docs`倾向于把问题问清楚，可能涉及非常多的轮数，适合需求模糊时深入沟通。
+> 实际开发时，可以先使用`grill-with-docs`生成一个详细文档，再使用`brainstorming` 做一个更好地补充。
+
+并非所有新功能都必须完整经过每一个步骤。如果功能很小，Agent 可能经过需求澄清后直接提示开始执行，这里的工作流就简化为：
 
 ```
 grill-with-docs
@@ -504,16 +510,15 @@ grill-with-docs
 implement
 ```
 
+当然，这里为了演示，要求 Agent 生成文档。新版 `mattpocock/skills` 中，旧的 `to-issues` 和 `to-prd` 已被当前工作流里的 `to-tickets` 和 `to-spec` 取代：如果任务比较小，可以直接用 `to-tickets` 拆成可执行任务；如果任务比较复杂，则先用 `to-spec` 生成规格文档，再用 `to-tickets` 拆分任务。
 
-### （3）外部 Issue
+### （2）外部 Issue
 
 ```
 triage
    ↓
 implement
 ```
-
-这条路径适合处理从外部进入任务追踪器的原始 Issue，例如：
 
 这条路径适合处理从外部进入任务追踪器的原始 Issue，例如：
 
@@ -574,7 +579,6 @@ ready-for-agent
 > Status: ready-for-agent
 > ```
 
-
 ### （3）疑难 Bug
 
 ```
@@ -582,9 +586,6 @@ diagnosing-bugs
        ↓
 implement / 架构改进
 ```
-
-
-### （3）疑难 Bug
 
 这条路径适合难以直接定位的问题，例如：
 
@@ -721,7 +722,332 @@ implement
 
 > 在大型项目正式编写规格之前，先绘制一张从未知状态走向可实施状态的决策地图。
 
-## 4、主流程与入口流程
+## 4、其他重要 Skill
+
+除了四条主路径，Matt Pocock Skills 里还有一些不一定出现在固定流程图中、但很值得单独掌握的 Skill。它们通常用于回答某个具体工程问题，而不是直接承担“从需求到上线”的完整路径。
+
+### （1）prototype
+
+`prototype` 的定位是：
+
+> 用可丢弃代码回答一个设计问题。
+
+它不是“先做一个简化版产品”，也不是正式实现的第一阶段，而是当讨论已经不足以判断方向时，用一个可运行结果验证关键未知问题。
+
+适合使用 `prototype` 的场景包括：
+
+- 想确认一个状态模型跑起来是否符合直觉
+- 想比较几种 UI 或交互布局
+- 想验证某个边界流程会不会让用户迷路
+- 想观察一个复杂逻辑在多种输入下如何变化
+- 想在投入正式实现前确认技术方案是否可行
+
+`prototype` 会先判断问题属于哪一类：
+
+|问题类型|原型形态|
+|---|---|
+|逻辑、状态机、流程规则是否合理|小型命令行或本地交互原型，重点暴露每一步的完整状态|
+|页面、组件、交互视觉应该长什么样|多个 UI 变体，通常用 URL 参数或切换控件快速对比|
+
+使用时，最好把要回答的问题说清楚，而不是只说“做个 prototype”：
+
+```text
+用 prototype 验证一下导入/导出任务的状态模型是否合理，重点看失败重试、重复导入和撤销流程。
+```
+
+```text
+用 prototype 做三个数据导入面板的 UI 变体，我想比较分步向导、单页表单和拖拽上传三种交互。
+```
+
+`prototype` 的关键约束：
+
+- 从第一天起就是可丢弃代码，文件名和位置要能看出它不是生产实现。
+- 必须提供一个简单命令运行，例如 `pnpm prototype` 或 `python prototype_xxx.py`。
+- 默认不做持久化，状态尽量放在内存里。
+- 不追求测试、抽象和完整错误处理，只保留让原型能跑起来的最小代码。
+- 每次交互后要暴露关键状态，让人能判断设计是否成立。
+- 验证完成后，把结论写回 Issue、Spec 或实现任务；主分支只保留被验证后的正式决策，不保留原型代码。
+
+可以把 `prototype` 理解为正式工作流旁边的一次低成本试错：
+
+```
+未知问题
+   ↓
+prototype
+   ↓
+形成结论
+   ↓
+回到 to-spec / to-tickets / implement
+```
+
+### （2）improve-codebase-architecture
+
+`improve-codebase-architecture` 用来扫描代码库中的架构摩擦，找出可以让模块变得更“深”的重构机会。
+
+这里的“深模块”不是指代码更多，而是指：
+
+> 对外接口简单，内部承担了足够多的复杂性，因此未来修改更集中、更容易测试，也更容易让 Agent 理解。
+
+它关注的问题包括：
+
+- 理解一个概念是否需要在很多小文件之间来回跳转
+- 某些模块是否过于浅，接口复杂度几乎等于实现复杂度
+- 是否为了测试抽出了很多纯函数，但真正的错误仍藏在调用关系里
+- 模块之间的 seam 是否模糊，导致职责互相泄漏
+- 哪些区域缺少稳定测试面，导致修改时很难判断是否破坏行为
+
+`improve-codebase-architecture` 的典型流程是：
+
+```
+选择扫描范围
+   ↓
+阅读 CONTEXT.md 和相关 ADR
+   ↓
+扫描代码热点和架构摩擦
+   ↓
+生成 HTML 架构报告
+   ↓
+选择一个候选重构方向
+   ↓
+进入 grilling / codebase-design 继续追问和细化
+```
+
+这个 Skill 不会一上来就直接改代码。它会先生成一个可视化 HTML 报告，每个候选项通常包含：
+
+- 涉及哪些文件和模块
+- 当前架构为什么造成摩擦
+- 可以如何调整模块责任或接口
+- 这样做如何改善 locality、leverage 和测试面
+- 重构前后的结构图
+- 推荐强度，例如 `Strong`、`Worth exploring`、`Speculative`
+
+它特别适合在以下时机使用：
+
+- 某个区域最近频繁修改，每次改动都牵连很多文件
+- Bug 很难测试，怀疑不是测试写得差，而是模块边界不合适
+- 代码里存在很多“为了复用而抽象”的薄封装，但没有真正降低复杂度
+- 想在做大功能前先识别哪些模块需要加深
+- 想让代码库更适合 Agent 长期维护
+
+使用时可以给出范围，让它不要漫无边际扫描：
+
+```text
+用 improve-codebase-architecture 看一下订单导入这块有没有模块加深的机会，重点关注测试难、状态分散和接口泄漏。
+```
+
+```text
+用 improve-codebase-architecture 扫一下最近经常改动的区域，给我一个架构改进候选报告。
+```
+
+它和 `codebase-design` 的关系是：
+
+- `improve-codebase-architecture` 更像发现问题和生成候选报告。
+- `codebase-design` 更像深入设计某个具体模块接口和 seam。
+
+所以常见组合是：
+
+```
+improve-codebase-architecture
+      ↓
+选择候选项
+      ↓
+codebase-design / grilling
+      ↓
+to-spec / to-tickets / implement
+```
+
+### （3）diagnosing-bugs
+
+`diagnosing-bugs` 用来处理普通“看代码猜原因”很容易失败的问题，例如难复现 Bug、随机失败、性能回退、环境相关错误、修复后反复出现的问题。
+
+它的核心纪律是：
+
+> 先建立能抓住这个 Bug 的反馈循环，再谈定位和修复。
+
+这里的反馈循环不是“测试能跑”，而是必须满足：
+
+- 能触发用户描述的具体问题
+- 能在 Bug 存在时变红，在修复后变绿
+- 尽量快速，最好是几秒级
+- 尽量确定，随机 Bug 也要把复现率提高到足以调试
+- Agent 可以反复运行，不依赖大量人工操作
+
+常见反馈循环包括：
+
+|场景|反馈方式|
+|---|---|
+|业务逻辑错误|写一个能失败的单元测试或集成测试|
+|接口行为异常|用 `curl` 或 HTTP 脚本复现请求|
+|命令行工具输出错误|准备 fixture 输入，对比 stdout 或快照|
+|前端交互 Bug|用 Playwright 或 Puppeteer 驱动页面并断言 DOM、控制台或网络|
+|线上偶发问题|保存真实请求、日志、事件流或 HAR 文件，再离线回放|
+|版本间回退|用 bisect 或差分脚本比较新旧版本行为|
+
+`diagnosing-bugs` 的完整流程可以概括为：
+
+```
+建立红绿反馈循环
+      ↓
+复现并最小化场景
+      ↓
+提出 3-5 个可证伪假设
+      ↓
+逐个增加观测点验证
+      ↓
+写回归测试
+      ↓
+修复并重新运行原始复现
+      ↓
+清理调试代码并总结根因
+```
+
+使用时，最好把症状、复现条件和已尝试过的修复都说出来：
+
+```text
+用 diagnosing-bugs 调试这个导入失败问题。现象是 CSV 有重复行时偶尔卡住，刷新后任务状态停在 processing，没有错误提示。
+```
+
+```text
+用 diagnosing-bugs 看一下最近的性能回退。列表页从 300ms 变成 2s，怀疑和筛选条件或数据库查询有关。
+```
+
+`diagnosing-bugs` 有几个重要习惯：
+
+- 在没有红绿反馈循环之前，不急着改代码。
+- 复现后要继续最小化场景，删掉不必要的输入、配置和步骤。
+- 不只提出一个原因，而是列出多个可证伪假设，并说明每个假设预期看到什么现象。
+- 临时日志要有唯一前缀，例如 `[DEBUG-a4f2]`，方便最后全部清理。
+- 性能问题优先建立基线和测量方式，而不是靠日志猜。
+- 修复后要重新跑最初的复现场景，确认修的是同一个 Bug。
+
+如果最终发现没有合适位置写回归测试，这本身就是一个架构信号：当前模块可能缺少可测试 seam。此时可以把诊断结论交给 `improve-codebase-architecture`，继续分析是否需要加深模块或调整接口。
+
+### （4）research
+
+`research` 适合在工程决策依赖外部资料时使用，例如框架选型、API 行为、迁移方案、兼容性边界等。
+
+它的重点不是随口搜索答案，而是：
+
+- 优先查高可信来源
+- 保留来源链接
+- 把结论写成 Markdown 文件
+- 明确哪些是事实、哪些是推断、哪些仍然不确定
+
+当一个决策会影响后续架构、依赖或开发计划时，先用 `research` 留下一份可回看的调查记录，比直接在对话里得到一个结论更稳。
+
+### （5）domain-modeling
+
+`domain-modeling` 用来沉淀项目里的领域语言。它会把关键概念、实体、规则和术语写入 `CONTEXT.md`，让后续 Agent 不必每次重新猜测这些词是什么意思。
+
+适合使用它的场景包括：
+
+- 需求讨论中出现了新的核心术语
+- 同一个概念在代码、产品和用户口径里有不同叫法
+- 某个模块应该用业务概念命名，而不是用技术细节命名
+- 架构改进需要先确认领域边界
+
+在 Matt Pocock Skills 里，`domain-modeling` 经常被 `grill-with-docs`、`improve-codebase-architecture` 等流程调用，用来保证项目长期上下文不会只留在一次聊天里。
+
+### （6）handoff
+
+`handoff` 用来把当前会话压缩成一份交接文档，让另一个 Agent 或下一次会话能够接着工作。
+
+它适合处理这种情况：
+
+- 当前对话已经很长，后续工作需要换一个新会话继续
+- 已经做了大量调查、讨论或局部修改，需要把上下文交给下一个 Agent
+- 想把“接下来该怎么做”整理成清晰的接力说明
+- 当前任务中有多个文件、决策、未完成事项，担心后续遗漏
+
+`handoff` 生成的不是项目文档，而是临时交接材料。它会保存到系统临时目录，而不是当前代码仓库，避免把一次会话的中间状态污染到项目里。
+
+一份好的 handoff 通常包含：
+
+- 当前任务目标
+- 已经完成了什么
+- 关键决策和原因
+- 相关文件、Issue、Spec、ADR 或提交链接
+- 还没有完成的事项
+- 下一位 Agent 建议使用哪些 Skill
+- 需要注意的风险或约束
+
+`handoff` 不应该重复复制已经存在于其他正式文档里的内容。如果某个结论已经写进 Spec、ADR、Issue、提交或代码 diff，交接文档只需要引用路径或链接。
+
+使用示例：
+
+```text
+用 handoff 总结一下当前会话，下一次主要继续实现导入导出功能的 to-tickets。
+```
+
+```text
+用 handoff 做一份交接，下一位 Agent 需要继续诊断这个性能回退，并优先使用 diagnosing-bugs。
+```
+
+使用 `handoff` 时还要注意：
+
+- 不写入仓库，只生成临时交接文档。
+- 不记录 API key、密码、个人隐私等敏感信息。
+- 如果用户说明了下一次会话的重点，交接文档会围绕这个重点组织。
+- 它适合会话切换，不适合替代正式 Spec、Issue 或 ADR。
+
+### （7）teach
+
+`teach` 用来把当前目录变成一个长期教学工作区，让 Agent 围绕某个主题持续教用户学习。
+
+它不是普通问答，也不是一次性解释概念，而是把学习过程拆成多个可积累的材料：
+
+- `MISSION.md`：记录为什么要学这个主题
+- `RESOURCES.md`：记录可继续阅读或观看的高质量资源
+- `lessons/`：保存一节节短小、可交互的 HTML 课程
+- `reference/`：保存速查表、术语表、算法图、流程卡片等参考材料
+- `learning-records/`：记录用户已经学到的关键经验和认知变化
+- `assets/`：保存课程共用的样式、组件、测验控件或图表工具
+- `NOTES.md`：记录用户的学习偏好和临时教学笔记
+
+`teach` 的重点是让知识真正留下来。它会关注两件事：
+
+- Fluency strength：当下能不能顺利想起来和用出来。
+- Storage strength：过一段时间后还能不能保留和迁移。
+
+因此，`teach` 不只是讲解，还会设计练习、回忆、测验和反馈循环，避免用户产生“刚听懂就以为掌握了”的错觉。
+
+适合使用 `teach` 的场景包括：
+
+- 想系统学习一个技术、工具、框架或理论
+- 想让 Agent 持续按自己的目标安排课程
+- 想把学习过程沉淀成可回看的 HTML 课程和参考文档
+- 想通过测验、练习和反馈来建立长期记忆
+- 想让后续会话知道自己已经学到哪里
+
+使用示例：
+
+```text
+用 teach 教我 TypeScript 类型体操，我的目标是能读懂复杂泛型库的类型定义。
+```
+
+```text
+用 teach 带我学习 Matt Pocock Skills，重点是我能在真实项目里判断什么时候用哪个 skill。
+```
+
+`teach` 的工作方式通常是：
+
+```
+确认学习使命
+   ↓
+收集高可信资源
+   ↓
+生成短小 lesson
+   ↓
+加入练习和反馈
+   ↓
+沉淀 reference 与 learning-records
+   ↓
+根据学习记录安排下一课
+```
+
+使用 `teach` 时，最重要的是先说明为什么要学。学习目标越贴近真实任务，课程越容易控制难度，也越容易落到能用的技能上。
+
+## 5、主流程与入口流程
 
 四条路径不是四套完全独立的开发体系，可以理解为：
 
@@ -737,7 +1063,7 @@ implement
 
 
 
-## 5、底层工程纪律
+## 6、底层工程纪律
 
 除了上层工作流，这套 Skills 还提供了一些可以被其他流程复用的底层能力：
 
@@ -751,6 +1077,9 @@ implement
 | `code-review`     | 检查代码标准和规格完成度     |
 | `research`        | 调查外部资料并保留来源      |
 | `prototype`       | 通过可丢弃实现验证未知问题    |
+| `improve-codebase-architecture` | 发现模块加深和架构改进机会 |
+| `handoff`         | 生成下一次会话可接手的交接文档 |
+| `teach`           | 建立长期教学工作区并持续产出课程 |
 
 这些 Skill 通常不会决定“整个项目下一步做什么”，而是负责回答更具体的问题：
 
@@ -758,5 +1087,3 @@ implement
 - 领域概念混乱 -> `domain-modeling`
 - 不知道在哪里测试 -> `codebase-design`
 - 行为已经明确，需要实现 -> `tdd`
-
-

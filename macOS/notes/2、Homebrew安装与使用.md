@@ -1,264 +1,284 @@
 ---
-title: Homebrew安装与使用
-date: 2026-05-13
-tags: [macOS, Homebrew]
+title: Homebrew 安装与使用
+date: 2026-07-21
+tags: [macOS, Homebrew, package-manager]
 aliases:
   - Homebrew安装与使用
+  - brew
+  - Homebrew
 ---
 
-\
-# 一、简介
+# 一、定位
 
-`Homebrew`是macOS上常用的软件包管理工具，也支持Linux。它可以通过命令行安装、更新、搜索、卸载软件，适合管理开发工具、命令行程序以及部分图形界面应用。
+Homebrew 是 macOS 上常用的软件包管理器，也支持 Linux。它通过 `brew` 命令安装、更新、查看和卸载软件，适合管理开发工具、命令行程序以及部分图形界面应用。
 
-例如，可以用`Homebrew`安装：
+没有 Homebrew 时，很多开发工具需要手动下载安装包、配置环境变量、处理依赖。使用 Homebrew 后，大部分工具都可以通过统一命令维护。
+
+示例：
 
 ```shell
 brew install node
 brew install python
-```
-
-也可以通过 Homebrew Cask 安装图形界面应用，例如：
-
-```shell
-brew install --cask google-chrome
 brew install --cask visual-studio-code
 ```
 
-Homebrew 本质上解决的是软件安装和维护问题。没有 Homebrew 时，很多软件需要手动下载安装包、配置环境变量、处理依赖；使用 Homebrew 后，大部分操作可以通过统一的 `brew` 命令完成。Homebrew 官方也把它定位为 macOS 或 Linux 的软件包管理器。
+# 二、安装准备
 
-# 二、安装前准备
+## 1、系统要求
 
-在 macOS 上安装`Homebrew`之前，通常需要先安装 Xcode Command Line Tools。详见[[1、Xcode与命令行工具|Xcode命令行工具]]。
+Homebrew 官方支持的 macOS 版本会随时间变化。当前官方安装文档建议使用受支持硬件上的较新 macOS，并要求安装 [[1、Xcode与命令行工具|Xcode Command Line Tools]] 或完整 Xcode。
 
-Xcode Command Line Tools 是 Apple 提供的一组命令行开发工具，包含 `clang`、`git`、`make` 等工具。Homebrew 在安装或编译某些软件时可能会依赖这些工具。
+> CLT 主要用于构建源码包和本地依赖。部分瓶装包（bottle）或图形应用（cask）可能不直接编译源码，但把 CLT 作为 macOS 开发环境基础仍然最稳妥。
 
-执行命令：
+## 2、默认路径
 
-```shell
-xcode-select --install
-```
+Homebrew 建议安装在默认前缀，方便直接使用官方预编译包：
 
-如果系统弹出安装窗口，按照提示安装即可。
+| Mac 类型 | 默认路径 |
+|---|---|
+| Apple Silicon | `/opt/homebrew` |
+| Intel | `/usr/local` |
 
-如果已经安装过，系统可能会提示：
+不要把 Homebrew 随意安装到自定义路径。偏离默认路径后，许多预编译包可能无法直接使用，安装速度和稳定性都会变差。
 
-```shell
-xcode-select: error: command line tools are already installed
-```
+# 三、安装 Homebrew
 
-这说明命令行工具已经存在，不需要重复安装。
+## 1、官方脚本
 
-# 三、安装Homebrew
-
-Homebrew 官方安装命令是：
+Homebrew 官方安装命令使用 `/bin/bash` 执行安装脚本：
 
 ```shell
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-这条命令会从 Homebrew 官方 GitHub 仓库下载安装脚本并执行。
+这条命令会从 Homebrew 官方仓库下载安装脚本，并在执行前说明它将要修改哪些内容。即使当前默认 shell 是 fish，也仍然可以直接运行这条命令，因为它显式调用的是 `/bin/bash`。
 
-如果在国内网络环境下访问 GitHub 较慢，可以使用镜像源或第三方安装脚本。但这类脚本不属于 Homebrew 官方维护，使用前应确认来源可信。
+## 2、谨慎使用镜像
 
-例如：
+如果网络访问 GitHub 较慢，可以考虑可信镜像或代理，但核心笔记里不建议长期记录来源不明的一键脚本。安装包管理器相当于把后续软件安装入口交给它，脚本来源必须可验证。
 
-```shell
-/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
-```
+更稳妥的做法是优先使用官方脚本；确实需要镜像时，单独记录镜像来源、维护者、更新时间和回退方式。
 
-# 四、配置环境变量
+# 四、环境变量
 
-安装完成后，终端通常会提示你执行类似下面的命令，把 Homebrew 加入 shell 环境变量。
+## 1、查看前缀
 
-Apple Silicon 芯片的 Mac，Homebrew 默认安装路径通常是：
+安装完成后，可以查看 Homebrew 前缀：
 
 ```shell
-/opt/homebrew
+brew --prefix
 ```
 
-常见配置命令：
+如果终端提示 `brew: command not found`，说明 shell 还没有把 Homebrew 的 `bin` 目录加入 `PATH`。
+
+## 2、配置 zsh
+
+Apple Silicon 常见配置：
 
 ```shell
 echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
 
-> `/opt/homebrew/bin/brew shellenv` 本质上是生成一组 `export` 命令，用来配置 Homebrew 所需的环境变量；`eval` 则会把这组输出结果当作 Shell 命令重新解析并执行。因此，这条命令的作用就是执行 Homebrew 生成的环境变量配置，让当前终端立即识别并使用 `brew`。
-
-Intel 芯片的 Mac，Homebrew 默认安装路径通常是：
-
-```shell
-/usr/local
-```
-
-常见配置命令：
+Intel 常见配置：
 
 ```shell
 echo 'eval "$(/usr/local/bin/brew shellenv)"' >> ~/.zprofile
 eval "$(/usr/local/bin/brew shellenv)"
 ```
 
-这一步的作用是让系统能在终端中找到 `brew` 命令。否则可能会出现：
+`brew shellenv` 会输出适合当前 Homebrew 安装位置的环境变量设置，包括 `PATH`、`MANPATH`、`INFOPATH` 以及 `HOMEBREW_PREFIX` 等变量。
 
-```shell
-zsh: command not found: brew
+## 3、配置 fish
+
+如果使用 [[3、fish shell 安装与使用|fish shell]]，可以把下面一行写入 `~/.config/fish/config.fish`：
+
+```fish
+/opt/homebrew/bin/brew shellenv | source
 ```
+
+Intel Mac 通常改成：
+
+```fish
+/usr/local/bin/brew shellenv | source
+```
+
+如果只想让 fish 找到 Homebrew 命令，也可以使用：
+
+```fish
+fish_add_path /opt/homebrew/bin
+```
+
+不过 `brew shellenv` 更完整，因为它不仅处理 `PATH`，还会设置 Homebrew 相关环境变量。
 
 # 五、验证安装
 
-安装完成后，可以使用下面的命令验证 Homebrew 是否安装成功：
+## 1、版本检查
+
+检查 Homebrew 版本：
 
 ```shell
 brew --version
 ```
 
-如果能看到类似输出，说明安装成功：
-
-![[assets/Pasted image 20260513013040.png|300]]
-
-还可以使用下面的命令检查 Homebrew 当前状态：
+检查当前环境状态：
 
 ```shell
 brew doctor
 ```
 
-`brew doctor` 会检查当前 Homebrew 环境是否存在潜在问题。如果输出：
+如果输出 `Your system is ready to brew.`，说明环境基本正常。`brew doctor` 的警告不一定都是致命错误，但安装路径、权限、CLT 缺失这类问题应优先处理。
+
+## 2、路径检查
+
+查看 `brew` 实际路径：
 
 ```shell
-Your system is ready to brew.
+command -v brew
 ```
 
-说明环境基本正常。
+查看 Homebrew 前缀：
+
+```shell
+brew --prefix
+```
+
+Apple Silicon 上通常应看到 `/opt/homebrew`，Intel Mac 上通常应看到 `/usr/local`。
 
 # 六、常用命令
 
-## 1、搜索软件
+## 1、查询与安装
+
+搜索软件：
 
 ```shell
 brew search node
 ```
 
-用于搜索 Homebrew 中是否有某个软件包。
-
-## 2、安装软件
-
-```shell
-brew install node
-```
-
-用于安装命令行软件包。
-
-如果要安装图形用户界面应用，可以使用`-cask`：
-
-```shell
-brew install --cask visual-studio-code
-```
-
-## 3、查看已经安装的软件
-
-```shell
-brew list
-```
-
-用于查看当前通过 Homebrew 安装了哪些软件包。
-
-如果只想查看图形界面应用，可以使用：
-
-```shell
-brew list --cask
-```
-
-## 4、查看某个软件的信息
+查看软件信息：
 
 ```shell
 brew info node
 ```
 
-用于查看某个软件包的版本、安装路径、依赖关系、是否已安装等信息。
+安装命令行软件包：
 
-## 5、更新Homebrew软件包索引
+```shell
+brew install node
+```
+
+安装图形界面应用：
+
+```shell
+brew install --cask visual-studio-code
+```
+
+这里的 `--cask` 表示安装图形界面应用或预编译应用包，不是 `-cask`。
+
+## 2、更新与升级
+
+更新 Homebrew 自身和软件包索引：
 
 ```shell
 brew update
 ```
 
-`brew update` 用来更新 Homebrew 本地的软件包索引。
-
-它不会直接升级已经安装的软件，而是让本地 Homebrew 知道：
-
-- 哪些软件有新版本；
-- 哪些软件包规则发生了变化；
-- 哪些 formula 或 cask 被新增、删除或修改。
-
-可以把它理解为：**先更新软件目录，但不真正升级软件。**
-
-## 6、升级已安装软件
+升级已安装软件：
 
 ```shell
 brew upgrade
 ```
 
-`brew upgrade` 用来升级已经安装的软件包。
-
-如果不指定软件名，它会尝试升级所有可升级的软件：
-
-```shell
-brew upgrade
-```
-
-如果只想升级某一个软件，可以写软件名：
+只升级某一个软件：
 
 ```shell
 brew upgrade node
 ```
 
-`brew upgrade` 通常会先需要有最新的软件包索引。实际使用时，可以先执行：
+可以把两者理解为：`brew update` 先更新“软件目录”，`brew upgrade` 再升级“已经安装的软件”。
+
+## 3、列表与清理
+
+查看已安装软件：
 
 ```shell
-brew update
-brew upgrade
+brew list
 ```
 
-不过 Homebrew 在一些情况下也会自动更新索引，所以你不一定每次都必须手动执行 `brew update`。
-
-## 7、清理旧版本和缓存
+只查看 cask 应用：
 
 ```shell
-brew cleanup
+brew list --cask
 ```
 
-`brew cleanup` 用来清理 Homebrew 产生的旧版本文件和缓存文件。
+预览清理内容：
 
-Homebrew 升级软件时，可能会保留旧版本文件。例如你之前安装过 `node 22.x`，后来升级到 `node 23.x`，旧版本的一些文件可能还留在本地。
-
-`brew cleanup` 的作用就是清理这些不再需要的旧文件，释放磁盘空间。
-
-如果你想先看看它会清理什么，但不真的删除，可以使用：
-
-```
+```shell
 brew cleanup -n
 ```
 
-这里的 `-n` 表示 dry run，也就是预演模式。它只显示将要清理的内容，不会真正删除文件。
+真正清理旧版本和缓存：
 
-确认没问题后，再执行：
-
-```
+```shell
 brew cleanup
 ```
 
+## 4、卸载软件
 
-## 8、卸载软件
+卸载命令行软件包：
 
 ```shell
 brew uninstall node
 ```
 
-用于卸载指定软件包。
-
-卸载图形界面应用可以使用：
+卸载图形界面应用：
 
 ```shell
 brew uninstall --cask visual-studio-code
 ```
+
+# 七、术语
+
+| 术语 | 含义 |
+|---|---|
+| formula | 命令行软件包定义，通常通过 `brew install` 安装 |
+| cask | 图形界面应用或预编译应用包，通常通过 `brew install --cask` 安装 |
+| bottle | Homebrew 提供的预编译二进制包 |
+| prefix | Homebrew 安装前缀，例如 `/opt/homebrew` |
+| Cellar | Homebrew 存放具体软件版本的目录 |
+| tap | 第三方或额外的软件包仓库 |
+
+# 八、排错
+
+## 1、命令找不到
+
+如果出现：
+
+```text
+zsh: command not found: brew
+```
+
+或 fish 中提示找不到 `brew`，优先检查：
+
+```shell
+command -v brew
+brew --prefix
+```
+
+如果 `command -v brew` 没有输出，通常是 shell 环境变量没有配置好。回到“环境变量”一节，根据当前 shell 写入 `brew shellenv`。
+
+## 2、权限异常
+
+日常不要使用 `sudo brew install ...`。Homebrew 的设计是安装后不需要用 `sudo` 管理普通软件包；如果频繁需要 `sudo`，通常说明安装路径或权限被改坏了。
+
+遇到权限问题时，先看 `brew doctor` 的提示，再判断是否需要修复目录所有者或重新安装。
+
+# 九、延伸
+
+Homebrew 是 macOS 开发环境的基础设施之一。安装语言工具链、终端工具、编辑器、数据库和 CLI 时，都可以先考虑 Homebrew；涉及 Apple 开发工具链时，再回到 [[1、Xcode与命令行工具|Xcode 与命令行工具]] 检查 CLT 或完整 Xcode 是否就绪。
+
+参考：
+
+- [Homebrew Documentation：Installation](https://docs.brew.sh/Installation)
+- [Homebrew Documentation：Manpage](https://docs.brew.sh/Manpage)
+- [Homebrew Documentation：FAQ](https://docs.brew.sh/FAQ)

@@ -163,7 +163,7 @@ git add .gitmodules third_party/ui
 git commit -m "chore: add ui submodule"
 ```
 
-这里提交的是 `.gitmodules` 和子模块提交指针，不是子模块内部的完整文件历史。`git add`、`git status`、`git commit` 的基础流程见 [[4、查看状态、暂存和提交|查看状态、暂存和提交]]。
+这里提交的是 `.gitmodules` 和子模块提交指针，不是子模块内部的完整文件历史。`git add`、`git status`、`git commit` 的基础流程见 [[通用计算机知识/notes/Git/01_本地仓库基础/4、查看状态、暂存和提交|查看状态、暂存和提交]]。
 
 ## 2、克隆带子模块的仓库
 
