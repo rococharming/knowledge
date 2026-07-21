@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "2026-07-21-周二",
+      "path": "02_日记/2026-07-21-周二.md"
+    },
+    {
+      "basename": "2、vivo npm 发包",
+      "path": "BlueOS开发/notes/BlueOS源码下载/2、vivo npm 发包.md"
+    },
+    {
+      "basename": "2026-07-20-周一",
+      "path": "02_日记/2026-07-20-周一.md"
+    },
+    {
       "basename": "1、Node.js 和 npm",
       "path": "前后端/notes/后端/Node.js与npm/1、Node.js 和 npm.md"
     },
@@ -71,10 +83,6 @@
     {
       "basename": "Cargo 依赖管理",
       "path": "Rust/notes/Rust基础/Cargo 依赖管理.md"
-    },
-    {
-      "basename": "2026-07-20-周一",
-      "path": "02_日记/2026-07-20-周一.md"
     },
     {
       "basename": "2、clap",
