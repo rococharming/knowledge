@@ -1,4 +1,5 @@
 .DS_Store
 .env
-.obsidian/workspace.json 
+.obsidian/workspace.json
+.obsidian/plugins/recent-files-obsidian/data.json
 .idea/
