@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>第 1 课：网页到底由什么组成</title>
+    <link rel="stylesheet" href="../../assets/course.css">
+    <script src="../../assets/course.js" defer></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <nav class="topbar" aria-label="主题切换">
+        <button class="theme-button" data-theme-choice="wood" type="button">木纹</button>
+        <button class="theme-button" data-theme-choice="paper" type="button">纸白</button>
+        <button class="theme-button" data-theme-choice="night" type="button">夜间</button>
+      </nav>
+
+      <article class="lesson">
+        <p class="lesson-kicker">Lesson 0001</p>
+        <h1>网页到底由什么组成</h1>
+        <p class="lede">今天只抓住一件事：一个网页通常由三层一起完成。HTML 负责内容结构，CSS 负责视觉样式，JavaScript 负责交互行为。你会用这个三层模型读懂一个最小博客卡片。</p>
+
+        <ul class="meta-row">
+          <li>预计 15 分钟</li>
+          <li>零基础可学</li>
+          <li>目标：读懂网页三层分工</li>
+        </ul>
+
+        <div class="rule"></div>
+
+        <section>
+          <p class="eyebrow">Concept</p>
+          <h2>先把网页想成一张会动的文章页</h2>
+          <p>你未来要做个人博客、数据看板和管理后台。它们看起来复杂，但入口都一样：页面上有什么内容，这些内容怎么摆放，用户操作以后页面怎么变化。</p>
+          <p>MDN 的入门资料也把简单网页作为起点：先组织内容，再添加样式，最后添加交互。这个顺序很适合零基础，因为它符合浏览器理解网页的方式。</p>
+        </section>
+
+        <section class="three-grid" aria-label="HTML CSS JavaScript">
+          <div class="mini-card">
+            <h3>HTML：内容骨架</h3>
+            <p>告诉浏览器“这里是标题、这里是段落、这里是链接”。没有 HTML，浏览器不知道内容的身份。</p>
+          </div>
+          <div class="mini-card">
+            <h3>CSS：视觉外观</h3>
+            <p>告诉浏览器“标题多大、卡片多宽、背景是什么、手机上怎么排”。没有 CSS，页面也能读，但很朴素。</p>
+          </div>
+          <div class="mini-card">
+            <h3>JavaScript：用户行为</h3>
+            <p>告诉浏览器“点击按钮后切主题、输入关键词后筛选文章、请求接口后刷新表格”。没有 JavaScript，页面很难变成应用。</p>
+          </div>
+        </section>
+
+        <section>
+          <p class="eyebrow">Example</p>
+          <h2>一个最小博客卡片</h2>
+          <p>先看它的最终效果。现在你不需要会写，只需要能判断每一部分属于哪一层。</p>
+
+          <article class="blog-card" aria-label="博客卡片预览">
+            <span class="tag">前端学习</span>
+            <h3>我的第一篇博客</h3>
+            <p>今天我学会了：网页由内容、样式和行为三层共同组成。</p>
+            <a href="#practice">开始练习</a>
+          </article>
+        </section>
+
+        <section>
+          <h2>这张卡片的 HTML</h2>
+          <p>下面这段代码只关心内容身份：标签、标题、段落、链接。</p>
+          <pre><code>&lt;article class="blog-card"&gt;
+  &lt;span class="tag"&gt;前端学习&lt;/span&gt;
+  &lt;h3&gt;我的第一篇博客&lt;/h3&gt;
+  &lt;p&gt;今天我学会了：网页由内容、样式和行为三层共同组成。&lt;/p&gt;
+  &lt;a href="#practice"&gt;开始练习&lt;/a&gt;
+&lt;/article&gt;</code></pre>
+        </section>
+
+        <section>
+          <h2>这张卡片的 CSS</h2>
+          <p>下面这段代码只关心视觉：宽度、边框、留白、颜色。</p>
+          <pre><code>.blog-card {
+  max-width: 420px;
+  border: 1px solid #e6d4b7;
+  padding: 20px;
+  background: #fffaf0;
+}</code></pre>
+        </section>
+
+        <section>
+          <h2>这张卡片未来的 JavaScript</h2>
+          <p>当你点击“开始练习”、切换主题、搜索文章时，JavaScript 就会开始工作。</p>
+          <pre><code>themeButton.addEventListener("click", function () {
+  document.body.classList.toggle("dark");
+});</code></pre>
+        </section>
+
+        <section id="practice" class="exercise">
+          <p class="eyebrow">Practice</p>
+          <h2>小练习：三次判断</h2>
+          <p>不用写代码，先训练判断力。看到需求后，说出它主要属于 HTML、CSS 还是 JavaScript。</p>
+          <ol>
+            <li>把“我的第一篇博客”改成“前端学习日记”。</li>
+            <li>把卡片背景改成浅黄色。</li>
+            <li>点击按钮以后切换夜间主题。</li>
+          </ol>
+          <p>参考答案：1 是 HTML，2 是 CSS，3 是 JavaScript。</p>
+        </section>
+
+        <section class="quiz" data-quiz="lesson-0001-q1" data-answer="css">
+          <p class="eyebrow">Recall</p>
+          <h2>即时小测</h2>
+          <p>如果你想让博客卡片在手机上从两列变成一列，主要应该修改哪一层？</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="lesson-0001-q1" value="html"> HTML</label>
+            <label><input type="radio" name="lesson-0001-q1" value="css"> CSS</label>
+            <label><input type="radio" name="lesson-0001-q1" value="javascript"> JavaScript</label>
+          </div>
+          <button class="check-button" type="button" data-check-answer>检查答案</button>
+          <p class="feedback" data-feedback aria-live="polite"></p>
+        </section>
+
+        <section class="source-note">
+          <h2>推荐阅读</h2>
+          <p>主读：<a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web" target="_blank" rel="noreferrer">MDN: Your first website</a>。重点看它如何把第一个网页拆成内容、样式、交互和发布。</p>
+          <p>配套练习：<a href="https://www.freecodecamp.org/learn/" target="_blank" rel="noreferrer">freeCodeCamp Learn</a> 里的 Responsive Web Design 方向。现在先不用完整刷，只要知道后面 HTML/CSS 小练习会从这里挑合适题目。</p>
+          <p>速查卡：<a href="../../reference/0001-web-three-layers.html">网页三层分工</a>。</p>
+        </section>
+
+        <section class="next-step">
+          <h2>下一步</h2>
+          <p>如果这节课有任何地方不清楚，直接问我。下一课我们会真正写第一份 HTML：标题、段落、链接、列表，以及一个博客首页的内容骨架。</p>
+        </section>
+      </article>
+    </main>
+  </body>
+</html>

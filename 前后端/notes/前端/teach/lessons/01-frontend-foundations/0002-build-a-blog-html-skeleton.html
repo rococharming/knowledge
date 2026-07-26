@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>第 2 课：写出博客首页的 HTML 骨架</title>
+    <link rel="stylesheet" href="../../assets/course.css">
+    <script src="../../assets/course.js" defer></script>
+  </head>
+  <body>
+    <main id="top" class="page-shell">
+      <nav class="topbar" aria-label="主题切换">
+        <button class="theme-button" data-theme-choice="wood" type="button">木纹</button>
+        <button class="theme-button" data-theme-choice="paper" type="button">纸白</button>
+        <button class="theme-button" data-theme-choice="night" type="button">夜间</button>
+      </nav>
+
+      <article class="lesson">
+        <p class="lesson-kicker">Lesson 0002</p>
+        <h1>写出博客首页的 HTML 骨架</h1>
+        <p class="lede">上一课我们知道 HTML 负责内容结构。今天只练一件事：把“个人博客首页上应该有什么”翻译成 HTML 标签。</p>
+
+        <ul class="meta-row">
+          <li>预计 20 分钟</li>
+          <li>承接第 1 课</li>
+          <li>目标：写出首页内容骨架</li>
+        </ul>
+
+        <div class="rule"></div>
+
+        <section>
+          <p class="eyebrow">Concept</p>
+          <h2>HTML 不是排版工具，是内容说明书</h2>
+          <p>HTML 的核心工作不是“让字变大”，而是告诉浏览器：这段内容在页面里扮演什么角色。MDN 的 HTML 基础文章强调，HTML 用元素包住内容，从而定义网页内容的结构。</p>
+          <p>所以，写 HTML 时先不要想颜色、边框和动画。先问：这是网站标题、导航、主要内容、一篇文章，还是一个链接？</p>
+        </section>
+
+        <section>
+          <p class="eyebrow">Model</p>
+          <h2>一个博客首页可以先分成三块</h2>
+          <div class="structure-map" aria-label="博客首页结构">
+            <div><strong>header</strong>：网站名字和导航入口。</div>
+            <div><strong>main</strong>：这个页面最重要的内容。</div>
+            <div><strong>section</strong>：一个有主题的内容区域，例如“最新文章”。</div>
+            <div><strong>article</strong>：一篇文章，或文章列表里的一张文章卡片。</div>
+          </div>
+        </section>
+
+        <section>
+          <p class="eyebrow">Example</p>
+          <h2>先看最终结构</h2>
+          <div class="html-preview" aria-label="博客首页预览">
+            <header>
+              <h3>Song 的前端学习笔记</h3>
+              <nav aria-label="示例导航">
+                <a href="#top">首页</a>
+                <a href="#posts">文章</a>
+                <a href="#about">关于</a>
+              </nav>
+            </header>
+
+            <section id="posts">
+              <h3>最新文章</h3>
+              <ul class="post-list">
+                <li>
+                  <article>
+                    <h4>网页到底由什么组成</h4>
+                    <p>理解 HTML、CSS、JavaScript 的分工。</p>
+                    <a href="#practice">阅读全文</a>
+                  </article>
+                </li>
+              </ul>
+            </section>
+          </div>
+        </section>
+
+        <section>
+          <h2>对应的 HTML</h2>
+          <p>下面的代码和上面的预览使用同一份内容：标题、导航文字、文章标题、文章摘要、链接文字都保持一致。</p>
+          <pre><code>&lt;header&gt;
+  &lt;h1&gt;Song 的前端学习笔记&lt;/h1&gt;
+  &lt;nav&gt;
+    &lt;a href="#top"&gt;首页&lt;/a&gt;
+    &lt;a href="#posts"&gt;文章&lt;/a&gt;
+    &lt;a href="#about"&gt;关于&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+  &lt;section&gt;
+    &lt;h2&gt;最新文章&lt;/h2&gt;
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;article&gt;
+          &lt;h3&gt;网页到底由什么组成&lt;/h3&gt;
+          &lt;p&gt;理解 HTML、CSS、JavaScript 的分工。&lt;/p&gt;
+          &lt;a href="#practice"&gt;阅读全文&lt;/a&gt;
+        &lt;/article&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/section&gt;
+&lt;/main&gt;</code></pre>
+        </section>
+
+        <section class="two-grid" aria-label="标签分工">
+          <div class="mini-card">
+            <h3>标题：<code>h1</code> 到 <code>h3</code></h3>
+            <p><code>h1</code> 是页面主标题；<code>h2</code> 是大区域标题；<code>h3</code> 是区域里的小标题。不要为了字号乱跳层级，字号以后交给 CSS。</p>
+          </div>
+          <div class="mini-card">
+            <h3>链接：<code>a</code></h3>
+            <p><code>a</code> 需要 <code>href</code> 才知道要去哪里。没有 <code>href</code> 的链接就像写了门牌但没有地址。</p>
+          </div>
+        </section>
+
+        <section id="practice" class="exercise">
+          <p class="eyebrow">Practice</p>
+          <h2>小练习：把需求翻译成标签</h2>
+          <p>先不用真的保存文件。请在脑子里或草稿里把下面 4 个内容写成 HTML 标签。</p>
+          <ol>
+            <li>页面主标题：我的个人博客。</li>
+            <li>导航链接：文章，指向 <code>/posts</code>。</li>
+            <li>区域标题：最新文章。</li>
+            <li>文章摘要：记录我的前端学习过程。</li>
+          </ol>
+          <p>参考答案可以和上方代码对照：主标题用 <code>h1</code>，导航链接用 <code>a href="/posts"</code>，区域标题用 <code>h2</code>，摘要用 <code>p</code>。</p>
+        </section>
+
+        <section class="quiz" data-quiz="lesson-0002-q1" data-answer="section" data-right-message="答对了。最新文章是页面里的一个内容区域标题。" data-wrong-message="再想想：它不是整个页面的标题，也不是单篇文章标题。">
+          <p class="eyebrow">Recall</p>
+          <h2>即时小测</h2>
+          <p>在博客首页里，“最新文章”最适合扮演哪个角色？</p>
+          <div class="quiz-options">
+            <label><input type="radio" name="lesson-0002-q1" value="page"> 页面主标题</label>
+            <label><input type="radio" name="lesson-0002-q1" value="section"> 区域大标题</label>
+            <label><input type="radio" name="lesson-0002-q1" value="post"> 文章小标题</label>
+          </div>
+          <button class="check-button" type="button" data-check-answer>检查答案</button>
+          <p class="feedback" data-feedback aria-live="polite"></p>
+        </section>
+
+        <section class="checklist-panel">
+          <h2>今天的检查清单</h2>
+          <ul>
+            <li>一个页面先有一个清楚的 <code>h1</code>。</li>
+            <li>页面主要内容放进 <code>main</code>。</li>
+            <li>同一组内容可以放进 <code>section</code>。</li>
+            <li>文章或文章卡片可以用 <code>article</code>。</li>
+            <li>链接文字要清楚，<code>href</code> 要写目标地址。</li>
+          </ul>
+        </section>
+
+        <section class="source-note">
+          <h2>推荐阅读</h2>
+          <p>主读：<a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Your_first_website/Creating_the_content" target="_blank" rel="noreferrer">MDN: HTML - Creating the content</a>。重点看 headings、paragraphs、lists、links 这些基础内容标签。</p>
+          <p>补读：<a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Headings_and_paragraphs" target="_blank" rel="noreferrer">MDN: Headings and paragraphs</a>。注意标题层级为什么会影响可访问性和搜索理解。</p>
+          <p>配套练习：<a href="https://www.freecodecamp.org/learn/2022/responsive-web-design/learn-html-by-building-a-cat-photo-app/step-1" target="_blank" rel="noreferrer">freeCodeCamp: Learn HTML by Building a Cat Photo App</a>。重点练 HTML 元素、标题、段落、链接和列表。</p>
+          <p>速查卡：<a href="../../reference/0002-basic-html-tags.html">博客首页常用 HTML 标签</a>。</p>
+        </section>
+
+        <section class="next-step">
+          <h2>下一步</h2>
+          <p>如果你愿意，可以把“小练习”里的 4 个内容写成 HTML 发给我，我会帮你改。下一课我们会进入 CSS：让这个博客骨架变成一张有留白、有层次的页面。</p>
+        </section>
+      </article>
+    </main>
+  </body>
+</html>
