@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>速查：CSS 第一组规则</title>
+    <link rel="stylesheet" href="../assets/course.css">
+    <script src="../assets/course.js" defer></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <nav class="topbar" aria-label="主题切换">
+        <button class="theme-button" data-theme-choice="wood" type="button">木纹</button>
+        <button class="theme-button" data-theme-choice="paper" type="button">纸白</button>
+        <button class="theme-button" data-theme-choice="night" type="button">夜间</button>
+      </nav>
+
+      <article class="lesson">
+        <p class="lesson-kicker">Reference 0003</p>
+        <h1>CSS 第一组规则</h1>
+        <p class="lede">CSS 规则回答三个问题：选中谁，改什么，改成什么。</p>
+
+        <section>
+          <h2>CSS 规则结构</h2>
+          <pre><code>.post-card {
+  padding: 16px;
+  border: 1px solid #e6d4b7;
+  background: #fffaf0;
+}</code></pre>
+          <p><code>.post-card</code> 是选择器，<code>padding</code> / <code>border</code> / <code>background</code> 是属性，冒号后面是属性值。</p>
+        </section>
+
+        <section class="two-grid">
+          <div class="mini-card">
+            <h2>常用选择器</h2>
+            <p><code>h1</code>：选中所有 <code>h1</code> 元素。</p>
+            <p><code>.post-card</code>：选中 class 为 <code>post-card</code> 的元素。</p>
+            <p><code>header a</code>：选中 <code>header</code> 里面的链接。</p>
+          </div>
+          <div class="mini-card">
+            <h2>常用属性</h2>
+            <p><code>color</code>：文字颜色。</p>
+            <p><code>background</code>：背景。</p>
+            <p><code>padding</code>：内容和边框之间的内边距。</p>
+            <p><code>border</code>：边框。</p>
+            <p><code>border-radius</code>：圆角。</p>
+          </div>
+        </section>
+      </article>
+    </main>
+  </body>
+</html>

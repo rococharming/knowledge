@@ -231,7 +231,7 @@ Agent 应按以下顺序判断：
 
 把 Ponytail 用好，不是要求 Agent “少写一点”，而是给它一套稳定的取舍顺序：**先理解，再复用；能不做就不做；必须做时只做最小正确版本；底线能力绝不压缩。**
 
-若你的主要痛点是流程混乱，先结合 [[3、Superpowers|Superpowers]] 或 [[5、Matt Pocock Skills|Matt Pocock Skills]] 建立需求和验证纪律；若主要痛点是“每个小需求都被 Agent 做成一个小框架”，就从 Ponytail 的 `full` 模式和一次 `@ponytail-review` 开始。
+若你的主要痛点是流程混乱，先结合 [[AI/notes/常用Skill和插件汇总/3、Superpowers|Superpowers]] 或 [[5、Matt Pocock Skills|Matt Pocock Skills]] 建立需求和验证纪律；若主要痛点是“每个小需求都被 Agent 做成一个小框架”，就从 Ponytail 的 `full` 模式和一次 `@ponytail-review` 开始。
 
 ## 1、参考
 

@@ -355,6 +355,107 @@ pre {
   padding-left: 1.2em;
 }
 
+.before-after {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.unstyled-demo,
+.styled-demo {
+  min-height: 260px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+  background: var(--paper-strong);
+}
+
+.unstyled-demo h3,
+.unstyled-demo h4,
+.unstyled-demo p,
+.unstyled-demo ul {
+  margin: revert;
+  padding: revert;
+  color: revert;
+  font: revert;
+}
+
+.styled-demo {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.styled-demo header {
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 14px;
+}
+
+.styled-demo h3 {
+  margin: 0 0 8px;
+  color: var(--accent-strong);
+  font-size: 1.45rem;
+}
+
+.styled-demo nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.styled-demo nav a,
+.styled-demo article a {
+  border-radius: 999px;
+  padding: 4px 9px;
+  color: #fffaf0;
+  background: var(--accent-strong);
+  text-decoration: none;
+}
+
+.styled-demo ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.styled-demo article {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.styled-demo h4 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+}
+
+.styled-demo p {
+  color: var(--muted);
+}
+
+.css-rule {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+  background: var(--code-bg);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+.css-rule .selector {
+  color: var(--accent-strong);
+  font-weight: 700;
+}
+
+.css-rule .property {
+  color: var(--success);
+  font-weight: 700;
+}
+
+.css-rule .value {
+  color: var(--danger);
+  font-weight: 700;
+}
+
 .quiz-options {
   display: grid;
   gap: 10px;

@@ -1,7 +1,11 @@
 ---
 title: HTML元数据
 date: 2026-07-13
-tags: [Web, 前端, HTML, 前端基础]
+tags:
+  - Web
+  - 前端
+  - HTML
+  - "#前端基础"
 aliases:
   - 元数据、SEO与Open Graph
   - Meta Description
@@ -66,13 +70,9 @@ Meta Description 使用 `meta` 元素表示：
 - `name="description"` 表示这是页面描述。
 - `content` 保存具体描述内容。
 
-搜索引擎可能把它显示在搜索结果的标题和链接下方：
+搜索引擎可能把它显示在搜索结果的标题和链接下方，其中第三行摘要就可能来自 Meta Description：
 
-```text
-HTML 入门学习指南
-https://learn.example.com/html/getting-started
-从 HTML 文档结构开始，学习常用元素、属性和语义化标签。
-```
+![[assets/HTML-Meta-Description-搜索结果示意.png|600]]
 
 ## 3、如何写好页面描述
 
@@ -109,7 +109,9 @@ https://learn.example.com/html/getting-started
 
 ## 1、Open Graph 的作用
 
-Open Graph 是一种网页元数据协议，用于控制链接分享到社交平台或即时通信工具后，预览卡片如何展示。
+Open Graph 是一种网页元数据协议。它的典型场景是：你把一个网页链接发到社交平台或即时通信工具里，平台会抓取这个页面的 Open Graph 元数据，然后自动生成一张链接预览卡片。
+
+![[assets/HTML-Open-Graph-链接分享预览场景.png|600]]
 
 它通常指定：
 
@@ -153,20 +155,6 @@ Open Graph 数据同样写在 `head` 中，但通常使用 `property` 属性，�
 ```
 
 `og:image` 和 `og:url` 通常应使用外部平台能够访问的完整 URL，而不是本地相对路径。
-
-## 3、分享卡片对应关系
-
-Open Graph 属性与社交媒体预览卡片的对应关系如下：
-
-![[assets/HTML-Open-Graph-社交媒体预览.png|500]]
-
-| Open Graph 属性 | 分享卡片中的位置 |
-|---|---|
-| `og:image` | 卡片预览大图 |
-| `og:title` | 内容标题 |
-| `og:description` | 标题下方摘要 |
-| `og:url` | 页面来源或链接地址 |
-| `og:type` | 网页、文章等内容类型 |
 
 # 四、Meta Description 与 Open Graph 的区别
 
@@ -229,4 +217,3 @@ Open Graph 的价值更多体现在传播体验：分享卡片更清晰时，用
 - Open Graph 控制网页链接在社交平台中的预览卡片。
 - `og:title`、`og:type`、`og:image`、`og:url` 和 `og:description` 是常用核心属性。
 - `og:image` 和 `og:url` 应使用外部平台可访问的完整 URL。
-- 多媒体内容的嵌入与可访问性可继续看 [[5、HTML音频与视频|音视频媒体]]。
