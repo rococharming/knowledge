@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第 4 课：模块系统，把代码拆成多个文件</title>
+  <link rel="stylesheet" href="../assets/course.css">
+  <script defer src="../assets/quiz.js"></script>
+</head>
+<body>
+  <main class="page">
+    <nav class="topline">
+      <span class="pill">Lesson 0004</span>
+      <a href="./0003-npm-scripts.html">第 3 课</a>
+      <a href="./0005-core-modules.html">第 5 课</a>
+      <a href="../reference/0001-course-map.html">课程地图</a>
+      <a href="../reference/0005-modules-cheatsheet.html">模块速查表</a>
+      <a href="https://nodejs.org/api/esm.html">Node.js ESM 文档</a>
+      <a href="https://nodejs.org/api/modules.html">Node.js CommonJS 文档</a>
+      <a href="https://nodejs.org/api/packages.html">Node.js Packages 文档</a>
+    </nav>
+
+    <h1>第 4 课：模块系统，把代码拆成多个文件</h1>
+    <p class="lead">这一课解决一个真实问题：代码不可能永远写在一个 <code>index.js</code> 里。模块系统让一个文件把能力“导出”，另一个文件再“导入”使用。</p>
+
+    <figure class="figure">
+      <img src="../assets/module-systems.png" alt="CommonJS 和 ES Module 由 package.json type 字段影响的手绘图">
+      <figcaption>Node.js 现在同时支持 CommonJS 和 ES Module。入门阶段先抓住：项目里最好明确写 <code>type</code>，让 Node.js 知道 <code>.js</code> 文件该按哪种模块规则解释。</figcaption>
+    </figure>
+
+    <section>
+      <h2>一、真实场景</h2>
+      <p>假设你正在写一个后端项目。刚开始只有一个文件：</p>
+      <pre><code>index.js</code></pre>
+      <p>后来你会想拆分：用户相关代码放一个文件，订单相关代码放一个文件，工具函数放一个文件。拆开以后，就需要一种方式让文件之间互相使用。</p>
+      <div class="callout">
+        <p><strong>本课胜利条件：</strong>你能创建两个文件，让 <code>message.js</code> 导出内容，再让 <code>app.js</code> 导入并打印它。</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>二、两种模块系统</h2>
+      <p>Node.js 官方文档说明，Node.js 有两套模块系统：CommonJS 和 ECMAScript modules，也就是常说的 ES Module。</p>
+      <div class="grid">
+        <div class="card">
+          <h3>CommonJS</h3>
+          <p>这是 Node.js 很早就使用的模块格式，常见关键字是 <code>require</code> 和 <code>module.exports</code>。</p>
+          <pre><code>const tool = require("./tool.js");
+
+module.exports = tool;</code></pre>
+        </div>
+        <div class="card">
+          <h3>ES Module</h3>
+          <p>这是 JavaScript 标准模块格式，常见关键字是 <code>import</code> 和 <code>export</code>。</p>
+          <pre><code>import { message } from "./message.js";
+
+export const message = "hello";</code></pre>
+        </div>
+      </div>
+      <p>这门课后面会优先使用 ES Module，因为它和现代 TypeScript、前端构建工具、很多新项目更容易衔接。</p>
+    </section>
+
+    <section>
+      <h2>三、package.json 的 type 字段</h2>
+      <p>你已经学过 <code>package.json</code> 是项目控制文档。到了模块系统，它又多了一个关键字段：<code>type</code>。</p>
+      <pre><code>{
+  "type": "module"
+}</code></pre>
+      <p>Node.js 官方 Packages 文档说明：当最近的 <code>package.json</code> 写了 <code>"type": "module"</code> 时，这个 package 里的 <code>.js</code> 文件会按 ES Module 解释。</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>写法</th>
+              <th>Node.js 怎么理解</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><code>"type": "module"</code></td><td><code>.js</code> 文件使用 <code>import</code> / <code>export</code>。</td></tr>
+            <tr><td><code>"type": "commonjs"</code></td><td><code>.js</code> 文件使用 <code>require</code> / <code>module.exports</code>。</td></tr>
+            <tr><td><code>.mjs</code></td><td>不管 <code>type</code> 怎么写，都按 ES Module。</td></tr>
+            <tr><td><code>.cjs</code></td><td>不管 <code>type</code> 怎么写，都按 CommonJS。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>四、复制粘贴练习</h2>
+      <p>现在做一个最小 ES Module 项目。仍然只复制粘贴，重点观察文件之间如何连接。</p>
+
+      <h3>1. 创建目录</h3>
+      <pre><code>mkdir module-lab
+cd module-lab</code></pre>
+
+      <h3>2. 创建 package.json</h3>
+      <pre><code>{
+  "name": "module-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node app.js"
+  }
+}</code></pre>
+
+      <h3>3. 创建 message.js</h3>
+      <pre><code>export const message = "Hello from message.js";</code></pre>
+      <p><code>export</code> 的意思是：这个文件把 <code>message</code> 暴露出去，允许别的文件使用。</p>
+
+      <h3>4. 创建 app.js</h3>
+      <pre><code>import { message } from "./message.js";
+
+console.log(message);</code></pre>
+      <p><code>import</code> 的意思是：从另一个文件拿到它导出的内容。这里的 <code>./message.js</code> 表示当前目录下的 <code>message.js</code>。</p>
+
+      <h3>5. 运行</h3>
+      <pre><code>npm run dev</code></pre>
+      <p>你应该看到：</p>
+      <pre><code>Hello from message.js</code></pre>
+      <div class="callout">
+        <p><strong>观察重点：</strong><code>npm run dev</code> 找到脚本，脚本启动 <code>node app.js</code>，<code>app.js</code> 再通过 <code>import</code> 使用 <code>message.js</code> 导出的内容。</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>五、即时练习</h2>
+
+      <div class="quiz" data-quiz data-ok="对。ES Module 常用 import 和 export。" data-bad="再看右侧那套标准模块写法。">
+        <p><strong>题 1：</strong>ES Module 常用哪组关键字？</p>
+        <button data-answer="true">import export</button>
+        <button data-answer="false">read write</button>
+        <button data-answer="false">start stop</button>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz" data-quiz data-ok="对。type: module 会让 .js 按 ES Module 解释。" data-bad="再看 package.json 的 type 字段。">
+        <p><strong>题 2：</strong><code>"type": "module"</code> 会让 <code>.js</code> 文件按什么规则解释？</p>
+        <button data-answer="false">CommonJS</button>
+        <button data-answer="true">ES Module</button>
+        <button data-answer="false">纯文本</button>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz" data-checklist data-required="export,import,message.js,app.js" data-ok="很好。你已经抓住导出和导入的关系。" data-bad="解释还不完整。">
+        <p><strong>回忆练习：</strong>用 2-4 句话解释：为什么 <code>app.js</code> 能打印 <code>message.js</code> 里的文字？</p>
+        <textarea class="scratch" aria-label="写下你的解释"></textarea>
+        <button class="check-button">检查关键词</button>
+        <p class="feedback"></p>
+      </div>
+    </section>
+
+    <section>
+      <h2>六、课后小任务</h2>
+      <p>在刚才项目里新增一个文件 <code>name.js</code>：</p>
+      <pre><code>export const username = "Kamen Rider";</code></pre>
+      <p>然后修改 <code>app.js</code>：</p>
+      <pre><code>import { message } from "./message.js";
+import { username } from "./name.js";
+
+console.log(message);
+console.log(username);</code></pre>
+      <p>重新运行 <code>npm run dev</code>。如果能看到两行输出，说明你已经会让一个入口文件导入多个模块。</p>
+      <p>如果卡住，把 <code>package.json</code>、<code>app.js</code> 和报错发给我，我会带你定位是路径、文件名还是模块语法的问题。</p>
+    </section>
+
+    <section>
+      <h2>主要来源</h2>
+      <p>本课参考 <a href="https://nodejs.org/api/esm.html">Node.js ECMAScript modules 文档</a>、<a href="https://nodejs.org/api/modules.html">Node.js CommonJS modules 文档</a> 和 <a href="https://nodejs.org/api/packages.html">Node.js Packages 文档</a> 对模块系统、<code>type</code> 字段、<code>.mjs</code> 与 <code>.cjs</code> 规则的说明。</p>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第 3 课：npm scripts 是项目命令菜单</title>
+  <link rel="stylesheet" href="../assets/course.css">
+  <script defer src="../assets/quiz.js"></script>
+</head>
+<body>
+  <main class="page">
+    <nav class="topline">
+      <span class="pill">Lesson 0003</span>
+      <a href="./0002-json-and-package-json.html">第 2 课</a>
+      <a href="../reference/0001-course-map.html">课程地图</a>
+      <a href="../reference/0004-npm-scripts-cheatsheet.html">npm scripts 速查表</a>
+      <a href="https://docs.npmjs.com/cli/using-npm/scripts/">npm Scripts 文档</a>
+      <a href="https://docs.npmjs.com/cli/commands/npm-run-script/">npm run-script 文档</a>
+    </nav>
+
+    <h1>第 3 课：npm scripts 是项目命令菜单</h1>
+    <p class="lead">这一课把 <code>scripts</code> 单独讲透。你会学会：为什么项目常写 <code>npm run dev</code>、<code>npm test</code>，以及这些命令怎样找到真正要执行的程序。</p>
+
+    <figure class="figure">
+      <img src="../assets/npm-scripts-menu.png" alt="npm 读取 package.json 中 scripts 菜单并执行对应 node 命令的手绘图">
+      <figcaption><code>scripts</code> 像项目命令菜单：左边是你输入的统一入口，右边是真正被执行的命令。</figcaption>
+    </figure>
+
+    <section>
+      <h2>一、真实场景</h2>
+      <p>你加入一个 Node.js 项目后，README 通常不会让你直接输入很长的底层命令，而是写：</p>
+      <pre><code>npm install
+npm run dev
+npm test</code></pre>
+      <p>这不是为了神秘化，而是为了统一入口。项目作者把常用动作写进 <code>package.json</code> 的 <code>scripts</code>，其他人按菜单执行。</p>
+      <div class="callout">
+        <p><strong>本课胜利条件：</strong>你能读懂 <code>scripts</code>，能新增一个脚本，并能解释 <code>npm run hello</code> 为什么会执行右侧命令。</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>二、scripts 的最小模型</h2>
+      <p>先看一份最小 <code>package.json</code>：</p>
+      <pre><code>{
+  "name": "scripts-lab",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node index.js",
+    "test": "node test.js",
+    "hello": "node hello.js"
+  }
+}</code></pre>
+      <p><code>scripts</code> 是一个对象。左边的 <code>dev</code>、<code>test</code>、<code>hello</code> 是脚本名；右边的 <code>node index.js</code> 等字符串是真正执行的命令。</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>你输入</th>
+              <th>npm 查找</th>
+              <th>真正执行</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><code>npm run dev</code></td><td><code>scripts.dev</code></td><td><code>node index.js</code></td></tr>
+            <tr><td><code>npm run hello</code></td><td><code>scripts.hello</code></td><td><code>node hello.js</code></td></tr>
+            <tr><td><code>npm test</code></td><td><code>scripts.test</code></td><td><code>node test.js</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>三、两个快捷命令</h2>
+      <p>多数脚本要写成 <code>npm run 脚本名</code>。但 <code>start</code> 和 <code>test</code> 很常用，所以 npm 给了快捷入口。</p>
+      <div class="grid">
+        <div class="card">
+          <h3>test</h3>
+          <p><code>npm test</code> 会运行 <code>scripts.test</code>。你也可以写 <code>npm run test</code>。</p>
+        </div>
+        <div class="card">
+          <h3>start</h3>
+          <p><code>npm start</code> 会运行 <code>scripts.start</code>。后面做后端服务时会经常见到。</p>
+        </div>
+      </div>
+      <p>入门阶段可以先统一使用 <code>npm run xxx</code>，看到 <code>npm test</code> 和 <code>npm start</code> 时知道它们是快捷写法就行。</p>
+    </section>
+
+    <section>
+      <h2>四、复制粘贴练习</h2>
+      <p>这次继续零基础友好路线：不要求你自己写复杂 JavaScript，只通过复制粘贴观察不同脚本执行不同文件。</p>
+
+      <h3>1. 创建目录</h3>
+      <pre><code>mkdir npm-scripts-lab
+cd npm-scripts-lab</code></pre>
+
+      <h3>2. 创建 package.json</h3>
+      <p>新建 <code>package.json</code>，复制：</p>
+      <pre><code>{
+  "name": "npm-scripts-lab",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node index.js",
+    "hello": "node hello.js",
+    "test": "node test.js"
+  }
+}</code></pre>
+
+      <h3>3. 创建三个 JavaScript 文件</h3>
+      <p>新建 <code>index.js</code>，复制：</p>
+      <pre><code>console.log("dev script: running index.js");</code></pre>
+      <p>新建 <code>hello.js</code>，复制：</p>
+      <pre><code>console.log("hello script: running hello.js");</code></pre>
+      <p>新建 <code>test.js</code>，复制：</p>
+      <pre><code>console.log("test script: running test.js");</code></pre>
+
+      <h3>4. 运行脚本</h3>
+      <pre><code>npm run dev
+npm run hello
+npm test</code></pre>
+      <p>你应该依次看到：</p>
+      <pre><code>dev script: running index.js
+hello script: running hello.js
+test script: running test.js</code></pre>
+      <div class="callout">
+        <p><strong>观察重点：</strong>你输入的是 npm 命令，但输出来自不同 <code>.js</code> 文件。npm 负责查菜单，Node.js 负责运行文件。</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>五、再往项目里看一步</h2>
+      <p>npm 官方文档里有两个对后面很重要的规则，现在先建立直觉即可。</p>
+      <div class="grid">
+        <div class="card">
+          <h3>脚本从项目根目录运行</h3>
+          <p>脚本里的相对路径通常从 <code>package.json</code> 所在目录算起。以后项目出现 <code>src/server.js</code> 时，这条会帮你判断路径。</p>
+        </div>
+        <div class="card">
+          <h3>本地命令可以直接写</h3>
+          <p>脚本运行时，本地依赖提供的命令会进入 PATH。所以后面安装 <code>typescript</code> 后，脚本里可以写 <code>tsc</code>。</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>六、即时练习</h2>
+
+      <div class="quiz" data-quiz data-ok="对。npm run hello 会查 scripts.hello。" data-bad="再看 scripts 的左边：hello 是脚本名。">
+        <p><strong>题 1：</strong><code>npm run hello</code> 会读取哪个位置？</p>
+        <button data-answer="false">scripts.dev</button>
+        <button data-answer="true">scripts.hello</button>
+        <button data-answer="false">version.hello</button>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz" data-quiz data-ok="对。npm test 是 test 脚本的快捷入口。" data-bad="再想想 test 是 npm 的常用快捷命令。">
+        <p><strong>题 2：</strong><code>npm test</code> 通常读取哪个脚本？</p>
+        <button data-answer="true">scripts.test</button>
+        <button data-answer="false">scripts.dev</button>
+        <button data-answer="false">scripts.main</button>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz" data-checklist data-required="npm,scripts,node,文件" data-ok="很好。你已经能描述 npm 和 node 的分工。" data-bad="解释还不完整。">
+        <p><strong>回忆练习：</strong>用 2-4 句话解释：为什么你输入 <code>npm run dev</code>，最后却是 <code>index.js</code> 在输出文字？</p>
+        <textarea class="scratch" aria-label="写下你的解释"></textarea>
+        <button class="check-button">检查关键词</button>
+        <p class="feedback"></p>
+      </div>
+    </section>
+
+    <section>
+      <h2>七、课后小任务</h2>
+      <p>在刚才的练习项目里，给 <code>scripts</code> 新增一个脚本：</p>
+      <pre><code>"bye": "node bye.js"</code></pre>
+      <p>然后新建 <code>bye.js</code>：</p>
+      <pre><code>console.log("bye script: running bye.js");</code></pre>
+      <p>最后运行：</p>
+      <pre><code>npm run bye</code></pre>
+      <p>如果能看到 <code>bye script: running bye.js</code>，说明你已经会给项目添加自己的 npm script 了。注意 JSON 里新增字段时，前一行通常要补英文逗号；最后一行不要加逗号。</p>
+      <p>如果卡住，把 <code>package.json</code> 发给我，我会帮你一起看 JSON 逗号、脚本名和文件名哪里没对上。</p>
+    </section>
+
+    <section>
+      <h2>主要来源</h2>
+      <p>本课参考 <a href="https://docs.npmjs.com/cli/using-npm/scripts/">npm Scripts 官方文档</a> 对 <code>scripts</code> 字段、pre/post 脚本、脚本运行目录和退出行为的说明，以及 <a href="https://docs.npmjs.com/cli/commands/npm-run-script/">npm run-script 官方文档</a> 对 <code>npm run</code>、传参和 <code>node_modules/.bin</code> PATH 行为的说明。</p>
+    </section>
+  </main>
+</body>
+</html>

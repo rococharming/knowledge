@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第 5 课：Node.js 核心模块</title>
+  <link rel="stylesheet" href="../assets/course.css">
+  <script defer src="../assets/quiz.js"></script>
+</head>
+<body>
+  <main class="page">
+    <nav class="topline">
+      <span class="pill">Lesson 0005</span>
+      <a href="./0004-module-systems.html">第 4 课</a>
+      <a href="../reference/0001-course-map.html">课程地图</a>
+      <a href="../reference/0006-core-modules-cheatsheet.html">核心模块速查表</a>
+      <a href="https://nodejs.org/api/fs.html">Node.js fs 文档</a>
+      <a href="https://nodejs.org/api/path.html">Node.js path 文档</a>
+      <a href="https://nodejs.org/api/process.html">Node.js process 文档</a>
+    </nav>
+
+    <h1>第 5 课：Node.js 核心模块</h1>
+    <p class="lead">前面你已经知道 Node.js 能运行 JavaScript。现在加一层：Node.js 还自带很多核心模块，让 JavaScript 可以读写文件、处理路径、读取当前进程信息。</p>
+
+    <figure class="figure">
+      <img src="../assets/core-modules-map.png" alt="Node.js 通过 fs path process 连接文件路径和当前进程的手绘图">
+      <figcaption>核心模块不需要安装。你可以把它们理解成 Node.js 自带的工具箱：<code>fs</code> 管文件，<code>path</code> 管路径，<code>process</code> 管当前程序信息。</figcaption>
+    </figure>
+
+    <section>
+      <h2>一、真实场景</h2>
+      <p>后端和 CLI 工具经常要做这些事：</p>
+      <div class="grid">
+        <div class="card"><h3>保存配置</h3><p>把用户设置写入一个文件。</p></div>
+        <div class="card"><h3>读取路径</h3><p>找到当前项目里的某个文件。</p></div>
+        <div class="card"><h3>读取参数</h3><p>知道用户在终端里输入了什么。</p></div>
+      </div>
+      <p>这些事都不需要先安装 npm 包，Node.js 自己就提供了入口。</p>
+      <div class="callout">
+        <p><strong>本课胜利条件：</strong>你能用 <code>fs</code> 写入并读取文件，用 <code>path</code> 拼路径，用 <code>process</code> 查看当前运行位置。</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>二、三个核心模块</h2>
+      <p>Node.js 官方 API 文档把这些能力作为内置模块提供。现代写法推荐用 <code>node:</code> 前缀，让读代码的人一眼知道这是 Node.js 自带模块。</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>模块</th>
+              <th>负责什么</th>
+              <th>这一课用到</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><code>node:fs</code></td><td>文件系统</td><td>写文件、读文件</td></tr>
+            <tr><td><code>node:path</code></td><td>路径处理</td><td>把目录名和文件名拼成路径</td></tr>
+            <tr><td><code>node:process</code></td><td>当前 Node.js 进程</td><td>读取当前工作目录</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>三、复制粘贴练习</h2>
+      <p>这节课继续使用 ES Module，所以 <code>package.json</code> 里写 <code>"type": "module"</code>。</p>
+
+      <h3>1. 创建目录</h3>
+      <pre><code>mkdir core-modules-lab
+cd core-modules-lab</code></pre>
+
+      <h3>2. 创建 package.json</h3>
+      <pre><code>{
+  "name": "core-modules-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node app.js"
+  }
+}</code></pre>
+
+      <h3>3. 创建 app.js</h3>
+      <pre><code>import { writeFileSync, readFileSync } from "node:fs";
+import { join } from "node:path";
+import process from "node:process";
+
+const filePath = join(process.cwd(), "message.txt");
+
+writeFileSync(filePath, "Hello core modules");
+
+const text = readFileSync(filePath, "utf8");
+
+console.log("current folder:", process.cwd());
+console.log("file path:", filePath);
+console.log("file text:", text);</code></pre>
+
+      <h3>4. 运行</h3>
+      <pre><code>npm run dev</code></pre>
+      <p>你会看到类似输出：</p>
+      <pre><code>current folder: /你的路径/core-modules-lab
+file path: /你的路径/core-modules-lab/message.txt
+file text: Hello core modules</code></pre>
+      <p>同时，目录里会多出一个 <code>message.txt</code> 文件。</p>
+    </section>
+
+    <section>
+      <h2>四、逐行理解</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>导入工具</h3>
+          <p><code>import ... from "node:fs"</code> 表示从 Node.js 自带的文件系统模块拿工具。</p>
+        </div>
+        <div class="card">
+          <h3>拼出路径</h3>
+          <p><code>join(process.cwd(), "message.txt")</code> 表示把当前目录和文件名拼成完整路径。</p>
+        </div>
+        <div class="card">
+          <h3>写入文件</h3>
+          <p><code>writeFileSync</code> 会把文字写入文件。这里先用同步版本，便于观察。</p>
+        </div>
+        <div class="card">
+          <h3>读取文件</h3>
+          <p><code>readFileSync(filePath, "utf8")</code> 会把文件内容按文本读回来。</p>
+        </div>
+      </div>
+      <div class="callout warning">
+        <p><strong>边界提醒：</strong>真实后端服务里，大量文件操作通常会优先考虑异步 API。这节课先用同步 API，是为了让零基础练习更容易看清执行顺序。</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>五、即时练习</h2>
+
+      <div class="quiz" data-quiz data-ok="对。fs 负责文件系统。" data-bad="再看三件套：文件、路径、进程。">
+        <p><strong>题 1：</strong>哪个模块负责读写文件？</p>
+        <button data-answer="true">node:fs</button>
+        <button data-answer="false">node:path</button>
+        <button data-answer="false">node:process</button>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz" data-quiz data-ok="对。path.join 用来拼路径。" data-bad="再想想哪个模块处理路径。">
+        <p><strong>题 2：</strong>哪个函数适合把目录和文件名拼成路径？</p>
+        <button data-answer="false">process.cwd</button>
+        <button data-answer="true">path.join</button>
+        <button data-answer="false">fs.readFile</button>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz" data-checklist data-required="fs,path,process,message.txt" data-ok="很好。你已经抓住三个核心模块的分工。" data-bad="解释还不完整。">
+        <p><strong>回忆练习：</strong>用 3-5 句话解释：这个程序怎样创建并读取 <code>message.txt</code>？</p>
+        <textarea class="scratch" aria-label="写下你的解释"></textarea>
+        <button class="check-button">检查关键词</button>
+        <p class="feedback"></p>
+      </div>
+    </section>
+
+    <section>
+      <h2>六、课后小任务</h2>
+      <p>只改一行，把：</p>
+      <pre><code>writeFileSync(filePath, "Hello core modules");</code></pre>
+      <p>改成：</p>
+      <pre><code>writeFileSync(filePath, "I can use Node.js core modules");</code></pre>
+      <p>重新运行 <code>npm run dev</code>。如果最后一行输出变了，说明你已经完成了“写文件 → 读文件 → 打印内容”的闭环。</p>
+      <p>如果卡住，把 <code>app.js</code> 和终端输出发给我，我会帮你判断是模块导入、路径还是文件读写的问题。</p>
+    </section>
+
+    <section>
+      <h2>主要来源</h2>
+      <p>本课参考 <a href="https://nodejs.org/api/fs.html">Node.js File system 文档</a> 对 <code>node:fs</code> 的说明，<a href="https://nodejs.org/api/path.html">Node.js Path 文档</a> 对 <code>path.join()</code> 的说明，以及 <a href="https://nodejs.org/api/process.html">Node.js Process 文档</a> 对 <code>process</code> 当前进程信息的说明。</p>
+    </section>
+  </main>
+</body>
+</html>

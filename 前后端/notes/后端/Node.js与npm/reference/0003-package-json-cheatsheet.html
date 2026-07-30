@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>package.json 速查表</title>
+  <link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+  <main class="page">
+    <nav class="topline">
+      <span class="pill">Reference 0003</span>
+      <a href="./0001-course-map.html">课程地图</a>
+      <a href="./0002-node-npm-glossary.html">术语表</a>
+      <a href="../lessons/0002-json-and-package-json.html">第 2 课</a>
+    </nav>
+
+    <h1>package.json 速查表</h1>
+    <p class="lead">读一个 npm 项目时，先不要被字段数量吓到。入门阶段只抓三类信息：项目是谁、能执行什么命令、依赖谁。</p>
+
+    <section>
+      <h2>一、最小可运行版本</h2>
+      <pre><code>{
+  "name": "hello-package-json",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "node index.js"
+  }
+}</code></pre>
+    </section>
+
+    <section>
+      <h2>二、入门必看字段</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>字段</th>
+              <th>作用</th>
+              <th>先怎么理解</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>name</code></td>
+              <td>项目或包的名字</td>
+              <td>发布包时尤其重要；本地练习也建议写清楚。</td>
+            </tr>
+            <tr>
+              <td><code>version</code></td>
+              <td>项目或包的版本</td>
+              <td>发布包时和 <code>name</code> 一起标识一个具体版本。</td>
+            </tr>
+            <tr>
+              <td><code>scripts</code></td>
+              <td>项目命令菜单</td>
+              <td><code>npm run dev</code> 会读取 <code>scripts.dev</code>。</td>
+            </tr>
+            <tr>
+              <td><code>dependencies</code></td>
+              <td>运行时依赖</td>
+              <td>应用真正运行时需要的包放这里。</td>
+            </tr>
+            <tr>
+              <td><code>devDependencies</code></td>
+              <td>开发期依赖</td>
+              <td>测试、编译、格式化等开发工具通常放这里。</td>
+            </tr>
+            <tr>
+              <td><code>private</code></td>
+              <td>是否禁止发布</td>
+              <td>练习项目或应用项目可以设为 <code>true</code>，避免误发布。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>三、JSON 易错点</h2>
+      <div class="grid">
+        <div class="card"><h3>双引号</h3><p>字段名和字符串必须用双引号，例如 <code>"name"</code>，不是 <code>name</code>。</p></div>
+        <div class="card"><h3>英文逗号</h3><p>字段之间用英文逗号分隔，最后一个字段后面不要逗号。</p></div>
+        <div class="card"><h3>不能写注释</h3><p><code>package.json</code> 是 JSON 文件，不能写 <code>// 注释</code>。</p></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

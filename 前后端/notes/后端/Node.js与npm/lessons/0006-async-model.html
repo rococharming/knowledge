@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第 6 课：异步模型</title>
+  <link rel="stylesheet" href="../assets/course.css">
+  <script defer src="../assets/quiz.js"></script>
+</head>
+<body>
+  <main class="page">
+    <nav class="topline">
+      <span class="pill">Lesson 0006</span>
+      <a href="./0005-core-modules.html">第 5 课</a>
+      <a href="../reference/0001-course-map.html">课程地图</a>
+      <a href="../reference/0007-async-cheatsheet.html">异步速查表</a>
+      <a href="https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick">Node.js Event Loop</a>
+      <a href="https://nodejs.org/en/learn/asynchronous-work/discover-javascript-timers">Node.js Timers</a>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">MDN Promise</a>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function">MDN async function</a>
+    </nav>
+
+    <h1>第 6 课：异步模型</h1>
+    <p class="lead">Node.js 后端经常在等：等文件、等数据库、等网络、等定时器。异步模型的核心不是“快”，而是“等待时不要卡住主线”。</p>
+
+    <figure class="figure">
+      <img src="../assets/async-flow.png" alt="main code、timer、callback queue 的异步执行手绘图">
+      <figcaption>先记住这张图：主线代码先走完，异步任务完成后，再把回调带回来执行。</figcaption>
+    </figure>
+
+    <section>
+      <h2>一、真实场景</h2>
+      <p>想象你写一个后端接口：用户发请求后，程序要去数据库查数据。查询数据库需要时间。如果整个程序傻等，其他请求就会被拖住。Node.js 的异步模型就是为这类“要等，但不能傻等”的场景服务。</p>
+      <div class="callout">
+        <p><strong>本课胜利条件：</strong>你能预测 <code>start</code>、<code>end</code>、<code>later</code> 的输出顺序，并能用 <code>async/await</code> 写一个看起来顺序清晰的异步程序。</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>二、先看一个反直觉输出</h2>
+      <p>复制这个例子时，先不要急着解释，先观察输出顺序。</p>
+      <pre><code>console.log("start");
+
+setTimeout(() => {
+  console.log("later");
+}, 1000);
+
+console.log("end");</code></pre>
+      <p>你可能以为输出是 <code>start</code>、<code>later</code>、<code>end</code>。实际会是：</p>
+      <pre><code>start
+end
+later</code></pre>
+      <p>原因是：<code>setTimeout</code> 只是登记一个以后执行的回调，主线代码不会停在原地等它。</p>
+    </section>
+
+    <section>
+      <h2>三、三个说法：callback、Promise、async/await</h2>
+      <p>它们都在处理异步，只是表达方式不同。</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Callback</h3>
+          <p>把一个函数交给别人：事情完成后，请调用这个函数。</p>
+          <pre><code>setTimeout(() => {
+  console.log("later");
+}, 1000);</code></pre>
+        </div>
+        <div class="card">
+          <h3>Promise</h3>
+          <p>MDN 把 Promise 描述为表示异步操作最终完成或失败的对象。先理解成“未来会有结果的盒子”。</p>
+          <pre><code>const result = Promise.resolve("done");
+
+result.then((value) => {
+  console.log(value);
+});</code></pre>
+        </div>
+        <div class="card">
+          <h3>async/await</h3>
+          <p><code>async</code> 函数可以使用 <code>await</code> 等待 Promise，让代码读起来更像顺序执行。</p>
+          <pre><code>const value = await result;
+
+console.log(value);</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>四、复制粘贴练习</h2>
+      <p>这次我们写一个小函数 <code>wait</code>，它会返回一个 Promise，用来模拟“等一会儿才完成”。</p>
+
+      <h3>1. 创建目录</h3>
+      <pre><code>mkdir async-lab
+cd async-lab</code></pre>
+
+      <h3>2. 创建 package.json</h3>
+      <pre><code>{
+  "name": "async-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node app.js"
+  }
+}</code></pre>
+
+      <h3>3. 创建 app.js</h3>
+      <pre><code>function wait(milliseconds) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("finished waiting");
+    }, milliseconds);
+  });
+}
+
+console.log("start");
+
+const result = await wait(1000);
+
+console.log(result);
+console.log("end");</code></pre>
+
+      <h3>4. 运行</h3>
+      <pre><code>npm run dev</code></pre>
+      <p>你会先看到 <code>start</code>，大约 1 秒后看到：</p>
+      <pre><code>finished waiting
+end</code></pre>
+      <div class="callout">
+        <p><strong>观察重点：</strong><code>await</code> 让当前这段代码等 Promise 结果，但它不是把整个 Node.js 运行时锁死。以后数据库查询、网络请求、文件异步 API 都会用到这个心智模型。</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>五、逐行理解</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>wait 函数</h3>
+          <p><code>wait(milliseconds)</code> 创建一个 Promise，表示“未来会完成”。</p>
+        </div>
+        <div class="card">
+          <h3>setTimeout</h3>
+          <p><code>setTimeout</code> 登记一个定时器，到时间后调用里面的函数。</p>
+        </div>
+        <div class="card">
+          <h3>resolve</h3>
+          <p><code>resolve("finished waiting")</code> 表示 Promise 成功完成，并把结果交出去。</p>
+        </div>
+        <div class="card">
+          <h3>await</h3>
+          <p><code>await wait(1000)</code> 等 Promise 完成，然后把结果放进 <code>result</code>。</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>六、即时练习</h2>
+
+      <div class="quiz" data-quiz data-ok="对。setTimeout 会先登记回调，主线继续。" data-bad="再看输出顺序：end 会先于 later 出现。">
+        <p><strong>题 1：</strong>下面代码先输出什么？</p>
+        <pre><code>setTimeout(() => console.log("later"), 1000);
+console.log("end");</code></pre>
+        <button data-answer="false">later</button>
+        <button data-answer="true">end</button>
+        <button data-answer="false">同时</button>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz" data-quiz data-ok="对。Promise 表示未来完成或失败的结果。" data-bad="再想想 Promise 像一个未来结果的盒子。">
+        <p><strong>题 2：</strong>Promise 最适合先理解成什么？</p>
+        <button data-answer="true">未来结果</button>
+        <button data-answer="false">项目配置</button>
+        <button data-answer="false">文件路径</button>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz" data-checklist data-required="setTimeout,Promise,await,result" data-ok="很好。你已经抓住这节课的异步主线。" data-bad="解释还不完整。">
+        <p><strong>回忆练习：</strong>用 3-5 句话解释：<code>wait(1000)</code> 为什么会等一秒后才给出 <code>result</code>？</p>
+        <textarea class="scratch" aria-label="写下你的解释"></textarea>
+        <button class="check-button">检查关键词</button>
+        <p class="feedback"></p>
+      </div>
+    </section>
+
+    <section>
+      <h2>七、课后小任务</h2>
+      <p>把练习里的：</p>
+      <pre><code>const result = await wait(1000);</code></pre>
+      <p>改成：</p>
+      <pre><code>const result = await wait(2000);</code></pre>
+      <p>重新运行 <code>npm run dev</code>。如果等待时间变长，说明你已经把参数、定时器、Promise、await 这条链路串起来了。</p>
+      <p>如果卡住，把 <code>app.js</code> 和终端输出发给我，我会帮你定位是括号、Promise 还是 <code>await</code> 的位置问题。</p>
+    </section>
+
+    <section>
+      <h2>主要来源</h2>
+      <p>本课参考 <a href="https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick">Node.js Event Loop 文档</a>、<a href="https://nodejs.org/en/learn/asynchronous-work/discover-javascript-timers">Node.js Timers 文档</a>、<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">MDN Promise 文档</a> 和 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function">MDN async function 文档</a>。</p>
+    </section>
+  </main>
+</body>
+</html>

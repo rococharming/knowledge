@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 640" role="img" aria-labelledby="title desc">
+  <title id="title">package.json 项目地图</title>
+  <desc id="desc">手绘风格示意图：package.json 连接项目身份、脚本命令、依赖清单和发布信息；npm 读取 package.json，Node.js 执行脚本指向的 JavaScript 文件。</desc>
+  <defs>
+    <filter id="paper">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="11"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.05"/>
+      </feComponentTransfer>
+      <feBlend in="SourceGraphic" mode="multiply"/>
+    </filter>
+    <style>
+      .bg { fill: #fffdf6; }
+      .paper { fill: #fffaf0; stroke: #242424; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .box-blue { fill: #e2f3f5; stroke: #167985; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .box-yellow { fill: #fff1bd; stroke: #a36d00; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .box-green { fill: #e8f5df; stroke: #4d7f28; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .box-red { fill: #ffe5df; stroke: #bf4d3f; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .tool { fill: #ffffff; stroke: #242424; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .arrow { fill: none; stroke: #242424; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 2 10; }
+      .line { fill: none; stroke: #242424; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .title { font-family: "Comic Sans MS", "Bradley Hand", "Segoe Print", sans-serif; font-size: 30px; font-weight: 700; fill: #242424; }
+      .label { font-family: "Comic Sans MS", "Bradley Hand", "Segoe Print", sans-serif; font-size: 24px; font-weight: 700; fill: #242424; }
+      .small { font-family: "Comic Sans MS", "Bradley Hand", "Segoe Print", sans-serif; font-size: 20px; font-weight: 650; fill: #242424; }
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 20px; font-weight: 700; fill: #242424; }
+    </style>
+  </defs>
+  <rect class="bg" width="1040" height="640"/>
+  <g filter="url(#paper)">
+    <path class="paper" d="M406 90 L628 90 L674 138 L674 412 L406 412 Z"/>
+    <path class="line" d="M628 92 L628 138 L672 138"/>
+    <text class="title" x="445" y="154">package.json</text>
+    <text class="mono" x="444" y="208">"name"</text>
+    <text class="mono" x="444" y="250">"scripts"</text>
+    <text class="mono" x="444" y="292">"dependencies"</text>
+    <text class="mono" x="444" y="334">"private"</text>
+
+    <rect class="box-blue" x="82" y="86" width="238" height="112" rx="16" transform="rotate(-2 201 142)"/>
+    <text class="label" x="132" y="135">项目身份</text>
+    <text class="small" x="126" y="168">name / version</text>
+    <path class="arrow" d="M406 176 C348 150 320 142 320 142"/>
+    <path class="line" d="M333 132 L320 142 L336 150"/>
+
+    <rect class="box-yellow" x="82" y="332" width="238" height="120" rx="16" transform="rotate(2 201 392)"/>
+    <text class="label" x="135" y="382">脚本命令</text>
+    <text class="small" x="122" y="416">npm run dev</text>
+    <path class="arrow" d="M406 284 C334 318 304 352 318 382"/>
+    <path class="line" d="M312 365 L318 382 L334 371"/>
+
+    <rect class="box-green" x="730" y="92" width="238" height="120" rx="16" transform="rotate(2 849 152)"/>
+    <text class="label" x="786" y="141">依赖清单</text>
+    <text class="small" x="766" y="176">dependencies</text>
+    <path class="arrow" d="M674 220 C724 184 744 166 732 152"/>
+    <path class="line" d="M727 170 L732 152 L713 158"/>
+
+    <rect class="box-red" x="730" y="330" width="238" height="120" rx="16" transform="rotate(-2 849 390)"/>
+    <text class="label" x="792" y="380">发布信息</text>
+    <text class="small" x="779" y="414">private / license</text>
+    <path class="arrow" d="M674 326 C730 350 758 368 734 392"/>
+    <path class="line" d="M745 376 L734 392 L754 392"/>
+
+    <rect class="tool" x="350" y="488" width="154" height="78" rx="14" transform="rotate(-1 427 527)"/>
+    <text class="label" x="390" y="537">npm</text>
+    <path class="arrow" d="M448 488 C472 450 493 424 522 412"/>
+    <path class="line" d="M504 412 L522 412 L514 429"/>
+    <text class="small" x="289" y="600">npm 读取配置</text>
+
+    <rect class="tool" x="548" y="488" width="168" height="78" rx="14" transform="rotate(1 632 527)"/>
+    <text class="label" x="590" y="537">Node.js</text>
+    <path class="arrow" d="M648 488 C674 452 710 436 744 426"/>
+    <path class="line" d="M725 422 L744 426 L732 441"/>
+    <rect class="box-blue" x="766" y="490" width="160" height="72" rx="14"/>
+    <text class="mono" x="800" y="534">index.js</text>
+    <text class="small" x="548" y="600">Node.js 执行文件</text>
+  </g>
+</svg>

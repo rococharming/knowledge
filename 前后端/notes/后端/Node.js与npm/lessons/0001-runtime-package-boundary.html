@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第 1 课：Node.js 与 npm 的边界</title>
+  <link rel="stylesheet" href="../assets/course.css">
+  <script defer src="../assets/quiz.js"></script>
+</head>
+<body>
+  <main class="page">
+    <nav class="topline">
+      <span class="pill">Lesson 0001</span>
+      <a href="../reference/0001-course-map.html">课程地图</a>
+      <a href="../reference/0002-node-npm-glossary.html">术语表</a>
+      <a href="https://nodejs.org/en/learn/getting-started/introduction-to-nodejs">Node.js 官方入门</a>
+      <a href="https://docs.npmjs.com/cli/v10/configuring-npm/package-json">npm package.json 文档</a>
+    </nav>
+
+    <h1>第 1 课：Node.js 与 npm 的边界</h1>
+    <p class="lead">这一课的目标很小，但很关键：看到一个 JavaScript 项目时，你能判断“现在是 Node.js 在运行代码，还是 npm 在管理项目”。这会影响后面所有安装、运行、调试和发布。</p>
+
+    <section>
+      <h2>一、真实场景</h2>
+      <p>你下载了一个 Node.js 项目，README 写着：</p>
+      <pre><code>npm install
+npm run dev</code></pre>
+      <p>很多初学者会把这两行都理解成“用 npm 启动项目”。这不够精确。第一行主要是在准备依赖；第二行是让 npm 找到 `package.json` 里的脚本，再由脚本启动真正的程序。那个程序通常最终由 `node`、`vite`、`tsx`、`nest` 等命令运行。</p>
+      <div class="callout">
+        <p><strong>本课胜利条件：</strong>你能用自己的话解释 `node index.js`、`npm install`、`npm run dev` 三者分别在做什么。</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>二、最小模型</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Node.js</h3>
+          <p>Node.js 是 JavaScript 的运行时。它让 JavaScript 可以在浏览器之外执行，并访问文件、网络、进程等系统能力。</p>
+          <pre><code>node index.js</code></pre>
+          <p>这句话的主语是 Node.js：运行 `index.js`。</p>
+        </div>
+        <div class="card">
+          <h3>npm CLI</h3>
+          <p>npm CLI 是项目管理工具。它会读取 `package.json`，安装依赖、运行脚本、发布包。</p>
+          <pre><code>npm install</code></pre>
+          <p>这句话的主语是 npm：根据项目描述准备依赖。</p>
+        </div>
+        <div class="card">
+          <h3>npm Registry</h3>
+          <p>npm Registry 是远程包仓库。安装依赖时，npm CLI 会向 Registry 查询包和版本信息。</p>
+          <pre><code>npm install picocolors</code></pre>
+          <p>这句话背后有网络请求：本机 npm CLI 去远程仓库拿包。</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>三、一次完整运行发生了什么</h2>
+      <p>假设项目里有这个 `package.json`：</p>
+      <pre><code>{
+  "name": "hello-node",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "dependencies": {
+    "picocolors": "^1.0.0"
+  }
+}</code></pre>
+
+      <div class="timeline">
+        <div class="step">
+          <strong>安装</strong>
+          <div>`npm install` 读取 `package.json`，解析依赖版本，访问 npm Registry，下载包，生成或更新 `package-lock.json` 和 `node_modules`。</div>
+        </div>
+        <div class="step">
+          <strong>运行</strong>
+          <div>`npm run dev` 读取 `scripts.dev`，找到右侧命令 `node index.js`，然后执行它。</div>
+        </div>
+        <div class="step">
+          <strong>执行</strong>
+          <div>`node index.js` 启动 Node.js 运行时，执行 JavaScript 文件里的代码。</div>
+        </div>
+      </div>
+
+      <div class="callout warning">
+        <p><strong>常见误区：</strong>`npm run dev` 不一定等于 Node.js 直接运行代码。它只是执行 `package.json` 里配置的脚本。脚本右侧可能是 `node`，也可能是 `vite`、`tsx`、`nest start` 或其他工具。</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>四、你需要掌握的判断法</h2>
+      <p>看到一个命令时，先问三个问题：</p>
+      <div class="grid">
+        <div class="card">
+          <h3>1. 它是否直接执行 JS 文件？</h3>
+          <p>如果是 `node xxx.js`，主角通常是 Node.js。</p>
+        </div>
+        <div class="card">
+          <h3>2. 它是否读取 package.json？</h3>
+          <p>如果是 `npm install` 或 `npm run xxx`，主角通常是 npm CLI。</p>
+        </div>
+        <div class="card">
+          <h3>3. 它是否需要下载包？</h3>
+          <p>如果要安装新依赖，本机 npm CLI 通常会访问 npm Registry。</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>五、即时练习</h2>
+
+      <div class="quiz" data-quiz data-ok="对。node 的职责是启动运行时并执行文件。" data-bad="再想一下：这里没有 install，也没有 run script。">
+        <p><strong>题 1：</strong>`node index.js` 的主要职责是什么？</p>
+        <button data-answer="true">运行代码</button>
+        <button data-answer="false">安装依赖</button>
+        <button data-answer="false">发布软件</button>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz" data-quiz data-ok="对。npm run 会读取 package.json 里的 scripts。" data-bad="再看命令：run 后面跟的是脚本名。">
+        <p><strong>题 2：</strong>`npm run dev` 首先会查哪里？</p>
+        <button data-answer="false">远程仓库</button>
+        <button data-answer="true">项目脚本</button>
+        <button data-answer="false">系统内核</button>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz" data-quiz data-ok="对。Registry 是远程包仓库。" data-bad="再想一下：Registry 的核心角色是保存和分发包。">
+        <p><strong>题 3：</strong>`npm install express` 通常会访问什么？</p>
+        <button data-answer="false">浏览页面</button>
+        <button data-answer="false">本地进程</button>
+        <button data-answer="true">远程仓库</button>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz" data-checklist data-required="node,npm,registry,package.json" data-ok="很好。你的解释已经覆盖四个关键角色。" data-bad="解释还不完整。">
+        <p><strong>回忆练习：</strong>不用看上文，用 3-5 句话解释 Node.js、npm CLI、npm Registry、package.json 的关系。写完点检查。</p>
+        <textarea class="scratch" aria-label="写下你的解释"></textarea>
+        <button class="check-button">检查关键词</button>
+        <p class="feedback"></p>
+      </div>
+    </section>
+
+    <section>
+      <h2>六、课后小任务</h2>
+      <p>这一题不考你会不会写 JavaScript。先复制粘贴，把项目跑起来，再观察 `npm run dev` 和 `node index.js` 的关系。</p>
+
+      <h3>1. 创建一个练习目录</h3>
+      <p>在终端里复制执行：</p>
+      <pre><code>mkdir hello-node
+cd hello-node</code></pre>
+      <p>`mkdir hello-node` 的意思是创建一个叫 `hello-node` 的文件夹；`cd hello-node` 的意思是进入这个文件夹。后面的文件都会放在这里。</p>
+
+      <h3>2. 创建 package.json</h3>
+      <p>新建一个叫 `package.json` 的文件，把下面内容完整复制进去：</p>
+      <pre><code>{
+  "name": "hello-node",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "node index.js"
+  }
+}</code></pre>
+      <p>先只关注 `scripts`：它给项目定义了一个叫 `dev` 的命令。这个命令真正执行的是右边的 `node index.js`。</p>
+
+      <h3>3. 创建 index.js</h3>
+      <p>新建一个叫 `index.js` 的文件，把下面内容完整复制进去：</p>
+      <pre><code>console.log("Hello Node.js");
+console.log("This file is running through node.");</code></pre>
+      <p>你现在不需要完全理解 JavaScript 语法。先记住：`console.log(...)` 会在终端输出一行文字。</p>
+
+      <h3>4. 运行项目</h3>
+      <p>在刚才的 `hello-node` 目录里执行：</p>
+      <pre><code>npm run dev</code></pre>
+      <p>如果看到下面两行输出，就说明成功了：</p>
+      <pre><code>Hello Node.js
+This file is running through node.</code></pre>
+
+      <h3>5. 对照观察</h3>
+      <p>再执行一次：</p>
+      <pre><code>node index.js</code></pre>
+      <p>你会看到同样的输出。区别是：`npm run dev` 先读取 `package.json` 的 `scripts.dev`，再执行 `node index.js`；而 `node index.js` 是直接启动 Node.js 运行这个文件。</p>
+
+      <div class="callout">
+        <p><strong>本题只要完成一个判断：</strong>当输出来自 `index.js` 时，真正运行 JavaScript 文件的是 Node.js；npm 只是帮你找到并执行项目脚本。</p>
+      </div>
+
+      <p>如果哪里卡住，直接问我。你可以把终端输出、`package.json` 内容或你的文件截图发来，我会按这门课的路线继续带你拆。</p>
+    </section>
+
+    <section>
+      <h2>主要来源</h2>
+      <p>本课参考了 <a href="https://nodejs.org/en/learn/getting-started/introduction-to-nodejs">Node.js 官方入门</a> 对运行时的定义，以及 <a href="https://docs.npmjs.com/cli/v10/configuring-npm/package-json">npm 官方 package.json 文档</a> 对项目描述文件的说明。后续课程会继续优先使用官方文档。</p>
+    </section>
+  </main>
+</body>
+</html>

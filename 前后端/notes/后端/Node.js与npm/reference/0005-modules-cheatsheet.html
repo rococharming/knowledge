@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Node.js 模块系统速查表</title>
+  <link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+  <main class="page">
+    <nav class="topline">
+      <span class="pill">Reference 0005</span>
+      <a href="./0001-course-map.html">课程地图</a>
+      <a href="../lessons/0004-module-systems.html">第 4 课</a>
+    </nav>
+
+    <h1>Node.js 模块系统速查表</h1>
+    <p class="lead">模块解决的是“把一个大文件拆成多个小文件，再让它们互相使用”的问题。</p>
+
+    <section>
+      <h2>一、两种写法</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>CommonJS</h3>
+          <pre><code>const tools = require("./tools.js");
+
+module.exports = {
+  message: "hello"
+};</code></pre>
+        </div>
+        <div class="card">
+          <h3>ES Module</h3>
+          <pre><code>import { message } from "./message.js";
+
+export const message = "hello";</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>二、Node.js 如何判断</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>标记</th>
+              <th>含义</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><code>"type": "module"</code></td><td>当前 package 里的 <code>.js</code> 文件按 ES Module 解释。</td></tr>
+            <tr><td><code>"type": "commonjs"</code></td><td>当前 package 里的 <code>.js</code> 文件按 CommonJS 解释。</td></tr>
+            <tr><td><code>.mjs</code></td><td>始终按 ES Module 解释。</td></tr>
+            <tr><td><code>.cjs</code></td><td>始终按 CommonJS 解释。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

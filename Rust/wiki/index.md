@@ -22,6 +22,7 @@ date: 2026-07-21
 - [[Rust 控制流]] — `if`、`loop`、`while`、`for`、范围表达式、循环标签与跳转语义。
 - [[Rust 函数、语句与表达式基础]] — 语句、表达式、代码块取值、函数定义、参数与返回值规则。
 - [[Rust 注释与 rustdoc 文档]] — 行注释、块注释、文档注释、doctest 与 `cargo doc` 文档生成。
+- [[Rust 所有权系统]] — 所有权规则、作用域、Drop、Move、Clone、Copy 与函数边界中的所有权转移。
 - [[Rust 变量绑定与常量基础]] — `let`、不可变性、`mut`、变量遮蔽、`const` 与 `static` 的基础语义。
 
 ## comparisons

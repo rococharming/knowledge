@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" role="img" aria-labelledby="title desc">
+  <title id="title">package.json 项目地图</title>
+  <desc id="desc">手绘风格示意图：package.json 连接项目身份、脚本、依赖和发布信息，npm 读取它，node 执行 index.js。</desc>
+  <defs>
+    <filter id="paper">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.055"/>
+      </feComponentTransfer>
+      <feBlend in="SourceGraphic" mode="multiply"/>
+    </filter>
+    <style>
+      .bg { fill: #fffdf8; }
+      .line { fill: none; stroke: #202124; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1 9; }
+      .solid { fill: #ffffff; stroke: #202124; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .soft { fill: #f4f8f2; stroke: #202124; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .teal { fill: #dff3f1; stroke: #087f83; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .coral { fill: #ffe9e4; stroke: #c94f3d; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .gold { fill: #fff0c2; stroke: #a46f00; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .txt { font-family: "Comic Sans MS", "Bradley Hand", "Segoe Print", sans-serif; fill: #202124; font-size: 25px; font-weight: 700; }
+      .small { font-size: 20px; font-weight: 650; }
+      .tiny { font-size: 17px; font-weight: 650; }
+    </style>
+  </defs>
+  <rect class="bg" width="960" height="560"/>
+  <g filter="url(#paper)">
+    <path class="solid" d="M390 115 L575 115 L615 158 L615 398 L390 398 Z"/>
+    <path class="line" d="M574 116 L574 158 L615 158"/>
+    <text class="txt" x="424" y="183">package.json</text>
+    <path class="line" d="M432 220 L570 220"/>
+    <path class="line" d="M432 260 L560 260"/>
+    <path class="line" d="M432 300 L585 300"/>
+    <path class="line" d="M432 340 L545 340"/>
+
+    <path class="line" d="M390 205 C305 176 252 155 180 134"/>
+    <rect class="teal" x="55" y="72" width="210" height="100" rx="12"/>
+    <circle class="solid" cx="96" cy="122" r="23"/>
+    <path class="line" d="M84 151 C96 139 112 139 126 151"/>
+    <text class="small" x="145" y="112">name</text>
+    <text class="small" x="145" y="142">version</text>
+
+    <path class="line" d="M390 305 C300 334 230 359 150 388"/>
+    <rect class="gold" x="55" y="332" width="210" height="116" rx="12"/>
+    <circle class="solid" cx="108" cy="390" r="28"/>
+    <path class="coral" d="M101 373 L101 407 L127 390 Z"/>
+    <text class="txt" x="154" y="399">scripts</text>
+
+    <path class="line" d="M615 225 C708 188 760 160 837 124"/>
+    <rect class="soft" x="712" y="75" width="190" height="100" rx="12"/>
+    <path class="solid" d="M744 120 L776 102 L809 120 L809 154 L744 154 Z"/>
+    <path class="line" d="M776 102 L776 136"/>
+    <path class="line" d="M744 120 L776 136 L809 120"/>
+    <text class="tiny" x="814" y="130">dependencies</text>
+
+    <path class="line" d="M615 318 C698 352 755 384 837 424"/>
+    <rect class="coral" x="712" y="372" width="190" height="100" rx="12"/>
+    <path class="solid" d="M755 432 L755 405 L802 384 L849 405 L849 432 L802 454 Z"/>
+    <path class="line" d="M755 405 L802 426 L849 405"/>
+    <path class="line" d="M802 426 L802 454"/>
+    <text class="txt" x="771" y="348">publish</text>
+
+    <rect class="solid" x="330" y="438" width="145" height="72" rx="10"/>
+    <text class="txt" x="374" y="483">npm</text>
+    <path class="line" d="M420 438 C438 414 454 402 475 392"/>
+
+    <rect class="solid" x="535" y="438" width="160" height="72" rx="10"/>
+    <text class="txt" x="584" y="483">node</text>
+    <path class="line" d="M615 438 C606 421 602 410 600 392"/>
+    <rect class="teal" x="724" y="223" width="145" height="80" rx="10"/>
+    <text class="small" x="760" y="270">index.js</text>
+    <path class="line" d="M695 470 C784 438 812 364 798 304"/>
+  </g>
+</svg>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Node.js 与 npm 术语表</title>
+  <link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+  <main class="page">
+    <nav class="topline">
+      <span class="pill">Reference 0002</span>
+      <a href="./0001-course-map.html">课程地图</a>
+      <a href="../lessons/0001-runtime-package-boundary.html">第 1 课</a>
+    </nav>
+
+    <h1>Node.js 与 npm 术语表</h1>
+    <p class="lead">后续课程统一使用这些词。遇到概念混乱时，先回到这里看“它负责什么，不负责什么”。</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>术语</th>
+            <th>一句话定义</th>
+            <th>边界</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Node.js</td>
+            <td>运行 JavaScript 的服务器端运行时。</td>
+            <td>负责执行代码和提供核心模块；不负责替你管理项目依赖。</td>
+          </tr>
+          <tr>
+            <td>npm CLI</td>
+            <td>本机终端里的 <code>npm</code> 命令。</td>
+            <td>负责安装、运行脚本、发布包；它不是远程仓库本身。</td>
+          </tr>
+          <tr>
+            <td>npm Registry</td>
+            <td>保存 npm package 和版本元数据的远程仓库服务。</td>
+            <td>负责分发包；不会运行你的项目代码。</td>
+          </tr>
+          <tr>
+            <td>package.json</td>
+            <td>npm 项目的描述文件。</td>
+            <td>记录项目名、版本、脚本、依赖、入口；不保存安装后的完整依赖树。</td>
+          </tr>
+          <tr>
+            <td>package-lock.json</td>
+            <td>npm 安装后生成的依赖锁文件。</td>
+            <td>记录精确依赖树；通常应该提交到应用项目仓库。</td>
+          </tr>
+          <tr>
+            <td>dependencies</td>
+            <td>项目运行时需要的依赖。</td>
+            <td>生产运行仍然需要；例如 Web 框架、数据库客户端。</td>
+          </tr>
+          <tr>
+            <td>devDependencies</td>
+            <td>只在开发、测试、构建时需要的依赖。</td>
+            <td>生产运行通常不直接需要；例如测试框架、编译器、格式化工具。</td>
+          </tr>
+          <tr>
+            <td>scripts</td>
+            <td>项目约定命令的集合。</td>
+            <td>让团队用统一入口执行任务；实际执行的仍是右侧命令字符串。</td>
+          </tr>
+          <tr>
+            <td>Module</td>
+            <td>一个可被导入或导出的代码单元。</td>
+            <td>Node.js 同时存在 CommonJS 和 ES Module 两套历史模型。</td>
+          </tr>
+          <tr>
+            <td>CLI</td>
+            <td>命令行工具。</td>
+            <td>用户通过终端调用；npm package 可以通过 <code>bin</code> 字段暴露 CLI。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</body>
+</html>

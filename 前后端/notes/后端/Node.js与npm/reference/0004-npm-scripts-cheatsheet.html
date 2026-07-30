@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>npm scripts 速查表</title>
+  <link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+  <main class="page">
+    <nav class="topline">
+      <span class="pill">Reference 0004</span>
+      <a href="./0001-course-map.html">课程地图</a>
+      <a href="../lessons/0003-npm-scripts.html">第 3 课</a>
+    </nav>
+
+    <h1>npm scripts 速查表</h1>
+    <p class="lead"><code>scripts</code> 是 npm 项目的命令菜单。团队成员不用记住底层命令，只要记住项目约定的入口。</p>
+
+    <section>
+      <h2>一、最小结构</h2>
+      <pre><code>{
+  "scripts": {
+    "dev": "node index.js",
+    "test": "node test.js",
+    "hello": "node hello.js"
+  }
+}</code></pre>
+    </section>
+
+    <section>
+      <h2>二、脚本怎么对应</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>你输入</th>
+              <th>npm 读取</th>
+              <th>真正执行</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><code>npm run dev</code></td><td><code>scripts.dev</code></td><td><code>node index.js</code></td></tr>
+            <tr><td><code>npm run hello</code></td><td><code>scripts.hello</code></td><td><code>node hello.js</code></td></tr>
+            <tr><td><code>npm test</code></td><td><code>scripts.test</code></td><td><code>node test.js</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>三、常用规则</h2>
+      <div class="grid">
+        <div class="card"><h3>普通脚本</h3><p>大多数自定义脚本用 <code>npm run 脚本名</code> 执行。</p></div>
+        <div class="card"><h3>快捷脚本</h3><p><code>npm test</code> 是 <code>test</code> 脚本的常见快捷入口；<code>npm start</code> 是 <code>start</code> 脚本的常见快捷入口。</p></div>
+        <div class="card"><h3>列出脚本</h3><p>忘记项目有哪些脚本时，运行 <code>npm run</code> 查看列表。</p></div>
+        <div class="card"><h3>本地命令</h3><p>脚本运行时，本地依赖提供的命令通常可以直接写，比如 <code>eslint .</code>。</p></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

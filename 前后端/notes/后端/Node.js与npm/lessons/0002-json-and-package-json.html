@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第 2 课：JSON 与 package.json</title>
+  <link rel="stylesheet" href="../assets/course.css">
+  <script defer src="../assets/quiz.js"></script>
+</head>
+<body>
+  <main class="page">
+    <nav class="topline">
+      <span class="pill">Lesson 0002</span>
+      <a href="./0001-runtime-package-boundary.html">第 1 课</a>
+      <a href="../reference/0001-course-map.html">课程地图</a>
+      <a href="../reference/0002-node-npm-glossary.html">术语表</a>
+      <a href="../reference/0003-package-json-cheatsheet.html">package.json 速查表</a>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON">MDN JSON</a>
+      <a href="https://docs.npmjs.com/cli/configuring-npm/package-json/">npm package.json 文档</a>
+    </nav>
+
+    <h1>第 2 课：JSON 与 package.json</h1>
+    <p class="lead">这一课只做一件事：让你能读懂一个最小 <code>package.json</code>。你不需要先会 JavaScript，只要能看懂“字段名、字段值、对象、脚本、依赖”这几件事。</p>
+
+    <figure class="figure">
+      <img src="../assets/package-json-map.svg" alt="package.json 连接项目身份、脚本、依赖和发布信息的手绘风格示意图">
+      <figcaption><code>package.json</code> 像项目的控制文档：npm 读它来安装依赖、执行脚本、准备发布；Node.js 通常只负责运行脚本最终指向的 JavaScript 文件。</figcaption>
+    </figure>
+
+    <section>
+      <h2>一、真实场景</h2>
+      <p>你打开一个 Node.js 项目，最常见的入口文件不是 <code>index.js</code>，而是 <code>package.json</code>。因为你通常会先问：</p>
+      <div class="grid">
+        <div class="card"><h3>这个项目叫什么？</h3><p>看 <code>name</code>。</p></div>
+        <div class="card"><h3>怎么启动？</h3><p>看 <code>scripts</code>。</p></div>
+        <div class="card"><h3>依赖哪些包？</h3><p>看 <code>dependencies</code> 和 <code>devDependencies</code>。</p></div>
+      </div>
+      <div class="callout">
+        <p><strong>本课胜利条件：</strong>看到一个最小 <code>package.json</code>，你能说出每个字段的大概作用，并能改一个脚本让 <code>npm run dev</code> 执行不同文件。</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>二、JSON 是什么</h2>
+      <p>JSON 是一种用文本表示结构化数据的格式。MDN 对 JSON 的核心描述是：它可以表示对象、数组、数字、字符串、布尔值和 <code>null</code>。<code>package.json</code> 必须是合法 JSON，而不是随便长得像 JavaScript 对象就可以。</p>
+
+      <p>先看一个最小 JSON 对象：</p>
+      <pre><code>{
+  "name": "hello-package-json",
+  "private": true,
+  "keywords": ["node", "npm"]
+}</code></pre>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>位置</th>
+              <th>读法</th>
+              <th>例子</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>"name"</code></td>
+              <td>字段名，也叫 key</td>
+              <td>必须用双引号</td>
+            </tr>
+            <tr>
+              <td><code>"hello-package-json"</code></td>
+              <td>字段值，也叫 value</td>
+              <td>这是字符串</td>
+            </tr>
+            <tr>
+              <td><code>true</code></td>
+              <td>布尔值</td>
+              <td>不是字符串，所以不加引号</td>
+            </tr>
+            <tr>
+              <td><code>["node", "npm"]</code></td>
+              <td>数组</td>
+              <td>表示一组有顺序的值</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout warning">
+        <p><strong>零基础先记三条：</strong>字段名用双引号；字段之间用英文逗号；最后一个字段后面不要逗号。</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>三、package.json 是什么</h2>
+      <p><code>package.json</code> 是 npm 项目的描述文件。npm 官方文档说明：如果你要发布包，<code>name</code> 和 <code>version</code> 是最重要的字段；依赖则通常写在 <code>dependencies</code> 或 <code>devDependencies</code> 里。</p>
+
+      <p>入门阶段，把它分成三块就够了：</p>
+      <pre><code>{
+  "name": "hello-package-json",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "dependencies": {
+    "picocolors": "^1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}</code></pre>
+
+      <div class="grid">
+        <div class="card">
+          <h3>项目身份</h3>
+          <p><code>name</code> 和 <code>version</code> 回答“这个项目是谁、当前版本是多少”。如果以后发布 npm package，它们会变得非常关键。</p>
+        </div>
+        <div class="card">
+          <h3>命令菜单</h3>
+          <p><code>scripts</code> 回答“这个项目有哪些统一命令”。例如 <code>npm run dev</code> 会执行 <code>scripts.dev</code> 右边的命令。</p>
+        </div>
+        <div class="card">
+          <h3>依赖清单</h3>
+          <p><code>dependencies</code> 放运行时需要的包；<code>devDependencies</code> 放开发、测试、构建时需要的工具。</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>四、复制粘贴练习</h2>
+      <p>这次仍然不要求你自己写 JavaScript。我们只通过复制粘贴，观察 <code>package.json</code> 如何影响项目运行。</p>
+
+      <h3>1. 创建目录</h3>
+      <pre><code>mkdir package-json-lab
+cd package-json-lab</code></pre>
+
+      <h3>2. 创建 package.json</h3>
+      <p>新建 <code>package.json</code>，复制下面内容：</p>
+      <pre><code>{
+  "name": "package-json-lab",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node index.js",
+    "hello": "node hello.js"
+  }
+}</code></pre>
+
+      <h3>3. 创建两个 JavaScript 文件</h3>
+      <p>新建 <code>index.js</code>，复制：</p>
+      <pre><code>console.log("This is index.js");</code></pre>
+      <p>新建 <code>hello.js</code>，复制：</p>
+      <pre><code>console.log("This is hello.js");</code></pre>
+
+      <h3>4. 运行两个脚本</h3>
+      <pre><code>npm run dev
+npm run hello</code></pre>
+      <p>你应该看到两个不同输出：</p>
+      <pre><code>This is index.js
+This is hello.js</code></pre>
+
+      <div class="callout">
+        <p><strong>观察重点：</strong><code>npm run dev</code> 和 <code>npm run hello</code> 都是 npm 先读取 <code>package.json</code>，再执行对应脚本右侧的 <code>node ...</code> 命令。</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>五、即时练习</h2>
+
+      <div class="quiz" data-quiz data-ok="对。package.json 必须是合法 JSON。" data-bad="再看 JSON 规则：package.json 不是随便的 JS 对象。">
+        <p><strong>题 1：</strong><code>package.json</code> 必须是什么格式？</p>
+        <button data-answer="true">合法 JSON</button>
+        <button data-answer="false">普通文本</button>
+        <button data-answer="false">网页标签</button>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz" data-quiz data-ok="对。scripts 像项目的命令菜单。" data-bad="再想想 npm run dev 会读取哪一块。">
+        <p><strong>题 2：</strong><code>npm run dev</code> 会读取哪个字段？</p>
+        <button data-answer="false">version</button>
+        <button data-answer="true">scripts</button>
+        <button data-answer="false">private</button>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz" data-quiz data-ok="对。运行时需要的包放 dependencies。" data-bad="再区分运行时和开发期。">
+        <p><strong>题 3：</strong>应用运行时需要的包通常放哪里？</p>
+        <button data-answer="true">dependencies</button>
+        <button data-answer="false">devDependencies</button>
+        <button data-answer="false">description</button>
+        <p class="feedback"></p>
+      </div>
+
+      <div class="quiz" data-checklist data-required="scripts,node,index.js,hello.js" data-ok="很好。你已经抓住脚本名和右侧命令的关系。" data-bad="解释还不完整。">
+        <p><strong>回忆练习：</strong>不用看上文，用 2-4 句话解释为什么 <code>npm run dev</code> 会运行 <code>index.js</code>，而 <code>npm run hello</code> 会运行 <code>hello.js</code>。写完点检查。</p>
+        <textarea class="scratch" aria-label="写下你的解释"></textarea>
+        <button class="check-button">检查关键词</button>
+        <p class="feedback"></p>
+      </div>
+    </section>
+
+    <section>
+      <h2>六、课后小任务</h2>
+      <p>在练习项目里，只改 <code>package.json</code>，把 <code>dev</code> 脚本从：</p>
+      <pre><code>"dev": "node index.js"</code></pre>
+      <p>改成：</p>
+      <pre><code>"dev": "node hello.js"</code></pre>
+      <p>然后重新运行：</p>
+      <pre><code>npm run dev</code></pre>
+      <p>如果输出变成 <code>This is hello.js</code>，说明你已经理解了本课最重要的关系：npm 读取脚本配置，Node.js 执行脚本指向的文件。</p>
+      <p>如果卡住，把你的 <code>package.json</code> 发给我，我会帮你看是哪一个 JSON 规则或脚本配置出了问题。</p>
+    </section>
+
+    <section>
+      <h2>主要来源</h2>
+      <p>本课参考 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON">MDN JSON 文档</a> 对 JSON 值类型和语法边界的说明，以及 <a href="https://docs.npmjs.com/cli/configuring-npm/package-json/">npm 官方 package.json 文档</a> 对 <code>name</code>、<code>version</code>、<code>scripts</code>、<code>dependencies</code>、<code>devDependencies</code> 等字段的说明。</p>
+    </section>
+  </main>
+</body>
+</html>

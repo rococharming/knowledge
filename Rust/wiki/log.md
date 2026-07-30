@@ -58,3 +58,12 @@ date: 2026-07-17
 - 更新: [[Cargo]], [[Rust/wiki/index|Rust Wiki 索引]], [[index|知识库领域目录]]
 - 级联更新: 更新 [[Cargo]] 的常用命令说明，补充 `cargo doc` 调用 `rustdoc` 生成 API 文档的关系。
 - 修正: 未发现与既有 wiki 页面的事实冲突；素材中的 docs.rs 与 `cargo doc` 界面截图未嵌入 concepts 页面，相关信息已转写为结构化文字。
+
+## 2026-07-28 Ingest: 所有权
+
+- 来源: [[所有权]]
+- 类型: articles
+- 创建: [[Rust 所有权系统]]
+- 更新: [[Rust 变量绑定与常量基础]], [[Rust 基本数据类型]], [[Rust 函数、语句与表达式基础]], [[Rust 控制流]], [[Rust/wiki/index|Rust Wiki 索引]], [[index|知识库领域目录]]
+- 级联更新: 更新 [[Rust 变量绑定与常量基础]], [[Rust 基本数据类型]], [[Rust 函数、语句与表达式基础]], [[Rust 控制流]] 的相关页面入口；候选 [[Rust 工具链与开发环境导览]] 仅高层提及所有权，未改。
+- 修正: 未发现与既有 wiki 页面的事实冲突；保留 `String` 栈/堆、Move、Clone、Copy 四类解释性内存示意图，未保留装饰性或纯操作截图。

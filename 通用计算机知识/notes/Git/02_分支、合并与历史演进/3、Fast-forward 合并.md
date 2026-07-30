@@ -189,7 +189,7 @@ fast-forward 也是合并。它只是没有新建 merge commit。判断成果是
 ## 1、合并前检查
 
 ```shell
-cd /Users/songpengfei/Learn/Git/practice-repo
+cd path/to/practice-repo
 git status -sb
 git log --oneline --decorate --graph --all --max-count=8
 ```

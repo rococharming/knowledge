@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Node.js 异步速查表</title>
+  <link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+  <main class="page">
+    <nav class="topline">
+      <span class="pill">Reference 0007</span>
+      <a href="./0001-course-map.html">课程地图</a>
+      <a href="../lessons/0006-async-model.html">第 6 课</a>
+    </nav>
+
+    <h1>Node.js 异步速查表</h1>
+    <p class="lead">异步不是“代码乱跑”，而是“先登记一件以后完成的事，主线继续往下走，完成后再回来处理结果”。</p>
+
+    <section>
+      <h2>一、三个阶段</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>阶段</th>
+              <th>你会看到</th>
+              <th>先怎么理解</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>同步代码</td><td><code>console.log("start")</code></td><td>立即执行。</td></tr>
+            <tr><td>登记异步任务</td><td><code>setTimeout(...)</code></td><td>把“以后再做”的事交出去。</td></tr>
+            <tr><td>回调执行</td><td><code>console.log("later")</code></td><td>主线代码结束后，异步结果再回来。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>二、三种常见写法</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Callback</h3>
+          <pre><code>setTimeout(() => {
+  console.log("later");
+}, 1000);</code></pre>
+        </div>
+        <div class="card">
+          <h3>Promise</h3>
+          <pre><code>Promise.resolve("done")
+  .then((value) => {
+    console.log(value);
+  });</code></pre>
+        </div>
+        <div class="card">
+          <h3>async/await</h3>
+          <pre><code>const value = await promise;
+
+console.log(value);</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>三、一句话边界</h2>
+      <div class="grid">
+        <div class="card"><h3>Callback</h3><p>把一个函数交出去，等事情完成后调用它。</p></div>
+        <div class="card"><h3>Promise</h3><p>用一个对象表示“未来会完成或失败的结果”。</p></div>
+        <div class="card"><h3>async/await</h3><p>用更像同步代码的写法等待 Promise。</p></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

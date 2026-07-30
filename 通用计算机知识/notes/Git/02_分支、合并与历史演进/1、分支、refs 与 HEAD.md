@@ -176,7 +176,7 @@ git log --oneline --decorate --graph --all --max-count=5
 ## 1、创建并观察
 
 ```shell
-cd /Users/songpengfei/Learn/Git/practice-repo
+cd path/to/practice-repo
 git status -sb
 git log --oneline --decorate --max-count=4
 git branch feature/note-title

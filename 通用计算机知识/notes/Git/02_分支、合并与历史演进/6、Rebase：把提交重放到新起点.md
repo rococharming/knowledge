@@ -150,7 +150,7 @@ rebase 也可能遇到冲突。它会在某个提交重放失败时暂停，等�
 ## 1、创建练习分支
 
 ```shell
-cd /Users/songpengfei/Learn/Git/practice-repo
+cd path/to/practice-repo
 git status -sb
 git log --oneline --decorate --graph --all --max-count=10
 ```

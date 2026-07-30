@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Node.js 与 npm 课程地图</title>
+  <link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+  <main class="page">
+    <nav class="topline">
+      <span class="pill">Reference 0001</span>
+      <a href="../lessons/0001-runtime-package-boundary.html">第 1 课</a>
+      <a href="./0002-node-npm-glossary.html">术语表</a>
+    </nav>
+
+    <h1>Node.js 与 npm 课程地图</h1>
+    <p class="lead">这门课按能力递进，而不是按工具名堆清单。最终目标是：能做 Node.js 后端项目，也能理解 npm 包、CLI 工具和开发者工具的工程边界。</p>
+
+    <section>
+      <h2>一、入门段：知道谁在工作</h2>
+      <div class="timeline">
+        <div class="step"><strong>第 1 课</strong><div><a href="../lessons/0001-runtime-package-boundary.html">Node.js 与 npm 的边界</a>：谁运行代码，谁管理项目，谁保存包。</div></div>
+        <div class="step"><strong>第 2 课</strong><div><a href="../lessons/0002-json-and-package-json.html">JSON 与 package.json</a>：读懂项目身份证，区分描述、脚本和依赖。</div></div>
+        <div class="step"><strong>第 3 课</strong><div><a href="../lessons/0003-npm-scripts.html">npm scripts</a>：把零散命令变成项目约定，理解 <code>npm run</code> 的执行位置。</div></div>
+        <div class="step"><strong>第 4 课</strong><div><a href="../lessons/0004-module-systems.html">模块系统</a>：CommonJS、ESM、<code>type</code>、入口文件和导入导出。</div></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>二、基础段：能写可运行项目</h2>
+      <div class="timeline">
+        <div class="step"><strong>第 5 课</strong><div><a href="../lessons/0005-core-modules.html">Node.js 核心模块</a>：<code>fs</code>、<code>path</code>、<code>process</code>，把脚本接到操作系统。</div></div>
+        <div class="step"><strong>第 6 课</strong><div><a href="../lessons/0006-async-model.html">异步模型</a>：callback、Promise、async/await 与 Event Loop。</div></div>
+        <div class="step"><strong>第 7 课</strong><div>TypeScript 项目化：<code>tsconfig</code>、类型边界、编译输出和运行方式。</div></div>
+        <div class="step"><strong>第 8 课</strong><div>依赖安装：<code>dependencies</code>、<code>devDependencies</code>、<code>package-lock.json</code> 和可复现安装。</div></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>三、后端段：能做真实 API</h2>
+      <div class="timeline">
+        <div class="step"><strong>第 9 课</strong><div>HTTP 请求响应：方法、状态码、Header、Body 与 API 契约。</div></div>
+        <div class="step"><strong>第 10 课</strong><div>Express 路由与中间件：从请求进入应用，到响应离开应用。</div></div>
+        <div class="step"><strong>第 11 课</strong><div>错误处理与输入校验：把“能跑”提升为“可预期”。</div></div>
+        <div class="step"><strong>第 12 课</strong><div>数据库基础：PostgreSQL、Prisma、schema、migration 和查询。</div></div>
+        <div class="step"><strong>第 13 课</strong><div>认证与授权：Cookie、Session、JWT、RBAC 和常见风险。</div></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>四、工程段：能维护项目</h2>
+      <div class="timeline">
+        <div class="step"><strong>第 14 课</strong><div>测试体系：单元测试、集成测试、HTTP 测试和测试数据。</div></div>
+        <div class="step"><strong>第 15 课</strong><div>配置与环境变量：本地、测试、生产环境如何分开。</div></div>
+        <div class="step"><strong>第 16 课</strong><div>日志与可观测性：定位一次请求为什么失败。</div></div>
+        <div class="step"><strong>第 17 课</strong><div>Docker 与部署入口：把项目从“我电脑能跑”变成“环境可复制”。</div></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>五、进阶段：npm 包与开发者工具</h2>
+      <div class="timeline">
+        <div class="step"><strong>第 18 课</strong><div>发布 npm package：版本、files、exports、README、license 与 publish。</div></div>
+        <div class="step"><strong>第 19 课</strong><div>CLI 工具：<code>bin</code> 字段、参数解析、退出码和终端交互。</div></div>
+        <div class="step"><strong>第 20 课</strong><div>Workspace 与 monorepo：多个包如何共享依赖与脚本。</div></div>
+        <div class="step"><strong>第 21 课</strong><div>进程管理：<code>child_process</code>、调用外部二进制、处理 stdout/stderr。</div></div>
+        <div class="step"><strong>第 22 课</strong><div>性能与稳定性：Stream、worker_threads、限流、缓存和背压。</div></div>
+        <div class="step"><strong>第 23 课</strong><div>Node 调 Rust：N-API、native addon、二进制分发和边界设计。</div></div>
+        <div class="step"><strong>第 24 课</strong><div>毕业项目：一个 TypeScript CLI + HTTP API + npm package 的开发者工具。</div></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>每课固定结构</h2>
+      <div class="grid">
+        <div class="card"><h3>真实场景</h3><p>先说明这个知识点在项目中解决什么问题。</p></div>
+        <div class="card"><h3>最小模型</h3><p>用一个能记住的心智模型解释核心概念。</p></div>
+        <div class="card"><h3>可运行例子</h3><p>每课至少有一段能放进项目里运行的代码或配置。</p></div>
+        <div class="card"><h3>即时反馈</h3><p>通过测验、检查清单或小练习，让学习变成可验证的动作。</p></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
