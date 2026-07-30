@@ -216,3 +216,11 @@ p::first-line {
 | `::selection`    | 选中用户框选的文字    |
 | `::placeholder`  | 选中输入框占位文字    |
 | `::marker`       | 选中列表项目符号     |
+
+
+提示词：
+
+Goal（目标）：做什么
+Context（背景）：来源和信息
+Output（输出）：格式、长度、详细程度等
+Boundaries（边界）：哪些事情必须保持不变、ChatGPT应该避免做什么，或者与您确认哪些事项
