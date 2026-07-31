@@ -1,6 +1,6 @@
 ---
 title: Rust 工具链与开发环境导览
-date: 2026-07-20
+date: 2026-07-31
 tags: [rust, toolchain, cargo, ide]
 source_count: 1
 ---
@@ -13,7 +13,9 @@ source_count: 1
 
 Rust 是一门编译型系统编程语言，强调内存安全、并发安全和接近 C/C++ 的运行效率。它通过所有权、借用和类型系统在编译期发现大量内存与并发问题，同时通过 `unsafe` 边界保留底层控制能力。
 
-安装层面，官方推荐使用 [[rustup]]。`rustup` 安装后会管理 `stable`、`beta`、`nightly` 等 toolchain，并在 `~/.cargo/bin` 下提供 `rustup`、`rustc`、`cargo` 等命令入口。日常开发中，开发者通常不直接管理具体二进制位置，而是让 `rustup` 根据默认配置或项目配置选择真实工具链。
+安装层面，官方推荐使用 [[rustup]]。`rustup` 安装后会管理 `stable`、`beta`、`nightly` 等 toolchain，并在 Cargo 的 `bin` 目录下提供 `rustup`、`rustc`、`cargo` 等命令入口。日常开发中，开发者通常不直接管理具体二进制位置，而是让 `rustup` 根据默认配置或项目配置选择真实工具链。
+
+Windows 上还要区分 Rust 工具链与系统构建工具：默认 MSVC 路线需要 Visual Studio Build Tools、MSVC 链接器和 Windows SDK；需要 MinGW / MSYS2 生态时可切换 GNU 工具链。详见 [[Windows Rust 工具链选择]]。
 
 构建层面，[[rustc]] 是编译器，适合理解 Rust 源码如何被编译成可执行文件或库；[[Cargo]] 是项目构建和包管理入口，负责创建项目、构建、运行、检查、测试、生成文档和管理依赖。真实项目通常以 Cargo 为主，`rustc` 作为 Cargo 底层调用的编译器存在。
 
@@ -22,6 +24,7 @@ Rust 是一门编译型系统编程语言，强调内存安全、并发安全和
 ## 页面拆分
 
 - [[Rust 安装与镜像源配置]]：安装 Rust、配置 RsProxy 镜像、验证工具链。
+- [[Windows Rust 工具链选择]]：Windows 上 MSVC/GNU 工具链的选择、下载和切换。
 - [[rustup]]：Rust 工具链管理器及常用命令。
 - [[rustc]]：Rust 编译器的定位、基本编译和 Edition 选项。
 - [[Cargo]]：Cargo 项目结构与常用开发命令。

@@ -1,6 +1,6 @@
 ---
 title: Rust 安装与镜像源配置
-date: 2026-07-20
+date: 2026-07-31
 tags: [rust, toolchain, setup]
 source_count: 1
 ---
@@ -27,9 +27,18 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 rustup --version
 rustc --version
 cargo --version
+rustup show
 ```
 
 ![[Image 3.png]]
+
+## Windows 安装要点
+
+Windows 上通常下载并运行 `rustup-init.exe`。安装时需要区分两层工具：[[rustup]] 下载 Rust 工具链；系统构建工具提供链接器、Windows SDK 和系统库。
+
+默认 Windows Rust 通常使用 MSVC 工具链，例如 `x86_64-pc-windows-msvc`。如果安装器提示 Visual C++ prerequisites，说明系统缺少 MSVC 链接器或 Windows SDK。普通学习和大多数 Windows 项目优先选择 MSVC 路线；只有明确需要 GNU ABI / MinGW 生态时才切换 GNU 工具链。
+
+Windows 上 MSVC 与 GNU 工具链的选择、下载和切换见 [[Windows Rust 工具链选择]]。
 
 ## 使用 RsProxy 镜像
 
@@ -87,6 +96,7 @@ git-fetch-with-cli = true
 - [[rustup]]
 - [[rustc]]
 - [[Cargo]]
+- [[Windows Rust 工具链选择]]
 
 ## 来源
 

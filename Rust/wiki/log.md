@@ -67,3 +67,12 @@ date: 2026-07-17
 - 更新: [[Rust 变量绑定与常量基础]], [[Rust 基本数据类型]], [[Rust 函数、语句与表达式基础]], [[Rust 控制流]], [[Rust/wiki/index|Rust Wiki 索引]], [[index|知识库领域目录]]
 - 级联更新: 更新 [[Rust 变量绑定与常量基础]], [[Rust 基本数据类型]], [[Rust 函数、语句与表达式基础]], [[Rust 控制流]] 的相关页面入口；候选 [[Rust 工具链与开发环境导览]] 仅高层提及所有权，未改。
 - 修正: 未发现与既有 wiki 页面的事实冲突；保留 `String` 栈/堆、Move、Clone、Copy 四类解释性内存示意图，未保留装饰性或纯操作截图。
+
+## 2026-07-31 Ingest: Rust安装与开发环境配置
+
+- 来源: [[Rust安装与开发环境配置]]
+- 类型: articles
+- 创建: [[Windows Rust 工具链选择]]
+- 更新: [[Rust 安装与镜像源配置]], [[rustup]], [[Rust 工具链与开发环境导览]], [[Rust/wiki/index|Rust Wiki 索引]], [[index|知识库领域目录]]
+- 级联更新: 更新 [[Rust 安装与镜像源配置]] 的 Windows 安装入口，更新 [[rustup]] 的 Windows 工具链选择说明，更新 [[Rust 工具链与开发环境导览]] 的页面拆分入口。
+- 修正: 将 archive 中旧版 `Rust安装与开发环境配置.md` 替换为当前 notes 版；补充 Windows MSVC/GNU、MSYS2/MinGW-w64 与 macOS/Linux 系统构建工具的区别。

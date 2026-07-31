@@ -1,6 +1,6 @@
 ---
 title: rustup
-date: 2026-07-20
+date: 2026-07-31
 tags: [rust, toolchain]
 source_count: 1
 ---
@@ -49,9 +49,28 @@ rustup self uninstall
 
 `rustup update` 用于更新已安装的 Rust toolchain；在较新的 rustup 行为中，它也会在更新 toolchain 时检查并更新 rustup 自身。
 
+## Windows 工具链选择
+
+Windows 上的 [[rustup]] 默认通常安装 MSVC 工具链，例如 `stable-x86_64-pc-windows-msvc`。MSVC 路线需要 Visual Studio 或 Visual Studio Build Tools 提供链接器和 Windows SDK。
+
+如果项目明确要求 GNU ABI / MinGW 生态，可以安装 GNU 工具链：
+
+```shell
+rustup toolchain install stable-gnu
+```
+
+临时使用 GNU 工具链时，可以在 Cargo 命令前加工具链前缀：
+
+```shell
+cargo +stable-gnu run
+```
+
+更完整的 Windows MSVC/GNU 选择与 MinGW-w64 构建工具配置见 [[Windows Rust 工具链选择]]。
+
 ## 相关页面
 
 - [[Rust 安装与镜像源配置]]
+- [[Windows Rust 工具链选择]]
 - [[rustc]]
 - [[Cargo]]
 

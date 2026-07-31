@@ -36,26 +36,78 @@ Rust官网比较智能，可以自动识别当前主机的操作系统，从而�
 
 >注意：由于国内安装Rust以及拉取crates.io的包可能存在流量出境不稳定问题，因此可使用国内镜像代理加快下载速度。如果想使用代理，直接跳过本小节，移步[[#^setting-proxy|设置国内镜像源]]。
 
-以`macOS`为例，在终端命令行执行如下命令：
+`rustup` 是 Rust 官方推荐的 **Rust 工具链管理器**，主要用于安装、更新和切换不同版本的 Rust 编译器及相关工具链。
+
+通过 `rustup` 安装的工具链通常包含 `rustc`、`cargo`、`rustdoc`、标准库以及相关组件。其中，`rustc` 是 Rust 编译器，`cargo` 是 Rust 构建系统和包管理工具。
+
+### （1）macOS / Linux
+
+在 macOS 或 Linux 上，通常直接在终端执行：
 
 ```shell
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-该命令就是安装`rustup`以及 Rust 的 stable 工具链（默认）。
+这条命令会先下载 `rustup-init.sh`，再由它下载并安装当前平台对应的 `rustup` 和默认 Rust 工具链。默认情况下，安装的是 `stable` 工具链。
 
-`rustup`是Rust官方推荐的**Rust工具链管理器**，
-主要用于安装、更新和切换不同版本的Rust编译器及相关工具链。
+### （2）Windows
 
-通过`rustup`安装的工具链通常包含`rustc`、`cargo`、`rustdoc`、标准库以及相关组件。其中，`rustc`是Rust编译器，`cargo`是Rust构建系统和包管理工具，`rustdoc`用来生成文档。
+在 Windows 上，通常进入 Rust 官网安装页面，下载并运行 `rustup-init.exe`。
 
-安装完成后，用户可以在`~/.cargo/bin`目录下看到`rustup`、`rustc`、`cargo`等命令入口，如下图所示：
+Windows 上的安装过程需要分成两件事理解：
+
+- **Rust 工具链**：由 `rustup-init.exe` 下载和安装，包含 `rustc`、`cargo`、`rustdoc`、标准库等。
+- **MSVC 构建环境**：由 Visual Studio 或 Visual Studio Build Tools 提供，包含链接器、Windows SDK 和 Windows API 库。
+
+Rust 本身不是 C++，但 Rust 在 Windows 上默认使用 MSVC 工具链，例如：
+
+```text
+x86_64-pc-windows-msvc
+```
+
+这里的 `msvc` 表示它使用微软 Visual C++ 生态的 ABI 和链接规则。Rust 源码经 `rustc` 编译后，还需要链接器把目标文件、Rust 标准库和 Windows 系统库链接成 `.exe` 文件。所以 Rust 需要借用 Windows 平台上的 MSVC 链接器和系统库。
+
+启动 `rustup-init.exe`后，安装程序通常会给出三个选择：
+
+```text
+1) Quick install via the Visual Studio Community installer
+2) Manually install the prerequisites
+3) Don't install the prerequisites
+```
+
+三个选项的区别如下：
+
+| 选项 | 含义 | 适合场景 |
+|---|---|---|
+| `1` | 让 `rustup-init.exe` 调用 Visual Studio Community 安装器，自动安装 Rust 所需的 MSVC 前置组件 | 个人学习、开源项目、希望省事 |
+| `2` | 自己安装 Visual Studio 或 Visual Studio Build Tools，并手动选择需要的组件 | 企业环境、想控制安装内容、不想安装完整 IDE |
+| `3` | 不安装 MSVC 前置组件 | 明确使用 GNU ABI / MinGW 工具链 |
+
+如果需要走 GNU ABI / MinGW 工具链路线，详见 [[4、Windows切换Rust GNU工具链|Windows 切换 Rust GNU 工具链]]。
+
+### （3）系统构建工具
+
+Rust 工具链由 `rustup` 下载，但最终生成可执行文件时，还需要当前操作系统上的链接器和系统库。Windows 上这一步通常体现为 MSVC / Visual Studio Build Tools；macOS 和 Linux 也有类似需求，只是安装方式不同。
+
+| 系统 | Rust 工具链 | 系统构建工具 |
+|---|---|---|
+| Windows | `rustup-init.exe` 下载 | Visual Studio Build Tools、MSVC、Windows SDK |
+| macOS | `rustup-init.sh` 下载 | Xcode Command Line Tools，通常可用 `xcode-select --install` 安装 |
+| Linux | `rustup-init.sh` 下载 | GCC / Clang、`make`、链接器和系统开发包 |
+
+macOS 和 Linux 不一定默认自带完整构建工具。很多开发者机器上已经因为 Git、Homebrew、C/C++ 或其他开发环境装过，所以 Rust 安装时不一定明显提示；如果缺少这些工具，通常会在编译阶段报错，再按系统提示或发行版包管理器补装。
+
+### （4）验证安装
+
+安装完成后，用户可以在 Cargo 的 `bin` 目录下看到 `rustup`、`rustc`、`cargo` 等命令入口，如下图所示：
 
 ![[assets/Image 1.png]]
 
-需要注意的是，这些命令入口并不一定是真正的编译器或构建工具入口本体；在 `rustup` 管理的环境中，`cargo`、`rustc`、`rustdoc` 等通常是由 `rustup` 管理的代理入口，因此这里的大部分命令都是软链接。
+> 在 Windows 上，对应目录通常是 `%USERPROFILE%\.cargo\bin`；在 macOS 或 Linux 上，对应目录通常是 `~/.cargo/bin`。
 
-例如，当在命令行中执行 `cargo build` 时，系统会先根据 `PATH` 找到 `~/.cargo/bin/cargo`。这个入口会转交给 `rustup`，由 `rustup` 根据当前目录、环境变量或默认配置判断应该使用哪个 toolchain，然后再调用对应 toolchain 中真正的 `cargo` 二进制文件。
+需要注意的是，这些命令入口并不一定是真正的编译器或构建工具入口本体；在 `rustup` 管理的环境中，`cargo`、`rustc`、`rustdoc` 等通常是由 `rustup` 管理的代理入口。
+
+例如，当在命令行中执行 `cargo build` 时，系统会先根据 `PATH` 找到 Cargo `bin` 目录中的 `cargo` 入口。这个入口会转交给 `rustup`，由 `rustup` 根据当前目录、环境变量或默认配置判断应该使用哪个 toolchain，然后再调用对应 toolchain 中真正的 `cargo` 二进制文件。
 
 可以通过`rustup which cargo`来查找真实cargo二进制的位置：
 
@@ -67,17 +119,36 @@ rustup which cargo
 
 ![[assets/Image 2.png]]
 
-上述细节了解即可。要执行这些程序，需要将`~/.cargo/bin`目录加入到`PATH`环境变量。但一般安装过程中，`rustup`会自动配置好。安装完成之后，重启终端即可。
+上述细节了解即可。要执行这些程序，需要将 Cargo `bin` 目录加入到 `PATH` 环境变量。但一般安装过程中，`rustup` 会自动配置好。安装完成之后，重启终端即可。
 
 执行如下命令验证是否安装配置成功：
 
 ```shell
 rustup --version
+rustc --version
+cargo --version
+rustup show
 ```
 
 示例：
 
 ![[assets/Image 3.png]]
+
+在 Windows 上，如果 `rustup show` 中看到类似下面的默认工具链，说明当前使用的是 MSVC 工具链：
+
+```text
+stable-x86_64-pc-windows-msvc
+```
+
+还可以创建一个最小项目验证完整编译流程：
+
+```shell
+cargo new hello-rust
+cd hello-rust
+cargo run
+```
+
+如果能够输出 `Hello, world!`，说明 Rust 工具链和系统链接环境都已经配置成功。如果出现 `link.exe not found` 之类的错误，通常说明 Visual Studio Build Tools、MSVC 组件或 Windows SDK 还没有安装完整。
 
 ## 2、设置国内镜像源 ^setting-proxy
 
@@ -150,6 +221,7 @@ rustup --version
 ```shell
 rustup self update
 ```
+
 ### （2）更新Rust工具链
 
 ```shell
@@ -159,6 +231,7 @@ rustup update  # 更新已经安装的 toolchain
 > 现在 `rustup update` 也会在更新 toolchain 时自动检查并更新 `rustup` 自身
 
 ## 3、安装Rust工具链
+
 ### （1）Rust工具链分类
 
 Rust 的工具链主要有三种发布通道：
@@ -242,6 +315,7 @@ fn main() {
 	println!("Hello, world!");
 }
 ```
+
 ### （1）默认输出
 
 执行：
@@ -285,7 +359,7 @@ Rust需要同时满足**稳定性和进化性**：
 rustc main.rs --edition=2021
 ```
 
-`rustc` 也可以直接编译库产物，例如 `rlib`。不过实际项目通常交给 Cargo 管理构建、依赖和链接。相关内容放在 [[9、crate与模块|crate 与模块]] 中单独说明。
+`rustc` 也可以直接编译库产物，例如 `rlib`。不过实际项目通常交给 Cargo 管理构建、依赖和链接。相关内容放在 [[13、crate与模块|crate 与模块]] 中单独说明。
 
 # 五、Cargo
 
@@ -408,7 +482,7 @@ mod tests {
 }
 ```
 
-其中，`#[cfg(test)]` 和 `#[test]` 是与测试相关的内容，详见[[Rust/notes/Rust基础/16、测试|测试]]。
+其中，`#[cfg(test)]` 和 `#[test]` 是与测试相关的内容，详见[[Rust/notes/Rust基础/20、测试|测试]]。
 
 ## 3、构建Cargo项目
 
@@ -482,7 +556,7 @@ cargo clean
 
 ## 7、测试
 
-Cargo 还提供了 `cargo test` 用于运行测试。关于测试的内容较多，参考[[Rust/notes/Rust基础/16、测试|测试]]。
+Cargo 还提供了 `cargo test` 用于运行测试。关于测试的内容较多，参考[[Rust/notes/Rust基础/20、测试|测试]]。
 
 命令如下：
 

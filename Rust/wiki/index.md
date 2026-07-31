@@ -1,6 +1,6 @@
 ---
 title: Rust Wiki 索引
-date: 2026-07-21
+date: 2026-07-31
 ---
 
 # Rust Wiki 索引
@@ -41,6 +41,7 @@ _（暂无）_
 
 - [[Rust IDE 环境配置]] — VS Code 与 RustRover 的 Rust 开发环境设置。
 - [[Rust 安装与镜像源配置]] — 官方 rustup 安装、RsProxy 镜像和验证命令。
+- [[Windows Rust 工具链选择]] — Windows 上 MSVC 与 GNU 工具链的选择、下载和切换。
 
 ## snippets
 
