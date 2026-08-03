@@ -1,7 +1,11 @@
 ---
-title: GitHub Update branch 同步 PR 分支
+title: 同步 PR 分支
 date: 2026-07-29
-tags: [Git, GitHub, Pull-Request, Git协作]
+tags:
+  - Git
+  - GitHub
+  - Pull-Request
+  - Git协作
 aliases:
   - Update branch
   - 同步 PR 分支

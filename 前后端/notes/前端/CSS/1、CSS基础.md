@@ -31,19 +31,17 @@ CSS（Cascading Style Sheets，层叠样式表）负责描述网页的视觉表�
 CSS 的基本单位是一条 **规则（rule）**。一条常见规则由选择器和声明块组成：
 
 ```css
-.profile-card {
-  background-color: white;
-  border: 1px solid #ddd;
-  padding: 16px;
+p {
+  color: pink;
 }
 ```
 
 其中：
 
-- `.profile-card` 是 **选择器（selector）**，表示这条规则要命中哪些元素。
+- `p` 是 **选择器（selector）**，表示这条规则要命中哪些元素。
 - `{ ... }` 是 **声明块（declaration block）**，里面放具体样式。
-- `background-color: white;` 是一条 **声明（declaration）**。
-- `background-color` 是 **属性（property）**，`white` 是 **值（value）**。
+- `color: pink;` 是一条 **声明（declaration）**。
+- `color` 是 **属性（property）**，`pink` 是 **值（value）**。
 
 简单来说，选择器负责“找谁”，声明负责“改成什么样”。
 
@@ -95,6 +93,24 @@ h2 {
 ```
 
 这里 `h2` 命中所有二级标题，`.note` 命中带有 `note` 类名的元素，`#main-title` 只命中指定 ID 的元素。`class` 和 `id` 的 HTML 基础可回看 [[前后端/notes/前端/HTML/3、HTML分组与脚本#三、id 与 class|id 与 class]]。
+
+## 4、CSS 书写规范
+
+1. 选择器和声明块（左大括号）中间保留一个空格距离
+2. 属性名和属性值中间保留一个空格距离
+3. 每个 CSS 属性独占一行（后期会打包压缩无需担心体积问题）
+
+## 5、CSS 注释
+
+在 CSS 代码中，使用`/* */`为代码添加注释。
+
+```css
+span {
+  /* 设置颜色为粉色 */
+  color: pink;
+}
+```
+
 
 # 三、引入方式
 
@@ -180,4 +196,4 @@ blockquote {
 }
 ```
 
-覆盖默认样式时要注意语义和可用性。比如链接默认有下划线，是为了让用户看出它可以点击；如果删除下划线，通常需要用颜色、悬停状态或其他视觉线索补回来。
+覆盖默认样式时要注意语义和可用性。比如链接默认有下划线，是为了让用户看出它可以点击；访问过的链接通常也会有不同颜色，帮助用户判断自己去过哪里。如果删除下划线，通常需要用颜色、悬停状态或其他视觉线索补回来。

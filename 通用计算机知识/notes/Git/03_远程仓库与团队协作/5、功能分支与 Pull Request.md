@@ -54,6 +54,7 @@ PR 给代码审查、讨论、自动检查和最终合并提供了一个固定�
 
 ![[assets/Pasted image 20260728234633.png|600]]
 
+如上图所示，当功能分支推送到远程时，GitHub 上会弹出创建 PR 的弹窗，点击**Compare & pull request**即可创建 PR。
 ## 1、对象关系
 
 | 对象 | 含义 |
@@ -106,7 +107,7 @@ To github.com:YOUR-USER/git-practice-remote.git
 branch 'feature/pr-practice' set up to track 'origin/feature/pr-practice'.
 ```
 
-这里的 `-u` 会让本地 `feature/pr-practice` 跟踪 GitHub 上的 `origin/feature/pr-practice`。后续站在这个分支上时，可以更方便地使用简短的 `git push` 或 `git pull`。
+第一次推送本地新分支时，通常使用 `-u` 选项，即 `--set-upstream`。 `-u` 会将远程的 `origin/feature/pr-practice` 设置为本地 `feature/pr-practice` 的上游分支。设置后，站在该本地分支上，可以直接使用简短的 `git push` 和 `git pull`，Git 会自动知道需要与哪个远程分支进行交互。
 
 ## 2、状态确认
 

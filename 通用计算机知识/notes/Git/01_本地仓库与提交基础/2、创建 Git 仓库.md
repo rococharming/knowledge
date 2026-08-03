@@ -113,7 +113,7 @@ origin  https://github.com/user/repo.git (fetch)
 origin  https://github.com/user/repo.git (push)
 ```
 
-`origin` 只是克隆来源的默认别名，不是特殊的服务器。认证、远程地址和协作流程见 [[通用计算机知识/notes/Git/1、远程仓库认证与凭证管理|远程仓库认证与凭证管理]]。
+`origin` 只是克隆来源的默认别名，不是特殊的服务器。远程地址和第一次推送流程见 [[通用计算机知识/notes/Git/03_远程仓库与团队协作/1、远程仓库与第一次推送|远程仓库与第一次推送]]。
 
 # 五、验证仓库
 
