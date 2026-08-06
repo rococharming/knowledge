@@ -1,13 +1,13 @@
 ---
 title: 用 git cherry-pick 复制指定提交
-date: 2026-08-03
+date: 2026-08-04
 tags: [Git, Git恢复, Git提交, git-cherry-pick]
 aliases:
   - git cherry-pick
   - cherry-pick
   - 复制指定提交
 ---
-
+ 
 # 一、cherry-pick
 
 `git cherry-pick` 用来把某个已有提交引入的改动复制到当前分支，并在当前分支上创建一个新提交。它适合处理“我只要某一个提交的改动，不要整条分支历史”的场景。
@@ -205,7 +205,9 @@ git status
 
 `cherry-pick` 适合“复制某个提交的改动”。如果你想保留一整条分支的上下文，merge 更合适；如果你只是想找到误 reset 前的位置，先看 [[9、用 git reflog 找回 reset 前的位置|reflog]]；如果分支名写错，改名操作在 [[通用计算机知识/notes/Git/02_分支、合并与历史演进/2、创建与切换分支#六、分支改名|分支改名]] 中处理。
 
-# 六、操作判断
+# 六、操作练习
+
+## 1、复制提交
 
 复制指定提交可以按这个顺序：
 
@@ -230,3 +232,72 @@ git log --oneline --decorate --all --max-count=5
 ```
 
 关键判断是：`cherry-pick` 复制的是指定提交引入的改动，并在当前分支生成新提交。只有在你明确“只要这个提交，不要整条分支”时，它才是合适工具。
+
+## 2、清理练习提交
+
+如果 cherry-pick 得到的是未共享的本地练习提交，并且文件内容也确认不要保留，可以把当前分支退回上一个提交。这是 [[6、用 git reset --hard 丢弃最近一次本地提交|hard reset]] 的一个具体练习场景。
+
+![[assets/reset-hard-after-cherry-pick-generated.png|600]]
+
+先确认当前只多出这一条本地提交：
+
+```shell
+git status -sb
+git rev-list --left-right --count origin/main...main
+git log --oneline --decorate origin/main..main
+```
+
+期待状态类似：
+
+```text
+## main...origin/main [ahead 1]
+0  1
+8ed9f08 (HEAD -> main) Add revert practice line
+```
+
+含义是：`origin/main` 没有当前分支缺失的提交，当前 `main` 只比 `origin/main` 多一条提交。此时还要确认这条 ahead 提交确实是准备丢弃的 cherry-pick 练习提交。
+
+再确认 working tree 和 index 没有额外修改：
+
+```shell
+git diff --stat
+git diff --staged --stat
+```
+
+两个命令都没有输出，才说明没有夹带未提交改动。确认无误后再执行：
+
+```shell
+git reset --hard HEAD~1
+```
+
+这个命令会把当前分支退回当前提交的父提交，并同时重置 index 和 working tree。它不会自动 push，也不会删除其他本地分支，例如 `recover/revert-practice`。
+
+## 3、收尾检查
+
+清理后检查：
+
+```shell
+git status -sb
+git branch --list "recover/*"
+git log --oneline --decorate --all --max-count=5
+```
+
+目标状态类似：
+
+```text
+## main...origin/main
+  recover/revert-practice
+ffa4a31 (recover/revert-practice) Revert "Add revert practice line"
+e8e5b34 Add revert practice line
+fe8d9c0 (HEAD -> main, origin/main, origin/HEAD) Merge pull request #1 ...
+```
+
+重点观察：
+
+| 观察点 | 结论 |
+|---|---|
+| 没有 `[ahead 1]` | `main` 已回到 `origin/main` 基线 |
+| `recover/revert-practice` 仍存在 | reset 当前分支不会删除其他分支 |
+| 没有文件路径 | working tree 和 index clean |
+
+如果 `origin/main..main` 里不是明确要丢弃的提交，或者 `git diff --stat` / `git diff --staged --stat` 有输出，先回到 [[1、撤销前的三问诊断|三问诊断]]，不要继续 hard reset。
