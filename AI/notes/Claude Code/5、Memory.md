@@ -153,7 +153,6 @@ CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1 claude --add-dir ../shared-config
 
 - `/init`命令初始化
 - `/memory`命令打开编辑
-- `#`操作符写入
 
 ## 2、/init初始化
 
@@ -194,18 +193,6 @@ CLAUDE_CODE_NEW_INIT=1 claude
 ![[assets/Pasted image 20260522112849.png|500]]
 
 
-## 4、使用`#`快捷写入记忆
-
-在交互输入中，可以用`#`开头快速添加记忆，例如：
-
-```text
-# 在该项目中总是使用 pnpm 而不是 npm 安装
-```
-
-`Claude Code` 会提示你选择要把这条内容保存到哪个记忆文件中或自动写入。
-
-
-
 # 四、编写规范的CLAUDE.md
 
 ## 1、控制文件大小
@@ -219,7 +206,9 @@ CLAUDE_CODE_NEW_INIT=1 claude
 - 按局部规则放到`.claude/rules/`并使用`paths`限定生效范围
 - 使用`@path`导入改善组织结构
 
-需要注意，`@path` 导入只能改善组织方式，不能减少上下文占用。被导入的文件仍然会在启动时展开并加载进上下文。
+需要注意，使用 `@path` 将内容拆分到多个文件，只能改善文件的组织和维护方式，不能减少上下文占用。Claude Code 会展开被导入文件的实际内容，并将其与引用它的 `CLAUDE.md` 一起加载到上下文中。
+
+因此，不要为了缩小 `CLAUDE.md` 而简单地把大量内容移动到其他文件后再通过 `@path` 全部导入。只有删除不必要的内容，或者改用 Skill、带 `paths` 的局部规则等按需加载机制，才能真正减少常驻上下文占用。
 
 
 ## 2、使用清晰结构
@@ -299,6 +288,16 @@ CLAUDE_CODE_NEW_INIT=1 claude
 - Git 工作流参考 @docs/git-instructions.md
 ```
 
+`@path` 可以出现在普通段落、列表等位置，不要求单独占一行。
+
+需要注意，Claude Code 不会解析 Markdown 行内代码和围栏代码块中的导入语句。因此，下面的内容只会被当作普通文本，不会触发导入：
+
+```text
+`@README.md`
+```
+
+这也可以用于在 `CLAUDE.md` 中直接提到 `@path`，而不导入对应文件。
+
 ## 2、路径解析规则
 
 导入路径支持**相对路径**和**绝对路径**。
@@ -322,102 +321,90 @@ repo/
 
 它会相对于 `repo/CLAUDE.md` 所在目录解析。
 
+也可以使用用户主目录路径：
+
+```markdown
+@~/repo/docs/git-instructions.md
+```
+
 ## 3、递归导入深度
 
-被导入的文件还可以继续导入其他文件，但最多支持 **4 层**递归导入。
+被导入的文件还可以继续导入其他文件，但最多支持 **4 层**递
+归导入。
 
-导入解析会跳过 Markdown 行内代码和代码块。如果只是想在说明里提到某个导入写法，而不是真的导入文件，应把它包在反引号里，例如写成 `` `@README` ``。
+例如：
 
+```text
+CLAUDE.md 
+└── 导入 a.md              第 1 次跳转 
+    └── 导入 b.md          第 2 次跳转 
+        └── 导入 c.md      第 3 次跳转 
+            └── 导入 d.md  第 4 次跳转
+```
+
+为了避免层级过深而难以维护，实际使用时应尽量减少递归导入。
 
 ## 4、适合导入的内容
 
-适合通过 `@path` 导入的内容包括：
+`@path` 适合拆分那些需要在每次会话中加载，但不适合全部堆放在主 `CLAUDE.md` 中的内容，例如：
 
-- README
-- package.json
+- 简短的项目概况
 - Git 工作流说明
 - 团队开发规范
-- 本地个人偏好文件等
+- 共享的项目约定
+- 个人项目偏好
+- `AGENTS.md` 等其他代理规则文件
 
 例如：
 
 ```markdown
-# 个人偏好
-- @~/.claude/my-project-instructions.md
+# 项目信息 
+
+- 项目概况：@docs/project-overview.md 
+- Git 工作流：@docs/git-instructions.md 
+- 团队规范：@docs/development-rules.md 
+- 个人偏好：@~/.claude/my-project-instructions.md
 ```
 
-第一次在项目中遇到外部导入时，`Claude Code` 会显示审批对话框，列出相关文件。如果拒绝导入，该导入会保持禁用，审批对话框不会再次出现。
+虽然也可以导入 `README.md`、`package.json` 等文件，但应注意文件大小。被导入文件的完整内容仍会进入上下文，因此不要导入内容庞大、经常变化或并非每次会话都需要的文件。
 
+`@path` 主要用于改善内容组织，并不能减少上下文占用。如果某项知识只在特定任务中需要，更适合将其做成 Skill；如果规则只适用于部分文件，更适合使用带 `paths` 的 `.claude/rules/`。
 
-# 六、CLAUDE.local.md
+## 5、外部导入审批
 
-## 1、概念
+在项目级 `CLAUDE.md` 中，如果导入路径最终指向当前工作目录之外的文件，该导入会被视为外部导入。
 
-`CLAUDE.local.md` 是当前项目中的个人本地记忆文件。它适合存放不应该提交到版本控制的内容，例如：
-
-- 个人常用命令
-- 本地开发环境差异
-- 私有沙盒URL
-- 个人偏好的测试数据
-- 临时调试说明
-
-通常应将它加入 `.gitignore`：
-
-```gitignore
-CLAUDE.local.md
-```
-
-## 2、与 git worktree 的关系
-
-如果在同一个仓库的多个 `git worktree` 工作，需要注意：
-
-被`Git`忽略的`CLAUDE.local.md`只存在于创建它的那个`worktree`，不会自动同步到其他`worktree`。因为`worktree`本质上是一个干净的`checkout`，所以未跟踪文件默认不会存在。
-
-如果希望多个 `worktree` 共享同一份个人指令，更推荐在 `CLAUDE.md` 中从用户目录导入一个文件，例如：
+例如：
 
 ```markdown
-# 个人偏好  
-  
-- @~/.claude/my-project-instructions.md
+@~/.claude/my-project-instructions.md
 ```
 
-由于团队其他成员的机器没有 `~/.claude/my-project-instructions.md` 文件，因此不会导入。
+Claude Code 第一次在该项目中遇到外部导入时，会显示审批对话框，并列出准备导入的文件。
 
-不过，`Claude Code`还提供了一种机制，那就是项目根目录下的`.worktreeinclude`文件。该文件用于指定在创建新的`worktree`时，需要复制进去的，被Git忽略的文件。
+如果拒绝审批：
 
-当`Claude Code`通过以下方式创建 Git worktree 时，会读取这个文件：
+- 这些外部导入会保持禁用
+- 对应文件不会进入上下文
+- 该项目之后不会再次显示相同的审批对话框
 
-- `claude --worktree`
-- `EnterWorktree`工具
-- 子代理的`isolation: worktree`
+该机制用于防止共享项目中的 `CLAUDE.md` 在未经同意的情况下导入工作目录之外的文件。
 
-`.worktreeinclude` 中的匹配规则使用 `.gitignore` 语法
-
-只要同时满足以下两个条件的文件才被复制：
-
-1. 匹配`.worktreeinclude`中的某条规则
-2. 本身也被 Git 忽略
-
-示例：
+用户级记忆文件中的导入不需要该审批，例如：
 
 ```
-# 本地环境文件
-.env
-.env.local
-
-# API 凭据
-config/secrets.json
-
-# 本地个人记忆文件
-CLAUDE.local.md
+~/.claude/CLAUDE.md
+~/.claude/rules/*.md
 ```
 
+因为这些文件属于用户自己的个人配置，会被视为与其他用户级配置具有相同的信任级别。
 
-# 七、AGENTS.md
 
-Claude Code 默认读取的是 `CLAUDE.md`，而不是`AGENTS.md`。
+## 6、AGENTS.md
 
-如果你的仓库已经为其他编码代理维护了 `AGENTS.md`，不需要重复写一份相同内容。可以创建一个 `CLAUDE.md`，在其中导入 `AGENTS.md`：
+Claude Code 比较特殊，长期记忆文件默认读取的是 `CLAUDE.md`，而不是`AGENTS.md`。
+
+如果你的仓库已经为其他编码代理（如 Codex）维护了 `AGENTS.md`，不需要重复写一份相同内容。可以创建一个 `CLAUDE.md`，在其中导入 `AGENTS.md`：
 
 示例：
 
@@ -435,371 +422,95 @@ Use plan mode for changes under `src/billing/`.
 ln -s AGENTS.md CLAUDE.md
 ```
 
-需要注意，Windows 创建符号链接通常需要管理员权限或开启 Developer Mode，因此在 Windows 上更推荐使用 `@AGENTS.md` 导入。
+> 需要注意，Windows 创建符号链接通常需要管理员权限或开启 Developer Mode，因此在 Windows 上更推荐使用 `@AGENTS.md` 导入。
 
-# 八、使用.claude/rules/整理规则
 
-## 1、rules规则
-
-当项目规模变大时，如果所有规则都堆在一个`CLAUDE.md`中，容易出现几个问题：
-
-- 文件越来越长，不利于阅读和维护
-- 不同主题的规则混在一起，不便于团队协作更新。
-- 某些只适用于局部目录的规则，也会被每次对话无差别加载
-- 这些内容在会话启动时一次性加载，会消耗大量上下文。
-
-`.claude/rules`的作用是**把规则拆分为独立文件，并支持按路径生效**。这样既可以让规则体系更清晰，也可以减少无关上下文的干扰。
-
-
-## 2、基本目录结构
-
-只需要把`.md`文件放到项目的`.claude/rules`目录即可。
-
-示例：
-
-```shell
-your-project/
-├── CLAUDE.md                # 主项目指令
-├── .claude/
-│   └── rules/
-│       ├── code-style.md    # 代码风格指南
-│       ├── testing.md       # 测试约定
-│       └── security.md      # 安全要求
-```
-
-每个文件最好只覆盖一个主题，并使用清晰文件名，例如：
-
-- `testing.md`
-- `code-style.md`
-- `security.md`
-- `api-design.md`
-
-`.claude/rules/`下的`.md`文件会被**递归**发现，因此也可以继续按领域拆分：
-
-```shell
-.claude/rules/
-├── frontend/
-│   └── react.md
-├── backend/
-│   └── api.md
-└── testing.md
-```
-
-
-## 3、无条件加载的规则
-
-如果规则文件没有`paths`的`YAML frontmatter`，它会在会话启动时加载。优先级与`CLAUDE.md`相同。
-
-这类规则适合存放全项目都成立的规范，例如：
-
-- 通用代码风格
-- 提交前测试要求
-- 安全基线要求
-- 全项目统一命名约定
-
-换句话说，没有 `paths` 的规则文件，本质上就是拆分版的全局项目指令。
-
-## 4、路径特定规则
-
-如果某些规则只适用于特定目录或文件类型，就可以在规则文件顶部使用`YAML frontmatter`的`paths`字段。
-
-示例：
-
-```yaml
----
-paths:
-  - "src/api/**/*.ts"
----
-
-# API 开发规则
-
-- 所有 API 接口都必须包含输入校验
-- 使用统一的错误响应格式
-- 补充 OpenAPI 文档注释
-
-```
-
-这表示：只有当 `Claude Code` 处理匹配 `src/api/**/*.ts` 的文件时，这组规则才会生效。
-
-**需要注意，路径规则不是每次工具调用都会触发，而是在`Claude Code`读取匹配文件时触发**。
-
-`paths`支持`glob`模式来匹配文件路径，可以根据目录、扩展名，或者二者组合进行限制。
-
-常见示例如下：
-
-|模式|含义|
-|---|---|
-|`**/*.ts`|任意目录下的 TypeScript 文件|
-|`src/**/*`|`src/` 目录下的所有文件|
-|`*.md`|项目根目录中的 Markdown 文件|
-|`src/components/*.tsx`|指定目录下的 React 组件文件|
-
-也可以一次匹配多个扩展名：
-
-```yaml
----
-paths:
-  - "src/**/*.{ts,tsx}"
-  - "lib/**/*.ts"
-  - "tests/**/*.test.ts"
----
-```
-
-这类写法适合把同一类规则应用到多个相关目录或多种文件类型上。
-
-## 5、使用符号链接共享规则
-
-`.claude/rules/` 支持符号链接，因此可以把一套公共规则维护在统一位置，再链接到多个项目复用。
-
-示例：
-
-```shell
-ln -s ~/shared-claude-rules .claude/rules/shared
-ln -s ~/company-standards/security.md .claude/rules/security.md
-```
-
-第一条表示把一个共享规则目录链接进当前项目。
-
-第二条表示把一个单独规则文件链接进当前项目。
-
-符号链接会被正常解析和加载，并且循环符号链接会被检测和处理。
-
-## 6、用户级规则
-
-除了项目内的 `.claude/rules/`，还可以在用户目录下维护个人规则：
-
-```shell
-~/.claude/rules/
-├── preferences.md    # 个人编码偏好
-└── workflows.md      # 个人工作流习惯
-```
-
-这类规则会应用到当前机器上的所有项目，适合保存不依赖具体项目、但你希望 Claude 始终遵循的偏好，例如：
-
-- 个人代码风格
-- 默认分析方式
-- 常用工作流
-- 偏好的修改策略
-
-**加载顺序上，用户级规则会先于项目规则加载，因此项目规则具有更高优先级**。
-
-# 九、大型团队管理CLAUDE.md
-
-## 1、组织级CLAUDE.md
-
-在团队或组织内推广 `Claude Code` 时，可以部署一份集中管理的组织级 `CLAUDE.md`，为所有开发者提供统一行为指引。
-
-组织级 `CLAUDE.md` 需要放置在系统指定的托管策略路径中：
-
-- **macOS**：`/Library/Application Support/ClaudeCode/CLAUDE.md`
-- **Linux / WSL**：`/etc/claude-code/CLAUDE.md`
-- **Windows**：`C:\Program Files\ClaudeCode\CLAUDE.md`
-
-组织级 `CLAUDE.md` 不能被个人设置排除。这样可以确保组织统一下发的行为指引始终生效。
-
-
-## 2、排除特定 CLAUDE.md  ^claude-md-excludes
-
-在大型`monorepo`中，仓库上层目录或其他团队目录中可能也存在`CLAUDE.md`或`.claude/rules/`。这些指令不一定和当前工作相关，甚至可能造成干扰。
-
-这时可以使用`claudeMdExcludes`设置，按路径或glob模式排除特定的`CLAUDE.md`文件或规则目录，避免它们被加载进上下文。
-
-一般放在`.claude/settings.local.json`中：
-
-```json
-{
-  "claudeMdExcludes": [
-    "**/monorepo/CLAUDE.md",
-    "/home/user/monorepo/other-team/.claude/rules/**"
-  ]
-}
-```
-
-`claudeMdExcludes` 使用 **glob 语法**，并且是针对**绝对文件路径**进行匹配的。
-
-它可以在 user、project、local 或托管策略等设置层中配置，数组会跨层合并。托管策略中的 `CLAUDE.md` 不能被排除。
-
-
-# 十、auto memory
+# 六、CLAUDE.local.md
 
 ## 1、概念
 
-`auto memory` 可以让 `Claude Code` 在不需要用户手动维护的情况下，跨会话积累项目相关知识。
+`CLAUDE.local.md` 是当前项目中的个人本地记忆文件，适合存放只与个人环境或工作习惯有关、不应该提交到版本控制的内容，例如：
 
-它会在工作过程中，根据内容是否值得长期保留，自动决定是否记录一些信息，例如：
+- 个人常用命令
+- 本地开发环境差异
+- 私有沙盒URL
+- 个人偏好的测试数据
+- 临时调试说明
 
-- 构建命令
-- 调试经验
-- 架构说明
-- 代码风格偏好
-- 工作流习惯
-- 用户反复纠正过的行为模式
+它会与项目中的`CLAUDE.md`一起加载。同一目录中，`CLAUDE.local.md`的内容会排在`CLAUDE.md`后面进入上下文。
 
-`Claude Code`不会在每次对话后都写入记忆，而是只保存它判断对未来会帮助的内容。
+但两者仍然属于提供给 Claude 的自然语言指令，不是具有严格覆盖机制的配置文件。因此，应尽量避免在两个文件中编写互相冲突的规则。
 
+通常应将它**加入 `.gitignore`**：
 
-## 2、启用和禁用
-
-自动记忆默认是**开启**的。
-
-可以通过三种方式控制它：
-
-1. 在会话中运行`/memory`，然后在界面中切换自动记忆开关。
-![[assets/Pasted image 20260526001218.png|500]]
-
-
-2. 在项目设置中设置`autoMemoryEnabled`配置
-
-例如，关闭自动记忆：
-
-```json
-{
-  "autoMemoryEnabled": false
-}
+```gitignore
+CLAUDE.local.md
 ```
 
+## 2、与 Git worktree 的关系
 
-3. 环境变量禁用
+如果在同一个仓库的多个 Git worktree 中工作，需要注意：被Git 忽略的 `CLAUDE.local.md` 只存在于创建它的那个 worktree 中，不会自动出现在其他 worktree。
 
-```shell
-CLAUDE_CODE_DISABLE_AUTO_MEMORY=1
+这是因为新建的 worktree 是一个独立的 checkout。主 worktree 中未被跟踪的文件，例如：
+
+```text
+CLAUDE.local.md
+.env
 ```
 
+默认不会被复制到新 worktree。
 
-## 3、存储位置
+如果希望多个 `worktree` 共享同一份个人指令，可以在项目级记忆文件中导入用户目录下的文件：
 
-每个项目都有独立的自动记忆目录，默认位置是：
-
-```shell
-~/.claude/projects/<project>/memory/
+```markdown
+# 个人偏好  
+  
+- @~/.claude/my-project-instructions.md
 ```
 
-其中 `<project>` 通常根据 Git 仓库路径推导得到，因此同一个仓库中的所有工作树和子目录都共享同一个存储目录。
+这份文件存放在用户目录中，因此多个 worktree 都可以引用同一个文件。由于团队其他成员的机器没有 `~/.claude/my-project-instructions.md` 文件，因此不会导入。
 
-如果项目没有纳入 Git 版本控制，则使用项目的根目录作为存储目录。
+Claude Code 还提供了另外一种机制，可以在项目根目录创建`.worktreeinclude`文件，用于在创建新 `worktree`时复制指定的 Git 忽略文件。
 
-如果希望把自动记忆保存到其他位置，可以配置 `autoMemoryDirectory`：
+`.worktreeinclude` 使用 `.gitignore` 风格的匹配语法。文件只有同时满足以下两个条件才会被复制：
 
-```json
-{
-  "autoMemoryDirectory": "~/my-custom-memory-dir"
-}
-```
+1. 匹配`.worktreeinclude`中的某条规则
+2. 本身也被 Git 忽略
 
-这个值必须是**绝对路径**，或者以 `~/` 开头。
-
-这个配置可以来自用户、项目、本地、托管策略配置，也可以通过启动参数传入。如果写在项目设置或本地设置中，需要先信任当前工作区，避免克隆别人的项目后未经确认就把自动记忆写到意外位置。
-
-
-## 4、目录结构
-
-自动记忆目录通常包含一个入口文件（`MEMORY.md`）和若干主题文件：
-
-```shell
-~/.claude/projects/<project>/memory/
-├── MEMORY.md
-├── debugging.md
-├── api-conventions.md
-└── ...
+例如：
 
 ```
+# 本地环境文件
+.env
+.env.local
 
-其中：
+# 本地配置
+config/secrets.json
 
-- `MEMORY.md`是**索引文件**，会记录记忆内容的组织形式
-- `debugging.md`、`api-conventions.md`等是按主题拆分的详细笔记
-- `Claude Code`会根据需要继续创建其他主题文件
+# 本地个人记忆文件
+CLAUDE.local.md
+```
 
+上述配置会在 Claude Code 创建新 worktree 时，把这些文件从原工作目录复制到新 worktree。
 
-## 5、工作方式
+该机制适用于 Claude Code 通过内置 Git worktree 逻辑创建的工作目录，包括：
 
-每次对话开始时，`Claude Code`不会把整个自动记忆目录全部加载进上下文。它只会加载`MEMORY.md`的一部分：前 200 行或前 25 KB（取先满足者），超出这个范围的内容不会在启动时自动加载。
+- `claude --worktree`
+- 子代理使用的隔离 worktree
+- Claude Code 桌面应用创建的并行会话 worktree
 
-因此，`MEMORY.md`会尽量短小，作为索引文件记录整个记忆目录中有什么内容，以及详细信息存放在哪些主题文件中。
+需要区分“创建”和“进入”：
 
-这个限制只适用于 `MEMORY.md`。`CLAUDE.md` 会完整加载，但文件越短、越具体，通常越容易被稳定遵循。
+- 创建新 worktree 时会处理 `.worktreeinclude`
+- 进入已经存在的 worktree 时，不会重新复制这些文件
+- 使用普通的 `git worktree add` 手动创建 worktree 时，Claude Code 不会参与创建过程，因此不会处理 `.worktreeinclude`
 
-当 `Claude Code` 写入 `MEMORY.md` 后，会检查它是否接近或超过读取限制。如果接近限制，会提示把索引改短：每条记忆尽量一行，把细节移到主题文件，并合并或删除陈旧条目。如果已经超过限制，写入仍会成功，但会要求重写索引，因为超出部分下次启动时不会被加载。
+例如，worktree 创建完成后再修改原目录中的：
 
-检查 `MEMORY.md` 大小时，会先移除 `YAML frontmatter` 和块级 `HTML` 注释，只计算真正会加载进上下文的内容。
+```text
+CLAUDE.local.md
+```
 
-主题文件如`debugging.md`、`patterns.md`不会在启动时加载，只有当 `Claude Code` 认为相关信息有用时，才会使用普通文件工具按需读取。
+其他已经存在的 worktree 不会自动更新，需要手动复制或重新创建。
 
-主会话的 `auto memory` 默认不会加载到子代理中。子代理如果启用自己的记忆，会使用独立的记忆目录；如果是从当前会话 fork 出来的子代理，则会继承父会话已有上下文。
-
-在会话过程中，如果你看到：
-
-- `Writing memory`
-- `Recalled memory`
-- `Saved 2 memories`
-- `Recalled 2 memories`
-
-说明 `Claude Code` 正在读写自动记忆目录。
-
-如果某个自动记忆文件带有 `YAML frontmatter`，`Claude Code` 后续写入它时，会在 frontmatter 中记录 `modified` 时间，用来表示这条记忆最后被更新的时间。没有 frontmatter 的文件不会因此自动新增 frontmatter。
-
-## 6、审计与编辑
-
-自动记忆文件本质上就是普通的`Markdown`文件，因此可以随时查看、修改、删除、拆分和重命名。
-
-如果不确定 `Claude Code` 记住了什么，可以运行`/memory`，然后打开自动记忆文件夹检查。
-
-
-
-# 十一、排查记忆相关问题
-
-## 1、Claude Code没有遵循记忆文件
-
-首先要明确：**`CLAUDE.md` 不是系统提示本身的一部分**，而是在系统提示之后，作为额外用户消息传递给模型。
-
-因此，它会影响`Claude Code`的行为，但不等于强制执行。
-
-排查顺序如下：
-
-1. 运行 `/context`，确认相关 `CLAUDE.md`、`CLAUDE.local.md`、`.claude/rules/*.md` 是否确实出现在 `Memory files` 中。
-2. 如果没加载，检查文件是否放在当前会话能加载的位置。
-3. 如果加载了，检查是否存在相互冲突的规则
-4. 把模糊指令改成具体、可验证的指令
-
-如果只是想打开、创建或编辑这些记忆文件，可以使用 `/memory`。
-
-如果指令必须在特定时间点运行，例如每次提交或每次文件编辑之后，请将其作为 Hook 来编写。Hook 在固定的生命周期事件中作为shell命令执行。
-
-对于希望在系统提示词级别执行的命令，使用`--append-system-prompt`，由于必须每次调用时都传递它，因此它更适合脚本和自动化，而不是交互式使用。
-
-使用 `InstructionsLoaded` Hook 来记录加载的确切指令文件、加载时间以及原因，这对于调试特定路径的规则或子目录中的懒加载文件非常有用。
-
-
-## 2、不知道自动记忆保存了什么
-
-如果不确定`Claude Code`已经记住了哪些内容，可以直接运行 `/memory`，然后打开自动记忆文件夹查看、编辑或删除。
-
-## 3、CLAUDE.md太大
-
-如果`CLAUDE.md`超过 200 行，通常应该开始整理。
-
-可以采用以下方式：
-
-- 删除不需要每次会话加载的内容。
-- 将路径相关规则放到 `.claude/rules/`。
-- 将多步骤流程改成 `skill`。
-- 将临时说明从 `CLAUDE.md` 中移除。
-- 将本地偏好放到 `CLAUDE.local.md` 或用户目录导入文件中。
-
-需要注意的是，把内容拆成 `@path` 导入虽然有助于组织结构更清晰，但**不会减少上下文占用**。因为被导入的文件仍然会在启动时一起加载进上下文，所以导入解决的是“可维护性”问题，而不是“长度”问题。
-
-## 4、/compact之后指令似乎丢失了
-
-执行 `/compact` 之后，并不是所有指令都会以同样方式保留下来。
-
-项目根目录的 `CLAUDE.md` 会在压缩后继续保留，因为 `/compact` 之后，`Claude Code`会重新从磁盘读取它，并再次注入到会话中。
-
-但子目录中的嵌套 `CLAUDE.md` 不会自动重新注入。它们只有在 `Claude Code` 后续再次读取对应子目录中的文件时，才会重新加载。
-
-因此，如果你发现某条指令在 `/compact` 之后消失了，常见原因是：
-
-- 这条指令原本只存在于对话里，没有写入文件
-- 这条指令位于嵌套 `CLAUDE.md` 中，而该目录尚未被重新触发读取
-- 这条指令来自路径限定规则，但当前还没有读取匹配路径的文件。
-
-如果希望某条规则在压缩后稳定保留，最可靠的方法是写进项目根目录的 `CLAUDE.md`，而不是只留在对话内容中。
+如果配置了自定义 `WorktreeCreate` Hook，它会完全替换 Claude Code 默认的 worktree 创建逻辑，此时 `.worktreeinclude` 不会被自动处理。需要复制本地文件时，应在 Hook 脚本中自行实现。
