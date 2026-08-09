@@ -302,7 +302,7 @@ README 给出的主张是：JSON 数据可减少约 60%～95% token，而 Coding
 
 - **模型原生 Compaction**：通常压缩长对话历史；Headroom 更关注发送前的工具输出和内容类型路由，并提供 CCR 原文检索。两者可以互补。
 - **RTK / lean-ctx**：主要精简命令行工具输出；Headroom 的范围更大，还处理 API、日志、JSON、文本和代理请求。Headroom 默认会在 Agent Wrap 中配置 RTK，也可选择 lean-ctx。
-- **[[6、Ponytail|Ponytail]]**：Ponytail 约束 Agent 的实现决策和输出行为，减少不必要代码；Headroom 压缩进入模型的上下文。前者解决“不要过度实现”，后者解决“不要把所有原始数据都塞给模型”，不能相互替代。
+- **Ponytail**：Ponytail 约束 Agent 的实现决策和输出行为，减少不必要代码；Headroom 压缩进入模型的上下文。前者解决“不要过度实现”，后者解决“不要把所有原始数据都塞给模型”，不能相互替代。
 
 ## 6、参考
 
