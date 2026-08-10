@@ -31,10 +31,10 @@ aliases:
 ## 已完善的笔记
 
 - [x] [[1、Claude Code入门]]
-- [x] [[3、Permission Mode]]
-- [x] [[4、Slash Command]]
-- [x] [[5、Memory]]
-- [x] [[6、Skill]]
+- [x] [[AI/notes/Claude Code/2、Permission Mode]]
+- [x] [[AI/notes/Claude Code/3、Slash Command]]
+- [x] [[AI/notes/Claude Code/4、Memory]]
+- [x] [[AI/notes/Claude Code/5、Skill]]
 - [x] [[8、MCP]]
 - [x] [[1、skill-creator]]
 - [x] [[2、find-skills]]

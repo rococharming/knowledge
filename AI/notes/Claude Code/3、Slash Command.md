@@ -35,7 +35,7 @@ aliases:
 
 旧式 `.claude/commands/*.md` 自定义命令仍然兼容，但 custom commands 已经合并进 Skills，`.claude/commands/deploy.md` 和 `.claude/skills/deploy/SKILL.md` 都可以创建 `/deploy`，但 Skill 支持目录结构、辅助文件、自动触发、可见性控制等更多能力，因此现在更推荐使用 Skill。
 
-关于 Skill 的更详细介绍参考[[6、Skill|Skill]]。
+关于 Skill 的更详细介绍参考[[AI/notes/Claude Code/5、Skill|Skill]]。
 
 4. 插件命令 / 插件 Skill
 

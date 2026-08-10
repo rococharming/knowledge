@@ -51,7 +51,7 @@ aliases:
 
 如果某条内容是复杂的多步骤流程，或者是适用于代码库中的某个特定区域，不建议全部堆到`CLAUDE.md`。更适合的方式：
 
-- 放到Skill中，作为可复用工作流（参考[[6、Skill|Skill]]）。
+- 放到Skill中，作为可复用工作流（参考[[AI/notes/Claude Code/5、Skill|Skill]]）。
 - 放到`.claude/rules/`中，并通过`paths`限定只在特定路径下生效
 
 ## 2、适合写入CLAUDE.md的场景

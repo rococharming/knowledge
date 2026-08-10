@@ -65,7 +65,7 @@ my-plugin/
 
 ## 1、Skills
 
-`Plugin`可包含`Skills`（详见[[6、Skill|Skills]]）以扩展`Claude`的能力。
+`Plugin`可包含`Skills`（详见[[AI/notes/Claude Code/5、Skill|Skills]]）以扩展`Claude`的能力。
 
 在插件根目录下添加`Skills/`目录，其中包含`SKILL.md`文件的具体 skill 名的目录：
 

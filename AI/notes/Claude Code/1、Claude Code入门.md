@@ -408,7 +408,7 @@ claude --permission-mode bypassPermissions
 ![[assets/Pasted image 20260713022832.png|600]]
 
 
-有关权限模式的更详细介绍参考[[3、Permission Mode|权限模式]]。
+有关权限模式的更详细介绍参考[[AI/notes/Claude Code/2、Permission Mode|权限模式]]。
 
 # 六、快速入门实战
 
