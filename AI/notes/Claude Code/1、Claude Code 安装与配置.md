@@ -149,16 +149,17 @@ Kimi API 开放平台是更通用的 API 平台，用来按 API Key 调用模型
 ```json
 {
   "env": {
+    "ANTHROPIC_AUTH_TOKEN": "sk-d43e8ad30991463693f421c9b6b68f3b",
     "ANTHROPIC_BASE_URL": "https://api.deepseek.com/anthropic",
-    "ANTHROPIC_AUTH_TOKEN": "YOUR API KEY",
-    "ANTHROPIC_DEFAULT_FABLE_MODEL": "deepseek-v4-pro[1M]",
-    "ANTHROPIC_DEFAULT_FABLE_MODEL_NAME": "deepseek-v4-pro",
+    "ANTHROPIC_DEFAULT_FABLE_MODEL": "deepseek-v4-flash[1M]",
+    "ANTHROPIC_DEFAULT_FABLE_MODEL_NAME": "deepseek-v4-flash",
     "ANTHROPIC_DEFAULT_HAIKU_MODEL": "deepseek-v4-flash",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "deepseek-v4-pro[1M]",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL_NAME": "deepseek-v4-pro",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "deepseek-v4-pro[1M]",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL_NAME": "deepseek-v4-pro",
-    "ANTHROPIC_MODEL": "deepseek-v4-pro"
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "deepseek-v4-flash[1M]",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL_NAME": "deepseek-v4-flash",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "deepseek-v4-flash[1M]",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL_NAME": "deepseek-v4-flash",
+    "ANTHROPIC_MODEL": "deepseek-v4-flash[1M]",
+    "CLAUDE_CODE_EFFORT_LEVEL": "max"
   }
 }
 ```
@@ -320,7 +321,7 @@ Claude Code 默认以英文方式回答，这里我们可以先引入`CLAUDE.md`
 
 ## 5、/clear
 
-`/clear` 用于清空当前上下文，开始一个新的上下文对话。别名：`new`和`reset`。它比较适合在任务边界使用：
+`/clear` 用于清空当前上下文，开始一个新的上下文对话。别名：`new`和`reset`。它比较适合在如下场景使用：
 
 - 准备开始另一个**完全无关**的任务
 - 会话开始混淆旧问题和新问题
@@ -329,42 +330,34 @@ Claude Code 默认以英文方式回答，这里我们可以先引入`CLAUDE.md`
 
 > 注意，clear 不会删除旧会话的上下文，后续仍然可以通过 `/resume` 在历史上下文记录中找到。
 
-如果当前上下文太长，但模型回答效果仍然不错，想延续当前任务，则可以使用`/compact`命令。
 
 ## 6、/compact
 
-`/compact` 用于主动压缩当前会话上下文，把历史会话整理成较短摘要，从而给后续对话腾出上下文空间。
+`/compact` 用于压缩当前会话上下文（Context Window），将较早的对话、工具调用、结果等信息总结成一份摘要，然后继续基于摘要工作，以释放上下文空间。LLM 有上下文窗口限制，上下文无法一直无限制增长，所以 Agent 需要对上下文进行压缩。
 
-它适合在长任务还没结束、但上下文已经比较长时使用。
+`/compact`不是清空对话，也不是重新开始。
 
-压缩会尽量保留关键信息，但细节仍可能丢失，所以可以主动指定保留重点。使用 `/compact [instructions]`附带重点压缩说明。
+压缩会尽量保留关键信息，但细节仍可能丢失，可以主动指定保留重点。使用 `/compact [instructions]`附带重点压缩说明。
 
 示例：
 
 ```text
 /compact
-/compact Focus on the API changes
-/compact 保留数据库结构、接口变更和未完成 TODO
+/compact 保留当前任务目标、修改方案和未完成事项
 ```
 
-即使不主动压缩，`Claude Code` 也会在上下文临近上限时**自动进行上下文压缩**。但自己主动压缩上下文是一个良好的习惯。
+即使不主动执行`/compact`压缩，Claude Code 也会在上下文临近上限时**自动进行上下文压缩**，以避免超出限制。
 
-
-## 7、/model和/effort
+## 7、/model
 
 `/model` 用于切换当前会话使用的模型。
 
 `/model` 后不带模型名称时，会打开模型选择器。例如：
 
-![[assets/Pasted image 20260709133121.png|400]]
 
-`/model` 后带模型名称时，则可以直接切换到指定模型。
+![[assets/Pasted image 20260811234533.png|600]]
 
-示例：
-
-```text
-/model [模型名]
-```
+由于这里模型映射的都是 deepseek-v4-flash，因此这里没必要切换。当有不同模型时，可以根据当前要完成的任务难易程度选择不同模型控制成本。
 
 对于支持 `effort level` 的模型，还可以执行 `/effort`：
 
@@ -372,13 +365,18 @@ Claude Code 默认以英文方式回答，这里我们可以先引入`CLAUDE.md`
 
 
 
-## 8、/resume
+## 8、/effort
+
+`/effort` 是 Claude Code 控制“模型推理投入程度”的命令，本质是调整 Claude API 的 `effort` 参数。它主要对 Anthropic Claude 模型有效；如果你接入 DeepSeek 等第三方模型，通常没有实际作用，除非第三方兼容层明确实现了该参数。
+
+
+## 9、/resume
 
 `/resume` 用于恢复或切换到之前的会话。可以通过会话 ID 或会话名称恢复，也可以不带参数打开会话选择器。`/continue` 是它的别名。
 
 示例：
 
-```bash
+```shell
 /resume
 /resume my-session-name
 /resume <session-id>
@@ -386,116 +384,8 @@ Claude Code 默认以英文方式回答，这里我们可以先引入`CLAUDE.md`
 
 执行 `/resume` 会打开会话选择器：
 
-![[assets/image-20260427225053266.png|500]]
+![[assets/Pasted image 20260812001952.png|600]]
 
-## 9、/exit
+## 10、/exit
 
-`/exit` 用于退出当前 `Claude Code` 会话，返回 shell。它的别名是 `/quit`。
-
-# 五、权限模式
-
-权限模式（Permission Mode）用于控制 Claude Code 会话在编辑文件、执行命令或发起网络请求前，是否需要向用户确认。不同模式对应不同的自主程度：监督越多，越安全；确认越少，效率越高，但风险也更大。
-
-选择什么权限模式，依据具体的实际情况来定。
-
-日常使用中，Claude Code 会话启动后默认有三种权限模式：
-
-- `default`：默认模式。该模式下，Claude Code 可以读取文件，但进行文件编辑、运行命令或其他可能产生影响的操作前，会先向你确认。
-- `acceptEdits`：自动编辑模式。不仅可以读取文件，同时自动批准在**工作目录内**进行文件创建和编辑。
-- `plan`：计划模式。它也是只读模式。在该模式下，Claude Code 会阅读和分析代码，探索项目结构，并给出修改方案，但不会直接修改源代码。`plan` 并不是完全不执行命令，`Claude Code` 仍然可能运行相关命令进行探索，只是不会编辑代码和文件。
-
-进入 Claude Code 会话后，默认是`default`模式：
-
-![[assets/Pasted image 20260713022422.png|600]]
-
-按 <kbd>Shift</kbd> + <kbd>Tab</kbd> 键在权限模式之间循环切换。
-
-```text
-default -> acceptEdits -> plan
-```
-
-当前模式会显示在状态栏中，如下：
-
-![[assets/Pasted image 20260713022548.png|600]]
-
-
-![[assets/Pasted image 20260713022607.png|600]]
-
-此外，Claude Code 还有 **Yolo 模式**：`bypassPermissions`，也就是跳过权限检查。
-
-`bypassPermissions`会禁用权限提示和安全检查，工具调用会立即执行。可以简单理解为：**基本不问，直接执行**。
-
-它的自主性最高，但风险也最大。适合非常确定环境安全、任务边界清晰，并且你愿意承担误操作风险的场景。
-
-启动 Claude Code 时，如果增加`--dangerously-skip-permissions`，就会进入`bypassPermissions`。
-
-```shell
-claude --dangerously-skip-permissions
-```
-
-此时`bypassPermissions`也加入了 <kbd>Shift</kbd> + <kbd>Tab</kbd> 的模式循环中。
-
-也可以通过指定 `--permission-mode` 为 `bypassPermissions` 进入：
-
-```shell
-claude --permission-mode bypassPermissions
-```
-
-如图所示：
-
-![[assets/Pasted image 20260713022832.png|600]]
-
-
-有关权限模式的更详细介绍参考[[AI/notes/Claude Code/2、Permission Mode|权限模式]]。
-
-# 六、快速入门实战
-
-下面进行一个简单实战：让 Claude Code 实现一个网页版的待办事项应用：
-
-这里先指定计划方案，创建项目目录进入会话后，先切换到`plan mode`，在对话框输入：
-
-```text
-设计一个 todo 应用，通过 HTML + CSS + JavaScript 实现，请你规划下需求和技术方案
-```
-
-如图所示：
-
-![[assets/image-20260427234137834.png|600]]
-
-在整个过程中，Claude Code 会和你确认一些功能需求。确认完成后，它会生成一份较完整的实现计划。
-
-如果计划符合你的预期，可以让 Claude Code 直接按计划开始执行；
-
-如果对当前计划还不满意，也可以继续补充需求，再让它重新调整方案。
-
-示例：
-
-**沟通需求**：
-
-![[assets/image-20260427234331376.png|600]]
-
-![[assets/image-20260427234350263.png|600]]
-
-![[assets/image-20260427234413903.png|600]]
-
-**生成方案**：
-
-![[assets/image-20260427234632965.png|600]]
-
-**执行计划**：
-
-![[assets/image-20260427234715436.png|600]]
-
-任务完成后，最终的效果如下：
-
-![[assets/image-20260427234915059.png|600]]
-
-# 七、Tips
-
-1. 在 Claude Code 会话中，按下 <kbd>!</kbd> 可进入 Bash 执行命令。
-2. macOS 下，在对话框输入内容，换行需要按 <kbd>Option</kbd> + <kbd>Enter</kbd>。如果使用的终端是`Terminal`，还需要在`Terminal`设置中勾选「将 <kbd>Option</kbd> 键用作 <kbd>Meta</kbd> 键」才能生效；Windows 下的换行快捷键是 <kbd>Shift</kbd> + <kbd>Enter</kbd>。
-
-![[assets/image-20260427235238808.png|500]]
-
-3. 如果觉得在对话框输入内容不方便，按下 <kbd>Ctrl</kbd> + <kbd>G</kbd> 可以打开默认编辑器来编辑对话内容，比如默认打开 `VS Code`。
-4. 对话框支持图片输入，可以直接将图片拖到对话框或按 <kbd>Ctrl</kbd> + <kbd>V</kbd> 粘贴。
+`/exit` 用于退出当前  Claude Code 会话，返回 shell。它的别名是 `/quit`。

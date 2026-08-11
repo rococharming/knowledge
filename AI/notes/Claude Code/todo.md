@@ -30,7 +30,7 @@ aliases:
 
 ## 已完善的笔记
 
-- [x] [[1、Claude Code入门]]
+- [x] [[AI/notes/Claude Code/1、Claude Code 安装与配置]]
 - [x] [[AI/notes/Claude Code/2、Permission Mode]]
 - [x] [[AI/notes/Claude Code/3、Slash Command]]
 - [x] [[AI/notes/Claude Code/4、Memory]]

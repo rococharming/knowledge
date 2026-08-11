@@ -75,7 +75,7 @@ MCP Server 可以暴露Prompts，这些 Prompts 会在 `Claude Code` 会话中�
 | `/stop`                   | 停止当前 background session。只在附着到后台会话时可用。                                      |
 | `/focus`                  | 切换 focus view，只显示最近一次提示、工具调用摘要和最终回复。仅在 fullscreen 渲染模式中可用。                 |
 
-上述的一些命令在[[1、Claude Code入门|Claude Code入门]]中已经详细介绍，下面是一些新命令的补充介绍：
+上述的一些命令在[[AI/notes/Claude Code/1、Claude Code 安装与配置|Claude Code入门]]中已经详细介绍，下面是一些新命令的补充介绍：
 
 ### （1）/context
 
