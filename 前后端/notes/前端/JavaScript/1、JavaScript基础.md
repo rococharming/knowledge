@@ -12,7 +12,7 @@ aliases:
 
 JavaScript 是一种脚本语言，常用来给网页添加交互、状态变化和动态内容。HTML 负责页面结构，CSS 负责视觉表现，JavaScript 负责让页面“根据事情发生而做出反应”。
 
-![[javascript-html-css-browser-handdrawn.png|700]]
+![[javascript-html-css-browser-handdrawn.png|600]]
 
 在一个网页里，三者可以这样分工：
 
@@ -23,8 +23,6 @@ JavaScript 是一种脚本语言，常用来给网页添加交互、状态变化
 | JavaScript | 行为与状态 | 点击按钮、校验表单、请求数据、更新页面 |
 
 前面已经学过 HTML 和 CSS。学习 JavaScript 时，可以先把它放在第三层：页面已经有结构和样式后，JavaScript 再根据用户操作或程序状态改变页面。
-
-> 简单来说：HTML 描述“有什么”，CSS 描述“长什么样”，JavaScript 描述“发生事情后怎么办”。
 
 # 二、运行环境
 
@@ -71,11 +69,13 @@ node index.js
 
 同一门语言可以在不同环境中运行，但环境提供的能力不同：浏览器重点提供页面、DOM、事件和网络能力；Node.js 重点提供文件系统、进程、服务端网络等能力。
 
+本系列以浏览器 JavaScript 为主。
+
 # 三、页面交互
 
 ## 1、事件
 
-网页交互通常从 **事件（event）** 开始。用户点击按钮、输入文字、提交表单、移动鼠标，浏览器都会产生事件；JavaScript 可以注册处理函数，在事件发生时执行代码。
+网页交互通常从**事件（event）** 开始。用户点击按钮、输入文字、提交表单、移动鼠标，浏览器都会产生事件。JavaScript 可以注册处理函数，在事件发生时执行代码。
 
 示例：
 
@@ -107,7 +107,7 @@ JavaScript 执行处理函数
 
 ## 2、状态
 
-**状态（state）** 是程序当前记住的信息。页面是否展开、用户是否登录、购物车里有几个商品、游戏分数是多少，都可以看作状态。
+**状态（state）** 是程序当前记住的信息。用户是否登录、购物车里有几个商品、游戏分数是多少，都可以看作状态。
 
 示例：
 
@@ -164,7 +164,7 @@ JavaScript 执行处理函数
 
 ## 2、内部脚本
 
-小实验也可以把 JavaScript 直接写在 HTML 的 `script` 元素中：
+学习阶段也可以把 JavaScript 直接写在 HTML 的 `script` 元素中：
 
 ```html
 <script>
@@ -181,7 +181,7 @@ JavaScript 执行处理函数
 示例：
 
 ```js
-console.log("JavaScript 练习页");
+console.log("Hello, world");
 ```
 
 `console.log()` 的输出不会出现在网页正文里，而是出现在开发者工具的 Console 面板中。它适合开发时观察结果，帮助确认代码是否真的执行。
@@ -189,19 +189,12 @@ console.log("JavaScript 练习页");
 > [!note] 开发者工具
 > 开发者工具是浏览器提供给开发者检查网页的工具集合。它可以查看 HTML 结构、CSS 样式、网络请求、错误信息和 JavaScript 输出。刚开始学习 JavaScript 时，最常用的是 Console 面板。
 
-在浏览器里观察输出，需要打开开发者工具，切换到 `Console` 面板：
+在浏览器里观察输出，需要打开开发者工具。
 
-![[assets/Pasted image 20260731004025.png|800]]
+以 Google 浏览器为例，可以按 <kbd>F12</kbd> 或者右键点击页面点击**检查**打开：
 
-macOS 常用快捷键：
+![[assets/Pasted image 20260811104613.png|200]]
 
-| 操作      | 快捷键                                                   |
-| ------- | ----------------------------------------------------- |
-| 打开开发者工具 | <kbd>Command</kbd> + <kbd>Option</kbd> + <kbd>I</kbd> |
-| 刷新页面    | <kbd>Command</kbd> + <kbd>R</kbd>                     |
-| 硬刷新     | <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd>  |
+在开发者工具界面，切到 `Console` 面板即可看到`console.log()`的输出：
 
-刷新页面就是让浏览器重新加载当前页面。普通刷新可能继续使用浏览器缓存里的 HTML、CSS 或 JavaScript 文件；硬刷新会更强地要求浏览器重新获取页面资源。学习 JavaScript 时，如果修改了 `.js` 文件但页面表现没有变化，可以先试一次硬刷新。
-
-> [!warning] 控制台不是页面
-> `console.log()` 只是把信息打印到 Console 面板里，不会修改用户看到的网页内容。后面学习 DOM 时，才会正式处理“把内容显示到页面上”的问题。
+![[assets/Pasted image 20260731004025.png|600]]
