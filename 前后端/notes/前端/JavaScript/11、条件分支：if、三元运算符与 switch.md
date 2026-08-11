@@ -1,0 +1,79 @@
+---
+title: 条件分支：if、三元运算符与 switch
+date: 2026-08-11
+tags: [Web, 前端, JavaScript, 控制流]
+aliases:
+  - JavaScript条件语句
+  - if else
+  - switch
+  - 三元运算符
+---
+
+# 一、if 与 else
+
+条件分支让程序根据条件选择不同路径。`if` 条件为 truthy 时执行对应代码；不满足时可用 `else if` 继续判断，最后用 `else` 处理剩余情况。
+
+```js
+const score = 87;
+
+if (score >= 90) {
+  console.log("A");
+} else if (score >= 80) {
+  console.log("B");
+} else if (score >= 70) {
+  console.log("C");
+} else {
+  console.log("需要继续练习");
+}
+```
+
+条件从上到下判断，命中第一项后便不再判断后续分支。即使分支只有一条语句，也推荐保留花括号，减少日后扩展时的错误。
+
+# 二、三元运算符
+
+三元运算符是唯一一个有三个操作数的运算符，适合根据一个简单条件得到一个值。
+
+```js
+const temperature = 30;
+const weather = temperature > 25 ? "sunny" : "cool";
+
+console.log(`It's a ${weather} day!`);
+```
+
+当每一侧只是一个简短表达式时，三元运算符很清晰；多层判断、多条语句或副作用较多时，使用 `if/else` 更易读。
+
+# 三、switch
+
+`switch` 适合将 **同一个表达式** 与多个固定值比较。`case` 使用严格匹配，`break` 用来结束当前分支；没有匹配时执行 `default`。
+
+```js
+const dayOfWeek = 3;
+
+switch (dayOfWeek) {
+  case 1:
+    console.log("星期一");
+    break;
+  case 3:
+    console.log("星期三");
+    break;
+  default:
+    console.log("其他日期");
+}
+```
+
+省略 `break` 会继续执行下一个 `case`，称为 fall-through。只有确实需要多个分支共用处理时才有意省略，并用注释说明。
+
+```js
+const role = "editor";
+
+switch (role) {
+  case "admin":
+  case "editor":
+    console.log("可以编辑");
+    break;
+  default:
+    console.log("只读");
+}
+```
+
+`switch` 不适合范围比较或组合多个条件；例如年龄、收入和权限同时决定结果时，使用 `if/else if` 更直接。

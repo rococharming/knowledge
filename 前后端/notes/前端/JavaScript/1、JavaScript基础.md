@@ -8,29 +8,25 @@ aliases:
   - ECMAScript
 ---
 
-# 一、核心定位
+# 一、定位
 
-JavaScript 是一种脚本语言，常用来给网页添加交互、状态变化和动态内容。HTML 负责页面结构，CSS 负责视觉表现，JavaScript 负责让页面“根据事情发生而做出反应”。
+JavaScript 是让网页产生行为和状态变化的编程语言。HTML 负责内容结构，CSS 负责视觉表现，JavaScript 负责响应用户操作、处理数据并更新页面。
 
 ![[javascript-html-css-browser-handdrawn.png|600]]
 
-在一个网页里，三者可以这样分工：
-
 | 技术 | 核心职责 | 常见例子 |
 |---|---|---|
-| HTML | 内容结构与语义 | 标题、段落、按钮、表单 |
-| CSS | 视觉表现与布局 | 颜色、字号、间距、Flex、Grid |
-| JavaScript | 行为与状态 | 点击按钮、校验表单、请求数据、更新页面 |
+| HTML | 内容结构与语义 | 标题、按钮、表单 |
+| CSS | 视觉表现与布局 | 颜色、间距、Flex、Grid |
+| JavaScript | 行为与状态 | 点击处理、表单校验、请求数据 |
 
-前面已经学过 HTML 和 CSS。学习 JavaScript 时，可以先把它放在第三层：页面已经有结构和样式后，JavaScript 再根据用户操作或程序状态改变页面。
+JavaScript 是语言规范；浏览器或 Node.js 则是运行这门语言、并额外提供 API 的环境。不要把 JavaScript 与浏览器混为一谈。
 
 # 二、运行环境
 
 ## 1、浏览器
 
-浏览器是前端 JavaScript 最常见的运行环境。JavaScript 代码由浏览器内置的 JavaScript 引擎执行，同时可以通过浏览器提供的 DOM、事件、网络请求等能力控制页面。
-
-示例：
+浏览器内置 JavaScript 引擎，并提供 DOM、事件和网络请求等 Web API。下面的 `const`、箭头函数和字符串是语言本身；`document.querySelector()` 与 `addEventListener()` 是浏览器 API。
 
 ```html
 <button id="save-button">保存</button>
@@ -39,101 +35,32 @@ JavaScript 是一种脚本语言，常用来给网页添加交互、状态变化
   const button = document.querySelector("#save-button");
 
   button.addEventListener("click", () => {
-     alert()
+    console.log("已点击");
   });
 </script>
 ```
 
-这里有两层能力需要区分：
-
-- `const`、箭头函数、字符串等属于 JavaScript 语言本身。
-- `document.querySelector`、`addEventListener` 属于浏览器提供给 JavaScript 的 Web API。
-
-这也是初学时最容易混淆的边界：JavaScript 语言本身不等于浏览器；浏览器给 JavaScript 提供了操作网页的入口。
-
 ## 2、Node.js
 
-JavaScript 也可以运行在浏览器之外。[[前后端/notes/后端/Node.js与npm/1、Node.js 和 npm|Node.js]] 是一种常见的 JavaScript 运行环境，它让 JavaScript 可以编写命令行程序、后端服务、构建工具和自动化脚本。
-
-示例：
+[[前后端/notes/后端/Node.js与npm/1、Node.js 和 npm|Node.js]] 让 JavaScript 可以在浏览器外运行，常用于命令行工具、后端服务和构建脚本。
 
 ```js
 console.log("Hello from Node.js");
 ```
 
-如果这段代码保存为 `index.js`，可以在终端中用 Node.js 运行：
+将代码保存为 `index.js` 后，可在终端执行：
 
 ```bash
 node index.js
 ```
 
-同一门语言可以在不同环境中运行，但环境提供的能力不同：浏览器重点提供页面、DOM、事件和网络能力；Node.js 重点提供文件系统、进程、服务端网络等能力。
+同一段 JavaScript 在不同环境中的语言规则相同，但可调用的 API 不同。本系列以浏览器 JavaScript 为主。
 
-本系列以浏览器 JavaScript 为主。
-
-# 三、页面交互
-
-## 1、事件
-
-网页交互通常从**事件（event）** 开始。用户点击按钮、输入文字、提交表单、移动鼠标，浏览器都会产生事件。JavaScript 可以注册处理函数，在事件发生时执行代码。
-
-示例：
-
-```html
-<p id="message">还没有点击按钮。</p>
-<button id="toggle-button">点我</button>
-
-<script>
-  const message = document.querySelector("#message");
-  const button = document.querySelector("#toggle-button");
-
-  button.addEventListener("click", () => {
-    message.textContent = "按钮已经被点击。";
-  });
-</script>
-```
-
-这里的流程是：
-
-```text
-用户点击按钮
-  ↓
-浏览器触发 click 事件
-  ↓
-JavaScript 执行处理函数
-  ↓
-页面文字发生变化
-```
-
-## 2、状态
-
-**状态（state）** 是程序当前记住的信息。用户是否登录、购物车里有几个商品、游戏分数是多少，都可以看作状态。
-
-示例：
-
-```html
-<p id="count">0</p>
-<button id="add-button">加 1</button>
-
-<script>
-  let count = 0;
-  const countText = document.querySelector("#count");
-  const addButton = document.querySelector("#add-button");
-
-  addButton.addEventListener("click", () => {
-    count = count + 1;
-    countText.textContent = String(count);
-  });
-</script>
-```
-
-`count` 保存当前数字。每次点击按钮，JavaScript 先更新 `count`，再把新的值显示到页面上。这里用到的 `let` 和 `const` 分别表示可更新变量和不重新赋值的名字，详见 [[3、变量声明|变量声明]]。
-
-# 四、编写位置
+# 三、编写与执行
 
 ## 1、外部脚本
 
-真实项目通常把 JavaScript 写在单独的 `.js` 文件中，再用 `script` 元素引入：
+真实项目通常将代码放在 `.js` 文件，再由 HTML 引入。`defer` 会让浏览器先解析 HTML，等文档结构可用后再执行脚本。
 
 ```html
 <!doctype html>
@@ -149,52 +76,43 @@ JavaScript 执行处理函数
 </html>
 ```
 
-这行 `script` 通常放在 `head` 中。`src` 指向脚本文件，`defer` 表示浏览器会先继续解析 HTML，等文档结构解析完成后再执行 `main.js`。这样脚本执行时，页面里的按钮、段落等元素已经存在，JavaScript 才能安全地查找和操作它们。
+也可以把不带 `defer` 的 `script` 放在 `body` 结束标签前。学习时可先在 HTML 内写小段脚本；代码变多后应拆到外部文件。
 
-也可以把不带 `defer` 的 `script` 放在 `body` 结束标签前：
+## 2、控制台
 
-```html
-<body>
-  <button id="save-button">保存</button>
-  <script src="./main.js"></script>
-</body>
-```
-
-入门和真实项目中，更推荐使用 `head` + `defer` 的写法：资源位置集中，执行时机也更清楚。外部脚本更容易维护，也能让 HTML、CSS、JavaScript 各自保持清晰边界。
-
-## 2、内部脚本
-
-学习阶段也可以把 JavaScript 直接写在 HTML 的 `script` 元素中：
-
-```html
-<script>
-  console.log("页面脚本开始执行");
-</script>
-```
-
-这种方式适合临时验证概念。等代码变多后，应拆到外部 `.js` 文件里，避免页面结构和交互逻辑混在一起。
-
-# 五、调试入口
-
-浏览器开发者工具里的 Console 是学习 JavaScript 的第一块练习场。后面会频繁看到 `console.log()`，先把它理解为“把括号里的内容显示到控制台，方便观察程序运行结果”。
-
-示例：
+`console.log()` 会把值输出到浏览器开发者工具的 Console 面板，不会显示在网页正文中。它是验证代码是否执行、观察变量值的第一种工具。
 
 ```js
-console.log("Hello, world");
+const message = "Hello, world";
+
+console.log(message);
 ```
 
-`console.log()` 的输出不会出现在网页正文里，而是出现在开发者工具的 Console 面板中。它适合开发时观察结果，帮助确认代码是否真的执行。
-
 > [!note] 开发者工具
-> 开发者工具是浏览器提供给开发者检查网页的工具集合。它可以查看 HTML 结构、CSS 样式、网络请求、错误信息和 JavaScript 输出。刚开始学习 JavaScript 时，最常用的是 Console 面板。
-
-在浏览器里观察输出，需要打开开发者工具。
-
-以 Google 浏览器为例，可以按 <kbd>F12</kbd> 或者右键点击页面点击**检查**打开：
+> 以 Chrome 为例，可按 <kbd>F12</kbd> 或右键页面后选择“检查”打开开发者工具，再切到 Console 面板。
 
 ![[assets/Pasted image 20260811104613.png|200]]
 
-在开发者工具界面，切到 `Console` 面板即可看到`console.log()`的输出：
-
 ![[assets/Pasted image 20260731004025.png|600]]
+
+# 四、交互与状态预览
+
+网页交互通常由事件开始：用户点击按钮，浏览器触发 `click` 事件，JavaScript 执行处理函数并改变页面。函数、DOM 与事件会在后续专题展开；这里先用它理解 JavaScript 的用途。
+
+```html
+<p id="count">0</p>
+<button id="add-button">加 1</button>
+
+<script>
+  let count = 0;
+  const countText = document.querySelector("#count");
+  const addButton = document.querySelector("#add-button");
+
+  addButton.addEventListener("click", () => {
+    count += 1;
+    countText.textContent = String(count);
+  });
+</script>
+```
+
+`count` 是程序当前记住的 **状态**。每次点击先更新状态，再把结果显示到页面；`let` 与 `const` 的选择见 [[3、变量声明|变量声明]]。
