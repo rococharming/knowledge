@@ -9,7 +9,7 @@ aliases:
 
 # 一、简介
 
-`Claude Code` 是 Anthropic 推出的 AI 代码工具。
+`Claude Code` 是 Anthropic 推出的 AI 代码编程工具。
 
 它能在终端或 IDE 中理解代码库、编辑文件、执行命令，并与开发工具协同工作，帮助开发者用**自然语言**完成代码阅读、开发、调试、重构、测试等任务。
 
@@ -17,13 +17,13 @@ aliases:
 
 # 二、安装
 
-以`macOS`为例，在终端执行：
+以`macOS`为例，推荐使用原生安装方式：
 
 ```bash
 curl -fsSL https://claude.ai/install.sh | bash
 ```
 
-这是原生安装方式，支持后台自动更新 Claude Code。但如果在后续配置文件中设置了`"CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"`，则不会自动更新。
+它安装的是 Claude Code 官方原生二进制，不依赖 Node/npm，并且拥有 Claude Code 自己控制的自动更新机制，更适合作为 Agent 工具长期运行环境。。但如果在后续配置文件中设置了`"CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"`，则不会自动更新。
 
 下载完成后，执行：
 
@@ -31,37 +31,15 @@ curl -fsSL https://claude.ai/install.sh | bash
 claude --version
 ```
 
-如果看到版本，说明安装成功：
-
-![[assets/image-20260427214629504.png|400]]
-
-可以执行如下命令手动更新：
-
-```bash
-claude update
-```
-
-如下图所示：
-
-![[assets/image-20260427214617672.png|400]]
+如果看到版本，说明安装成功。
 
 # 三、配置接入第三方模型
 
+本篇配置是手动修改`~/.claude/settings.json`，如果觉得麻烦，可以跳过本章节，使用 CC Switch 应用简化配置，参考[[AI/notes/CC-Switch/1、简介与安装|CC-Switch 安装]]和[[AI/notes/CC-Switch/2、供应商添加与切换|供应商添加与切换]]。
+
 ## 1、基本原理
 
-进入项目目录，首次启动`Claude Code`：
-
-```bash
-cd path/to/project
-claude 
-```
-
-会提示登录，但这里不推荐使用官方接口，原因有两点：
-
-- 需要国外手机号验证，比较麻烦
-- Anthropic 对中国管控较严，后续使用很有可能被封号
-
-因此，推荐**通过配置接入第三方模型**，需要配置 `BASE_URL + API_KEY + model` 映射。
+**通过配置接入第三方模型**，需要配置 `BASE_URL + API_KEY + model` 映射。
 
 这里可以把三个配置理解成：
 
@@ -218,66 +196,126 @@ Kimi API 开放平台是更通用的 API 平台，用来按 API Key 调用模型
 
 ## 1、第一次对话
 
-配置好模型之后，就可以进入项目目录，在终端执行：
+配置好模型之后，就可以进入项目目录，在终端执行 `claude`，第一次会进入选择终端样式界面：
 
-```shell
-claude
-```
+![[assets/Pasted image 20260811131827.png|600]]
 
-即可进入 Claude Code 会话交流了，如下图所示：
 
-![[assets/Pasted image 20260709103931.png|400]]
+这里选择默认的 Dark mode，可以在下面看到该样式的效果。
 
-现在，可以在对话框输入`/`开头（Slash Command）的命令，熟悉 Claude Code 的一些常用操作了。
+下面进入 Claude Code 的一些使用提示：
+
+![[assets/Pasted image 20260811133017.png|600]]
+
+按提示键入<kbd>Enter</kbd>，这里询问要不要自动优化终端快捷键和提示音设置：
+
+![[assets/Pasted image 20260811133200.png|600]]
+
+它想帮你设置两件事：
+
+- <kbd>Option</kbd> + <kbd>Enter</kbd>：在输入框里换行，而不是发送消息。
+- 关闭 audible bell：避免终端发出“叮”的提示音。
+
+这里选`Yes`即可，后续如果想重新设置，可以使用`/terminal-setup`命令。
+
+接下来进入：
+
+![[assets/Pasted image 20260811133549.png|600]]
+
+这是 Claude Code 的**工作区信任确认**。它在问：这个项目是不是你信任的目录。选了信任之后，Claude Code 才会在这个目录里读取、编辑、执行文件。
+
+选择`Yes`后，就可以进入 Claude Code 了：
+
+![[assets/Pasted image 20260811133722.png|600]]
+
+现在可以发送文本验证是否可用：
+
+![[assets/Pasted image 20260811133820.png|600]]
+
+接下来介绍 Claude Code 一些日常开发常用的 Slash Command（斜杠命令）。Slash Command 是指以`/`开头的指令，直接在文本框输入`/`会弹出可用的 Slash Command 列表。
+
+![[assets/Pasted image 20260811133950.png|600]]
 
 ## 2、/usage
 
 `/usage` 用于查看当前 Claude Code 会话的成本和用量概览，也可以使用别名 `/cost`。
 
-如图所示：
+示例：
 
-![[assets/Pasted image 20260709112423.png|500]]
+![[assets/Pasted image 20260811134055.png|600]]
 
-输出信息解释如下：
+首先看顶部标签：
 
-- **Total cost**：当前会话的本地估算费用。API 按量用户可参考该信息，但实际账单以 Console 为准。Pro/Max 订阅用户可以忽略。注意，这里提示如果接入第三方模型，估算费用可能不准确。
-- **Total duration (API)**：当前会话 API 调用的累计耗时。
-- **Total duration (wall)**：当前会话从开始到现在经过的现实时间。
+```shell
+Settings  Status  Config  Usage  Stats
+```
+
+这是 Claude Code 的终端 UI 标签页。你当前停在 **Usage** 页。
+
+然后是第二行的`Session`，表示当前这一次 Claude Code 会话。也就是说，这段统计只针对这次打开 Claude Code 后的当前 session。
+
+接下来就是完整的一些用量信息了：
+
+- **Total cost**：表示当前会话的估算费用。这里提示用的是 Claude Code 不认识价格表的模型（deepseek flash），所以费用可能不准确。所以接入第三方模型时，此信息可以忽略。
+- **Total duration (API)**：这次会话里，真正发生 API 请求、等待模型返回的累计时间。
+- **Total duration (wall)**：从这个会话开始到现在，真实墙钟时间过去了多久。
 - **Total code changes**：反映会话跟踪到的变更行数，不一定等同于`git diff`的全部语义，也不一定只限代码，可能包括配置、文档等文件变更。
-- **Usage by model**：按模型统计`input`、`output`、`cache read`、`cache write`。具体含义可参考[[1、AI常见概念汇总#二、Token|Token]]。实际 input tokens ≈ input + cache read + cache write。
+- **Usage by model**：按模型统计 token 用量。逐项解释：
+
+| 字段                      | 含义            |
+| ----------------------- | ------------- |
+| `deepseek-v4-flash[1m]` | 本次调用的模型名      |
+| `27.1k input`           | 输入给模型的 token  |
+| `169 output`            | 模型生成的输出 token |
+| `0 cache read`          | 没有读取缓存 token  |
+| `0 cache write`         | 没有写入缓存 token  |
+
+Claude Code 的 token 统计类型包括 `input`、`output`、`cacheRead`、`cacheCreation`，也就是输入、输出、缓存读取、缓存创建。
+
+以当前接入的 deepseek flash 为例，此时发送“你好”得到回复后，执行`/usage`查看结果：
+
+![[assets/Pasted image 20260811220459.png|600]]
+
+由于是新的会话首次提问，此时的`cache read`为0。注意这里明明只发了“你好”，但`input`却有`33.2k`，这是因为每次发给模型的上下文除了当前轮次的新问题，还包含系统提示词、CLAUDE.md、项目规则、工具列表、MCP配置、历史对话等。
+
+现在继续第二次提问“你是什么模型”，再调用`/usage`查看结果：
+
+![[assets/Pasted image 20260811220838.png|600]]
+
+本次可以看到`cache read`不再为0，因为本次命中了缓存。第一次请求结束时，DeepSeek 后端已经把可复用的 prompt 前缀缓存起来了。这次实际传给模型的上下文是`input`+`cache read`。`input`是本次新增、需要重新处理的 token，而`cache read`是之前已经计算过，本次直接复用的 token。
 
 ## 3、/doctor
 
-`/doctor` 命令是 `Claude Code` 的自诊断命令，相当于健康检查，会扫描当前安装并报告几类关键状态：
+`/doctor`用于诊断当前 Claude Code 环境是否正常，包括 Claude Code 安装状态、更新状态、配置文件、MCP 配置、工具依赖、权限与运行环境等。
 
-| 检查项                       | 用途                                                       |
-| ------------------------- | -------------------------------------------------------- |
-| **Diagnostics**           | 运行环境：版本、提交哈希、平台、路径、安装方式                                  |
-| **Updates**               | 更新通道、是否启用自动更新、上次更新结果                                     |
-| **Background** **server** | 后台守护进程（用于 IDE 集成、statusline 等）                           |
-| **Remote** **Control**    | 是否登录 claude.ai / Anthropic API，能否启用远程控制                  |
-| **MCP**                   | 已配置的 MCP 服务器、传输协议（stdio / http / sse）、连接状态、注册工具数、上下文预算占用 |
-| **Skills**                | 已加载技能列表，及上下文预算占用情况                                       |
-| **Version** **locks**     | 运行中的版本锁（防止多实例冲突）                                         |
+新版 `/doctor` 命令升级为完整环境检查工具，不仅诊断 Claude Code 安装、配置、MCP、工具环境等问题，还可以辅助修复发现的问题。
 
-示例：
+![[assets/Pasted image 20260811223926.png|600]]
 
-![[assets/Pasted image 20260709132248.png|500]]
+Claude Code 默认以英文方式回答，这里我们可以先引入`CLAUDE.md`（具体可参考：[[AI/notes/Claude Code/4、Memory|Memory]]），这里理解为长期全局规则，每次新开一个会话都会进入上下文。
 
-这里还可以看到自动更新是 disabled 的，因为设置了 `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC`。如果希望打开自动更新，移除原先配置中的 `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC`。
+打开`~/.claude/CLAUDE.md`，写入：
+
+```markdown
+## 沟通偏好
+
+每次回答使用中文和我交流
+```
+
+这样，每次对话都以中文方式呈现，现在可以看看`/doctor`都看了些什么：
+
+![[assets/Pasted image 20260811225949.png|600]]
+
+可以看到运行`/doctor`，还会建议我将默认权限模式设置为`auto`，这里选择应用，后续权限模式详细介绍该模式。
+
+![[assets/Pasted image 20260811230851.png|700]]
+
 
 ## 4、/status
 
-`/status` 用于打开 `Claude Code` 设置界面的 Status 页面，查看当前环境状态，例如版本、当前模型、账号状态、连接状态等信息。
+`/status` 用于查看当前 Claude Code 会话和环境状态，包括 Claude Code 版本、当前会话名称、ID、当前工作目录、Base URL、认证方式、模型、当前加载了哪些来源。
 
-![[assets/Pasted image 20260709132655.png|500]]
-
-部分字段解释：
-
-- `Session name`：当前会话名称。默认没有名称，可以通过`/rename`为当前会话取一个别名。之后使用 `/resume` 恢复会话时，可以用会话名来识别，而不必依赖很长的 session ID。
-- `Session ID`：当前会话的唯一标识。
-- `cwd`：当前会话启动时所在的工作目录
-- `Setting sources`：当前生效配置的来源。例如 `User settings` 表示用户级配置生效，通常对应 `~/.claude/settings.json`。除此之外，还可能有项目级配置等。这些配置详见[[Settings|Settings]]。
+![[assets/Pasted image 20260811231403.png|600]]
 
 
 ## 5、/clear
