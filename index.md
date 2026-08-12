@@ -13,3 +13,4 @@ date: 2026-07-31
 - [[通用计算机知识/wiki/index|通用计算机知识]] — 操作系统、计算机网络、数据结构与算法、计算机组成原理等通用计算机科学基础知识（0 页）
 - [[BlueOS开发/wiki/index|BlueOS开发]] — BlueOS（蓝河操作系统）应用层开发：UI 框架、前端框架、快应用（RPK）、开发工具链与工程实践（0 页）
 - [[Obsidian/wiki/index|Obsidian]] — Obsidian 工具与插件生态，以及基于 Obsidian 搭建 llm-wiki 知识库的方法（0 页）
+- [[跨境电商/wiki/index|跨境电商]] — 跨境电商平台运营：Amazon、eBay、TikTok Shop、Shopify 等平台的开店、流量获取、广告投放、选品与平台规则合规（0 页）
