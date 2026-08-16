@@ -1,11 +1,12 @@
 ---
-title: JavaScript基础
+title: JavaScript 基础
 date: 2026-07-30
 tags: [Web, 前端, JavaScript, 前端基础]
 aliases:
   - JS基础
   - JavaScript入门
   - ECMAScript
+  - JavaScript基础
 ---
 
 # 一、定位
@@ -60,7 +61,7 @@ node index.js
 
 ## 1、外部脚本
 
-真实项目通常将代码放在 `.js` 文件，再由 HTML 引入。`defer` 会让浏览器先解析 HTML，等文档结构可用后再执行脚本。
+真实项目通常将代码放在 `.js` 文件，再由 HTML 的`<script>`标签引入。`defer` 会让浏览器先解析 HTML，等文档结构可用后再执行脚本。
 
 ```html
 <!doctype html>
@@ -99,6 +100,8 @@ console.log(message);
 
 网页交互通常由事件开始：用户点击按钮，浏览器触发 `click` 事件，JavaScript 执行处理函数并改变页面。函数、DOM 与事件会在后续专题展开；这里先用它理解 JavaScript 的用途。
 
+## 1、状态更新
+
 ```html
 <p id="count">0</p>
 <button id="add-button">加 1</button>
@@ -110,9 +113,22 @@ console.log(message);
 
   addButton.addEventListener("click", () => {
     count += 1;
-    countText.textContent = String(count);
+    countText.textContent = count;
   });
 </script>
 ```
 
-`count` 是程序当前记住的 **状态**。每次点击先更新状态，再把结果显示到页面；`let` 与 `const` 的选择见 [[3、变量声明|变量声明]]。
+`count` 是程序当前记住的 **状态**。每次点击先更新状态，再把结果显示到页面；`let` 与 `const` 的选择见 [[3、变量|变量]]。
+
+## 2、浏览器输入
+
+`prompt()` 是浏览器提供的输入弹窗，不是 JavaScript 语言本身。用户确认时它返回字符串，取消时返回 `null`；即使输入数字，得到的也是字符串。
+
+```js
+const answer = prompt("你正在学习什么？", "JavaScript");
+
+console.log(answer);
+```
+
+> [!note]
+> `prompt()` 适合入门实验，但会阻塞页面且样式无法定制。真实网页通常使用表单元素与事件处理；把输入转为数字的方式见 [[9、类型转换|类型转换]]。

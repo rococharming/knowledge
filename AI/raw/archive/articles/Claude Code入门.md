@@ -235,7 +235,7 @@ claude
 - **Total duration (API)**：当前会话 API 调用的累计耗时。
 - **Total duration (wall)**：当前会话从开始到现在经过的现实时间。
 - **Total code changes**：反映会话跟踪到的变更行数，不一定等同于`git diff`的全部语义，也不一定只限代码，可能包括配置、文档等文件变更。
-- **Usage by model**：按模型统计`input`、`output`、`cache read`、`cache write`。具体含义可参考[[AI/notes/1、AI常见概念#二、Token|Token]]。实际 input tokens ≈ input + cache read + cache write。
+- **Usage by model**：按模型统计`input`、`output`、`cache read`、`cache write`。具体含义可参考[[AI/notes/1、AI基本概念#二、Token|Token]]。实际 input tokens ≈ input + cache read + cache write。
 
 ## 3、/doctor
 
