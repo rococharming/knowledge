@@ -64,6 +64,7 @@ knowledge/
 | [BlueOS开发](BlueOS开发/wiki/index.md) | BlueOS（蓝河操作系统）应用层开发：UI 框架、前端框架、快应用（RPK）、开发工具链与工程实践 | 活跃 |
 | [Obsidian](Obsidian/wiki/index.md) | Obsidian 工具与插件生态，以及基于 Obsidian 搭建 llm-wiki 知识库的方法 | 活跃 |
 | [跨境电商](跨境电商/wiki/index.md) | 跨境电商平台运营：Amazon、eBay、TikTok Shop、Shopify 等平台的开店、流量获取、广告投放、选品与平台规则合规 | 活跃 |
+| [公务员备考](公务员备考/wiki/index.md) | 公务员考试备考知识：覆盖行测、申论、面试、选岗、时政与公共基础知识，并沉淀可执行的复习方法。 | 活跃 |
 ---
 
 ## 核心操作
