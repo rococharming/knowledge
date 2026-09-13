@@ -1,67 +1,15 @@
 ---
 title: Obsidian 入门
 date: 2026-07-07
-tags: [Obsidian, obsidian, note-taking, Obsidian 入门]
+tags:
+  - Obsidian
+  - note-taking
 aliases:
   - Obsidian 入门
-  - Obsidian入门
 ---
 
-# 一、Obsidian 概述
 
-## 1、简介
-Obsidian 是一款以本地 Markdown 文件为基础的知识管理与笔记应用，由 Erica Xu 和 Shida Li 创立，并于 2020 年首次推出。它不把笔记封闭在专有数据库中，而是直接读取和管理本地文件夹中的 `.md` 文件。
 
-在 Obsidian 中，一个用于保存笔记、附件和配置的文件夹称为仓库（Vault）。仓库中的内容仍然是普通文件，可以使用文件管理器、文本编辑器或其他 Markdown 工具打开。
-
-Obsidian 主要有三个特点：
-
-- **本地文件** ：笔记使用 Markdown 格式保存，并通过文件和文件夹组织
-- **双向链接** ：既能看到当前笔记链接了哪些内容，也能看到哪些笔记正在引用当前笔记
-- **高度可扩展** ：可以通过核心插件、社区插件、主题和 CSS 片段扩展功能与外观
-
-这些能力让 Obsidian 既可以作为简单的 Markdown 编辑器，也可以逐步发展为个人知识库。不过，可选插件和工作流非常多，初学时不必急于配置完整系统。
-
-> [!tip]
-> 先完成安装、创建仓库并开始记录，再根据实际需求增加插件和调整结构。一个能持续使用的简单系统，通常比一次性搭建复杂系统更有效。
-
-## 2、跨平台支持
-Obsidian 支持 Windows、macOS、Linux、iOS、iPadOS 和 Android。各平台版本可以从 [Obsidian 下载页面](https://obsidian.md/download) 获取。由于笔记以本地文件保存，即使离线也可以正常阅读和编辑。
-
-## 3、费用与同步
-Obsidian 应用本身可以免费用于个人、商业、教育、非营利等用途，也不要求注册账号。Catalyst 和 Commercial 许可证属于自愿支持项目，不是使用 Obsidian 的必要条件。
-
-Obsidian Sync 是可选的付费同步服务，用于在桌面端和移动端之间同步仓库，提供端到端加密、版本历史等功能。它不是使用 Obsidian 的前提；也可以根据设备和系统选择 iCloud、OneDrive、Git 等其他同步方案。
-
-> [!warning]
-> 同步不能代替备份。无论使用哪种同步方案，都建议另外保留独立备份，并避免在多个同步工具中同时管理同一仓库。
-
-## 4、Markdown 与数据可迁移性
-Obsidian 使用 Markdown 纯文本文件构建知识库。Markdown 文件具有以下优势：
-
-- 不依赖 Obsidian 也能搜索、阅读和编辑
-- 可以使用 Git 进行版本管理
-- 便于在 Windows、macOS 和 Linux 之间迁移
-- 相比专有格式，更容易长期保存并迁移到其他工具
-
-Obsidian 在标准 Markdown 基础上还支持双向链接、内容嵌入、Callout、属性等扩展语法，详见 [[2、Obsidian 扩展语法|Obsidian 扩展语法]]。
-
-本笔记只介绍建立并运行基础笔记系统所需的操作。熟悉基本流程后，再逐步探索插件、主题和自动化功能。
-
-## 5、定位
-
-Obsidian 首先是一个码字工具，但更重要的是，它是一个深度的知识管理工具：
-
-- 内容为基础
-- 链接为核心
-
-通过建立知识库，来关联知识点，同时发现新知识点。
-
-时刻记住，Obsidian 不是单纯的信息收集工具，否则它不是你的第二大脑，而是第二垃圾桶！
-
-# 二、安装 Obsidian
-
-访问 [Obsidian 官方下载页面](https://obsidian.md/download)，根据当前设备选择对应的平台版本，然后按照安装向导完成安装。
 
 
 # 三、创建与选择仓库
