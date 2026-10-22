@@ -2,7 +2,7 @@
   "alwaysUpdateLinks": true,
   "attachmentFolderPath": "assets",
   "useTab": true,
-  "showLineNumber": true,
+  "showLineNumber": false,
   "readableLineLength": false,
   "propertiesInDocument": "visible",
   "strictLineBreaks": false,
